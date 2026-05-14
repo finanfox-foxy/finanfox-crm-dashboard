@@ -317,11 +317,11 @@ def main():
 
     # ── Period stats ──
     yesterday_stats = compute_period_stats(
-        contacts, deals_raw, pf_records, "Ayer", in_yesterday
+        contacts, deals, pf_records, "Ayer", in_yesterday
     )
 
     this_month_stats = compute_period_stats(
-        contacts, deals_raw, pf_records, "Este Mes", in_this_month
+        contacts, deals, pf_records, "Este Mes", in_this_month
     )
 
     print(f"\n📅 Ayer ({YESTERDAY}):")
