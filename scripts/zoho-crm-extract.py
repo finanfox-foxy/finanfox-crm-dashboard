@@ -23,7 +23,12 @@ DATA_DIR = Path(__file__).parent.parent / 'data'
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 DATA_FILE = DATA_DIR / 'zoho-crm.json'
 
-def get_access_token():
+ACCESS_TOKEN = None
+
+def get_access_token(force=False):
+    global ACCESS_TOKEN
+    if ACCESS_TOKEN and not force:
+        return ACCESS_TOKEN
     r = requests.post(f"{ACCOUNTS_URL}/oauth/v2/token", data={
         'refresh_token': REFRESH_TOKEN,
         'client_id': CLIENT_ID,
@@ -34,7 +39,8 @@ def get_access_token():
     if 'access_token' not in data:
         print(f"ERROR refreshing token: {data}")
         sys.exit(1)
-    return data['access_token']
+    ACCESS_TOKEN = data['access_token']
+    return ACCESS_TOKEN
 
 def api_get(module, params=None):
     token = get_access_token()
@@ -42,6 +48,10 @@ def api_get(module, params=None):
     r = requests.get(url, headers={'Authorization': f'Zoho-oauthtoken {token}'}, params=params)
     if r.status_code == 204:
         return {"data": []}
+    # If unauthorized, refresh token once and retry
+    if r.status_code == 401:
+        token = get_access_token(force=True)
+        r = requests.get(url, headers={'Authorization': f'Zoho-oauthtoken {token}'}, params=params)
     try:
         return r.json()
     except:
