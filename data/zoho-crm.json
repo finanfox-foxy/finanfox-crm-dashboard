@@ -1,5 +1,9 @@
 {
-  "timestamp": "2026-05-14T21:04:38+0000",
+  "timestamp": "2026-05-14T21:57:16Z",
+  "generated_at": "2026-05-14",
+  "today": "2026-05-14",
+  "yesterday": "2026-05-13",
+  "this_month": "2026-05",
   "contacts": [
     {
       "id": "862490000004800001",
@@ -19339,51 +19343,153 @@
     }
   ],
   "stats": {
-    "contacts": {
-      "total": 404,
-      "with_email": 399,
-      "with_phone": 378,
-      "welcome_sent": 42,
-      "by_owner": {
-        "Alberto Prieto": 125,
-        "Jose Orrequia": 144,
-        "Jaime Becerra": 101,
-        "Alex Caballero": 34
+    "all_time": {
+      "contacts": {
+        "total": 404,
+        "with_email": 399,
+        "with_phone": 378,
+        "welcome_sent": 42,
+        "by_owner": {
+          "Alberto Prieto": 125,
+          "Jose Orrequia": 144,
+          "Jaime Becerra": 101,
+          "Alex Caballero": 34
+        },
+        "by_canal": {
+          "Finanfox": 387,
+          "null": 17
+        }
       },
-      "by_canal": {
-        "Finanfox": 387,
-        "null": 17
+      "deals": {
+        "total": 406,
+        "by_stage": {
+          "Llamada Pendiente": 134,
+          "Revisando Propuesta": 13,
+          "Aceptado/Falta Firma": 26,
+          "Análisis Financiero": 38,
+          "Cerrado Ganado": 48,
+          "Cerrado Perdido": 115,
+          "Reasesoramiento": 18,
+          "Asesoramiento": 14
+        },
+        "by_owner": {
+          "Alberto Prieto": 138,
+          "Jaime Becerra": 106,
+          "Alex Caballero": 13,
+          "Jose Orrequia": 149
+        },
+        "by_type": {
+          "Cliente existente": 302,
+          "Nuevo Cliente": 100,
+          "null": 4
+        },
+        "pipeline_value": 1408019,
+        "total_aportaciones": 1378019,
+        "avg_deal_size": 3468.03,
+        "closed_won": 48,
+        "closed_won_value": 760748,
+        "conversion_rate": 11.8
       }
     },
-    "deals": {
-      "total": 406,
-      "by_stage": {
+    "yesterday": {
+      "label": "Ayer",
+      "new_contacts": 5,
+      "new_deals": 6,
+      "won_deals": 1,
+      "won_value": 2000.0,
+      "total_aportacion_won": 2000.0,
+      "product_breakdown": {
+        "Monefit": 2000.0
+      },
+      "product_count": {
+        "Monefit": 1
+      },
+      "advisor_ranking_won": [
+        {
+          "name": "Alberto Prieto",
+          "won": 1,
+          "total_aportacion": 2000.0
+        }
+      ],
+      "advisor_ranking_aportacion": [
+        {
+          "name": "Alberto Prieto",
+          "won": 1,
+          "total_aportacion": 2000.0
+        }
+      ],
+      "pipeline_stages": {
         "Llamada Pendiente": 134,
         "Revisando Propuesta": 13,
         "Aceptado/Falta Firma": 26,
         "Análisis Financiero": 38,
         "Cerrado Ganado": 48,
-        "Cerrado Perdido": 115,
         "Reasesoramiento": 18,
         "Asesoramiento": 14
       },
-      "by_owner": {
-        "Alberto Prieto": 138,
-        "Jaime Becerra": 106,
-        "Alex Caballero": 13,
-        "Jose Orrequia": 149
+      "pipeline_value": 1393019.0
+    },
+    "this_month": {
+      "label": "Este Mes",
+      "new_contacts": 120,
+      "new_deals": 134,
+      "won_deals": 13,
+      "won_value": 366641.0,
+      "total_aportacion_won": 366641.0,
+      "product_breakdown": {
+        "Monefit": 288000.0,
+        "Compra Única": 53641.0,
+        "Cuenta Depósito Bonificada": 25000.0
       },
-      "by_type": {
-        "Cliente existente": 302,
-        "Nuevo Cliente": 100,
-        "null": 4
+      "product_count": {
+        "Monefit": 9,
+        "Compra Única": 5,
+        "Cuenta Depósito Bonificada": 1
       },
-      "pipeline_value": 1408019,
-      "total_aportaciones": 1378019,
-      "avg_deal_size": 3468.03,
-      "closed_won": 48,
-      "closed_won_value": 760748,
-      "conversion_rate": 11.8
+      "advisor_ranking_won": [
+        {
+          "name": "Alberto Prieto",
+          "won": 8,
+          "total_aportacion": 116000.0
+        },
+        {
+          "name": "Jaime Becerra",
+          "won": 3,
+          "total_aportacion": 155000.0
+        },
+        {
+          "name": "Alex Caballero",
+          "won": 2,
+          "total_aportacion": 95641.0
+        }
+      ],
+      "advisor_ranking_aportacion": [
+        {
+          "name": "Jaime Becerra",
+          "won": 3,
+          "total_aportacion": 155000.0
+        },
+        {
+          "name": "Alberto Prieto",
+          "won": 8,
+          "total_aportacion": 116000.0
+        },
+        {
+          "name": "Alex Caballero",
+          "won": 2,
+          "total_aportacion": 95641.0
+        }
+      ],
+      "pipeline_stages": {
+        "Llamada Pendiente": 134,
+        "Revisando Propuesta": 13,
+        "Aceptado/Falta Firma": 26,
+        "Análisis Financiero": 38,
+        "Cerrado Ganado": 48,
+        "Reasesoramiento": 18,
+        "Asesoramiento": 14
+      },
+      "pipeline_value": 1393019.0
     }
   }
 }
