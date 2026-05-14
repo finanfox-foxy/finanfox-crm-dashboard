@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard - Finanfox 🦊</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --accent: #f97316;
+            --accent-light: #fb923c;
+            --success: #22c55e;
+            --warning: #eab308;
+            --error: #ef4444;
+            --info: #3b82f6;
+            --purple: #a855f7;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: var(--shadow);
+        }
+        .top-bar h1 { font-size: 1.3rem; }
+        .top-bar h1 span { color: var(--accent); }
+        .timestamp { color: var(--text-muted); font-size: 0.8rem; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px 24px; }
+
+        .crm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .crm-card {
+            background: var(--surface); border-radius: 12px; padding: 20px;
+            box-shadow: var(--shadow); border: 1px solid var(--border);
+            border-left: 4px solid var(--text-muted);
+        }
+        .crm-card.accent { border-left-color: var(--accent); }
+        .crm-card.success { border-left-color: var(--success); }
+        .crm-card.info { border-left-color: var(--info); }
+        .crm-card.purple { border-left-color: var(--purple); }
+        .crm-card.warning { border-left-color: var(--warning); }
+        .crm-card .value { font-size: 1.8rem; font-weight: 700; }
+        .crm-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+        .crm-card .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+        .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+        .chart-container {
+            background: var(--surface); border-radius: 12px; padding: 20px;
+            box-shadow: var(--shadow); border: 1px solid var(--border);
+        }
+        .chart-container h3 { font-size: 0.9rem; margin-bottom: 16px; }
+        .chart-container canvas { max-height: 280px; }
+
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        .data-table th { text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--border); color: var(--text-muted); font-weight: 600; }
+        .data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+        .data-table tr:hover td { background: var(--surface-hover); }
+
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; }
+        .badge-orange { background: #fff7ed; color: #c2410c; }
+        .badge-green { background: #f0fdf4; color: #15803d; }
+        .badge-blue { background: #eff6ff; color: #1d4ed8; }
+        .badge-red { background: #fef2f2; color: #dc2626; }
+        .badge-purple { background: #f5f3ff; color: #6d28d9; }
+        .badge-gray { background: #f1f5f9; color: #475569; }
+
+        .loading { text-align: center; padding: 80px; color: var(--text-muted); }
+        .loading .spinner { font-size: 2.5rem; margin-bottom: 16px; animation: spin 1.5s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .error-banner {
+            background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+            padding: 24px; margin-bottom: 20px; color: #991b1b; text-align: center;
+        }
+        .error-banner h3 { margin-bottom: 8px; }
+
+        .badge-bar { display: inline-block; height: 20px; border-radius: 4px; margin-right: 4px; vertical-align: middle; }
+        .last-updated { text-align: center; color: var(--text-muted); font-size: 0.78rem; margin-top: 32px; padding: 16px; border-top: 1px solid var(--border); }
+        .last-updated a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .charts-row { grid-template-columns: 1fr; }
+            .crm-grid { grid-template-columns: 1fr 1fr; }
+            .container { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>🦊 <span>CRM</span> Dashboard</h1>
+        <div style="display:flex;align-items:center;gap:12px">
+            <span class="timestamp" id="crm-timestamp">Cargando...</span>
+            <button onclick="refreshData()" style="background:var(--accent);color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:0.82rem">🔄 Actualizar</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loading-state" class="loading">
+            <div class="spinner">🔄</div>
+            <p>Cargando datos del CRM...</p>
+        </div>
+        <div id="error-state" class="error-banner" style="display:none">
+            <h3>⚠️ No se pudieron cargar los datos</h3>
+            <p id="error-message">Error de conexión. Puede que los datos aún no se hayan generado.</p>
+        </div>
+        <div id="dashboard-content" style="display:none">
+            <div class="crm-grid" id="kpi-cards"></div>
+
+            <div class="charts-row">
+                <div class="chart-container">
+                    <h3>📊 Pipeline por Etapa</h3>
+                    <canvas id="chart-stage"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>💰 Valor Pipeline por Etapa</h3>
+                    <canvas id="chart-stage-value"></canvas>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-container">
+                    <h3>👤 Ofertas por Asesor</h3>
+                    <canvas id="chart-owner"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>👥 Contactos por Asesor</h3>
+                    <canvas id="chart-contact-owner"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container" style="margin-bottom:24px">
+                <h3>📋 Últimas Ofertas</h3>
+                <div style="overflow-x:auto">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Deal</th>
+                                <th>Contacto</th>
+                                <th>Asesor</th>
+                                <th>Etapa</th>
+                                <th>Importe</th>
+                                <th>Aportación</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="deals-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-updated">
+            <span id="footer-timestamp"></span> ·
+            <a href="https://github.com/finanfox-foxy/finanfox-crm-dashboard" target="_blank">GitHub</a> ·
+            Hecho por 🦊 Foxy para Finanfox
+        </div>
+    </div>
+
+    <script>
+        let chartStage = null, chartStageValue = null, chartOwner = null, chartContactOwner = null;
+
+        function getStageBadge(stage) {
+            const s = stage || '';
+            if (s.includes('Ganado')) return 'badge-green';
+            if (s.includes('Perdido')) return 'badge-red';
+            if (s.includes('Firma') || s.includes('Aceptado')) return 'badge-purple';
+            if (s.includes('Análisis') || s.includes('Analisis')) return 'badge-blue';
+            if (s.includes('Pendiente') || s.includes('Llamada')) return 'badge-orange';
+            return 'badge-gray';
+        }
+
+        function formatEUR(v) {
+            return '€' + Number(v).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+
+        function renderDashboard(data) {
+            const stats = data.stats;
+            const c = stats.contacts;
+            const d = stats.deals;
+
+            document.getElementById('crm-timestamp').textContent =
+                'Actualizado: ' + new Date(data.timestamp).toLocaleString('es-ES', {
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                });
+            document.getElementById('footer-timestamp').textContent =
+                'Última actualización: ' + new Date(data.timestamp).toLocaleString('es-ES');
+
+            // KPI Cards
+            document.getElementById('kpi-cards').innerHTML = `
+                <div class="crm-card accent">
+                    <div class="value">${c.total}</div>
+                    <div class="label">👥 Contactos</div>
+                    <div class="sub">📧 ${c.with_email} con email</div>
+                </div>
+                <div class="crm-card info">
+                    <div class="value">${d.total}</div>
+                    <div class="label">💰 Ofertas</div>
+                    <div class="sub">Promedio: ${formatEUR(d.avg_deal_size)}</div>
+                </div>
+                <div class="crm-card success">
+                    <div class="value">${formatEUR(d.pipeline_value)}</div>
+                    <div class="label">📊 Pipeline Total</div>
+                    <div class="sub">${d.closed_won} cerrados: ${formatEUR(d.closed_won_value)}</div>
+                </div>
+                <div class="crm-card purple">
+                    <div class="value">${d.conversion_rate}%</div>
+                    <div class="label">🎯 Tasa Conversión</div>
+                    <div class="sub">${formatEUR(d.total_aportaciones)} en aportaciones</div>
+                </div>
+                <div class="crm-card warning">
+                    <div class="value">${data.products ? data.products.length : 0}</div>
+                    <div class="label">📦 Productos</div>
+                    <div class="sub">${data.tasks ? data.tasks.length : 0} tareas pendientes</div>
+                </div>
+            `;
+
+            const colors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444','#64748b','#06b6d4'];
+
+            // Pipeline by Stage (bar)
+            const stages = Object.entries(d.by_stage).sort((a,b) => b[1] - a[1]);
+            if (chartStage) chartStage.destroy();
+            const ctx1 = document.getElementById('chart-stage').getContext('2d');
+            chartStage = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: stages.map(s => s[0]),
+                    datasets: [{
+                        label: 'Deals',
+                        data: stages.map(s => s[1]),
+                        backgroundColor: stages.map((_,i) => colors[i % colors.length]),
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 10 } } }
+                }
+            });
+
+            // Pipeline Value by Stage
+            const stageValues = {};
+            (data.deals || []).forEach(deal => {
+                const st = deal.Stage || 'Sin etapa';
+                stageValues[st] = (stageValues[st] || 0) + (deal.Amount || 0);
+            });
+            const svSorted = Object.entries(stageValues).sort((a,b) => b[1] - a[1]);
+            if (chartStageValue) chartStageValue.destroy();
+            const ctx2 = document.getElementById('chart-stage-value').getContext('2d');
+            chartStageValue = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: svSorted.map(s => s[0]),
+                    datasets: [{
+                        label: 'Valor (€)',
+                        data: svSorted.map(s => s[1]),
+                        backgroundColor: svSorted.map((_,i) => colors[i % colors.length]),
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { callback: v => '€' + v.toLocaleString('es-ES') } } }
+                }
+            });
+
+            // Deals by Owner
+            const owners = Object.entries(d.by_owner).sort((a,b) => b[1] - a[1]);
+            if (chartOwner) chartOwner.destroy();
+            const ctx3 = document.getElementById('chart-owner').getContext('2d');
+            chartOwner = new Chart(ctx3, {
+                type: 'doughnut',
+                data: {
+                    labels: owners.map(o => o[0]),
+                    datasets: [{
+                        data: owners.map(o => o[1]),
+                        backgroundColor: owners.map((_,i) => colors[i % colors.length])
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } } }
+            });
+
+            // Contacts by Owner
+            const contactOwners = Object.entries(c.by_owner).sort((a,b) => b[1] - a[1]);
+            if (chartContactOwner) chartContactOwner.destroy();
+            const ctx4 = document.getElementById('chart-contact-owner').getContext('2d');
+            chartContactOwner = new Chart(ctx4, {
+                type: 'doughnut',
+                data: {
+                    labels: contactOwners.map(o => o[0]),
+                    datasets: [{
+                        data: contactOwners.map(o => o[1]),
+                        backgroundColor: contactOwners.map((_,i) => colors[i % colors.length])
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } } }
+            });
+
+            // Deals Table
+            const tbody = document.getElementById('deals-table-body');
+            const recent = (data.deals || []).slice(-50).reverse();
+            tbody.innerHTML = recent.map(deal => `
+                <tr>
+                    <td><strong>${deal.Deal_Name || 'Sin nombre'}</strong></td>
+                    <td>${deal.Contact_Name || '-'}</td>
+                    <td>${deal.Owner || '-'}</td>
+                    <td><span class="badge ${getStageBadge(deal.Stage)}">${deal.Stage}</span></td>
+                    <td>${formatEUR(deal.Amount || 0)}</td>
+                    <td>${formatEUR(deal.Total_Aportaciones || 0)}</td>
+                    <td>${deal.Type || '-'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function refreshData() {
+            document.getElementById('loading-state').style.display = '';
+            document.getElementById('error-state').style.display = 'none';
+            document.getElementById('dashboard-content').style.display = 'none';
+
+            fetch('data/zoho-crm.json?_=' + Date.now())
+                .then(r => {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(data => {
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('dashboard-content').style.display = '';
+                    renderDashboard(data);
+                })
+                .catch(err => {
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('error-state').style.display = '';
+                    document.getElementById('error-message').textContent =
+                        'No se encontraron datos del CRM. El GitHub Action genera los datos automáticamente cada día a las 9:30.';
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', refreshData);
+    </script>
+</body>
+</html>

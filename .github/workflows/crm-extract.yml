@@ -1,0 +1,61 @@
+name: CRM Daily Extract
+
+on:
+  schedule:
+    # Daily at 7:30 UTC = 9:30 AM Europe/Madrid (CET) / 8:30 AM (CEST)
+    - cron: '30 7 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Extract Zoho CRM data
+        env:
+          ZOHO_CLIENT_ID: ${{ secrets.ZOHO_CLIENT_ID }}
+          ZOHO_CLIENT_SECRET: ${{ secrets.ZOHO_CLIENT_SECRET }}
+          ZOHO_REFRESH_TOKEN: ${{ secrets.ZOHO_REFRESH_TOKEN }}
+          ZOHO_ACCOUNTS_URL: ${{ secrets.ZOHO_ACCOUNTS_URL || 'https://accounts.zoho.eu' }}
+          ZOHO_API_DOMAIN: ${{ secrets.ZOHO_API_DOMAIN || 'https://www.zohoapis.eu' }}
+        run: python scripts/zoho-crm-extract.py
+
+      - name: Commit data
+        run: |
+          git config user.name "Foxy 🦊"
+          git config user.email "foxy@finanfox.com"
+          git add data/zoho-crm.json
+          git diff --staged --quiet || git commit -m "📊 CRM data update $(date +'%Y-%m-%d %H:%M')"
+          git push
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
