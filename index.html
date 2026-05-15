@@ -306,11 +306,11 @@
                 <div class="crm-grid" id="kpi-ayer"></div>
                 <div class="charts-row">
                     <div class="chart-container">
-                        <h3>🔝 Ranking Asesores (Ofertas Ganadas)</h3>
+                        <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
                         <div id="advisor-won-ayer"></div>
                     </div>
                     <div class="chart-container">
-                        <h3>💰 Ranking Asesores (Por Aportación)</h3>
+                        <h3>💰 Ranking Asesores (Por Inversión)</h3>
                         <div id="advisor-aport-ayer"></div>
                     </div>
                 </div>
@@ -326,11 +326,11 @@
                 <div class="crm-grid" id="kpi-this_month"></div>
                 <div class="charts-row">
                     <div class="chart-container">
-                        <h3>🔝 Ranking Asesores (Ofertas Ganadas)</h3>
+                        <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
                         <div id="advisor-won-this_month"></div>
                     </div>
                     <div class="chart-container">
-                        <h3>💰 Ranking Asesores (Por Aportación)</h3>
+                        <h3>💰 Ranking Asesores (Por Inversión)</h3>
                         <div id="advisor-aport-this_month"></div>
                     </div>
                 </div>
@@ -345,7 +345,7 @@
                 <div class="crm-grid" id="kpi-all_time"></div>
                 <div class="charts-row">
                     <div class="chart-container">
-                        <h3>👤 Ofertas por Asesor</h3>
+                        <h3>👤 Oportunidades por Asesor</h3>
                         <canvas id="chart-owner-all"></canvas>
                     </div>
                     <div class="chart-container">
@@ -354,7 +354,7 @@
                     </div>
                 </div>
                 <div class="chart-container full-width" style="margin-bottom:24px">
-                    <h3>📋 Últimas Ofertas</h3>
+                    <h3>📋 Últimas Oportunidades</h3>
                     <div style="overflow-x:auto">
                         <table class="compact-table">
                             <thead>
@@ -364,7 +364,7 @@
                                     <th>Asesor</th>
                                     <th>Etapa</th>
                                     <th>Importe</th>
-                                    <th>Aportación</th>
+                                    <th>Inversión</th>
                                     <th>Tipo</th>
                                 </tr>
                             </thead>
@@ -464,14 +464,14 @@
                             <div class="value">${s.new_deals}</div>
                             ${cmp ? renderCmpBadge(s.new_deals, cmp.new_deals) : ''}
                         </div>
-                        <div class="label">📈 Nuevas Ofertas</div>
+                        <div class="label">📈 Nuevas Oportunidades</div>
                     </div>
                     <div class="crm-card success">
                         <div class="value-row">
                             <div class="value">${s.won_deals}</div>
                             ${cmp ? renderCmpBadge(s.won_deals, cmp.won_deals) : ''}
                         </div>
-                        <div class="label">🏆 Ofertas Ganadas</div>
+                        <div class="label">🏆 Oportunidades Ganadas</div>
                         <div class="sub">${formatEUR(s.won_value)} ${cmp ? renderCmpBadge(s.won_value, cmp.won_value) : ''}</div>
                     </div>
                     <div class="crm-card purple">
@@ -479,7 +479,7 @@
                             <div class="value">${formatEUR(s.total_aportacion_won)}</div>
                             ${cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won) : ''}
                         </div>
-                        <div class="label">💰 Total Aportado</div>
+                        <div class="label">💰 Total Invertido</div>
                     </div>
                     <div class="crm-card warning">
                         <div class="value-row">
@@ -500,7 +500,7 @@
                     </div>
                     <div class="crm-card info">
                         <div class="value">${d.total}</div>
-                        <div class="label">💰 Ofertas</div>
+                        <div class="label">💰 Oportunidades</div>
                         <div class="sub">Promedio: ${formatEUR(d.avg_deal_size)}</div>
                     </div>
                     <div class="crm-card success">
@@ -511,7 +511,7 @@
                     <div class="crm-card purple">
                         <div class="value">${d.conversion_rate}%</div>
                         <div class="label">🎯 Tasa Conversión</div>
-                        <div class="sub">${formatEUR(d.total_aportaciones)} en aportaciones</div>
+                        <div class="sub">${formatEUR(d.total_aportaciones)} en inversiones</div>
                     </div>
                     <div class="crm-card warning">
                         <div class="value">${data.products ? data.products.length : 0}</div>
@@ -531,7 +531,7 @@
                     <th>#</th>
                     <th>Asesor</th>
                     <th>${label}</th>
-                    <th>💰 Aportación Total</th>
+                    <th>💰 Inversión Total</th>
                 </tr></thead><tbody>`;
             ranking.forEach((a, i) => {
                 const medal = i < 3 ? medals[i] : `${i+1}.`;
@@ -556,7 +556,7 @@
                 <thead><tr>
                     <th>Producto</th>
                     <th>Veces</th>
-                    <th>Total Aportado</th>
+                    <th>Total Invertido</th>
                     <th>%</th>
                 </tr></thead><tbody>`;
             names.forEach((name, i) => {
