@@ -103,7 +103,11 @@ def spain_today():
 
 TODAY = spain_today()
 YESTERDAY = TODAY - timedelta(days=1)
+PREV_YESTERDAY = YESTERDAY - timedelta(days=1)  # día anterior a ayer
 THIS_MONTH = str(TODAY)[:7]  # "2026-05"
+# Mes anterior (primer día del mes actual - 1 día = último día del mes anterior)
+PREV_MONTH_FIRST = TODAY.replace(day=1) - timedelta(days=1)
+PREV_MONTH = str(PREV_MONTH_FIRST)[:7]  # e.g., "2026-04"
 
 def in_yesterday(date_str):
     """Check if date string is from yesterday (Spain time)."""
@@ -116,6 +120,18 @@ def in_this_month(date_str):
     if not date_str:
         return False
     return date_str[:7] == THIS_MONTH
+
+def in_prev_yesterday(date_str):
+    """Check if date string is from the day before yesterday (Spain time)."""
+    if not date_str:
+        return False
+    return date_str[:10] == str(PREV_YESTERDAY)
+
+def in_prev_month(date_str):
+    """Check if date string is from previous month (Spain time)."""
+    if not date_str:
+        return False
+    return date_str[:7] == PREV_MONTH
 
 # ── Stats computation ────────────────────────────────────
 def compute_period_stats(contacts, deals, product_records, label, filter_fn):
@@ -336,6 +352,25 @@ def main():
     print(f"   Ofertas ganadas: {this_month_stats['won_deals']} (€{this_month_stats['won_value']:,.0f})")
     print(f"   Productos cerrados: {len(this_month_stats['product_breakdown'])}")
 
+    # ── Previous period stats (for comparison) ──
+    print("\n📊 Calculando periodos de comparación...")
+    prev_yesterday_stats = compute_period_stats(
+        contacts, deals, pf_records, "Anteayer", in_prev_yesterday
+    )
+    prev_month_stats = compute_period_stats(
+        contacts, deals, pf_records, "Mes Anterior", in_prev_month
+    )
+
+    print(f"\n📅 Anteayer ({PREV_YESTERDAY}):")
+    print(f"   Nuevos contactos: {prev_yesterday_stats['new_contacts']}")
+    print(f"   Nuevas ofertas: {prev_yesterday_stats['new_deals']}")
+    print(f"   Ofertas ganadas: {prev_yesterday_stats['won_deals']} (€{prev_yesterday_stats['won_value']:,.0f})")
+
+    print(f"\n📅 Mes anterior ({PREV_MONTH}):")
+    print(f"   Nuevos contactos: {prev_month_stats['new_contacts']}")
+    print(f"   Nuevas ofertas: {prev_month_stats['new_deals']}")
+    print(f"   Ofertas ganadas: {prev_month_stats['won_deals']} (€{prev_month_stats['won_value']:,.0f})")
+
     # ── Assemble output ──
     data = {
         "timestamp": datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
@@ -351,6 +386,18 @@ def main():
             "all_time": all_time_stats,
             "yesterday": yesterday_stats,
             "this_month": this_month_stats,
+        },
+        "comparison": {
+            "yesterday": {
+                "previous": str(PREV_YESTERDAY),
+                "period_label": "anteayer",
+                "stats": prev_yesterday_stats
+            },
+            "this_month": {
+                "previous": PREV_MONTH,
+                "period_label": "mes anterior",
+                "stats": prev_month_stats
+            }
         }
     }
 

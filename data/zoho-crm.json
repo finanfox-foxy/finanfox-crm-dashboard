@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-05-14T21:57:16Z",
-  "generated_at": "2026-05-14",
-  "today": "2026-05-14",
-  "yesterday": "2026-05-13",
+  "timestamp": "2026-05-15T07:08:24Z",
+  "generated_at": "2026-05-15",
+  "today": "2026-05-15",
+  "yesterday": "2026-05-14",
   "this_month": "2026-05",
   "contacts": [
     {
@@ -54,6 +54,31 @@
       "Created_Time": "2026-05-14T19:15:20+02:00",
       "Modified_Time": "2026-05-14T19:15:21+02:00",
       "Last_Activity_Time": "2026-05-14T19:18:07+02:00"
+    },
+    {
+      "id": "862490000004738006",
+      "Full_Name": "Ada Rey",
+      "First_Name": "Ada",
+      "Last_Name": "Rey",
+      "Email": "adareyyy5@gmail.com",
+      "Phone": "+34672889078",
+      "Owner": "Alberto Prieto",
+      "Canal": "Finanfox",
+      "Socio": null,
+      "Fuente": null,
+      "DNI": null,
+      "Cuenta_Corriente": null,
+      "Estado_civil": null,
+      "Profesi_n": null,
+      "Club": null,
+      "Divisi_n": null,
+      "Plantilla_Bienvenida_enviada": false,
+      "Visitor_Score": null,
+      "Days_Visited": null,
+      "Average_Time_Spent_Minutes": null,
+      "Created_Time": "2026-05-15T00:23:05+02:00",
+      "Modified_Time": "2026-05-15T00:23:44+02:00",
+      "Last_Activity_Time": "2026-05-15T00:24:15+02:00"
     },
     {
       "id": "862490000004687004",
@@ -652,8 +677,8 @@
       "Days_Visited": null,
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-11T16:27:15+02:00",
-      "Modified_Time": "2026-05-11T16:27:45+02:00",
-      "Last_Activity_Time": "2026-05-14T17:57:08+02:00"
+      "Modified_Time": "2026-05-15T01:08:05+02:00",
+      "Last_Activity_Time": "2026-05-15T01:09:51+02:00"
     },
     {
       "id": "862490000004506005",
@@ -10108,6 +10133,28 @@
   ],
   "deals": [
     {
+      "id": "862490000004802031",
+      "Deal_Name": "Planificación de Ada Rey",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Ada Rey",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-05-15T00:23:44+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null
+    },
+    {
       "id": "862490000004802009",
       "Deal_Name": "Planificación de MÒNICA BARRASA",
       "Amount": null,
@@ -19345,25 +19392,25 @@
   "stats": {
     "all_time": {
       "contacts": {
-        "total": 404,
-        "with_email": 399,
-        "with_phone": 378,
+        "total": 405,
+        "with_email": 400,
+        "with_phone": 379,
         "welcome_sent": 42,
         "by_owner": {
-          "Alberto Prieto": 125,
+          "Alberto Prieto": 126,
           "Jose Orrequia": 144,
           "Jaime Becerra": 101,
           "Alex Caballero": 34
         },
         "by_canal": {
-          "Finanfox": 387,
+          "Finanfox": 388,
           "null": 17
         }
       },
       "deals": {
-        "total": 406,
+        "total": 407,
         "by_stage": {
-          "Llamada Pendiente": 134,
+          "Llamada Pendiente": 135,
           "Revisando Propuesta": 13,
           "Aceptado/Falta Firma": 26,
           "Análisis Financiero": 38,
@@ -19373,19 +19420,19 @@
           "Asesoramiento": 14
         },
         "by_owner": {
-          "Alberto Prieto": 138,
+          "Alberto Prieto": 139,
           "Jaime Becerra": 106,
           "Alex Caballero": 13,
           "Jose Orrequia": 149
         },
         "by_type": {
-          "Cliente existente": 302,
+          "Cliente existente": 303,
           "Nuevo Cliente": 100,
           "null": 4
         },
         "pipeline_value": 1408019,
         "total_aportaciones": 1378019,
-        "avg_deal_size": 3468.03,
+        "avg_deal_size": 3459.51,
         "closed_won": 48,
         "closed_won_value": 760748,
         "conversion_rate": 11.8
@@ -19394,32 +19441,36 @@
     "yesterday": {
       "label": "Ayer",
       "new_contacts": 5,
-      "new_deals": 6,
+      "new_deals": 12,
       "won_deals": 1,
-      "won_value": 2000.0,
-      "total_aportacion_won": 2000.0,
+      "won_value": 88000.0,
+      "total_aportacion_won": 88000.0,
       "product_breakdown": {
-        "Monefit": 2000.0
+        "Monefit": 50000.0,
+        "Cuenta Depósito Bonificada": 25000.0,
+        "Compra Única": 13000.0
       },
       "product_count": {
+        "Compra Única": 1,
+        "Cuenta Depósito Bonificada": 1,
         "Monefit": 1
       },
       "advisor_ranking_won": [
         {
-          "name": "Alberto Prieto",
+          "name": "Alex Caballero",
           "won": 1,
-          "total_aportacion": 2000.0
+          "total_aportacion": 88000.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
-          "name": "Alberto Prieto",
+          "name": "Alex Caballero",
           "won": 1,
-          "total_aportacion": 2000.0
+          "total_aportacion": 88000.0
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 134,
+        "Llamada Pendiente": 135,
         "Revisando Propuesta": 13,
         "Aceptado/Falta Firma": 26,
         "Análisis Financiero": 38,
@@ -19431,8 +19482,8 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 120,
-      "new_deals": 134,
+      "new_contacts": 121,
+      "new_deals": 135,
       "won_deals": 13,
       "won_value": 366641.0,
       "total_aportacion_won": 366641.0,
@@ -19481,7 +19532,7 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 134,
+        "Llamada Pendiente": 135,
         "Revisando Propuesta": 13,
         "Aceptado/Falta Firma": 26,
         "Análisis Financiero": 38,
@@ -19490,6 +19541,130 @@
         "Asesoramiento": 14
       },
       "pipeline_value": 1393019.0
+    }
+  },
+  "comparison": {
+    "yesterday": {
+      "previous": "2026-05-13",
+      "period_label": "anteayer",
+      "stats": {
+        "label": "Anteayer",
+        "new_contacts": 5,
+        "new_deals": 6,
+        "won_deals": 1,
+        "won_value": 2000.0,
+        "total_aportacion_won": 2000.0,
+        "product_breakdown": {
+          "Monefit": 2000.0
+        },
+        "product_count": {
+          "Monefit": 1
+        },
+        "advisor_ranking_won": [
+          {
+            "name": "Alberto Prieto",
+            "won": 1,
+            "total_aportacion": 2000.0
+          }
+        ],
+        "advisor_ranking_aportacion": [
+          {
+            "name": "Alberto Prieto",
+            "won": 1,
+            "total_aportacion": 2000.0
+          }
+        ],
+        "pipeline_stages": {
+          "Llamada Pendiente": 135,
+          "Revisando Propuesta": 13,
+          "Aceptado/Falta Firma": 26,
+          "Análisis Financiero": 38,
+          "Cerrado Ganado": 48,
+          "Reasesoramiento": 18,
+          "Asesoramiento": 14
+        },
+        "pipeline_value": 1393019.0
+      }
+    },
+    "this_month": {
+      "previous": "2026-04",
+      "period_label": "mes anterior",
+      "stats": {
+        "label": "Mes Anterior",
+        "new_contacts": 248,
+        "new_deals": 246,
+        "won_deals": 28,
+        "won_value": 306207.0,
+        "total_aportacion_won": 306207.0,
+        "product_breakdown": {
+          "Compra Única": 144764.0,
+          "Monefit": 78270.0,
+          "Cuenta Depósito Bonificada": 65500.0,
+          "Proyectos crowdfunding energético": 15000.0,
+          "APEX PIAS Estrategia 5": 2673.0
+        },
+        "product_count": {
+          "Compra Única": 12,
+          "Monefit": 11,
+          "Cuenta Depósito Bonificada": 3,
+          "Proyectos crowdfunding energético": 1,
+          "APEX PIAS Estrategia 5": 1
+        },
+        "advisor_ranking_won": [
+          {
+            "name": "Alberto Prieto",
+            "won": 8,
+            "total_aportacion": 85539.0
+          },
+          {
+            "name": "Jose Orrequia",
+            "won": 7,
+            "total_aportacion": 92900.0
+          },
+          {
+            "name": "Jaime Becerra",
+            "won": 7,
+            "total_aportacion": 44095.0
+          },
+          {
+            "name": "Alex Caballero",
+            "won": 6,
+            "total_aportacion": 83673.0
+          }
+        ],
+        "advisor_ranking_aportacion": [
+          {
+            "name": "Jose Orrequia",
+            "won": 7,
+            "total_aportacion": 92900.0
+          },
+          {
+            "name": "Alberto Prieto",
+            "won": 8,
+            "total_aportacion": 85539.0
+          },
+          {
+            "name": "Alex Caballero",
+            "won": 6,
+            "total_aportacion": 83673.0
+          },
+          {
+            "name": "Jaime Becerra",
+            "won": 7,
+            "total_aportacion": 44095.0
+          }
+        ],
+        "pipeline_stages": {
+          "Llamada Pendiente": 135,
+          "Revisando Propuesta": 13,
+          "Aceptado/Falta Firma": 26,
+          "Análisis Financiero": 38,
+          "Cerrado Ganado": 48,
+          "Reasesoramiento": 18,
+          "Asesoramiento": 14
+        },
+        "pipeline_value": 1393019.0
+      }
     }
   }
 }
