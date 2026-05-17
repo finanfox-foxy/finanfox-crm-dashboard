@@ -623,10 +623,10 @@ function renderGlobalTab(stats) {
     }
 }
 
-function renderDealsTable(stats) {
+function renderDealsTable() {
     var tbody = document.getElementById('deals-table-body');
     if (!tbody) return;
-    var deals = stats.deals.latest || [];
+    var deals = currentData.deals || [];
     var html = '';
     deals.forEach(function(d) {
         var stageColor = getStageColor(d.Stage);
@@ -754,7 +754,7 @@ function refreshUI() {
     renderPeriodTab('ayer', stats, stats.yesterday_comparison, 'yesterday');
     renderPeriodTab('this_month', stats, stats.this_month_comparison, 'prev_month');
     renderGlobalTab(stats);
-    renderDealsTable(stats);
+    renderDealsTable();
     renderFunnelFromPipeline(stats.pipeline || currentData.pipeline || {});
 }
 
