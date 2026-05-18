@@ -74,6 +74,34 @@
             border-bottom-color: var(--accent);
             background: #fff7ed;
         }
+        .app-tab-bar {
+            display: flex; gap: 0; margin-bottom: 24px;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .app-tab-btn {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .app-tab-btn:hover { background: var(--surface-hover); }
+        .app-tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            background: #fff7ed;
+        }
+        .app-panel { display: none; }
+        .app-panel.active { display: block; }
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
         .crm-grid {
@@ -269,89 +297,150 @@
         </div>
         <div id="dashboard-content" class="fade-in" style="display:none">
 
-            <div class="tab-bar" id="tab-bar">
-                <button class="tab-btn active" data-tab="ayer" onclick="switchTab('ayer')">📅 Ayer</button>
-                <button class="tab-btn" data-tab="this_month" onclick="switchTab('this_month')">📆 Este Mes</button>
-                <button class="tab-btn" data-tab="all_time" onclick="switchTab('all_time')">🌐 Global</button>
+            <!-- App-level tabs: Ventas | Financiero -->
+            <div class="app-tab-bar" id="app-tab-bar">
+                <button class="app-tab-btn active" data-app="ventas" onclick="switchAppTab('ventas')">📊 Ventas</button>
+                <button class="app-tab-btn" data-app="financiero" onclick="switchAppTab('financiero')">💰 Financiero</button>
             </div>
 
-            <div class="tab-panel active" id="panel-ayer">
-                <p class="cmp-context" id="cmp-header-ayer" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
-                <div class="crm-grid" id="kpi-ayer"></div>
-                <div class="charts-row">
-                    <div class="chart-container">
-                        <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
-                        <div id="advisor-won-ayer"></div>
+            <!-- ===== VENTAS PANEL ===== -->
+            <div class="app-panel active" id="app-ventas">
+                <!-- Period tab bar: Ayer | Este Mes | Este Trimestre | Global -->
+                <div class="tab-bar" id="tab-bar">
+                    <button class="tab-btn active" data-tab="ayer" onclick="switchTab('ayer')">📅 Ayer</button>
+                    <button class="tab-btn" data-tab="this_month" onclick="switchTab('this_month')">📆 Este Mes</button>
+                    <button class="tab-btn" data-tab="this_quarter" onclick="switchTab('this_quarter')">🗓️ Este Trimestre</button>
+                    <button class="tab-btn" data-tab="all_time" onclick="switchTab('all_time')">🌐 Global</button>
+                </div>
+
+                <!-- Ayer -->
+                <div class="tab-panel active" id="panel-ayer">
+                    <p class="cmp-context" id="cmp-header-ayer" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-ayer"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-ayer"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-ayer"></div>
+                        </div>
                     </div>
-                    <div class="chart-container">
-                        <h3>💰 Ranking Asesores (Por Inversión)</h3>
-                        <div id="advisor-aport-ayer"></div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-ayer"></div>
+                    </div>
+                    <!-- Pipeline Ayer -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Ayer</h3>
+                        <div id="pipeline-ayer"></div>
                     </div>
                 </div>
-                <div class="chart-container full-width" style="margin-bottom:20px">
-                    <h3>📦 Productos Cerrados</h3>
-                    <div id="products-ayer"></div>
+
+                <!-- Este Mes -->
+                <div class="tab-panel" id="panel-this_month">
+                    <p class="cmp-context" id="cmp-header-this_month" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_month"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_month"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_month"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_month"></div>
+                    </div>
+                    <!-- Pipeline Este Mes -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Mes</h3>
+                        <div id="pipeline-this_month"></div>
+                    </div>
+                </div>
+
+                <!-- Este Trimestre -->
+                <div class="tab-panel" id="panel-this_quarter">
+                    <p class="cmp-context" id="cmp-header-this_quarter" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_quarter"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_quarter"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_quarter"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_quarter"></div>
+                    </div>
+                    <!-- Pipeline Este Trimestre -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Trimestre</h3>
+                        <div id="pipeline-this_quarter"></div>
+                    </div>
+                </div>
+
+                <!-- Global -->
+                <div class="tab-panel" id="panel-all_time">
+                    <div class="crm-grid" id="kpi-all_time"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>💰 Oportunidades por Asesor</h3>
+                            <canvas id="chart-owner-all"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>👥 Contactos por Asesor</h3>
+                            <canvas id="chart-contact-owner-all"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width">
+                        <h3>📋 Últimas Ofertas</h3>
+                        <div style="overflow-x:auto">
+                            <table class="compact-table">
+                                <thead><tr>
+                                    <th>Nombre</th>
+                                    <th>Contacto</th>
+                                    <th>Asesor</th>
+                                    <th>Etapa</th>
+                                    <th>Importe</th>
+                                    <th>Inversión</th>
+                                    <th>Tipo</th>
+                                </tr></thead>
+                                <tbody id="deals-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="tab-panel" id="panel-this_month">
-                <p class="cmp-context" id="cmp-header-this_month" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
-                <div class="crm-grid" id="kpi-this_month"></div>
-                <div class="charts-row">
-                    <div class="chart-container">
-                        <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
-                        <div id="advisor-won-this_month"></div>
+            <!-- ===== FINANCIERO PANEL (placeholder) ===== -->
+            <div class="app-panel" id="app-financiero">
+                <h3 style="margin-top:0;margin-bottom:16px">💰 Panel Financiero</h3>
+                <p class="cmp-context" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px" id="financial-period"></p>
+                <div id="financial-loading">Cargando datos financieros…</div>
+                <div id="financial-content" style="display:none">
+                    <div class="crm-grid" id="financial-kpis"></div>
+                    <div class="chart-container full-width">
+                        <h3>📈 Evolución Mensual</h3>
+                        <canvas id="financial-monthly-chart"></canvas>
                     </div>
                     <div class="chart-container">
-                        <h3>💰 Ranking Asesores (Por Inversión)</h3>
-                        <div id="advisor-aport-this_month"></div>
-                    </div>
-                </div>
-                <div class="chart-container full-width" style="margin-bottom:20px">
-                    <h3>📦 Productos Cerrados</h3>
-                    <div id="products-this_month"></div>
-                </div>
-            </div>
-
-            <div class="tab-panel" id="panel-all_time">
-                <div class="crm-grid" id="kpi-all_time"></div>
-                <div class="charts-row">
-                    <div class="chart-container">
-                        <h3>💰 Oportunidades por Asesor</h3>
-                        <canvas id="chart-owner-all"></canvas>
+                        <h3>📊 Ingresos por Categoría (YTD)</h3>
+                        <table class="kpi-table" id="financial-income-cats"></table>
                     </div>
                     <div class="chart-container">
-                        <h3>👥 Contactos por Asesor</h3>
-                        <canvas id="chart-contact-owner-all"></canvas>
+                        <h3>📊 Gastos por Categoría (YTD)</h3>
+                        <table class="kpi-table" id="financial-expense-cats"></table>
                     </div>
                 </div>
-                <div class="chart-container full-width">
-                    <h3>📋 Últimas Ofertas</h3>
-                    <div style="overflow-x:auto">
-                        <table class="compact-table">
-                            <thead><tr>
-                                <th>Nombre</th>
-                                <th>Contacto</th>
-                                <th>Asesor</th>
-                                <th>Etapa</th>
-                                <th>Importe</th>
-                                <th>Inversión</th>
-                                <th>Tipo</th>
-                            </tr></thead>
-                            <tbody id="deals-table-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="chart-container full-width">
-                <h3>🔽 Pipeline - Embudo de Ventas</h3>
-                <p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:8px">
-                    Conversión entre fases del pipeline ·
-                    <span style="font-weight:600;color:#22c55e">Verde ↑</span> mejora vs periodo anterior ·
-                    <span style="font-weight:600;color:#dc2626">Rojo ↓</span> empeora
-                </p>
-                <div id="pipeline-funnel"></div>
             </div>
 
             <div class="last-updated">
@@ -364,7 +453,16 @@
     <script>
 let currentData = null;
 const charts = {};
-const PERIOD_MAP = { ayer: 'yesterday', this_month: 'this_month' };
+const PERIOD_MAP = { ayer: 'yesterday', this_month: 'this_month', this_quarter: 'this_quarter' };
+
+function switchAppTab(app) {
+    document.querySelectorAll('.app-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.app-panel').forEach(function(p) { p.classList.remove('active'); });
+    var tb = document.querySelector('.app-tab-btn[data-app="' + app + '"]');
+    if (tb) tb.classList.add('active');
+    var pn = document.getElementById('app-' + app);
+    if (pn) pn.classList.add('active');
+}
 
 function switchTab(tab) {
     document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -549,7 +647,9 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
 
     el = document.getElementById('cmp-header-' + periodKey);
     if (el && comparisonStats) {
-        var cmpLabel = cmpKey === 'yesterday' ? 'anteayer' : 'mes previo';
+        var cmpLabel = 'mes previo';
+        if (cmpKey === 'yesterday') cmpLabel = 'anteayer';
+        else if (cmpKey === 'this_quarter') cmpLabel = 'trimestre previo';
         el.textContent = '↔️ Comparativa vs ' + cmpLabel;
         el.style.display = 'block';
     } else if (el) {
@@ -570,6 +670,14 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
 
     el = document.getElementById('products-' + periodKey);
     if (el) el.innerHTML = renderProductBreakdown(s.product_breakdown, s.product_count, s.product_details);
+
+    // Render period-specific pipeline
+    var pipelineKey = statKey;
+    var pipelineData = (currentData.pipeline && currentData.pipeline[pipelineKey]) ? currentData.pipeline[pipelineKey] : null;
+    var pipelineEl = document.getElementById('pipeline-' + periodKey);
+    if (pipelineEl && pipelineData) {
+        pipelineEl.innerHTML = renderFunnelFromPipeline(pipelineData, periodKey);
+    }
 }
 
 function renderGlobalTab(stats) {
@@ -644,8 +752,9 @@ function renderDealsTable() {
     tbody.innerHTML = html;
 }
 
-function renderFunnelFromPipeline(pipeline) {
-    var funnelEl = document.getElementById('pipeline-funnel');
+function renderFunnelFromPipeline(pipeline, periodKey) {
+    var funnelElId = 'pipeline-' + (periodKey || 'funnel');
+    var funnelEl = document.getElementById(funnelElId);
     if (!funnelEl) return;
 
     if (!pipeline || (!pipeline.details || pipeline.details.length === 0) && (!pipeline.stages)) {
@@ -754,9 +863,9 @@ function refreshUI() {
 
     renderPeriodTab('ayer', stats, stats.yesterday_comparison, 'yesterday');
     renderPeriodTab('this_month', stats, stats.this_month_comparison, 'prev_month');
+    renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
     renderGlobalTab(stats);
     renderDealsTable();
-    renderFunnelFromPipeline(stats.pipeline || currentData.pipeline || {});
 }
 
 function loadData(data) {
@@ -773,20 +882,99 @@ function showError(msg) {
     document.getElementById('error-message').textContent = msg;
 }
 
+var currentFinancialData = null;
+
+function renderFinancialTab() {
+    var fd = currentFinancialData;
+    if (!fd) {
+        document.getElementById('financial-loading').style.display = 'block';
+        document.getElementById('financial-content').style.display = 'none';
+        return;
+    }
+    document.getElementById('financial-loading').style.display = 'none';
+    document.getElementById('financial-content').style.display = 'block';
+    document.getElementById('financial-period').textContent = 'Periodo: ' + fd.period_start + ' a ' + fd.period_end + ' · ' + fd.account_name;
+
+    // KPIs
+    var ytd = fd.ytd;
+    var mtd = fd.mtd;
+    var kpiHtml = '';
+    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Ingresos YTD</div><div class=\"kpi-value\">' + formatEUR(ytd.income_total) + '</div></div>';
+    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Gastos YTD</div><div class=\"kpi-value\">' + formatEUR(ytd.expenses_total) + '</div></div>';
+    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Margen YTD</div><div class=\"kpi-value\" style=\"color:' + (ytd.margin >= 0 ? 'var(--success)' : '#ef4444') + '\">' + formatEUR(ytd.margin) + '</div></div>';
+    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Ingresos MTD</div><div class=\"kpi-value\">' + formatEUR(mtd.income_total) + '</div></div>';
+    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Gastos MTD</div><div class=\"kpi-value\" style=\"color:var(--warning)\">' + formatEUR(mtd.expenses_total) + '</div></div>';
+    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Margen MTD</div><div class=\"kpi-value\" style=\"color:' + (mtd.margin >= 0 ? 'var(--success)' : '#ef4444') + '\">' + formatEUR(mtd.margin) + '</div></div>';
+    document.getElementById('financial-kpis').innerHTML = kpiHtml;
+
+    // Monthly chart
+    var ctx = document.getElementById('financial-monthly-chart').getContext('2d');
+    if (charts.financialMonthly) charts.financialMonthly.destroy();
+    var evo = fd.monthly_evolution;
+    var labels = evo.map(function(e) { return e.month; });
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                { label: 'Ingresos', data: evo.map(function(e) { return e.income; }), backgroundColor: '#22c55e88', borderColor: '#22c55e', borderWidth: 1 },
+                { label: 'Gastos', data: evo.map(function(e) { return e.expenses; }), backgroundColor: '#ef444488', borderColor: '#ef4444', borderWidth: 1 },
+                { label: 'Margen', data: evo.map(function(e) { return e.margin; }), backgroundColor: '#3b82f688', borderColor: '#3b82f6', borderWidth: 1, type: 'line' },
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'top' } },
+            scales: {
+                y: { ticks: { callback: function(v) { return '€' + (v / 1000).toFixed(0) + 'K'; } } }
+            }
+        }
+    });
+    charts.financialMonthly = chart;
+
+    // Category tables
+    var cats = fd.category_summary;
+    var incTable = '<tr><th>Categoría</th><th>Total</th><th>%</th></tr>';
+    Object.keys(cats.income).forEach(function(k) {
+        incTable += '<tr><td>' + k + '</td><td>' + formatEUR(cats.income[k].total) + '</td><td>' + cats.income[k].pct + '%</td></tr>';
+    });
+    document.getElementById('financial-income-cats').innerHTML = incTable;
+
+    var expTable = '<tr><th>Categoría</th><th>Total</th><th>%</th></tr>';
+    Object.keys(cats.expenses).forEach(function(k) {
+        expTable += '<tr><td>' + k + '</td><td>' + formatEUR(cats.expenses[k].total) + '</td><td>' + cats.expenses[k].pct + '%</td></tr>';
+    });
+    document.getElementById('financial-expense-cats').innerHTML = expTable;
+}
+
 function refreshData() {
     document.getElementById('dashboard-content').style.display = 'none';
     document.getElementById('loading-state').style.display = 'block';
     document.getElementById('error-state').style.display = 'none';
-    fetch('data/zoho-crm.json?_=' + Date.now())
+    var zohoFetch = fetch('data/zoho-crm.json?_=' + Date.now())
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    var finFetch = fetch('data/financial_data.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-        .then(loadData)
+        .then(function(d) { currentFinancialData = d; });
+    Promise.all([zohoFetch, finFetch])
+        .then(function(results) {
+            loadData(results[0]);
+            renderFinancialTab();
+        })
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('data/zoho-crm.json?_=' + Date.now())
+    var zohoFetch = fetch('data/zoho-crm.json?_=' + Date.now())
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    var finFetch = fetch('data/financial_data.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-        .then(loadData)
+        .then(function(d) { currentFinancialData = d; });
+    Promise.all([zohoFetch, finFetch])
+        .then(function(results) {
+            loadData(results[0]);
+            renderFinancialTab();
+        })
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 });
     </script>

@@ -111,6 +111,37 @@ THIS_MONTH = str(TODAY)[:7]  # "2026-05"
 PREV_MONTH_FIRST = TODAY.replace(day=1) - timedelta(days=1)
 PREV_MONTH = str(PREV_MONTH_FIRST)[:7]  # e.g., "2026-04"
 
+# ── Quarter helpers ──────────────────────────────────────
+def _quarter_dates(today):
+    
+    q = (today.month - 1) // 3 + 1
+    start_month = (q - 1) * 3 + 1
+    start_date = today.replace(month=start_month, day=1)
+    if q < 4:
+        end_month = q * 3
+        end_date = today.replace(month=end_month + 1, day=1) - timedelta(days=1)
+    else:
+        end_date = today.replace(month=12, day=31)
+    return f"Q{q}", start_date, end_date
+
+def _prev_quarter_dates(today):
+    q = (today.month - 1) // 3 + 1
+    if q == 1:
+        prev_q = 4
+        prev_year = today.year - 1
+        start_date = date(prev_year, 10, 1)
+        end_date = date(prev_year, 12, 31)
+    else:
+        prev_q = q - 1
+        start_month = (prev_q - 1) * 3 + 1
+        start_date = today.replace(month=start_month, day=1)
+        end_month = prev_q * 3
+        end_date = today.replace(month=end_month + 1, day=1) - timedelta(days=1)
+    return f"Q{prev_q}", start_date, end_date
+
+THIS_QUARTER_LABEL, THIS_QUARTER_START, THIS_QUARTER_END = _quarter_dates(TODAY)
+PREV_QUARTER_LABEL, PREV_QUARTER_START, PREV_QUARTER_END = _prev_quarter_dates(TODAY)
+
 def in_yesterday(date_str):
     if not date_str:
         return False
@@ -130,6 +161,24 @@ def in_prev_month(date_str):
     if not date_str:
         return False
     return date_str[:7] == PREV_MONTH
+
+def in_this_quarter(date_str):
+    if not date_str:
+        return False
+    try:
+        d = datetime.strptime(date_str[:10], '%Y-%m-%d').date()
+        return THIS_QUARTER_START <= d <= THIS_QUARTER_END
+    except:
+        return False
+
+def in_prev_quarter(date_str):
+    if not date_str:
+        return False
+    try:
+        d = datetime.strptime(date_str[:10], '%Y-%m-%d').date()
+        return PREV_QUARTER_START <= d <= PREV_QUARTER_END
+    except:
+        return False
 
 # ── Funnel stage order ───────────────────────────────────
 STAGE_ORDER = [
@@ -212,14 +261,21 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         key=lambda x: -x['total_aportacion']
     )
 
-    # Pipeline stages: ALL deals (not just period) — current state
-    # For "yesterday" and "this-month", pipeline shows current state
-    # But we also want deals CREATED in period and still open
+    # Pipeline stages: filtered by period
+    # Open stages: Created_Time in period
+    # Terminal stages (Ganado/Perdido): Closing_Date in period
+    def _in_pipeline_period(deal):
+        stage = deal.get('Stage', '')
+        if 'Ganado' in stage or 'Perdido' in stage:
+            return filter_fn(deal.get('Closing_Date'))
+        return filter_fn(deal.get('Created_Time'))
+
     pipeline_stages = {}
     pipeline_value = 0.0
     for d in deals:
+        if not _in_pipeline_period(d):
+            continue
         stage = d.get('Stage', 'Sin etapa')
-        # Include all stages (including perdido) for complete funnel
         pipeline_stages[stage] = pipeline_stages.get(stage, 0) + 1
         pipeline_value += float(d.get('Amount', 0) or 0)
 
@@ -247,6 +303,75 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "advisor_ranking_aportacion": advisor_ranking_aportacion,
         "pipeline_stages": ordered_pipeline,
         "pipeline_value": pipeline_value,
+    }
+
+def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
+    """Compute pipeline details with conversion rates from period-specific stages."""
+    if previous_pipeline is None:
+        previous_pipeline = {}
+
+    TERMINAL_STAGES_SET = {'Cerrado Ganado', 'Cerrado Perdido'}
+    pipeline_details = []
+    terminal_details = []
+    total_pipeline = sum(pipeline_stages.values())
+    prev_count = None
+    first_stage_count = None
+
+    for stage in STAGE_ORDER:
+        curr_count = pipeline_stages.get(stage, 0)
+        prev_count_in_pipeline = previous_pipeline.get(stage, None)
+        is_terminal = stage in TERMINAL_STAGES_SET
+
+        pct_of_total = round(curr_count / total_pipeline * 100, 1) if total_pipeline > 0 else 0
+
+        if not is_terminal and first_stage_count is None:
+            first_stage_count = curr_count
+
+        conv_from_top = round(curr_count / first_stage_count * 100, 1) if first_stage_count and first_stage_count > 0 else None
+
+        if not is_terminal and prev_count is not None and prev_count > 0 and curr_count <= prev_count:
+            conv_pct = round(curr_count / prev_count * 100, 1)
+        else:
+            conv_pct = None
+
+        stage_data = {
+            'stage': stage,
+            'count': curr_count,
+            'pct_of_total': pct_of_total,
+            'conversion_from_prev': conv_pct,
+            'conversion_from_top': conv_from_top,
+            'cmp_count': prev_count_in_pipeline
+        }
+
+        if is_terminal:
+            terminal_details.append(stage_data)
+        else:
+            pipeline_details.append(stage_data)
+            prev_count = curr_count
+
+    # Add extra stages not in order
+    extra_stages = pipeline_stages.copy()
+    for stage in STAGE_ORDER:
+        extra_stages.pop(stage, None)
+    for stage, count in sorted(extra_stages.items()):
+        prev_count_in_pipeline = previous_pipeline.get(stage, None)
+        pipeline_details.append({
+            'stage': stage,
+            'count': count,
+            'pct_of_total': 0,
+            'conversion_from_prev': '',
+            'conversion_from_top': '',
+            'cmp_count': prev_count_in_pipeline
+        })
+
+    return {
+        'stage_order': STAGE_ORDER,
+        'details': pipeline_details,
+        'terminal': terminal_details,
+        'active_total': total_pipeline - sum(s.get('count', 0) for s in terminal_details),
+        'won_total': pipeline_stages.get('Cerrado Ganado', 0),
+        'lost_total': pipeline_stages.get('Cerrado Perdido', 0),
+        'total_pipeline': total_pipeline
     }
 
 # ── Main ─────────────────────────────────────────────────
@@ -429,76 +554,44 @@ def main():
     print(f"   Ofertas ganadas: {prev_month_stats['won_deals']} (E{prev_month_stats['won_value']:,.0f})")
     print(f"   Ofertas perdidas: {prev_month_stats['lost_deals']}")
 
-    # ── Pipeline details for funnel with conversion and comparison ──
-    TERMINAL_STAGES_SET = {'Cerrado Ganado', 'Cerrado Perdido'}
-    pipeline_details = []
-    terminal_details = []
-    total_pipeline = sum(this_month_stats['pipeline_stages'].values())
-    prev_count = None
-    first_stage_count = None
+    # ── Quarter stats ──
+    this_quarter_stats = compute_period_stats(
+        contacts, deals, pf_records, "Este Trimestre", in_this_quarter
+    )
+    prev_quarter_stats = compute_period_stats(
+        contacts, deals, pf_records, "Trimestre Anterior", in_prev_quarter
+    )
 
-    for stage in STAGE_ORDER:
-        curr_count = this_month_stats['pipeline_stages'].get(stage, 0)
-        prev_count_in_pipeline = previous_pipeline.get(stage, None)
-        is_terminal = stage in TERMINAL_STAGES_SET
+    print(f"\nEste trimestre ({THIS_QUARTER_LABEL}: {THIS_QUARTER_START} a {THIS_QUARTER_END}):")
+    print(f"   Nuevos contactos: {this_quarter_stats['new_contacts']}")
+    print(f"   Nuevas ofertas: {this_quarter_stats['new_deals']}")
+    print(f"   Ofertas ganadas: {this_quarter_stats['won_deals']} (E{this_quarter_stats['won_value']:,.0f})")
+    print(f"   Ofertas perdidas: {this_quarter_stats['lost_deals']}")
+    print(f"   Productos cerrados: {len(this_quarter_stats['product_breakdown'])}")
 
-        # pct_of_total: % of all pipeline deals in this stage
-        pct_of_total = round(curr_count / total_pipeline * 100, 1) if total_pipeline > 0 else 0
+    print(f"\nTrimestre anterior ({PREV_QUARTER_LABEL}: {PREV_QUARTER_START} a {PREV_QUARTER_END}):")
+    print(f"   Nuevos contactos: {prev_quarter_stats['new_contacts']}")
+    print(f"   Nuevas ofertas: {prev_quarter_stats['new_deals']}")
+    print(f"   Ofertas ganadas: {prev_quarter_stats['won_deals']} (E{prev_quarter_stats['won_value']:,.0f})")
+    print(f"   Ofertas perdidas: {prev_quarter_stats['lost_deals']}")
+    print(f"   Productos cerrados: {len(prev_quarter_stats['product_breakdown'])}")
 
-        # Track first active stage count for conversion_from_top
-        if not is_terminal and first_stage_count is None:
-            first_stage_count = curr_count
+    # ── Per-period pipeline details ──
+    yesterday_pipeline = compute_pipeline_details(yesterday_stats['pipeline_stages'])
+    this_month_pipeline = compute_pipeline_details(this_month_stats['pipeline_stages'], previous_pipeline)
+    this_quarter_pipeline = compute_pipeline_details(this_quarter_stats['pipeline_stages'],
+        prev_quarter_stats['pipeline_stages'] if prev_quarter_stats else {})
 
-        # conversion_from_top: what % of top-of-funnel makes it here
-        if first_stage_count and first_stage_count > 0:
-            conv_from_top = round(curr_count / first_stage_count * 100, 1)
-        else:
-            conv_from_top = None
-
-        # conversion_from_prev: only meaningful for active stages with normal funnel flow
-        # (current <= previous). Skip for terminal stages and when deals enter mid-funnel.
-        if not is_terminal and prev_count is not None and prev_count > 0 and curr_count <= prev_count:
-            conv_pct = round(curr_count / prev_count * 100, 1)
-        else:
-            conv_pct = None
-
-        stage_data = {
-            'stage': stage,
-            'count': curr_count,
-            'pct_of_total': pct_of_total,
-            'conversion_from_prev': conv_pct,
-            'conversion_from_top': conv_from_top,
-            'cmp_count': prev_count_in_pipeline
-        }
-
-        if is_terminal:
-            terminal_details.append(stage_data)
-        else:
-            pipeline_details.append(stage_data)
-            prev_count = curr_count
-
-    # Add extra stages not in order (unknown stages that may appear)
-    extra_stages = this_month_stats['pipeline_stages'].copy()
-    for stage in STAGE_ORDER:
-        extra_stages.pop(stage, None)
-    for stage, count in sorted(extra_stages.items()):
-        prev_count_in_pipeline = previous_pipeline.get(stage, None)
-        pipeline_details.append({
-            'stage': stage,
-            'count': count,
-            'pct_of_total': 0,
-            'conversion_from_prev': '',
-            'conversion_from_top': '',
-            'cmp_count': prev_count_in_pipeline
-        })
-
-    # ── Assemble output ──
+# ── Assemble output ──
     data = {
         "timestamp": datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
         "generated_at": str(TODAY),
         "today": str(TODAY),
         "yesterday": str(YESTERDAY),
         "this_month": THIS_MONTH,
+        "this_quarter_start": str(THIS_QUARTER_START),
+        "this_quarter_end": str(THIS_QUARTER_END),
+        "this_quarter_label": THIS_QUARTER_LABEL,
         "contacts": contacts,
         "deals": deals,
         "products": products,
@@ -507,6 +600,7 @@ def main():
             "all_time": all_time_stats,
             "yesterday": yesterday_stats,
             "this_month": this_month_stats,
+            "this_quarter": this_quarter_stats,
         },
         "comparison": {
             "yesterday": {
@@ -518,21 +612,24 @@ def main():
                 "previous": PREV_MONTH,
                 "period_label": "mes anterior",
                 "stats": prev_month_stats
+            },
+            "this_quarter": {
+                "previous_label": PREV_QUARTER_LABEL,
+                "previous_start": str(PREV_QUARTER_START),
+                "previous_end": str(PREV_QUARTER_END),
+                "period_label": "trimestre anterior",
+                "stats": prev_quarter_stats
             }
         },
         "pipeline": {
             "stage_order": STAGE_ORDER,
-            "details": pipeline_details,
-            "terminal": terminal_details,
-            "active_total": total_pipeline - sum(s.get('count', 0) for s in terminal_details),
-            "won_total": this_month_stats['pipeline_stages'].get('Cerrado Ganado', 0),
-            "lost_total": this_month_stats['pipeline_stages'].get('Cerrado Perdido', 0),
+            "yesterday": yesterday_pipeline,
+            "this_month": this_month_pipeline,
+            "this_quarter": this_quarter_pipeline,
             "previous_pipeline": previous_pipeline,
             "previous_value": previous_pipeline_value,
-            "total_pipeline": total_pipeline
         }
     }
-
     DATA_FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     print(f"\nDatos guardados en {DATA_FILE}")
     print(f"   {len(contacts)} contactos | {len(deals)} ofertas | {len(products)} productos")
