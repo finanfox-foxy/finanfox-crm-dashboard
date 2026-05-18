@@ -676,7 +676,7 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
     var pipelineData = (currentData.pipeline && currentData.pipeline[pipelineKey]) ? currentData.pipeline[pipelineKey] : null;
     var pipelineEl = document.getElementById('pipeline-' + periodKey);
     if (pipelineEl && pipelineData) {
-        pipelineEl.innerHTML = renderFunnelFromPipeline(pipelineData, periodKey);
+        renderFunnelFromPipeline(pipelineData, periodKey);
     }
 }
 
