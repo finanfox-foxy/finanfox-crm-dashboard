@@ -310,6 +310,7 @@
                     <button class="tab-btn active" data-tab="ayer" onclick="switchTab('ayer')">📅 Ayer</button>
                     <button class="tab-btn" data-tab="this_month" onclick="switchTab('this_month')">📆 Este Mes</button>
                     <button class="tab-btn" data-tab="this_quarter" onclick="switchTab('this_quarter')">🗓️ Este Trimestre</button>
+                    <button class="tab-btn" data-tab="this_year" onclick="switchTab('this_year')">📆 Este Año</button>
                     <button class="tab-btn" data-tab="all_time" onclick="switchTab('all_time')">🌐 Global</button>
                 </div>
 
@@ -386,6 +387,30 @@
                         <h3>🔽 Pipeline Este Trimestre</h3>
                         <div id="pipeline-this_quarter"></div>
                     </div>
+                                </div>
+
+                <!-- Este Año -->
+                <div class="tab-panel" id="panel-this_year">
+                    <p class="cmp-context" id="cmp-header-this_year" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_year"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_year"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_year"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_year"></div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Año</h3>
+                        <div id="pipeline-this_year"></div>
+                    </div>
                 </div>
 
                 <!-- Global -->
@@ -417,6 +442,14 @@
                                 <tbody id="deals-table-body"></tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pipeline Global -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Global</h3>
+                        <div id="pipeline-all_time"></div>
                     </div>
                 </div>
             </div>
@@ -453,7 +486,7 @@
     <script>
 let currentData = null;
 const charts = {};
-const PERIOD_MAP = { ayer: 'yesterday', this_month: 'this_month', this_quarter: 'this_quarter' };
+const PERIOD_MAP = { ayer: 'yesterday', this_month: 'this_month', this_quarter: 'this_quarter', this_year: 'this_year' };
 
 function switchAppTab(app) {
     document.querySelectorAll('.app-tab-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -583,7 +616,10 @@ function renderKPI(periodKey, stats, comparisonStats) {
         html += '<div class="crm-card success"><div class="value-row"><div class="value">' + s.won_deals + '</div>' + (cmp ? renderCmpBadge(s.won_deals, cmp.won_deals, true) : '') + '</div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + formatEUR(s.won_value) + ' ' + (cmp ? renderCmpBadge(s.won_value, cmp.won_value, true) : '') + '</div></div>';
         html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
         html += '<div class="crm-card error"><div class="value-row"><div class="value">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
-        html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + Object.keys(s.product_breakdown).length + '</div>' + (cmp ? renderCmpBadge(Object.keys(s.product_breakdown).length, Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Distintos</div></div>';
+                html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
+        html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (s.win_rate !== undefined ? s.win_rate + '%' : 'N/A') + '</div></div><div class="label">⚡ Win Rate</div><div class="sub">' + (s.won_deals + ' ganados de ' + (s.won_deals + s.lost_deals)) + '</div></div>';
+        html += '<div class="crm-card info"><div class="value-row"><div class="value">' + (s.avg_days_to_win !== undefined && s.avg_days_to_win > 0 ? s.avg_days_to_win + ' días' : 'N/A') + '</div></div><div class="label">📅 Días hasta cierre</div></div>';
+        html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + (s.conversion_clientes ? s.conversion_clientes.ratio + '%' : 'N/A') + '</div>' + (cmp && cmp.conversion_clientes ? renderCmpBadge(s.conversion_clientes.ratio, cmp.conversion_clientes.ratio, false) : '') + '</div><div class="label">🔄 Conversión clientes</div><div class="sub">' + (s.conversion_clientes ? s.conversion_clientes.converted_contacts + ' de ' + s.conversion_clientes.total_contacts : '') + '</div></div>';
         return html;
     } else {
         var c = s.contacts;
@@ -620,7 +656,7 @@ function renderProductBreakdown(products, counts, details) {
     }
     var total = Object.values(products).reduce(function(a,b) { return a + b; }, 0);
     var hasDetails = details && details.length > 0;
-    var html = '<table class="compact-table"><thead><tr><th>Producto</th>' + (hasDetails ? '<th>Entidad</th>' : '') + '<th>Veces</th><th>Total Invertido</th><th>%</th></tr></thead><tbody>';
+    var html = '<table class="compact-table"><thead><tr><th>Producto</th>' + (hasDetails ? '<th>Entidad</th>' : '') + '<th>CANTIDAD</th><th>Total Invertido</th><th>%</th></tr></thead><tbody>';
     if (hasDetails) {
         details.forEach(function(item, i) {
             var amt = item.total || item.aportacion || 0;
@@ -732,6 +768,16 @@ function renderGlobalTab(stats) {
     }
 }
 
+    // Render Global pipeline
+    var pipelineData = (currentData.pipeline && currentData.pipeline.all_time) ? currentData.pipeline.all_time : null;
+    var pipelineEl = document.getElementById('pipeline-all_time');
+    if (pipelineEl && pipelineData) {
+        renderFunnelFromPipeline(pipelineData, 'all_time');
+    } else if (pipelineEl) {
+        pipelineEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
+    }
+}
+
 function renderDealsTable() {
     var tbody = document.getElementById('deals-table-body');
     if (!tbody) return;
@@ -795,7 +841,15 @@ function renderFunnelFromPipeline(pipeline, periodKey) {
     }
 
     // Active funnel
-    html += '<div style="margin-bottom:4px"><strong style="font-size:0.8rem;color:var(--text-muted)">📊 Pipeline Activo</strong></div>';
+        html += '<div style="margin-bottom:4px"><strong style="font-size:0.8rem;color:var(--text-muted)">📊 Pipeline Activo</strong></div>';
+    html += '<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0">';
+    html += '<strong style="color:#475569">Leyenda:</strong> ';
+    html += '<span style="margin-right:10px"><strong>Nº</strong> = Oportunidades en etapa</span>';
+    html += '<span style="margin-right:10px"><strong>%</strong> = % sobre total del pipeline</span>';
+    html += '<span style="margin-right:10px"><strong>% del top</strong> = % respecto a inicio del embudo</span>';
+    html += '<span style="margin-right:10px"><strong>↓X% conv.</strong> = Caída de conversión vs etapa anterior</span>';
+    html += '<span><strong>↑/↓ badge</strong> = Cambio vs periodo anterior</span>';
+    html += '</div>';
     html += renderFunnel(activeStages);
 
     // ── Terminal outcomes (Cerrado Ganado / Cerrado Perdido) ──
@@ -847,7 +901,8 @@ function renderFunnelFromPipeline(pipeline, periodKey) {
             html += '<div style="flex:1;background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;padding:16px;text-align:center">';
             html += '<div style="font-size:2rem;font-weight:700;color:var(--text)">' + winRate + '%</div>';
             html += '<div style="font-size:0.85rem;color:var(--text-muted);font-weight:600">⚡ Win Rate</div>';
-            html += '<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px">' + wonTotal + ' ganados de ' + total + '</div>';
+                        html += '<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px">' + wonTotal + ' ganados de ' + total + '</div>';
+            html += '<div style="font-size:0.65rem;color:var(--text-muted);margin-top:1px">Ganados / (Ganados+Perdidos)</div>';
             html += '</div>';
         }
         html += '</div>';
@@ -864,6 +919,7 @@ function refreshUI() {
     renderPeriodTab('ayer', stats, stats.yesterday_comparison, 'yesterday');
     renderPeriodTab('this_month', stats, stats.this_month_comparison, 'prev_month');
     renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
+    renderPeriodTab('this_year', stats, (currentData.comparison && currentData.comparison.this_year ? currentData.comparison.this_year.stats : null), 'this_year');
     renderGlobalTab(stats);
     renderDealsTable();
 }
