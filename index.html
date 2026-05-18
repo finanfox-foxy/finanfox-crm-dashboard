@@ -465,7 +465,15 @@
                 <h3 style="margin-top:0;margin-bottom:12px">💰 Panel Financiero</h3>
                 <p class="cmp-context" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px" id="financial-period"></p>
                 <div id="financial-loading">Cargando datos financieros…</div>
-                <div id="financial-content" style="display:none">
+                
+<div class="chart-container full-width" style="margin-top:8px">
+                        <h3>📈 Evolución Mensual</h3>
+                        <canvas id="financial-monthly-chart"></canvas>
+<div class="chart-container full-width" style="margin-top:8px">
+                        <h3>📈 Evolución Mensual</h3>
+                        <canvas id="financial-monthly-chart"></canvas>
+                    </div>
+                </div><div id="financial-content" style="display:none">
                     <!-- Sub-tabs -->
                     <div class="period-tabs" style="margin-bottom:16px">
                         <button class="period-tab-btn active" onclick="switchFinancialSubtab('this_month')">Este Mes</button>
@@ -493,11 +501,8 @@
                             <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Gastos</h3><canvas id="finpie-expense-this_year"></canvas></div>
                         </div>
                     </div>
-                    <div class="chart-container full-width" style="margin-top:8px">
-                        <h3>📈 Evolución Mensual</h3>
-                        <canvas id="financial-monthly-chart"></canvas>
-                    </div>
-                </div>
+                    
+
             </div>
 
             <div class="last-updated">
