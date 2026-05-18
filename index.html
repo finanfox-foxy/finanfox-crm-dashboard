@@ -469,11 +469,7 @@
 <div class="chart-container full-width" style="margin-top:8px">
                         <h3>📈 Evolución Mensual</h3>
                         <canvas id="financial-monthly-chart"></canvas>
-<div class="chart-container full-width" style="margin-top:8px">
-                        <h3>📈 Evolución Mensual</h3>
-                        <canvas id="financial-monthly-chart"></canvas>
-                    </div>
-                </div><div id="financial-content" style="display:none">
+                    </div><div id="financial-content" style="display:none">
                     <!-- Sub-tabs -->
                     <div class="period-tabs" style="margin-bottom:16px">
                         <button class="period-tab-btn active" onclick="switchFinancialSubtab('this_month')">Este Mes</button>
@@ -568,7 +564,7 @@ function renderCmpBadge(current, previous, showQty) {
         return '<span class="cmp-badge cmp-na">N/A</span>';
     }
     var change = calcChange(current, previous);
-    var qty = current - previous;
+    var qty = Math.round((current - previous) * 100) / 100;
     var qtyStr = qty > 0 ? '+' + qty : String(qty);
     if (change.pct === 999.9) {
         return '<span class="cmp-badge cmp-up">+' + qty + ' / +∞% ↑</span>';
