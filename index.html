@@ -525,9 +525,10 @@ function renderProductBreakdown(products, counts, details) {
     var html = '<table class="compact-table"><thead><tr><th>Producto</th>' + (hasDetails ? '<th>Entidad</th>' : '') + '<th>Veces</th><th>Total Invertido</th><th>%</th></tr></thead><tbody>';
     if (hasDetails) {
         details.forEach(function(item, i) {
-            var amt = item.aportacion;
+            var amt = item.total || item.aportacion || 0;
+            var cnt = item.veces || 1;
             var pct = (amt / total * 100).toFixed(1);
-            html += '<tr><td><span class="badge ' + getBadgeClass(i) + '">' + item.producto + '</span></td><td>' + (item.entidad || '-') + '</td><td>1</td><td><strong>' + formatEUR(amt) + '</strong></td>';
+            html += '<tr><td><span class="badge ' + getBadgeClass(i) + '">' + item.producto + '</span></td><td>' + (item.entidad || '-') + '</td><td><strong>' + cnt + '</strong></td><td><strong>' + formatEUR(amt) + '</strong></td>';
             html += '<td><div style="display:flex;align-items:center;gap:8px"><div style="height:16px;width:' + pct + '%;background:var(--accent);border-radius:4px;min-width:4px;max-width:120px;transition:width 0.4s"></div><span style="font-size:0.75rem;color:var(--text-muted)">' + pct + '%</span></div></td></tr>';
         });
     } else {

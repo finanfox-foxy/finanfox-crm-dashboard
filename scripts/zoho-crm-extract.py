@@ -172,7 +172,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     ]
 
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
-    product_details = []
+    product_details = {}
     product_breakdown = {}
     product_count = {}
     for pr in product_records:
@@ -183,11 +183,12 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
             pname = prod.get('name', 'Otro') if isinstance(prod, dict) else 'Otro'
             entidad = pr.get('Entidades', '') or ''
             amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
-            product_details.append({
-                'producto': pname,
-                'entidad': entidad,
-                'aportacion': amount
-            })
+            # Group by (producto, entidad)
+            key = (pname, entidad)
+            if key not in product_details:
+                product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
+            product_details[key]['veces'] += 1
+            product_details[key]['total'] += amount
             product_breakdown[pname] = product_breakdown.get(pname, 0) + amount
             product_count[pname] = product_count.get(pname, 0) + 1
 
@@ -241,7 +242,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "total_aportacion_won": sum(float(d.get('Total_Aportaciones', 0) or 0) for d in won_deals),
         "product_breakdown": dict(sorted(product_breakdown.items(), key=lambda x: -x[1])),
         "product_count": dict(sorted(product_count.items(), key=lambda x: -x[1])),
-        "product_details": sorted(product_details, key=lambda x: -x['aportacion']),
+        "product_details": sorted(product_details.values(), key=lambda x: -x['total']),
         "advisor_ranking_won": advisor_ranking_won,
         "advisor_ranking_aportacion": advisor_ranking_aportacion,
         "pipeline_stages": ordered_pipeline,
