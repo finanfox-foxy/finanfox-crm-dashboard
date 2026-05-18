@@ -272,7 +272,15 @@
             .top-bar { padding: 12px 16px; }
             .tab-btn { font-size: 0.8rem; padding: 12px 10px; }
         }
-    </style>
+    .period-tab-btn {
+    padding:8px 16px; border:1px solid var(--border); border-radius:6px;
+    background:var(--card-bg); color:var(--text-muted); cursor:pointer;
+    font-size:0.85rem; transition:all .15s;
+}
+.period-tab-btn:hover { background:var(--accent-hover); color:var(--accent); }
+.period-tab-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.fin-period-panel { animation:fadeIn .2s ease; }
+</style>
 </head>
 <body>
     <div class="top-bar">
@@ -452,24 +460,42 @@
                 </div>
             </div>
 
-            <!-- ===== FINANCIERO PANEL ===== -->
+            <!-- ===== FINANCIERO PANEL (sub-tabs) ===== -->
             <div class="app-panel" id="app-financiero">
-                <h3 style="margin-top:0;margin-bottom:16px">💰 Panel Financiero</h3>
+                <h3 style="margin-top:0;margin-bottom:12px">💰 Panel Financiero</h3>
                 <p class="cmp-context" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px" id="financial-period"></p>
                 <div id="financial-loading">Cargando datos financieros…</div>
                 <div id="financial-content" style="display:none">
-                    <div class="crm-grid" id="financial-kpis"></div>
-                    <div class="chart-container full-width">
+                    <!-- Sub-tabs -->
+                    <div class="period-tabs" style="margin-bottom:16px">
+                        <button class="period-tab-btn active" onclick="switchFinancialSubtab('this_month')">Este Mes</button>
+                        <button class="period-tab-btn" onclick="switchFinancialSubtab('this_quarter')">Este Trimestre</button>
+                        <button class="period-tab-btn" onclick="switchFinancialSubtab('this_year')">Este Año</button>
+                    </div>
+                    <div class="fin-period-panel" id="fin-period-this_month">
+                        <div class="crm-grid" id="finkpi-this_month"></div>
+                        <div style="display:flex;flex-wrap:wrap;gap:16px">
+                            <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Ingresos</h3><canvas id="finpie-income-this_month"></canvas></div>
+                            <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Gastos</h3><canvas id="finpie-expense-this_month"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="fin-period-panel" id="fin-period-this_quarter" style="display:none">
+                        <div class="crm-grid" id="finkpi-this_quarter"></div>
+                        <div style="display:flex;flex-wrap:wrap;gap:16px">
+                            <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Ingresos</h3><canvas id="finpie-income-this_quarter"></canvas></div>
+                            <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Gastos</h3><canvas id="finpie-expense-this_quarter"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="fin-period-panel" id="fin-period-this_year" style="display:none">
+                        <div class="crm-grid" id="finkpi-this_year"></div>
+                        <div style="display:flex;flex-wrap:wrap;gap:16px">
+                            <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Ingresos</h3><canvas id="finpie-income-this_year"></canvas></div>
+                            <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Gastos</h3><canvas id="finpie-expense-this_year"></canvas></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-top:8px">
                         <h3>📈 Evolución Mensual</h3>
                         <canvas id="financial-monthly-chart"></canvas>
-                    </div>
-                    <div class="chart-container">
-                        <h3>📊 Ingresos por Categoría (YTD)</h3>
-                        <table class="kpi-table" id="financial-income-cats"></table>
-                    </div>
-                    <div class="chart-container">
-                        <h3>📊 Gastos por Categoría (YTD)</h3>
-                        <table class="kpi-table" id="financial-expense-cats"></table>
                     </div>
                 </div>
             </div>
@@ -935,7 +961,6 @@ function showError(msg) {
 }
 
 var currentFinancialData = null;
-
 function renderFinancialTab() {
     var fd = currentFinancialData;
     if (!fd) {
@@ -945,29 +970,21 @@ function renderFinancialTab() {
     }
     document.getElementById('financial-loading').style.display = 'none';
     document.getElementById('financial-content').style.display = 'block';
-    document.getElementById('financial-period').textContent = 'Periodo: ' + fd.period_start + ' a ' + fd.period_end + ' · ' + fd.account_name;
+    document.getElementById('financial-period').textContent = 'Periodo: ' + fd.period_start + ' a ' + fd.period_end + ' \u00b7 ' + fd.account_name;
 
-    // KPIs
-    var ytd = fd.ytd;
-    var mtd = fd.mtd;
-    var kpiHtml = '';
-    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Ingresos YTD</div><div class=\"kpi-value\">' + formatEUR(ytd.income_total) + '</div></div>';
-    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Gastos YTD</div><div class=\"kpi-value\">' + formatEUR(ytd.expenses_total) + '</div></div>';
-    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Margen YTD</div><div class=\"kpi-value\" style=\"color:' + (ytd.margin >= 0 ? 'var(--success)' : '#ef4444') + '\">' + formatEUR(ytd.margin) + '</div></div>';
-    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Ingresos MTD</div><div class=\"kpi-value\">' + formatEUR(mtd.income_total) + '</div></div>';
-    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Gastos MTD</div><div class=\"kpi-value\" style=\"color:var(--warning)\">' + formatEUR(mtd.expenses_total) + '</div></div>';
-    kpiHtml += '<div class=\"kpi-card\"><div class=\"kpi-label\">Margen MTD</div><div class=\"kpi-value\" style=\"color:' + (mtd.margin >= 0 ? 'var(--success)' : '#ef4444') + '\">' + formatEUR(mtd.margin) + '</div></div>';
-    document.getElementById('financial-kpis').innerHTML = kpiHtml;
+    // Render all three periods
+    renderFinancialPeriodTab('this_month', fd);
+    renderFinancialPeriodTab('this_quarter', fd);
+    renderFinancialPeriodTab('this_year', fd);
 
-    // Monthly chart
+    // Monthly evolution chart
     var ctx = document.getElementById('financial-monthly-chart').getContext('2d');
     if (charts.financialMonthly) charts.financialMonthly.destroy();
     var evo = fd.monthly_evolution;
-    var labels = evo.map(function(e) { return e.month; });
-    var chart = new Chart(ctx, {
+    charts.financialMonthly = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: evo.map(function(e) { return e.month; }),
             datasets: [
                 { label: 'Ingresos', data: evo.map(function(e) { return e.income; }), backgroundColor: '#22c55e88', borderColor: '#22c55e', borderWidth: 1 },
                 { label: 'Gastos', data: evo.map(function(e) { return e.expenses; }), backgroundColor: '#ef444488', borderColor: '#ef4444', borderWidth: 1 },
@@ -977,27 +994,156 @@ function renderFinancialTab() {
         options: {
             responsive: true,
             plugins: { legend: { position: 'top' } },
-            scales: {
-                y: { ticks: { callback: function(v) { return '€' + (v / 1000).toFixed(0) + 'K'; } } }
-            }
+            scales: { y: { ticks: { callback: function(v) { return '\u20ac' + (v / 1000).toFixed(0) + 'K'; } } } }
         }
     });
-    charts.financialMonthly = chart;
 
-    // Category tables
-    var cats = fd.category_summary;
-    var incTable = '<tr><th>Categoría</th><th>Total</th><th>%</th></tr>';
-    Object.keys(cats.income).forEach(function(k) {
-        incTable += '<tr><td>' + k + '</td><td>' + formatEUR(cats.income[k].total) + '</td><td>' + cats.income[k].pct + '%</td></tr>';
-    });
-    document.getElementById('financial-income-cats').innerHTML = incTable;
-
-    var expTable = '<tr><th>Categoría</th><th>Total</th><th>%</th></tr>';
-    Object.keys(cats.expenses).forEach(function(k) {
-        expTable += '<tr><td>' + k + '</td><td>' + formatEUR(cats.expenses[k].total) + '</td><td>' + cats.expenses[k].pct + '%</td></tr>';
-    });
-    document.getElementById('financial-expense-cats').innerHTML = expTable;
+    // Activate first sub-tab
+    switchFinancialSubtab('this_month');
 }
+
+/** Get months belonging to the quarter of a given month string */
+function getQuarterMonths(ms) {
+    var y = ms.split("-")[0], m = parseInt(ms.split("-")[1]);
+    if (m <= 3) return [y+"-01", y+"-02", y+"-03"];
+    if (m <= 6) return [y+"-04", y+"-05", y+"-06"];
+    if (m <= 9) return [y+"-07", y+"-08", y+"-09"];
+    return [y+"-10", y+"-11", y+"-12"];
+}
+
+/** Quarter label from a month string */
+function getQuarterLabel(ms) {
+    var y = ms.split("-")[0], m = parseInt(ms.split("-")[1]);
+    if (m <= 3) return y+" Q1";
+    if (m <= 6) return y+" Q2";
+    if (m <= 9) return y+" Q3";
+    return y+" Q4";
+}
+
+/** Aggregate multiple months into one period summary */
+function aggregateFinancialMonths(fd, monthList) {
+    var inc = 0, exp = 0, tx = 0, ic = {}, ec = {};
+    monthList.forEach(function(m) {
+        var d = fd.months[m];
+        if (!d) return;
+        inc += d.income.total;
+        exp += d.expenses.total;
+        tx += d.transaction_count;
+        Object.keys(d.income.categories).forEach(function(c) { ic[c] = (ic[c] || 0) + d.income.categories[c]; });
+        Object.keys(d.expenses.categories).forEach(function(c) { ec[c] = (ec[c] || 0) + d.expenses.categories[c]; });
+    });
+    var sortedInc = Object.keys(ic).sort(function(a,b){ return ic[b] - ic[a]; });
+    var sortedExp = Object.keys(ec).sort(function(a,b){ return ec[b] - ec[a]; });
+    return {
+        income_total: inc,
+        expenses_total: exp,
+        margin: inc - exp,
+        transaction_count: tx,
+        income_categories: ic,
+        expense_categories: ec,
+        sorted_income_cats: sortedInc,
+        sorted_expense_cats: sortedExp
+    };
+}
+
+/** Render KPI cards for a financial period with optional comparison */
+function renderFinancialKPIs(data, prevData, containerId) {
+    var h = '';
+    h += '<div class="kpi-card"><div class="kpi-value">' + formatEUR(data.income_total) + '</div>';
+    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.income_total, prevData.income_total, true) + '</div>';
+    h += '<div class="kpi-label">💰 Ingresos</div></div>';
+    h += '<div class="kpi-card"><div class="kpi-value" style="color:var(--warning)">' + formatEUR(data.expenses_total) + '</div>';
+    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.expenses_total, prevData.expenses_total, true) + '</div>';
+    h += '<div class="kpi-label">📉 Gastos</div></div>';
+    var mColor = data.margin >= 0 ? 'var(--success)' : '#ef4444';
+    h += '<div class="kpi-card"><div class="kpi-value" style="color:' + mColor + '">' + formatEUR(data.margin) + '</div>';
+    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.margin, prevData.margin, true) + '</div>';
+    h += '<div class="kpi-label">📈 Margen</div></div>';
+    h += '<div class="kpi-card"><div class="kpi-value">' + data.transaction_count + '</div>';
+    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.transaction_count, prevData.transaction_count, true) + '</div>';
+    h += '<div class="kpi-label">📝 Operaciones</div></div>';
+    document.getElementById(containerId).innerHTML = h;
+}
+
+/** Render a doughnut pie chart */
+function renderFinancialPie(canvasId, categories, sortKeys) {
+    var el = document.getElementById(canvasId);
+    if (!el) return;
+    if (charts[canvasId]) charts[canvasId].destroy();
+    var keys = sortKeys || Object.keys(categories);
+    var vals = keys.map(function(k) { return categories[k]; });
+    var total = vals.reduce(function(a,b){ return a+b; }, 0);
+    var colors = ['#f97316','#3b82f6','#22c55e','#a855f7','#ef4444','#eab308','#06b6d4','#ec4899','#84cc16','#14b8a6','#f43f5e','#8b5cf6'];
+    var bk = keys.map(function(_,i){ return colors[i % colors.length]; });
+    var labels = keys.map(function(k,i){ return k + ' (' + (total>0 ? (vals[i]/total*100).toFixed(1) : '0') + '%)'; });
+    charts[canvasId] = new Chart(el.getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{ data: vals, backgroundColor: bk, borderWidth: 1 }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } } }
+        }
+    });
+}
+
+/** Compute and render one financial period tab (this_month, this_quarter, this_year) */
+function renderFinancialPeriodTab(periodKey, fd) {
+    var months = fd.months;
+    var sortedMonths = Object.keys(months).sort();
+    var lastMonth = sortedMonths[sortedMonths.length - 1];
+    var data = null, prevData = null;
+
+    if (periodKey === 'this_month') {
+        var md = months[lastMonth];
+        var ic = md.income.categories;
+        var ec = md.expenses.categories;
+        data = {
+            income_total: md.income.total,
+            expenses_total: md.expenses.total,
+            margin: md.margin,
+            transaction_count: md.transaction_count,
+            income_categories: ic,
+            expense_categories: ec,
+            sorted_income_cats: Object.keys(ic).sort(function(a,b){ return ic[b]-ic[a]; }),
+            sorted_expense_cats: Object.keys(ec).sort(function(a,b){ return ec[b]-ec[a]; })
+        };
+        if (sortedMonths.length >= 2) {
+            var pm = months[sortedMonths[sortedMonths.length - 2]];
+            if (pm) prevData = {
+                income_total: pm.income.total,
+                expenses_total: pm.expenses.total,
+                margin: pm.margin,
+                transaction_count: pm.transaction_count
+            };
+        }
+    } else if (periodKey === 'this_quarter') {
+        data = aggregateFinancialMonths(fd, getQuarterMonths(lastMonth));
+        prevData = aggregateFinancialMonths(fd, getQuarterMonths(sortedMonths[0]));
+    } else { // this_year
+        data = aggregateFinancialMonths(fd, sortedMonths);
+    }
+
+    renderFinancialKPIs(data, prevData, 'finkpi-' + periodKey);
+    renderFinancialPie('finpie-income-' + periodKey, data.income_categories, data.sorted_income_cats);
+    renderFinancialPie('finpie-expense-' + periodKey, data.expense_categories, data.sorted_expense_cats);
+}
+
+/** Switch financial sub-tab visibility */
+function switchFinancialSubtab(tabId) {
+    document.querySelectorAll('.fin-period-panel').forEach(function(el) { el.style.display = 'none'; });
+    document.querySelectorAll('.period-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    var panel = document.getElementById('fin-period-' + tabId);
+    if (panel) panel.style.display = 'block';
+    document.querySelectorAll('.period-tab-btn').forEach(function(b) {
+        if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf(tabId) >= 0) {
+            b.classList.add('active');
+        }
+    });
+}
+
 
 function refreshData() {
     document.getElementById('dashboard-content').style.display = 'none';
