@@ -766,17 +766,15 @@ function renderGlobalTab(stats) {
             }
         });
     }
-}
-
-    // Render Global pipeline
-    var pipelineData = (currentData.pipeline && currentData.pipeline.all_time) ? currentData.pipeline.all_time : null;
-    var pipelineEl = document.getElementById('pipeline-all_time');
-    if (pipelineEl && pipelineData) {
-        renderFunnelFromPipeline(pipelineData, 'all_time');
-    } else if (pipelineEl) {
-        pipelineEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
+        // Render Global pipeline
+        var pipelineData = (currentData.pipeline && currentData.pipeline.all_time) ? currentData.pipeline.all_time : null;
+        var pipelineEl = document.getElementById('pipeline-all_time');
+        if (pipelineEl && pipelineData) {
+            renderFunnelFromPipeline(pipelineData, 'all_time');
+        } else if (pipelineEl) {
+            pipelineEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
+        }
     }
-}
 
 function renderDealsTable() {
     var tbody = document.getElementById('deals-table-body');
