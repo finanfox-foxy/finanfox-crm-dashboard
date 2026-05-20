@@ -312,6 +312,78 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         if stage not in STAGE_ORDER:
             ordered_pipeline[stage] = count
 
+    # ── Win rate ──
+    total_closed = len(won_deals) + len(lost_deals)
+    win_rate = round(len(won_deals) / total_closed * 100, 1) if total_closed > 0 else None
+
+    # ── Avg days to win ──
+    def _parse_date(s):
+        if not s:
+            return None
+        try:
+            return datetime.strptime(s[:10], '%Y-%m-%d')
+        except:
+            return None
+
+    days_to_win = []
+    for d in won_deals:
+        created = _parse_date(d.get('Created_Time'))
+        closed = _parse_date(d.get('Closing_Date'))
+        if created and closed:
+            days_to_win.append((closed - created).days)
+    avg_days_to_win = round(sum(days_to_win) / len(days_to_win), 1) if days_to_win else None
+
+    # ── Products closed count ──
+    products_closed_count = sum(detail['veces'] for detail in product_details.values())
+
+    # ── Conversion clientes ──
+    # Build set of contact IDs from won deals
+    contact_ids_in_deals = set()
+    contact_id_to_created = {}
+    for c in contacts:
+        cid = c.get('id')
+        if cid:
+            created = _parse_date(c.get('Created_Time'))
+            contact_id_to_created[cid] = created
+
+    for d in won_deals:
+        contact_ref = d.get('Contact_Name')
+        if isinstance(contact_ref, dict):
+            cid = contact_ref.get('id')
+            if cid:
+                contact_ids_in_deals.add(cid)
+
+    # Count contacts in this period that match won deal contacts
+    converted_ids = {cid for cid in contact_ids_in_deals if cid in contact_id_to_created}
+    total_contacts = len(period_contacts)
+    converted_contacts = len(converted_ids)
+    conversion_ratio = round(converted_contacts / total_contacts * 100, 1) if total_contacts > 0 else 0.0
+
+    # Avg days from contact creation to deal close (earliest deal per contact)
+    days_to_convert = []
+    contact_to_earliest_close = {}
+    for d in won_deals:
+        contact_ref = d.get('Contact_Name')
+        if isinstance(contact_ref, dict):
+            cid = contact_ref.get('id')
+            if cid and cid in converted_ids:
+                closed = _parse_date(d.get('Closing_Date'))
+                if closed:
+                    if cid not in contact_to_earliest_close or closed < contact_to_earliest_close[cid]:
+                        contact_to_earliest_close[cid] = closed
+    for cid, close_date in contact_to_earliest_close.items():
+        created = contact_id_to_created.get(cid)
+        if created and close_date:
+            days_to_convert.append((close_date - created).days)
+    avg_days_to_convert = round(sum(days_to_convert) / len(days_to_convert), 1) if days_to_convert else None
+
+    conversion_clientes = {
+        "total_contacts": total_contacts,
+        "converted_contacts": converted_contacts,
+        "ratio": conversion_ratio,
+        "avg_days_to_convert": avg_days_to_convert or 0,
+    }
+
     return {
         "label": label,
         "new_contacts": len(period_contacts),
@@ -327,6 +399,10 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "advisor_ranking_aportacion": advisor_ranking_aportacion,
         "pipeline_stages": ordered_pipeline,
         "pipeline_value": pipeline_value,
+        "win_rate": win_rate,
+        "avg_days_to_win": avg_days_to_win,
+        "products_closed_count": products_closed_count,
+        "conversion_clientes": conversion_clientes,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
