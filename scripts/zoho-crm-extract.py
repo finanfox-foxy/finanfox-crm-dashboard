@@ -142,6 +142,12 @@ def _prev_quarter_dates(today):
 THIS_QUARTER_LABEL, THIS_QUARTER_START, THIS_QUARTER_END = _quarter_dates(TODAY)
 PREV_QUARTER_LABEL, PREV_QUARTER_START, PREV_QUARTER_END = _prev_quarter_dates(TODAY)
 
+# ── Year helpers ─────────────────────────────────────────
+THIS_YEAR_START = TODAY.replace(month=1, day=1)
+THIS_YEAR_END = TODAY.replace(month=12, day=31)
+PREV_YEAR_START = TODAY.replace(year=TODAY.year - 1, month=1, day=1)
+PREV_YEAR_END = TODAY.replace(year=TODAY.year - 1, month=12, day=31)
+
 def in_yesterday(date_str):
     if not date_str:
         return False
@@ -177,6 +183,24 @@ def in_prev_quarter(date_str):
     try:
         d = datetime.strptime(date_str[:10], '%Y-%m-%d').date()
         return PREV_QUARTER_START <= d <= PREV_QUARTER_END
+    except:
+        return False
+
+def in_this_year(date_str):
+    if not date_str:
+        return False
+    try:
+        d = datetime.strptime(date_str[:10], '%Y-%m-%d').date()
+        return THIS_YEAR_START <= d <= THIS_YEAR_END
+    except:
+        return False
+
+def in_prev_year(date_str):
+    if not date_str:
+        return False
+    try:
+        d = datetime.strptime(date_str[:10], '%Y-%m-%d').date()
+        return PREV_YEAR_START <= d <= PREV_YEAR_END
     except:
         return False
 
@@ -576,11 +600,35 @@ def main():
     print(f"   Ofertas perdidas: {prev_quarter_stats['lost_deals']}")
     print(f"   Productos cerrados: {len(prev_quarter_stats['product_breakdown'])}")
 
+    # ── Year stats ──
+    this_year_stats = compute_period_stats(
+        contacts, deals, pf_records, "Este Año", in_this_year
+    )
+    prev_year_stats = compute_period_stats(
+        contacts, deals, pf_records, "Año Anterior", in_prev_year
+    )
+
+    print(f"\nEste año ({THIS_YEAR_START} a {THIS_YEAR_END}):")
+    print(f"   Nuevos contactos: {this_year_stats['new_contacts']}")
+    print(f"   Nuevas ofertas: {this_year_stats['new_deals']}")
+    print(f"   Ofertas ganadas: {this_year_stats['won_deals']} (E{this_year_stats['won_value']:,.0f})")
+    print(f"   Ofertas perdidas: {this_year_stats['lost_deals']}")
+    print(f"   Productos cerrados: {len(this_year_stats['product_breakdown'])}")
+
+    print(f"\nAño anterior ({PREV_YEAR_START} a {PREV_YEAR_END}):")
+    print(f"   Nuevos contactos: {prev_year_stats['new_contacts']}")
+    print(f"   Nuevas ofertas: {prev_year_stats['new_deals']}")
+    print(f"   Ofertas ganadas: {prev_year_stats['won_deals']} (E{prev_year_stats['won_value']:,.0f})")
+    print(f"   Ofertas perdidas: {prev_year_stats['lost_deals']}")
+    print(f"   Productos cerrados: {len(prev_year_stats['product_breakdown'])}")
+
     # ── Per-period pipeline details ──
     yesterday_pipeline = compute_pipeline_details(yesterday_stats['pipeline_stages'])
     this_month_pipeline = compute_pipeline_details(this_month_stats['pipeline_stages'], previous_pipeline)
     this_quarter_pipeline = compute_pipeline_details(this_quarter_stats['pipeline_stages'],
         prev_quarter_stats['pipeline_stages'] if prev_quarter_stats else {})
+    this_year_pipeline = compute_pipeline_details(this_year_stats['pipeline_stages'],
+        prev_year_stats['pipeline_stages'] if prev_year_stats else {})
 
 # ── Assemble output ──
     data = {
@@ -601,6 +649,7 @@ def main():
             "yesterday": yesterday_stats,
             "this_month": this_month_stats,
             "this_quarter": this_quarter_stats,
+            "this_year": this_year_stats,
         },
         "comparison": {
             "yesterday": {
@@ -619,6 +668,13 @@ def main():
                 "previous_end": str(PREV_QUARTER_END),
                 "period_label": "trimestre anterior",
                 "stats": prev_quarter_stats
+            },
+            "this_year": {
+                "previous_label": str(PREV_YEAR_START) + " a " + str(PREV_YEAR_END),
+                "previous_start": str(PREV_YEAR_START),
+                "previous_end": str(PREV_YEAR_END),
+                "period_label": "año anterior",
+                "stats": prev_year_stats
             }
         },
         "pipeline": {
@@ -626,6 +682,7 @@ def main():
             "yesterday": yesterday_pipeline,
             "this_month": this_month_pipeline,
             "this_quarter": this_quarter_pipeline,
+            "this_year": this_year_pipeline,
             "previous_pipeline": previous_pipeline,
             "previous_value": previous_pipeline_value,
         }

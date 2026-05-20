@@ -629,7 +629,7 @@ function renderFunnel(stages) {
 
 function renderKPI(periodKey, stats, comparisonStats) {
     var statKey = PERIOD_MAP[periodKey] || periodKey;
-    var s = periodKey === 'all_time' ? stats.all_time : stats[statKey];
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
     var isPeriod = periodKey !== 'all_time';
     if (isPeriod) {
         var cmp = comparisonStats || null;
@@ -721,7 +721,7 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
     if (el) el.innerHTML = renderKPI(periodKey, stats, comparisonStats);
 
     var statKey = PERIOD_MAP[periodKey] || periodKey;
-    var s = periodKey === 'all_time' ? stats.all_time : stats[statKey];
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
 
     el = document.getElementById('advisor-won-' + periodKey);
     if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_won);
@@ -730,7 +730,7 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
     if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_aportacion);
 
     el = document.getElementById('products-' + periodKey);
-    if (el) el.innerHTML = renderProductBreakdown(s.product_breakdown, s.product_count, s.product_details);
+    if (el) el.innerHTML = renderProductBreakdown(s.product_breakdown || {}, s.product_count || {}, s.product_details || []);
 
     // Render period-specific pipeline
     var pipelineKey = statKey;
