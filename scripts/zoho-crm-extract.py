@@ -377,6 +377,15 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
             days_to_convert.append((close_date - created).days)
     avg_days_to_convert = round(sum(days_to_convert) / len(days_to_convert), 1) if days_to_convert else None
 
+    # ── Contacts by day of month ──
+    contacts_by_day = {}
+    for c in period_contacts:
+        created = c.get('Created_Time', '')
+        if created and len(created) >= 10:
+            day = created[8:10].lstrip('0') or '0'
+            contacts_by_day[day] = contacts_by_day.get(day, 0) + 1
+    contacts_by_day = dict(sorted(contacts_by_day.items(), key=lambda x: int(x[0])))
+
     conversion_clientes = {
         "total_contacts": total_contacts,
         "converted_contacts": converted_contacts,
@@ -403,6 +412,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "avg_days_to_win": avg_days_to_win,
         "products_closed_count": products_closed_count,
         "conversion_clientes": conversion_clientes,
+        "contacts_by_day": contacts_by_day,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):

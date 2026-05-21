@@ -351,6 +351,11 @@
                 <div class="tab-panel" id="panel-this_month">
                     <p class="cmp-context" id="cmp-header-this_month" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
                     <div class="crm-grid" id="kpi-this_month"></div>
+                    <!-- Daily contacts chart -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📈 Nuevos Contactos por Día</h3>
+                        <canvas id="daily-contacts-this_month"></canvas>
+                    </div>
                     <div class="charts-row">
                         <div class="chart-container">
                             <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
@@ -738,6 +743,59 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
     var pipelineEl = document.getElementById('pipeline-' + periodKey);
     if (pipelineEl && pipelineData) {
         renderFunnelFromPipeline(pipelineData, periodKey);
+    }
+
+    // ── Daily new contacts bar chart (this_month only) ──
+    if (periodKey === 'this_month') {
+        var dailyCanvas = document.getElementById('daily-contacts-this_month');
+        if (dailyCanvas) {
+            if (charts.dailyContacts) { charts.dailyContacts.destroy(); }
+            var byDay = s.contacts_by_day || {};
+            var allDays = [];
+            var now = new Date();
+            var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            for (var d = 1; d <= daysInMonth; d++) {
+                allDays.push(String(d));
+            }
+            var counts = allDays.map(function(day) { return byDay[day] || 0; });
+            charts.dailyContacts = new Chart(dailyCanvas, {
+                type: 'bar',
+                data: {
+                    labels: allDays,
+                    datasets: [{
+                        label: 'Nuevos Contactos',
+                        data: counts,
+                        backgroundColor: '#3b82f6',
+                        borderColor: '#2563eb',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: function(items) { return 'Día ' + items[0].label; },
+                                label: function(item) { return item.raw + ' contacto' + (item.raw !== 1 ? 's' : ''); }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Día del Mes' },
+                            ticks: { maxTicksLimit: 31 }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Nº Contactos' },
+                            ticks: { stepSize: 1, precision: 0 }
+                        }
+                    }
+                }
+            });
+        }
     }
 }
 
