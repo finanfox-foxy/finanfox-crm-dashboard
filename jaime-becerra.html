@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaime Becerra - CRM Dashboard 🦊</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --accent: #f97316;
+            --success: #22c55e;
+            --warning: #eab308;
+            --error: #ef4444;
+            --info: #3b82f6;
+            --purple: #a855f7;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        .top-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: var(--shadow);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .top-bar h1 { font-size: 1.3rem; }
+        .top-bar h1 span { color: var(--accent); }
+        .timestamp { color: var(--text-muted); font-size: 0.8rem; }
+        .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px 24px; }
+        .tab-bar {
+            display: flex; gap: 0; margin-bottom: 20px;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn:hover { background: var(--surface-hover); }
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            background: #fff7ed;
+        }
+        .app-tab-bar {
+            display: flex; gap: 0; margin-bottom: 24px;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .app-tab-btn {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .app-tab-btn:hover { background: var(--surface-hover); }
+        .app-tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            background: #fff7ed;
+        }
+        .app-panel { display: none; }
+        .app-panel.active { display: block; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        .crm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .crm-card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--text-muted);
+        }
+        .crm-card.accent { border-left-color: var(--accent); }
+        .crm-card.success { border-left-color: var(--success); }
+        .crm-card.info { border-left-color: var(--info); }
+        .crm-card.purple { border-left-color: var(--purple); }
+        .crm-card.warning { border-left-color: var(--warning); }
+        .crm-card.error { border-left-color: var(--error); }
+        .crm-card .value { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+        .crm-card .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+        .crm-card .sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+        .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        .chart-container {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .chart-container h3 { font-size: 0.85rem; margin-bottom: 12px; color: var(--text-muted); }
+        .chart-container canvas { max-height: 300px; }
+        .full-width { grid-column: 1 / -1; }
+        .funnel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 0;
+        }
+        .funnel-stage {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .funnel-stage:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+        .funnel-stage .funnel-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            min-width: 160px;
+        }
+        .funnel-stage .funnel-count { font-weight: 700; font-size: 1.1rem; }
+        .funnel-stage .funnel-pct { color: var(--text-muted); font-size: 0.78rem; margin-left: 8px; }
+        .funnel-stage .funnel-conv {
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-left: 12px;
+            color: var(--text);
+            background: var(--surface-hover);
+            border-radius: 6px;
+            padding: 2px 10px;
+        }
+        .funnel-connector {
+            width: 2px;
+            height: 12px;
+            background: var(--border);
+            border-radius: 1px;
+        }
+        .compact-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        .compact-table th {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .compact-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+        .compact-table tr:hover td { background: var(--surface-hover); }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+        .badge-1 { background: #fff7ed; color: #c2410c; }
+        .badge-2 { background: #f0fdf4; color: #15803d; }
+        .badge-3 { background: #eff6ff; color: #1d4ed8; }
+        .badge-4 { background: #f5f3ff; color: #6d28d9; }
+        .badge-5 { background: #fdf2f8; color: #be185d; }
+        .badge-6 { background: #f0f9ff; color: #0e7490; }
+        .badge-7 { background: #fefce8; color: #a16207; }
+        .badge-8 { background: #f1f5f9; color: #475569; }
+        .cmp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+            vertical-align: middle;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+        }
+        .cmp-up {
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+        .cmp-down {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        .cmp-flat {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+        .cmp-na {
+            background: #f8fafc;
+            color: #94a3b8;
+            border: 1px solid #e2e8f0;
+            font-size: 0.65rem;
+        }
+        .crm-card .value-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease; }
+        .ranking-medal { font-size: 1.1rem; margin-right: 4px; }
+        .last-updated {
+            text-align: center; color: var(--text-muted); font-size: 0.78rem;
+            margin-top: 32px; padding: 16px; border-top: 1px solid var(--border);
+        }
+        .last-updated a { color: var(--accent); text-decoration: none; }
+        .loading { text-align: center; padding: 80px; color: var(--text-muted); }
+        .loading .spinner { font-size: 2.5rem; margin-bottom: 16px; animation: spin 1.5s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .error-banner {
+            background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+            padding: 24px; margin-bottom: 20px; color: #991b1b; text-align: center;
+        }
+        @media (max-width: 768px) {
+            .charts-row { grid-template-columns: 1fr; }
+            .crm-grid { grid-template-columns: 1fr 1fr; }
+            .container { padding: 12px; }
+            .top-bar { padding: 12px 16px; }
+            .tab-btn { font-size: 0.8rem; padding: 12px 10px; }
+        }
+    .period-tab-btn {
+    padding:8px 16px; border:1px solid var(--border); border-radius:6px;
+    background:var(--card-bg); color:var(--text-muted); cursor:pointer;
+    font-size:0.85rem; transition:all .15s;
+}
+.period-tab-btn:hover { background:var(--accent-hover); color:var(--accent); }
+.period-tab-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.fin-period-panel { animation:fadeIn .2s ease; }
+</style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>🦊 <span>Jaime Becerra</span></h1>
+        <div class="header-right">
+            <span class="timestamp" id="crm-timestamp">Cargando...</span>
+            <button onclick="refreshData()"
+                    style="background:var(--accent);color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:0.82rem">
+                🔄 Actualizar
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loading-state" class="loading">
+            <div class="spinner">🔄</div>
+            <p>Cargando datos del CRM...</p>
+        </div>
+        <div id="error-state" class="error-banner" style="display:none">
+            <h3>⚠️ No se pudieron cargar los datos</h3>
+            <p id="error-message">Error de conexión.</p>
+        </div>
+        <div id="dashboard-content" class="fade-in" style="display:none">
+
+            <!-- App-level tabs: Ventas | Financiero -->
+            
+
+            <!-- ===== VENTAS PANEL ===== -->
+            <div class="app-panel active" id="app-ventas">
+                <!-- Period tab bar: Ayer | Este Mes | Este Trimestre | Global -->
+                <div class="tab-bar" id="tab-bar">
+                    
+                    <button class="tab-btn active" data-tab="this_month" onclick="switchTab('this_month')">📆 Este Mes</button>
+                    <button class="tab-btn" data-tab="this_quarter" onclick="switchTab('this_quarter')">🗓️ Este Trimestre</button>
+                    <button class="tab-btn" data-tab="this_year" onclick="switchTab('this_year')">📆 Este Año</button>
+                    <button class="tab-btn" data-tab="all_time" onclick="switchTab('all_time')">🌐 Global</button>
+                </div>
+
+                <!-- Este Mes -->
+                <div class="tab-panel" id="panel-this_month">
+                    <p class="cmp-context" id="cmp-header-this_month" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_month"></div>
+                    <!-- Daily contacts chart -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📈 Nuevos Contactos por Día</h3>
+                        <canvas id="daily-contacts-this_month"></canvas>
+                    </div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_month"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_month"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_month"></div>
+                    </div>
+                    <!-- Pipeline Este Mes -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Mes</h3>
+                        <div id="pipeline-this_month"></div>
+                    </div>
+                </div>
+
+                <!-- Este Trimestre -->
+                <div class="tab-panel" id="panel-this_quarter">
+                    <p class="cmp-context" id="cmp-header-this_quarter" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_quarter"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_quarter"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_quarter"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_quarter"></div>
+                    </div>
+                    <!-- Pipeline Este Trimestre -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Trimestre</h3>
+                        <div id="pipeline-this_quarter"></div>
+                    </div>
+                                </div>
+
+                <!-- Este Año -->
+                <div class="tab-panel" id="panel-this_year">
+                    <p class="cmp-context" id="cmp-header-this_year" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_year"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_year"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_year"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_year"></div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Año</h3>
+                        <div id="pipeline-this_year"></div>
+                    </div>
+                </div>
+
+                <!-- Global -->
+                <div class="tab-panel" id="panel-all_time">
+                    <div class="crm-grid" id="kpi-all_time"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>💰 Oportunidades por Asesor</h3>
+                            <canvas id="chart-owner-all"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>👥 Contactos por Asesor</h3>
+                            <canvas id="chart-contact-owner-all"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width">
+                        <h3>📋 Últimas Ofertas</h3>
+                        <div style="overflow-x:auto">
+                            <table class="compact-table">
+                                <thead><tr>
+                                    <th>Nombre</th>
+                                    <th>Contacto</th>
+                                    <th>Asesor</th>
+                                    <th>Etapa</th>
+                                    <th>Importe</th>
+                                    <th>Inversión</th>
+                                    <th>Tipo</th>
+                                </tr></thead>
+                                <tbody id="deals-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Global -->
+                <div class="chart-container full-width" style="margin-bottom:20px">
+                    <h3>🔽 Pipeline Global</h3>
+                    <div id="pipeline-all_time"></div>
+                </div>
+            </div>
+
+            <div class="last-updated">
+                🦊 <strong>Finanfox</strong> — <span id="footer-timestamp"></span>
+                · <a href="javascript:refreshData()">Actualizar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+let currentData = null;
+const charts = {};
+const PERIOD_MAP = { ayer: 'yesterday', this_month: 'this_month', this_quarter: 'this_quarter', this_year: 'this_year' };
+
+function switchAppTab(app) {
+    document.querySelectorAll('.app-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.app-panel').forEach(function(p) { p.classList.remove('active'); });
+    var tb = document.querySelector('.app-tab-btn[data-app="' + app + '"]');
+    if (tb) tb.classList.add('active');
+    var pn = document.getElementById('app-' + app);
+    if (pn) pn.classList.add('active');
+}
+
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    var tb = document.querySelector('.tab-btn[data-tab="' + tab + '"]');
+    if (tb) tb.classList.add('active');
+    var pn = document.getElementById('panel-' + tab);
+    if (pn) pn.classList.add('active');
+}
+
+function formatEUR(v) {
+    return '€' + Number(v).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function getBadgeClass(i) {
+    var cls = ['badge-1','badge-2','badge-3','badge-4','badge-5','badge-6','badge-7','badge-8'];
+    return cls[i % cls.length];
+}
+
+function getStageColor(stage) {
+    var s = (stage || '').toLowerCase();
+    if (s.indexOf('ganado') !== -1) return '#22c55e';
+    if (s.indexOf('perdido') !== -1) return '#ef4444';
+    if (s.indexOf('firma') !== -1) return '#a855f7';
+    if (s.indexOf('analisis') !== -1) return '#3b82f6';
+    if (s.indexOf('pendiente') !== -1 || s.indexOf('llamada') !== -1) return '#f97316';
+    return '#94a3b8';
+}
+
+function calcChange(current, previous) {
+    if (previous === 0 && current === 0) return { pct: 0, cls: 'cmp-flat', arrow: '→' };
+    if (previous === 0) return { pct: 999.9, cls: 'cmp-up', arrow: '↑' };
+    var pct = ((current - previous) / previous) * 100;
+    if (pct > 0) return { pct: Math.round(pct * 10) / 10, cls: 'cmp-up', arrow: '↑' };
+    if (pct < 0) return { pct: Math.round(pct * 10) / 10, cls: 'cmp-down', arrow: '↓' };
+    return { pct: 0, cls: 'cmp-flat', arrow: '→' };
+}
+
+function renderCmpBadge(current, previous, showQty) {
+    if (previous === undefined || previous === null) {
+        return '<span class="cmp-badge cmp-na">N/A</span>';
+    }
+    var change = calcChange(current, previous);
+    var qty = Math.round((current - previous) * 100) / 100;
+    var qtyStr = qty > 0 ? '+' + qty : String(qty);
+    if (change.pct === 999.9) {
+        return '<span class="cmp-badge cmp-up">+' + qty + ' / +∞% ↑</span>';
+    }
+    var sign = change.pct > 0 ? '+' : '';
+    if (showQty) {
+        return '<span class="cmp-badge ' + change.cls + '">' + qtyStr + ' / ' + sign + change.pct + '% ' + change.arrow + '</span>';
+    }
+    return '<span class="cmp-badge ' + change.cls + '">' + sign + change.pct + '% ' + change.arrow + '</span>';
+}
+
+function renderFunnel(stages) {
+    if (!stages || stages.length === 0) {
+        return '<p style="color:var(--text-muted);padding:12px">Pipeline activo vacío.</p>';
+    }
+    var maxCount = 1;
+    stages.forEach(function(s) { if (s.count > maxCount) maxCount = s.count; });
+    var maxWidth = 95;
+    var minWidth = 20;
+    var html = '<div class="funnel-container">';
+    stages.forEach(function(item, i) {
+        var stage = item.stage;
+        var count = item.count;
+        var pctTotal = item.pct_of_total;
+        var convFromPrev = item.conversion_from_prev;
+        var convFromTop = item.conversion_from_top;
+        var pct = count / maxCount;
+        var width = minWidth + (maxWidth - minWidth) * pct;
+        var color = getStageColor(stage);
+
+        html += '<div class="funnel-stage" style="border-color:' + color + '40;width:' + width + '%">';
+        html += '<div class="funnel-left">';
+        html += '<span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:' + color + '"></span>';
+        html += '<strong>' + stage + '</strong>';
+        html += '</div>';
+        html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
+        html += '<span class="funnel-count">' + count + '</span>';
+
+        // pct_of_total badge
+        if (pctTotal !== undefined && pctTotal !== null && pctTotal !== '') {
+            html += '<span class="badge" style="font-size:0.7rem;background:#f1f5f9;color:#475569">' + pctTotal + '%</span>';
+        }
+
+        // conversion_from_top: % from top-of-funnel
+        if (convFromTop !== undefined && convFromTop !== null && convFromTop !== '' && i > 0) {
+            html += '<span class="funnel-conv" style="color:var(--text-muted)">' + convFromTop + '% del top</span>';
+        }
+
+        // conversion_from_prev: only when meaningful (decrease from prev stage)
+        if (convFromPrev !== undefined && convFromPrev !== null && convFromPrev !== '' && convFromPrev !== 0) {
+            html += '<span class="funnel-conv cmp-down">↓' + convFromPrev + '% conv.</span>';
+        }
+
+        if (item.cmp_count !== undefined && item.cmp_count !== null) {
+            html += renderCmpBadge(count, item.cmp_count, false);
+        }
+        html += '</div></div>';
+    });
+    html += '</div>';
+    return html;
+}
+
+function renderKPI(periodKey, stats, comparisonStats) {
+    var statKey = PERIOD_MAP[periodKey] || periodKey;
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
+    var isPeriod = periodKey !== 'all_time';
+    if (isPeriod) {
+        var cmp = comparisonStats || null;
+        var lost = s.lost_deals || 0;
+        var lostCmp = cmp ? (cmp.lost_deals || 0) : null;
+        var html = '';
+        html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + s.new_contacts + '</div>' + (cmp ? renderCmpBadge(s.new_contacts, cmp.new_contacts, true) : '') + '</div><div class="label">👥 Nuevos Contactos</div></div>';
+        html += '<div class="crm-card info"><div class="value-row"><div class="value">' + s.new_deals + '</div>' + (cmp ? renderCmpBadge(s.new_deals, cmp.new_deals, true) : '') + '</div><div class="label">📈 Nuevas Oportunidades</div></div>';
+        html += '<div class="crm-card success"><div class="value-row"><div class="value">' + s.won_deals + '</div>' + (cmp ? renderCmpBadge(s.won_deals, cmp.won_deals, true) : '') + '</div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + formatEUR(s.won_value) + ' ' + (cmp ? renderCmpBadge(s.won_value, cmp.won_value, true) : '') + '</div></div>';
+        html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
+        html += '<div class="crm-card error"><div class="value-row"><div class="value">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+                html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
+        html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (s.win_rate !== undefined && s.win_rate !== null ? s.win_rate + '%' : 'N/A') + '</div>' + (cmp && cmp.win_rate !== undefined && cmp.win_rate !== null ? renderCmpBadge(s.win_rate, cmp.win_rate, false) : '') + '</div><div class="label">⚡ Win Rate</div><div class="sub">' + (s.won_deals + ' ganados de ' + (s.won_deals + s.lost_deals)) + '</div></div>';
+        html += '<div class="crm-card info"><div class="value-row"><div class="value">' + (s.avg_days_to_win !== undefined && s.avg_days_to_win > 0 ? s.avg_days_to_win + ' días' : 'N/A') + '</div>' + (cmp && cmp.avg_days_to_win !== undefined && cmp.avg_days_to_win > 0 ? renderCmpBadge(s.avg_days_to_win, cmp.avg_days_to_win, false) : '') + '</div><div class="label">📅 Días hasta cierre</div></div>';
+        html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + (s.conversion_clientes ? s.conversion_clientes.ratio + '%' : 'N/A') + '</div>' + (cmp && cmp.conversion_clientes ? renderCmpBadge(s.conversion_clientes.ratio, cmp.conversion_clientes.ratio, false) : '') + '</div><div class="label">🔄 Conversión clientes</div><div class="sub">' + (s.conversion_clientes ? s.conversion_clientes.converted_contacts + ' de ' + s.conversion_clientes.total_contacts : '') + '</div></div>';
+        return html;
+    } else {
+        var c = s.contacts;
+        var d = s.deals;
+        var html = '';
+        html += '<div class="crm-card accent"><div class="value">' + c.total + '</div><div class="label">👥 Contactos</div><div class="sub">📧 ' + c.with_email + ' con email</div></div>';
+        html += '<div class="crm-card info"><div class="value">' + d.total + '</div><div class="label">💰 Oportunidades</div><div class="sub">Promedio: ' + formatEUR(d.avg_deal_size) + '</div></div>';
+        html += '<div class="crm-card success"><div class="value">' + formatEUR(d.pipeline_value) + '</div><div class="label">📊 Pipeline Total</div><div class="sub">' + d.closed_won + ' ganados: ' + formatEUR(d.closed_won_value) + '</div></div>';
+        html += '<div class="crm-card purple"><div class="value">' + d.conversion_rate + '%</div><div class="label">🎯 Tasa Conversión</div><div class="sub">' + formatEUR(d.total_aportaciones) + ' en inversiones</div></div>';
+        html += '<div class="crm-card error"><div class="value">' + (d.closed_lost || 0) + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+        html += '<div class="crm-card warning"><div class="value">' + (currentData.products ? currentData.products.length : 0) + '</div><div class="label">📦 Productos</div></div>';
+        return html;
+    }
+}
+
+function renderAdvisorTable(ranking) {
+    if (!ranking || ranking.length === 0) {
+        return '<p style="color:var(--text-muted);padding:12px">Sin datos en este período.</p>';
+    }
+    var medals = ['🥇','🥈','🥉'];
+    var html = '<table class="compact-table"><thead><tr><th>#</th><th>Asesor</th><th>🏆 Ganadas</th><th>💰 Inversión</th></tr></thead><tbody>';
+    ranking.forEach(function(a, i) {
+        var medal = i < 3 ? medals[i] : String(i+1) + '.';
+        html += '<tr><td><span class="ranking-medal">' + medal + '</span></td><td><strong>' + a.name + '</strong></td><td>' + a.won + '</td><td>' + formatEUR(a.total_aportacion) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    return html;
+}
+
+function renderProductBreakdown(products, counts, details) {
+    var names = Object.keys(products);
+    if (names.length === 0) {
+        return '<p style="color:var(--text-muted);padding:12px">Sin productos cerrados en este período.</p>';
+    }
+    var total = Object.values(products).reduce(function(a,b) { return a + b; }, 0);
+    var hasDetails = details && details.length > 0;
+    var html = '<table class="compact-table"><thead><tr><th>Producto</th>' + (hasDetails ? '<th>Entidad</th>' : '') + '<th>CANTIDAD</th><th>Total Invertido</th><th>%</th></tr></thead><tbody>';
+    if (hasDetails) {
+        details.forEach(function(item, i) {
+            var amt = item.total || item.aportacion || 0;
+            var cnt = item.veces || 1;
+            var pct = (amt / total * 100).toFixed(1);
+            html += '<tr><td><span class="badge ' + getBadgeClass(i) + '">' + item.producto + '</span></td><td>' + (item.entidad || '-') + '</td><td><strong>' + cnt + '</strong></td><td><strong>' + formatEUR(amt) + '</strong></td>';
+            html += '<td><div style="display:flex;align-items:center;gap:8px"><div style="height:16px;width:' + pct + '%;background:var(--accent);border-radius:4px;min-width:4px;max-width:120px;transition:width 0.4s"></div><span style="font-size:0.75rem;color:var(--text-muted)">' + pct + '%</span></div></td></tr>';
+        });
+    } else {
+        names.forEach(function(name, i) {
+            var amt = products[name];
+            var cnt = counts[name] || 0;
+            var pct = (amt / total * 100).toFixed(1);
+            html += '<tr><td><span class="badge ' + getBadgeClass(i) + '">' + name + '</span></td><td>' + cnt + '</td><td><strong>' + formatEUR(amt) + '</strong></td>';
+            html += '<td><div style="display:flex;align-items:center;gap:8px"><div style="height:16px;width:' + pct + '%;background:var(--accent);border-radius:4px;min-width:4px;max-width:120px;transition:width 0.4s"></div><span style="font-size:0.75rem;color:var(--text-muted)">' + pct + '%</span></div></td></tr>';
+        });
+    }
+    html += '</tbody></table>';
+    return html;
+}
+
+function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
+    var el;
+
+    el = document.getElementById('cmp-header-' + periodKey);
+    if (el && comparisonStats) {
+        var cmpLabel = 'mes previo';
+        if (cmpKey === 'yesterday') cmpLabel = 'anteayer';
+        else if (cmpKey === 'this_quarter') cmpLabel = 'trimestre previo';
+        el.textContent = '↔️ Comparativa vs ' + cmpLabel;
+        el.style.display = 'block';
+    } else if (el) {
+        el.style.display = 'none';
+    }
+
+    el = document.getElementById('kpi-' + periodKey);
+    if (el) el.innerHTML = renderKPI(periodKey, stats, comparisonStats);
+
+    var statKey = PERIOD_MAP[periodKey] || periodKey;
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
+
+    el = document.getElementById('advisor-won-' + periodKey);
+    if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_won);
+
+    el = document.getElementById('advisor-aport-' + periodKey);
+    if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_aportacion);
+
+    el = document.getElementById('products-' + periodKey);
+    if (el) el.innerHTML = renderProductBreakdown(s.product_breakdown || {}, s.product_count || {}, s.product_details || []);
+
+    // Render period-specific pipeline
+    var pipelineKey = statKey;
+    var pipelineData = (currentData.pipeline && currentData.pipeline[pipelineKey]) ? currentData.pipeline[pipelineKey] : null;
+    var pipelineEl = document.getElementById('pipeline-' + periodKey);
+    if (pipelineEl && pipelineData) {
+        renderFunnelFromPipeline(pipelineData, periodKey);
+    }
+
+    // ── Daily new contacts bar chart (this_month only) ──
+    if (periodKey === 'this_month') {
+        var dailyCanvas = document.getElementById('daily-contacts-this_month');
+        if (dailyCanvas) {
+            if (charts.dailyContacts) { charts.dailyContacts.destroy(); }
+            var byDay = s.contacts_by_day || {};
+            var allDays = [];
+            var now = new Date();
+            var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            for (var d = 1; d <= daysInMonth; d++) {
+                allDays.push(String(d));
+            }
+            var counts = allDays.map(function(day) { return byDay[day] || 0; });
+            charts.dailyContacts = new Chart(dailyCanvas, {
+                type: 'bar',
+                data: {
+                    labels: allDays,
+                    datasets: [{
+                        label: 'Nuevos Contactos',
+                        data: counts,
+                        backgroundColor: '#3b82f6',
+                        borderColor: '#2563eb',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: function(items) { return 'Día ' + items[0].label; },
+                                label: function(item) { return item.raw + ' contacto' + (item.raw !== 1 ? 's' : ''); }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Día del Mes' },
+                            ticks: { maxTicksLimit: 31 }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Nº Contactos' },
+                            ticks: { stepSize: 1, precision: 0 }
+                        }
+                    }
+                }
+            });
+        }
+    }
+}
+
+function renderGlobalTab(stats) {
+    var s = stats.all_time;
+    document.getElementById('kpi-all_time').innerHTML = renderKPI('all_time', stats, null);
+
+    if (charts.chartOwner) { charts.chartOwner.destroy(); }
+    if (charts.chartContact) { charts.chartContact.destroy(); }
+
+    var ctx1 = document.getElementById('chart-owner-all');
+    if (ctx1 && s.deals.by_owner) {
+        var owners = Object.keys(s.deals.by_owner);
+        var vals = owners.map(function(o) { return s.deals.by_owner[o]; });
+        charts.chartOwner = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: owners,
+                datasets: [{
+                    label: 'Oportunidades',
+                    data: vals,
+                    backgroundColor: '#f97316'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    }
+
+    var ctx2 = document.getElementById('chart-contact-owner-all');
+    if (ctx2 && s.contacts.by_owner) {
+        var owners = Object.keys(s.contacts.by_owner);
+        var vals = owners.map(function(o) { return s.contacts.by_owner[o]; });
+        charts.chartContact = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: owners,
+                datasets: [{
+                    label: 'Contactos',
+                    data: vals,
+                    backgroundColor: '#3b82f6'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    }
+        // Render Global pipeline
+        var pipelineData = (currentData.pipeline && currentData.pipeline.all_time) ? currentData.pipeline.all_time : null;
+        var pipelineEl = document.getElementById('pipeline-all_time');
+        if (pipelineEl && pipelineData) {
+            renderFunnelFromPipeline(pipelineData, 'all_time');
+        } else if (pipelineEl) {
+            pipelineEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
+        }
+    }
+
+function renderDealsTable() {
+    var tbody = document.getElementById('deals-table-body');
+    if (!tbody) return;
+    var deals = currentData.deals || [];
+    var html = '';
+    deals.forEach(function(d) {
+        var stageColor = getStageColor(d.Stage);
+        html += '<tr>';
+        html += '<td><strong>' + d.Deal_Name + '</strong></td>';
+        html += '<td>' + (d.Contact_Name || '-') + '</td>';
+        html += '<td>' + (d.Owner || '-') + '</td>';
+        html += '<td><span style="color:' + stageColor + ';font-weight:600">●</span> ' + d.Stage + '</td>';
+        html += '<td>' + (d.Amount ? formatEUR(d.Amount) : '-') + '</td>';
+        html += '<td>' + (d.Total_Aportaciones ? formatEUR(d.Total_Aportaciones) : '-') + '</td>';
+        html += '<td>' + (d.Type || '-') + '</td>';
+        html += '</tr>';
+    });
+    tbody.innerHTML = html;
+}
+
+function renderFunnelFromPipeline(pipeline, periodKey) {
+    var funnelElId = 'pipeline-' + (periodKey || 'funnel');
+    var funnelEl = document.getElementById(funnelElId);
+    if (!funnelEl) return;
+
+    if (!pipeline || (!pipeline.details || pipeline.details.length === 0) && (!pipeline.stages)) {
+        funnelEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
+        return;
+    }
+
+    var html = '';
+
+    // ── Active pipeline funnel ──
+    var activeStages = [];
+    if (pipeline.details && pipeline.details.length > 0) {
+        pipeline.details.forEach(function(d) {
+            activeStages.push({
+                stage: d.stage,
+                count: d.count,
+                pct_of_total: d.pct_of_total,
+                conversion_from_prev: d.conversion_from_prev,
+                conversion_from_top: d.conversion_from_top,
+                cmp_count: d.cmp_count
+            });
+        });
+    } else if (pipeline.stages) {
+        // Fallback for old data format
+        var order = pipeline.stage_order || Object.keys(pipeline.stages);
+        var prevStages = pipeline.previous_pipeline || {};
+        order.forEach(function(stage) {
+            if (stage === 'Cerrado Ganado' || stage === 'Cerrado Perdido') return;
+            activeStages.push({
+                stage: stage,
+                count: pipeline.stages[stage],
+                pct_of_total: null,
+                conversion_from_prev: null,
+                conversion_from_top: null,
+                cmp_count: prevStages[stage]
+            });
+        });
+    }
+
+    // Active funnel
+        html += '<div style="margin-bottom:4px"><strong style="font-size:0.8rem;color:var(--text-muted)">📊 Pipeline Activo</strong></div>';
+    html += '<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0">';
+    html += '<strong style="color:#475569">Leyenda:</strong> ';
+    html += '<span style="margin-right:10px"><strong>Nº</strong> = Oportunidades en etapa</span>';
+    html += '<span style="margin-right:10px"><strong>%</strong> = % sobre total del pipeline</span>';
+    html += '<span style="margin-right:10px"><strong>% del top</strong> = % respecto a inicio del embudo</span>';
+    html += '<span style="margin-right:10px"><strong>↓X% conv.</strong> = Caída de conversión vs etapa anterior</span>';
+    html += '<span><strong>↑/↓ badge</strong> = Cambio vs periodo anterior</span>';
+    html += '</div>';
+    html += renderFunnel(activeStages);
+
+    // ── Terminal outcomes (Cerrado Ganado / Cerrado Perdido) ──
+    var terminalStages = [];
+    if (pipeline.terminal && pipeline.terminal.length > 0) {
+        terminalStages = pipeline.terminal;
+    } else if (pipeline.stages) {
+        // Fallback for old data format
+        ['Cerrado Ganado', 'Cerrado Perdido'].forEach(function(s) {
+            if (pipeline.stages[s]) {
+                terminalStages.push({
+                    stage: s,
+                    count: pipeline.stages[s],
+                    pct_of_total: null
+                });
+            }
+        });
+    }
+
+    if (terminalStages.length > 0) {
+        html += '<div style="margin:16px 0 4px"><strong style="font-size:0.8rem;color:var(--text-muted)">✅ Resultados Finales</strong></div>';
+        html += '<div style="display:flex;gap:16px">';
+        terminalStages.forEach(function(t) {
+            var isWon = t.stage.indexOf('Ganado') !== -1;
+            var bg = isWon ? '#f0fdf4' : '#fef2f2';
+            var border = isWon ? '#22c55e' : '#ef4444';
+            var color = isWon ? '#15803d' : '#dc2626';
+            var icon = isWon ? '🏆' : '❌';
+            var pctLabel = '';
+            if (t.pct_of_total !== undefined && t.pct_of_total !== null && t.pct_of_total !== '') {
+                pctLabel = ' · ' + t.pct_of_total + '% del total';
+            }
+            html += '<div style="flex:1;background:' + bg + ';border:2px solid ' + border + ';border-radius:10px;padding:16px;text-align:center">';
+            html += '<div style="font-size:2rem;font-weight:700;color:' + color + '">' + icon + ' ' + t.count + '</div>';
+            html += '<div style="font-size:0.85rem;color:' + color + ';font-weight:600">' + t.stage + '</div>';
+            if (pctLabel) html += '<div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">' + pctLabel + '</div>';
+            if (t.cmp_count !== undefined && t.cmp_count !== null) {
+                html += '<div style="margin-top:4px">' + renderCmpBadge(t.count, t.cmp_count, true) + '</div>';
+            }
+            html += '</div>';
+        });
+
+        // Win/Loss ratio
+        var wonTotal = pipeline.won_total || 0;
+        var lostTotal = pipeline.lost_total || 0;
+        var total = wonTotal + lostTotal;
+        if (total > 0) {
+            var winRate = Math.round(wonTotal / total * 100);
+            html += '<div style="flex:1;background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;padding:16px;text-align:center">';
+            html += '<div style="font-size:2rem;font-weight:700;color:var(--text)">' + winRate + '%</div>';
+            html += '<div style="font-size:0.85rem;color:var(--text-muted);font-weight:600">⚡ Win Rate</div>';
+                        html += '<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px">' + wonTotal + ' ganados de ' + total + '</div>';
+            html += '<div style="font-size:0.65rem;color:var(--text-muted);margin-top:1px">Ganados / (Ganados+Perdidos)</div>';
+            html += '</div>';
+        }
+        html += '</div>';
+    }
+
+    funnelEl.innerHTML = html;
+}
+
+function refreshUI() {
+    var stats = currentData.stats;
+    document.getElementById('crm-timestamp').textContent = '🕐 ' + (currentData.timestamp || '') + ' (Global: ' + stats.all_time.contacts.total + ' contactos)';
+    document.getElementById('footer-timestamp').textContent = 'Actualizado: ' + (currentData.timestamp || '-');
+
+    renderPeriodTab('ayer', stats, (currentData.comparison && currentData.comparison.yesterday ? currentData.comparison.yesterday.stats : null), 'yesterday');
+    renderPeriodTab('this_month', stats, (currentData.comparison && currentData.comparison.this_month ? currentData.comparison.this_month.stats : null), 'prev_month');
+    renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
+    renderPeriodTab('this_year', stats, (currentData.comparison && currentData.comparison.this_year ? currentData.comparison.this_year.stats : null), 'this_year');
+    renderGlobalTab(stats);
+    renderDealsTable();
+}
+
+function loadData(data) {
+    currentData = data;
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display = 'none';
+    document.getElementById('dashboard-content').style.display = 'block';
+    refreshUI();
+}
+
+function showError(msg) {
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display = 'block';
+    document.getElementById('error-message').textContent = msg;
+}
+
+
+function refreshData() {
+    document.getElementById('dashboard-content').style.display = 'none';
+    document.getElementById('loading-state').style.display = 'block';
+    document.getElementById('error-state').style.display = 'none';
+    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now())
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    zohoFetch
+        .then(function(data) {
+            loadData(data);
+        })
+        .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now())
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    zohoFetch
+        .then(function(data) {
+            loadData(data);
+        })
+        .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
+});
+    </script>
+</body>
+</html>

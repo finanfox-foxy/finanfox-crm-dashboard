@@ -484,6 +484,134 @@ def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
         'total_pipeline': total_pipeline
     }
 
+# ── Advisor-specific data generation ─────────────────────────
+ADVISORS = [
+    "Alberto Prieto",
+    "Jaime Becerra",
+    "Jose Orrequia",
+]
+
+def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all):
+    """
+    Generate complete CRM stats filtered to a single advisor.
+    Returns a dict with the same structure as the main data file.
+    """
+    # Filter deals by this advisor
+    advisor_deals = [d for d in deals_all if d.get('Owner') == advisor_name]
+    advisor_deal_ids = {d['id'] for d in advisor_deals if d.get('id')}
+    advisor_won_ids = {d['id'] for d in advisor_deals if 'Ganado' in (d.get('Stage') or '') and d.get('id')}
+    
+    # Filter product records: only those linked to this advisor's won deals
+    advisor_pf = [pr for pr in pf_records_all 
+                  if (pr.get('Parent_Id') or {}).get('id') in advisor_won_ids]
+    
+    # Filter contacts by this advisor
+    advisor_contacts = [c for c in contacts_all if c.get('Owner') == advisor_name]
+
+    # ── All-time stats (compact) ──
+    closed_won = [d for d in advisor_deals if 'Ganado' in (d.get('Stage') or '')]
+    closed_lost = [d for d in advisor_deals if 'Perdido' in (d.get('Stage') or '')]
+    pipeline_val = sum(float(d.get('Amount', 0) or 0) for d in advisor_deals)
+    total_aport = sum(float(d.get('Total_Aportaciones', 0) or 0) for d in advisor_deals)
+    
+    all_time = {
+        "contacts": {
+            "total": len(advisor_contacts),
+            "with_email": sum(1 for c in advisor_contacts if c.get('Email')),
+            "with_phone": sum(1 for c in advisor_contacts if c.get('Phone')),
+            "by_owner": {advisor_name: len(advisor_contacts)},
+        },
+        "deals": {
+            "total": len(advisor_deals),
+            "by_stage": {},
+            "by_owner": {advisor_name: len(advisor_deals)},
+            "pipeline_value": pipeline_val,
+            "total_aportaciones": total_aport,
+            "avg_deal_size": round(pipeline_val / len(advisor_deals), 2) if advisor_deals else 0,
+            "closed_won": len(closed_won),
+            "closed_won_value": sum(float(d.get('Amount', 0) or 0) for d in closed_won),
+            "closed_lost": len(closed_lost),
+            "conversion_rate": round(len(closed_won) / len(advisor_deals) * 100, 1) if advisor_deals else 0,
+        }
+    }
+
+    # Fill by_stage for Global
+    for d in advisor_deals:
+        stage = d.get('Stage', 'Sin etapa')
+        all_time['deals']['by_stage'][stage] = all_time['deals']['by_stage'].get(stage, 0) + 1
+
+    # ── Period stats (reuse compute_period_stats with filtered data) ──
+    yesterday_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Ayer", in_yesterday)
+    this_month_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Mes", in_this_month)
+    this_quarter_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Trimestre", in_this_quarter)
+    this_year_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Año", in_this_year)
+
+    prev_yesterday_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Anteayer", in_prev_yesterday)
+    prev_month_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Mes Anterior", in_prev_month)
+    prev_quarter_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Trimestre Anterior", in_prev_quarter)
+    prev_year_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Año Anterior", in_prev_year)
+
+    # ── Pipeline details ──
+    this_month_pipeline = compute_pipeline_details(this_month_stats['pipeline_stages'])
+    this_quarter_pipeline = compute_pipeline_details(this_quarter_stats['pipeline_stages'],
+        prev_quarter_stats['pipeline_stages'] if prev_quarter_stats else {})
+    this_year_pipeline = compute_pipeline_details(this_year_stats['pipeline_stages'],
+        prev_year_stats['pipeline_stages'] if prev_year_stats else {})
+    
+    # ── Assemble ──
+    slug = advisor_name.lower().replace(' ', '-')
+    return {
+        "advisor_name": advisor_name,
+        "timestamp": datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+        "generated_at": str(TODAY),
+        "today": str(TODAY),
+        "yesterday": str(YESTERDAY),
+        "this_month": THIS_MONTH,
+        "this_quarter_start": str(THIS_QUARTER_START),
+        "this_quarter_end": str(THIS_QUARTER_END),
+        "this_quarter_label": THIS_QUARTER_LABEL,
+        "stats": {
+            "all_time": all_time,
+            "yesterday": yesterday_stats,
+            "this_month": this_month_stats,
+            "this_quarter": this_quarter_stats,
+            "this_year": this_year_stats,
+        },
+        "comparison": {
+            "yesterday": {
+                "previous": str(PREV_YESTERDAY),
+                "period_label": "anteayer",
+                "stats": prev_yesterday_stats
+            },
+            "this_month": {
+                "previous": PREV_MONTH,
+                "period_label": "mes anterior",
+                "stats": prev_month_stats
+            },
+            "this_quarter": {
+                "previous_label": PREV_QUARTER_LABEL,
+                "previous_start": str(PREV_QUARTER_START),
+                "previous_end": str(PREV_QUARTER_END),
+                "period_label": "trimestre anterior",
+                "stats": prev_quarter_stats
+            },
+            "this_year": {
+                "previous_label": str(PREV_YEAR_START) + " a " + str(PREV_YEAR_END),
+                "previous_start": str(PREV_YEAR_START),
+                "previous_end": str(PREV_YEAR_END),
+                "period_label": "año anterior",
+                "stats": prev_year_stats
+            }
+        },
+        "pipeline": {
+            "stage_order": STAGE_ORDER,
+            "yesterday": compute_pipeline_details(yesterday_stats['pipeline_stages']),
+            "this_month": this_month_pipeline,
+            "this_quarter": this_quarter_pipeline,
+            "this_year": this_year_pipeline,
+        }
+    }
+
 # ── Main ─────────────────────────────────────────────────
 def main():
     print("Extrayendo datos de Zoho CRM...")
@@ -777,6 +905,19 @@ def main():
     print(f"\nDatos guardados en {DATA_FILE}")
     print(f"   {len(contacts)} contactos | {len(deals)} ofertas | {len(products)} productos")
     print(f"   Pipeline: E{pipeline_value:,.0f} | Cerrados ganados: {closed_won_count} (E{closed_won_value:,.0f}) | Perdidos: {closed_lost_count}")
+
+    # ── Generate per-advisor JSON files ──
+    print("\nGenerando datos por asesor...")
+    for advisor in ADVISORS:
+        slug = advisor.lower().replace(' ', '-')
+        adv_file = DATA_DIR / f'{slug}.json'
+        try:
+            adv_data = generate_advisor_data(advisor, contacts, deals, pf_records)
+            adv_file.write_text(json.dumps(adv_data, indent=2, ensure_ascii=False))
+            all_s = adv_data['stats']
+            print(f"   {advisor}: {all_s['all_time']['deals']['total']} ofertas, {all_s['all_time']['contacts']['total']} contactos → {adv_file.name}")
+        except Exception as e:
+            print(f"   ERROR {advisor}: {e}")
 
 if __name__ == '__main__':
     main()
