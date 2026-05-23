@@ -457,12 +457,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Pipeline Global -->
-                <div class="chart-container full-width" style="margin-bottom:20px">
-                    <h3>🔽 Pipeline Global</h3>
-                    <div id="pipeline-all_time"></div>
-                </div>
             </div>
 
             <!-- ===== FINANCIERO PANEL (sub-tabs) ===== -->
@@ -849,14 +843,6 @@ function renderGlobalTab(stats) {
             }
         });
     }
-        // Render Global pipeline
-        var pipelineData = (currentData.pipeline && currentData.pipeline.all_time) ? currentData.pipeline.all_time : null;
-        var pipelineEl = document.getElementById('pipeline-all_time');
-        if (pipelineEl && pipelineData) {
-            renderFunnelFromPipeline(pipelineData, 'all_time');
-        } else if (pipelineEl) {
-            pipelineEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
-        }
     }
 
 function renderDealsTable() {

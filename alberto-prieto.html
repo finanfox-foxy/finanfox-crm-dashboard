@@ -320,7 +320,7 @@
                 </div>
 
                 <!-- Este Mes -->
-                <div class="tab-panel" id="panel-this_month">
+                <div class="tab-panel active" id="panel-this_month">
                     <p class="cmp-context" id="cmp-header-this_month" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
                     <div class="crm-grid" id="kpi-this_month"></div>
                     <!-- Daily contacts chart -->
@@ -428,12 +428,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
-
-                <!-- Pipeline Global -->
-                <div class="chart-container full-width" style="margin-bottom:20px">
-                    <h3>🔽 Pipeline Global</h3>
-                    <div id="pipeline-all_time"></div>
                 </div>
             </div>
 
@@ -780,14 +774,6 @@ function renderGlobalTab(stats) {
             }
         });
     }
-        // Render Global pipeline
-        var pipelineData = (currentData.pipeline && currentData.pipeline.all_time) ? currentData.pipeline.all_time : null;
-        var pipelineEl = document.getElementById('pipeline-all_time');
-        if (pipelineEl && pipelineData) {
-            renderFunnelFromPipeline(pipelineData, 'all_time');
-        } else if (pipelineEl) {
-            pipelineEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
-        }
     }
 
 function renderDealsTable() {
