@@ -313,8 +313,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
             ordered_pipeline[stage] = count
 
     # ── Win rate ──
-    total_closed = len(won_deals) + len(lost_deals)
-    win_rate = round(len(won_deals) / total_closed * 100, 1) if total_closed > 0 else None
+    new_deals_count = len(new_deals)
+    win_rate = round(len(won_deals) / new_deals_count * 100, 1) if new_deals_count > 0 else None
 
     # ── Avg days to win ──
     def _parse_date(s):

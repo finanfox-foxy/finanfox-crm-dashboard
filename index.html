@@ -579,10 +579,6 @@ function renderFunnel(stages) {
     if (!stages || stages.length === 0) {
         return '<p style="color:var(--text-muted);padding:12px">Pipeline activo vacío.</p>';
     }
-    var maxCount = 1;
-    stages.forEach(function(s) { if (s.count > maxCount) maxCount = s.count; });
-    var maxWidth = 95;
-    var minWidth = 20;
     var html = '<div class="funnel-container">';
     stages.forEach(function(item, i) {
         var stage = item.stage;
@@ -590,11 +586,9 @@ function renderFunnel(stages) {
         var pctTotal = item.pct_of_total;
         var convFromPrev = item.conversion_from_prev;
         var convFromTop = item.conversion_from_top;
-        var pct = count / maxCount;
-        var width = minWidth + (maxWidth - minWidth) * pct;
         var color = getStageColor(stage);
 
-        html += '<div class="funnel-stage" style="border-color:' + color + '40;width:' + width + '%">';
+        html += '<div class="funnel-stage" style="border-color:' + color + '40">';
         html += '<div class="funnel-left">';
         html += '<span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:' + color + '"></span>';
         html += '<strong>' + stage + '</strong>';
@@ -641,7 +635,7 @@ function renderKPI(periodKey, stats, comparisonStats) {
         html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
         html += '<div class="crm-card error"><div class="value-row"><div class="value">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
                 html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
-        html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (s.win_rate !== undefined && s.win_rate !== null ? s.win_rate + '%' : 'N/A') + '</div>' + (cmp && cmp.win_rate !== undefined && cmp.win_rate !== null ? renderCmpBadge(s.win_rate, cmp.win_rate, false) : '') + '</div><div class="label">⚡ Win Rate</div><div class="sub">' + (s.won_deals + ' ganados de ' + (s.won_deals + s.lost_deals)) + '</div></div>';
+        html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (s.win_rate !== undefined && s.win_rate !== null ? s.win_rate + '%' : 'N/A') + '</div>' + (cmp && cmp.win_rate !== undefined && cmp.win_rate !== null ? renderCmpBadge(s.win_rate, cmp.win_rate, false) : '') + '</div><div class="label">⚡ Win Rate</div><div class="sub">' + (s.won_deals + ' ganados de ' + s.new_deals + ' nuevas') + '</div></div>';
         html += '<div class="crm-card info"><div class="value-row"><div class="value">' + (s.avg_days_to_win !== undefined && s.avg_days_to_win > 0 ? s.avg_days_to_win + ' días' : 'N/A') + '</div>' + (cmp && cmp.avg_days_to_win !== undefined && cmp.avg_days_to_win > 0 ? renderCmpBadge(s.avg_days_to_win, cmp.avg_days_to_win, false) : '') + '</div><div class="label">📅 Días hasta cierre</div></div>';
         html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + (s.conversion_clientes ? s.conversion_clientes.ratio + '%' : 'N/A') + '</div>' + (cmp && cmp.conversion_clientes ? renderCmpBadge(s.conversion_clientes.ratio, cmp.conversion_clientes.ratio, false) : '') + '</div><div class="label">🔄 Conversión clientes</div><div class="sub">' + (s.conversion_clientes ? s.conversion_clientes.converted_contacts + ' de ' + s.conversion_clientes.total_contacts : '') + '</div></div>';
         return html;
