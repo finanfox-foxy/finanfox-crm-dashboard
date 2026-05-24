@@ -328,15 +328,6 @@
                         <h3>📈 Nuevos Contactos por Día</h3>
                         <canvas id="daily-contacts-this_month"></canvas>
                     </div>
-                    <div class="charts-row">
-                        <div class="chart-container">
-                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
-                            <div id="advisor-won-this_month"></div>
-                        </div>
-                        <div class="chart-container">
-                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
-                            <div id="advisor-aport-this_month"></div>
-                        </div>
                     </div>
                     <div class="chart-container full-width" style="margin-bottom:20px">
                         <h3>📦 Productos Cerrados</h3>
@@ -353,15 +344,6 @@
                 <div class="tab-panel" id="panel-this_quarter">
                     <p class="cmp-context" id="cmp-header-this_quarter" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
                     <div class="crm-grid" id="kpi-this_quarter"></div>
-                    <div class="charts-row">
-                        <div class="chart-container">
-                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
-                            <div id="advisor-won-this_quarter"></div>
-                        </div>
-                        <div class="chart-container">
-                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
-                            <div id="advisor-aport-this_quarter"></div>
-                        </div>
                     </div>
                     <div class="chart-container full-width" style="margin-bottom:20px">
                         <h3>📦 Productos Cerrados</h3>
@@ -378,15 +360,6 @@
                 <div class="tab-panel" id="panel-this_year">
                     <p class="cmp-context" id="cmp-header-this_year" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
                     <div class="crm-grid" id="kpi-this_year"></div>
-                    <div class="charts-row">
-                        <div class="chart-container">
-                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
-                            <div id="advisor-won-this_year"></div>
-                        </div>
-                        <div class="chart-container">
-                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
-                            <div id="advisor-aport-this_year"></div>
-                        </div>
                     </div>
                     <div class="chart-container full-width" style="margin-bottom:20px">
                         <h3>📦 Productos Cerrados</h3>
@@ -401,28 +374,16 @@
                 <!-- Global -->
                 <div class="tab-panel" id="panel-all_time">
                     <div class="crm-grid" id="kpi-all_time"></div>
-                    <div class="charts-row">
-                        <div class="chart-container">
-                            <h3>💰 Oportunidades por Asesor</h3>
-                            <canvas id="chart-owner-all"></canvas>
-                        </div>
-                        <div class="chart-container">
-                            <h3>👥 Contactos por Asesor</h3>
-                            <canvas id="chart-contact-owner-all"></canvas>
-                        </div>
-                    </div>
                     <div class="chart-container full-width">
-                        <h3>📋 Últimas Ofertas</h3>
+                        <h3>📋 Últimas Oportunidades</h3>
                         <div style="overflow-x:auto">
                             <table class="compact-table">
                                 <thead><tr>
                                     <th>Nombre</th>
                                     <th>Contacto</th>
-                                    <th>Asesor</th>
                                     <th>Etapa</th>
-                                    <th>Importe</th>
                                     <th>Inversión</th>
-                                    <th>Tipo</th>
+                                    <th>Días Activo</th>
                                 </tr></thead>
                                 <tbody id="deals-table-body"></tbody>
                             </table>
@@ -650,12 +611,6 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
     var statKey = PERIOD_MAP[periodKey] || periodKey;
     var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
 
-    el = document.getElementById('advisor-won-' + periodKey);
-    if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_won);
-
-    el = document.getElementById('advisor-aport-' + periodKey);
-    if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_aportacion);
-
     el = document.getElementById('products-' + periodKey);
     if (el) el.innerHTML = renderProductBreakdown(s.product_breakdown || {}, s.product_count || {}, s.product_details || []);
 
@@ -725,71 +680,39 @@ function renderGlobalTab(stats) {
     var s = stats.all_time;
     document.getElementById('kpi-all_time').innerHTML = renderKPI('all_time', stats, null);
 
-    if (charts.chartOwner) { charts.chartOwner.destroy(); }
-    if (charts.chartContact) { charts.chartContact.destroy(); }
-
-    var ctx1 = document.getElementById('chart-owner-all');
-    if (ctx1 && s.deals.by_owner) {
-        var owners = Object.keys(s.deals.by_owner);
-        var vals = owners.map(function(o) { return s.deals.by_owner[o]; });
-        charts.chartOwner = new Chart(ctx1, {
-            type: 'bar',
-            data: {
-                labels: owners,
-                datasets: [{
-                    label: 'Oportunidades',
-                    data: vals,
-                    backgroundColor: '#f97316'
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: { y: { beginAtZero: true } }
-            }
-        });
-    }
-
-    var ctx2 = document.getElementById('chart-contact-owner-all');
-    if (ctx2 && s.contacts.by_owner) {
-        var owners = Object.keys(s.contacts.by_owner);
-        var vals = owners.map(function(o) { return s.contacts.by_owner[o]; });
-        charts.chartContact = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: owners,
-                datasets: [{
-                    label: 'Contactos',
-                    data: vals,
-                    backgroundColor: '#3b82f6'
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { display: false } },
-                scales: { y: { beginAtZero: true } }
-            }
-        });
-    }
     }
 
 function renderDealsTable() {
     var tbody = document.getElementById('deals-table-body');
     if (!tbody) return;
     var deals = currentData.deals || [];
+    // Filter active deals (not won, not lost)
+    var activeDeals = deals.filter(function(d) {
+        var s = (d.Stage || '').toLowerCase();
+        return s.indexOf('ganado') === -1 && s.indexOf('perdido') === -1;
+    });
+    var now = new Date();
     var html = '';
-    deals.forEach(function(d) {
+    activeDeals.forEach(function(d) {
         var stageColor = getStageColor(d.Stage);
+        // Calculate days active from Created_Time
+        var daysActive = 'N/A';
+        if (d.Created_Time) {
+            var created = new Date(d.Created_Time);
+            var diff = Math.floor((now - created) / (1000 * 60 * 60 * 24));
+            daysActive = diff + (diff === 1 ? ' día' : ' días');
+        }
         html += '<tr>';
         html += '<td><strong>' + d.Deal_Name + '</strong></td>';
         html += '<td>' + (d.Contact_Name || '-') + '</td>';
-        html += '<td>' + (d.Owner || '-') + '</td>';
         html += '<td><span style="color:' + stageColor + ';font-weight:600">●</span> ' + d.Stage + '</td>';
-        html += '<td>' + (d.Amount ? formatEUR(d.Amount) : '-') + '</td>';
         html += '<td>' + (d.Total_Aportaciones ? formatEUR(d.Total_Aportaciones) : '-') + '</td>';
-        html += '<td>' + (d.Type || '-') + '</td>';
+        html += '<td>' + daysActive + '</td>';
         html += '</tr>';
     });
+    if (activeDeals.length === 0) {
+        html = '<p style="color:var(--text-muted);padding:12px">No hay oportunidades activas actualmente.</p>';
+    }
     tbody.innerHTML = html;
 }
 
