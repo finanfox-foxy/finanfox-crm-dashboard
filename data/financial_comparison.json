@@ -1,0 +1,262 @@
+{
+  "generated_at": "2026-05-24T20:43:51Z",
+  "periods": {
+    "jan_apr_2025": {
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04"
+      ],
+      "totals": {
+        "income": 219350.23,
+        "expenses": 219555.62,
+        "margin": -205.39
+      },
+      "categories": {
+        "income": {
+          "Otros ingresos": 183050.16,
+          "Transferencias clientes": 36300.07
+        },
+        "expenses": {
+          "Nóminas": 66418.6,
+          "Impuestos": 35356.48,
+          "Marketing": 29549.68,
+          "Proveedores": 26429.3,
+          "Gastos varios": 19152.9,
+          "Gastos financieros": 18576.27,
+          "Seguridad Social": 17105.22,
+          "Suscripciones": 5567.87,
+          "Otros gastos": 1399.3
+        }
+      }
+    },
+    "jan_apr_2026": {
+      "months": [
+        "2026-01",
+        "2026-02",
+        "2026-03",
+        "2026-04"
+      ],
+      "totals": {
+        "income": 422023.71,
+        "expenses": 360867.69,
+        "margin": 61156.02
+      },
+      "categories": {
+        "income": {
+          "Transferencias clientes": 415689.73,
+          "Otros ingresos": 6333.98
+        },
+        "expenses": {
+          "Impuestos": 69397.32,
+          "Nóminas": 69101.59,
+          "Gastos financieros": 65628.56,
+          "Proveedores": 54334.94,
+          "Marketing": 40604.3,
+          "Seguridad Social": 25567.35,
+          "Otros gastos": 23261.32,
+          "Gastos varios": 8888.91,
+          "Suscripciones": 2993.45,
+          "Seguros": 1089.95
+        }
+      }
+    }
+  },
+  "variation": {
+    "income_pct": 92.4,
+    "expenses_pct": 64.4,
+    "margin_pct": 29675.6,
+    "income_abs": 202673.48,
+    "expenses_abs": 141312.07,
+    "margin_abs": 61361.41
+  },
+  "category_variation": {
+    "income": {
+      "Transferencias clientes": {
+        "2025": 36300.07,
+        "2026": 415689.73,
+        "variation_pct": 1045.1,
+        "variation_abs": 379389.66
+      },
+      "Otros ingresos": {
+        "2025": 183050.16,
+        "2026": 6333.98,
+        "variation_pct": -96.5,
+        "variation_abs": -176716.18
+      }
+    },
+    "expenses": {
+      "Impuestos": {
+        "2025": 35356.48,
+        "2026": 69397.32,
+        "variation_pct": 96.3,
+        "variation_abs": 34040.84
+      },
+      "Proveedores": {
+        "2025": 26429.3,
+        "2026": 54334.94,
+        "variation_pct": 105.6,
+        "variation_abs": 27905.64
+      },
+      "Seguros": {
+        "2025": 0,
+        "2026": 1089.95,
+        "variation_pct": null,
+        "variation_abs": 1089.95
+      },
+      "Marketing": {
+        "2025": 29549.68,
+        "2026": 40604.3,
+        "variation_pct": 37.4,
+        "variation_abs": 11054.62
+      },
+      "Gastos financieros": {
+        "2025": 18576.27,
+        "2026": 65628.56,
+        "variation_pct": 253.3,
+        "variation_abs": 47052.29
+      },
+      "Seguridad Social": {
+        "2025": 17105.22,
+        "2026": 25567.35,
+        "variation_pct": 49.5,
+        "variation_abs": 8462.13
+      },
+      "Suscripciones": {
+        "2025": 5567.87,
+        "2026": 2993.45,
+        "variation_pct": -46.2,
+        "variation_abs": -2574.42
+      },
+      "Gastos varios": {
+        "2025": 19152.9,
+        "2026": 8888.91,
+        "variation_pct": -53.6,
+        "variation_abs": -10263.99
+      },
+      "Otros gastos": {
+        "2025": 1399.3,
+        "2026": 23261.32,
+        "variation_pct": 1562.4,
+        "variation_abs": 21862.02
+      },
+      "Nóminas": {
+        "2025": 66418.6,
+        "2026": 69101.59,
+        "variation_pct": 4.0,
+        "variation_abs": 2682.99
+      }
+    }
+  },
+  "margin_evolution": [
+    {
+      "month": "01",
+      "month_label": "January",
+      "income_2025": 49396.82,
+      "expenses_2025": 72126.02,
+      "margin_2025": -22729.2,
+      "income_2026": 115730.51,
+      "expenses_2026": 149103.83,
+      "margin_2026": -33373.32
+    },
+    {
+      "month": "02",
+      "month_label": "February",
+      "income_2025": 49513.56,
+      "expenses_2025": 44246.42,
+      "margin_2025": 5267.14,
+      "income_2026": 87087.63,
+      "expenses_2026": 70339.79,
+      "margin_2026": 16747.84
+    },
+    {
+      "month": "03",
+      "month_label": "March",
+      "income_2025": 56994.55,
+      "expenses_2025": 38465.21,
+      "margin_2025": 18529.34,
+      "income_2026": 122482.76,
+      "expenses_2026": 54420.28,
+      "margin_2026": 68062.48
+    },
+    {
+      "month": "04",
+      "month_label": "April",
+      "income_2025": 63445.3,
+      "expenses_2025": 64717.97,
+      "margin_2025": -1272.67,
+      "income_2026": 96722.81,
+      "expenses_2026": 87003.79,
+      "margin_2026": 9719.02
+    }
+  ],
+  "annual_estimates": {
+    "2025_full": {
+      "months_available": 12,
+      "months_list": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12"
+      ],
+      "monthly_avg": {
+        "income": 81836.63,
+        "expenses": 75274.42,
+        "margin": 6562.21
+      },
+      "annual_estimate": {
+        "income": 982039.56,
+        "expenses": 903293.04,
+        "margin": 78746.52
+      }
+    },
+    "2026_janapr_projection": {
+      "months_available": 4,
+      "months_list": [
+        "2026-01",
+        "2026-02",
+        "2026-03",
+        "2026-04"
+      ],
+      "monthly_avg": {
+        "income": 105505.93,
+        "expenses": 90216.92,
+        "margin": 15289.01
+      },
+      "annual_estimate": {
+        "income": 1266071.16,
+        "expenses": 1082603.04,
+        "margin": 183468.12
+      }
+    },
+    "2026_available_projection": {
+      "months_available": 5,
+      "months_list": [
+        "2026-01",
+        "2026-02",
+        "2026-03",
+        "2026-04",
+        "2026-05"
+      ],
+      "monthly_avg": {
+        "income": 104643.76,
+        "expenses": 86718.04,
+        "margin": 17925.72
+      },
+      "annual_estimate": {
+        "income": 1255725.12,
+        "expenses": 1040616.48,
+        "margin": 215108.64
+      }
+    }
+  }
+}
