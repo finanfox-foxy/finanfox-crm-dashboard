@@ -544,7 +544,7 @@ function renderKPI(periodKey, stats, comparisonStats) {
         html += '<div class="crm-card success"><div class="value">' + formatEUR(d.pipeline_value) + '</div><div class="label">📊 Pipeline Total</div><div class="sub">' + d.closed_won + ' ganados: ' + formatEUR(d.closed_won_value) + '</div></div>';
         html += '<div class="crm-card purple"><div class="value">' + d.conversion_rate + '%</div><div class="label">🎯 Tasa Conversión</div><div class="sub">' + formatEUR(d.total_aportaciones) + ' en inversiones</div></div>';
         html += '<div class="crm-card error"><div class="value">' + (d.closed_lost || 0) + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
-        html += '<div class="crm-card warning"><div class="value">' + (currentData.products ? currentData.products.length : 0) + '</div><div class="label">📦 Productos</div></div>';
+        html += '<div class="crm-card warning"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : 0) + '</div><div class="label">📦 Productos</div></div>';
         return html;
     }
 }

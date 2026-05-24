@@ -540,6 +540,28 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
         stage = d.get('Stage', 'Sin etapa')
         all_time['deals']['by_stage'][stage] = all_time['deals']['by_stage'].get(stage, 0) + 1
 
+    # Product breakdown for all_time (from won deals)
+    at_product_details = {}
+    at_product_breakdown = {}
+    at_product_count = {}
+    for pr in advisor_pf:
+        prod = pr.get('Producto', {})
+        pname = prod.get('name', 'Otro') if isinstance(prod, dict) else 'Otro'
+        entidad = pr.get('Entidades', '') or ''
+        amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
+        key = (pname, entidad)
+        if key not in at_product_details:
+            at_product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
+        at_product_details[key]['veces'] += 1
+        at_product_details[key]['total'] += amount
+        at_product_breakdown[pname] = at_product_breakdown.get(pname, 0) + amount
+        at_product_count[pname] = at_product_count.get(pname, 0) + 1
+
+    all_time['product_breakdown'] = at_product_breakdown
+    all_time['product_count'] = at_product_count
+    all_time['product_details'] = list(at_product_details.values())
+    all_time['products_closed_count'] = sum(detail['veces'] for detail in at_product_details.values())
+
     # ── Period stats (reuse compute_period_stats with filtered data) ──
     yesterday_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Ayer", in_yesterday)
     this_month_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Mes", in_this_month)
