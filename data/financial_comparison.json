@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T21:06:45Z",
+  "generated_at": "2026-05-24T21:13:21Z",
   "periods": {
     "jan_apr_2025": {
       "months": [
@@ -15,7 +15,7 @@
       },
       "categories": {
         "income": {
-          "Real Money": 140978.7,
+          "Monefit": 140978.7,
           "Sunday Marketplace": 40213.43,
           "Silver / Gold": 17603.2,
           "IronBridge": 12081.5,
@@ -84,41 +84,11 @@
   },
   "category_variation": {
     "income": {
-      "Sunday Marketplace": {
-        "2025": 40213.43,
-        "2026": 3504.56,
-        "variation_pct": -91.3,
-        "variation_abs": -36708.87
-      },
-      "IronBridge": {
-        "2025": 12081.5,
-        "2026": 11246.69,
-        "variation_pct": -6.9,
-        "variation_abs": -834.81
-      },
-      "SG Patrimonio": {
-        "2025": 6615.37,
-        "2026": 70878.84,
-        "variation_pct": 971.4,
-        "variation_abs": 64263.47
-      },
       "Monefit": {
-        "2025": 0,
+        "2025": 140978.7,
         "2026": 251239.21,
-        "variation_pct": null,
-        "variation_abs": 251239.21
-      },
-      "Seguros y Cías": {
-        "2025": 601.02,
-        "2026": 877.84,
-        "variation_pct": 46.1,
-        "variation_abs": 276.82
-      },
-      "Admin RNT": {
-        "2025": 0,
-        "2026": 1951.58,
-        "variation_pct": null,
-        "variation_abs": 1951.58
+        "variation_pct": 78.2,
+        "variation_abs": 110260.51
       },
       "Otros partners": {
         "2025": 1257.01,
@@ -126,50 +96,50 @@
         "variation_pct": -100.0,
         "variation_abs": -1257.01
       },
+      "Seguros y Cías": {
+        "2025": 601.02,
+        "2026": 877.84,
+        "variation_pct": 46.1,
+        "variation_abs": 276.82
+      },
+      "IronBridge": {
+        "2025": 12081.5,
+        "2026": 11246.69,
+        "variation_pct": -6.9,
+        "variation_abs": -834.81
+      },
       "Silver / Gold": {
         "2025": 17603.2,
         "2026": 39098.38,
         "variation_pct": 122.1,
         "variation_abs": 21495.18
       },
+      "Admin RNT": {
+        "2025": 0,
+        "2026": 1951.58,
+        "variation_pct": null,
+        "variation_abs": 1951.58
+      },
+      "SG Patrimonio": {
+        "2025": 6615.37,
+        "2026": 70878.84,
+        "variation_pct": 971.4,
+        "variation_abs": 64263.47
+      },
+      "Sunday Marketplace": {
+        "2025": 40213.43,
+        "2026": 3504.56,
+        "variation_pct": -91.3,
+        "variation_abs": -36708.87
+      },
       "Real Money": {
-        "2025": 140978.7,
+        "2025": 0,
         "2026": 43226.61,
-        "variation_pct": -69.3,
-        "variation_abs": -97752.09
+        "variation_pct": null,
+        "variation_abs": 43226.61
       }
     },
     "expenses": {
-      "Gastos financieros": {
-        "2025": 18576.27,
-        "2026": 65628.56,
-        "variation_pct": 253.3,
-        "variation_abs": 47052.29
-      },
-      "Nóminas": {
-        "2025": 66418.6,
-        "2026": 69101.59,
-        "variation_pct": 4.0,
-        "variation_abs": 2682.99
-      },
-      "Otros gastos": {
-        "2025": 1399.3,
-        "2026": 23261.32,
-        "variation_pct": 1562.4,
-        "variation_abs": 21862.02
-      },
-      "Suscripciones": {
-        "2025": 5567.87,
-        "2026": 2993.45,
-        "variation_pct": -46.2,
-        "variation_abs": -2574.42
-      },
-      "Seguros": {
-        "2025": 0,
-        "2026": 1089.95,
-        "variation_pct": null,
-        "variation_abs": 1089.95
-      },
       "Proveedores": {
         "2025": 26429.3,
         "2026": 54334.94,
@@ -194,11 +164,41 @@
         "variation_pct": 37.4,
         "variation_abs": 11054.62
       },
+      "Suscripciones": {
+        "2025": 5567.87,
+        "2026": 2993.45,
+        "variation_pct": -46.2,
+        "variation_abs": -2574.42
+      },
+      "Otros gastos": {
+        "2025": 1399.3,
+        "2026": 23261.32,
+        "variation_pct": 1562.4,
+        "variation_abs": 21862.02
+      },
+      "Nóminas": {
+        "2025": 66418.6,
+        "2026": 69101.59,
+        "variation_pct": 4.0,
+        "variation_abs": 2682.99
+      },
       "Impuestos": {
         "2025": 35356.48,
         "2026": 69397.32,
         "variation_pct": 96.3,
         "variation_abs": 34040.84
+      },
+      "Gastos financieros": {
+        "2025": 18576.27,
+        "2026": 65628.56,
+        "variation_pct": 253.3,
+        "variation_abs": 47052.29
+      },
+      "Seguros": {
+        "2025": 0,
+        "2026": 1089.95,
+        "variation_pct": null,
+        "variation_abs": 1089.95
       }
     }
   },
