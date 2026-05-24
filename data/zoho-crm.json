@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-24T22:04:09Z",
+  "timestamp": "2026-05-24T22:22:41Z",
   "generated_at": "2026-05-25",
   "today": "2026-05-25",
   "yesterday": "2026-05-24",
@@ -557,6 +557,31 @@
       "Created_Time": "2026-05-24T11:59:04+02:00",
       "Modified_Time": "2026-05-24T12:01:03+02:00",
       "Last_Activity_Time": "2026-05-24T12:01:33+02:00"
+    },
+    {
+      "id": "862490000005041014",
+      "Full_Name": "Sara Flores",
+      "First_Name": "Sara",
+      "Last_Name": "Flores",
+      "Email": "sf9464838@gmail.com",
+      "Phone": "+34642922311",
+      "Owner": "Alberto Prieto",
+      "Canal": "Finanfox",
+      "Socio": null,
+      "Fuente": null,
+      "DNI": null,
+      "Cuenta_Corriente": null,
+      "Estado_civil": null,
+      "Profesi_n": null,
+      "Club": null,
+      "Divisi_n": null,
+      "Plantilla_Bienvenida_enviada": false,
+      "Visitor_Score": null,
+      "Days_Visited": null,
+      "Average_Time_Spent_Minutes": null,
+      "Created_Time": "2026-05-25T00:16:05+02:00",
+      "Modified_Time": "2026-05-25T00:16:37+02:00",
+      "Last_Activity_Time": "2026-05-25T00:17:04+02:00"
     },
     {
       "id": "862490000005040011",
@@ -11684,6 +11709,28 @@
       "Sales_Cycle_Duration": null
     },
     {
+      "id": "862490000005068057",
+      "Deal_Name": "Planificación de Sara Flores",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Sara Flores",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-05-25T00:16:33+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null
+    },
+    {
       "id": "862490000005068035",
       "Deal_Name": "Planificación de Vicente Martinez",
       "Amount": null,
@@ -21798,27 +21845,27 @@
   "stats": {
     "all_time": {
       "contacts": {
-        "total": 459,
-        "with_email": 453,
-        "with_phone": 430,
+        "total": 460,
+        "with_email": 454,
+        "with_phone": 431,
         "welcome_sent": 53,
         "by_owner": {
           "Jaime Becerra": 113,
-          "Alberto Prieto": 143,
+          "Alberto Prieto": 144,
           "Jose Orrequia": 168,
           "Alex Caballero": 35
         },
         "by_canal": {
-          "Finanfox": 441,
+          "Finanfox": 442,
           "null": 18
         }
       },
       "deals": {
-        "total": 452,
+        "total": 453,
         "by_stage": {
           "Aceptado/Falta Firma": 33,
           "Cerrado Ganado": 62,
-          "Llamada Pendiente": 72,
+          "Llamada Pendiente": 73,
           "Cerrado Perdido": 217,
           "Análisis Financiero": 19,
           "Asesoramiento": 10,
@@ -21826,19 +21873,19 @@
           "Revisando Propuesta": 18
         },
         "by_owner": {
-          "Alberto Prieto": 154,
+          "Alberto Prieto": 155,
           "Jose Orrequia": 170,
           "Jaime Becerra": 115,
           "Alex Caballero": 13
         },
         "by_type": {
-          "Cliente existente": 344,
+          "Cliente existente": 345,
           "Nuevo Cliente": 104,
           "null": 4
         },
         "pipeline_value": 1865659,
         "total_aportaciones": 1835659,
-        "avg_deal_size": 4127.56,
+        "avg_deal_size": 4118.45,
         "closed_won": 62,
         "closed_won_value": 1157269,
         "closed_lost": 217,
@@ -21856,6 +21903,7 @@
       "product_breakdown": {},
       "product_count": {},
       "product_details": [],
+      "product_deals": [],
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
@@ -21877,8 +21925,8 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 175,
-      "new_deals": 186,
+      "new_contacts": 176,
+      "new_deals": 187,
       "won_deals": 27,
       "lost_deals": 143,
       "won_value": 763162.0,
@@ -21919,6 +21967,188 @@
           "entidad": "Aegon",
           "veces": 2,
           "total": 3600.0
+        }
+      ],
+      "product_deals": [
+        {
+          "producto": "PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 1200.0,
+          "close_date": "2026-05-21"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-21"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 20000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 200000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 45000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 30000.0,
+          "close_date": "2026-05-19"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 1000.0,
+          "close_date": "2026-05-18"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 25494.0,
+          "close_date": "2026-05-14"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 2000.0,
+          "close_date": "2026-05-12"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 21000.0,
+          "close_date": "2026-05-12"
+        },
+        {
+          "producto": "PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 2400.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 5000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 7641.0,
+          "close_date": "2026-05-06"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 13000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 25000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 50000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 30000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 130000.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 4821.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 4000.0,
+          "close_date": "2026-04-30"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 20000.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 16356.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-04-29"
         }
       ],
       "advisor_ranking_won": [
@@ -21966,7 +22196,7 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 66,
+        "Llamada Pendiente": 67,
         "Análisis Financiero": 17,
         "Asesoramiento": 6,
         "Reasesoramiento": 12,
@@ -21976,11 +22206,11 @@
         "Cerrado Perdido": 143
       },
       "pipeline_value": 982852.0,
-      "win_rate": 14.5,
+      "win_rate": 14.4,
       "avg_days_to_win": 8.1,
       "products_closed_count": 30,
       "conversion_clientes": {
-        "total_contacts": 175,
+        "total_contacts": 176,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
@@ -22009,13 +22239,14 @@
         "21": 10,
         "22": 8,
         "23": 2,
-        "24": 6
+        "24": 6,
+        "25": 1
       }
     },
     "this_quarter": {
       "label": "Este Trimestre",
-      "new_contacts": 423,
-      "new_deals": 426,
+      "new_contacts": 424,
+      "new_deals": 427,
       "won_deals": 55,
       "lost_deals": 212,
       "won_value": 1069369.0,
@@ -22074,6 +22305,356 @@
           "total": 2673.0
         }
       ],
+      "product_deals": [
+        {
+          "producto": "PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 1200.0,
+          "close_date": "2026-05-21"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-21"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 20000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 200000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 45000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 30000.0,
+          "close_date": "2026-05-19"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 1000.0,
+          "close_date": "2026-05-18"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 25494.0,
+          "close_date": "2026-05-14"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 2000.0,
+          "close_date": "2026-05-12"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 21000.0,
+          "close_date": "2026-05-12"
+        },
+        {
+          "producto": "PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 2400.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 5000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 7641.0,
+          "close_date": "2026-05-06"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 13000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 25000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 50000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 30000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 130000.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 4821.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 4000.0,
+          "close_date": "2026-04-30"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 20000.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 3000.0,
+          "close_date": "2026-04-30"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 4200.0,
+          "close_date": "2026-04-30"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 16356.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 8500.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 1870.0,
+          "close_date": "2026-04-27"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-04-21"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 20169.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 25000.0,
+          "close_date": "2026-04-23"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-04-23"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-04-21"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-04-24"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 25800.0,
+          "close_date": "2026-04-23"
+        },
+        {
+          "producto": "Proyectos crowdfunding energético",
+          "entidad": "Crowmie",
+          "total": 15000.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 200.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 2000.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3851.0,
+          "close_date": "2026-04-17"
+        },
+        {
+          "producto": "APEX PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 2673.0,
+          "close_date": "2026-04-15"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 6515.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 14200.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 4929.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 17000.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 4500.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 5300.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 30000.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-04-09"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-04-09"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-04-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-04-08"
+        }
+      ],
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
@@ -22119,7 +22700,7 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 72,
+        "Llamada Pendiente": 73,
         "Análisis Financiero": 19,
         "Asesoramiento": 10,
         "Reasesoramiento": 21,
@@ -22133,7 +22714,7 @@
       "avg_days_to_win": 6.5,
       "products_closed_count": 58,
       "conversion_clientes": {
-        "total_contacts": 423,
+        "total_contacts": 424,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
@@ -22163,7 +22744,7 @@
         "22": 11,
         "23": 14,
         "24": 13,
-        "25": 4,
+        "25": 5,
         "26": 7,
         "27": 8,
         "28": 8,
@@ -22173,8 +22754,8 @@
     },
     "this_year": {
       "label": "Este Año",
-      "new_contacts": 457,
-      "new_deals": 451,
+      "new_contacts": 458,
+      "new_deals": 452,
       "won_deals": 58,
       "lost_deals": 216,
       "won_value": 1091369.0,
@@ -22233,6 +22814,386 @@
           "total": 2673.0
         }
       ],
+      "product_deals": [
+        {
+          "producto": "PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 1200.0,
+          "close_date": "2026-05-21"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-21"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 20000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 200000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 45000.0,
+          "close_date": "2026-05-20"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 30000.0,
+          "close_date": "2026-05-19"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 1000.0,
+          "close_date": "2026-05-18"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 25494.0,
+          "close_date": "2026-05-14"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 2000.0,
+          "close_date": "2026-05-12"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 21000.0,
+          "close_date": "2026-05-12"
+        },
+        {
+          "producto": "PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 2400.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 5000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-08"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 7641.0,
+          "close_date": "2026-05-06"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 13000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 25000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 50000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 30000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 130000.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 4821.0,
+          "close_date": "2026-05-07"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-05-05"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 4000.0,
+          "close_date": "2026-04-30"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 20000.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 3000.0,
+          "close_date": "2026-04-30"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 4200.0,
+          "close_date": "2026-04-30"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 16356.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 8500.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-04-29"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 1870.0,
+          "close_date": "2026-04-27"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 15000.0,
+          "close_date": "2026-04-21"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 20169.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 25000.0,
+          "close_date": "2026-04-23"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-04-23"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-04-21"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-04-24"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 25800.0,
+          "close_date": "2026-04-23"
+        },
+        {
+          "producto": "Proyectos crowdfunding energético",
+          "entidad": "Crowmie",
+          "total": 15000.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 200.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 2000.0,
+          "close_date": "2026-04-20"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3851.0,
+          "close_date": "2026-04-17"
+        },
+        {
+          "producto": "APEX PIAS Estrategia 5",
+          "entidad": "Aegon",
+          "total": 2673.0,
+          "close_date": "2026-04-15"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 6515.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 14200.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 4929.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 17000.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 4500.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 5300.0,
+          "close_date": "2026-04-13"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 30000.0,
+          "close_date": "2026-04-14"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-04-09"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 10000.0,
+          "close_date": "2026-04-09"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-04-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-04-08"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 5000.0,
+          "close_date": "2026-03-26"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-02-06"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 4000.0,
+          "close_date": "2026-02-06"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 7000.0,
+          "close_date": "2026-02-06"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-02-01"
+        }
+      ],
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
@@ -22278,7 +23239,7 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 72,
+        "Llamada Pendiente": 73,
         "Análisis Financiero": 19,
         "Asesoramiento": 10,
         "Reasesoramiento": 21,
@@ -22288,11 +23249,11 @@
         "Cerrado Perdido": 216
       },
       "pipeline_value": 1799759.0,
-      "win_rate": 12.9,
+      "win_rate": 12.8,
       "avg_days_to_win": 7.9,
       "products_closed_count": 63,
       "conversion_clientes": {
-        "total_contacts": 457,
+        "total_contacts": 458,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
@@ -22322,7 +23283,7 @@
         "22": 11,
         "23": 16,
         "24": 13,
-        "25": 6,
+        "25": 7,
         "26": 10,
         "27": 9,
         "28": 11,
@@ -22347,6 +23308,7 @@
         "product_breakdown": {},
         "product_count": {},
         "product_details": [],
+        "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
@@ -22422,6 +23384,176 @@
             "entidad": "Aegon",
             "veces": 1,
             "total": 2673.0
+          }
+        ],
+        "product_deals": [
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 3000.0,
+            "close_date": "2026-04-30"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 4200.0,
+            "close_date": "2026-04-30"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 8500.0,
+            "close_date": "2026-04-29"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 1870.0,
+            "close_date": "2026-04-27"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 15000.0,
+            "close_date": "2026-04-21"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 20169.0,
+            "close_date": "2026-04-20"
+          },
+          {
+            "producto": "Cuenta Depósito Bonificada",
+            "entidad": "The Real Money",
+            "total": 25000.0,
+            "close_date": "2026-04-23"
+          },
+          {
+            "producto": "Cuenta Depósito Bonificada",
+            "entidad": "The Real Money",
+            "total": 20250.0,
+            "close_date": "2026-04-23"
+          },
+          {
+            "producto": "Cuenta Depósito Bonificada",
+            "entidad": "The Real Money",
+            "total": 20250.0,
+            "close_date": "2026-04-21"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10000.0,
+            "close_date": "2026-04-24"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 25800.0,
+            "close_date": "2026-04-23"
+          },
+          {
+            "producto": "Proyectos crowdfunding energético",
+            "entidad": "Crowmie",
+            "total": 15000.0,
+            "close_date": "2026-04-20"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 200.0,
+            "close_date": "2026-04-20"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 2000.0,
+            "close_date": "2026-04-20"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 3851.0,
+            "close_date": "2026-04-17"
+          },
+          {
+            "producto": "APEX PIAS Estrategia 5",
+            "entidad": "Aegon",
+            "total": 2673.0,
+            "close_date": "2026-04-15"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 6515.0,
+            "close_date": "2026-04-14"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 6000.0,
+            "close_date": "2026-04-14"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 14200.0,
+            "close_date": "2026-04-14"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 4929.0,
+            "close_date": "2026-04-13"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 17000.0,
+            "close_date": "2026-04-13"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 4500.0,
+            "close_date": "2026-04-13"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 5300.0,
+            "close_date": "2026-04-13"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 30000.0,
+            "close_date": "2026-04-14"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10000.0,
+            "close_date": "2026-04-09"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10000.0,
+            "close_date": "2026-04-09"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 10000.0,
+            "close_date": "2026-04-08"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 10000.0,
+            "close_date": "2026-04-08"
           }
         ],
         "advisor_ranking_won": [
@@ -22557,6 +23689,38 @@
             "total": 6000.0
           }
         ],
+        "product_deals": [
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 5000.0,
+            "close_date": "2026-03-26"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 3000.0,
+            "close_date": "2026-02-06"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 4000.0,
+            "close_date": "2026-02-06"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 7000.0,
+            "close_date": "2026-02-06"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 3000.0,
+            "close_date": "2026-02-01"
+          }
+        ],
         "advisor_ranking_won": [
           {
             "name": "Alex Caballero",
@@ -22628,6 +23792,7 @@
         "product_breakdown": {},
         "product_count": {},
         "product_details": [],
+        "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
@@ -22759,18 +23924,18 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 66,
-          "pct_of_total": 22.3,
+          "count": 67,
+          "pct_of_total": 22.6,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
-          "cmp_count": 62
+          "cmp_count": 66
         },
         {
           "stage": "Análisis Financiero",
           "count": 17,
           "pct_of_total": 5.7,
-          "conversion_from_prev": 25.8,
-          "conversion_from_top": 25.8,
+          "conversion_from_prev": 25.4,
+          "conversion_from_top": 25.4,
           "cmp_count": 17
         },
         {
@@ -22778,23 +23943,23 @@
           "count": 6,
           "pct_of_total": 2.0,
           "conversion_from_prev": 35.3,
-          "conversion_from_top": 9.1,
+          "conversion_from_top": 9.0,
           "cmp_count": 6
         },
         {
           "stage": "Reasesoramiento",
           "count": 12,
-          "pct_of_total": 4.1,
+          "pct_of_total": 4.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 18.2,
+          "conversion_from_top": 17.9,
           "cmp_count": 12
         },
         {
           "stage": "Revisando Propuesta",
           "count": 4,
-          "pct_of_total": 1.4,
+          "pct_of_total": 1.3,
           "conversion_from_prev": 33.3,
-          "conversion_from_top": 6.1,
+          "conversion_from_top": 6.0,
           "cmp_count": 4
         },
         {
@@ -22802,7 +23967,7 @@
           "count": 21,
           "pct_of_total": 7.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 31.8,
+          "conversion_from_top": 31.3,
           "cmp_count": 21
         }
       ],
@@ -22812,22 +23977,22 @@
           "count": 27,
           "pct_of_total": 9.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 40.9,
+          "conversion_from_top": 40.3,
           "cmp_count": 27
         },
         {
           "stage": "Cerrado Perdido",
           "count": 143,
-          "pct_of_total": 48.3,
+          "pct_of_total": 48.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 216.7,
+          "conversion_from_top": 213.4,
           "cmp_count": 143
         }
       ],
-      "active_total": 126,
+      "active_total": 127,
       "won_total": 27,
       "lost_total": 143,
-      "total_pipeline": 296
+      "total_pipeline": 297
     },
     "this_quarter": {
       "stage_order": [
@@ -22843,8 +24008,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 72,
-          "pct_of_total": 16.4,
+          "count": 73,
+          "pct_of_total": 16.6,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -22853,8 +24018,8 @@
           "stage": "Análisis Financiero",
           "count": 19,
           "pct_of_total": 4.3,
-          "conversion_from_prev": 26.4,
-          "conversion_from_top": 26.4,
+          "conversion_from_prev": 26.0,
+          "conversion_from_top": 26.0,
           "cmp_count": null
         },
         {
@@ -22862,7 +24027,7 @@
           "count": 10,
           "pct_of_total": 2.3,
           "conversion_from_prev": 52.6,
-          "conversion_from_top": 13.9,
+          "conversion_from_top": 13.7,
           "cmp_count": null
         },
         {
@@ -22870,7 +24035,7 @@
           "count": 21,
           "pct_of_total": 4.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 29.2,
+          "conversion_from_top": 28.8,
           "cmp_count": null
         },
         {
@@ -22878,7 +24043,7 @@
           "count": 18,
           "pct_of_total": 4.1,
           "conversion_from_prev": 85.7,
-          "conversion_from_top": 25.0,
+          "conversion_from_top": 24.7,
           "cmp_count": null
         },
         {
@@ -22886,7 +24051,7 @@
           "count": 32,
           "pct_of_total": 7.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 44.4,
+          "conversion_from_top": 43.8,
           "cmp_count": 1
         }
       ],
@@ -22896,22 +24061,22 @@
           "count": 55,
           "pct_of_total": 12.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 76.4,
+          "conversion_from_top": 75.3,
           "cmp_count": 3
         },
         {
           "stage": "Cerrado Perdido",
           "count": 212,
-          "pct_of_total": 48.3,
+          "pct_of_total": 48.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 294.4,
+          "conversion_from_top": 290.4,
           "cmp_count": 4
         }
       ],
-      "active_total": 172,
+      "active_total": 173,
       "won_total": 55,
       "lost_total": 212,
-      "total_pipeline": 439
+      "total_pipeline": 440
     },
     "this_year": {
       "stage_order": [
@@ -22927,8 +24092,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 72,
-          "pct_of_total": 16.1,
+          "count": 73,
+          "pct_of_total": 16.3,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -22936,9 +24101,9 @@
         {
           "stage": "Análisis Financiero",
           "count": 19,
-          "pct_of_total": 4.3,
-          "conversion_from_prev": 26.4,
-          "conversion_from_top": 26.4,
+          "pct_of_total": 4.2,
+          "conversion_from_prev": 26.0,
+          "conversion_from_top": 26.0,
           "cmp_count": null
         },
         {
@@ -22946,7 +24111,7 @@
           "count": 10,
           "pct_of_total": 2.2,
           "conversion_from_prev": 52.6,
-          "conversion_from_top": 13.9,
+          "conversion_from_top": 13.7,
           "cmp_count": null
         },
         {
@@ -22954,7 +24119,7 @@
           "count": 21,
           "pct_of_total": 4.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 29.2,
+          "conversion_from_top": 28.8,
           "cmp_count": null
         },
         {
@@ -22962,7 +24127,7 @@
           "count": 18,
           "pct_of_total": 4.0,
           "conversion_from_prev": 85.7,
-          "conversion_from_top": 25.0,
+          "conversion_from_top": 24.7,
           "cmp_count": null
         },
         {
@@ -22970,7 +24135,7 @@
           "count": 33,
           "pct_of_total": 7.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 45.8,
+          "conversion_from_top": 45.2,
           "cmp_count": null
         }
       ],
@@ -22978,27 +24143,27 @@
         {
           "stage": "Cerrado Ganado",
           "count": 58,
-          "pct_of_total": 13.0,
+          "pct_of_total": 12.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 80.6,
+          "conversion_from_top": 79.5,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 216,
-          "pct_of_total": 48.3,
+          "pct_of_total": 48.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 300.0,
+          "conversion_from_top": 295.9,
           "cmp_count": 1
         }
       ],
-      "active_total": 173,
+      "active_total": 174,
       "won_total": 58,
       "lost_total": 216,
-      "total_pipeline": 447
+      "total_pipeline": 448
     },
     "previous_pipeline": {
-      "Llamada Pendiente": 62,
+      "Llamada Pendiente": 66,
       "Análisis Financiero": 17,
       "Asesoramiento": 6,
       "Reasesoramiento": 12,
