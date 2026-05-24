@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T20:43:51Z",
+  "generated_at": "2026-05-24T21:06:45Z",
   "periods": {
     "jan_apr_2025": {
       "months": [
@@ -15,8 +15,13 @@
       },
       "categories": {
         "income": {
-          "Otros ingresos": 183050.16,
-          "Transferencias clientes": 36300.07
+          "Real Money": 140978.7,
+          "Sunday Marketplace": 40213.43,
+          "Silver / Gold": 17603.2,
+          "IronBridge": 12081.5,
+          "SG Patrimonio": 6615.37,
+          "Otros partners": 1257.01,
+          "Seguros y Cías": 601.02
         },
         "expenses": {
           "Nóminas": 66418.6,
@@ -45,8 +50,14 @@
       },
       "categories": {
         "income": {
-          "Transferencias clientes": 415689.73,
-          "Otros ingresos": 6333.98
+          "Monefit": 251239.21,
+          "SG Patrimonio": 70878.84,
+          "Real Money": 43226.61,
+          "Silver / Gold": 39098.38,
+          "IronBridge": 11246.69,
+          "Sunday Marketplace": 3504.56,
+          "Admin RNT": 1951.58,
+          "Seguros y Cías": 877.84
         },
         "expenses": {
           "Impuestos": 69397.32,
@@ -73,67 +84,73 @@
   },
   "category_variation": {
     "income": {
-      "Transferencias clientes": {
-        "2025": 36300.07,
-        "2026": 415689.73,
-        "variation_pct": 1045.1,
-        "variation_abs": 379389.66
+      "Sunday Marketplace": {
+        "2025": 40213.43,
+        "2026": 3504.56,
+        "variation_pct": -91.3,
+        "variation_abs": -36708.87
       },
-      "Otros ingresos": {
-        "2025": 183050.16,
-        "2026": 6333.98,
-        "variation_pct": -96.5,
-        "variation_abs": -176716.18
+      "IronBridge": {
+        "2025": 12081.5,
+        "2026": 11246.69,
+        "variation_pct": -6.9,
+        "variation_abs": -834.81
+      },
+      "SG Patrimonio": {
+        "2025": 6615.37,
+        "2026": 70878.84,
+        "variation_pct": 971.4,
+        "variation_abs": 64263.47
+      },
+      "Monefit": {
+        "2025": 0,
+        "2026": 251239.21,
+        "variation_pct": null,
+        "variation_abs": 251239.21
+      },
+      "Seguros y Cías": {
+        "2025": 601.02,
+        "2026": 877.84,
+        "variation_pct": 46.1,
+        "variation_abs": 276.82
+      },
+      "Admin RNT": {
+        "2025": 0,
+        "2026": 1951.58,
+        "variation_pct": null,
+        "variation_abs": 1951.58
+      },
+      "Otros partners": {
+        "2025": 1257.01,
+        "2026": 0,
+        "variation_pct": -100.0,
+        "variation_abs": -1257.01
+      },
+      "Silver / Gold": {
+        "2025": 17603.2,
+        "2026": 39098.38,
+        "variation_pct": 122.1,
+        "variation_abs": 21495.18
+      },
+      "Real Money": {
+        "2025": 140978.7,
+        "2026": 43226.61,
+        "variation_pct": -69.3,
+        "variation_abs": -97752.09
       }
     },
     "expenses": {
-      "Impuestos": {
-        "2025": 35356.48,
-        "2026": 69397.32,
-        "variation_pct": 96.3,
-        "variation_abs": 34040.84
-      },
-      "Proveedores": {
-        "2025": 26429.3,
-        "2026": 54334.94,
-        "variation_pct": 105.6,
-        "variation_abs": 27905.64
-      },
-      "Seguros": {
-        "2025": 0,
-        "2026": 1089.95,
-        "variation_pct": null,
-        "variation_abs": 1089.95
-      },
-      "Marketing": {
-        "2025": 29549.68,
-        "2026": 40604.3,
-        "variation_pct": 37.4,
-        "variation_abs": 11054.62
-      },
       "Gastos financieros": {
         "2025": 18576.27,
         "2026": 65628.56,
         "variation_pct": 253.3,
         "variation_abs": 47052.29
       },
-      "Seguridad Social": {
-        "2025": 17105.22,
-        "2026": 25567.35,
-        "variation_pct": 49.5,
-        "variation_abs": 8462.13
-      },
-      "Suscripciones": {
-        "2025": 5567.87,
-        "2026": 2993.45,
-        "variation_pct": -46.2,
-        "variation_abs": -2574.42
-      },
-      "Gastos varios": {
-        "2025": 19152.9,
-        "2026": 8888.91,
-        "variation_pct": -53.6,
-        "variation_abs": -10263.99
+      "Nóminas": {
+        "2025": 66418.6,
+        "2026": 69101.59,
+        "variation_pct": 4.0,
+        "variation_abs": 2682.99
       },
       "Otros gastos": {
         "2025": 1399.3,
@@ -141,11 +158,47 @@
         "variation_pct": 1562.4,
         "variation_abs": 21862.02
       },
-      "Nóminas": {
-        "2025": 66418.6,
-        "2026": 69101.59,
-        "variation_pct": 4.0,
-        "variation_abs": 2682.99
+      "Suscripciones": {
+        "2025": 5567.87,
+        "2026": 2993.45,
+        "variation_pct": -46.2,
+        "variation_abs": -2574.42
+      },
+      "Seguros": {
+        "2025": 0,
+        "2026": 1089.95,
+        "variation_pct": null,
+        "variation_abs": 1089.95
+      },
+      "Proveedores": {
+        "2025": 26429.3,
+        "2026": 54334.94,
+        "variation_pct": 105.6,
+        "variation_abs": 27905.64
+      },
+      "Seguridad Social": {
+        "2025": 17105.22,
+        "2026": 25567.35,
+        "variation_pct": 49.5,
+        "variation_abs": 8462.13
+      },
+      "Gastos varios": {
+        "2025": 19152.9,
+        "2026": 8888.91,
+        "variation_pct": -53.6,
+        "variation_abs": -10263.99
+      },
+      "Marketing": {
+        "2025": 29549.68,
+        "2026": 40604.3,
+        "variation_pct": 37.4,
+        "variation_abs": 11054.62
+      },
+      "Impuestos": {
+        "2025": 35356.48,
+        "2026": 69397.32,
+        "variation_pct": 96.3,
+        "variation_abs": 34040.84
       }
     }
   },

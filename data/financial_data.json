@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-05-18T06:54:42Z",
-  "generated_at": "2026-05-18",
+  "timestamp": "2026-05-24T21:07:46Z",
+  "generated_at": "2026-05-24",
   "period_start": "2026-01-01",
   "period_end": "2026-05-18",
   "account_name": "FINANFOX PLANIFICADORES FINANCIEROS S.L.",
@@ -10,8 +10,13 @@
       "income": {
         "total": 115730.51,
         "categories": {
-          "Otros ingresos": 3724.01,
-          "Transferencias clientes": 112006.5
+          "IronBridge": 4280.11,
+          "Monefit": 61954.0,
+          "Real Money": 14266.66,
+          "SG Patrimonio": 20284.93,
+          "Seguros y Cías": 219.45,
+          "Silver / Gold": 11220.8,
+          "Sunday Marketplace": 3504.56
         }
       },
       "expenses": {
@@ -36,9 +41,9 @@
         "pct": 33.0
       },
       "biggest_income_category": {
-        "name": "Transferencias clientes",
-        "amount": 112006.5,
-        "pct": 96.8
+        "name": "Monefit",
+        "amount": 61954.0,
+        "pct": 53.5
       },
       "transaction_count": 46
     },
@@ -46,8 +51,12 @@
       "income": {
         "total": 87087.63,
         "categories": {
-          "Otros ingresos": 144.39,
-          "Transferencias clientes": 86943.24
+          "IronBridge": 4273.98,
+          "Monefit": 64050.7,
+          "Real Money": 9528.86,
+          "SG Patrimonio": 3910.0,
+          "Seguros y Cías": 144.39,
+          "Silver / Gold": 5179.7
         }
       },
       "expenses": {
@@ -71,9 +80,9 @@
         "pct": 43.1
       },
       "biggest_income_category": {
-        "name": "Transferencias clientes",
-        "amount": 86943.24,
-        "pct": 99.8
+        "name": "Monefit",
+        "amount": 64050.7,
+        "pct": 73.5
       },
       "transaction_count": 52
     },
@@ -81,8 +90,12 @@
       "income": {
         "total": 122482.76,
         "categories": {
-          "Otros ingresos": 138.45,
-          "Transferencias clientes": 122344.31
+          "IronBridge": 1090.11,
+          "Monefit": 64400.53,
+          "Real Money": 9801.47,
+          "SG Patrimonio": 36311.43,
+          "Seguros y Cías": 138.45,
+          "Silver / Gold": 10740.77
         }
       },
       "expenses": {
@@ -107,9 +120,9 @@
         "pct": 28.2
       },
       "biggest_income_category": {
-        "name": "Transferencias clientes",
-        "amount": 122344.31,
-        "pct": 99.9
+        "name": "Monefit",
+        "amount": 64400.53,
+        "pct": 52.6
       },
       "transaction_count": 39
     },
@@ -117,8 +130,13 @@
       "income": {
         "total": 96722.81,
         "categories": {
-          "Otros ingresos": 2327.13,
-          "Transferencias clientes": 94395.68
+          "Admin RNT": 1951.58,
+          "IronBridge": 1602.49,
+          "Monefit": 60833.98,
+          "Real Money": 9629.62,
+          "SG Patrimonio": 10372.48,
+          "Seguros y Cías": 375.55,
+          "Silver / Gold": 11957.11
         }
       },
       "expenses": {
@@ -142,9 +160,9 @@
         "pct": 22.8
       },
       "biggest_income_category": {
-        "name": "Transferencias clientes",
-        "amount": 94395.68,
-        "pct": 97.6
+        "name": "Monefit",
+        "amount": 60833.98,
+        "pct": 62.9
       },
       "transaction_count": 48
     },
@@ -152,9 +170,11 @@
       "income": {
         "total": 101195.08,
         "categories": {
-          "Comisiones": 47.66,
-          "Otros ingresos": 175.44,
-          "Transferencias clientes": 100971.98
+          "Monefit": 58583.92,
+          "Real Money": 27925.94,
+          "SG Patrimonio": 4119.03,
+          "Seguros y Cías": 223.1,
+          "Silver / Gold": 10343.09
         }
       },
       "expenses": {
@@ -176,9 +196,9 @@
         "pct": 37.0
       },
       "biggest_income_category": {
-        "name": "Transferencias clientes",
-        "amount": 100971.98,
-        "pct": 99.8
+        "name": "Monefit",
+        "amount": 58583.92,
+        "pct": 57.9
       },
       "transaction_count": 28
     }
@@ -196,37 +216,92 @@
   },
   "category_summary": {
     "income": {
-      "Transferencias clientes": {
-        "total": 516661.71,
-        "pct": 98.7,
+      "Monefit": {
+        "total": 309823.13,
+        "pct": 59.2,
         "months": {
-          "2026-01": 112006.5,
-          "2026-02": 86943.24,
-          "2026-03": 122344.31,
-          "2026-04": 94395.68,
-          "2026-05": 100971.98
+          "2026-01": 61954.0,
+          "2026-02": 64050.7,
+          "2026-03": 64400.53,
+          "2026-04": 60833.98,
+          "2026-05": 58583.92
         }
       },
-      "Otros ingresos": {
-        "total": 6509.42,
-        "pct": 1.2,
+      "SG Patrimonio": {
+        "total": 74997.87,
+        "pct": 14.3,
         "months": {
-          "2026-01": 3724.01,
-          "2026-02": 144.39,
-          "2026-03": 138.45,
-          "2026-04": 2327.13,
-          "2026-05": 175.44
+          "2026-01": 20284.93,
+          "2026-02": 3910.0,
+          "2026-03": 36311.43,
+          "2026-04": 10372.48,
+          "2026-05": 4119.03
         }
       },
-      "Comisiones": {
-        "total": 47.66,
-        "pct": 0.0,
+      "Real Money": {
+        "total": 71152.55,
+        "pct": 13.6,
+        "months": {
+          "2026-01": 14266.66,
+          "2026-02": 9528.86,
+          "2026-03": 9801.47,
+          "2026-04": 9629.62,
+          "2026-05": 27925.94
+        }
+      },
+      "Silver / Gold": {
+        "total": 49441.47,
+        "pct": 9.4,
+        "months": {
+          "2026-01": 11220.8,
+          "2026-02": 5179.7,
+          "2026-03": 10740.77,
+          "2026-04": 11957.11,
+          "2026-05": 10343.09
+        }
+      },
+      "IronBridge": {
+        "total": 11246.69,
+        "pct": 2.1,
+        "months": {
+          "2026-01": 4280.11,
+          "2026-02": 4273.98,
+          "2026-03": 1090.11,
+          "2026-04": 1602.49,
+          "2026-05": 0
+        }
+      },
+      "Sunday Marketplace": {
+        "total": 3504.56,
+        "pct": 0.7,
+        "months": {
+          "2026-01": 3504.56,
+          "2026-02": 0,
+          "2026-03": 0,
+          "2026-04": 0,
+          "2026-05": 0
+        }
+      },
+      "Admin RNT": {
+        "total": 1951.58,
+        "pct": 0.4,
         "months": {
           "2026-01": 0,
           "2026-02": 0,
           "2026-03": 0,
-          "2026-04": 0,
-          "2026-05": 47.66
+          "2026-04": 1951.58,
+          "2026-05": 0
+        }
+      },
+      "Seguros y Cías": {
+        "total": 1100.94,
+        "pct": 0.2,
+        "months": {
+          "2026-01": 219.45,
+          "2026-02": 144.39,
+          "2026-03": 138.45,
+          "2026-04": 375.55,
+          "2026-05": 223.1
         }
       }
     },
