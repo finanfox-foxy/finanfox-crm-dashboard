@@ -562,22 +562,46 @@ function renderAdvisorTable(ranking) {
 var COMMISSION_TABLE = [
     { keywords: ['monefit'], product: 'Monefit', partner: 'MONEFIT', min: 100000, rate: 0.0023 },
     { keywords: ['neowintech', 'neowin'], product: 'Neowintech', partner: 'NEOWINTECH', min: 157500, rate: 0.0013 },
-    { keywords: ['silvergold', 'silver gold', 'sg ', 'ccu oro', 'cu oro'], product: 'SilverGold', partner: 'SILVERGOLD', min: 132750, rate: 0.0057 },
-    { keywords: ['reental'], product: 'Reental', partner: 'REENTAL', min: 60000, rate: 0.0042 },
-    { keywords: ['crowmie'], product: 'Crowmie', partner: 'CROWMIE', min: 80000, rate: 0.0024 },
-    { keywords: ['unit-linked', 'unit linked', 'u-l ', 'ul '], product: 'Unit-Linked Prima única', partner: 'AEGON', min: 15000, rate: 0.0049 },
-    { keywords: ['pias estrategia', 'pias selección', 'pias elección', 'pias eleccion', 'pias '], product: 'Aportación anual PIAS', partner: 'AEGON', min: 4500, rate: 0.0663 },
-    { keywords: ['seguro de vida', 'vida', 'crecivida'], product: 'Prima neta Seguro de Vida', partner: 'AEGON', min: 4350, rate: 0.15 },
-    { keywords: ['cuenta depósito bonificada', 'cuenta deposito bonificada', 'cuenta depósito', 'cuenta deposito'], product: 'Cuenta Depósito bonificado', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
-    { keywords: ['gold opportunity', 'gold opp'], product: 'Gold Opportunity', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
+    // Entity-based entries: match by partner/entity name (any product from this partner)
+    { entityKeywords: ['silvergold', 'silver gold', 'sg '], product: 'SilverGold', partner: 'SILVERGOLD', min: 132750, rate: 0.0057 },
+    { entityKeywords: ['monefit', 'creditstar'], product: 'Monefit', partner: 'MONEFIT', min: 100000, rate: 0.0023 },
+    { entityKeywords: ['neowintech', 'neowin'], product: 'Neowintech', partner: 'NEOWINTECH', min: 157500, rate: 0.0013 },
+    { entityKeywords: ['reental'], product: 'Reental', partner: 'REENTAL', min: 60000, rate: 0.0042 },
+    { entityKeywords: ['crowmie'], product: 'Crowmie', partner: 'CROWMIE', min: 80000, rate: 0.0024 },
+    { entityKeywords: ['aegon'], product: 'Aportación anual PIAS', partner: 'AEGON', min: 4500, rate: 0.0663 },
+    { entityKeywords: ['mapfre'], product: 'Aportación anual PIAS Elección', partner: 'MAPFRE', min: 40000, rate: 0.0042 },
+    { entityKeywords: ['santalucia', 'santa lucí', 'santa lu'], product: 'Aportación anual PIAS', partner: 'SANTALUCÍA', min: 40000, rate: 0.0042 },
+    { entityKeywords: ['the real money', 'real money', 'trm'], product: 'Cuenta Depósito bonificado', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
+    // Specific product-name entries (fallback when entity unknown)
+    { productKeywords: ['unit-linked', 'unit linked', 'u-l ', 'ul '], product: 'Unit-Linked Prima única', partner: 'AEGON', min: 15000, rate: 0.0049 },
+    { productKeywords: ['pias estrategia', 'pias selección', 'pias elección', 'pias eleccion', 'pias '], product: 'Aportación anual PIAS', partner: 'AEGON', min: 4500, rate: 0.0663 },
+    { productKeywords: ['seguro de vida', 'vida', 'crecivida'], product: 'Prima neta Seguro de Vida', partner: 'AEGON', min: 4350, rate: 0.15 },
+    { productKeywords: ['cuenta depósito bonificada', 'cuenta deposito bonificada', 'cuenta depósito', 'cuenta deposito'], product: 'Cuenta Depósito bonificado', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
+    { productKeywords: ['gold opportunity', 'gold opp'], product: 'Gold Opportunity', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
 ];
 
-function findCommission(productName) {
-    var lower = (productName || '').toLowerCase();
+function findCommission(productName, entityName) {
+    var entLower = (entityName || '').toLowerCase();
+    var prodLower = (productName || '').toLowerCase();
+    // First try match by entity name
     for (var i = 0; i < COMMISSION_TABLE.length; i++) {
-        for (var j = 0; j < COMMISSION_TABLE[i].keywords.length; j++) {
-            if (lower.indexOf(COMMISSION_TABLE[i].keywords[j]) !== -1) {
-                return COMMISSION_TABLE[i];
+        var ek = COMMISSION_TABLE[i].entityKeywords;
+        if (ek) {
+            for (var j = 0; j < ek.length; j++) {
+                if (entLower.indexOf(ek[j]) !== -1) {
+                    return COMMISSION_TABLE[i];
+                }
+            }
+        }
+    }
+    // Fallback: match by product name keywords
+    for (var i = 0; i < COMMISSION_TABLE.length; i++) {
+        var pk = COMMISSION_TABLE[i].productKeywords;
+        if (pk) {
+            for (var j = 0; j < pk.length; j++) {
+                if (prodLower.indexOf(pk[j]) !== -1) {
+                    return COMMISSION_TABLE[i];
+                }
             }
         }
     }
@@ -593,7 +617,7 @@ function renderCommissionSection(stats) {
     var totalPct = 0;
     var productData = [];
     details.forEach(function(item, idx) {
-        var commission = findCommission(item.producto);
+        var commission = findCommission(item.producto, item.entidad);
         var minAmount = commission ? commission.min : null;
         var pct = (minAmount && minAmount > 0) ? (item.total / minAmount) : 0;
         totalPct += pct;
