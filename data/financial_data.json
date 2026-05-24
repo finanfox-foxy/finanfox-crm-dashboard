@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-24T21:13:21Z",
+  "timestamp": "2026-05-24T21:23:24Z",
   "generated_at": "2026-05-24",
   "period_start": "2026-01-01",
   "period_end": "2026-05-18",
@@ -27,8 +27,7 @@
           "Impuestos": 49228.54,
           "Marketing": 9277.87,
           "Nóminas": 18297.12,
-          "Otros gastos": 20000.0,
-          "Proveedores": 29804.07,
+          "Proveedores": 49804.07,
           "Seguridad Social": 7200.67,
           "Seguros": 181.31,
           "Suscripciones": 377.89
@@ -36,9 +35,9 @@
       },
       "margin": -33373.32,
       "biggest_expense_category": {
-        "name": "Impuestos",
-        "amount": 49228.54,
-        "pct": 33.0
+        "name": "Proveedores",
+        "amount": 49804.07,
+        "pct": 33.4
       },
       "biggest_income_category": {
         "name": "Monefit",
@@ -106,8 +105,7 @@
           "Impuestos": 82.26,
           "Marketing": 10873.69,
           "Nóminas": 3298.23,
-          "Otros gastos": 3261.32,
-          "Proveedores": 6704.58,
+          "Proveedores": 9965.9,
           "Seguridad Social": 5869.43,
           "Seguros": 301.08,
           "Suscripciones": 715.92
@@ -306,6 +304,17 @@
       }
     },
     "expenses": {
+      "Proveedores": {
+        "total": 104468.17,
+        "pct": 24.1,
+        "months": {
+          "2026-01": 49804.07,
+          "2026-02": 4405.57,
+          "2026-03": 9965.9,
+          "2026-04": 13420.72,
+          "2026-05": 26871.91
+        }
+      },
       "Gastos financieros": {
         "total": 86849.01,
         "pct": 20.0,
@@ -326,17 +335,6 @@
           "2026-03": 3298.23,
           "2026-04": 17221.69,
           "2026-05": 15423.23
-        }
-      },
-      "Proveedores": {
-        "total": 81206.85,
-        "pct": 18.7,
-        "months": {
-          "2026-01": 29804.07,
-          "2026-02": 4405.57,
-          "2026-03": 6704.58,
-          "2026-04": 13420.72,
-          "2026-05": 26871.91
         }
       },
       "Impuestos": {
@@ -369,17 +367,6 @@
           "2026-02": 6328.0,
           "2026-03": 5869.43,
           "2026-04": 6169.25,
-          "2026-05": 0
-        }
-      },
-      "Otros gastos": {
-        "total": 23261.32,
-        "pct": 5.4,
-        "months": {
-          "2026-01": 20000.0,
-          "2026-02": 0,
-          "2026-03": 3261.32,
-          "2026-04": 0,
           "2026-05": 0
         }
       },
