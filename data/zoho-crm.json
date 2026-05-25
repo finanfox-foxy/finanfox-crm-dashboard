@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-25T05:24:14Z",
+  "timestamp": "2026-05-25T08:57:52Z",
   "generated_at": "2026-05-25",
   "today": "2026-05-25",
   "yesterday": "2026-05-24",
@@ -81,7 +81,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-22T10:13:06+02:00",
       "Modified_Time": "2026-05-22T10:13:08+02:00",
-      "Last_Activity_Time": "2026-05-22T12:46:04+02:00"
+      "Last_Activity_Time": "2026-05-25T10:51:42+02:00"
     },
     {
       "id": "862490000005100010",
@@ -106,7 +106,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-22T10:07:48+02:00",
       "Modified_Time": "2026-05-22T10:07:48+02:00",
-      "Last_Activity_Time": "2026-05-22T12:46:51+02:00"
+      "Last_Activity_Time": "2026-05-25T10:55:00+02:00"
     },
     {
       "id": "862490000005099332",
@@ -275,13 +275,13 @@
       "Profesi_n": "Desarrollador de software",
       "Club": null,
       "Divisi_n": null,
-      "Plantilla_Bienvenida_enviada": false,
+      "Plantilla_Bienvenida_enviada": true,
       "Visitor_Score": null,
       "Days_Visited": null,
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-21T09:47:17+02:00",
-      "Modified_Time": "2026-05-21T09:47:18+02:00",
-      "Last_Activity_Time": "2026-05-22T12:15:20+02:00"
+      "Modified_Time": "2026-05-25T10:53:59+02:00",
+      "Last_Activity_Time": "2026-05-25T10:53:59+02:00"
     },
     {
       "id": "862490000005079001",
@@ -359,6 +359,31 @@
       "Last_Activity_Time": "2026-05-21T01:19:15+02:00"
     },
     {
+      "id": "862490000005068075",
+      "Full_Name": "Javier Ortiz",
+      "First_Name": "Javier",
+      "Last_Name": "Ortiz",
+      "Email": "jortizdg@gmail.com",
+      "Phone": "+34654393822",
+      "Owner": "Alberto Prieto",
+      "Canal": "Finanfox",
+      "Socio": null,
+      "Fuente": null,
+      "DNI": null,
+      "Cuenta_Corriente": null,
+      "Estado_civil": null,
+      "Profesi_n": null,
+      "Club": null,
+      "Divisi_n": null,
+      "Plantilla_Bienvenida_enviada": false,
+      "Visitor_Score": null,
+      "Days_Visited": null,
+      "Average_Time_Spent_Minutes": null,
+      "Created_Time": "2026-05-25T10:00:14+02:00",
+      "Modified_Time": "2026-05-25T10:01:09+02:00",
+      "Last_Activity_Time": "2026-05-25T10:01:40+02:00"
+    },
+    {
       "id": "862490000005067013",
       "Full_Name": "Jordi Balcells",
       "First_Name": "Jordi",
@@ -406,7 +431,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-22T22:52:51+02:00",
       "Modified_Time": "2026-05-22T22:53:31+02:00",
-      "Last_Activity_Time": "2026-05-22T22:54:01+02:00"
+      "Last_Activity_Time": "2026-05-25T09:39:29+02:00"
     },
     {
       "id": "862490000005062001",
@@ -706,7 +731,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-20T19:40:46+02:00",
       "Modified_Time": "2026-05-20T19:40:46+02:00",
-      "Last_Activity_Time": "2026-05-21T10:52:22+02:00"
+      "Last_Activity_Time": "2026-05-25T10:54:21+02:00"
     },
     {
       "id": "862490000005025007",
@@ -756,7 +781,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-24T02:42:06+02:00",
       "Modified_Time": "2026-05-24T02:42:37+02:00",
-      "Last_Activity_Time": "2026-05-24T02:43:08+02:00"
+      "Last_Activity_Time": "2026-05-25T09:42:04+02:00"
     },
     {
       "id": "862490000005008003",
@@ -4631,7 +4656,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-05T05:15:00+02:00",
       "Modified_Time": "2026-05-14T12:33:40+02:00",
-      "Last_Activity_Time": "2026-05-21T12:42:51+02:00"
+      "Last_Activity_Time": "2026-05-25T10:55:49+02:00"
     },
     {
       "id": "862490000004238018",
@@ -11690,8 +11715,8 @@
       "id": "862490000005079040",
       "Deal_Name": "Alejandro Galindo Garcia - SG CCC Oportunity plata III",
       "Amount": 5000,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "Alejandro Galindo Garcia",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -11700,13 +11725,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-05-21T09:48:58+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-05-25",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null
+      "Overall_Sales_Duration": 4,
+      "Sales_Cycle_Duration": 4
     },
     {
       "id": "862490000005068057",
@@ -12052,6 +12077,28 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": "Bookings",
       "Created_Time": "2026-05-22T16:52:24+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null
+    },
+    {
+      "id": "862490000005012164",
+      "Deal_Name": "Planificación de Javier Ortiz",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Javier Ortiz",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-05-25T10:01:09+02:00",
       "Closing_Date": null,
       "Tag": [
         "Finanfox"
@@ -21845,27 +21892,27 @@
   "stats": {
     "all_time": {
       "contacts": {
-        "total": 460,
-        "with_email": 454,
-        "with_phone": 431,
-        "welcome_sent": 53,
+        "total": 461,
+        "with_email": 455,
+        "with_phone": 432,
+        "welcome_sent": 54,
         "by_owner": {
           "Jaime Becerra": 113,
-          "Alberto Prieto": 144,
+          "Alberto Prieto": 145,
           "Jose Orrequia": 168,
           "Alex Caballero": 35
         },
         "by_canal": {
-          "Finanfox": 442,
+          "Finanfox": 443,
           "null": 18
         }
       },
       "deals": {
-        "total": 453,
+        "total": 454,
         "by_stage": {
-          "Aceptado/Falta Firma": 33,
-          "Cerrado Ganado": 62,
-          "Llamada Pendiente": 73,
+          "Aceptado/Falta Firma": 32,
+          "Cerrado Ganado": 63,
+          "Llamada Pendiente": 74,
           "Cerrado Perdido": 217,
           "Análisis Financiero": 19,
           "Asesoramiento": 10,
@@ -21873,23 +21920,23 @@
           "Revisando Propuesta": 18
         },
         "by_owner": {
-          "Alberto Prieto": 155,
+          "Alberto Prieto": 156,
           "Jose Orrequia": 170,
           "Jaime Becerra": 115,
           "Alex Caballero": 13
         },
         "by_type": {
-          "Cliente existente": 345,
+          "Cliente existente": 346,
           "Nuevo Cliente": 104,
           "null": 4
         },
         "pipeline_value": 1865659,
         "total_aportaciones": 1835659,
-        "avg_deal_size": 4118.45,
-        "closed_won": 62,
-        "closed_won_value": 1157269,
+        "avg_deal_size": 4109.38,
+        "closed_won": 63,
+        "closed_won_value": 1162269,
         "closed_lost": 217,
-        "conversion_rate": 13.7
+        "conversion_rate": 13.9
       }
     },
     "yesterday": {
@@ -21924,21 +21971,21 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 176,
-      "new_deals": 187,
-      "won_deals": 27,
+      "new_contacts": 177,
+      "new_deals": 188,
+      "won_deals": 28,
       "lost_deals": 143,
-      "won_value": 763162.0,
-      "total_aportacion_won": 763162.0,
+      "won_value": 768162.0,
+      "total_aportacion_won": 768162.0,
       "product_breakdown": {
         "Monefit": 584000.0,
-        "Compra Única": 100312.0,
+        "Compra Única": 105312.0,
         "Cuenta Depósito Bonificada": 75250.0,
         "PIAS Estrategia 5": 3600.0
       },
       "product_count": {
         "Monefit": 17,
-        "Compra Única": 8,
+        "Compra Única": 9,
         "Cuenta Depósito Bonificada": 3,
         "PIAS Estrategia 5": 2
       },
@@ -21952,8 +21999,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 8,
-          "total": 100312.0
+          "veces": 9,
+          "total": 105312.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -21971,8 +22018,8 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 14,
-          "total_aportacion": 354377.0
+          "won": 15,
+          "total_aportacion": 359377.0
         },
         {
           "name": "Jaime Becerra",
@@ -21993,8 +22040,8 @@
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 14,
-          "total_aportacion": 354377.0
+          "won": 15,
+          "total_aportacion": 359377.0
         },
         {
           "name": "Jaime Becerra",
@@ -22013,21 +22060,21 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 67,
+        "Llamada Pendiente": 68,
         "Análisis Financiero": 17,
         "Asesoramiento": 6,
         "Reasesoramiento": 12,
         "Revisando Propuesta": 4,
-        "Aceptado/Falta Firma": 21,
-        "Cerrado Ganado": 27,
+        "Aceptado/Falta Firma": 20,
+        "Cerrado Ganado": 28,
         "Cerrado Perdido": 143
       },
       "pipeline_value": 982852.0,
-      "win_rate": 14.4,
-      "avg_days_to_win": 8.1,
-      "products_closed_count": 30,
+      "win_rate": 14.9,
+      "avg_days_to_win": 8.0,
+      "products_closed_count": 31,
       "conversion_clientes": {
-        "total_contacts": 176,
+        "total_contacts": 177,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
@@ -22057,20 +22104,20 @@
         "22": 8,
         "23": 2,
         "24": 6,
-        "25": 1
+        "25": 2
       }
     },
     "this_quarter": {
       "label": "Este Trimestre",
-      "new_contacts": 424,
-      "new_deals": 427,
-      "won_deals": 55,
+      "new_contacts": 425,
+      "new_deals": 428,
+      "won_deals": 56,
       "lost_deals": 212,
-      "won_value": 1069369.0,
-      "total_aportacion_won": 1069369.0,
+      "won_value": 1074369.0,
+      "total_aportacion_won": 1074369.0,
       "product_breakdown": {
         "Monefit": 662270.0,
-        "Compra Única": 245076.0,
+        "Compra Única": 250076.0,
         "Cuenta Depósito Bonificada": 140750.0,
         "Proyectos crowdfunding energético": 15000.0,
         "PIAS Estrategia 5": 3600.0,
@@ -22078,7 +22125,7 @@
       },
       "product_count": {
         "Monefit": 28,
-        "Compra Única": 20,
+        "Compra Única": 21,
         "Cuenta Depósito Bonificada": 6,
         "PIAS Estrategia 5": 2,
         "Proyectos crowdfunding energético": 1,
@@ -22094,8 +22141,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 20,
-          "total": 245076.0
+          "veces": 21,
+          "total": 250076.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -22125,8 +22172,8 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 22,
-          "total_aportacion": 439916.0
+          "won": 23,
+          "total_aportacion": 444916.0
         },
         {
           "name": "Jaime Becerra",
@@ -22147,8 +22194,8 @@
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 22,
-          "total_aportacion": 439916.0
+          "won": 23,
+          "total_aportacion": 444916.0
         },
         {
           "name": "Jaime Becerra",
@@ -22167,21 +22214,21 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 73,
+        "Llamada Pendiente": 74,
         "Análisis Financiero": 19,
         "Asesoramiento": 10,
         "Reasesoramiento": 21,
         "Revisando Propuesta": 18,
-        "Aceptado/Falta Firma": 32,
-        "Cerrado Ganado": 55,
+        "Aceptado/Falta Firma": 31,
+        "Cerrado Ganado": 56,
         "Cerrado Perdido": 212
       },
       "pipeline_value": 1768759.0,
-      "win_rate": 12.9,
+      "win_rate": 13.1,
       "avg_days_to_win": 6.5,
-      "products_closed_count": 58,
+      "products_closed_count": 59,
       "conversion_clientes": {
-        "total_contacts": 424,
+        "total_contacts": 425,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
@@ -22211,7 +22258,7 @@
         "22": 11,
         "23": 14,
         "24": 13,
-        "25": 5,
+        "25": 6,
         "26": 7,
         "27": 8,
         "28": 8,
@@ -22221,15 +22268,15 @@
     },
     "this_year": {
       "label": "Este Año",
-      "new_contacts": 458,
-      "new_deals": 452,
-      "won_deals": 58,
+      "new_contacts": 459,
+      "new_deals": 453,
+      "won_deals": 59,
       "lost_deals": 216,
-      "won_value": 1091369.0,
-      "total_aportacion_won": 1091369.0,
+      "won_value": 1096369.0,
+      "total_aportacion_won": 1096369.0,
       "product_breakdown": {
         "Monefit": 678270.0,
-        "Compra Única": 251076.0,
+        "Compra Única": 256076.0,
         "Cuenta Depósito Bonificada": 140750.0,
         "Proyectos crowdfunding energético": 15000.0,
         "PIAS Estrategia 5": 3600.0,
@@ -22237,7 +22284,7 @@
       },
       "product_count": {
         "Monefit": 31,
-        "Compra Única": 22,
+        "Compra Única": 23,
         "Cuenta Depósito Bonificada": 6,
         "PIAS Estrategia 5": 2,
         "Proyectos crowdfunding energético": 1,
@@ -22253,8 +22300,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 22,
-          "total": 251076.0
+          "veces": 23,
+          "total": 256076.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -22284,8 +22331,8 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 22,
-          "total_aportacion": 439916.0
+          "won": 23,
+          "total_aportacion": 444916.0
         },
         {
           "name": "Jose Orrequia",
@@ -22306,8 +22353,8 @@
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 22,
-          "total_aportacion": 439916.0
+          "won": 23,
+          "total_aportacion": 444916.0
         },
         {
           "name": "Jaime Becerra",
@@ -22326,21 +22373,21 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 73,
+        "Llamada Pendiente": 74,
         "Análisis Financiero": 19,
         "Asesoramiento": 10,
         "Reasesoramiento": 21,
         "Revisando Propuesta": 18,
-        "Aceptado/Falta Firma": 33,
-        "Cerrado Ganado": 58,
+        "Aceptado/Falta Firma": 32,
+        "Cerrado Ganado": 59,
         "Cerrado Perdido": 216
       },
       "pipeline_value": 1799759.0,
-      "win_rate": 12.8,
+      "win_rate": 13.0,
       "avg_days_to_win": 7.9,
-      "products_closed_count": 63,
+      "products_closed_count": 64,
       "conversion_clientes": {
-        "total_contacts": 458,
+        "total_contacts": 459,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
@@ -22370,7 +22417,7 @@
         "22": 11,
         "23": 16,
         "24": 13,
-        "25": 7,
+        "25": 8,
         "26": 10,
         "27": 9,
         "28": 11,
@@ -22807,8 +22854,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 67,
-          "pct_of_total": 22.6,
+          "count": 68,
+          "pct_of_total": 22.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": 67
@@ -22817,8 +22864,8 @@
           "stage": "Análisis Financiero",
           "count": 17,
           "pct_of_total": 5.7,
-          "conversion_from_prev": 25.4,
-          "conversion_from_top": 25.4,
+          "conversion_from_prev": 25.0,
+          "conversion_from_top": 25.0,
           "cmp_count": 17
         },
         {
@@ -22826,7 +22873,7 @@
           "count": 6,
           "pct_of_total": 2.0,
           "conversion_from_prev": 35.3,
-          "conversion_from_top": 9.0,
+          "conversion_from_top": 8.8,
           "cmp_count": 6
         },
         {
@@ -22834,7 +22881,7 @@
           "count": 12,
           "pct_of_total": 4.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 17.9,
+          "conversion_from_top": 17.6,
           "cmp_count": 12
         },
         {
@@ -22842,40 +22889,40 @@
           "count": 4,
           "pct_of_total": 1.3,
           "conversion_from_prev": 33.3,
-          "conversion_from_top": 6.0,
+          "conversion_from_top": 5.9,
           "cmp_count": 4
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 21,
-          "pct_of_total": 7.1,
+          "count": 20,
+          "pct_of_total": 6.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 31.3,
+          "conversion_from_top": 29.4,
           "cmp_count": 21
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 27,
-          "pct_of_total": 9.1,
+          "count": 28,
+          "pct_of_total": 9.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 40.3,
+          "conversion_from_top": 41.2,
           "cmp_count": 27
         },
         {
           "stage": "Cerrado Perdido",
           "count": 143,
-          "pct_of_total": 48.1,
+          "pct_of_total": 48.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 213.4,
+          "conversion_from_top": 210.3,
           "cmp_count": 143
         }
       ],
       "active_total": 127,
-      "won_total": 27,
+      "won_total": 28,
       "lost_total": 143,
-      "total_pipeline": 297
+      "total_pipeline": 298
     },
     "this_quarter": {
       "stage_order": [
@@ -22891,8 +22938,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 73,
-          "pct_of_total": 16.6,
+          "count": 74,
+          "pct_of_total": 16.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -22901,8 +22948,8 @@
           "stage": "Análisis Financiero",
           "count": 19,
           "pct_of_total": 4.3,
-          "conversion_from_prev": 26.0,
-          "conversion_from_top": 26.0,
+          "conversion_from_prev": 25.7,
+          "conversion_from_top": 25.7,
           "cmp_count": null
         },
         {
@@ -22910,7 +22957,7 @@
           "count": 10,
           "pct_of_total": 2.3,
           "conversion_from_prev": 52.6,
-          "conversion_from_top": 13.7,
+          "conversion_from_top": 13.5,
           "cmp_count": null
         },
         {
@@ -22918,7 +22965,7 @@
           "count": 21,
           "pct_of_total": 4.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 28.8,
+          "conversion_from_top": 28.4,
           "cmp_count": null
         },
         {
@@ -22926,40 +22973,40 @@
           "count": 18,
           "pct_of_total": 4.1,
           "conversion_from_prev": 85.7,
-          "conversion_from_top": 24.7,
+          "conversion_from_top": 24.3,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 32,
-          "pct_of_total": 7.3,
+          "count": 31,
+          "pct_of_total": 7.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 43.8,
+          "conversion_from_top": 41.9,
           "cmp_count": 1
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 55,
-          "pct_of_total": 12.5,
+          "count": 56,
+          "pct_of_total": 12.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 75.3,
+          "conversion_from_top": 75.7,
           "cmp_count": 3
         },
         {
           "stage": "Cerrado Perdido",
           "count": 212,
-          "pct_of_total": 48.2,
+          "pct_of_total": 48.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 290.4,
+          "conversion_from_top": 286.5,
           "cmp_count": 4
         }
       ],
       "active_total": 173,
-      "won_total": 55,
+      "won_total": 56,
       "lost_total": 212,
-      "total_pipeline": 440
+      "total_pipeline": 441
     },
     "this_year": {
       "stage_order": [
@@ -22975,8 +23022,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 73,
-          "pct_of_total": 16.3,
+          "count": 74,
+          "pct_of_total": 16.5,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -22985,8 +23032,8 @@
           "stage": "Análisis Financiero",
           "count": 19,
           "pct_of_total": 4.2,
-          "conversion_from_prev": 26.0,
-          "conversion_from_top": 26.0,
+          "conversion_from_prev": 25.7,
+          "conversion_from_top": 25.7,
           "cmp_count": null
         },
         {
@@ -22994,7 +23041,7 @@
           "count": 10,
           "pct_of_total": 2.2,
           "conversion_from_prev": 52.6,
-          "conversion_from_top": 13.7,
+          "conversion_from_top": 13.5,
           "cmp_count": null
         },
         {
@@ -23002,7 +23049,7 @@
           "count": 21,
           "pct_of_total": 4.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 28.8,
+          "conversion_from_top": 28.4,
           "cmp_count": null
         },
         {
@@ -23010,40 +23057,40 @@
           "count": 18,
           "pct_of_total": 4.0,
           "conversion_from_prev": 85.7,
-          "conversion_from_top": 24.7,
+          "conversion_from_top": 24.3,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 33,
-          "pct_of_total": 7.4,
+          "count": 32,
+          "pct_of_total": 7.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 45.2,
+          "conversion_from_top": 43.2,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 58,
-          "pct_of_total": 12.9,
+          "count": 59,
+          "pct_of_total": 13.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 79.5,
+          "conversion_from_top": 79.7,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 216,
-          "pct_of_total": 48.2,
+          "pct_of_total": 48.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 295.9,
+          "conversion_from_top": 291.9,
           "cmp_count": 1
         }
       ],
       "active_total": 174,
-      "won_total": 58,
+      "won_total": 59,
       "lost_total": 216,
-      "total_pipeline": 448
+      "total_pipeline": 449
     },
     "previous_pipeline": {
       "Llamada Pendiente": 67,
