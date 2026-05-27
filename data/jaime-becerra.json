@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-05-24T22:22:41Z",
-  "generated_at": "2026-05-25",
-  "today": "2026-05-25",
-  "yesterday": "2026-05-24",
+  "timestamp": "2026-05-26T05:00:10Z",
+  "generated_at": "2026-05-26",
+  "today": "2026-05-26",
+  "yesterday": "2026-05-25",
   "this_month": "2026-05",
   "this_quarter_start": "2026-04-01",
   "this_quarter_end": "2026-06-30",
@@ -40,7 +40,38 @@
         "closed_won_value": 233095.0,
         "closed_lost": 54,
         "conversion_rate": 10.4
-      }
+      },
+      "product_breakdown": {
+        "Cuenta Depósito Bonificada": 30000.0,
+        "Monefit": 154300.0,
+        "Compra Única": 48795.0
+      },
+      "product_count": {
+        "Cuenta Depósito Bonificada": 1,
+        "Monefit": 4,
+        "Compra Única": 7
+      },
+      "product_details": [
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 1,
+          "total": 30000.0
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "veces": 4,
+          "total": 154300.0
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "veces": 7,
+          "total": 48795.0
+        }
+      ],
+      "products_closed_count": 12
     },
     "yesterday": {
       "label": "Ayer",
@@ -53,7 +84,6 @@
       "product_breakdown": {},
       "product_count": {},
       "product_details": [],
-      "product_deals": [],
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {},
@@ -105,38 +135,6 @@
           "entidad": "SilverGold",
           "veces": 1,
           "total": 10000.0
-        }
-      ],
-      "product_deals": [
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 30000.0,
-          "close_date": "2026-05-19"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-05-08"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 130000.0,
-          "close_date": "2026-05-07"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-05"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 4000.0,
-          "close_date": "2026-04-30"
         }
       ],
       "advisor_ranking_won": [
@@ -227,80 +225,6 @@
           "entidad": "The Real Money",
           "veces": 1,
           "total": 30000.0
-        }
-      ],
-      "product_deals": [
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 30000.0,
-          "close_date": "2026-05-19"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-05-08"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 130000.0,
-          "close_date": "2026-05-07"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-05"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 4000.0,
-          "close_date": "2026-04-30"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 2000.0,
-          "close_date": "2026-04-20"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 3851.0,
-          "close_date": "2026-04-17"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 6515.0,
-          "close_date": "2026-04-14"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4929.0,
-          "close_date": "2026-04-13"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 17000.0,
-          "close_date": "2026-04-13"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4500.0,
-          "close_date": "2026-04-13"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 5300.0,
-          "close_date": "2026-04-13"
         }
       ],
       "advisor_ranking_won": [
@@ -405,80 +329,6 @@
           "total": 30000.0
         }
       ],
-      "product_deals": [
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 30000.0,
-          "close_date": "2026-05-19"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-05-08"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 130000.0,
-          "close_date": "2026-05-07"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-05"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 4000.0,
-          "close_date": "2026-04-30"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 2000.0,
-          "close_date": "2026-04-20"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 3851.0,
-          "close_date": "2026-04-17"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 6515.0,
-          "close_date": "2026-04-14"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4929.0,
-          "close_date": "2026-04-13"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 17000.0,
-          "close_date": "2026-04-13"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4500.0,
-          "close_date": "2026-04-13"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 5300.0,
-          "close_date": "2026-04-13"
-        }
-      ],
       "advisor_ranking_won": [
         {
           "name": "Jaime Becerra",
@@ -548,12 +398,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-05-23",
+      "previous": "2026-05-24",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 2,
-        "new_deals": 2,
+        "new_contacts": 0,
+        "new_deals": 0,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -561,25 +411,20 @@
         "product_breakdown": {},
         "product_count": {},
         "product_details": [],
-        "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
-        "pipeline_stages": {
-          "Llamada Pendiente": 2
-        },
+        "pipeline_stages": {},
         "pipeline_value": 0.0,
-        "win_rate": 0.0,
+        "win_rate": null,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 2,
+          "total_contacts": 0,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {
-          "23": 2
-        }
+        "contacts_by_day": {}
       }
     },
     "this_month": {
@@ -613,50 +458,6 @@
             "entidad": "Monefit",
             "veces": 1,
             "total": 5300.0
-          }
-        ],
-        "product_deals": [
-          {
-            "producto": "Compra Única",
-            "entidad": "SilverGold",
-            "total": 2000.0,
-            "close_date": "2026-04-20"
-          },
-          {
-            "producto": "Compra Única",
-            "entidad": "SilverGold",
-            "total": 3851.0,
-            "close_date": "2026-04-17"
-          },
-          {
-            "producto": "Compra Única",
-            "entidad": "SilverGold",
-            "total": 6515.0,
-            "close_date": "2026-04-14"
-          },
-          {
-            "producto": "Compra Única",
-            "entidad": "SilverGold",
-            "total": 4929.0,
-            "close_date": "2026-04-13"
-          },
-          {
-            "producto": "Compra Única",
-            "entidad": "SilverGold",
-            "total": 17000.0,
-            "close_date": "2026-04-13"
-          },
-          {
-            "producto": "Compra Única",
-            "entidad": "SilverGold",
-            "total": 4500.0,
-            "close_date": "2026-04-13"
-          },
-          {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "total": 5300.0,
-            "close_date": "2026-04-13"
           }
         ],
         "advisor_ranking_won": [
@@ -736,7 +537,6 @@
         "product_breakdown": {},
         "product_count": {},
         "product_details": [],
-        "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
@@ -778,7 +578,6 @@
         "product_breakdown": {},
         "product_count": {},
         "product_details": [],
-        "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {

@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-05-24T22:22:41Z",
-  "generated_at": "2026-05-25",
-  "today": "2026-05-25",
-  "yesterday": "2026-05-24",
+  "timestamp": "2026-05-26T05:00:10Z",
+  "generated_at": "2026-05-26",
+  "today": "2026-05-26",
+  "yesterday": "2026-05-25",
   "this_month": "2026-05",
   "this_quarter_start": "2026-04-01",
   "this_quarter_end": "2026-06-30",
@@ -40,12 +40,35 @@
         "closed_won_value": 189150.0,
         "closed_lost": 77,
         "conversion_rate": 7.1
-      }
+      },
+      "product_breakdown": {
+        "Monefit": 103400.0,
+        "Cuenta Depósito Bonificada": 85750.0
+      },
+      "product_count": {
+        "Monefit": 8,
+        "Cuenta Depósito Bonificada": 4
+      },
+      "product_details": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "veces": 8,
+          "total": 103400.0
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 4,
+          "total": 85750.0
+        }
+      ],
+      "products_closed_count": 12
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 5,
-      "new_deals": 5,
+      "new_contacts": 0,
+      "new_deals": 0,
       "won_deals": 0,
       "lost_deals": 0,
       "won_value": 0,
@@ -53,25 +76,20 @@
       "product_breakdown": {},
       "product_count": {},
       "product_details": [],
-      "product_deals": [],
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
-      "pipeline_stages": {
-        "Llamada Pendiente": 5
-      },
+      "pipeline_stages": {},
       "pipeline_value": 0.0,
-      "win_rate": 0.0,
+      "win_rate": null,
       "avg_days_to_win": null,
       "products_closed_count": 0,
       "conversion_clientes": {
-        "total_contacts": 5,
+        "total_contacts": 0,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {
-        "24": 5
-      }
+      "contacts_by_day": {}
     },
     "this_month": {
       "label": "Este Mes",
@@ -101,32 +119,6 @@
           "entidad": "The Real Money",
           "veces": 1,
           "total": 20250.0
-        }
-      ],
-      "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 20000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 6000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 45000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-29"
         }
       ],
       "advisor_ranking_won": [
@@ -215,74 +207,6 @@
           "entidad": "The Real Money",
           "veces": 4,
           "total": 85750.0
-        }
-      ],
-      "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 20000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 6000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 45000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 3000.0,
-          "close_date": "2026-04-30"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 4200.0,
-          "close_date": "2026-04-30"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-29"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 25000.0,
-          "close_date": "2026-04-23"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-23"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-21"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 6000.0,
-          "close_date": "2026-04-14"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 14200.0,
-          "close_date": "2026-04-14"
         }
       ],
       "advisor_ranking_won": [
@@ -382,80 +306,6 @@
           "total": 85750.0
         }
       ],
-      "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 20000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 6000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 45000.0,
-          "close_date": "2026-05-20"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 3000.0,
-          "close_date": "2026-04-30"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 4200.0,
-          "close_date": "2026-04-30"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-29"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 25000.0,
-          "close_date": "2026-04-23"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-23"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-21"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 6000.0,
-          "close_date": "2026-04-14"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 14200.0,
-          "close_date": "2026-04-14"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 5000.0,
-          "close_date": "2026-03-26"
-        }
-      ],
       "advisor_ranking_won": [
         {
           "name": "Jose Orrequia",
@@ -527,12 +377,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-05-23",
+      "previous": "2026-05-24",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 0,
-        "new_deals": 0,
+        "new_contacts": 5,
+        "new_deals": 5,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -540,21 +390,24 @@
         "product_breakdown": {},
         "product_count": {},
         "product_details": [],
-        "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
-        "pipeline_stages": {},
+        "pipeline_stages": {
+          "Llamada Pendiente": 5
+        },
         "pipeline_value": 0.0,
-        "win_rate": null,
+        "win_rate": 0.0,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 0,
+          "total_contacts": 5,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {}
+        "contacts_by_day": {
+          "24": 5
+        }
       }
     },
     "this_month": {
@@ -588,50 +441,6 @@
             "entidad": "Monefit",
             "veces": 4,
             "total": 27400.0
-          }
-        ],
-        "product_deals": [
-          {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "total": 3000.0,
-            "close_date": "2026-04-30"
-          },
-          {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "total": 4200.0,
-            "close_date": "2026-04-30"
-          },
-          {
-            "producto": "Cuenta Depósito Bonificada",
-            "entidad": "The Real Money",
-            "total": 25000.0,
-            "close_date": "2026-04-23"
-          },
-          {
-            "producto": "Cuenta Depósito Bonificada",
-            "entidad": "The Real Money",
-            "total": 20250.0,
-            "close_date": "2026-04-23"
-          },
-          {
-            "producto": "Cuenta Depósito Bonificada",
-            "entidad": "The Real Money",
-            "total": 20250.0,
-            "close_date": "2026-04-21"
-          },
-          {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "total": 6000.0,
-            "close_date": "2026-04-14"
-          },
-          {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "total": 14200.0,
-            "close_date": "2026-04-14"
           }
         ],
         "advisor_ranking_won": [
@@ -727,14 +536,6 @@
             "total": 5000.0
           }
         ],
-        "product_deals": [
-          {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "total": 5000.0,
-            "close_date": "2026-03-26"
-          }
-        ],
         "advisor_ranking_won": [
           {
             "name": "Jose Orrequia",
@@ -789,7 +590,6 @@
         "product_breakdown": {},
         "product_count": {},
         "product_details": [],
-        "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {},
@@ -832,50 +632,50 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 5,
-          "pct_of_total": 100.0,
+          "count": 0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
           "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": 0.0,
-          "conversion_from_top": 0.0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
@@ -883,24 +683,24 @@
         {
           "stage": "Cerrado Ganado",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
-      "active_total": 5,
+      "active_total": 0,
       "won_total": 0,
       "lost_total": 0,
-      "total_pipeline": 5
+      "total_pipeline": 0
     },
     "this_month": {
       "stage_order": [
