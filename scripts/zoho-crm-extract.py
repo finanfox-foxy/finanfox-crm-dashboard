@@ -745,10 +745,28 @@ def main():
     tasks = [simplify(t, task_fields) for t in tasks_raw]
     print(f"    -> {len(tasks)} tareas")
 
+    # ── Discover module fields: Entidades y Productos ──
+    # User reports the relevant field names differ from Productos_Financieros API name.
+    # Try common variations and print raw record keys for first record.
+    print("  Descubriendo modulos de productos...")
+    for module_name in ['Entidades_y_Productos', 'Entidades_Productos', 'Productos_Financieros', 'Productos']:
+        try:
+            r = api_get(f'settings/modules/{module_name}')
+            if r.get('data'):
+                fields = r['data'][0].get('fields', [])
+                print(f"    ✅ {module_name}: {len(fields)} fields")
+                for f in fields:
+                    print(f"      - {f.get('api_name')} ({f.get('field_label')}) [{f.get('data_type')}]")
+        except:
+            pass
+
     # ── Productos Financieros (custom subform) ──
     print("  Productos Financieros...")
     pf_records = fetch_all('Productos_Financieros')
     print(f"    -> {len(pf_records)} registros")
+    if pf_records:
+        raw_keys = list(pf_records[0].keys())
+        print(f"    Keys del primer registro: {raw_keys}")
 
     # ── All-time stats ──
     print("  Calculando estadisticas...")
