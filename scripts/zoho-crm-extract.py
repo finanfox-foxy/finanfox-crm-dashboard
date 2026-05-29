@@ -594,6 +594,28 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
     prev_quarter_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Trimestre Anterior", in_prev_quarter)
     prev_year_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Año Anterior", in_prev_year)
 
+    # ── Fill contacts_by_day from deals when real contact data unavailable ──
+    # Zoho contact IDs may not match deal references, so fallback to deal creation dates
+    stats_list = [
+        (yesterday_stats, in_yesterday),
+        (this_month_stats, in_this_month),
+        (this_quarter_stats, in_this_quarter),
+        (this_year_stats, in_this_year),
+        (prev_yesterday_stats, in_prev_yesterday),
+        (prev_month_stats, in_prev_month),
+    ]
+    for stats_obj, filter_fn in stats_list:
+        if stats_obj.get('new_contacts', 0) == 0 and stats_obj.get('contacts_by_day', {}) == {}:
+            # Build contacts_by_day from deals created in this period
+            deal_by_day = {}
+            for d in advisor_deals:
+                created = d.get('Created_Time', '')
+                if created and filter_fn(created):
+                    day = created[8:10].lstrip('0') or '0'
+                    deal_by_day[day] = deal_by_day.get(day, 0) + 1
+            stats_obj['contacts_by_day'] = dict(sorted(deal_by_day.items(), key=lambda x: int(x[0])))
+            stats_obj['new_contacts'] = sum(deal_by_day.values())
+
     # ── Pipeline details ──
     this_month_pipeline = compute_pipeline_details(this_month_stats['pipeline_stages'])
     this_quarter_pipeline = compute_pipeline_details(this_quarter_stats['pipeline_stages'],
