@@ -284,7 +284,7 @@
 </head>
 <body>
     <div class="top-bar">
-        <h1>🦊 <span>Jaime Becerra</span></h1>
+        <h1>🦊 <span>Alberto Prieto</span></h1>
         <div class="header-right">
             <span class="timestamp" id="crm-timestamp">Cargando...</span>
             <button onclick="refreshData()"
@@ -558,7 +558,10 @@ function renderAdvisorTable(ranking) {
     return html;
 }
 
+// ── Commission table for financial products ──
 var COMMISSION_TABLE = [
+    { keywords: ['monefit'], product: 'Monefit', partner: 'MONEFIT', min: 100000, rate: 0.0023 },
+    { keywords: ['neowintech', 'neowin'], product: 'Neowintech', partner: 'NEOWINTECH', min: 157500, rate: 0.0013 },
     // Entity-based entries: match by partner/entity name (any product from this partner)
     { entityKeywords: ['silvergold', 'silver gold', 'sg '], product: 'SilverGold', partner: 'SILVERGOLD', min: 132750, rate: 0.0057 },
     { entityKeywords: ['monefit', 'creditstar'], product: 'Monefit', partner: 'MONEFIT', min: 100000, rate: 0.0023 },
@@ -672,7 +675,10 @@ function renderCommissionSection(stats) {
             total: d.total,
             min: minAmount,
             rate: commissionInfo ? commissionInfo.rate : 0,
-            pct: pct
+            pct: pct,
+            fecha_inicio: d.fecha_inicio || '',
+            objetivo_financiero: d.objetivo_financiero || '',
+            plazo: d.plazo || ''
         });
     });
     
@@ -725,7 +731,7 @@ function renderCommissionSection(stats) {
     html += '<div class="crm-card success"><div class="value">' + formatEUR(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
     html += '</div>';
     
-    html += '<table class="compact-table"><thead><tr><th>#</th><th>Producto</th><th>Entidad</th><th>Total</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
+    html += '<table class="compact-table"><thead><tr><th>#</th><th>Producto</th><th>Entidad</th><th>Fecha Inicio</th><th>Obj. Financiero</th><th>Plazo</th><th>Total</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
     var runningPct = 0;
     dealsWithMeta.forEach(function(item, idx) {
         runningPct += item.pct;
@@ -739,6 +745,9 @@ function renderCommissionSection(stats) {
         html += '<td style="font-size:0.75rem;color:var(--text-muted)"><span style="white-space:nowrap">#' + (idx + 1) + '</span></td>';
         html += '<td><strong>' + item.producto + '</strong></td>';
         html += '<td>' + item.entidad + '</td>';
+        html += '<td style="font-size:0.72rem;color:var(--text-muted)">' + item.fecha_inicio + '</td>';
+        html += '<td style="font-size:0.72rem;color:var(--text-muted);max-width:120px;overflow:hidden;text-overflow:ellipsis">' + item.objetivo_financiero + '</td>';
+        html += '<td style="font-size:0.72rem;color:var(--text-muted)">' + item.plazo + '</td>';
         html += '<td>' + formatEUR(item.total) + '</td>';
         html += '<td><div style="display:flex;align-items:center;gap:4px"><div style="height:12px;width:' + Math.min(pctBar, 100) + '%;background:' + (hasComm ? 'var(--success)' : 'var(--accent)') + ';border-radius:4px;max-width:60px;min-width:4px;transition:width 0.4s"></div><span style="font-size:0.7rem">' + pctBar + '%</span></div></td>';
         html += '<td ' + (hasComm ? 'style="color:var(--success);font-weight:600"' : 'style="color:var(--text-muted)"') + '>' + (hasComm ? formatEUR(item.commission) : '0€') + '</td>';
@@ -1040,7 +1049,7 @@ function refreshData() {
     document.getElementById('dashboard-content').style.display = 'none';
     document.getElementById('loading-state').style.display = 'block';
     document.getElementById('error-state').style.display = 'none';
-    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now())
+    var zohoFetch = fetch('data/alberto-prieto.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     zohoFetch
         .then(function(data) {
@@ -1050,7 +1059,7 @@ function refreshData() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now())
+    var zohoFetch = fetch('data/alberto-prieto.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     zohoFetch
         .then(function(data) {

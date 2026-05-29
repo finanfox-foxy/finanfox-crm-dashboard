@@ -260,6 +260,9 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                 entidad = pr.get('Entidades', '') or ''
                 amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
                 close_date = (pr.get('Created_Time', '') or '')[:10]
+                fecha_inicio = (pr.get('Fecha_Inicio', '') or '')[:10]
+                obj_financiero = pr.get('Objetivo_Financiero', '') or ''
+                plazo = pr.get('Plazos', '') or ''
                 key = (pname, entidad)
                 if key not in product_details:
                     product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
@@ -271,7 +274,10 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                     'producto': pname,
                     'entidad': entidad,
                     'total': amount,
-                    'close_date': close_date
+                    'close_date': close_date,
+                    'fecha_inicio': fecha_inicio,
+                    'objetivo_financiero': obj_financiero,
+                    'plazo': plazo
                 })
     else:
         # Fallback: extract product info from won deal names (format: "ClientName - ProductName")
@@ -298,7 +304,10 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                 'producto': pname,
                 'entidad': entidad,
                 'total': amount,
-                'close_date': close_date
+                'close_date': close_date,
+                'fecha_inicio': '',
+                'objetivo_financiero': '',
+                'plazo': ''
             })
 
     # Advisor performance: won deals by owner
@@ -745,28 +754,10 @@ def main():
     tasks = [simplify(t, task_fields) for t in tasks_raw]
     print(f"    -> {len(tasks)} tareas")
 
-    # ── Discover module fields: Entidades y Productos ──
-    # User reports the relevant field names differ from Productos_Financieros API name.
-    # Try common variations and print raw record keys for first record.
-    print("  Descubriendo modulos de productos...")
-    for module_name in ['Entidades_y_Productos', 'Entidades_Productos', 'Productos_Financieros', 'Productos']:
-        try:
-            r = api_get(f'settings/modules/{module_name}')
-            if r.get('data'):
-                fields = r['data'][0].get('fields', [])
-                print(f"    ✅ {module_name}: {len(fields)} fields")
-                for f in fields:
-                    print(f"      - {f.get('api_name')} ({f.get('field_label')}) [{f.get('data_type')}]")
-        except:
-            pass
-
-    # ── Productos Financieros (custom subform) ──
-    print("  Productos Financieros...")
+    # ── Productos Financieros (Entidades y Productos subtable) ──
+    print("  Productos Financieros (Entidades y Productos)...")
     pf_records = fetch_all('Productos_Financieros')
-    print(f"    -> {len(pf_records)} registros")
-    if pf_records:
-        raw_keys = list(pf_records[0].keys())
-        print(f"    Keys del primer registro: {raw_keys}")
+    print(f"    -> {len(pf_records)} registros de productos")
 
     # ── All-time stats ──
     print("  Calculando estadisticas...")
