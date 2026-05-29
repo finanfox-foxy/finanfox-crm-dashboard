@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-05-29T15:25:11Z",
+  "timestamp": "2026-05-29T15:28:39Z",
   "generated_at": "2026-05-29",
   "today": "2026-05-29",
   "yesterday": "2026-05-28",
@@ -44,7 +44,7 @@
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 0,
+      "new_contacts": 3,
       "new_deals": 3,
       "won_deals": 7,
       "lost_deals": 3,
@@ -162,11 +162,13 @@
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {}
+      "contacts_by_day": {
+        "28": 3
+      }
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 0,
+      "new_contacts": 54,
       "new_deals": 54,
       "won_deals": 24,
       "lost_deals": 36,
@@ -398,11 +400,35 @@
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {}
+      "contacts_by_day": {
+        "1": 3,
+        "2": 3,
+        "3": 2,
+        "4": 2,
+        "5": 1,
+        "7": 2,
+        "8": 3,
+        "10": 1,
+        "11": 2,
+        "12": 4,
+        "13": 2,
+        "14": 5,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "19": 2,
+        "20": 4,
+        "21": 4,
+        "22": 1,
+        "23": 1,
+        "27": 4,
+        "28": 3,
+        "29": 2
+      }
     },
     "this_quarter": {
       "label": "Este Trimestre",
-      "new_contacts": 0,
+      "new_contacts": 113,
       "new_deals": 113,
       "won_deals": 31,
       "lost_deals": 57,
@@ -676,11 +702,40 @@
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {}
+      "contacts_by_day": {
+        "1": 4,
+        "2": 4,
+        "3": 2,
+        "4": 2,
+        "5": 1,
+        "6": 2,
+        "7": 10,
+        "8": 4,
+        "9": 7,
+        "10": 1,
+        "11": 3,
+        "12": 7,
+        "13": 8,
+        "14": 6,
+        "15": 2,
+        "16": 2,
+        "17": 4,
+        "18": 1,
+        "19": 4,
+        "20": 7,
+        "21": 7,
+        "22": 2,
+        "23": 2,
+        "25": 2,
+        "27": 5,
+        "28": 5,
+        "29": 5,
+        "30": 4
+      }
     },
     "this_year": {
       "label": "Este Año",
-      "new_contacts": 0,
+      "new_contacts": 122,
       "new_deals": 122,
       "won_deals": 31,
       "lost_deals": 57,
@@ -954,7 +1009,37 @@
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {}
+      "contacts_by_day": {
+        "1": 4,
+        "2": 4,
+        "3": 2,
+        "4": 2,
+        "5": 1,
+        "6": 2,
+        "7": 10,
+        "8": 4,
+        "9": 7,
+        "10": 1,
+        "11": 3,
+        "12": 7,
+        "13": 8,
+        "14": 6,
+        "15": 2,
+        "16": 2,
+        "17": 4,
+        "18": 1,
+        "19": 4,
+        "20": 7,
+        "21": 7,
+        "22": 2,
+        "23": 3,
+        "25": 2,
+        "27": 6,
+        "28": 7,
+        "29": 8,
+        "30": 5,
+        "31": 1
+      }
     }
   },
   "comparison": {
@@ -963,7 +1048,7 @@
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 0,
+        "new_contacts": 4,
         "new_deals": 4,
         "won_deals": 2,
         "lost_deals": 0,
@@ -1034,7 +1119,9 @@
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {}
+        "contacts_by_day": {
+          "27": 4
+        }
       }
     },
     "this_month": {
@@ -1042,7 +1129,7 @@
       "period_label": "mes anterior",
       "stats": {
         "label": "Mes Anterior",
-        "new_contacts": 0,
+        "new_contacts": 59,
         "new_deals": 59,
         "won_deals": 7,
         "lost_deals": 21,
@@ -1147,7 +1234,32 @@
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {}
+        "contacts_by_day": {
+          "1": 1,
+          "2": 1,
+          "6": 2,
+          "7": 8,
+          "8": 1,
+          "9": 7,
+          "11": 1,
+          "12": 3,
+          "13": 6,
+          "14": 1,
+          "15": 1,
+          "16": 1,
+          "17": 3,
+          "18": 1,
+          "19": 2,
+          "20": 3,
+          "21": 3,
+          "22": 1,
+          "23": 1,
+          "25": 2,
+          "27": 1,
+          "28": 2,
+          "29": 3,
+          "30": 4
+        }
       }
     },
     "this_quarter": {
