@@ -246,17 +246,47 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
 
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
     product_details = {}
+    product_deals = []  # individual per-deal records with close dates (for chronological commission)
     product_breakdown = {}
     product_count = {}
-    for pr in product_records:
-        parent = pr.get('Parent_Id', {})
-        parent_id = parent.get('id') if isinstance(parent, dict) else None
-        if parent_id in won_deal_ids:
-            prod = pr.get('Producto', {})
-            pname = prod.get('name', 'Otro') if isinstance(prod, dict) else 'Otro'
-            entidad = pr.get('Entidades', '') or ''
-            amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
-            # Group by (producto, entidad)
+
+    if product_records:
+        for pr in product_records:
+            parent = pr.get('Parent_Id', {})
+            parent_id = parent.get('id') if isinstance(parent, dict) else None
+            if parent_id in won_deal_ids:
+                prod = pr.get('Producto', {})
+                pname = prod.get('name', 'Otro') if isinstance(prod, dict) else 'Otro'
+                entidad = pr.get('Entidades', '') or ''
+                amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
+                close_date = (pr.get('Created_Time', '') or '')[:10]
+                key = (pname, entidad)
+                if key not in product_details:
+                    product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
+                product_details[key]['veces'] += 1
+                product_details[key]['total'] += amount
+                product_breakdown[pname] = product_breakdown.get(pname, 0) + amount
+                product_count[pname] = product_count.get(pname, 0) + 1
+                product_deals.append({
+                    'producto': pname,
+                    'entidad': entidad,
+                    'total': amount,
+                    'close_date': close_date
+                })
+    else:
+        # Fallback: extract product info from won deal names (format: "ClientName - ProductName")
+        for d in won_deals:
+            deal_name = d.get('Deal_Name', '') or ''
+            amount = float(d.get('Total_Aportaciones', 0) or 0)
+            close_date = (d.get('Closing_Date', '') or '')[:10]
+            if ' - ' in deal_name:
+                parts = deal_name.split(' - ')
+                pname = parts[-1].strip()
+            else:
+                pname = 'Planificación'
+            if not pname:
+                pname = 'Otro'
+            entidad = ''
             key = (pname, entidad)
             if key not in product_details:
                 product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
@@ -264,6 +294,12 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
             product_details[key]['total'] += amount
             product_breakdown[pname] = product_breakdown.get(pname, 0) + amount
             product_count[pname] = product_count.get(pname, 0) + 1
+            product_deals.append({
+                'producto': pname,
+                'entidad': entidad,
+                'total': amount,
+                'close_date': close_date
+            })
 
     # Advisor performance: won deals by owner
     advisor_won = {}
@@ -347,11 +383,9 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
             contact_id_to_created[cid] = created
 
     for d in won_deals:
-        contact_ref = d.get('Contact_Name')
-        if isinstance(contact_ref, dict):
-            cid = contact_ref.get('id')
-            if cid:
-                contact_ids_in_deals.add(cid)
+        cid = d.get('_contact_id')
+        if cid:
+            contact_ids_in_deals.add(cid)
 
     # Count contacts in this period that match won deal contacts
     converted_ids = {cid for cid in contact_ids_in_deals if cid in contact_id_to_created}
@@ -363,10 +397,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     days_to_convert = []
     contact_to_earliest_close = {}
     for d in won_deals:
-        contact_ref = d.get('Contact_Name')
-        if isinstance(contact_ref, dict):
-            cid = contact_ref.get('id')
-            if cid and cid in converted_ids:
+        cid = d.get('_contact_id')
+        if cid and cid in converted_ids:
                 closed = _parse_date(d.get('Closing_Date'))
                 if closed:
                     if cid not in contact_to_earliest_close or closed < contact_to_earliest_close[cid]:
@@ -404,6 +436,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "product_breakdown": dict(sorted(product_breakdown.items(), key=lambda x: -x[1])),
         "product_count": dict(sorted(product_count.items(), key=lambda x: -x[1])),
         "product_details": sorted(product_details.values(), key=lambda x: -x['total']),
+        "product_deals": product_deals,
         "advisor_ranking_won": advisor_ranking_won,
         "advisor_ranking_aportacion": advisor_ranking_aportacion,
         "pipeline_stages": ordered_pipeline,
@@ -506,7 +539,17 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
                   if (pr.get('Parent_Id') or {}).get('id') in advisor_won_ids]
     
     # Filter contacts by this advisor
-    advisor_contacts = [c for c in contacts_all if c.get('Owner') == advisor_name]
+    # Primary method: find contact IDs linked to this advisor's deals (more reliable than Owner field)
+    advisor_deal_contact_ids = set()
+    for d in advisor_deals:
+        cid = d.get('_contact_id')
+        if cid:
+            advisor_deal_contact_ids.add(cid)
+
+    advisor_contacts = [c for c in contacts_all if c.get('id') in advisor_deal_contact_ids]
+    # Fallback: if no deal-linked contacts, use Owner field
+    if not advisor_contacts:
+        advisor_contacts = [c for c in contacts_all if c.get('Owner') == advisor_name]
 
     # ── All-time stats (compact) ──
     closed_won = [d for d in advisor_deals if 'Ganado' in (d.get('Stage') or '')]
@@ -539,28 +582,6 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
     for d in advisor_deals:
         stage = d.get('Stage', 'Sin etapa')
         all_time['deals']['by_stage'][stage] = all_time['deals']['by_stage'].get(stage, 0) + 1
-
-    # Product breakdown for all_time (from won deals)
-    at_product_details = {}
-    at_product_breakdown = {}
-    at_product_count = {}
-    for pr in advisor_pf:
-        prod = pr.get('Producto', {})
-        pname = prod.get('name', 'Otro') if isinstance(prod, dict) else 'Otro'
-        entidad = pr.get('Entidades', '') or ''
-        amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
-        key = (pname, entidad)
-        if key not in at_product_details:
-            at_product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
-        at_product_details[key]['veces'] += 1
-        at_product_details[key]['total'] += amount
-        at_product_breakdown[pname] = at_product_breakdown.get(pname, 0) + amount
-        at_product_count[pname] = at_product_count.get(pname, 0) + 1
-
-    all_time['product_breakdown'] = at_product_breakdown
-    all_time['product_count'] = at_product_count
-    all_time['product_details'] = list(at_product_details.values())
-    all_time['products_closed_count'] = sum(detail['veces'] for detail in at_product_details.values())
 
     # ── Period stats (reuse compute_period_stats with filtered data) ──
     yesterday_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Ayer", in_yesterday)
@@ -678,7 +699,14 @@ def main():
         'Created_Time', 'Closing_Date', 'Tag', 'Lead_Conversion_Time',
         'Overall_Sales_Duration', 'Sales_Cycle_Duration'
     ]
-    deals = [simplify(d, deal_fields) for d in deals_raw]
+    # Preserve contact ID before simplify() strips Contact_Name dict to just name string
+    deals = []
+    for d in deals_raw:
+        simplified = simplify(d, deal_fields)
+        cn = d.get('Contact_Name', {})
+        if isinstance(cn, dict):
+            simplified['_contact_id'] = cn.get('id')
+        deals.append(simplified)
     print(f"    -> {len(deals)} ofertas")
 
     # ── Products ──

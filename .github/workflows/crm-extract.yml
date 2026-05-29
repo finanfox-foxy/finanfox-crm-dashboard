@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name "Foxy 🦊"
           git config user.email "foxy@finanfox.com"
-          git add data/zoho-crm.json
+          git add data/
           git diff --staged --quiet || git commit -m "📊 CRM data update $(date +'%Y-%m-%d %H:%M')"
           git push
 
