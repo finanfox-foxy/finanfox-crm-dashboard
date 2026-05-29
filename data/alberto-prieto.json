@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-05-29T15:37:30Z",
+  "timestamp": "2026-05-29T17:12:18Z",
   "generated_at": "2026-05-29",
   "today": "2026-05-29",
   "yesterday": "2026-05-28",
@@ -19,9 +19,9 @@
         }
       },
       "deals": {
-        "total": 173,
+        "total": 174,
         "by_stage": {
-          "Cerrado Ganado": 33,
+          "Cerrado Ganado": 34,
           "Aceptado/Falta Firma": 8,
           "Cerrado Perdido": 97,
           "Análisis Financiero": 9,
@@ -31,15 +31,15 @@
           "Asesoramiento": 1
         },
         "by_owner": {
-          "Alberto Prieto": 173
+          "Alberto Prieto": 174
         },
-        "pipeline_value": 616566.0,
-        "total_aportaciones": 616566.0,
-        "avg_deal_size": 3563.97,
-        "closed_won": 33,
-        "closed_won_value": 559116.0,
+        "pipeline_value": 617406.0,
+        "total_aportaciones": 617406.0,
+        "avg_deal_size": 3548.31,
+        "closed_won": 34,
+        "closed_won_value": 559956.0,
         "closed_lost": 97,
-        "conversion_rate": 19.1
+        "conversion_rate": 19.5
       }
     },
     "yesterday": {
@@ -120,19 +120,19 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 87,
-      "new_deals": 87,
-      "won_deals": 21,
+      "new_contacts": 88,
+      "new_deals": 88,
+      "won_deals": 22,
       "lost_deals": 53,
-      "won_value": 407677.0,
-      "total_aportacion_won": 407677.0,
+      "won_value": 408517.0,
+      "total_aportacion_won": 408517.0,
       "product_breakdown": {
-        "Monefit": 340100.0,
+        "Monefit": 340940.0,
         "Compra Única": 65177.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
-        "Monefit": 11,
+        "Monefit": 12,
         "Compra Única": 8,
         "PIAS Estrategia 5": 2
       },
@@ -140,8 +140,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 11,
-          "total": 340100.0
+          "veces": 12,
+          "total": 340940.0
         },
         {
           "producto": "Compra Única",
@@ -157,6 +157,15 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 840.0,
+          "close_date": "2026-05-29",
+          "fecha_inicio": "2026-05-29",
+          "objetivo_financiero": "Colchón de seguridad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -350,15 +359,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 21,
-          "total_aportacion": 407677.0
+          "won": 22,
+          "total_aportacion": 408517.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 21,
-          "total_aportacion": 407677.0
+          "won": 22,
+          "total_aportacion": 408517.0
         }
       ],
       "pipeline_stages": {
@@ -368,13 +377,13 @@
         "Reasesoramiento": 5,
         "Revisando Propuesta": 7,
         "Aceptado/Falta Firma": 5,
-        "Cerrado Ganado": 21,
+        "Cerrado Ganado": 22,
         "Cerrado Perdido": 53
       },
-      "pipeline_value": 458927.0,
-      "win_rate": 24.1,
-      "avg_days_to_win": 6.9,
-      "products_closed_count": 21,
+      "pipeline_value": 459767.0,
+      "win_rate": 25.0,
+      "avg_days_to_win": 6.6,
+      "products_closed_count": 22,
       "conversion_clientes": {
         "total_contacts": 0,
         "converted_contacts": 0,
@@ -407,24 +416,24 @@
         "26": 4,
         "27": 7,
         "28": 4,
-        "29": 2
+        "29": 3
       }
     },
     "this_quarter": {
       "label": "Este Trimestre",
-      "new_contacts": 166,
-      "new_deals": 166,
-      "won_deals": 29,
+      "new_contacts": 167,
+      "new_deals": 167,
+      "won_deals": 30,
       "lost_deals": 95,
-      "won_value": 493216.0,
-      "total_aportacion_won": 493216.0,
+      "won_value": 494056.0,
+      "total_aportacion_won": 494056.0,
       "product_breakdown": {
-        "Monefit": 385470.0,
+        "Monefit": 386310.0,
         "Compra Única": 105346.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
-        "Monefit": 16,
+        "Monefit": 17,
         "Compra Única": 11,
         "PIAS Estrategia 5": 2
       },
@@ -432,8 +441,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 16,
-          "total": 385470.0
+          "veces": 17,
+          "total": 386310.0
         },
         {
           "producto": "Compra Única",
@@ -449,6 +458,15 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 840.0,
+          "close_date": "2026-05-29",
+          "fecha_inicio": "2026-05-29",
+          "objetivo_financiero": "Colchón de seguridad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -714,15 +732,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 29,
-          "total_aportacion": 493216.0
+          "won": 30,
+          "total_aportacion": 494056.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 29,
-          "total_aportacion": 493216.0
+          "won": 30,
+          "total_aportacion": 494056.0
         }
       ],
       "pipeline_stages": {
@@ -732,13 +750,13 @@
         "Reasesoramiento": 8,
         "Revisando Propuesta": 8,
         "Aceptado/Falta Firma": 8,
-        "Cerrado Ganado": 29,
+        "Cerrado Ganado": 30,
         "Cerrado Perdido": 95
       },
-      "pipeline_value": 550666.0,
-      "win_rate": 17.5,
-      "avg_days_to_win": 6.8,
-      "products_closed_count": 29,
+      "pipeline_value": 551506.0,
+      "win_rate": 18.0,
+      "avg_days_to_win": 6.5,
+      "products_closed_count": 30,
       "conversion_clientes": {
         "total_contacts": 0,
         "converted_contacts": 0,
@@ -774,24 +792,24 @@
         "26": 8,
         "27": 10,
         "28": 9,
-        "29": 8
+        "29": 9
       }
     },
     "this_year": {
       "label": "Este Año",
-      "new_contacts": 173,
-      "new_deals": 173,
-      "won_deals": 29,
+      "new_contacts": 174,
+      "new_deals": 174,
+      "won_deals": 30,
       "lost_deals": 97,
-      "won_value": 493216.0,
-      "total_aportacion_won": 493216.0,
+      "won_value": 494056.0,
+      "total_aportacion_won": 494056.0,
       "product_breakdown": {
-        "Monefit": 385470.0,
+        "Monefit": 386310.0,
         "Compra Única": 105346.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
-        "Monefit": 16,
+        "Monefit": 17,
         "Compra Única": 11,
         "PIAS Estrategia 5": 2
       },
@@ -799,8 +817,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 16,
-          "total": 385470.0
+          "veces": 17,
+          "total": 386310.0
         },
         {
           "producto": "Compra Única",
@@ -816,6 +834,15 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 840.0,
+          "close_date": "2026-05-29",
+          "fecha_inicio": "2026-05-29",
+          "objetivo_financiero": "Colchón de seguridad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -1081,15 +1108,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 29,
-          "total_aportacion": 493216.0
+          "won": 30,
+          "total_aportacion": 494056.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 29,
-          "total_aportacion": 493216.0
+          "won": 30,
+          "total_aportacion": 494056.0
         }
       ],
       "pipeline_stages": {
@@ -1099,13 +1126,13 @@
         "Reasesoramiento": 8,
         "Revisando Propuesta": 8,
         "Aceptado/Falta Firma": 8,
-        "Cerrado Ganado": 29,
+        "Cerrado Ganado": 30,
         "Cerrado Perdido": 97
       },
-      "pipeline_value": 550666.0,
-      "win_rate": 16.8,
-      "avg_days_to_win": 6.8,
-      "products_closed_count": 29,
+      "pipeline_value": 551506.0,
+      "win_rate": 17.2,
+      "avg_days_to_win": 6.5,
+      "products_closed_count": 30,
       "conversion_clientes": {
         "total_contacts": 0,
         "converted_contacts": 0,
@@ -1141,7 +1168,7 @@
         "26": 8,
         "27": 11,
         "28": 9,
-        "29": 11,
+        "29": 12,
         "30": 2,
         "31": 1
       }
@@ -1563,7 +1590,7 @@
         {
           "stage": "Llamada Pendiente",
           "count": 9,
-          "pct_of_total": 8.2,
+          "pct_of_total": 8.1,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -1571,7 +1598,7 @@
         {
           "stage": "Análisis Financiero",
           "count": 9,
-          "pct_of_total": 8.2,
+          "pct_of_total": 8.1,
           "conversion_from_prev": 100.0,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -1595,7 +1622,7 @@
         {
           "stage": "Revisando Propuesta",
           "count": 7,
-          "pct_of_total": 6.4,
+          "pct_of_total": 6.3,
           "conversion_from_prev": null,
           "conversion_from_top": 77.8,
           "cmp_count": null
@@ -1612,25 +1639,25 @@
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 21,
-          "pct_of_total": 19.1,
+          "count": 22,
+          "pct_of_total": 19.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 233.3,
+          "conversion_from_top": 244.4,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 53,
-          "pct_of_total": 48.2,
+          "pct_of_total": 47.7,
           "conversion_from_prev": null,
           "conversion_from_top": 588.9,
           "cmp_count": null
         }
       ],
       "active_total": 36,
-      "won_total": 21,
+      "won_total": 22,
       "lost_total": 53,
-      "total_pipeline": 110
+      "total_pipeline": 111
     },
     "this_quarter": {
       "stage_order": [
@@ -1696,25 +1723,25 @@
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 29,
-          "pct_of_total": 17.4,
+          "count": 30,
+          "pct_of_total": 17.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 322.2,
+          "conversion_from_top": 333.3,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 95,
-          "pct_of_total": 56.9,
+          "pct_of_total": 56.5,
           "conversion_from_prev": null,
           "conversion_from_top": 1055.6,
           "cmp_count": 2
         }
       ],
       "active_total": 43,
-      "won_total": 29,
+      "won_total": 30,
       "lost_total": 95,
-      "total_pipeline": 167
+      "total_pipeline": 168
     },
     "this_year": {
       "stage_order": [
@@ -1780,25 +1807,25 @@
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 29,
-          "pct_of_total": 17.2,
+          "count": 30,
+          "pct_of_total": 17.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 322.2,
+          "conversion_from_top": 333.3,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 97,
-          "pct_of_total": 57.4,
+          "pct_of_total": 57.1,
           "conversion_from_prev": null,
           "conversion_from_top": 1077.8,
           "cmp_count": null
         }
       ],
       "active_total": 43,
-      "won_total": 29,
+      "won_total": 30,
       "lost_total": 97,
-      "total_pipeline": 169
+      "total_pipeline": 170
     }
   }
 }
