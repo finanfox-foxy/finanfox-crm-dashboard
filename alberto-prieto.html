@@ -1045,7 +1045,12 @@ function refreshData() {
     document.getElementById('dashboard-content').style.display = 'none';
     document.getElementById('loading-state').style.display = 'block';
     document.getElementById('error-state').style.display = 'none';
-    var zohoFetch = fetch('data/alberto-prieto.json?_=' + Date.now())
+    var ADVISOR_MAP = {'alberto-prieto': 'Alberto Prieto','jaime-becerra': 'Jaime Becerra','jose-orrequia': 'Jose Orrequia'};
+    var advisorSlug = window.location.pathname.replace(/.*\//, '').replace('.html', '');
+    var advisorName = ADVISOR_MAP[advisorSlug] || 'Asesor';
+    document.title = advisorName + ' - CRM Dashboard 🦊';
+    document.getElementById('advisor-title').textContent = advisorName;
+    var zohoFetch = fetch('data/' + advisorSlug + '.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     zohoFetch
         .then(function(data) {
@@ -1055,13 +1060,7 @@ function refreshData() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var zohoFetch = fetch('data/alberto-prieto.json?_=' + Date.now())
-        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
-    zohoFetch
-        .then(function(data) {
-            loadData(data);
-        })
-        .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
+    refreshData();
 });
     </script>
 </body>
