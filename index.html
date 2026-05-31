@@ -277,7 +277,18 @@
             .tab-btn { font-size: 0.8rem; padding: 12px 10px; }
         }
         .fin-period-panel { animation:fadeIn .2s ease; }
-</style>
+
+        /* ── Accordion Histórico ── */
+        .accordion-item { border:1px solid #e2e8f0; border-radius:8px; margin-bottom:8px; overflow:hidden; background:#fff; }
+        .accordion-header { display:flex; justify-content:space-between; align-items:center; padding:14px 18px; cursor:pointer; user-select:none; transition:background .15s; }
+        .accordion-header:hover { background:#f8fafc; }
+        .accordion-header .month-label { font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:10px; }
+        .accordion-header .month-summary { font-size:0.78rem; color:var(--text-muted); display:flex; align-items:center; gap:12px; }
+        .accordion-arrow { transition:transform .2s; font-size:0.8rem; margin-left:8px; }
+        .accordion-arrow.open { transform:rotate(180deg); }
+        .accordion-body { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+        .accordion-body.open { max-height:5000px; }
+        .accordion-inner { padding:18px; border-top:1px solid #e2e8f0; }
 </head>
 <body>
     <div class="top-bar">
@@ -317,6 +328,7 @@
                     <button class="tab-btn" data-tab="this_quarter" onclick="switchTab('this_quarter')">🗓️ Este Trimestre</button>
                     <button class="tab-btn" data-tab="this_year" onclick="switchTab('this_year')">📆 Este Año</button>
                     <button class="tab-btn" data-tab="mayo2026" onclick="switchTab('mayo2026')">📊 Análisis Mayo</button>
+                    <button class="tab-btn" data-tab="historico2026" onclick="switchTab('historico2026')">📅 Histórico 2026</button>
                     <button class="tab-btn" data-tab="all_time" onclick="switchTab('all_time')">🌐 Global</button>
                 </div>
 
@@ -427,6 +439,11 @@
                 <!-- Mayo 2026 - Análisis Profundo -->
                 <div class="tab-panel" id="panel-mayo2026">
                     <div id="mayo-content"></div>
+                </div>
+
+                <!-- Histórico 2026 -->
+                <div class="tab-panel" id="panel-historico2026">
+                    <div id="historico-content"></div>
                 </div>
 
                 <!-- Global -->
@@ -997,6 +1014,7 @@ function refreshUI() {
     renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
     renderPeriodTab('this_year', stats, (currentData.comparison && currentData.comparison.this_year ? currentData.comparison.this_year.stats : null), 'this_year');
     renderMayoAnalysis();
+    renderHistorico2026();
     renderGlobalTab(stats);
     renderDealsTable();
 }
@@ -1698,6 +1716,184 @@ function renderMayoAnalysis() {
     html += '<div style="margin-top:12px;padding:12px 16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:0.82rem">';
     html += '<strong>🎯 Próximos pasos:</strong> Mejorar lead scoring + campo UTM en formularios + recordatorios automáticos de citas (+ Jose necesita disciplina de cierre semanal para evitar batchs) + sesión con Jaime para replicar su método.';
     html += '</div></div>';
+
+    container.innerHTML = html;
+}
+
+function toggleMonth(monthKey) {
+    var body = document.getElementById('month-' + monthKey);
+    var arrow = document.querySelector('.accordion-header[data-month="' + monthKey + '"] .accordion-arrow');
+    if (!body) return;
+    var isOpen = body.classList.contains('open');
+    // Close all others
+    document.querySelectorAll('.accordion-body').forEach(function(b) { b.classList.remove('open'); });
+    document.querySelectorAll('.accordion-arrow').forEach(function(a) { a.classList.remove('open'); });
+    // Toggle clicked
+    if (!isOpen) {
+        body.classList.add('open');
+        if (arrow) arrow.classList.add('open');
+    }
+}
+
+function renderHistorico2026() {
+    var container = document.getElementById('historico-content');
+    if (!container) return;
+    var deals = currentData.deals;
+    if (!deals) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
+
+    function fmt(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:0}); }
+    function fmtDec(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+    function round(v) { return Math.round(v); }
+    function bar(pct,c) { return '<div style="height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden"><div style="height:8px;width:'+Math.min(pct,100)+'%;background:'+c+';border-radius:4px"></div></div>'; }
+
+    var monthLabels = {
+        '2026-05':'Mayo 2026','2026-04':'Abril 2026','2026-03':'Marzo 2026',
+        '2026-02':'Febrero 2026','2026-01':'Enero 2026'
+    };
+    var monthOrder = ['2026-05','2026-04','2026-03','2026-02','2026-01'];
+
+    // ── Compute per-month stats from deals ──
+    var byMonth = {};
+    monthOrder.forEach(function(m) { byMonth[m] = {won:0,lost:0,vol_won:0,vol_lost:0,created:0,deals:[],open:0}; });
+
+    deals.forEach(function(d) {
+        var cl = (d.Closing_Date || '').substring(0,7);
+        var ct = (d.Created_Time || '').substring(0,7);
+        var stage = d.Stage || '';
+        var amt = parseFloat(d.Amount) || 0;
+        var owner = d.Owner || d['Deal Owner'] || '';
+        var name = d.Deal_Name || d['Deal Name'] || '';
+
+        // Per closing month
+        if (byMonth[cl]) {
+            if (stage === 'Cerrado Ganado') { byMonth[cl].won++; byMonth[cl].vol_won += amt; byMonth[cl].deals.push({name:name,amt:amt,owner:owner}); }
+            else if (stage === 'Cerrado Perdido') { byMonth[cl].lost++; byMonth[cl].vol_lost += amt; }
+        }
+        // Per created month
+        if (byMonth[ct]) { byMonth[ct].created++; }
+        // Pipeline open
+        if (byMonth[cl] && stage !== 'Cerrado Ganado' && stage !== 'Cerrado Perdido') {
+            byMonth[cl].open++;
+        }
+    });
+
+    // ── Product inference ──
+    function inferProduct(name) {
+        var n = (name || '').toLowerCase();
+        if (n.indexOf('monefit') >= 0) return 'Monefit';
+        if (n.indexOf('depósito') >= 0 || n.indexOf('cuenta deposito') >= 0) return 'Cuenta Depósito';
+        if (n.indexOf('planificacion') >= 0 || n.indexOf('planificación') >= 0 || n.indexOf('plan financ') >= 0) return 'Planificación Financiera';
+        if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0) return 'Compra Única';
+        if (n.indexOf('pias') >= 0 || n.indexOf('estrategia') >= 0) return 'PIAS';
+        if (n.indexOf('trm') >= 0) return 'TRM';
+        if (n.indexOf('compra experta') >= 0) return 'Compra Experta';
+        if (n.indexOf('crowdfunding') >= 0 || n.indexOf('proyecto') >= 0) return 'Crowdfunding';
+        return 'Otros';
+    }
+
+    function productBreakdown(dealsArr) {
+        var prods = {};
+        dealsArr.forEach(function(d) {
+            var p = inferProduct(d.name);
+            prods[p] = (prods[p] || 0) + d.amt;
+        });
+        return Object.keys(prods).sort(function(a,b){return prods[b]-prods[a];}).map(function(k){return {name:k,vol:prods[k]};});
+    }
+
+    // ── Build HTML ──
+    var html = '';
+    html += '<h3 style="margin-top:0;margin-bottom:16px">📅 <span style="color:var(--accent)">Histórico Mensual</span> — 2026</h3>';
+    html += '<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px">Haz clic en un mes para expandir. Se cierra automáticamente al abrir otro.</p>';
+
+    var prevMonthVol = null;
+    monthOrder.forEach(function(mk) {
+        var m = byMonth[mk];
+        var label = monthLabels[mk];
+        var isSignificant = m.created >= 5 && m.won + m.lost >= 2;
+        var totalClosed = m.won + m.lost;
+        var winRate = totalClosed > 0 ? (m.won / totalClosed * 100).toFixed(1) : '-';
+        var prevLabel = monthOrder[monthOrder.indexOf(mk) + 1];
+        var prev = prevLabel ? byMonth[prevLabel] : null;
+        var vsPrev = '';
+        if (prev && prev.won > 0) {
+            var change = ((m.vol_won - prev.vol_won) / prev.vol_won * 100);
+            var arrowIcon = change > 0 ? '📈' : change < 0 ? '📉' : '➡️';
+            vsPrev = arrowIcon + ' <span style="color:' + (change >= 0 ? 'var(--success)' : 'var(--error)') + ';font-weight:600">' + (change >= 0 ? '+' : '') + change.toFixed(0) + '%</span>';
+        }
+
+        // Sort top deals
+        var topDeals = m.deals.slice().sort(function(a,b){return b.amt-a.amt;}).slice(0,5);
+
+        // Product breakdown from won deals
+        var prods = productBreakdown(m.deals);
+        var totalProd = prods.reduce(function(s,p){return s+p.vol;}, 0);
+
+        if (!isSignificant) {
+            html += '<div class="accordion-item" style="opacity:0.5;pointer-events:none">';
+            html += '<div class="accordion-header"><span class="month-label">' + label + '</span><span class="month-summary">Sin datos significativos</span></div></div>';
+            return;
+        }
+
+        html += '<div class="accordion-item">';
+        html += '<div class="accordion-header" data-month="' + mk + '" onclick="toggleMonth(\'' + mk + '\')">';
+        html += '<span class="month-label">' + label + ' ' + vsPrev + '</span>';
+        html += '<span class="month-summary">';
+        html += '<span>🏆 ' + fmt(m.vol_won) + '</span>';
+        html += '<span>✅ ' + m.won + ' won</span>';
+        html += '<span>❌ ' + m.lost + ' lost</span>';
+        html += '<span>📊 ' + m.created + ' creados</span>';
+        html += '<span class="accordion-arrow">▼</span>';
+        html += '</span></div>';
+        html += '<div class="accordion-body" id="month-' + mk + '">';
+        html += '<div class="accordion-inner">';
+
+        // KPI grid
+        html += '<div class="crm-grid" style="margin-bottom:14px;grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">';
+        html += '<div class="crm-card success" style="padding:10px"><div class="value" style="font-size:1rem">' + fmt(m.vol_won) + '</div><div class="label" style="font-size:0.7rem">Volumen ganado</div></div>';
+        html += '<div class="crm-card accent" style="padding:10px"><div class="value" style="font-size:1rem">' + m.won + '</div><div class="label" style="font-size:0.7rem">Deals ganados</div></div>';
+        html += '<div class="crm-card warning" style="padding:10px"><div class="value" style="font-size:1rem;color:var(--warning)">' + m.lost + '</div><div class="label" style="font-size:0.7rem">Deals perdidos</div></div>';
+        html += '<div class="crm-card" style="padding:10px;border-color:' + (parseFloat(winRate)>=30?'var(--success)':parseFloat(winRate)>=15?'var(--warning)':'var(--error)') + '"><div class="value" style="font-size:1rem;color:' + (parseFloat(winRate)>=30?'var(--success)':parseFloat(winRate)>=15?'var(--warning)':'var(--error)') + '">' + winRate + '%</div><div class="label" style="font-size:0.7rem">Tasa cierre</div></div>';
+        html += '<div class="crm-card" style="padding:10px"><div class="value" style="font-size:1rem">' + fmt(m.won > 0 ? m.vol_won/m.won : 0) + '</div><div class="label" style="font-size:0.7rem">Ticket medio</div></div>';
+        html += '<div class="crm-card" style="padding:10px"><div class="value" style="font-size:1rem">' + m.created + '</div><div class="label" style="font-size:0.7rem">Nuevos creados</div></div>';
+        html += '</div>';
+
+        // Product breakdown
+        if (prods.length > 0) {
+            html += '<h4 style="margin:0 0 8px;font-size:0.82rem">📦 Productos</h4>';
+            html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
+            html += '<thead><tr><th>Producto</th><th>Volumen</th><th>%</th><th></th></tr></thead><tbody>';
+            var prodColors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444','#14b8a6','#6366f1'];
+            prods.forEach(function(p,i) {
+                var pct = totalProd > 0 ? (p.vol/totalProd*100).toFixed(1) : 0;
+                html += '<tr><td>' + p.name + '</td><td>' + fmt(p.vol) + '</td><td>' + pct + '%</td><td style="width:80px">' + bar(pct, prodColors[i % prodColors.length]) + '</td></tr>';
+            });
+            html += '</tbody></table></div>';
+        }
+
+        // Top deals
+        if (topDeals.length > 0) {
+            html += '<h4 style="margin:12px 0 8px;font-size:0.82rem">🏆 Top 5 Deals</h4>';
+            html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
+            html += '<thead><tr><th>#</th><th>Asesor</th><th>Importe</th><th>Deal</th></tr></thead><tbody>';
+            topDeals.forEach(function(t,i) {
+                html += '<tr><td>' + (i+1) + '</td><td>' + t.owner + '</td><td><strong>' + fmt(t.amt) + '</strong></td><td>' + (t.name||'').substring(0,45) + '</td></tr>';
+            });
+            html += '</tbody></table></div>';
+        }
+
+        // Pipeline remaining at month end
+        if (m.open > 0) {
+            html += '<div style="margin-top:10px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.72rem;color:var(--text-muted)">';
+            html += '📌 <strong>' + m.open + ' oportunidades</strong> siguen abiertas a cierre de mes';
+            html += '</div>';
+        }
+
+        html += '</div></div></div>';
+    });
+
+    if (html.indexOf('accordion-item') < 0) {
+        html = '<p class="loading">No hay datos históricos disponibles.</p>';
+    }
 
     container.innerHTML = html;
 }
