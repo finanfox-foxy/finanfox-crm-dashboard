@@ -1486,6 +1486,8 @@ function renderMayoAnalysis() {
     html += '<div style="font-size:1.1rem;font-weight:700;color:#9a3412">🔥 Mayo ha sido un mes histórico</div>';
     html += '<p style="color:#7c2d12;font-size:0.85rem;margin:6px 0 0">';
     html += 'Casi multiplicáis por <strong>4,3</strong> el volumen de abril. ' + fmt(mayDeals.length) + ' deals creados, el ticket medio subió un <strong>' + (avgPrevTicket > 0 ? ((avgTicket - avgPrevTicket)/avgPrevTicket*100).toFixed(0) : 'N/A') + '%</strong>. Los 3 asesores mejoraron.';
+    html += '<br><em>Nota: la cifra de perdidos está inflada porque Jose cerró de golpe oportunidades antiguas de abril que tenía en "Llamada Pendiente".';
+    html += ' Limpieza administrativa, no pérdidas reales del mes.</em>';
     html += '</p></div>';
 
     // === DEAL SIZE DISTRIBUTION ===
@@ -1534,7 +1536,7 @@ function renderMayoAnalysis() {
         html += '</tr>';
     });
     html += '</tbody></table></div>';
-    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f8fafc;border-radius:4px">* Alex tiene tasa alta porque gestiona leads directos/CEO</div></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f8fafc;border-radius:4px">* Alex tiene tasa alta porque gestiona leads directos/CEO. Los perdidos de Jose están inflados por cierre batch de pipeline arrastrado de abril.</div></div>';
 
     // Lost reasons by advisor
     html += '<div class="chart-container"><h3>❌ Motivos de Pérdida por Asesor</h3>';
@@ -1560,7 +1562,7 @@ function renderMayoAnalysis() {
     });
     html += '</tbody></table></div>';
     html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#fef2f2;border-radius:4px">';
-    html += '<strong>⚠️ Jose:</strong> 91,2% pérdidas por "No interesado" — problema de calificación.';
+    html += '<strong>⚠️ Jose:</strong> 91,2% pérdidas por "No interesado" — pero <em>parcialmente explicado</em> porque cerró de golpe oportunidades antiguas de "Llamada Pendiente" que arrastraba de abril. Limpieza administrativa.';
     html += '<br><strong>⚠️ Jaime:</strong> 41,4% "No apareció" — necesita mejores recordatorios.';
     html += '<br><strong>⚠️ Alberto:</strong> 55,7% "No interesado" + 29,9% "No apareció" — mixto.';
     html += '</div></div>';
@@ -1676,12 +1678,13 @@ function renderMayoAnalysis() {
     html += '<li><strong>Alberto cierra rápido</strong> — 6,5 días de ciclo. Más leads = más volumen.</li>';
     html += '<li><strong>Deals entre €5K-€30K se cierran solos</strong> — 96-100% de éxito.</li>';
     html += '<li><strong>Mayo récord</strong> — 4,3x el volumen de abril. Tendencia clara 📈</li>';
+    html += '<li><strong>Jose tiene potencial</strong> — su tasa de cierre real es mejor de lo que muestran los números (limpieza de pipeline infló los perdidos).</li>';
     html += '</ul></div>';
     // Improve
     html += '<div style="background:#fef2f2;border-radius:10px;padding:16px;border:1px solid #fecaca">';
     html += '<h4 style="color:#dc2626;margin:0 0 8px">⚠️ Lo que hay que arreglar (urgente)</h4>';
     html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
-    html += '<li><strong>Lead scoring de Jose</strong> — 91% pérdidas por "No interesado". Filtro previo.</li>';
+    html += '<li><strong>Lead scoring para Jose</strong> — tiene 91% pérdidas pero parte es limpieza de pipeline arrastrado. Aún así, filtrar leads fríos antes de asignar.</li>';
     html += '<li><strong>Umbral mínimo €5K</strong> — deals pequeños tienen 9,5% cierre. O automatizar o descartar.</li>';
     html += '<li><strong>Falta teléfono en 90% contactos</strong> — sin teléfono no se puede calificar bien.</li>';
     html += '<li><strong>Sin UTMs / fuente de lead</strong> — no se puede hacer atribución de campañas.</li>';
@@ -1689,7 +1692,7 @@ function renderMayoAnalysis() {
     html += '</ul></div>';
     html += '</div>';
     html += '<div style="margin-top:12px;padding:12px 16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:0.82rem">';
-    html += '<strong>🎯 Próximos pasos:</strong> Lead scoring + campo UTM en formularios + recordatorios automáticos de citas + sesión con Jaime para replicar su método.';
+    html += '<strong>🎯 Próximos pasos:</strong> Mejorar lead scoring + campo UTM en formularios + recordatorios automáticos de citas (+ Jose necesita disciplina de cierre semanal para evitar batchs) + sesión con Jaime para replicar su método.';
     html += '</div></div>';
 
     container.innerHTML = html;
