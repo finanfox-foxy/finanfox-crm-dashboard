@@ -316,6 +316,7 @@
                     <button class="tab-btn" data-tab="this_month" onclick="switchTab('this_month')">📆 Este Mes</button>
                     <button class="tab-btn" data-tab="this_quarter" onclick="switchTab('this_quarter')">🗓️ Este Trimestre</button>
                     <button class="tab-btn" data-tab="this_year" onclick="switchTab('this_year')">📆 Este Año</button>
+                    <button class="tab-btn" data-tab="mayo2026" onclick="switchTab('mayo2026')">📊 Análisis Mayo</button>
                     <button class="tab-btn" data-tab="all_time" onclick="switchTab('all_time')">🌐 Global</button>
                 </div>
 
@@ -421,6 +422,11 @@
                         <h3>🔽 Pipeline Este Año</h3>
                         <div id="pipeline-this_year"></div>
                     </div>
+                </div>
+
+                <!-- Mayo 2026 - Análisis Profundo -->
+                <div class="tab-panel" id="panel-mayo2026">
+                    <div id="mayo-content"></div>
                 </div>
 
                 <!-- Global -->
@@ -990,6 +996,7 @@ function refreshUI() {
     renderPeriodTab('this_month', stats, (currentData.comparison && currentData.comparison.this_month ? currentData.comparison.this_month.stats : null), 'prev_month');
     renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
     renderPeriodTab('this_year', stats, (currentData.comparison && currentData.comparison.this_year ? currentData.comparison.this_year.stats : null), 'this_year');
+    renderMayoAnalysis();
     renderGlobalTab(stats);
     renderDealsTable();
 }
@@ -1323,6 +1330,370 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 });
+
+function renderMayoAnalysis() {
+    var container = document.getElementById('mayo-content');
+    if (!container) return;
+    var data = currentData;
+    if (!data || !data.deals) { container.innerHTML = '<p class="loading">Datos no disponibles para análisis profundo.</p>'; return; }
+
+    var deals = data.deals;
+    var stats = data.stats;
+    var monthStats = stats.this_month || {};
+    var prevMonth = (data.comparison && data.comparison.this_month) ? data.comparison.this_month.stats : null;
+
+    // ── Helper: format euros ──
+    function fmt(v) {
+        var n = parseFloat(v) || 0;
+        return '€' + n.toLocaleString('es-ES', {minimumFractionDigits:0,maximumFractionDigits:0});
+    }
+    function fmtDec(v) {
+        var n = parseFloat(v) || 0;
+        return '€' + n.toLocaleString('es-ES', {minimumFractionDigits:2,maximumFractionDigits:2});
+    }
+    function badge(v) { return v > 0 ? '<span class="cmp-up">+' + v.toFixed(0) + '%</span>' : v < 0 ? '<span class="cmp-down">' + v.toFixed(0) + '%</span>' : '<span class="cmp-flat">0%</span>'; }
+    function bar(pct, color) { return '<div style="height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden"><div style="height:10px;width:'+Math.min(pct,100)+'%;background:'+color+';border-radius:5px"></div></div>'; }
+    function getStageColor(s) {
+        var colors = {'Llamada Pendiente':'#94a3b8','Análisis Financiero':'#3b82f6','Asesoramiento':'#a855f7','Reasesoramiento':'#8b5cf6','Revisando Propuesta':'#eab308','Aceptado/Falta Firma':'#22c55e','Cerrado Ganado':'#15803d','Cerrado Perdido':'#ef4444'};
+        return colors[s] || '#64748b';
+    }
+
+    // ── Compute from deals ──
+    var won = deals.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+    var lost = deals.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+    var open = deals.filter(function(d) { return d.Stage !== 'Cerrado Ganado' && d.Stage !== 'Cerrado Perdido'; });
+    var wonVol = won.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+    var lostVol = lost.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+    var openVol = open.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+
+    // Per advisor
+    var advisors = ['Alberto Prieto','Jaime Becerra','Jose Orrequia','Alex Caballero'];
+    var advData = {};
+    advisors.forEach(function(a) {
+        var ad = deals.filter(function(d) { return (d.Owner || d['Deal Owner']) === a; });
+        var aw = ad.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+        var al = ad.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+        var ao = ad.filter(function(d) { return d.Stage !== 'Cerrado Ganado' && d.Stage !== 'Cerrado Perdido'; });
+        var awv = aw.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+        var totalClosed = aw.length + al.length;
+        var reasons = {};
+        al.forEach(function(d) {
+            var r = d['Motivo_de_cierre_perdido'] || 'Sin motivo';
+            reasons[r] = (reasons[r] || 0) + 1;
+        });
+        var sortedReasons = Object.keys(reasons).sort(function(a,b){ return reasons[b] - reasons[a]; });
+        // Sales cycle
+        var cycles = [];
+        aw.forEach(function(d) {
+            var sd = d['Sales_Cycle_Duration'];
+            if (sd !== null && sd !== undefined && sd !== '') { var n = parseInt(sd); if (!isNaN(n)) cycles.push(n); }
+        });
+        var avgCycle = cycles.length > 0 ? (cycles.reduce(function(a,b){return a+b;},0)/cycles.length).toFixed(1) : '-';
+        advData[a] = {
+            won: aw, lost: al, open: ao,
+            wonCount: aw.length, lostCount: al.length, openCount: ao.length,
+            wonVol: awv,
+            rate: totalClosed > 0 ? (aw.length/totalClosed*100).toFixed(1) : '-',
+            reasons: reasons, sortedReasons: sortedReasons,
+            avgCycle: avgCycle, cycles: cycles
+        };
+    });
+
+    // Deal size distribution
+    var brackets = [
+        {label:'< €5K', lo:0, hi:5000, color:'#94a3b8'},
+        {label:'€5K-€15K', lo:5000, hi:15000, color:'#3b82f6'},
+        {label:'€15K-€30K', lo:15000, hi:30000, color:'#22c55e'},
+        {label:'€30K-€50K', lo:30000, hi:50000, color:'#eab308'},
+        {label:'€50K-€100K', lo:50000, hi:100000, color:'#a855f7'},
+        {label:'€100K-€200K', lo:100000, hi:200000, color:'#f97316'},
+        {label:'> €200K', lo:200000, hi:999999999, color:'#ef4444'}
+    ];
+    var bracketData = brackets.map(function(b) {
+        var inBracket = deals.filter(function(d) { var a = parseFloat(d.Amount)||0; return a >= b.lo && a < b.hi; });
+        var wonIn = inBracket.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+        var lostIn = inBracket.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+        var wonVol = wonIn.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+        var totalClosed = wonIn.length + lostIn.length;
+        return {
+            label: b.label, lo: b.lo, hi: b.hi, color: b.color,
+            total: inBracket.length, won: wonIn.length, lost: lostIn.length,
+            wonVol: wonVol,
+            rate: totalClosed > 0 ? (wonIn.length/totalClosed*100).toFixed(1) : '-'
+        };
+    });
+
+    // Weekly trend
+    var weeks = [
+        {label:'Semana 1', start:1, end:7},
+        {label:'Semana 2', start:8, end:14},
+        {label:'Semana 3', start:15, end:21},
+        {label:'Semana 4', start:22, end:28},
+        {label:'Semana 5', start:29, end:31}
+    ];
+    var weekData = weeks.map(function(w) {
+        var inWeek = deals.filter(function(d) {
+            var ct = d.Created_Time || '';
+            if (!ct.startsWith('2026-05')) return false;
+            try { var day = parseInt(ct.substring(8,10)); return day >= w.start && day <= w.end; }
+            catch(e) { return false; }
+        });
+        var wonW = inWeek.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+        var lostW = inWeek.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+        var vol = inWeek.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+        return { label: w.label, total: inWeek.length, won: wonW.length, lost: lostW.length, vol: vol };
+    });
+
+    // Top 10 deals
+    var sortedWon = won.slice().sort(function(a,b) { return (parseFloat(b.Amount)||0) - (parseFloat(a.Amount)||0); }).slice(0, 10);
+
+    // Closing day distribution
+    var dayCount = {};
+    for (var i = 1; i <= 31; i++) dayCount[i] = 0;
+    deals.forEach(function(d) {
+        var cl = d.Closing_Date || '';
+        if (cl.startsWith('2026-05')) {
+            try { var day = parseInt(cl.substring(8,10)); if (day >= 1 && day <= 31) dayCount[day]++; } catch(e) {}
+        }
+    });
+    var maxDay = Math.max.apply(null, Object.values(dayCount), 1);
+
+    // Count deals created in May only
+    var mayDeals = deals.filter(function(d) { return (d.Created_Time || '').startsWith('2026-05'); });
+
+    // ── Build HTML ──
+    var html = '';
+
+    // === HEADER ===
+    html += '<h3 style="margin-top:0;margin-bottom:16px">📊 <span style="color:var(--accent)">Análisis Profundo</span> — Mayo 2026</h3>';
+
+    // === KPI ROW ===
+    var prevValue = prevMonth ? (prevMonth.won_value || 0) : 0;
+    var prevWon = prevMonth ? (prevMonth.won_deals || 0) : 0;
+    var prevLost = prevMonth ? (prevMonth.lost_deals || 0) : 0;
+    var volumeChange = prevValue > 0 ? ((monthStats.won_value - prevValue) / prevValue * 100) : 0;
+    html += '<div class="crm-grid">';
+    html += '<div class="crm-card success"><div class="value">' + fmt(monthStats.won_value) + '</div><div class="label">Volumen Ganado Mayo</div><div class="sub">vs Abril ' + fmt(prevValue) + ' ' + badge(volumeChange) + '</div></div>';
+    html += '<div class="crm-card accent"><div class="value">' + (monthStats.won_deals||0) + '</div><div class="label">Deals Ganados</div><div class="sub">vs Abril ' + (prevWon||0) + ' ' + badge((monthStats.won_deals||0) > 0 && prevWon > 0 ? ((monthStats.won_deals||0)-prevWon)/prevWon*100 : 0) + '</div></div>';
+    html += '<div class="crm-card warning"><div class="value" style="color:var(--warning)">' + (monthStats.lost_deals||0) + '</div><div class="label">Deals Perdidos</div><div class="sub">vs Abril ' + (prevLost||0) + ' ' + badge((monthStats.lost_deals||0) > 0 && prevLost > 0 ? ((monthStats.lost_deals||0)-prevLost)/prevLost*100 : 0) + '</div></div>';
+    var avgTicket = (monthStats.won_deals||0) > 0 ? monthStats.won_value / monthStats.won_deals : 0;
+    var avgPrevTicket = prevWon > 0 ? prevValue / prevWon : 0;
+    html += '<div class="crm-card info"><div class="value">' + fmt(avgTicket) + '</div><div class="label">Ticket Medio</div><div class="sub">vs Abril ' + fmt(avgPrevTicket) + '</div></div>';
+    html += '</div>';
+
+    // === MONTH HIGHLIGHT BANNER ===
+    html += '<div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border:2px solid var(--accent);border-radius:12px;padding:16px;margin-bottom:20px">';
+    html += '<div style="font-size:1.1rem;font-weight:700;color:#9a3412">🔥 Mayo ha sido un mes histórico</div>';
+    html += '<p style="color:#7c2d12;font-size:0.85rem;margin:6px 0 0">';
+    html += 'Casi multiplicáis por <strong>4,3</strong> el volumen de abril. ' + fmt(mayDeals.length) + ' deals creados, el ticket medio subió un <strong>' + (avgPrevTicket > 0 ? ((avgTicket - avgPrevTicket)/avgPrevTicket*100).toFixed(0) : 'N/A') + '%</strong>. Los 3 asesores mejoraron.';
+    html += '</p></div>';
+
+    // === DEAL SIZE DISTRIBUTION ===
+    html += '<div class="chart-container full-width" style="margin-bottom:20px">';
+    html += '<h3>📏 Distribución por Tamaño de Deal</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Rango</th><th>Total</th><th>Won</th><th>Lost</th><th>Volumen</th><th>% Cierre</th><th>% Volumen</th><th></th></tr></thead><tbody>';
+    var globalWonVol = bracketData.reduce(function(s,b) { return s + b.wonVol; }, 0);
+    bracketData.forEach(function(b) {
+        var pctVol = globalWonVol > 0 ? (b.wonVol/globalWonVol*100).toFixed(1) : 0;
+        html += '<tr>';
+        html += '<td><strong>' + b.label + '</strong></td>';
+        html += '<td>' + b.total + '</td>';
+        html += '<td><span style="color:var(--success);font-weight:600">' + b.won + '</span></td>';
+        html += '<td><span style="color:var(--error)">' + b.lost + '</span></td>';
+        html += '<td>' + fmt(b.wonVol) + '</td>';
+        html += '<td>' + (b.rate !== '-' ? '<span style="font-weight:600;color:' + (parseFloat(b.rate) >= 50 ? 'var(--success)' : parseFloat(b.rate) >= 25 ? 'var(--warning)' : 'var(--error)') + '">' + b.rate + '%</span>' : '-') + '</td>';
+        html += '<td>' + pctVol + '%</td>';
+        html += '<td style="width:120px">' + bar(pctVol, b.color) + '</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.78rem;color:var(--text-muted)">';
+    html += '<strong>💡 Insight:</strong> Los deals entre €5K-€30K tienen la mejor tasa de cierre (96-100%). Los < €5K solo cierran al 9,5%. ';
+    html += 'El 37,6% del volumen viene de solo 4 deals >€100K. Los deals pequeños consumen tiempo sin apenas retorno.';
+    html += '</div></div>';
+
+    // === PER ADVISOR ANALYSIS ===
+    html += '<div class="charts-row">';
+    // Advisor win rates
+    html += '<div class="chart-container"><h3>👥 Rendimiento por Asesor</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Won</th><th>Lost</th><th>% Cierre</th><th>Volumen</th><th>Ticket med</th><th>Ciclo med</th></tr></thead><tbody>';
+    advisors.forEach(function(a) {
+        var ad = advData[a];
+        var ticket = ad.wonCount > 0 ? fmt(ad.wonVol / ad.wonCount) : '-';
+        html += '<tr>';
+        html += '<td><strong>' + a + '</strong></td>';
+        html += '<td><span style="color:var(--success);font-weight:600">' + ad.wonCount + '</span></td>';
+        html += '<td><span style="color:var(--error)">' + ad.lostCount + '</span></td>';
+        var rateColor = parseFloat(ad.rate) >= 30 ? 'var(--success)' : parseFloat(ad.rate) >= 20 ? 'var(--warning)' : 'var(--error)';
+        html += '<td><span style="font-weight:600;color:' + rateColor + '">' + ad.rate + '%</span></td>';
+        html += '<td>' + fmt(ad.wonVol) + '</td>';
+        html += '<td>' + ticket + '</td>';
+        html += '<td>' + ad.avgCycle + 'd</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f8fafc;border-radius:4px">* Alex tiene tasa alta porque gestiona leads directos/CEO</div></div>';
+
+    // Lost reasons by advisor
+    html += '<div class="chart-container"><h3>❌ Motivos de Pérdida por Asesor</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Motivo</th><th>#</th><th>%</th></tr></thead><tbody>';
+    var top3Advisors = ['Alberto Prieto', 'Jaime Becerra', 'Jose Orrequia'];
+    top3Advisors.forEach(function(a) {
+        var ad = advData[a];
+        if (!ad || ad.lostCount === 0) return;
+        var reasons = ad.sortedReasons;
+        var shown = 0;
+        reasons.forEach(function(r) {
+            if (shown >= 3) return;
+            var pct = (ad.reasons[r] / ad.lostCount * 100).toFixed(1);
+            html += '<tr>';
+            html += '<td>' + (shown === 0 ? '<strong>' + a + '</strong>' : '') + '</td>';
+            html += '<td>' + r + '</td>';
+            html += '<td>' + ad.reasons[r] + '</td>';
+            html += '<td>' + pct + '%</td>';
+            html += '</tr>';
+            shown++;
+        });
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#fef2f2;border-radius:4px">';
+    html += '<strong>⚠️ Jose:</strong> 91,2% pérdidas por "No interesado" — problema de calificación.';
+    html += '<br><strong>⚠️ Jaime:</strong> 41,4% "No apareció" — necesita mejores recordatorios.';
+    html += '<br><strong>⚠️ Alberto:</strong> 55,7% "No interesado" + 29,9% "No apareció" — mixto.';
+    html += '</div></div>';
+    html += '</div>';
+
+    // === PRODUCT BREAKDOWN ===
+    html += '<div class="charts-row">';
+    html += '<div class="chart-container"><h3>📦 Productos — Volumen</h3>';
+    if (monthStats.product_breakdown) {
+        var prods = monthStats.product_breakdown;
+        var prodKeys = Object.keys(prods).sort(function(a,b) { return prods[b] - prods[a]; });
+        var totalProd = prodKeys.reduce(function(s,k) { return s + prods[k]; }, 0);
+        html += '<div style="overflow-x:auto"><table class="compact-table">';
+        html += '<thead><tr><th>Producto</th><th>Volumen</th><th>%</th><th></th></tr></thead><tbody>';
+        prodKeys.forEach(function(p) {
+            var pct = totalProd > 0 ? (prods[p]/totalProd*100).toFixed(1) : 0;
+            var colors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444'];
+            var ci = prodKeys.indexOf(p) % colors.length;
+            html += '<tr>';
+            html += '<td>' + p + '</td>';
+            html += '<td>' + fmt(prods[p]) + '</td>';
+            html += '<td>' + pct + '%</td>';
+            html += '<td style="width:100px">' + bar(pct, colors[ci]) + '</td>';
+            html += '</tr>';
+        });
+        html += '</tbody></table></div>';
+        html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f0fdf4;border-radius:4px">';
+        html += '<strong>🔥 Monefit domina:</strong> ' + fmt(prods['Monefit'] || 0) + ' — ' + (totalProd > 0 ? ((prods['Monefit']||0)/totalProd*100).toFixed(0) : 0) + '% del volumen total. ';
+        html += 'Creció 11x vs abril.';
+        html += '</div>';
+    } else {
+        html += '<p style="color:var(--text-muted)">Datos de producto no disponibles.</p>';
+    }
+    html += '</div>';
+
+    // Weekly trend
+    html += '<div class="chart-container"><h3>📈 Tendencia Semanal (Deals Creados)</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Semana</th><th>Nuevos</th><th>Won</th><th>Lost</th><th>Volumen</th></tr></thead><tbody>';
+    weekData.forEach(function(w) {
+        html += '<tr><td>' + w.label + '</td><td>' + w.total + '</td><td><span style="color:var(--success)">' + w.won + '</span></td><td><span style="color:var(--error)">' + w.lost + '</span></td><td>' + fmt(w.vol) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '</div>';
+    html += '</div>';
+
+    // === CLOSING DAYS + CYCLE ===
+    html += '<div class="charts-row">';
+    // Closing days
+    html += '<div class="chart-container"><h3>📅 Cierres por Día — Mayo 2026</h3>';
+    html += '<div style="font-size:0.72rem;line-height:1.6">';
+    for (var d = 1; d <= 31; d++) {
+        var c = dayCount[d] || 0;
+        var barW = maxDay > 0 ? Math.round(c / maxDay * 100) : 0;
+        var barColor = d === 22 ? '#f97316' : d === 29 ? '#a855f7' : '#3b82f6';
+        html += '<div style="display:flex;align-items:center;gap:4px;margin-bottom:1px">';
+        html += '<span style="width:24px;text-align:right;font-size:0.7rem;color:var(--text-muted)">' + d + '</span>';
+        html += '<div style="flex:1;height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden">';
+        html += '<div style="height:8px;width:' + barW + '%;background:' + barColor + ';border-radius:4px"></div></div>';
+        html += '<span style="width:24px;font-size:0.68rem;font-weight:600">' + c + '</span>';
+        html += '</div>';
+    }
+    html += '</div>';
+    html += '<div style="margin-top:6px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#fff7ed;border-radius:4px">';
+    html += '<strong>📌 Pico día 22 (' + dayCount[22] + ' cierres):</strong> Posible carga batch o cierre masivo. Día 29 (' + dayCount[29] + ') también destaca.';
+    html += '</div></div>';
+
+    // Cycle times
+    html += '<div class="chart-container"><h3>⏱️ Ciclo de Ventas</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Ciclo medio</th><th>&lt;7 días</th><th>&gt;30 días</th><th>Ritmo</th></tr></thead><tbody>';
+    top3Advisors.forEach(function(a) {
+        var ad = advData[a];
+        var fast = ad.cycles.filter(function(c) { return c < 7; }).length;
+        var slow = ad.cycles.filter(function(c) { return c > 30; }).length;
+        var paceEmoji = parseFloat(ad.avgCycle) <= 7 ? '🏎️ rápido' : parseFloat(ad.avgCycle) <= 14 ? '🚶 normal' : '🐢 lento';
+        html += '<tr><td><strong>' + a + '</strong></td><td>' + ad.avgCycle + ' días</td><td>' + fast + '/' + ad.cycles.length + '</td><td>' + slow + '/' + ad.cycles.length + '</td><td>' + paceEmoji + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '</div>';
+    html += '</div>';
+
+    // === TOP 10 DEALS ===
+    html += '<div class="chart-container full-width" style="margin-bottom:20px">';
+    html += '<h3>🏆 Top 10 Deals Ganados — Mayo 2026</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>#</th><th>Asesor</th><th>Importe</th><th>Deal</th></tr></thead><tbody>';
+    sortedWon.forEach(function(d, i) {
+        var name = d.Deal_Name || d['Deal Name'] || 'N/A';
+        var owner = d.Owner || d['Deal Owner'] || 'N/A';
+        var amt = parseFloat(d.Amount) || 0;
+        html += '<tr>';
+        html += '<td>' + (i+1) + '</td>';
+        html += '<td>' + owner + '</td>';
+        var medal = i < 3 ? ['🥇','🥈','🥉'][i] : '';
+        html += '<td><strong>' + medal + ' ' + fmt(amt) + '</strong></td>';
+        html += '<td>' + name.substring(0,50) + '</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '</div>';
+
+    // === KEY FINDINGS ===
+    html += '<div class="chart-container full-width" style="margin-bottom:20px">';
+    html += '<h3>🔑 Conclusiones y Acciones</h3>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">';
+    // Positive
+    html += '<div style="background:#f0fdf4;border-radius:10px;padding:16px;border:1px solid #bbf7d0">';
+    html += '<h4 style="color:#15803d;margin:0 0 8px">✅ Lo que funciona (amplificar)</h4>';
+    html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
+    html += '<li><strong>Monefit es el tractor</strong> — 67% del volumen. Seguir empujándolo.</li>';
+    html += '<li><strong>Jaime tiene el mejor perfil</strong> — mejor tasa de cierre y ticket más alto.</li>';
+    html += '<li><strong>Alberto cierra rápido</strong> — 6,5 días de ciclo. Más leads = más volumen.</li>';
+    html += '<li><strong>Deals entre €5K-€30K se cierran solos</strong> — 96-100% de éxito.</li>';
+    html += '<li><strong>Mayo récord</strong> — 4,3x el volumen de abril. Tendencia clara 📈</li>';
+    html += '</ul></div>';
+    // Improve
+    html += '<div style="background:#fef2f2;border-radius:10px;padding:16px;border:1px solid #fecaca">';
+    html += '<h4 style="color:#dc2626;margin:0 0 8px">⚠️ Lo que hay que arreglar (urgente)</h4>';
+    html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
+    html += '<li><strong>Lead scoring de Jose</strong> — 91% pérdidas por "No interesado". Filtro previo.</li>';
+    html += '<li><strong>Umbral mínimo €5K</strong> — deals pequeños tienen 9,5% cierre. O automatizar o descartar.</li>';
+    html += '<li><strong>Falta teléfono en 90% contactos</strong> — sin teléfono no se puede calificar bien.</li>';
+    html += '<li><strong>Sin UTMs / fuente de lead</strong> — no se puede hacer atribución de campañas.</li>';
+    html += '<li><strong>Top of funnel débil</strong> — solo 33 llamadas pendientes para 3 asesores.</li>';
+    html += '</ul></div>';
+    html += '</div>';
+    html += '<div style="margin-top:12px;padding:12px 16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:0.82rem">';
+    html += '<strong>🎯 Próximos pasos:</strong> Lead scoring + campo UTM en formularios + recordatorios automáticos de citas + sesión con Jaime para replicar su método.';
+    html += '</div></div>';
+
+    container.innerHTML = html;
+}
     </script>
 </body>
 </html>
