@@ -486,7 +486,7 @@
                 <p class="cmp-context" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px" id="financial-period"></p>
                 <div id="financial-loading">Cargando datos financieros…</div>
                 
-<div class="chart-container full-width" style="margin-top:8px">
+<div class="chart-container full-width" style="margin-top:24px">
                         <h3>📈 Evolución Mensual</h3>
                         <canvas id="financial-monthly-chart"></canvas>
                     </div><div id="financial-content" style="display:none">
@@ -499,6 +499,7 @@
                     </div>
                     <div class="fin-period-panel" id="fin-period-this_month">
                         <div class="crm-grid" id="finkpi-this_month"></div>
+                        <div id="finsummary-this_month" class="cmp-context" style="margin-top:12px;font-size:0.85rem;padding:12px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border-color)"></div>
                         <div style="display:flex;flex-wrap:wrap;gap:16px">
                             <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Ingresos</h3><canvas id="finpie-income-this_month"></canvas></div>
                             <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Gastos</h3><canvas id="finpie-expense-this_month"></canvas></div>
@@ -506,6 +507,7 @@
                     </div>
                     <div class="fin-period-panel" id="fin-period-this_quarter" style="display:none">
                         <div class="crm-grid" id="finkpi-this_quarter"></div>
+                        <div id="finsummary-this_quarter" class="cmp-context" style="margin-top:12px;font-size:0.85rem;padding:12px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border-color)"></div>
                         <div style="display:flex;flex-wrap:wrap;gap:16px">
                             <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Ingresos</h3><canvas id="finpie-income-this_quarter"></canvas></div>
                             <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Gastos</h3><canvas id="finpie-expense-this_quarter"></canvas></div>
@@ -513,6 +515,7 @@
                     </div>
                     <div class="fin-period-panel" id="fin-period-this_year" style="display:none">
                         <div class="crm-grid" id="finkpi-this_year"></div>
+                        <div id="finsummary-this_year" class="cmp-context" style="margin-top:12px;font-size:0.85rem;padding:12px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border-color)"></div>
                         <div style="display:flex;flex-wrap:wrap;gap:16px">
                             <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Ingresos</h3><canvas id="finpie-income-this_year"></canvas></div>
                             <div class="chart-container" style="flex:1;min-width:280px"><h3>📊 Gastos</h3><canvas id="finpie-expense-this_year"></canvas></div>
@@ -1122,21 +1125,58 @@ function aggregateFinancialMonths(fd, monthList) {
 
 /** Render KPI cards for a financial period with optional comparison */
 function renderFinancialKPIs(data, prevData, containerId) {
-    var h = '';
-    h += '<div class="kpi-card"><div class="kpi-value">' + formatEUR(data.income_total) + '</div>';
-    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.income_total, prevData.income_total, true) + '</div>';
-    h += '<div class="kpi-label">💰 Ingresos</div></div>';
-    h += '<div class="kpi-card"><div class="kpi-value" style="color:var(--warning)">' + formatEUR(data.expenses_total) + '</div>';
-    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.expenses_total, prevData.expenses_total, true) + '</div>';
-    h += '<div class="kpi-label">📉 Gastos</div></div>';
     var mColor = data.margin >= 0 ? 'var(--success)' : '#ef4444';
-    h += '<div class="kpi-card"><div class="kpi-value" style="color:' + mColor + '">' + formatEUR(data.margin) + '</div>';
-    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.margin, prevData.margin, true) + '</div>';
-    h += '<div class="kpi-label">📈 Margen</div></div>';
-    h += '<div class="kpi-card"><div class="kpi-value">' + data.transaction_count + '</div>';
-    if (prevData) h += '<div class="kpi-sub">' + renderCmpBadge(data.transaction_count, prevData.transaction_count, true) + '</div>';
-    h += '<div class="kpi-label">📝 Operaciones</div></div>';
+    var marginPct = data.income_total > 0 ? (data.margin / data.income_total * 100).toFixed(1) : '0.0';
+    var h = '';
+    h += '<div class="crm-card accent"><div class="value-row"><div class="value">' + formatEUR(data.income_total) + '</div>' + (prevData ? renderCmpBadge(data.income_total, prevData.income_total, true) : '') + '</div><div class="label">💰 Ingresos</div></div>';
+    h += '<div class="crm-card warning"><div class="value-row"><div class="value" style="color:var(--warning)">' + formatEUR(data.expenses_total) + '</div>' + (prevData ? renderCmpBadge(data.expenses_total, prevData.expenses_total, true) : '') + '</div><div class="label">📉 Gastos</div></div>';
+    h += '<div class="crm-card success"><div class="value-row"><div class="value" style="color:' + mColor + '">' + formatEUR(data.margin) + '</div>' + (prevData ? renderCmpBadge(data.margin, prevData.margin, true) : '') + '</div><div class="label">📈 Margen</div><div class="sub">' + marginPct + '% sobre ingresos</div></div>';
     document.getElementById(containerId).innerHTML = h;
+}
+
+/** Render an executive summary text in Spanish for a financial period */
+function renderFinancialSummary(periodKey, data, prevData) {
+    var el = document.getElementById('finsummary-' + periodKey);
+    if (!el) return;
+    var marginPct = data.income_total > 0 ? (data.margin / data.income_total * 100).toFixed(1) : '0.0';
+    var direction = '';
+    var change = prevData ? data.margin - prevData.margin : 0;
+    if (data.margin > 0) {
+        direction = 'positivo';
+    } else if (data.margin === 0) {
+        direction = 'equilibrado';
+    } else {
+        direction = 'negativo';
+    }
+    var ingChange = '';
+    var gasChange = '';
+    if (prevData) {
+        var ingDiff = data.income_total - prevData.income_total;
+        var gasDiff = data.expenses_total - prevData.expenses_total;
+        ingChange = (ingDiff >= 0 ? '+' : '') + formatEUR(ingDiff);
+        gasChange = (gasDiff >= 0 ? '+' : '') + formatEUR(gasDiff);
+    }
+    var html = '';
+    html += '<strong>📋 Resumen ejecutivo</strong><br>';
+    html += 'Margen <strong>' + direction + '</strong> de <strong>' + formatEUR(data.margin) + '</strong>';
+    html += ' (' + marginPct + '% sobre ingresos).';
+    if (prevData && change !== 0) {
+        var changeDir = change >= 0 ? 'mejorado' : 'empeorado';
+        html += ' Ha ' + changeDir + ' en <strong>' + formatEUR(Math.abs(change)) + '</strong> vs. el periodo anterior.';
+    }
+    html += '<br>';
+    if (prevData) {
+        html += 'Ingresos: <strong>' + formatEUR(data.income_total) + '</strong> (' + ingChange + ' vs. anterior). ';
+        html += 'Gastos: <strong>' + formatEUR(data.expenses_total) + '</strong> (' + gasChange + ' vs. anterior).';
+    }
+    html += '<br>';
+    if (data.income_total > data.expenses_total) {
+        html += '✅ Los ingresos cubren los gastos con un excedente de ' + formatEUR(data.margin) + '.';
+    } else {
+        html += '⚠️ Los gastos superan los ingresos en ' + formatEUR(Math.abs(data.margin)) + '. ';
+        html += '<strong>Revisar partidas de gasto urgente.</strong>';
+    }
+    el.innerHTML = html;
 }
 
 /** Render a doughnut pie chart */
@@ -1203,6 +1243,7 @@ function renderFinancialPeriodTab(periodKey, fd) {
     renderFinancialKPIs(data, prevData, 'finkpi-' + periodKey);
     renderFinancialPie('finpie-income-' + periodKey, data.income_categories, data.sorted_income_cats);
     renderFinancialPie('finpie-expense-' + periodKey, data.expense_categories, data.sorted_expense_cats);
+    renderFinancialSummary(periodKey, data, prevData);
 }
 
 /** Switch financial sub-tab visibility */
