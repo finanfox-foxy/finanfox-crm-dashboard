@@ -655,7 +655,25 @@ function guessEntity(productName) {
     return '';
 }
 
+
+function _extractNameParts(deal) {
+    var dn = deal.Deal_Name || '';
+    var cn = deal.Contact_Name || {};
+    var clientName = typeof cn === 'object' ? (cn.name || '') : (typeof cn === 'string' ? cn : '');
+    var parts = dn.split(' - ');
+    var productPart = dn;
+    if (parts.length >= 2) {
+        clientName = parts[0].trim();
+        productPart = parts.slice(1).join(' - ').trim();
+    }
+    var prod = inferProduct(productPart);
+    var ent = guessEntity(prod);
+    return { producto: prod, entidad: ent, cliente: clientName };
+}
+
 function renderCommissionSectionForDeals(deals) {
+    var _cLkp = {};
+    (currentData.deals || []).forEach(function(d_){if(d_.Stage==='Cerrado Ganado'){var a=d_.Total_Aportaciones||d_.Amount||'0';var n_=d_.Contact_Name||{};_cLkp[a]=typeof n_==='object'?(n_.name||''):(typeof n_==='string'?n_:'');}});
     if (!deals || deals.length === 0) {
         return '<div class="chart-container full-width" style="margin-bottom:20px">' +
             '<h3>🎯 Objetivo mensual y comisiones</h3>' +
@@ -688,6 +706,7 @@ function renderCommissionSectionForDeals(deals) {
             thresholdReachedAt = idx;
         }
         dealsWithMeta.push({
+            cliente: d.cliente || _cLkp[d.total] || '',
             producto: d.producto,
             entidad: entity,
             total: d.total,
@@ -731,7 +750,7 @@ function renderCommissionSectionForDeals(deals) {
     html += '<div class="crm-grid" style="margin-bottom:12px">';
     html += '<div class="crm-card success"><div class="value">' + formatEUR(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
     html += '</div>';
-    html += '<table class="compact-table"><thead><tr><th>#</th><th>Producto</th><th>Entidad</th><th>Fecha Cierre</th><th>Inversión</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
+    html += '<table class="compact-table"><thead><tr><th>#</th><th>Cliente</th><th>Producto</th><th>Entidad</th><th>Fecha Cierre</th><th>Inversión</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
     var runningPct = 0;
     dealsWithMeta.forEach(function(item, idx) {
         runningPct += item.pct;
@@ -742,6 +761,7 @@ function renderCommissionSectionForDeals(deals) {
         var rowBg = hasComm ? 'rgba(34,197,94,0.04)' : (isThresh ? 'rgba(234,179,8,0.08)' : '');
         html += '<tr style="' + (rowBg ? 'background:' + rowBg : '') + '">';
         html += '<td style="font-size:0.75rem;color:var(--text-muted)"><span style="white-space:nowrap">#' + (idx + 1) + '</span></td>';
+        html += '<td style="font-size:0.72rem"><span style="white-space:nowrap">' + (item.cliente || '') + '</span></td>';
         html += '<td><strong>' + item.producto + '</strong></td>';
         html += '<td>' + item.entidad + '</td>';
         html += '<td style="font-size:0.72rem;color:var(--text-muted)">' + item.close_date + '</td>';
@@ -770,6 +790,8 @@ function renderCommissionSectionForDeals(deals) {
 
 function renderCommissionSection(stats) {
     var deals = stats.product_deals || [];
+    var _cLkp = {};
+    (currentData.deals || []).forEach(function(d_){if(d_.Stage==='Cerrado Ganado'){var a=d_.Total_Aportaciones||d_.Amount||'0';var n_=d_.Contact_Name||{};_cLkp[a]=typeof n_==='object'?(n_.name||''):(typeof n_==='string'?n_:'');}});
     // Determine current month from close_dates
     var now = new Date();
     var currentYear = now.getFullYear();
@@ -815,6 +837,7 @@ function renderCommissionSection(stats) {
             thresholdReachedAt = idx;
         }
         dealsWithMeta.push({
+            cliente: d.cliente || _cLkp[d.total] || '',
             producto: d.producto,
             entidad: entity,
             total: d.total,
@@ -874,7 +897,7 @@ function renderCommissionSection(stats) {
     html += '<div class="crm-card success"><div class="value">' + formatEUR(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
     html += '</div>';
     
-    html += '<table class="compact-table"><thead><tr><th>#</th><th>Producto</th><th>Entidad</th><th>Fecha Cierre</th><th>Inversión</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
+    html += '<table class="compact-table"><thead><tr><th>#</th><th>Cliente</th><th>Producto</th><th>Entidad</th><th>Fecha Cierre</th><th>Inversión</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
     var runningPct = 0;
     dealsWithMeta.forEach(function(item, idx) {
         runningPct += item.pct;
@@ -886,6 +909,7 @@ function renderCommissionSection(stats) {
         var rowBg = hasComm ? 'rgba(34,197,94,0.04)' : (isThreshold ? 'rgba(234,179,8,0.08)' : '');
         html += '<tr style="' + (rowBg ? 'background:' + rowBg : '') + '">';
         html += '<td style="font-size:0.75rem;color:var(--text-muted)"><span style="white-space:nowrap">#' + (idx + 1) + '</span></td>';
+        html += '<td style="font-size:0.72rem"><span style="white-space:nowrap">' + (item.cliente || '') + '</span></td>';
         html += '<td><strong>' + item.producto + '</strong></td>';
         html += '<td>' + item.entidad + '</td>';
         html += '<td style="font-size:0.72rem;color:var(--text-muted)">' + item.close_date + '</td>';
@@ -1235,12 +1259,12 @@ function renderHistorico2026() {
     function inferProduct(name) {
         var n = (name || '').toLowerCase();
         if (n.indexOf('monefit') >= 0) return 'Monefit';
-        if (n.indexOf('depósito') >= 0 || n.indexOf('cuenta deposito') >= 0) return 'Cuenta Depósito';
-        if (n.indexOf('planificacion') >= 0 || n.indexOf('planificación') >= 0 || n.indexOf('plan financ') >= 0) return 'Planificación Financiera';
-        if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0) return 'Compra Única';
         if (n.indexOf('pias') >= 0 || n.indexOf('estrategia') >= 0) return 'PIAS';
         if (n.indexOf('trm') >= 0) return 'TRM';
-        if (n.indexOf('compra experta') >= 0) return 'Compra Experta';
+        if (n.indexOf('depósito') >= 0 || n.indexOf('cuenta deposito') >= 0) return 'Cuenta Depósito';
+        if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0 || n.indexOf('compra experta') >= 0) return 'Compra Única';
+        if (n.indexOf('planificacion') >= 0 || n.indexOf('planificación') >= 0 || n.indexOf('plan financ') >= 0) return 'Planificación Financiera';
+        if (n.indexOf('silvergold') >= 0 || n.indexOf(' sg ') >= 0 || n.indexOf('sg-') >= 0 || n.indexOf('ccu') >= 0 || n.indexOf('opportunity') >= 0 || n.indexOf('oportunity') >= 0) return 'SilverGold';
         if (n.indexOf('crowdfunding') >= 0 || n.indexOf('proyecto') >= 0) return 'Crowdfunding';
         return 'Otros';
     }
@@ -1299,14 +1323,13 @@ function renderHistorico2026() {
         var totalProd = prods.reduce(function(s,p){return s+p.vol;}, 0);
         var topDeals = wonDeals.slice().sort(function(a,b){return (parseFloat(b.Amount)||0)-(parseFloat(a.Amount)||0);}).slice(0,5);
 
-        // Build product_deals from won deals for commission section
+        // Build product_deals from won deals with client names
         var monthProductDeals = [];
         wonDeals.forEach(function(wd) {
-            var pname = inferProduct(wd.Deal_Name || wd['Deal Name'] || '');
-            var entity = guessEntity(pname);
+            var parts = _extractNameParts(wd);
             var total = parseFloat(wd.Total_Aportaciones || wd.Amount || 0);
             var cd = (wd.Closing_Date || '').substring(0,10);
-            monthProductDeals.push({ producto: pname, entidad: entity, total: total, close_date: cd });
+            monthProductDeals.push({ producto: parts.producto, entidad: parts.entidad, total: total, close_date: cd, cliente: parts.cliente });
         });
         var commissionHtml = renderCommissionSectionForDeals(monthProductDeals);
 
@@ -1351,9 +1374,9 @@ function renderHistorico2026() {
         if (topDeals.length > 0) {
             html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">🏆 Top 5 Oportunidades Ganadas</h4>';
             html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
-            html += '<thead><tr><th>#</th><th>Importe</th><th>Inversión</th><th>Deal</th></tr></thead><tbody>';
+            html += '<thead><tr><th>#</th><th>Importe</th><th>Inversión</th><th>Cliente</th><th>Deal</th></tr></thead><tbody>';
             topDeals.forEach(function(t,i) {
-                html += '<tr><td>' + (i+1) + '</td><td><strong>' + fmt(t.Amount) + '</strong></td><td>' + fmt(t.Total_Aportaciones) + '</td><td>' + (t.Deal_Name||t['Deal Name']||'').substring(0,45) + '</td></tr>';
+                html += '<tr><td>' + (i+1) + '</td><td><strong>' + fmt(t.Amount) + '</strong></td><td>' + fmt(t.Total_Aportaciones) + '</td><td>' + _extractNameParts(t).cliente + '</td><td>' + (t.Deal_Name||t['Deal Name']||'').substring(0,42) + '</td></tr>';
             });
             html += '</tbody></table></div>';
         }
