@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-01T16:56:13Z",
+  "timestamp": "2026-06-01T19:46:57Z",
   "generated_at": "2026-06-01",
   "today": "2026-06-01",
   "yesterday": "2026-05-31",
@@ -22,11 +22,11 @@
         "total": 180,
         "by_stage": {
           "Cerrado Ganado": 34,
-          "Análisis Financiero": 11,
+          "Análisis Financiero": 10,
           "Llamada Pendiente": 8,
           "Aceptado/Falta Firma": 8,
           "Cerrado Perdido": 101,
-          "Reasesoramiento": 8,
+          "Reasesoramiento": 9,
           "Revisando Propuesta": 8,
           "Asesoramiento": 2
         },
@@ -761,9 +761,9 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 8,
-        "Análisis Financiero": 11,
+        "Análisis Financiero": 10,
         "Asesoramiento": 2,
-        "Reasesoramiento": 8,
+        "Reasesoramiento": 9,
         "Revisando Propuesta": 8,
         "Aceptado/Falta Firma": 8,
         "Cerrado Ganado": 30,
@@ -1170,9 +1170,9 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 8,
-        "Análisis Financiero": 11,
+        "Análisis Financiero": 10,
         "Asesoramiento": 2,
-        "Reasesoramiento": 8,
+        "Reasesoramiento": 9,
         "Revisando Propuesta": 8,
         "Aceptado/Falta Firma": 8,
         "Cerrado Ganado": 30,
@@ -1527,9 +1527,9 @@
         ],
         "pipeline_stages": {
           "Llamada Pendiente": 8,
-          "Análisis Financiero": 10,
+          "Análisis Financiero": 9,
           "Asesoramiento": 2,
-          "Reasesoramiento": 5,
+          "Reasesoramiento": 6,
           "Revisando Propuesta": 7,
           "Aceptado/Falta Firma": 5,
           "Cerrado Ganado": 22,
@@ -2015,8 +2015,8 @@
       "id": "862490000005087460",
       "Deal_Name": "Planificación de Juan Carlos Guzman",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Reasesoramiento",
+      "Probability": 60,
       "Contact_Name": "Juan Carlos Guzman",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -5961,33 +5961,33 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 11,
-          "pct_of_total": 6.3,
+          "count": 10,
+          "pct_of_total": 5.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 137.5,
+          "conversion_from_top": 125.0,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 2,
           "pct_of_total": 1.1,
-          "conversion_from_prev": 18.2,
+          "conversion_from_prev": 20.0,
           "conversion_from_top": 25.0,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 8,
-          "pct_of_total": 4.6,
+          "count": 9,
+          "pct_of_total": 5.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
+          "conversion_from_top": 112.5,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
           "count": 8,
           "pct_of_total": 4.6,
-          "conversion_from_prev": 100.0,
+          "conversion_from_prev": 88.9,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
@@ -6045,33 +6045,33 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 11,
-          "pct_of_total": 6.2,
+          "count": 10,
+          "pct_of_total": 5.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 137.5,
+          "conversion_from_top": 125.0,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 2,
           "pct_of_total": 1.1,
-          "conversion_from_prev": 18.2,
+          "conversion_from_prev": 20.0,
           "conversion_from_top": 25.0,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 8,
-          "pct_of_total": 4.5,
+          "count": 9,
+          "pct_of_total": 5.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
+          "conversion_from_top": 112.5,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
           "count": 8,
           "pct_of_total": 4.5,
-          "conversion_from_prev": 100.0,
+          "conversion_from_prev": 88.9,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
