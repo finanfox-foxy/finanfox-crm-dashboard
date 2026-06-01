@@ -1338,18 +1338,44 @@ function renderFinancialComparison() {
     catHtml += '</div>';
     document.getElementById('comparison-categories').innerHTML = catHtml;
 
-    // ── Annual projections ──
-    var projHtml = '<h3>📊 Estimaciones Anuales</h3><div style="display:flex;flex-wrap:wrap;gap:12px">';
-    ['2025_full','2026_jan_may_projection'].forEach(function(key) {
-        var e = estimates[key];
-        if (!e) return;
-        var label = key === '2025_full' ? '2025 (completo)' : '2026 (proy. Ene-May)';
-        projHtml += '<div class="kpi-card" style="flex:1;min-width:200px"><div class="kpi-label">' + label + '</div>';
-        projHtml += '<div class="kpi-value" style="font-size:1rem">' + formatEUR(e.annual_estimate.income) + '</div><div class="cmp-context" style="font-size:0.72rem">💰 Ingresos</div>';
-        projHtml += '<div class="kpi-value" style="font-size:1rem;color:var(--warning)">' + formatEUR(e.annual_estimate.expenses) + '</div><div class="cmp-context" style="font-size:0.72rem">📉 Gastos</div>';
-        projHtml += '<div class="kpi-value" style="font-size:1rem;color:' + (e.annual_estimate.margin >= 0 ? 'var(--success)' : '#ef4444') + '">' + formatEUR(e.annual_estimate.margin) + '</div><div class="cmp-context" style="font-size:0.72rem">📈 Margen</div>';
+    // ── Annual projections (KPI-style comparison cards) ──
+    var projHtml = '<h3>📊 Estimaciones Anuales</h3>';
+    projHtml += '<div class="crm-grid" style="grid-template-columns:repeat(3,1fr)">';
+    var e25 = estimates['2025_full'];
+    var e26 = estimates['2026_jan_may_projection'];
+    if (e25 && e26) {
+        // Income
+        var incVar = e26.annual_estimate.income - e25.annual_estimate.income;
+        var incPct = (incVar / e25.annual_estimate.income * 100).toFixed(1);
+        projHtml += '<div class="crm-card" style="border-top:3px solid #22c55e">';
+        projHtml += '<div class="value-row"><div class="value">' + formatEUR(e26.annual_estimate.income) + '</div><div class="cmp-badge" style="background:#22c55e20;color:#22c55e">+' + incPct + '%</div></div>';
+        projHtml += '<div class="label">💰 Ingresos · 2026 proy.</div>';
+        projHtml += '<div class="sub">2025: ' + formatEUR(e25.annual_estimate.income) + '</div>';
+        projHtml += '<div class="sub" style="color:var(--text-muted);font-size:0.72rem">' + formatEUR(e26.monthly_avg.income) + '/mes (2025: ' + formatEUR(e25.monthly_avg.income) + '/mes)</div>';
         projHtml += '</div>';
-    });
+        // Expenses
+        var expVar = e26.annual_estimate.expenses - e25.annual_estimate.expenses;
+        var expPct = (expVar / e25.annual_estimate.expenses * 100).toFixed(1);
+        projHtml += '<div class="crm-card" style="border-top:3px solid #E76F51">';
+        projHtml += '<div class="value-row"><div class="value" style="color:var(--warning)">' + formatEUR(e26.annual_estimate.expenses) + '</div><div class="cmp-badge" style="background:#E76F5120;color:#E76F51">+' + expPct + '%</div></div>';
+        projHtml += '<div class="label">📉 Gastos · 2026 proy.</div>';
+        projHtml += '<div class="sub">2025: ' + formatEUR(e25.annual_estimate.expenses) + '</div>';
+        projHtml += '<div class="sub" style="color:var(--text-muted);font-size:0.72rem">' + formatEUR(e26.monthly_avg.expenses) + '/mes (2025: ' + formatEUR(e25.monthly_avg.expenses) + '/mes)</div>';
+        projHtml += '</div>';
+        // Margin
+        var marVar = e26.annual_estimate.margin - e25.annual_estimate.margin;
+        var marPct = e25.annual_estimate.margin !== 0 ? (marVar / Math.abs(e25.annual_estimate.margin) * 100).toFixed(1) : 'NUEVO';
+        if (marVar > 0) marPct = '+' + marPct;
+        var marColor = e26.annual_estimate.margin >= 0 ? '#22c55e' : '#ef4444';
+        projHtml += '<div class="crm-card" style="border-top:3px solid #2A9D8F">';
+        projHtml += '<div class="value-row"><div class="value" style="color:#2A9D8F">' + formatEUR(e26.annual_estimate.margin) + '</div><div class="cmp-badge" style="background:#2A9D8F20;color:#2A9D8F">' + marPct + '</div></div>';
+        projHtml += '<div class="label">📈 Margen · 2026 proy.</div>';
+        projHtml += '<div class="sub">2025: ' + formatEUR(e25.annual_estimate.margin) + ' (' + (e25.annual_estimate.margin/e25.annual_estimate.income*100).toFixed(1) + '%)</div>';
+        projHtml += '<div class="sub" style="color:var(--text-muted);font-size:0.72rem">' + formatEUR(e26.monthly_avg.margin) + '/mes · ' + (e26.annual_estimate.margin/e26.annual_estimate.income*100).toFixed(1) + '% margen</div>';
+        projHtml += '</div>';
+    } else {
+        projHtml += '<div class="crm-card" style="grid-column:1/-1;text-align:center"><div class="label">Datos insuficientes para proyección</div></div>';
+    }
     projHtml += '</div>';
     document.getElementById('comparison-projections').innerHTML = projHtml;
 }
