@@ -729,8 +729,8 @@ function renderCommissionSectionForDeals(deals) {
         if (cumulativePct >= 1.0 && thresholdReachedAt === -1) {
             thresholdReachedAt = idx;
         }
+        var normProduct = normalizeProduct(d.producto, entity);
         dealsWithMeta.push({
-            var normProduct = normalizeProduct(d.producto, entity);
             cliente: d.cliente || _cLkp[d.total] || '',
             producto: normProduct,
             entidad: entity,
@@ -861,8 +861,8 @@ function renderCommissionSection(stats) {
         if (cumulativePct >= 1.0 && thresholdReachedAt === -1) {
             thresholdReachedAt = idx;
         }
+        var normProduct = normalizeProduct(d.producto, entity);
         dealsWithMeta.push({
-            var normProduct = normalizeProduct(d.producto, entity);
             cliente: d.cliente || _cLkp[d.total] || '',
             producto: normProduct,
             entidad: entity,
