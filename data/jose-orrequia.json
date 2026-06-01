@@ -1,10 +1,10 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-05-31T20:08:40Z",
-  "generated_at": "2026-05-31",
-  "today": "2026-05-31",
-  "yesterday": "2026-05-30",
-  "this_month": "2026-05",
+  "timestamp": "2026-06-01T02:00:21Z",
+  "generated_at": "2026-06-01",
+  "today": "2026-06-01",
+  "yesterday": "2026-05-31",
+  "this_month": "2026-06",
   "this_quarter_start": "2026-04-01",
   "this_quarter_end": "2026-06-30",
   "this_quarter_label": "Q2",
@@ -64,199 +64,6 @@
       "avg_days_to_win": null,
       "products_closed_count": 0,
       "conversion_clientes": {
-        "total_contacts": 0,
-        "converted_contacts": 0,
-        "ratio": 0.0,
-        "avg_days_to_convert": 0
-      },
-      "contacts_by_day": {
-        "30": 1
-      }
-    },
-    "this_month": {
-      "label": "Este Mes",
-      "new_contacts": 1,
-      "new_deals": 82,
-      "won_deals": 13,
-      "lost_deals": 107,
-      "won_value": 208000.0,
-      "total_aportacion_won": 208000.0,
-      "product_breakdown": {
-        "Cuenta Depósito Bonificada": 81000.0,
-        "Monefit": 77000.0,
-        "Compra Única": 50000.0
-      },
-      "product_count": {
-        "Monefit": 5,
-        "Cuenta Depósito Bonificada": 4,
-        "Compra Única": 4
-      },
-      "product_details": [
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "veces": 4,
-          "total": 81000.0
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "veces": 5,
-          "total": 77000.0
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "veces": 4,
-          "total": 50000.0
-        }
-      ],
-      "product_deals": [
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-05-27",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": ""
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 20000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 5000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-04",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 1000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-20",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-22",
-          "fecha_inicio": "2026-05-25",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-22",
-          "fecha_inicio": "2026-05-25",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": ""
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 20000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 6000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-20",
-          "objetivo_financiero": "Hijos",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 45000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-19",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-29",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        }
-      ],
-      "advisor_ranking_won": [
-        {
-          "name": "Jose Orrequia",
-          "won": 13,
-          "total_aportacion": 208000.0
-        }
-      ],
-      "advisor_ranking_aportacion": [
-        {
-          "name": "Jose Orrequia",
-          "won": 13,
-          "total_aportacion": 208000.0
-        }
-      ],
-      "pipeline_stages": {
-        "Llamada Pendiente": 17,
-        "Análisis Financiero": 9,
-        "Asesoramiento": 4,
-        "Reasesoramiento": 1,
-        "Cerrado Ganado": 13,
-        "Cerrado Perdido": 107
-      },
-      "pipeline_value": 258000.0,
-      "win_rate": 15.9,
-      "avg_days_to_win": 7.5,
-      "products_closed_count": 13,
-      "conversion_clientes": {
         "total_contacts": 1,
         "converted_contacts": 0,
         "ratio": 0.0,
@@ -265,6 +72,33 @@
       "contacts_by_day": {
         "31": 1
       }
+    },
+    "this_month": {
+      "label": "Este Mes",
+      "new_contacts": 0,
+      "new_deals": 0,
+      "won_deals": 0,
+      "lost_deals": 0,
+      "won_value": 0,
+      "total_aportacion_won": 0,
+      "product_breakdown": {},
+      "product_count": {},
+      "product_details": [],
+      "product_deals": [],
+      "advisor_ranking_won": [],
+      "advisor_ranking_aportacion": [],
+      "pipeline_stages": {},
+      "pipeline_value": 0.0,
+      "win_rate": null,
+      "avg_days_to_win": null,
+      "products_closed_count": 0,
+      "conversion_clientes": {
+        "total_contacts": 0,
+        "converted_contacts": 0,
+        "ratio": 0.0,
+        "avg_days_to_convert": 0
+      },
+      "contacts_by_day": {}
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -794,28 +628,79 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-05-29",
+      "previous": "2026-05-30",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 0,
-        "new_deals": 0,
-        "won_deals": 1,
-        "lost_deals": 34,
-        "won_value": 20250.0,
-        "total_aportacion_won": 20250.0,
+        "new_contacts": 1,
+        "new_deals": 1,
+        "won_deals": 0,
+        "lost_deals": 0,
+        "won_value": 0,
+        "total_aportacion_won": 0,
+        "product_breakdown": {},
+        "product_count": {},
+        "product_details": [],
+        "product_deals": [],
+        "advisor_ranking_won": [],
+        "advisor_ranking_aportacion": [],
+        "pipeline_stages": {
+          "Llamada Pendiente": 1
+        },
+        "pipeline_value": 0.0,
+        "win_rate": 0.0,
+        "avg_days_to_win": null,
+        "products_closed_count": 0,
+        "conversion_clientes": {
+          "total_contacts": 0,
+          "converted_contacts": 0,
+          "ratio": 0.0,
+          "avg_days_to_convert": 0
+        },
+        "contacts_by_day": {
+          "30": 1
+        }
+      }
+    },
+    "this_month": {
+      "previous": "2026-05",
+      "period_label": "mes anterior",
+      "stats": {
+        "label": "Mes Anterior",
+        "new_contacts": 1,
+        "new_deals": 82,
+        "won_deals": 13,
+        "lost_deals": 107,
+        "won_value": 208000.0,
+        "total_aportacion_won": 208000.0,
         "product_breakdown": {
-          "Cuenta Depósito Bonificada": 20250.0
+          "Cuenta Depósito Bonificada": 81000.0,
+          "Monefit": 77000.0,
+          "Compra Única": 50000.0
         },
         "product_count": {
-          "Cuenta Depósito Bonificada": 1
+          "Monefit": 5,
+          "Cuenta Depósito Bonificada": 4,
+          "Compra Única": 4
         },
         "product_details": [
           {
             "producto": "Cuenta Depósito Bonificada",
             "entidad": "The Real Money",
-            "veces": 1,
-            "total": 20250.0
+            "veces": 4,
+            "total": 81000.0
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "veces": 5,
+            "total": 77000.0
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "veces": 4,
+            "total": 50000.0
           }
         ],
         "product_deals": [
@@ -827,97 +712,76 @@
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
-          }
-        ],
-        "advisor_ranking_won": [
-          {
-            "name": "Jose Orrequia",
-            "won": 1,
-            "total_aportacion": 20250.0
-          }
-        ],
-        "advisor_ranking_aportacion": [
-          {
-            "name": "Jose Orrequia",
-            "won": 1,
-            "total_aportacion": 20250.0
-          }
-        ],
-        "pipeline_stages": {
-          "Cerrado Ganado": 1,
-          "Cerrado Perdido": 34
-        },
-        "pipeline_value": 20250.0,
-        "win_rate": null,
-        "avg_days_to_win": 2.0,
-        "products_closed_count": 1,
-        "conversion_clientes": {
-          "total_contacts": 0,
-          "converted_contacts": 0,
-          "ratio": 0.0,
-          "avg_days_to_convert": 0
-        },
-        "contacts_by_day": {}
-      }
-    },
-    "this_month": {
-      "previous": "2026-04",
-      "period_label": "mes anterior",
-      "stats": {
-        "label": "Mes Anterior",
-        "new_contacts": 95,
-        "new_deals": 95,
-        "won_deals": 7,
-        "lost_deals": 6,
-        "won_value": 92900.0,
-        "total_aportacion_won": 92900.0,
-        "product_breakdown": {
-          "Cuenta Depósito Bonificada": 65500.0,
-          "Monefit": 27400.0
-        },
-        "product_count": {
-          "Monefit": 4,
-          "Cuenta Depósito Bonificada": 3
-        },
-        "product_details": [
+          },
           {
             "producto": "Cuenta Depósito Bonificada",
             "entidad": "The Real Money",
-            "veces": 3,
-            "total": 65500.0
+            "total": 20250.0,
+            "close_date": "2026-05-26",
+            "fecha_inicio": "2026-05-29",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": ""
           },
           {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "veces": 4,
-            "total": 27400.0
-          }
-        ],
-        "product_deals": [
-          {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "total": 3000.0,
-            "close_date": "2026-04-30",
-            "fecha_inicio": "2026-04-17",
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 20000.0,
+            "close_date": "2026-05-26",
+            "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Monefit",
             "entidad": "Monefit",
-            "total": 4200.0,
-            "close_date": "2026-04-30",
-            "fecha_inicio": "2026-04-28",
+            "total": 5000.0,
+            "close_date": "2026-05-26",
+            "fecha_inicio": "2026-05-04",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
           {
-            "producto": "Cuenta Depósito Bonificada",
-            "entidad": "The Real Money",
-            "total": 25000.0,
-            "close_date": "2026-04-23",
-            "fecha_inicio": "",
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 1000.0,
+            "close_date": "2026-05-26",
+            "fecha_inicio": "2026-05-20",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10000.0,
+            "close_date": "2026-05-22",
+            "fecha_inicio": "2026-05-25",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10000.0,
+            "close_date": "2026-05-22",
+            "fecha_inicio": "2026-05-25",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10000.0,
+            "close_date": "2026-05-20",
+            "fecha_inicio": "2026-05-22",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": ""
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 20000.0,
+            "close_date": "2026-05-20",
+            "fecha_inicio": "2026-05-22",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
@@ -925,96 +789,73 @@
             "producto": "Cuenta Depósito Bonificada",
             "entidad": "The Real Money",
             "total": 20250.0,
-            "close_date": "2026-04-23",
-            "fecha_inicio": "2026-04-24",
-            "objetivo_financiero": "",
-            "plazo": ""
-          },
-          {
-            "producto": "Cuenta Depósito Bonificada",
-            "entidad": "The Real Money",
-            "total": 20250.0,
-            "close_date": "2026-04-21",
-            "fecha_inicio": "2026-04-22",
-            "objetivo_financiero": "",
-            "plazo": ""
+            "close_date": "2026-05-20",
+            "fecha_inicio": "2026-05-22",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Monefit",
             "entidad": "Monefit",
             "total": 6000.0,
-            "close_date": "2026-04-14",
-            "fecha_inicio": "2026-04-13",
-            "objetivo_financiero": "Obtener rentabilidad",
-            "plazo": ""
+            "close_date": "2026-05-20",
+            "fecha_inicio": "2026-05-20",
+            "objetivo_financiero": "Hijos",
+            "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Monefit",
             "entidad": "Monefit",
-            "total": 14200.0,
-            "close_date": "2026-04-14",
-            "fecha_inicio": "2026-04-13",
+            "total": 45000.0,
+            "close_date": "2026-05-20",
+            "fecha_inicio": "2026-05-19",
             "objetivo_financiero": "Obtener rentabilidad",
-            "plazo": ""
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Cuenta Depósito Bonificada",
+            "entidad": "The Real Money",
+            "total": 20250.0,
+            "close_date": "2026-04-29",
+            "fecha_inicio": "2026-05-22",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
           }
         ],
         "advisor_ranking_won": [
           {
             "name": "Jose Orrequia",
-            "won": 7,
-            "total_aportacion": 92900.0
+            "won": 13,
+            "total_aportacion": 208000.0
           }
         ],
         "advisor_ranking_aportacion": [
           {
             "name": "Jose Orrequia",
-            "won": 7,
-            "total_aportacion": 92900.0
+            "won": 13,
+            "total_aportacion": 208000.0
           }
         ],
         "pipeline_stages": {
-          "Asesoramiento": 3,
-          "Reasesoramiento": 2,
-          "Revisando Propuesta": 8,
-          "Aceptado/Falta Firma": 4,
-          "Cerrado Ganado": 7,
-          "Cerrado Perdido": 6
+          "Llamada Pendiente": 17,
+          "Análisis Financiero": 9,
+          "Asesoramiento": 4,
+          "Reasesoramiento": 1,
+          "Cerrado Ganado": 13,
+          "Cerrado Perdido": 107
         },
-        "pipeline_value": 320650.0,
-        "win_rate": 7.4,
-        "avg_days_to_win": 3.9,
-        "products_closed_count": 7,
+        "pipeline_value": 258000.0,
+        "win_rate": 15.9,
+        "avg_days_to_win": 7.5,
+        "products_closed_count": 13,
         "conversion_clientes": {
-          "total_contacts": 0,
+          "total_contacts": 1,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "5": 1,
-          "7": 18,
-          "8": 3,
-          "9": 1,
-          "10": 1,
-          "11": 2,
-          "12": 7,
-          "13": 5,
-          "14": 5,
-          "15": 4,
-          "16": 2,
-          "17": 4,
-          "18": 3,
-          "19": 2,
-          "20": 2,
-          "21": 7,
-          "23": 5,
-          "24": 5,
-          "25": 2,
-          "26": 3,
-          "27": 4,
-          "28": 1,
-          "29": 1,
-          "30": 7
+          "31": 1
         }
       }
     },
@@ -1230,75 +1071,75 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 17,
-          "pct_of_total": 11.3,
+          "count": 0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 9,
-          "pct_of_total": 6.0,
-          "conversion_from_prev": 52.9,
-          "conversion_from_top": 52.9,
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 4,
-          "pct_of_total": 2.6,
-          "conversion_from_prev": 44.4,
-          "conversion_from_top": 23.5,
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 1,
-          "pct_of_total": 0.7,
-          "conversion_from_prev": 25.0,
-          "conversion_from_top": 5.9,
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
           "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": 0.0,
-          "conversion_from_top": 0.0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 13,
-          "pct_of_total": 8.6,
+          "count": 0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 76.5,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 107,
-          "pct_of_total": 70.9,
+          "count": 0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 629.4,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
-      "active_total": 31,
-      "won_total": 13,
-      "lost_total": 107,
-      "total_pipeline": 151
+      "active_total": 0,
+      "won_total": 0,
+      "lost_total": 0,
+      "total_pipeline": 0
     },
     "this_quarter": {
       "stage_order": [
