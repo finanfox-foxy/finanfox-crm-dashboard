@@ -626,6 +626,30 @@ function findCommission(productName, entityName) {
     return null;
 }
 
+};
+// Normalize product name for commission grouping (SilverGold/TRM variants → canonical)
+function normalizeProduct(producto, entidad) {
+    var e = (entidad || '').toLowerCase();
+    var p = (producto || '').toLowerCase();
+    if (e.indexOf('silvergold') >= 0 || e.indexOf('silver gold') >= 0) return 'SilverGold';
+    if (e.indexOf('the real money') >= 0 || e.indexOf('real money') >= 0 || e.indexOf('trm') >= 0) return 'TRM';
+    if (e.indexOf('monefit') >= 0) return 'Monefit';
+    if (e.indexOf('aegon') >= 0) return 'PIAS';
+    if (e.indexOf('neowintech') >= 0) return 'Neowintech';
+    if (e.indexOf('reental') >= 0) return 'Reental';
+    if (e.indexOf('crowmie') >= 0) return 'Crowmie';
+    if (e.indexOf('santalucia') >= 0 || e.indexOf('santa lu') >= 0) return 'PIAS Santalucía';
+    if (e.indexOf('mapfre') >= 0) return 'PIAS Mapfre';
+    if (p.indexOf('monefit') >= 0) return 'Monefit';
+    if (p.indexOf('compra ') >= 0 || p.indexOf('silvergold') >= 0 || p.indexOf('ccu') >= 0) return 'SilverGold';
+    if (p.indexOf('pias') >= 0) return 'PIAS';
+    if (p.indexOf('cuenta dep') >= 0 || p.indexOf('gold opportunity') >= 0 || p.indexOf('dep') >= 0) return 'TRM';
+    if (p.indexOf('neowin') >= 0) return 'Neowintech';
+    if (p.indexOf('reental') >= 0) return 'Reental';
+    if (p.indexOf('crowmie') >= 0) return 'Crowmie';
+    return producto;
+}
+
 // Fallback product→entity mapping for when entidad is empty (extracted from deal names)
 var PRODUCT_ENTITY_MAP = {
     'compra única': 'SilverGold',
@@ -706,8 +730,9 @@ function renderCommissionSectionForDeals(deals) {
             thresholdReachedAt = idx;
         }
         dealsWithMeta.push({
+            var normProduct = normalizeProduct(d.producto, entity);
             cliente: d.cliente || _cLkp[d.total] || '',
-            producto: d.producto,
+            producto: normProduct,
             entidad: entity,
             total: d.total,
             min: minAmount,
@@ -837,8 +862,9 @@ function renderCommissionSection(stats) {
             thresholdReachedAt = idx;
         }
         dealsWithMeta.push({
+            var normProduct = normalizeProduct(d.producto, entity);
             cliente: d.cliente || _cLkp[d.total] || '',
-            producto: d.producto,
+            producto: normProduct,
             entidad: entity,
             total: d.total,
             min: minAmount,
@@ -1335,7 +1361,7 @@ function renderHistorico2026() {
             var parts = _extractNameParts(wd);
             var total = parseFloat(wd.Total_Aportaciones || wd.Amount || 0);
             var cd = (wd.Closing_Date || '').substring(0,10);
-            monthProductDeals.push({ producto: parts.producto, entidad: parts.entidad, total: total, close_date: cd, cliente: parts.cliente });
+            monthProductDeals.push({ producto: normalizeProduct(parts.producto, parts.entidad), entidad: parts.entidad, total: total, close_date: cd, cliente: parts.cliente });
         });
         var commissionHtml = renderCommissionSectionForDeals(monthProductDeals);
 
