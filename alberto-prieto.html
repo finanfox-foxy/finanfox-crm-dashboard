@@ -655,6 +655,119 @@ function guessEntity(productName) {
     return '';
 }
 
+function renderCommissionSectionForDeals(deals) {
+    if (!deals || deals.length === 0) {
+        return '<div class="chart-container full-width" style="margin-bottom:20px">' +
+            '<h3>🎯 Objetivo mensual y comisiones</h3>' +
+            '<p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px">Los productos se acumulan cronológicamente. El producto que cruza el umbral (≥100%) comisiona por la parte que excede el objetivo restante. A partir de ahí, todos los productos siguientes comisionan por su importe completo × tasa.</p>' +
+            '<div style="margin:12px 0">' +
+            '<div style="display:flex;justify-content:space-between;margin-bottom:6px">' +
+            '<span style="font-size:0.85rem;font-weight:600">Progreso objetivo: 0%</span>' +
+            '<span style="font-size:0.85rem;color:var(--text-muted);font-weight:600">Pendiente</span>' +
+            '</div>' +
+            '<div style="height:24px;background:var(--border);border-radius:12px;overflow:hidden">' +
+            '<div style="height:100%;width:0%;background:var(--accent);border-radius:12px"></div>' +
+            '</div></div>' +
+            '<div class="crm-grid" style="margin-bottom:12px">' +
+            '<div class="crm-card success"><div class="value">0€</div><div class="label">💰 Comisión Estimada Mensual</div></div>' +
+            '</div>' +
+            '<p style="font-size:0.8rem;color:var(--text-muted);text-align:center;padding:16px">📭 No hay operaciones cerradas este mes aún. El objetivo y comisiones aparecerán automáticamente cuando se registre la primera inversión.</p>' +
+            '</div>';
+    }
+    deals.sort(function(a, b) { return a.close_date.localeCompare(b.close_date); });
+    var cumulativePct = 0;
+    var thresholdReachedAt = -1;
+    var dealsWithMeta = [];
+    deals.forEach(function(d, idx) {
+        var entity = d.entidad || guessEntity(d.producto);
+        var commissionInfo = findCommission(d.producto, entity);
+        var minAmount = commissionInfo ? commissionInfo.min : null;
+        var pct = (minAmount && minAmount > 0) ? (d.total / minAmount) : 0;
+        cumulativePct += pct;
+        if (cumulativePct >= 1.0 && thresholdReachedAt === -1) {
+            thresholdReachedAt = idx;
+        }
+        dealsWithMeta.push({
+            producto: d.producto,
+            entidad: entity,
+            total: d.total,
+            min: minAmount,
+            rate: commissionInfo ? commissionInfo.rate : 0,
+            pct: pct,
+            close_date: d.close_date || ''
+        });
+    });
+    var totalCommission = 0;
+    dealsWithMeta.forEach(function(item, idx) {
+        if (thresholdReachedAt < 0) { item.commission = 0; }
+        else if (idx > thresholdReachedAt) {
+            item.commission = item.total * item.rate;
+            totalCommission += item.commission;
+        } else if (idx === thresholdReachedAt) {
+            var cumBefore = 0;
+            for (var k = 0; k < idx; k++) { cumBefore += dealsWithMeta[k].pct; }
+            var remainingPct = Math.max(0, 1.0 - cumBefore);
+            var objectivePortion = remainingPct * item.total;
+            var commPortion = item.total - objectivePortion;
+            item.commission = commPortion * item.rate;
+            totalCommission += item.commission;
+        } else { item.commission = 0; }
+    });
+    var displayPct = Math.round(cumulativePct * 100);
+    var objectiveReached = cumulativePct >= 1.0;
+    var barColor = objectiveReached ? 'var(--success)' : 'var(--accent)';
+    var html = '<div class="chart-container full-width" style="margin-bottom:20px">';
+    html += '<h3>🎯 Objetivo mensual y comisiones</h3>';
+    html += '<p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px">Los productos se acumulan cronológicamente. El producto que cruza el umbral (≥100%) comisiona por la parte que excede el objetivo restante. A partir de ahí, todos los productos siguientes comisionan por su importe completo × tasa.</p>';
+    html += '<div style="margin:12px 0">';
+    html += '<div style="display:flex;justify-content:space-between;margin-bottom:6px">';
+    html += '<span style="font-size:0.85rem;font-weight:600">Progreso objetivo: ' + displayPct + '%</span>';
+    html += '<span style="font-size:0.85rem;color:' + (objectiveReached ? 'var(--success)' : 'var(--text-muted)') + ';font-weight:600">' + (objectiveReached ? '✅ Objetivo alcanzado!' : 'Pendiente') + '</span>';
+    html += '</div>';
+    html += '<div style="height:24px;background:var(--border);border-radius:12px;overflow:hidden">';
+    html += '<div style="height:100%;width:' + displayPct + '%;background:' + barColor + ';border-radius:12px;transition:width 0.5s;display:flex;align-items:center;justify-content:center">';
+    if (displayPct > 10) { html += '<span style="color:#fff;font-size:0.75rem;font-weight:600">' + displayPct + '%</span>'; }
+    html += '</div></div></div>';
+    html += '<div class="crm-grid" style="margin-bottom:12px">';
+    html += '<div class="crm-card success"><div class="value">' + formatEUR(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
+    html += '</div>';
+    html += '<table class="compact-table"><thead><tr><th>#</th><th>Producto</th><th>Entidad</th><th>Fecha Cierre</th><th>Inversión</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
+    var runningPct = 0;
+    dealsWithMeta.forEach(function(item, idx) {
+        runningPct += item.pct;
+        var pctBar = Math.round(item.pct * 100);
+        var hasComm = item.commission > 0;
+        var isThresh = (idx === thresholdReachedAt);
+        var stateLabel = hasComm ? (isThresh ? '💰 Comisiona exceso' : '✅ Importe completo') : (isThresh ? '🎯 Umbral: cubre objetivo' : (thresholdReachedAt >= 0 && idx > thresholdReachedAt ? '—' : '🎯 Objetivo'));
+        var rowBg = hasComm ? 'rgba(34,197,94,0.04)' : (isThresh ? 'rgba(234,179,8,0.08)' : '');
+        html += '<tr style="' + (rowBg ? 'background:' + rowBg : '') + '">';
+        html += '<td style="font-size:0.75rem;color:var(--text-muted)"><span style="white-space:nowrap">#' + (idx + 1) + '</span></td>';
+        html += '<td><strong>' + item.producto + '</strong></td>';
+        html += '<td>' + item.entidad + '</td>';
+        html += '<td style="font-size:0.72rem;color:var(--text-muted)">' + item.close_date + '</td>';
+        html += '<td>' + formatEUR(item.total) + '</td>';
+        html += '<td><div style="display:flex;align-items:center;gap:4px"><div style="height:12px;width:' + Math.min(pctBar, 100) + '%;background:' + (hasComm ? 'var(--success)' : 'var(--accent)') + ';border-radius:4px;max-width:60px;min-width:4px;transition:width 0.4s"></div><span style="font-size:0.7rem">' + pctBar + '%</span></div></td>';
+        html += '<td ' + (hasComm ? 'style="color:var(--success);font-weight:600"' : 'style="color:var(--text-muted)"') + '>' + (hasComm ? formatEUR(item.commission) : '0€') + '</td>';
+        html += '<td style="font-size:0.72rem;' + (hasComm ? 'color:var(--success);' : 'color:var(--accent);') + 'font-weight:500">' + stateLabel + '</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table>';
+    html += '<div style="margin-top:8px;font-size:0.75rem;color:var(--text-muted);border-top:1px solid var(--border);padding-top:8px">';
+    if (thresholdReachedAt >= 0) {
+        html += '<strong>Resumen:</strong> Los primeros <strong>' + (thresholdReachedAt + 1) + '</strong> producto(s) acumularon el <strong>' + displayPct + '%</strong> del objetivo global.';
+        var commCount = 0;
+        for (var ci = thresholdReachedAt; ci < dealsWithMeta.length; ci++) { if (dealsWithMeta[ci].commission > 0) commCount++; }
+        if (commCount > 0) { html += ' A partir del umbral, <strong>' + commCount + '</strong> producto(s) comisionan por su importe completo.'; }
+        else { html += ' Todos los productos tras el umbral comisionan por su importe completo.'; }
+    } else {
+        html += '<strong>Resumen:</strong> Se ha acumulado un <strong>' + displayPct + '%</strong> del objetivo global. Aún no se ha alcanzado el 100%.';
+    }
+    html += ' Comisión total estimada: <strong>' + formatEUR(totalCommission) + '</strong>.';
+    html += '</div></div>';
+    return html;
+}
+
+
 function renderCommissionSection(stats) {
     var deals = stats.product_deals || [];
     // Determine current month from close_dates
@@ -1119,53 +1232,6 @@ function renderHistorico2026() {
     if (!deals || deals.length === 0) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
 
     function fmt(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:0}); }
-    function fmtDec(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-    function bar(pct,c) { return '<div style="height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden"><div style="height:8px;width:'+Math.min(pct,100)+'%;background:'+c+';border-radius:4px"></div></div>'; }
-
-    var monthLabels = {
-        '2026-05':'Mayo 2026','2026-04':'Abril 2026','2026-03':'Marzo 2026',
-        '2026-02':'Febrero 2026','2026-01':'Enero 2026'
-    };
-    var monthOrder = ['2026-05','2026-04','2026-03','2026-02','2026-01'];
-
-    var byMonth = {};
-    monthOrder.forEach(function(m) { byMonth[m] = {won:0,lost:0,vol_won:0,vol_lost:0,vol_aport:0,created:0,deals:[],open:0,daysToWin:[]}; });
-
-    deals.forEach(function(d) {
-        var cl = (d.Closing_Date || '').substring(0,7);
-        var ct = (d.Created_Time || '').substring(0,7);
-        var stage = d.Stage || '';
-        var amt = parseFloat(d.Amount) || 0;
-        var aport = parseFloat(d.Total_Aportaciones) || 0;
-        var name = d.Deal_Name || d['Deal Name'] || '';
-
-        if (byMonth[cl]) {
-            if (stage === 'Cerrado Ganado') {
-                byMonth[cl].won++;
-                byMonth[cl].vol_won += amt;
-                byMonth[cl].vol_aport += aport;
-                byMonth[cl].deals.push({name:name, amt:amt, aport:aport, deal:d});
-                // Days to win
-                var closed = d.Closing_Date || '';
-                var created = d.Created_Time || '';
-                if (closed && created) {
-                    var cd = new Date(closed);
-                    var cr = new Date(created);
-                    var diff = Math.round((cd - cr) / (1000 * 60 * 60 * 24));
-                    if (diff >= 0) byMonth[cl].daysToWin.push(diff);
-                }
-            } else if (stage === 'Cerrado Perdido') {
-                byMonth[cl].lost++;
-                byMonth[cl].vol_lost += amt;
-                byMonth[cl].deals.push({name:name, amt:amt, aport:0, deal:d});
-            }
-        }
-        if (byMonth[ct]) { byMonth[ct].created++; }
-        if (byMonth[cl] && stage !== 'Cerrado Ganado' && stage !== 'Cerrado Perdido') {
-            byMonth[cl].open++;
-        }
-    });
-
     function inferProduct(name) {
         var n = (name || '').toLowerCase();
         if (n.indexOf('monefit') >= 0) return 'Monefit';
@@ -1178,28 +1244,46 @@ function renderHistorico2026() {
         if (n.indexOf('crowdfunding') >= 0 || n.indexOf('proyecto') >= 0) return 'Crowdfunding';
         return 'Otros';
     }
-
     function productBreakdown(dealsArr) {
         var prods = {};
-        dealsArr.forEach(function(d) {
-            var p = inferProduct(d.name);
-            if (p) { prods[p] = (prods[p] || 0) + d.amt; }
-        });
+        dealsArr.forEach(function(d) { var p = inferProduct(d.name||''); prods[p] = (prods[p] || 0) + d.amt; });
         return Object.keys(prods).sort(function(a,b){return prods[b]-prods[a];}).map(function(k){return {name:k,vol:prods[k]};});
     }
 
-    function monthCommission(dealsArr) {
-        var total = 0;
-        dealsArr.forEach(function(d) {
-            if (d.deal && d.deal.Stage === 'Cerrado Ganado') {
-                var match = findCommission(d.deal.Deal_Name || d.deal['Deal Name'] || '', '');
-                if (match) {
-                    total += (d.aport || d.amt || 0) * match.rate;
+    var monthLabels = {'2026-05':'Mayo 2026','2026-04':'Abril 2026','2026-03':'Marzo 2026','2026-02':'Febrero 2026','2026-01':'Enero 2026'};
+    var monthOrder = ['2026-05','2026-04','2026-03','2026-02','2026-01'];
+
+    var byMonth = {};
+    monthOrder.forEach(function(m) {
+        byMonth[m] = {won:0,lost:0,vol_won:0,vol_lost:0,vol_aport:0,created:0,deals:[],open:0,daysToWin:[],wonDeals:[]};
+    });
+
+    deals.forEach(function(d) {
+        var cl = (d.Closing_Date || '').substring(0,7);
+        var ct = (d.Created_Time || '').substring(0,7);
+        var stage = d.Stage || '';
+        var amt = parseFloat(d.Amount) || 0;
+        var aport = parseFloat(d.Total_Aportaciones) || 0;
+        var name = d.Deal_Name || d['Deal Name'] || '';
+        if (byMonth[cl]) {
+            if (stage === 'Cerrado Ganado') {
+                byMonth[cl].won++; byMonth[cl].vol_won += amt; byMonth[cl].vol_aport += aport;
+                byMonth[cl].deals.push({name:name, amt:amt, aport:aport, deal:d});
+                byMonth[cl].wonDeals.push(d);
+                var closed = d.Closing_Date || '', created = d.Created_Time || '';
+                if (closed && created) {
+                    var cd = new Date(closed), cr = new Date(created);
+                    var diff = Math.round((cd - cr) / (1000*60*60*24));
+                    if (diff >= 0) byMonth[cl].daysToWin.push(diff);
                 }
+            } else if (stage === 'Cerrado Perdido') {
+                byMonth[cl].lost++; byMonth[cl].vol_lost += amt;
+                byMonth[cl].deals.push({name:name, amt:amt, aport:0, deal:d});
             }
-        });
-        return total;
-    }
+        }
+        if (byMonth[ct]) { byMonth[ct].created++; }
+        if (byMonth[cl] && stage !== 'Cerrado Ganado' && stage !== 'Cerrado Perdido') { byMonth[cl].open++; }
+    });
 
     var html = '';
     html += '<h3 style="margin-top:0;margin-bottom:16px">📅 <span style="color:var(--accent)">Histórico Mensual</span> — 2026</h3>';
@@ -1210,28 +1294,34 @@ function renderHistorico2026() {
         var label = monthLabels[mk];
         var winRate = m.created > 0 ? (m.won / m.created * 100).toFixed(1) : null;
         var avgDays = m.daysToWin.length > 0 ? Math.round(m.daysToWin.reduce(function(a,b){return a+b;},0) / m.daysToWin.length) : null;
-        var closedTotal = m.won + m.lost;
-        // Unique product types from WON deals only
-        var wonDealsOnly = m.deals.filter(function(d){return d.deal && d.deal.Stage === 'Cerrado Ganado';});
-        var prods = productBreakdown(wonDealsOnly);
+        var wonDeals = m.wonDeals || [];
+        var prods = productBreakdown(m.deals.filter(function(d){return d.deal && d.deal.Stage === 'Cerrado Ganado';}));
         var totalProd = prods.reduce(function(s,p){return s+p.vol;}, 0);
-        var productsClosed = prods.length;
-        var commission = monthCommission(wonDealsOnly);
+        var topDeals = wonDeals.slice().sort(function(a,b){return (parseFloat(b.Amount)||0)-(parseFloat(a.Amount)||0);}).slice(0,5);
 
-        // ── KPI cards (same as renderKPI in 'Este Mes') ──
+        // Build product_deals from won deals for commission section
+        var monthProductDeals = [];
+        wonDeals.forEach(function(wd) {
+            var pname = inferProduct(wd.Deal_Name || wd['Deal Name'] || '');
+            var entity = guessEntity(pname);
+            var total = parseFloat(wd.Total_Aportaciones || wd.Amount || 0);
+            var cd = (wd.Closing_Date || '').substring(0,10);
+            monthProductDeals.push({ producto: pname, entidad: entity, total: total, close_date: cd });
+        });
+        var commissionHtml = renderCommissionSectionForDeals(monthProductDeals);
+
+        // ── KPI cards ──
         var kpiHtml = '<div class="crm-grid" style="margin-bottom:14px">';
         kpiHtml += '<div class="crm-card accent"><div class="value-row"><div class="value">—</div></div><div class="label">👥 Nuevos Contactos</div></div>';
         kpiHtml += '<div class="crm-card info"><div class="value-row"><div class="value">' + m.created + '</div></div><div class="label">📈 Nuevas Oportunidades</div></div>';
         kpiHtml += '<div class="crm-card success"><div class="value-row"><div class="value">' + m.won + '</div></div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + fmt(m.vol_won) + '</div></div>';
         kpiHtml += '<div class="crm-card purple"><div class="value-row"><div class="value">' + fmt(m.vol_aport) + '</div></div><div class="label">💰 Total Invertido</div></div>';
         kpiHtml += '<div class="crm-card error"><div class="value-row"><div class="value">' + m.lost + '</div></div><div class="label">❌ Oportunidades Perdidas</div></div>';
-        kpiHtml += '<div class="crm-card warning"><div class="value-row"><div class="value">' + productsClosed + '</div></div><div class="label">📦 Productos Cerrados</div></div>';
+        kpiHtml += '<div class="crm-card warning"><div class="value-row"><div class="value">' + prods.length + '</div></div><div class="label">📦 Productos Cerrados</div></div>';
         kpiHtml += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (winRate !== null ? winRate + '%' : 'N/A') + '</div></div><div class="label">⚡ Win Rate</div><div class="sub">' + m.won + ' ganados de ' + m.created + ' nuevas</div></div>';
         kpiHtml += '<div class="crm-card info"><div class="value-row"><div class="value">' + (avgDays !== null ? avgDays + ' días' : 'N/A') + '</div></div><div class="label">📅 Días hasta cierre</div></div>';
         kpiHtml += '<div class="crm-card accent"><div class="value-row"><div class="value">—</div></div><div class="label">🔄 Conversión clientes</div></div>';
         kpiHtml += '</div>';
-
-        var topDeals = m.deals.filter(function(d){return d.deal && d.deal.Stage === 'Cerrado Ganado';}).slice().sort(function(a,b){return b.amt-a.amt;}).slice(0,5);
 
         html += '<div class="accordion-item">';
         html += '<div class="accordion-header" data-month="' + mk + '" onclick="toggleMonth(\'' + mk + '\')">';
@@ -1239,27 +1329,13 @@ function renderHistorico2026() {
         html += '<span class="month-summary">';
         html += '<span>🏆 ' + fmt(m.vol_won) + '</span>';
         if (m.won > 0) html += '<span>✅ ' + m.won + ' won</span>';
-        if (commission > 0) html += '<span>💶 ' + fmt(commission) + '</span>';
         html += '<span>📊 ' + m.created + ' creadas</span>';
         html += '<span class="accordion-arrow">▼</span>';
         html += '</span></div>';
         html += '<div class="accordion-body" id="month-' + mk + '">';
         html += '<div class="accordion-inner">';
-
-        // KPI cards
         html += kpiHtml;
-
-        // Commission section (simplified, from deals)
-        if (commission > 0) {
-            html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">💶 Comisiones del Mes</h4>';
-            html += '<div style="padding:12px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;margin-bottom:14px">';
-            html += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">';
-            html += '<span style="font-weight:600;color:var(--success)">Comisión estimada total:</span>';
-            html += '<span style="font-size:1.1rem;font-weight:700;color:var(--success)">' + fmt(commission) + '</span>';
-            html += '</div></div>';
-        }
-
-        // Product breakdown
+        html += commissionHtml;  // Full commission section with per-product breakdown
         if (prods.length > 0) {
             html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">📦 Productos</h4>';
             html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
@@ -1267,32 +1343,27 @@ function renderHistorico2026() {
             var prodColors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444','#14b8a6','#6366f1'];
             prods.forEach(function(p,i) {
                 var pct = totalProd > 0 ? (p.vol/totalProd*100).toFixed(1) : 0;
+                function bar(pct,c) { return '<div style="height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden"><div style="height:8px;width:'+Math.min(pct,100)+'%;background:'+c+';border-radius:4px"></div></div>'; }
                 html += '<tr><td>' + p.name + '</td><td>' + fmt(p.vol) + '</td><td>' + pct + '%</td><td style="width:80px">' + bar(pct, prodColors[i % prodColors.length]) + '</td></tr>';
             });
             html += '</tbody></table></div>';
         }
-
-        // Top 5 deals
         if (topDeals.length > 0) {
             html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">🏆 Top 5 Oportunidades Ganadas</h4>';
             html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
             html += '<thead><tr><th>#</th><th>Importe</th><th>Inversión</th><th>Deal</th></tr></thead><tbody>';
             topDeals.forEach(function(t,i) {
-                html += '<tr><td>' + (i+1) + '</td><td><strong>' + fmt(t.amt) + '</strong></td><td>' + fmt(t.aport) + '</td><td>' + (t.name||'').substring(0,45) + '</td></tr>';
+                html += '<tr><td>' + (i+1) + '</td><td><strong>' + fmt(t.Amount) + '</strong></td><td>' + fmt(t.Total_Aportaciones) + '</td><td>' + (t.Deal_Name||t['Deal Name']||'').substring(0,45) + '</td></tr>';
             });
             html += '</tbody></table></div>';
         }
-
-        // Open deals at month end
         if (m.open > 0) {
             html += '<div style="margin-top:10px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.72rem;color:var(--text-muted)">';
             html += '📌 <strong>' + m.open + ' oportunidades</strong> siguen abiertas a cierre de mes';
             html += '</div>';
         }
-
         html += '</div></div></div>';
     });
-
     container.innerHTML = html;
 }
 </script>
