@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T17:00:00Z",
+  "generated_at": "2026-06-01T17:30:00Z",
   "periods": {
     "jan_may_2025": {
       "months": [
@@ -11,8 +11,8 @@
       ],
       "totals": {
         "income": 321593.42,
-        "expenses": 287231.81,
-        "margin": 34361.61
+        "expenses": 287231.8,
+        "margin": 34361.62
       },
       "categories": {
         "income": {
@@ -26,16 +26,18 @@
           "Stripe": 413.94
         },
         "expenses": {
-          "Nóminas": 88894.6,
-          "Marketing": 52357.29,
-          "Impuestos": 35356.48,
-          "Gastos financieros": 33300.0,
-          "Gastos varios": 31184.16,
-          "Seguridad Social": 23982.57,
-          "Suscripciones": 18244.24,
-          "Proveedores": 2763.92,
-          "Alquiler": 954.02,
-          "Seguros": 194.53
+          "Nóminas": 88342.36,
+          "Marketing": 75407.9,
+          "Impuestos": 35155.56,
+          "Gastos financieros": 33525.08,
+          "Seguridad Social": 23917.01,
+          "Suscripciones": 18477.64,
+          "Proveedores": 5508.92,
+          "Gastos varios": 5314.43,
+          "Alquiler": 946.87,
+          "Transporte": 362.4,
+          "Seguros": 191.64,
+          "Viajes": 81.99
         }
       }
     },
@@ -49,8 +51,8 @@
       ],
       "totals": {
         "income": 523892.45,
-        "expenses": 418947.11,
-        "margin": 104945.34
+        "expenses": 418947.12,
+        "margin": 104945.33
       },
       "categories": {
         "income": {
@@ -63,18 +65,18 @@
           "Seguros y Cías": 1100.94
         },
         "expenses": {
-          "Nóminas": 84524.82,
-          "Proveedores": 79538.49,
-          "Marketing": 72293.2,
-          "Impuestos": 69430.68,
-          "Gastos financieros": 65693.56,
-          "Seguridad Social": 30673.64,
-          "Gastos varios": 8965.59,
-          "Suscripciones": 5668.44,
-          "Seguros": 1391.03,
-          "Alquiler": 330.22,
-          "Viajes": 310.96,
-          "Transporte": 126.48
+          "Marketing": 115784.56,
+          "Nóminas": 79227.6,
+          "Impuestos": 69388.03,
+          "Gastos financieros": 62397.38,
+          "Proveedores": 49761.13,
+          "Seguridad Social": 29462.94,
+          "Suscripciones": 5877.06,
+          "Gastos varios": 3943.56,
+          "Seguros": 1332.06,
+          "Viajes": 962.13,
+          "Transporte": 480.45,
+          "Alquiler": 330.22
         }
       }
     }
@@ -84,8 +86,8 @@
     "expenses_pct": 45.9,
     "margin_pct": 205.4,
     "income_abs": 202299.03,
-    "expenses_abs": 131715.3,
-    "margin_abs": 70583.73
+    "expenses_abs": 131715.32,
+    "margin_abs": 70583.71
   },
   "category_variation": {
     "income": {
@@ -146,76 +148,76 @@
     },
     "expenses": {
       "Alquiler": {
-        "2025": 954.02,
+        "2025": 946.87,
         "2026": 330.22,
-        "variation_abs": -623.8,
-        "variation_pct": -65.4
+        "variation_abs": -616.65,
+        "variation_pct": -65.1
       },
       "Gastos financieros": {
-        "2025": 33300.0,
-        "2026": 65693.56,
-        "variation_abs": 32393.56,
-        "variation_pct": 97.3
+        "2025": 33525.08,
+        "2026": 62397.38,
+        "variation_abs": 28872.3,
+        "variation_pct": 86.1
       },
       "Gastos varios": {
-        "2025": 31184.16,
-        "2026": 8965.59,
-        "variation_abs": -22218.57,
-        "variation_pct": -71.2
+        "2025": 5314.43,
+        "2026": 3943.56,
+        "variation_abs": -1370.87,
+        "variation_pct": -25.8
       },
       "Impuestos": {
-        "2025": 35356.48,
-        "2026": 69430.68,
-        "variation_abs": 34074.2,
-        "variation_pct": 96.4
+        "2025": 35155.56,
+        "2026": 69388.03,
+        "variation_abs": 34232.47,
+        "variation_pct": 97.4
       },
       "Marketing": {
-        "2025": 52357.29,
-        "2026": 72293.2,
-        "variation_abs": 19935.91,
-        "variation_pct": 38.1
+        "2025": 75407.9,
+        "2026": 115784.56,
+        "variation_abs": 40376.66,
+        "variation_pct": 53.5
       },
       "Nóminas": {
-        "2025": 88894.6,
-        "2026": 84524.82,
-        "variation_abs": -4369.78,
-        "variation_pct": -4.9
+        "2025": 88342.36,
+        "2026": 79227.6,
+        "variation_abs": -9114.76,
+        "variation_pct": -10.3
       },
       "Proveedores": {
-        "2025": 2763.92,
-        "2026": 79538.49,
-        "variation_abs": 76774.57,
-        "variation_pct": 2777.7
+        "2025": 5508.92,
+        "2026": 49761.13,
+        "variation_abs": 44252.21,
+        "variation_pct": 803.3
       },
       "Seguridad Social": {
-        "2025": 23982.57,
-        "2026": 30673.64,
-        "variation_abs": 6691.07,
-        "variation_pct": 27.9
+        "2025": 23917.01,
+        "2026": 29462.94,
+        "variation_abs": 5545.93,
+        "variation_pct": 23.2
       },
       "Seguros": {
-        "2025": 194.53,
-        "2026": 1391.03,
-        "variation_abs": 1196.5,
-        "variation_pct": 615.1
+        "2025": 191.64,
+        "2026": 1332.06,
+        "variation_abs": 1140.42,
+        "variation_pct": 595.1
       },
       "Suscripciones": {
-        "2025": 18244.24,
-        "2026": 5668.44,
-        "variation_abs": -12575.8,
-        "variation_pct": -68.9
+        "2025": 18477.64,
+        "2026": 5877.06,
+        "variation_abs": -12600.58,
+        "variation_pct": -68.2
       },
       "Transporte": {
-        "2025": 0,
-        "2026": 126.48,
-        "variation_abs": 126.48,
-        "variation_pct": null
+        "2025": 362.4,
+        "2026": 480.45,
+        "variation_abs": 118.05,
+        "variation_pct": 32.6
       },
       "Viajes": {
-        "2025": 0,
-        "2026": 310.96,
-        "variation_abs": 310.96,
-        "variation_pct": null
+        "2025": 81.99,
+        "2026": 962.13,
+        "variation_abs": 880.14,
+        "variation_pct": 1073.5
       }
     }
   },
@@ -224,8 +226,8 @@
       "month": "01",
       "month_label": "Enero",
       "income_2025": 49396.82,
-      "expenses_2025": 72126.02,
-      "margin_2025": -22729.2,
+      "expenses_2025": 72126.01,
+      "margin_2025": -22729.19,
       "income_2026": 115730.51,
       "expenses_2026": 149103.83,
       "margin_2026": -33373.32
@@ -237,8 +239,8 @@
       "expenses_2025": 44246.42,
       "margin_2025": 5267.14,
       "income_2026": 87087.63,
-      "expenses_2026": 70339.79,
-      "margin_2026": 16747.84
+      "expenses_2026": 70339.8,
+      "margin_2026": 16747.83
     },
     {
       "month": "03",
@@ -295,8 +297,8 @@
       },
       "annual_estimate": {
         "income": 975516.36,
-        "expenses": 891983.86,
-        "margin": 83532.5
+        "expenses": 891983.85,
+        "margin": 83532.51
       }
     },
     "2026_jan_may_projection": {
@@ -315,8 +317,8 @@
       },
       "annual_estimate": {
         "income": 1257341.88,
-        "expenses": 1005473.06,
-        "margin": 251868.82
+        "expenses": 1005473.09,
+        "margin": 251868.79
       }
     }
   }
