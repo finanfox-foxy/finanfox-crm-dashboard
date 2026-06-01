@@ -639,9 +639,6 @@ function guessEntity(productName) {
 
 function renderCommissionSection(stats) {
     var deals = stats.product_deals || [];
-    if (deals.length === 0) {
-        return '';
-    }
     // Determine current month from close_dates
     var now = new Date();
     var currentYear = now.getFullYear();
@@ -652,8 +649,25 @@ function renderCommissionSection(stats) {
         return d.close_date && d.close_date.indexOf(monthPrefix) === 0;
     });
     monthDeals.sort(function(a, b) { return a.close_date.localeCompare(b.close_date); });
-    if (monthDeals.length === 0) {
-        return '';
+    if (deals.length === 0 || monthDeals.length === 0) {
+        // Siempre mostrar la sección aunque esté a cero
+        var html = '<div class="chart-container full-width" style="margin-bottom:20px">';
+        html += '<h3>🎯 Objetivo mensual y comisiones</h3>';
+        html += '<p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px">Los productos se acumulan cronológicamente. El producto que cruza el umbral (≥100%) comisiona por la parte que excede el objetivo restante. A partir de ahí, todos los productos siguientes comisionan por su importe completo × tasa.</p>';
+        html += '<div style="margin:12px 0">';
+        html += '<div style="display:flex;justify-content:space-between;margin-bottom:6px">';
+        html += '<span style="font-size:0.85rem;font-weight:600">Progreso objetivo: 0%</span>';
+        html += '<span style="font-size:0.85rem;color:var(--text-muted);font-weight:600">Pendiente</span>';
+        html += '</div>';
+        html += '<div style="height:24px;background:var(--border);border-radius:12px;overflow:hidden">';
+        html += '<div style="height:100%;width:0%;background:var(--accent);border-radius:12px"></div>';
+        html += '</div></div>';
+        html += '<div class="crm-grid" style="margin-bottom:12px">';
+        html += '<div class="crm-card success"><div class="value">0€</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
+        html += '</div>';
+        html += '<p style="font-size:0.8rem;color:var(--text-muted);text-align:center;padding:16px">📭 No hay operaciones cerradas este mes aún. El objetivo y comisiones aparecerán automáticamente cuando se registre la primera inversión.</p>';
+        html += '</div>';
+        return html;
     }
     
     // Pass 1: accumulate % and find threshold (first deal that pushes cumPct >= 100%)
