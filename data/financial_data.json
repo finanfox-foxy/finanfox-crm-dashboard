@@ -621,18 +621,24 @@
         }
       },
       "expenses": {
-        "total": 82079.42000000001,
+        "total": 58079.42,
         "categories": {
           "Marketing": 11484.34,
           "Seguridad Social": 5106.29,
-          "Gastos varios": 22505.650000000005,
-          "Suscripciones": 2056.23,
-          "Proveedores": 25470.32,
+          "Gastos varios": 22076.430000000004,
+          "Suscripciones": 2013.54,
+          "Proveedores": 1942.23,
           "Impuestos": 33.36,
           "Nóminas": 15423.23
         }
       },
-      "margin": 19789.319999999978,
+      "investments": {
+        "total": 24000.0,
+        "categories": {
+          "Inversiones": 24000.0
+        }
+      },
+      "margin": 43789.31999999999,
       "transaction_count": 42,
       "biggest_income_category": {
         "name": "Monefit",
@@ -640,9 +646,9 @@
         "pct": 57.5
       },
       "biggest_expense_category": {
-        "name": "Proveedores",
-        "amount": 25470.32,
-        "pct": 31.0
+        "name": "Gastos varios",
+        "amount": 22076.430000000004,
+        "pct": 38.0
       }
     }
   },
@@ -1223,8 +1229,8 @@
     {
       "month": "2026-05",
       "income": 101868.73999999999,
-      "expenses": 82079.42000000001,
-      "margin": 19789.319999999978
+      "expenses": 58079.42,
+      "margin": 43789.31999999999
     }
   ]
 }
