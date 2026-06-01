@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-06-01T11:59:36Z",
+  "timestamp": "2026-06-01T13:41:57Z",
   "generated_at": "2026-06-01",
   "today": "2026-06-01",
   "yesterday": "2026-05-31",
@@ -24,8 +24,8 @@
           "Llamada Pendiente": 12,
           "Cerrado Ganado": 21,
           "Cerrado Perdido": 118,
-          "Análisis Financiero": 10,
-          "Asesoramiento": 7,
+          "Asesoramiento": 8,
+          "Análisis Financiero": 9,
           "Reasesoramiento": 3,
           "Aceptado/Falta Firma": 4,
           "Revisando Propuesta": 8
@@ -542,8 +542,8 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 12,
-        "Análisis Financiero": 10,
-        "Asesoramiento": 7,
+        "Análisis Financiero": 9,
+        "Asesoramiento": 8,
         "Reasesoramiento": 3,
         "Revisando Propuesta": 8,
         "Aceptado/Falta Firma": 4,
@@ -851,8 +851,8 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 12,
-        "Análisis Financiero": 10,
-        "Asesoramiento": 7,
+        "Análisis Financiero": 9,
+        "Asesoramiento": 8,
         "Reasesoramiento": 3,
         "Revisando Propuesta": 8,
         "Aceptado/Falta Firma": 4,
@@ -1112,8 +1112,8 @@
         ],
         "pipeline_stages": {
           "Llamada Pendiente": 12,
-          "Análisis Financiero": 10,
-          "Asesoramiento": 4,
+          "Análisis Financiero": 9,
+          "Asesoramiento": 5,
           "Reasesoramiento": 1,
           "Cerrado Ganado": 13,
           "Cerrado Perdido": 107
@@ -1519,8 +1519,8 @@
       "id": "862490000005052159",
       "Deal_Name": "Planificación de Fernando Queipo Moreno",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Asesoramiento",
+      "Probability": 60,
       "Contact_Name": "Fernando Queipo Moreno",
       "Owner": "Jose Orrequia",
       "Type": "Cliente existente",
@@ -5650,25 +5650,25 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 10,
-          "pct_of_total": 5.5,
-          "conversion_from_prev": 83.3,
-          "conversion_from_top": 83.3,
+          "count": 9,
+          "pct_of_total": 5.0,
+          "conversion_from_prev": 75.0,
+          "conversion_from_top": 75.0,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 7,
-          "pct_of_total": 3.9,
-          "conversion_from_prev": 70.0,
-          "conversion_from_top": 58.3,
+          "count": 8,
+          "pct_of_total": 4.4,
+          "conversion_from_prev": 88.9,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 3,
           "pct_of_total": 1.7,
-          "conversion_from_prev": 42.9,
+          "conversion_from_prev": 37.5,
           "conversion_from_top": 25.0,
           "cmp_count": null
         },
@@ -5734,25 +5734,25 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 10,
-          "pct_of_total": 5.5,
-          "conversion_from_prev": 83.3,
-          "conversion_from_top": 83.3,
+          "count": 9,
+          "pct_of_total": 4.9,
+          "conversion_from_prev": 75.0,
+          "conversion_from_top": 75.0,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 7,
-          "pct_of_total": 3.8,
-          "conversion_from_prev": 70.0,
-          "conversion_from_top": 58.3,
+          "count": 8,
+          "pct_of_total": 4.4,
+          "conversion_from_prev": 88.9,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 3,
           "pct_of_total": 1.6,
-          "conversion_from_prev": 42.9,
+          "conversion_from_prev": 37.5,
           "conversion_from_top": 25.0,
           "cmp_count": null
         },
