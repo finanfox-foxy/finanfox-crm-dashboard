@@ -2,10 +2,6 @@ name: CRM Daily Extract
 
 on:
   push:
-    paths:
-      - '*.html'
-      - 'scripts/*.py'
-      - 'data/*.json'
   schedule:
     # Daily at 7:30 UTC = 9:30 AM Europe/Madrid (CET) / 8:30 AM (CEST)
     - cron: '0 5 * * *'
