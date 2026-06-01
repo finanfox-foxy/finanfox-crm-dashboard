@@ -1,203 +1,241 @@
 {
-  "generated_at": "2026-05-24T21:28:58Z",
+  "generated_at": "2026-06-01T16:30:00Z",
   "periods": {
-    "jan_apr_2025": {
+    "jan_may_2025": {
       "months": [
         "2025-01",
         "2025-02",
         "2025-03",
-        "2025-04"
+        "2025-04",
+        "2025-05"
       ],
       "totals": {
-        "income": 219350.23,
-        "expenses": 219555.62,
-        "margin": -205.39
+        "income": 321593.42,
+        "expenses": 287231.81,
+        "margin": 34361.61
       },
       "categories": {
         "income": {
-          "Monefit": 140978.7,
-          "Sunday Marketplace": 40213.43,
-          "Silver / Gold": 17603.2,
-          "IronBridge": 12081.5,
-          "SG Patrimonio": 6615.37,
-          "Otros partners": 1257.01,
-          "Seguros y Cías": 601.02
+          "Real Money": 140978.7,
+          "PMC (Intermediación)": 46858.25,
+          "Sunday Marketplace": 46416.23,
+          "Monefit": 41194.81,
+          "Silver / Gold": 27415.51,
+          "IronBridge": 16020.28,
+          "Seguros y Cías": 1325.19,
+          "Otros Ingresos": 970.51,
+          "Stripe": 413.94
         },
         "expenses": {
-          "Nóminas": 66418.6,
+          "Nóminas": 88894.6,
+          "Marketing": 52357.29,
           "Impuestos": 35356.48,
-          "Marketing": 29549.68,
-          "Proveedores": 26429.3,
-          "Gastos varios": 20552.2,
-          "Gastos financieros": 18576.27,
-          "Seguridad Social": 17105.22,
-          "Suscripciones": 5567.87
+          "Gastos financieros": 33300.0,
+          "Gastos varios": 32138.18,
+          "Seguridad Social": 23982.57,
+          "Suscripciones": 18244.24,
+          "Proveedores": 2763.92,
+          "Seguros": 194.53
         }
       }
     },
-    "jan_apr_2026": {
+    "jan_may_2026": {
       "months": [
         "2026-01",
         "2026-02",
         "2026-03",
-        "2026-04"
+        "2026-04",
+        "2026-05"
       ],
       "totals": {
-        "income": 422023.71,
-        "expenses": 360867.69,
-        "margin": 61156.02
+        "income": 523892.45,
+        "expenses": 418947.11,
+        "margin": 104945.34
       },
       "categories": {
         "income": {
-          "Monefit": 251239.21,
+          "Monefit": 309823.13,
+          "Real Money": 71152.55,
           "SG Patrimonio": 70878.84,
-          "Real Money": 43226.61,
-          "Silver / Gold": 39098.38,
-          "IronBridge": 11246.69,
+          "Silver / Gold": 53560.5,
+          "IronBridge": 11920.35,
           "Sunday Marketplace": 3504.56,
           "Admin RNT": 1951.58,
-          "Seguros y Cías": 877.84
+          "Seguros y Cías": 1100.94
         },
         "expenses": {
-          "Proveedores": 77596.26,
-          "Impuestos": 69397.32,
-          "Nóminas": 69101.59,
-          "Gastos financieros": 65628.56,
-          "Marketing": 40604.3,
-          "Seguridad Social": 25567.35,
-          "Gastos varios": 8888.91,
-          "Suscripciones": 2993.45,
-          "Seguros": 1089.95
+          "Nóminas": 84524.82,
+          "Proveedores": 79538.49,
+          "Marketing": 72293.2,
+          "Impuestos": 69430.68,
+          "Gastos financieros": 65693.56,
+          "Seguridad Social": 30673.64,
+          "Gastos varios": 8965.59,
+          "Suscripciones": 5668.44,
+          "Seguros": 1391.03,
+          "Alquiler": 330.22,
+          "Viajes": 310.96,
+          "Transporte": 126.48
         }
       }
     }
   },
   "variation": {
-    "income_pct": 92.4,
-    "expenses_pct": 64.4,
-    "margin_pct": 29675.6,
-    "income_abs": 202673.48,
-    "expenses_abs": 141312.07,
-    "margin_abs": 61361.41
+    "income_pct": 62.9,
+    "expenses_pct": 45.9,
+    "margin_pct": 205.4,
+    "income_abs": 202299.03,
+    "expenses_abs": 131715.3,
+    "margin_abs": 70583.73
   },
   "category_variation": {
     "income": {
-      "IronBridge": {
-        "2025": 12081.5,
-        "2026": 11246.69,
-        "variation_pct": -6.9,
-        "variation_abs": -834.81
+      "SG Patrimonio": {
+        "2025": 0,
+        "2026": 70878.84,
+        "variation_abs": 70878.84,
+        "variation_pct": null
+      },
+      "PMC (Intermediación)": {
+        "2025": 46858.25,
+        "2026": 0,
+        "variation_abs": -46858.25,
+        "variation_pct": -100.0
+      },
+      "Sunday Marketplace": {
+        "2025": 46416.23,
+        "2026": 3504.56,
+        "variation_abs": -42911.67,
+        "variation_pct": -92.4
+      },
+      "Real Money": {
+        "2025": 140978.7,
+        "2026": 71152.55,
+        "variation_abs": -69826.15,
+        "variation_pct": -49.5
+      },
+      "Stripe": {
+        "2025": 413.94,
+        "2026": 0,
+        "variation_abs": -413.94,
+        "variation_pct": -100.0
       },
       "Admin RNT": {
         "2025": 0,
         "2026": 1951.58,
-        "variation_pct": null,
-        "variation_abs": 1951.58
-      },
-      "Sunday Marketplace": {
-        "2025": 40213.43,
-        "2026": 3504.56,
-        "variation_pct": -91.3,
-        "variation_abs": -36708.87
+        "variation_abs": 1951.58,
+        "variation_pct": null
       },
       "Silver / Gold": {
-        "2025": 17603.2,
-        "2026": 39098.38,
-        "variation_pct": 122.1,
-        "variation_abs": 21495.18
+        "2025": 27415.51,
+        "2026": 53560.5,
+        "variation_abs": 26144.99,
+        "variation_pct": 95.4
       },
-      "Seguros y Cías": {
-        "2025": 601.02,
-        "2026": 877.84,
-        "variation_pct": 46.1,
-        "variation_abs": 276.82
-      },
-      "Real Money": {
-        "2025": 0,
-        "2026": 43226.61,
-        "variation_pct": null,
-        "variation_abs": 43226.61
-      },
-      "Otros partners": {
-        "2025": 1257.01,
+      "Otros Ingresos": {
+        "2025": 970.51,
         "2026": 0,
-        "variation_pct": -100.0,
-        "variation_abs": -1257.01
+        "variation_abs": -970.51,
+        "variation_pct": -100.0
       },
       "Monefit": {
-        "2025": 140978.7,
-        "2026": 251239.21,
-        "variation_pct": 78.2,
-        "variation_abs": 110260.51
+        "2025": 41194.81,
+        "2026": 309823.13,
+        "variation_abs": 268628.32,
+        "variation_pct": 652.1
       },
-      "SG Patrimonio": {
-        "2025": 6615.37,
-        "2026": 70878.84,
-        "variation_pct": 971.4,
-        "variation_abs": 64263.47
+      "IronBridge": {
+        "2025": 16020.28,
+        "2026": 11920.35,
+        "variation_abs": -4099.93,
+        "variation_pct": -25.6
+      },
+      "Seguros y Cías": {
+        "2025": 1325.19,
+        "2026": 1100.94,
+        "variation_abs": -224.25,
+        "variation_pct": -16.9
       }
     },
     "expenses": {
-      "Suscripciones": {
-        "2025": 5567.87,
-        "2026": 2993.45,
-        "variation_pct": -46.2,
-        "variation_abs": -2574.42
-      },
-      "Proveedores": {
-        "2025": 26429.3,
-        "2026": 77596.26,
-        "variation_pct": 193.6,
-        "variation_abs": 51166.96
-      },
-      "Seguros": {
+      "Viajes": {
         "2025": 0,
-        "2026": 1089.95,
-        "variation_pct": null,
-        "variation_abs": 1089.95
-      },
-      "Seguridad Social": {
-        "2025": 17105.22,
-        "2026": 25567.35,
-        "variation_pct": 49.5,
-        "variation_abs": 8462.13
-      },
-      "Marketing": {
-        "2025": 29549.68,
-        "2026": 40604.3,
-        "variation_pct": 37.4,
-        "variation_abs": 11054.62
-      },
-      "Nóminas": {
-        "2025": 66418.6,
-        "2026": 69101.59,
-        "variation_pct": 4.0,
-        "variation_abs": 2682.99
+        "2026": 310.96,
+        "variation_abs": 310.96,
+        "variation_pct": null
       },
       "Impuestos": {
         "2025": 35356.48,
-        "2026": 69397.32,
-        "variation_pct": 96.3,
-        "variation_abs": 34040.84
+        "2026": 69430.68,
+        "variation_abs": 34074.2,
+        "variation_pct": 96.4
+      },
+      "Suscripciones": {
+        "2025": 18244.24,
+        "2026": 5668.44,
+        "variation_abs": -12575.8,
+        "variation_pct": -68.9
+      },
+      "Proveedores": {
+        "2025": 2763.92,
+        "2026": 79538.49,
+        "variation_abs": 76774.57,
+        "variation_pct": 2777.7
+      },
+      "Nóminas": {
+        "2025": 88894.6,
+        "2026": 84524.82,
+        "variation_abs": -4369.78,
+        "variation_pct": -4.9
+      },
+      "Marketing": {
+        "2025": 52357.29,
+        "2026": 72293.2,
+        "variation_abs": 19935.91,
+        "variation_pct": 38.1
       },
       "Gastos varios": {
-        "2025": 20552.2,
-        "2026": 8888.91,
-        "variation_pct": -56.7,
-        "variation_abs": -11663.29
+        "2025": 32138.18,
+        "2026": 8965.59,
+        "variation_abs": -23172.59,
+        "variation_pct": -72.1
+      },
+      "Transporte": {
+        "2025": 0,
+        "2026": 126.48,
+        "variation_abs": 126.48,
+        "variation_pct": null
       },
       "Gastos financieros": {
-        "2025": 18576.27,
-        "2026": 65628.56,
-        "variation_pct": 253.3,
-        "variation_abs": 47052.29
+        "2025": 33300.0,
+        "2026": 65693.56,
+        "variation_abs": 32393.56,
+        "variation_pct": 97.3
+      },
+      "Alquiler": {
+        "2025": 0,
+        "2026": 330.22,
+        "variation_abs": 330.22,
+        "variation_pct": null
+      },
+      "Seguros": {
+        "2025": 194.53,
+        "2026": 1391.03,
+        "variation_abs": 1196.5,
+        "variation_pct": 615.1
+      },
+      "Seguridad Social": {
+        "2025": 23982.57,
+        "2026": 30673.64,
+        "variation_abs": 6691.07,
+        "variation_pct": 27.9
       }
     }
   },
   "margin_evolution": [
     {
       "month": "01",
-      "month_label": "January",
+      "month_label": "Enero",
       "income_2025": 49396.82,
       "expenses_2025": 72126.02,
       "margin_2025": -22729.2,
@@ -207,7 +245,7 @@
     },
     {
       "month": "02",
-      "month_label": "February",
+      "month_label": "Febrero",
       "income_2025": 49513.56,
       "expenses_2025": 44246.42,
       "margin_2025": 5267.14,
@@ -217,7 +255,7 @@
     },
     {
       "month": "03",
-      "month_label": "March",
+      "month_label": "Marzo",
       "income_2025": 56994.55,
       "expenses_2025": 38465.21,
       "margin_2025": 18529.34,
@@ -227,13 +265,23 @@
     },
     {
       "month": "04",
-      "month_label": "April",
+      "month_label": "Abril",
       "income_2025": 63445.3,
       "expenses_2025": 64717.97,
       "margin_2025": -1272.67,
       "income_2026": 96722.81,
       "expenses_2026": 87003.79,
       "margin_2026": 9719.02
+    },
+    {
+      "month": "05",
+      "month_label": "Mayo",
+      "income_2025": 102243.19,
+      "expenses_2025": 67676.19,
+      "margin_2025": 34567.0,
+      "income_2026": 101868.74,
+      "expenses_2026": 58079.42,
+      "margin_2026": 43789.32
     }
   ],
   "annual_estimates": {
@@ -254,36 +302,17 @@
         "2025-12"
       ],
       "monthly_avg": {
-        "income": 81836.63,
-        "expenses": 75274.42,
-        "margin": 6562.21
+        "income": 81293.03,
+        "expenses": 74331.99,
+        "margin": 6961.04
       },
       "annual_estimate": {
-        "income": 982039.56,
-        "expenses": 903293.04,
-        "margin": 78746.52
+        "income": 975516.36,
+        "expenses": 891983.86,
+        "margin": 83532.5
       }
     },
-    "2026_janapr_projection": {
-      "months_available": 4,
-      "months_list": [
-        "2026-01",
-        "2026-02",
-        "2026-03",
-        "2026-04"
-      ],
-      "monthly_avg": {
-        "income": 105505.93,
-        "expenses": 90216.92,
-        "margin": 15289.01
-      },
-      "annual_estimate": {
-        "income": 1266071.16,
-        "expenses": 1082603.04,
-        "margin": 183468.12
-      }
-    },
-    "2026_available_projection": {
+    "2026_jan_may_projection": {
       "months_available": 5,
       "months_list": [
         "2026-01",
@@ -293,14 +322,14 @@
         "2026-05"
       ],
       "monthly_avg": {
-        "income": 104643.76,
-        "expenses": 86718.04,
-        "margin": 17925.72
+        "income": 104778.49,
+        "expenses": 83789.42,
+        "margin": 20989.07
       },
       "annual_estimate": {
-        "income": 1255725.12,
-        "expenses": 1040616.48,
-        "margin": 215108.64
+        "income": 1257341.88,
+        "expenses": 1005473.06,
+        "margin": 251868.82
       }
     }
   }

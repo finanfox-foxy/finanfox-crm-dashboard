@@ -1236,8 +1236,9 @@ function renderFinancialPeriodTab(periodKey, fd) {
     } else if (periodKey === 'this_quarter') {
         data = aggregateFinancialMonths(fd, getQuarterMonths(lastMonth));
         prevData = aggregateFinancialMonths(fd, getQuarterMonths(sortedMonths[0]));
-    } else { // this_year
-        data = aggregateFinancialMonths(fd, sortedMonths);
+    } else { // this_year — solo año actual (2026)
+        var currentYearMonths = sortedMonths.filter(function(m) { return m.startsWith('2026'); });
+        data = aggregateFinancialMonths(fd, currentYearMonths.length > 0 ? currentYearMonths : sortedMonths);
     }
 
     renderFinancialKPIs(data, prevData, 'finkpi-' + periodKey);
@@ -1268,8 +1269,8 @@ function renderFinancialComparison() {
     var cmp = currentComparisonData;
     if (!cmp) { document.getElementById('comparison-summary').innerHTML = '<p style="color:var(--text-muted)">Datos de comparativa no disponibles.</p>'; return; }
 
-    var p25 = cmp.periods.jan_apr_2025;
-    var p26 = cmp.periods.jan_apr_2026;
+    var p25 = cmp.periods.jan_may_2025;
+    var p26 = cmp.periods.jan_may_2026;
     var var_ = cmp.variation;
     var marginEvo = cmp.margin_evolution;
     var catVar = cmp.category_variation;
@@ -1277,7 +1278,7 @@ function renderFinancialComparison() {
 
     // ── Summary comparison table ──
     function pctStr(v) { return v !== null ? (v >= 0 ? '+' : '') + v.toFixed(1) + '%' : 'N/A'; }
-    var summaryHtml = '<div style="overflow-x:auto"><table class="cmp-table"><thead><tr><th></th><th>Ene-Abr 2025</th><th>Ene-Abr 2026</th><th>Variación €</th><th>Variación %</th></tr></thead><tbody>';
+    var summaryHtml = '<div style="overflow-x:auto"><table class="cmp-table"><thead><tr><th></th><th>Ene-May 2025</th><th>Ene-May 2026</th><th>Variación €</th><th>Variación %</th></tr></thead><tbody>';
     summaryHtml += '<tr><td><strong>💰 Ingresos</strong></td><td>' + formatEUR(p25.totals.income) + '</td><td>' + formatEUR(p26.totals.income) + '</td><td style="color:' + (var_.income_abs >=0 ? 'var(--success)' : '#ef4444') + '">' + (var_.income_abs >=0 ? '+' : '') + formatEUR(var_.income_abs) + '</td><td>' + pctStr(var_.income_pct) + '</td></tr>';
     summaryHtml += '<tr><td><strong>📉 Gastos</strong></td><td>' + formatEUR(p25.totals.expenses) + '</td><td>' + formatEUR(p26.totals.expenses) + '</td><td style="color:' + (var_.expenses_abs >=0 ? '#ef4444' : 'var(--success)') + '">' + (var_.expenses_abs >=0 ? '+' : '') + formatEUR(var_.expenses_abs) + '</td><td>' + pctStr(var_.expenses_pct) + '</td></tr>';
     summaryHtml += '<tr><td><strong>📈 Margen</strong></td><td>' + formatEUR(p25.totals.margin) + '</td><td>' + formatEUR(p26.totals.margin) + '</td><td style="color:' + (var_.margin_abs >=0 ? 'var(--success)' : '#ef4444') + '">' + (var_.margin_abs >=0 ? '+' : '') + formatEUR(var_.margin_abs) + '</td><td>' + (p25.totals.margin === 0 ? 'NUEVO' : pctStr(var_.margin_pct)) + '</td></tr>';
@@ -1339,10 +1340,10 @@ function renderFinancialComparison() {
 
     // ── Annual projections ──
     var projHtml = '<h3>📊 Estimaciones Anuales</h3><div style="display:flex;flex-wrap:wrap;gap:12px">';
-    ['2025_full','2026_janapr_projection'].forEach(function(key) {
+    ['2025_full','2026_jan_may_projection'].forEach(function(key) {
         var e = estimates[key];
         if (!e) return;
-        var label = key === '2025_full' ? '2025 (completo)' : '2026 (proy. Ene-Abr)';
+        var label = key === '2025_full' ? '2025 (completo)' : '2026 (proy. Ene-May)';
         projHtml += '<div class="kpi-card" style="flex:1;min-width:200px"><div class="kpi-label">' + label + '</div>';
         projHtml += '<div class="kpi-value" style="font-size:1rem">' + formatEUR(e.annual_estimate.income) + '</div><div class="cmp-context" style="font-size:0.72rem">💰 Ingresos</div>';
         projHtml += '<div class="kpi-value" style="font-size:1rem;color:var(--warning)">' + formatEUR(e.annual_estimate.expenses) + '</div><div class="cmp-context" style="font-size:0.72rem">📉 Gastos</div>';
