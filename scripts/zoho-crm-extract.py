@@ -699,6 +699,7 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
                 "stats": prev_year_stats
             }
         },
+        "deals": advisor_deals,
         "pipeline": {
             "stage_order": STAGE_ORDER,
             "yesterday": compute_pipeline_details(yesterday_stats['pipeline_stages']),
