@@ -595,6 +595,28 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
     # ── Period stats (reuse compute_period_stats with filtered data) ──
     yesterday_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Ayer", in_yesterday)
     this_month_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Mes", in_this_month)
+
+    # ── Same guard: evitar sobreescribir this_month con ceros en transición de mes ──
+    if this_month_stats['won_deals'] == 0 and this_month_stats['won_value'] == 0.0:
+        adv_file = DATA_DIR / f'{advisor_name.lower().replace(" ", "-")}.json'
+        if adv_file.exists():
+            try:
+                prev_adv = json.loads(adv_file.read_text())
+                prev_adv_month = prev_adv.get('stats', {}).get('this_month', {})
+                if prev_adv_month.get('won_deals', 0) > 0:
+                    old_ts = prev_adv.get('generated_at', '')
+                    if old_ts:
+                        try:
+                            old_dt = datetime.strptime(old_ts, '%Y-%m-%d')
+                            age_days = (datetime.now() - old_dt).days
+                        except:
+                            age_days = 99
+                    else:
+                        age_days = 99
+                    if age_days < 35:
+                        this_month_stats = prev_adv_month
+            except (json.JSONDecodeError, KeyError):
+                pass
     this_quarter_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Trimestre", in_this_quarter)
     this_year_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Año", in_this_year)
 
@@ -837,6 +859,33 @@ def main():
     this_month_stats = compute_period_stats(
         contacts, deals, pf_records, "Este Mes", in_this_month
     )
+
+    # ── Guard: evitar sobreescribir this_month con ceros en transición de mes ──
+    # Si el nuevo mes no tiene deals ganados aún (ej: 1 de Junio vs deals de Mayo),
+    # mantener los datos del mes anterior en this_month para no romper dashboards.
+    if this_month_stats['won_deals'] == 0 and this_month_stats['won_value'] == 0.0:
+        if DATA_FILE.exists():
+            try:
+                prev_data = json.loads(DATA_FILE.read_text())
+                prev_month_data = prev_data.get('stats', {}).get('this_month', {})
+                if prev_month_data.get('won_deals', 0) > 0:
+                    old_ts = prev_data.get('generated_at', '')
+                    # Solo mantener si los datos viejos tienen <35 días (no datos eternamente obsoletos)
+                    if old_ts:
+                        try:
+                            old_dt = datetime.strptime(old_ts, '%Y-%m-%d')
+                            age_days = (datetime.now() - old_dt).days
+                        except:
+                            age_days = 99
+                    else:
+                        age_days = 99
+                    if age_days < 35:
+                        print(f"\n  ⚠️ Transición de mes detectada: THIS_MONTH={THIS_MONTH} pero 0 deals ganados.")
+                        print(f"     Manteniendo datos de {old_ts} (won_deals={prev_month_data['won_deals']}) para evitar ceros.")
+                        print(f"     Los datos se actualizarán cuando se cierre el primer deal de {THIS_MONTH}.")
+                        this_month_stats = prev_month_data
+            except (json.JSONDecodeError, KeyError):
+                pass
 
     print(f"\nAyer ({YESTERDAY}):")
     print(f"   Nuevos contactos: {yesterday_stats['new_contacts']}")
