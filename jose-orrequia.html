@@ -1116,9 +1116,10 @@ function renderHistorico2026() {
     var container = document.getElementById('historico-content');
     if (!container) return;
     var deals = currentData.deals;
-    if (!deals) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
+    if (!deals || deals.length === 0) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
 
     function fmt(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:0}); }
+    function fmtDec(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}); }
     function bar(pct,c) { return '<div style="height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden"><div style="height:8px;width:'+Math.min(pct,100)+'%;background:'+c+';border-radius:4px"></div></div>'; }
 
     var monthLabels = {
@@ -1128,18 +1129,36 @@ function renderHistorico2026() {
     var monthOrder = ['2026-05','2026-04','2026-03','2026-02','2026-01'];
 
     var byMonth = {};
-    monthOrder.forEach(function(m) { byMonth[m] = {won:0,lost:0,vol_won:0,vol_lost:0,created:0,deals:[],open:0}; });
+    monthOrder.forEach(function(m) { byMonth[m] = {won:0,lost:0,vol_won:0,vol_lost:0,vol_aport:0,created:0,deals:[],open:0,daysToWin:[]}; });
 
     deals.forEach(function(d) {
         var cl = (d.Closing_Date || '').substring(0,7);
         var ct = (d.Created_Time || '').substring(0,7);
         var stage = d.Stage || '';
         var amt = parseFloat(d.Amount) || 0;
+        var aport = parseFloat(d.Total_Aportaciones) || 0;
         var name = d.Deal_Name || d['Deal Name'] || '';
 
         if (byMonth[cl]) {
-            if (stage === 'Cerrado Ganado') { byMonth[cl].won++; byMonth[cl].vol_won += amt; byMonth[cl].deals.push({name:name,amt:amt}); }
-            else if (stage === 'Cerrado Perdido') { byMonth[cl].lost++; byMonth[cl].vol_lost += amt; }
+            if (stage === 'Cerrado Ganado') {
+                byMonth[cl].won++;
+                byMonth[cl].vol_won += amt;
+                byMonth[cl].vol_aport += aport;
+                byMonth[cl].deals.push({name:name, amt:amt, aport:aport, deal:d});
+                // Days to win
+                var closed = d.Closing_Date || '';
+                var created = d.Created_Time || '';
+                if (closed && created) {
+                    var cd = new Date(closed);
+                    var cr = new Date(created);
+                    var diff = Math.round((cd - cr) / (1000 * 60 * 60 * 24));
+                    if (diff >= 0) byMonth[cl].daysToWin.push(diff);
+                }
+            } else if (stage === 'Cerrado Perdido') {
+                byMonth[cl].lost++;
+                byMonth[cl].vol_lost += amt;
+                byMonth[cl].deals.push({name:name, amt:amt, aport:0, deal:d});
+            }
         }
         if (byMonth[ct]) { byMonth[ct].created++; }
         if (byMonth[cl] && stage !== 'Cerrado Ganado' && stage !== 'Cerrado Perdido') {
@@ -1164,60 +1183,85 @@ function renderHistorico2026() {
         var prods = {};
         dealsArr.forEach(function(d) {
             var p = inferProduct(d.name);
-            prods[p] = (prods[p] || 0) + d.amt;
+            if (p) { prods[p] = (prods[p] || 0) + d.amt; }
         });
         return Object.keys(prods).sort(function(a,b){return prods[b]-prods[a];}).map(function(k){return {name:k,vol:prods[k]};});
     }
 
+    function monthCommission(dealsArr) {
+        var total = 0;
+        dealsArr.forEach(function(d) {
+            if (d.deal && d.deal.Stage === 'Cerrado Ganado') {
+                var match = findCommission(d.deal.Deal_Name || d.deal['Deal Name'] || '', '');
+                if (match) {
+                    total += (d.aport || d.amt || 0) * match.rate;
+                }
+            }
+        });
+        return total;
+    }
+
     var html = '';
     html += '<h3 style="margin-top:0;margin-bottom:16px">📅 <span style="color:var(--accent)">Histórico Mensual</span> — 2026</h3>';
-    html += '<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px">Haz clic en un mes para expandir.</p>';
+    html += '<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px">Haz clic en un mes para expandir. Datos calculados de las oportunidades de ese mes.</p>';
 
     monthOrder.forEach(function(mk) {
         var m = byMonth[mk];
         var label = monthLabels[mk];
-        var totalClosed = m.won + m.lost;
-        var winRate = totalClosed > 0 ? (m.won / totalClosed * 100).toFixed(1) : '-';
-        var monthIdx = monthOrder.indexOf(mk);
-        var prevLabel = monthOrder[monthIdx + 1];
-        var prev = prevLabel ? byMonth[prevLabel] : null;
-        var vsPrev = '';
-        if (prev && prev.won > 0) {
-            var change = ((m.vol_won - prev.vol_won) / prev.vol_won * 100);
-            var arrowIcon = change > 0 ? '📈' : change < 0 ? '📉' : '➡️';
-            vsPrev = arrowIcon + ' <span style="color:' + (change >= 0 ? 'var(--success)' : 'var(--error)') + ';font-weight:600">' + (change >= 0 ? '+' : '') + change.toFixed(0) + '%</span>';
-        }
-
-        var topDeals = m.deals.slice().sort(function(a,b){return b.amt-a.amt;}).slice(0,5);
-        var prods = productBreakdown(m.deals);
+        var winRate = m.created > 0 ? (m.won / m.created * 100).toFixed(1) : null;
+        var avgDays = m.daysToWin.length > 0 ? Math.round(m.daysToWin.reduce(function(a,b){return a+b;},0) / m.daysToWin.length) : null;
+        var closedTotal = m.won + m.lost;
+        // Unique product types from WON deals only
+        var wonDealsOnly = m.deals.filter(function(d){return d.deal && d.deal.Stage === 'Cerrado Ganado';});
+        var prods = productBreakdown(wonDealsOnly);
         var totalProd = prods.reduce(function(s,p){return s+p.vol;}, 0);
+        var productsClosed = prods.length;
+        var commission = monthCommission(wonDealsOnly);
+
+        // ── KPI cards (same as renderKPI in 'Este Mes') ──
+        var kpiHtml = '<div class="crm-grid" style="margin-bottom:14px">';
+        kpiHtml += '<div class="crm-card accent"><div class="value-row"><div class="value">—</div></div><div class="label">👥 Nuevos Contactos</div></div>';
+        kpiHtml += '<div class="crm-card info"><div class="value-row"><div class="value">' + m.created + '</div></div><div class="label">📈 Nuevas Oportunidades</div></div>';
+        kpiHtml += '<div class="crm-card success"><div class="value-row"><div class="value">' + m.won + '</div></div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + fmt(m.vol_won) + '</div></div>';
+        kpiHtml += '<div class="crm-card purple"><div class="value-row"><div class="value">' + fmt(m.vol_aport) + '</div></div><div class="label">💰 Total Invertido</div></div>';
+        kpiHtml += '<div class="crm-card error"><div class="value-row"><div class="value">' + m.lost + '</div></div><div class="label">❌ Oportunidades Perdidas</div></div>';
+        kpiHtml += '<div class="crm-card warning"><div class="value-row"><div class="value">' + productsClosed + '</div></div><div class="label">📦 Productos Cerrados</div></div>';
+        kpiHtml += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (winRate !== null ? winRate + '%' : 'N/A') + '</div></div><div class="label">⚡ Win Rate</div><div class="sub">' + m.won + ' ganados de ' + m.created + ' nuevas</div></div>';
+        kpiHtml += '<div class="crm-card info"><div class="value-row"><div class="value">' + (avgDays !== null ? avgDays + ' días' : 'N/A') + '</div></div><div class="label">📅 Días hasta cierre</div></div>';
+        kpiHtml += '<div class="crm-card accent"><div class="value-row"><div class="value">—</div></div><div class="label">🔄 Conversión clientes</div></div>';
+        kpiHtml += '</div>';
+
+        var topDeals = m.deals.filter(function(d){return d.deal && d.deal.Stage === 'Cerrado Ganado';}).slice().sort(function(a,b){return b.amt-a.amt;}).slice(0,5);
 
         html += '<div class="accordion-item">';
         html += '<div class="accordion-header" data-month="' + mk + '" onclick="toggleMonth(\'' + mk + '\')">';
-        html += '<span class="month-label">' + label + ' ' + vsPrev + '</span>';
+        html += '<span class="month-label">' + label + '</span>';
         html += '<span class="month-summary">';
         html += '<span>🏆 ' + fmt(m.vol_won) + '</span>';
-        if (m.won > 0 || m.lost > 0) {
-            html += '<span>✅ ' + m.won + ' won</span>';
-            html += '<span>❌ ' + m.lost + ' lost</span>';
-        }
-        html += '<span>📊 ' + m.created + ' creados</span>';
+        if (m.won > 0) html += '<span>✅ ' + m.won + ' won</span>';
+        if (commission > 0) html += '<span>💶 ' + fmt(commission) + '</span>';
+        html += '<span>📊 ' + m.created + ' creadas</span>';
         html += '<span class="accordion-arrow">▼</span>';
         html += '</span></div>';
         html += '<div class="accordion-body" id="month-' + mk + '">';
         html += '<div class="accordion-inner">';
 
-        html += '<div class="crm-grid" style="margin-bottom:14px;grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">';
-        html += '<div class="crm-card success" style="padding:10px"><div class="value" style="font-size:1rem">' + fmt(m.vol_won) + '</div><div class="label" style="font-size:0.7rem">Volumen ganado</div></div>';
-        html += '<div class="crm-card accent" style="padding:10px"><div class="value" style="font-size:1rem">' + m.won + '</div><div class="label" style="font-size:0.7rem">Deals ganados</div></div>';
-        html += '<div class="crm-card warning" style="padding:10px"><div class="value" style="font-size:1rem;color:var(--warning)">' + m.lost + '</div><div class="label" style="font-size:0.7rem">Deals perdidos</div></div>';
-        html += '<div class="crm-card" style="padding:10px;border-color:' + (parseFloat(winRate)>=30?'var(--success)':parseFloat(winRate)>=15?'var(--warning)':'var(--error)') + '"><div class="value" style="font-size:1rem;color:' + (parseFloat(winRate)>=30?'var(--success)':parseFloat(winRate)>=15?'var(--warning)':'var(--error)') + '">' + winRate + '%</div><div class="label" style="font-size:0.7rem">Tasa cierre</div></div>';
-        html += '<div class="crm-card" style="padding:10px"><div class="value" style="font-size:1rem">' + fmt(m.won > 0 ? m.vol_won/m.won : 0) + '</div><div class="label" style="font-size:0.7rem">Ticket medio</div></div>';
-        html += '<div class="crm-card" style="padding:10px"><div class="value" style="font-size:1rem">' + m.created + '</div><div class="label" style="font-size:0.7rem">Nuevos creados</div></div>';
-        html += '</div>';
+        // KPI cards
+        html += kpiHtml;
 
+        // Commission section (simplified, from deals)
+        if (commission > 0) {
+            html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">💶 Comisiones del Mes</h4>';
+            html += '<div style="padding:12px 16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;margin-bottom:14px">';
+            html += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">';
+            html += '<span style="font-weight:600;color:var(--success)">Comisión estimada total:</span>';
+            html += '<span style="font-size:1.1rem;font-weight:700;color:var(--success)">' + fmt(commission) + '</span>';
+            html += '</div></div>';
+        }
+
+        // Product breakdown
         if (prods.length > 0) {
-            html += '<h4 style="margin:0 0 8px;font-size:0.82rem">📦 Productos</h4>';
+            html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">📦 Productos</h4>';
             html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
             html += '<thead><tr><th>Producto</th><th>Volumen</th><th>%</th><th></th></tr></thead><tbody>';
             var prodColors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444','#14b8a6','#6366f1'];
@@ -1228,16 +1272,18 @@ function renderHistorico2026() {
             html += '</tbody></table></div>';
         }
 
+        // Top 5 deals
         if (topDeals.length > 0) {
-            html += '<h4 style="margin:12px 0 8px;font-size:0.82rem">🏆 Top 5 Deals</h4>';
+            html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">🏆 Top 5 Oportunidades Ganadas</h4>';
             html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
-            html += '<thead><tr><th>#</th><th>Importe</th><th>Deal</th></tr></thead><tbody>';
+            html += '<thead><tr><th>#</th><th>Importe</th><th>Inversión</th><th>Deal</th></tr></thead><tbody>';
             topDeals.forEach(function(t,i) {
-                html += '<tr><td>' + (i+1) + '</td><td><strong>' + fmt(t.amt) + '</strong></td><td>' + (t.name||'').substring(0,45) + '</td></tr>';
+                html += '<tr><td>' + (i+1) + '</td><td><strong>' + fmt(t.amt) + '</strong></td><td>' + fmt(t.aport) + '</td><td>' + (t.name||'').substring(0,45) + '</td></tr>';
             });
             html += '</tbody></table></div>';
         }
 
+        // Open deals at month end
         if (m.open > 0) {
             html += '<div style="margin-top:10px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.72rem;color:var(--text-muted)">';
             html += '📌 <strong>' + m.open + ' oportunidades</strong> siguen abiertas a cierre de mes';
