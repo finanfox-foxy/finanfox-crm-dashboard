@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T18:50:00Z",
+  "generated_at": "2026-06-01T21:45:00Z",
   "periods": {
     "jan_may_2025": {
       "months": [
@@ -49,16 +49,17 @@
         "2026-05"
       ],
       "totals": {
-        "income": 523892.45,
+        "income": 500892.45,
         "expenses": 301912.32,
-        "margin": 221980.13
+        "margin": 198980.13
       },
       "categories": {
         "income": {
           "Monefit": 309823.13,
-          "SilverGold": 124439.34,
+          "SilverGold": 90934.47,
           "The Real Money": 71152.55,
           "IronBridge": 11920.35,
+          "Plusvalías": 10504.87,
           "Sunday Marketplace": 3504.56,
           "Reental": 1951.58,
           "Seguros y Cías": 1100.94
@@ -81,12 +82,12 @@
     }
   },
   "variation": {
-    "income_pct": 62.9,
+    "income_pct": 55.8,
     "expenses_pct": 24.6,
-    "margin_pct": 179.9,
-    "income_abs": 202299.03000000003,
+    "margin_pct": 150.9,
+    "income_abs": 179299.03000000003,
     "expenses_abs": 59636.92000000001,
-    "margin_abs": 142662.11
+    "margin_abs": 119662.11
   },
   "category_variation": {
     "income": {
@@ -108,6 +109,12 @@
         "variation_abs": -729.9,
         "variation_pct": -100.0
       },
+      "Plusvalías": {
+        "2025": 0,
+        "2026": 10504.87,
+        "variation_abs": 10504.87,
+        "variation_pct": null
+      },
       "Reental": {
         "2025": 0,
         "2026": 1951.58,
@@ -122,9 +129,9 @@
       },
       "SilverGold": {
         "2025": 27656.12,
-        "2026": 124439.34,
-        "variation_abs": 96783.22,
-        "variation_pct": 350.0
+        "2026": 90934.47,
+        "variation_abs": 63278.35,
+        "variation_pct": 228.8
       },
       "Stripe": {
         "2025": 413.94,
@@ -247,9 +254,9 @@
       "income_2025": 56994.55,
       "expenses_2025": 34598.92,
       "margin_2025": 22395.63,
-      "income_2026": 122482.76,
+      "income_2026": 99482.76,
       "expenses_2026": 42337.83,
-      "margin_2026": 80144.93
+      "margin_2026": 57144.93
     },
     {
       "month": "04",
@@ -310,14 +317,14 @@
         "2026-05"
       ],
       "monthly_avg": {
-        "income": 104778.49,
+        "income": 100178.49,
         "expenses": 60382.46,
-        "margin": 44396.03
+        "margin": 39796.03
       },
       "annual_estimate": {
-        "income": 1257341.88,
+        "income": 1202141.88,
         "expenses": 724589.57,
-        "margin": 532752.31
+        "margin": 477552.31
       }
     }
   }
