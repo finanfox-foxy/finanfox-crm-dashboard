@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-01T16:08:58Z",
+  "timestamp": "2026-06-01T16:56:13Z",
   "generated_at": "2026-06-01",
   "today": "2026-06-01",
   "yesterday": "2026-05-31",
@@ -31,7 +31,32 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-05-31T01:57:09+02:00",
       "Modified_Time": "2026-05-31T01:57:37+02:00",
-      "Last_Activity_Time": "2026-05-31T01:58:08+02:00"
+      "Last_Activity_Time": "2026-06-01T18:47:20+02:00"
+    },
+    {
+      "id": "862490000005275009",
+      "Full_Name": "Alexis",
+      "First_Name": null,
+      "Last_Name": "Alexis",
+      "Email": "Alexdagomarco@gmail.com",
+      "Phone": null,
+      "Owner": "Alex Caballero",
+      "Canal": "Finanfox",
+      "Socio": null,
+      "Fuente": null,
+      "DNI": null,
+      "Cuenta_Corriente": null,
+      "Estado_civil": null,
+      "Profesi_n": null,
+      "Club": null,
+      "Divisi_n": null,
+      "Plantilla_Bienvenida_enviada": false,
+      "Visitor_Score": "0",
+      "Days_Visited": null,
+      "Average_Time_Spent_Minutes": null,
+      "Created_Time": "2026-06-01T18:39:32+02:00",
+      "Modified_Time": "2026-06-01T18:39:34+02:00",
+      "Last_Activity_Time": "2026-06-01T18:39:34+02:00"
     },
     {
       "id": "862490000005272011",
@@ -99982,31 +100007,6 @@
       "Created_Time": "2026-05-28T00:27:46+02:00",
       "Modified_Time": "2026-05-28T00:27:46+02:00",
       "Last_Activity_Time": null
-    },
-    {
-      "id": "862490000005193417",
-      "Full_Name": "Juan Moreno Gutiérrez",
-      "First_Name": "Juan",
-      "Last_Name": "Moreno Gutiérrez",
-      "Email": "juan.moreno@uca.es",
-      "Phone": null,
-      "Owner": "Alex Caballero",
-      "Canal": "Finanfox",
-      "Socio": null,
-      "Fuente": "Odoo",
-      "DNI": null,
-      "Cuenta_Corriente": null,
-      "Estado_civil": null,
-      "Profesi_n": null,
-      "Club": null,
-      "Divisi_n": null,
-      "Plantilla_Bienvenida_enviada": false,
-      "Visitor_Score": null,
-      "Days_Visited": null,
-      "Average_Time_Spent_Minutes": null,
-      "Created_Time": "2026-05-28T00:27:46+02:00",
-      "Modified_Time": "2026-05-28T00:27:46+02:00",
-      "Last_Activity_Time": null
     }
   ],
   "deals": [
@@ -112014,9 +112014,9 @@
         "welcome_sent": 0,
         "by_owner": {
           "Jose Orrequia": 1,
+          "Alex Caballero": 3991,
           "Alberto Prieto": 6,
-          "Jaime Becerra": 2,
-          "Alex Caballero": 3991
+          "Jaime Becerra": 2
         },
         "by_canal": {
           "Finanfox": 4000
@@ -114013,8 +114013,8 @@
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "1": 2,
-        "28": 3990,
+        "1": 3,
+        "28": 3989,
         "30": 2,
         "31": 6
       }
@@ -115264,8 +115264,8 @@
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "1": 2,
-        "28": 3990,
+        "1": 3,
+        "28": 3989,
         "30": 2,
         "31": 6
       }
@@ -115312,7 +115312,7 @@
       "period_label": "mes anterior",
       "stats": {
         "label": "Mes Anterior",
-        "new_contacts": 3998,
+        "new_contacts": 3997,
         "new_deals": 236,
         "won_deals": 64,
         "lost_deals": 196,
@@ -116170,13 +116170,13 @@
         "avg_days_to_win": 10.6,
         "products_closed_count": 67,
         "conversion_clientes": {
-          "total_contacts": 3998,
+          "total_contacts": 3997,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "28": 3990,
+          "28": 3989,
           "30": 2,
           "31": 6
         }
