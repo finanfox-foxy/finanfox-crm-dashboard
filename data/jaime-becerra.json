@@ -1,10 +1,10 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-05-31T08:15:26Z",
-  "generated_at": "2026-05-31",
-  "today": "2026-05-31",
-  "yesterday": "2026-05-30",
-  "this_month": "2026-05",
+  "timestamp": "2026-06-01T10:22:02Z",
+  "generated_at": "2026-06-01",
+  "today": "2026-06-01",
+  "yesterday": "2026-05-31",
+  "this_month": "2026-06",
   "this_quarter_start": "2026-04-01",
   "this_quarter_end": "2026-06-30",
   "this_quarter_label": "Q2",
@@ -44,8 +44,8 @@
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 2,
-      "new_deals": 3,
+      "new_contacts": 0,
+      "new_deals": 0,
       "won_deals": 0,
       "lost_deals": 0,
       "won_value": 0,
@@ -56,22 +56,18 @@
       "product_deals": [],
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
-      "pipeline_stages": {
-        "Llamada Pendiente": 3
-      },
+      "pipeline_stages": {},
       "pipeline_value": 0.0,
-      "win_rate": 0.0,
+      "win_rate": null,
       "avg_days_to_win": null,
       "products_closed_count": 0,
       "conversion_clientes": {
-        "total_contacts": 2,
+        "total_contacts": 0,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {
-        "30": 2
-      }
+      "contacts_by_day": {}
     },
     "this_month": {
       "label": "Este Mes",
@@ -443,6 +439,8 @@
           "entidad": "Monefit",
           "total": 50.0,
           "close_date": "2026-05-29",
+          "cliente": "Juan Jose Gonzalez del Ojo",
+          "parent_id": "862490000005268122",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -452,6 +450,8 @@
           "entidad": "Monefit",
           "total": 2600.0,
           "close_date": "2026-05-29",
+          "cliente": "Marc Ventura",
+          "parent_id": "862490000003947128",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -461,6 +461,8 @@
           "entidad": "Monefit",
           "total": 500.0,
           "close_date": "2026-05-29",
+          "cliente": "Virginia De la varga sanz",
+          "parent_id": "862490000003468760",
           "fecha_inicio": "2026-05-11",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -470,6 +472,8 @@
           "entidad": "SilverGold",
           "total": 1200.0,
           "close_date": "2026-05-28",
+          "cliente": "Jorge Martín Rodríguez",
+          "parent_id": "862490000005079230",
           "fecha_inicio": "2027-05-28",
           "objetivo_financiero": "Hijos",
           "plazo": "Largo Plazo (+10 años)"
@@ -479,6 +483,8 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-27",
+          "cliente": "Iban Vázquez Cabeza",
+          "parent_id": "862490000005099801",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -488,6 +494,8 @@
           "entidad": "SilverGold",
           "total": 25000.0,
           "close_date": "2026-05-27",
+          "cliente": "Iban Vázquez Cabeza",
+          "parent_id": "862490000005099780",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -497,6 +505,8 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-22",
+          "cliente": "Jorge Martín Rodríguez",
+          "parent_id": "862490000005099261",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -506,6 +516,8 @@
           "entidad": "Monefit",
           "total": 290.0,
           "close_date": "2026-05-21",
+          "cliente": "Nerea Junyent Grao",
+          "parent_id": "862490000005079205",
           "fecha_inicio": "2026-04-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -515,6 +527,8 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-21",
+          "cliente": "Javier Venegas Diaz",
+          "parent_id": "862490000005079116",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -524,6 +538,8 @@
           "entidad": "SilverGold",
           "total": 9000.0,
           "close_date": "2026-05-21",
+          "cliente": "Javier Venegas Diaz",
+          "parent_id": "862490000003139141",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -533,6 +549,8 @@
           "entidad": "SilverGold",
           "total": 12000.0,
           "close_date": "2026-05-20",
+          "cliente": "Luisa Rodríguez Guillén",
+          "parent_id": "862490000004983074",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -542,6 +560,8 @@
           "entidad": "SilverGold",
           "total": 8000.0,
           "close_date": "2026-05-20",
+          "cliente": "Encarni Salvador Reyes",
+          "parent_id": "862490000004983003",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -551,6 +571,8 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-19",
+          "cliente": "David Sin apellido",
+          "parent_id": "862490000004851167",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -560,6 +582,8 @@
           "entidad": "The Real Money",
           "total": 30000.0,
           "close_date": "2026-05-19",
+          "cliente": "David Sin apellido",
+          "parent_id": "862490000004851124",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -569,6 +593,8 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004733133",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -578,6 +604,8 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004733108",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -587,6 +615,8 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004733090",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -596,6 +626,8 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004688075",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -605,6 +637,8 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-08",
+          "cliente": "Ilídio Paulo Sachiambo Vatuva",
+          "parent_id": "862490000004374140",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -614,6 +648,8 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-08",
+          "cliente": "David Sin apellido",
+          "parent_id": "862490000003468895",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -623,6 +659,8 @@
           "entidad": "Monefit",
           "total": 220000.0,
           "close_date": "2026-05-08",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000003620223",
           "fecha_inicio": "2026-05-15",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -632,6 +670,8 @@
           "entidad": "Monefit",
           "total": 130000.0,
           "close_date": "2026-05-07",
+          "cliente": "Álvaro Hernández Carrasco",
+          "parent_id": "862490000004315612",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -641,6 +681,8 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-05",
+          "cliente": "Pablo Silvestre Marrodán",
+          "parent_id": "862490000004315207",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -650,6 +692,8 @@
           "entidad": "Monefit",
           "total": 4000.0,
           "close_date": "2026-04-30",
+          "cliente": "Gabriel Herrera",
+          "parent_id": "862490000003468345",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -659,6 +703,8 @@
           "entidad": "SilverGold",
           "total": 2000.0,
           "close_date": "2026-04-20",
+          "cliente": "Isabel Maria Peña Vadillo",
+          "parent_id": "862490000003989430",
           "fecha_inicio": "2026-04-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -668,6 +714,8 @@
           "entidad": "SilverGold",
           "total": 3851.0,
           "close_date": "2026-04-17",
+          "cliente": "Pablo Silvestre Marrodán",
+          "parent_id": "862490000003809276",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -677,6 +725,8 @@
           "entidad": "SilverGold",
           "total": 6515.0,
           "close_date": "2026-04-14",
+          "cliente": "Mathieu Rincent",
+          "parent_id": "862490000003689145",
           "fecha_inicio": "2026-04-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -686,6 +736,8 @@
           "entidad": "SilverGold",
           "total": 4929.0,
           "close_date": "2026-04-13",
+          "cliente": "Rebeca Barbanoj Torguet",
+          "parent_id": "862490000003669772",
           "fecha_inicio": "2025-04-24",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -695,6 +747,8 @@
           "entidad": "SilverGold",
           "total": 17000.0,
           "close_date": "2026-04-13",
+          "cliente": "Rafael de la Fuente González",
+          "parent_id": "862490000003669614",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -704,6 +758,8 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-04-13",
+          "cliente": "Isabel Maria Peña Vadillo",
+          "parent_id": "862490000003669433",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -713,6 +769,8 @@
           "entidad": "Monefit",
           "total": 5300.0,
           "close_date": "2026-04-13",
+          "cliente": "Pablo Muñoz de la Cruz",
+          "parent_id": "862490000003669276",
           "fecha_inicio": "2026-03-15",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -816,6 +874,8 @@
           "entidad": "Monefit",
           "total": 50.0,
           "close_date": "2026-05-29",
+          "cliente": "Juan Jose Gonzalez del Ojo",
+          "parent_id": "862490000005268122",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -825,6 +885,8 @@
           "entidad": "Monefit",
           "total": 2600.0,
           "close_date": "2026-05-29",
+          "cliente": "Marc Ventura",
+          "parent_id": "862490000003947128",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -834,6 +896,8 @@
           "entidad": "Monefit",
           "total": 500.0,
           "close_date": "2026-05-29",
+          "cliente": "Virginia De la varga sanz",
+          "parent_id": "862490000003468760",
           "fecha_inicio": "2026-05-11",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -843,6 +907,8 @@
           "entidad": "SilverGold",
           "total": 1200.0,
           "close_date": "2026-05-28",
+          "cliente": "Jorge Martín Rodríguez",
+          "parent_id": "862490000005079230",
           "fecha_inicio": "2027-05-28",
           "objetivo_financiero": "Hijos",
           "plazo": "Largo Plazo (+10 años)"
@@ -852,6 +918,8 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-27",
+          "cliente": "Iban Vázquez Cabeza",
+          "parent_id": "862490000005099801",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -861,6 +929,8 @@
           "entidad": "SilverGold",
           "total": 25000.0,
           "close_date": "2026-05-27",
+          "cliente": "Iban Vázquez Cabeza",
+          "parent_id": "862490000005099780",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -870,6 +940,8 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-22",
+          "cliente": "Jorge Martín Rodríguez",
+          "parent_id": "862490000005099261",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -879,6 +951,8 @@
           "entidad": "Monefit",
           "total": 290.0,
           "close_date": "2026-05-21",
+          "cliente": "Nerea Junyent Grao",
+          "parent_id": "862490000005079205",
           "fecha_inicio": "2026-04-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -888,6 +962,8 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-21",
+          "cliente": "Javier Venegas Diaz",
+          "parent_id": "862490000005079116",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -897,6 +973,8 @@
           "entidad": "SilverGold",
           "total": 9000.0,
           "close_date": "2026-05-21",
+          "cliente": "Javier Venegas Diaz",
+          "parent_id": "862490000003139141",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -906,6 +984,8 @@
           "entidad": "SilverGold",
           "total": 12000.0,
           "close_date": "2026-05-20",
+          "cliente": "Luisa Rodríguez Guillén",
+          "parent_id": "862490000004983074",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -915,6 +995,8 @@
           "entidad": "SilverGold",
           "total": 8000.0,
           "close_date": "2026-05-20",
+          "cliente": "Encarni Salvador Reyes",
+          "parent_id": "862490000004983003",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -924,6 +1006,8 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-19",
+          "cliente": "David Sin apellido",
+          "parent_id": "862490000004851167",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -933,6 +1017,8 @@
           "entidad": "The Real Money",
           "total": 30000.0,
           "close_date": "2026-05-19",
+          "cliente": "David Sin apellido",
+          "parent_id": "862490000004851124",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -942,6 +1028,8 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004733133",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -951,6 +1039,8 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004733108",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -960,6 +1050,8 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004733090",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -969,6 +1061,8 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000004688075",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -978,6 +1072,8 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-08",
+          "cliente": "Ilídio Paulo Sachiambo Vatuva",
+          "parent_id": "862490000004374140",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -987,6 +1083,8 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-08",
+          "cliente": "David Sin apellido",
+          "parent_id": "862490000003468895",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -996,6 +1094,8 @@
           "entidad": "Monefit",
           "total": 220000.0,
           "close_date": "2026-05-08",
+          "cliente": "Jordi Garcia Serra",
+          "parent_id": "862490000003620223",
           "fecha_inicio": "2026-05-15",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1005,6 +1105,8 @@
           "entidad": "Monefit",
           "total": 130000.0,
           "close_date": "2026-05-07",
+          "cliente": "Álvaro Hernández Carrasco",
+          "parent_id": "862490000004315612",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1014,6 +1116,8 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-05",
+          "cliente": "Pablo Silvestre Marrodán",
+          "parent_id": "862490000004315207",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1023,6 +1127,8 @@
           "entidad": "Monefit",
           "total": 4000.0,
           "close_date": "2026-04-30",
+          "cliente": "Gabriel Herrera",
+          "parent_id": "862490000003468345",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1032,6 +1138,8 @@
           "entidad": "SilverGold",
           "total": 2000.0,
           "close_date": "2026-04-20",
+          "cliente": "Isabel Maria Peña Vadillo",
+          "parent_id": "862490000003989430",
           "fecha_inicio": "2026-04-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1041,6 +1149,8 @@
           "entidad": "SilverGold",
           "total": 3851.0,
           "close_date": "2026-04-17",
+          "cliente": "Pablo Silvestre Marrodán",
+          "parent_id": "862490000003809276",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1050,6 +1160,8 @@
           "entidad": "SilverGold",
           "total": 6515.0,
           "close_date": "2026-04-14",
+          "cliente": "Mathieu Rincent",
+          "parent_id": "862490000003689145",
           "fecha_inicio": "2026-04-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1059,6 +1171,8 @@
           "entidad": "SilverGold",
           "total": 4929.0,
           "close_date": "2026-04-13",
+          "cliente": "Rebeca Barbanoj Torguet",
+          "parent_id": "862490000003669772",
           "fecha_inicio": "2025-04-24",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1068,6 +1182,8 @@
           "entidad": "SilverGold",
           "total": 17000.0,
           "close_date": "2026-04-13",
+          "cliente": "Rafael de la Fuente González",
+          "parent_id": "862490000003669614",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1077,6 +1193,8 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-04-13",
+          "cliente": "Isabel Maria Peña Vadillo",
+          "parent_id": "862490000003669433",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1086,6 +1204,8 @@
           "entidad": "Monefit",
           "total": 5300.0,
           "close_date": "2026-04-13",
+          "cliente": "Pablo Muñoz de la Cruz",
+          "parent_id": "862490000003669276",
           "fecha_inicio": "2026-03-15",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -1132,36 +1252,95 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-05-29",
+      "previous": "2026-05-30",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
         "new_contacts": 2,
-        "new_deals": 2,
-        "won_deals": 5,
-        "lost_deals": 1,
-        "won_value": 33150.0,
-        "total_aportacion_won": 33150.0,
+        "new_deals": 3,
+        "won_deals": 0,
+        "lost_deals": 0,
+        "won_value": 0,
+        "total_aportacion_won": 0,
+        "product_breakdown": {},
+        "product_count": {},
+        "product_details": [],
+        "product_deals": [],
+        "advisor_ranking_won": [],
+        "advisor_ranking_aportacion": [],
+        "pipeline_stages": {
+          "Llamada Pendiente": 3
+        },
+        "pipeline_value": 0.0,
+        "win_rate": 0.0,
+        "avg_days_to_win": null,
+        "products_closed_count": 0,
+        "conversion_clientes": {
+          "total_contacts": 2,
+          "converted_contacts": 0,
+          "ratio": 0.0,
+          "avg_days_to_convert": 0
+        },
+        "contacts_by_day": {
+          "30": 2
+        }
+      }
+    },
+    "this_month": {
+      "previous": "2026-05",
+      "period_label": "mes anterior",
+      "stats": {
+        "label": "Mes Anterior",
+        "new_contacts": 2,
+        "new_deals": 57,
+        "won_deals": 24,
+        "lost_deals": 36,
+        "won_value": 552640.0,
+        "total_aportacion_won": 552640.0,
         "product_breakdown": {
-          "Compra Única": 30000.0,
-          "Monefit": 3150.0
+          "Monefit": 402440.0,
+          "Compra Única": 114000.0,
+          "Cuenta Depósito Bonificada": 30000.0,
+          "Compra Experta": 5000.0,
+          "Compra Periódica": 1200.0
         },
         "product_count": {
-          "Monefit": 3,
-          "Compra Única": 2
+          "Compra Única": 12,
+          "Monefit": 9,
+          "Compra Periódica": 1,
+          "Compra Experta": 1,
+          "Cuenta Depósito Bonificada": 1
         },
         "product_details": [
           {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "veces": 9,
+            "total": 402440.0
+          },
+          {
             "producto": "Compra Única",
             "entidad": "SilverGold",
-            "veces": 2,
+            "veces": 12,
+            "total": 114000.0
+          },
+          {
+            "producto": "Cuenta Depósito Bonificada",
+            "entidad": "The Real Money",
+            "veces": 1,
             "total": 30000.0
           },
           {
-            "producto": "Monefit",
-            "entidad": "Monefit",
-            "veces": 3,
-            "total": 3150.0
+            "producto": "Compra Experta",
+            "entidad": "SilverGold",
+            "veces": 1,
+            "total": 5000.0
+          },
+          {
+            "producto": "Compra Periódica",
+            "entidad": "SilverGold",
+            "veces": 1,
+            "total": 1200.0
           }
         ],
         "product_deals": [
@@ -1170,6 +1349,8 @@
             "entidad": "Monefit",
             "total": 50.0,
             "close_date": "2026-05-29",
+            "cliente": "Juan Jose Gonzalez del Ojo",
+            "parent_id": "862490000005268122",
             "fecha_inicio": "2026-05-25",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -1179,6 +1360,8 @@
             "entidad": "Monefit",
             "total": 2600.0,
             "close_date": "2026-05-29",
+            "cliente": "Marc Ventura",
+            "parent_id": "862490000003947128",
             "fecha_inicio": "2026-05-20",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -1188,15 +1371,30 @@
             "entidad": "Monefit",
             "total": 500.0,
             "close_date": "2026-05-29",
+            "cliente": "Virginia De la varga sanz",
+            "parent_id": "862490000003468760",
             "fecha_inicio": "2026-05-11",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Periódica",
+            "entidad": "SilverGold",
+            "total": 1200.0,
+            "close_date": "2026-05-28",
+            "cliente": "Jorge Martín Rodríguez",
+            "parent_id": "862490000005079230",
+            "fecha_inicio": "2027-05-28",
+            "objetivo_financiero": "Hijos",
+            "plazo": "Largo Plazo (+10 años)"
           },
           {
             "producto": "Compra Única",
             "entidad": "SilverGold",
             "total": 5000.0,
             "close_date": "2026-05-27",
+            "cliente": "Iban Vázquez Cabeza",
+            "parent_id": "862490000005099801",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -1206,121 +1404,97 @@
             "entidad": "SilverGold",
             "total": 25000.0,
             "close_date": "2026-05-27",
+            "cliente": "Iban Vázquez Cabeza",
+            "parent_id": "862490000005099780",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
-          }
-        ],
-        "advisor_ranking_won": [
+          },
           {
-            "name": "Jaime Becerra",
-            "won": 5,
-            "total_aportacion": 33150.0
-          }
-        ],
-        "advisor_ranking_aportacion": [
-          {
-            "name": "Jaime Becerra",
-            "won": 5,
-            "total_aportacion": 33150.0
-          }
-        ],
-        "pipeline_stages": {
-          "Revisando Propuesta": 1,
-          "Cerrado Ganado": 5,
-          "Cerrado Perdido": 1
-        },
-        "pipeline_value": 33150.0,
-        "win_rate": 250.0,
-        "avg_days_to_win": 18.8,
-        "products_closed_count": 5,
-        "conversion_clientes": {
-          "total_contacts": 0,
-          "converted_contacts": 0,
-          "ratio": 0.0,
-          "avg_days_to_convert": 0
-        },
-        "contacts_by_day": {
-          "29": 2
-        }
-      }
-    },
-    "this_month": {
-      "previous": "2026-04",
-      "period_label": "mes anterior",
-      "stats": {
-        "label": "Mes Anterior",
-        "new_contacts": 59,
-        "new_deals": 59,
-        "won_deals": 7,
-        "lost_deals": 21,
-        "won_value": 44095.0,
-        "total_aportacion_won": 44095.0,
-        "product_breakdown": {
-          "Compra Única": 38795.0,
-          "Monefit": 5300.0
-        },
-        "product_count": {
-          "Compra Única": 6,
-          "Monefit": 1
-        },
-        "product_details": [
-          {
-            "producto": "Compra Única",
+            "producto": "Compra Experta",
             "entidad": "SilverGold",
-            "veces": 6,
-            "total": 38795.0
+            "total": 5000.0,
+            "close_date": "2026-05-22",
+            "cliente": "Jorge Martín Rodríguez",
+            "parent_id": "862490000005099261",
+            "fecha_inicio": "2026-05-28",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": ""
           },
           {
             "producto": "Monefit",
             "entidad": "Monefit",
-            "veces": 1,
-            "total": 5300.0
-          }
-        ],
-        "product_deals": [
+            "total": 290.0,
+            "close_date": "2026-05-21",
+            "cliente": "Nerea Junyent Grao",
+            "parent_id": "862490000005079205",
+            "fecha_inicio": "2026-04-05",
+            "objetivo_financiero": "Colchón de seguridad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
           {
             "producto": "Compra Única",
             "entidad": "SilverGold",
-            "total": 2000.0,
-            "close_date": "2026-04-20",
-            "fecha_inicio": "2026-04-29",
+            "total": 5000.0,
+            "close_date": "2026-05-21",
+            "cliente": "Javier Venegas Diaz",
+            "parent_id": "862490000005079116",
+            "fecha_inicio": "2026-05-26",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Compra Única",
             "entidad": "SilverGold",
-            "total": 3851.0,
-            "close_date": "2026-04-17",
-            "fecha_inicio": "2026-04-23",
+            "total": 9000.0,
+            "close_date": "2026-05-21",
+            "cliente": "Javier Venegas Diaz",
+            "parent_id": "862490000003139141",
+            "fecha_inicio": "2026-05-26",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Compra Única",
             "entidad": "SilverGold",
-            "total": 6515.0,
-            "close_date": "2026-04-14",
-            "fecha_inicio": "2026-04-22",
+            "total": 12000.0,
+            "close_date": "2026-05-20",
+            "cliente": "Luisa Rodríguez Guillén",
+            "parent_id": "862490000004983074",
+            "fecha_inicio": "2026-05-27",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Compra Única",
             "entidad": "SilverGold",
-            "total": 4929.0,
-            "close_date": "2026-04-13",
-            "fecha_inicio": "2025-04-24",
+            "total": 8000.0,
+            "close_date": "2026-05-20",
+            "cliente": "Encarni Salvador Reyes",
+            "parent_id": "862490000004983003",
+            "fecha_inicio": "2026-05-25",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Compra Única",
             "entidad": "SilverGold",
-            "total": 17000.0,
-            "close_date": "2026-04-13",
-            "fecha_inicio": "2026-04-20",
+            "total": 10000.0,
+            "close_date": "2026-05-19",
+            "cliente": "David Sin apellido",
+            "parent_id": "862490000004851167",
+            "fecha_inicio": "2026-05-27",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Cuenta Depósito Bonificada",
+            "entidad": "The Real Money",
+            "total": 30000.0,
+            "close_date": "2026-05-19",
+            "cliente": "David Sin apellido",
+            "parent_id": "862490000004851124",
+            "fecha_inicio": "",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
@@ -1328,17 +1502,109 @@
             "producto": "Compra Única",
             "entidad": "SilverGold",
             "total": 4500.0,
-            "close_date": "2026-04-13",
-            "fecha_inicio": "2026-04-23",
+            "close_date": "2026-05-14",
+            "cliente": "Jordi Garcia Serra",
+            "parent_id": "862490000004733133",
+            "fecha_inicio": "2026-05-28",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 4500.0,
+            "close_date": "2026-05-14",
+            "cliente": "Jordi Garcia Serra",
+            "parent_id": "862490000004733108",
+            "fecha_inicio": "2026-05-28",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10500.0,
+            "close_date": "2026-05-14",
+            "cliente": "Jordi Garcia Serra",
+            "parent_id": "862490000004733090",
+            "fecha_inicio": "2026-05-28",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10500.0,
+            "close_date": "2026-05-14",
+            "cliente": "Jordi Garcia Serra",
+            "parent_id": "862490000004688075",
+            "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           },
           {
             "producto": "Monefit",
             "entidad": "Monefit",
-            "total": 5300.0,
-            "close_date": "2026-04-13",
-            "fecha_inicio": "2026-03-15",
+            "total": 15000.0,
+            "close_date": "2026-05-08",
+            "cliente": "Ilídio Paulo Sachiambo Vatuva",
+            "parent_id": "862490000004374140",
+            "fecha_inicio": "2026-05-07",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 30000.0,
+            "close_date": "2026-05-08",
+            "cliente": "David Sin apellido",
+            "parent_id": "862490000003468895",
+            "fecha_inicio": "2026-05-12",
+            "objetivo_financiero": "Colchón de seguridad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 220000.0,
+            "close_date": "2026-05-08",
+            "cliente": "Jordi Garcia Serra",
+            "parent_id": "862490000003620223",
+            "fecha_inicio": "2026-05-15",
+            "objetivo_financiero": "Negocio",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 130000.0,
+            "close_date": "2026-05-07",
+            "cliente": "Álvaro Hernández Carrasco",
+            "parent_id": "862490000004315612",
+            "fecha_inicio": "2026-05-07",
+            "objetivo_financiero": "Negocio",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 10000.0,
+            "close_date": "2026-05-05",
+            "cliente": "Pablo Silvestre Marrodán",
+            "parent_id": "862490000004315207",
+            "fecha_inicio": "2026-05-07",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 4000.0,
+            "close_date": "2026-04-30",
+            "cliente": "Gabriel Herrera",
+            "parent_id": "862490000003468345",
+            "fecha_inicio": "2026-05-14",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
           }
@@ -1346,61 +1612,39 @@
         "advisor_ranking_won": [
           {
             "name": "Jaime Becerra",
-            "won": 7,
-            "total_aportacion": 44095.0
+            "won": 24,
+            "total_aportacion": 552640.0
           }
         ],
         "advisor_ranking_aportacion": [
           {
             "name": "Jaime Becerra",
-            "won": 7,
-            "total_aportacion": 44095.0
+            "won": 24,
+            "total_aportacion": 552640.0
           }
         ],
         "pipeline_stages": {
-          "Llamada Pendiente": 1,
-          "Análisis Financiero": 2,
+          "Llamada Pendiente": 12,
+          "Análisis Financiero": 6,
+          "Asesoramiento": 3,
           "Reasesoramiento": 1,
-          "Revisando Propuesta": 5,
+          "Revisando Propuesta": 2,
           "Aceptado/Falta Firma": 2,
-          "Cerrado Ganado": 7,
-          "Cerrado Perdido": 21
+          "Cerrado Ganado": 24,
+          "Cerrado Perdido": 36
         },
-        "pipeline_value": 77595.0,
-        "win_rate": 11.9,
-        "avg_days_to_win": 7.9,
-        "products_closed_count": 7,
+        "pipeline_value": 588640.0,
+        "win_rate": 42.1,
+        "avg_days_to_win": 16.5,
+        "products_closed_count": 24,
         "conversion_clientes": {
-          "total_contacts": 0,
+          "total_contacts": 2,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "1": 1,
-          "2": 1,
-          "6": 2,
-          "7": 8,
-          "8": 1,
-          "9": 7,
-          "11": 1,
-          "12": 3,
-          "13": 6,
-          "14": 1,
-          "15": 1,
-          "16": 1,
-          "17": 3,
-          "18": 1,
-          "19": 2,
-          "20": 3,
-          "21": 3,
-          "22": 1,
-          "23": 1,
-          "25": 2,
-          "27": 1,
-          "28": 2,
-          "29": 3,
-          "30": 4
+          "30": 2
         }
       }
     },
@@ -1471,354 +1715,6 @@
         },
         "contacts_by_day": {}
       }
-    }
-  },
-  "pipeline": {
-    "stage_order": [
-      "Llamada Pendiente",
-      "Análisis Financiero",
-      "Asesoramiento",
-      "Reasesoramiento",
-      "Revisando Propuesta",
-      "Aceptado/Falta Firma",
-      "Cerrado Ganado",
-      "Cerrado Perdido"
-    ],
-    "yesterday": {
-      "stage_order": [
-        "Llamada Pendiente",
-        "Análisis Financiero",
-        "Asesoramiento",
-        "Reasesoramiento",
-        "Revisando Propuesta",
-        "Aceptado/Falta Firma",
-        "Cerrado Ganado",
-        "Cerrado Perdido"
-      ],
-      "details": [
-        {
-          "stage": "Llamada Pendiente",
-          "count": 3,
-          "pct_of_total": 100.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Análisis Financiero",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": 0.0,
-          "conversion_from_top": 0.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Asesoramiento",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Reasesoramiento",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Revisando Propuesta",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Aceptado/Falta Firma",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
-          "cmp_count": null
-        }
-      ],
-      "terminal": [
-        {
-          "stage": "Cerrado Ganado",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Cerrado Perdido",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
-          "cmp_count": null
-        }
-      ],
-      "active_total": 3,
-      "won_total": 0,
-      "lost_total": 0,
-      "total_pipeline": 3
-    },
-    "this_month": {
-      "stage_order": [
-        "Llamada Pendiente",
-        "Análisis Financiero",
-        "Asesoramiento",
-        "Reasesoramiento",
-        "Revisando Propuesta",
-        "Aceptado/Falta Firma",
-        "Cerrado Ganado",
-        "Cerrado Perdido"
-      ],
-      "details": [
-        {
-          "stage": "Llamada Pendiente",
-          "count": 12,
-          "pct_of_total": 14.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Análisis Financiero",
-          "count": 6,
-          "pct_of_total": 7.0,
-          "conversion_from_prev": 50.0,
-          "conversion_from_top": 50.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 3.5,
-          "conversion_from_prev": 50.0,
-          "conversion_from_top": 25.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Reasesoramiento",
-          "count": 1,
-          "pct_of_total": 1.2,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 8.3,
-          "cmp_count": null
-        },
-        {
-          "stage": "Revisando Propuesta",
-          "count": 2,
-          "pct_of_total": 2.3,
-          "conversion_from_prev": null,
-          "conversion_from_top": 16.7,
-          "cmp_count": null
-        },
-        {
-          "stage": "Aceptado/Falta Firma",
-          "count": 2,
-          "pct_of_total": 2.3,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 16.7,
-          "cmp_count": null
-        }
-      ],
-      "terminal": [
-        {
-          "stage": "Cerrado Ganado",
-          "count": 24,
-          "pct_of_total": 27.9,
-          "conversion_from_prev": null,
-          "conversion_from_top": 200.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Cerrado Perdido",
-          "count": 36,
-          "pct_of_total": 41.9,
-          "conversion_from_prev": null,
-          "conversion_from_top": 300.0,
-          "cmp_count": null
-        }
-      ],
-      "active_total": 26,
-      "won_total": 24,
-      "lost_total": 36,
-      "total_pipeline": 86
-    },
-    "this_quarter": {
-      "stage_order": [
-        "Llamada Pendiente",
-        "Análisis Financiero",
-        "Asesoramiento",
-        "Reasesoramiento",
-        "Revisando Propuesta",
-        "Aceptado/Falta Firma",
-        "Cerrado Ganado",
-        "Cerrado Perdido"
-      ],
-      "details": [
-        {
-          "stage": "Llamada Pendiente",
-          "count": 13,
-          "pct_of_total": 10.4,
-          "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Análisis Financiero",
-          "count": 8,
-          "pct_of_total": 6.4,
-          "conversion_from_prev": 61.5,
-          "conversion_from_top": 61.5,
-          "cmp_count": null
-        },
-        {
-          "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 2.4,
-          "conversion_from_prev": 37.5,
-          "conversion_from_top": 23.1,
-          "cmp_count": null
-        },
-        {
-          "stage": "Reasesoramiento",
-          "count": 2,
-          "pct_of_total": 1.6,
-          "conversion_from_prev": 66.7,
-          "conversion_from_top": 15.4,
-          "cmp_count": null
-        },
-        {
-          "stage": "Revisando Propuesta",
-          "count": 7,
-          "pct_of_total": 5.6,
-          "conversion_from_prev": null,
-          "conversion_from_top": 53.8,
-          "cmp_count": null
-        },
-        {
-          "stage": "Aceptado/Falta Firma",
-          "count": 4,
-          "pct_of_total": 3.2,
-          "conversion_from_prev": 57.1,
-          "conversion_from_top": 30.8,
-          "cmp_count": null
-        }
-      ],
-      "terminal": [
-        {
-          "stage": "Cerrado Ganado",
-          "count": 31,
-          "pct_of_total": 24.8,
-          "conversion_from_prev": null,
-          "conversion_from_top": 238.5,
-          "cmp_count": null
-        },
-        {
-          "stage": "Cerrado Perdido",
-          "count": 57,
-          "pct_of_total": 45.6,
-          "conversion_from_prev": null,
-          "conversion_from_top": 438.5,
-          "cmp_count": null
-        }
-      ],
-      "active_total": 37,
-      "won_total": 31,
-      "lost_total": 57,
-      "total_pipeline": 125
-    },
-    "this_year": {
-      "stage_order": [
-        "Llamada Pendiente",
-        "Análisis Financiero",
-        "Asesoramiento",
-        "Reasesoramiento",
-        "Revisando Propuesta",
-        "Aceptado/Falta Firma",
-        "Cerrado Ganado",
-        "Cerrado Perdido"
-      ],
-      "details": [
-        {
-          "stage": "Llamada Pendiente",
-          "count": 13,
-          "pct_of_total": 10.4,
-          "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
-          "cmp_count": null
-        },
-        {
-          "stage": "Análisis Financiero",
-          "count": 8,
-          "pct_of_total": 6.4,
-          "conversion_from_prev": 61.5,
-          "conversion_from_top": 61.5,
-          "cmp_count": null
-        },
-        {
-          "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 2.4,
-          "conversion_from_prev": 37.5,
-          "conversion_from_top": 23.1,
-          "cmp_count": null
-        },
-        {
-          "stage": "Reasesoramiento",
-          "count": 2,
-          "pct_of_total": 1.6,
-          "conversion_from_prev": 66.7,
-          "conversion_from_top": 15.4,
-          "cmp_count": null
-        },
-        {
-          "stage": "Revisando Propuesta",
-          "count": 7,
-          "pct_of_total": 5.6,
-          "conversion_from_prev": null,
-          "conversion_from_top": 53.8,
-          "cmp_count": null
-        },
-        {
-          "stage": "Aceptado/Falta Firma",
-          "count": 4,
-          "pct_of_total": 3.2,
-          "conversion_from_prev": 57.1,
-          "conversion_from_top": 30.8,
-          "cmp_count": null
-        }
-      ],
-      "terminal": [
-        {
-          "stage": "Cerrado Ganado",
-          "count": 31,
-          "pct_of_total": 24.8,
-          "conversion_from_prev": null,
-          "conversion_from_top": 238.5,
-          "cmp_count": null
-        },
-        {
-          "stage": "Cerrado Perdido",
-          "count": 57,
-          "pct_of_total": 45.6,
-          "conversion_from_prev": null,
-          "conversion_from_top": 438.5,
-          "cmp_count": 1
-        }
-      ],
-      "active_total": 37,
-      "won_total": 31,
-      "lost_total": 57,
-      "total_pipeline": 125
     }
   },
   "deals": [
@@ -4193,7 +4089,7 @@
     },
     {
       "id": "862490000003468345",
-      "Deal_Name": "Planificación de Gabriel Herrera",
+      "Deal_Name": "Gabriel Herrera - Monefit",
       "Amount": 4000,
       "Stage": "Cerrado Ganado",
       "Probability": 100,
@@ -4716,5 +4612,353 @@
       "Overall_Sales_Duration": 1,
       "Sales_Cycle_Duration": 1
     }
-  ]
+  ],
+  "pipeline": {
+    "stage_order": [
+      "Llamada Pendiente",
+      "Análisis Financiero",
+      "Asesoramiento",
+      "Reasesoramiento",
+      "Revisando Propuesta",
+      "Aceptado/Falta Firma",
+      "Cerrado Ganado",
+      "Cerrado Perdido"
+    ],
+    "yesterday": {
+      "stage_order": [
+        "Llamada Pendiente",
+        "Análisis Financiero",
+        "Asesoramiento",
+        "Reasesoramiento",
+        "Revisando Propuesta",
+        "Aceptado/Falta Firma",
+        "Cerrado Ganado",
+        "Cerrado Perdido"
+      ],
+      "details": [
+        {
+          "stage": "Llamada Pendiente",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        },
+        {
+          "stage": "Análisis Financiero",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        },
+        {
+          "stage": "Asesoramiento",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        },
+        {
+          "stage": "Reasesoramiento",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        },
+        {
+          "stage": "Revisando Propuesta",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        },
+        {
+          "stage": "Aceptado/Falta Firma",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        }
+      ],
+      "terminal": [
+        {
+          "stage": "Cerrado Ganado",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        },
+        {
+          "stage": "Cerrado Perdido",
+          "count": 0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
+        }
+      ],
+      "active_total": 0,
+      "won_total": 0,
+      "lost_total": 0,
+      "total_pipeline": 0
+    },
+    "this_month": {
+      "stage_order": [
+        "Llamada Pendiente",
+        "Análisis Financiero",
+        "Asesoramiento",
+        "Reasesoramiento",
+        "Revisando Propuesta",
+        "Aceptado/Falta Firma",
+        "Cerrado Ganado",
+        "Cerrado Perdido"
+      ],
+      "details": [
+        {
+          "stage": "Llamada Pendiente",
+          "count": 12,
+          "pct_of_total": 14.0,
+          "conversion_from_prev": null,
+          "conversion_from_top": 100.0,
+          "cmp_count": null
+        },
+        {
+          "stage": "Análisis Financiero",
+          "count": 6,
+          "pct_of_total": 7.0,
+          "conversion_from_prev": 50.0,
+          "conversion_from_top": 50.0,
+          "cmp_count": null
+        },
+        {
+          "stage": "Asesoramiento",
+          "count": 3,
+          "pct_of_total": 3.5,
+          "conversion_from_prev": 50.0,
+          "conversion_from_top": 25.0,
+          "cmp_count": null
+        },
+        {
+          "stage": "Reasesoramiento",
+          "count": 1,
+          "pct_of_total": 1.2,
+          "conversion_from_prev": 33.3,
+          "conversion_from_top": 8.3,
+          "cmp_count": null
+        },
+        {
+          "stage": "Revisando Propuesta",
+          "count": 2,
+          "pct_of_total": 2.3,
+          "conversion_from_prev": null,
+          "conversion_from_top": 16.7,
+          "cmp_count": null
+        },
+        {
+          "stage": "Aceptado/Falta Firma",
+          "count": 2,
+          "pct_of_total": 2.3,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 16.7,
+          "cmp_count": null
+        }
+      ],
+      "terminal": [
+        {
+          "stage": "Cerrado Ganado",
+          "count": 24,
+          "pct_of_total": 27.9,
+          "conversion_from_prev": null,
+          "conversion_from_top": 200.0,
+          "cmp_count": null
+        },
+        {
+          "stage": "Cerrado Perdido",
+          "count": 36,
+          "pct_of_total": 41.9,
+          "conversion_from_prev": null,
+          "conversion_from_top": 300.0,
+          "cmp_count": null
+        }
+      ],
+      "active_total": 26,
+      "won_total": 24,
+      "lost_total": 36,
+      "total_pipeline": 86
+    },
+    "this_quarter": {
+      "stage_order": [
+        "Llamada Pendiente",
+        "Análisis Financiero",
+        "Asesoramiento",
+        "Reasesoramiento",
+        "Revisando Propuesta",
+        "Aceptado/Falta Firma",
+        "Cerrado Ganado",
+        "Cerrado Perdido"
+      ],
+      "details": [
+        {
+          "stage": "Llamada Pendiente",
+          "count": 13,
+          "pct_of_total": 10.4,
+          "conversion_from_prev": null,
+          "conversion_from_top": 100.0,
+          "cmp_count": null
+        },
+        {
+          "stage": "Análisis Financiero",
+          "count": 8,
+          "pct_of_total": 6.4,
+          "conversion_from_prev": 61.5,
+          "conversion_from_top": 61.5,
+          "cmp_count": null
+        },
+        {
+          "stage": "Asesoramiento",
+          "count": 3,
+          "pct_of_total": 2.4,
+          "conversion_from_prev": 37.5,
+          "conversion_from_top": 23.1,
+          "cmp_count": null
+        },
+        {
+          "stage": "Reasesoramiento",
+          "count": 2,
+          "pct_of_total": 1.6,
+          "conversion_from_prev": 66.7,
+          "conversion_from_top": 15.4,
+          "cmp_count": null
+        },
+        {
+          "stage": "Revisando Propuesta",
+          "count": 7,
+          "pct_of_total": 5.6,
+          "conversion_from_prev": null,
+          "conversion_from_top": 53.8,
+          "cmp_count": null
+        },
+        {
+          "stage": "Aceptado/Falta Firma",
+          "count": 4,
+          "pct_of_total": 3.2,
+          "conversion_from_prev": 57.1,
+          "conversion_from_top": 30.8,
+          "cmp_count": null
+        }
+      ],
+      "terminal": [
+        {
+          "stage": "Cerrado Ganado",
+          "count": 31,
+          "pct_of_total": 24.8,
+          "conversion_from_prev": null,
+          "conversion_from_top": 238.5,
+          "cmp_count": null
+        },
+        {
+          "stage": "Cerrado Perdido",
+          "count": 57,
+          "pct_of_total": 45.6,
+          "conversion_from_prev": null,
+          "conversion_from_top": 438.5,
+          "cmp_count": null
+        }
+      ],
+      "active_total": 37,
+      "won_total": 31,
+      "lost_total": 57,
+      "total_pipeline": 125
+    },
+    "this_year": {
+      "stage_order": [
+        "Llamada Pendiente",
+        "Análisis Financiero",
+        "Asesoramiento",
+        "Reasesoramiento",
+        "Revisando Propuesta",
+        "Aceptado/Falta Firma",
+        "Cerrado Ganado",
+        "Cerrado Perdido"
+      ],
+      "details": [
+        {
+          "stage": "Llamada Pendiente",
+          "count": 13,
+          "pct_of_total": 10.4,
+          "conversion_from_prev": null,
+          "conversion_from_top": 100.0,
+          "cmp_count": null
+        },
+        {
+          "stage": "Análisis Financiero",
+          "count": 8,
+          "pct_of_total": 6.4,
+          "conversion_from_prev": 61.5,
+          "conversion_from_top": 61.5,
+          "cmp_count": null
+        },
+        {
+          "stage": "Asesoramiento",
+          "count": 3,
+          "pct_of_total": 2.4,
+          "conversion_from_prev": 37.5,
+          "conversion_from_top": 23.1,
+          "cmp_count": null
+        },
+        {
+          "stage": "Reasesoramiento",
+          "count": 2,
+          "pct_of_total": 1.6,
+          "conversion_from_prev": 66.7,
+          "conversion_from_top": 15.4,
+          "cmp_count": null
+        },
+        {
+          "stage": "Revisando Propuesta",
+          "count": 7,
+          "pct_of_total": 5.6,
+          "conversion_from_prev": null,
+          "conversion_from_top": 53.8,
+          "cmp_count": null
+        },
+        {
+          "stage": "Aceptado/Falta Firma",
+          "count": 4,
+          "pct_of_total": 3.2,
+          "conversion_from_prev": 57.1,
+          "conversion_from_top": 30.8,
+          "cmp_count": null
+        }
+      ],
+      "terminal": [
+        {
+          "stage": "Cerrado Ganado",
+          "count": 31,
+          "pct_of_total": 24.8,
+          "conversion_from_prev": null,
+          "conversion_from_top": 238.5,
+          "cmp_count": null
+        },
+        {
+          "stage": "Cerrado Perdido",
+          "count": 57,
+          "pct_of_total": 45.6,
+          "conversion_from_prev": null,
+          "conversion_from_top": 438.5,
+          "cmp_count": 1
+        }
+      ],
+      "active_total": 37,
+      "won_total": 31,
+      "lost_total": 57,
+      "total_pipeline": 125
+    }
+  }
 }
