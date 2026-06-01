@@ -1284,9 +1284,9 @@ function inferProduct(name) {
     if (n.indexOf('pias') >= 0 || n.indexOf('estrategia') >= 0) return 'PIAS';
     if (n.indexOf('trm') >= 0) return 'TRM';
     if (n.indexOf('depósito') >= 0 || n.indexOf('cuenta deposito') >= 0) return 'Cuenta Depósito';
-    if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0 || n.indexOf('compra experta') >= 0) return 'Compra Única';
+    if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0 || n.indexOf('compra experta') >= 0 || n.indexOf(' cu ') >= 0) return 'Compra Única';
     if (n.indexOf('planificacion') >= 0 || n.indexOf('planificación') >= 0 || n.indexOf('plan financ') >= 0) return 'Planificación Financiera';
-    if (n.indexOf('silvergold') >= 0 || n.indexOf(' sg ') >= 0 || n.indexOf('sg-') >= 0 || n.indexOf('ccu') >= 0 || n.indexOf('opportunity') >= 0 || n.indexOf('oportunity') >= 0) return 'SilverGold';
+    if (n.indexOf('silvergold') >= 0 || n.indexOf(' sg ') >= 0 || n.indexOf('sg ') >= 0 || n.indexOf('sg-') >= 0 || n.indexOf('ccu') >= 0 || n.indexOf('opportunity') >= 0 || n.indexOf('oportunity') >= 0) return 'SilverGold';
     if (n.indexOf('crowdfunding') >= 0 || n.indexOf('proyecto') >= 0) return 'Crowdfunding';
     return 'Otros';
 }
