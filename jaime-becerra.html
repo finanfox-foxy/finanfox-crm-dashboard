@@ -653,6 +653,10 @@ function normalizeProduct(producto, entidad) {
 var PRODUCT_ENTITY_MAP = {
     'compra única': 'SilverGold',
     'compra unica': 'SilverGold',
+    'silvergold': 'SilverGold',
+    'sg': 'SilverGold',
+    'trm': 'The Real Money',
+    'the real money': 'The Real Money',
     'gold opportunity': 'The Real Money',
     'cuenta depósito': 'The Real Money',
     'cuenta deposito': 'The Real Money',
@@ -1282,7 +1286,7 @@ function inferProduct(name) {
     var n = (name || '').toLowerCase();
     if (n.indexOf('monefit') >= 0) return 'Monefit';
     if (n.indexOf('pias') >= 0 || n.indexOf('estrategia') >= 0) return 'PIAS';
-    if (n.indexOf('trm') >= 0) return 'TRM';
+    if (n.indexOf('trm') >= 0 || n.indexOf('gold opp') >= 0 || n.indexOf('gold oport') >= 0 || n.indexOf('cuenta gold') >= 0) return 'TRM';
     if (n.indexOf('depósito') >= 0 || n.indexOf('cuenta deposito') >= 0) return 'Cuenta Depósito';
     if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0 || n.indexOf('compra experta') >= 0 || n.indexOf(' cu ') >= 0) return 'Compra Única';
     if (n.indexOf('planificacion') >= 0 || n.indexOf('planificación') >= 0 || n.indexOf('plan financ') >= 0) return 'Planificación Financiera';
