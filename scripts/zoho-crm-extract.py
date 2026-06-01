@@ -250,6 +250,17 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     product_breakdown = {}
     product_count = {}
 
+    # Build client name lookup map from linked deals
+    deal_client_map = {}
+    for d_ in deals:
+        cn_ = d_.get('Contact_Name', {})
+        if isinstance(cn_, dict):
+            deal_client_map[d_.get('id')] = cn_.get('name', '')
+        elif isinstance(cn_, str):
+            deal_client_map[d_.get('id')] = cn_
+        else:
+            deal_client_map[d_.get('id')] = ''
+
     if product_records:
         for pr in product_records:
             parent = pr.get('Parent_Id', {})
@@ -263,6 +274,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                 fecha_inicio = (pr.get('Fecha_Inicio', '') or '')[:10]
                 obj_financiero = pr.get('Objetivo_Financiero', '') or ''
                 plazo = pr.get('Plazos', '') or ''
+                cliente = deal_client_map.get(parent_id, '')
                 key = (pname, entidad)
                 if key not in product_details:
                     product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
@@ -275,6 +287,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                     'entidad': entidad,
                     'total': amount,
                     'close_date': close_date,
+                    'cliente': cliente,
+                    'parent_id': parent_id,
                     'fecha_inicio': fecha_inicio,
                     'objetivo_financiero': obj_financiero,
                     'plazo': plazo
@@ -285,9 +299,13 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
             deal_name = d.get('Deal_Name', '') or ''
             amount = float(d.get('Total_Aportaciones', 0) or 0)
             close_date = (d.get('Closing_Date', '') or '')[:10]
+            cn = d.get('Contact_Name', {})
+            cliente = cn.get('name', '') if isinstance(cn, dict) else (cn if isinstance(cn, str) else '')
             if ' - ' in deal_name:
                 parts = deal_name.split(' - ')
                 pname = parts[-1].strip()
+                if not cliente:
+                    cliente = parts[0].strip()
             else:
                 pname = 'Planificación'
             if not pname:
@@ -305,6 +323,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                 'entidad': entidad,
                 'total': amount,
                 'close_date': close_date,
+                'cliente': cliente,
+                'parent_id': d.get('id'),
                 'fecha_inicio': '',
                 'objetivo_financiero': '',
                 'plazo': ''
