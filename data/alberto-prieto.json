@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-02T09:08:24Z",
+  "timestamp": "2026-06-02T11:37:41Z",
   "generated_at": "2026-06-02",
   "today": "2026-06-02",
   "yesterday": "2026-06-01",
@@ -21,11 +21,11 @@
       "deals": {
         "total": 180,
         "by_stage": {
-          "Cerrado Ganado": 35,
+          "Cerrado Ganado": 37,
           "Análisis Financiero": 9,
           "Llamada Pendiente": 8,
           "Cerrado Perdido": 102,
-          "Aceptado/Falta Firma": 7,
+          "Aceptado/Falta Firma": 5,
           "Reasesoramiento": 9,
           "Revisando Propuesta": 8,
           "Asesoramiento": 2
@@ -36,10 +36,10 @@
         "pipeline_value": 618506.0,
         "total_aportaciones": 618506.0,
         "avg_deal_size": 3436.14,
-        "closed_won": 35,
-        "closed_won_value": 562956.0,
+        "closed_won": 37,
+        "closed_won_value": 586206.0,
         "closed_lost": 102,
-        "conversion_rate": 19.4
+        "conversion_rate": 20.6
       }
     },
     "yesterday": {
@@ -78,25 +78,44 @@
       "label": "Este Mes",
       "new_contacts": 1,
       "new_deals": 1,
-      "won_deals": 1,
+      "won_deals": 3,
       "lost_deals": 5,
-      "won_value": 3000.0,
-      "total_aportacion_won": 3000.0,
+      "won_value": 26250.0,
+      "total_aportacion_won": 26250.0,
       "product_breakdown": {
-        "Compra Única": 3000.0
+        "Cuenta Depósito Bonificada": 20250.0,
+        "Compra Única": 6000.0
       },
       "product_count": {
-        "Compra Única": 1
+        "Compra Única": 2,
+        "Cuenta Depósito Bonificada": 1
       },
       "product_details": [
         {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 1,
+          "total": 20250.0
+        },
+        {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 1,
-          "total": 3000.0
+          "veces": 2,
+          "total": 6000.0
         }
       ],
       "product_deals": [
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-05-27",
+          "cliente": "Maria Jimenez Peña",
+          "parent_id": "862490000005143104",
+          "fecha_inicio": "2026-05-27",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
@@ -107,31 +126,42 @@
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-05-27",
+          "cliente": "Maria Jimenez Peña",
+          "parent_id": "862490000005143062",
+          "fecha_inicio": "2026-05-27",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
         }
       ],
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 1,
-          "total_aportacion": 3000.0
+          "won": 3,
+          "total_aportacion": 26250.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 1,
-          "total_aportacion": 3000.0
+          "won": 3,
+          "total_aportacion": 26250.0
         }
       ],
       "pipeline_stages": {
         "Análisis Financiero": 1,
-        "Cerrado Ganado": 1,
+        "Cerrado Ganado": 3,
         "Cerrado Perdido": 5
       },
-      "pipeline_value": 3000.0,
-      "win_rate": 100.0,
+      "pipeline_value": 26250.0,
+      "win_rate": 300.0,
       "avg_days_to_win": 6.0,
-      "products_closed_count": 1,
+      "products_closed_count": 3,
       "conversion_clientes": {
         "total_contacts": 1,
         "converted_contacts": 0,
@@ -146,19 +176,21 @@
       "label": "Este Trimestre",
       "new_contacts": 6,
       "new_deals": 173,
-      "won_deals": 31,
+      "won_deals": 33,
       "lost_deals": 100,
-      "won_value": 497056.0,
-      "total_aportacion_won": 497056.0,
+      "won_value": 520306.0,
+      "total_aportacion_won": 520306.0,
       "product_breakdown": {
         "Monefit": 386310.0,
-        "Compra Única": 108346.0,
+        "Compra Única": 111346.0,
+        "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
         "Monefit": 17,
-        "Compra Única": 12,
-        "PIAS Estrategia 5": 2
+        "Compra Única": 13,
+        "PIAS Estrategia 5": 2,
+        "Cuenta Depósito Bonificada": 1
       },
       "product_details": [
         {
@@ -170,8 +202,14 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 12,
-          "total": 108346.0
+          "veces": 13,
+          "total": 111346.0
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 1,
+          "total": 20250.0
         },
         {
           "producto": "PIAS Estrategia 5",
@@ -209,7 +247,29 @@
           "total": 3000.0,
           "close_date": "2026-05-27",
           "cliente": "Maria Jimenez Peña",
+          "parent_id": "862490000005143104",
+          "fecha_inicio": "2026-05-27",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-05-27",
+          "cliente": "Maria Jimenez Peña",
           "parent_id": "862490000005143082",
+          "fecha_inicio": "2026-05-27",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-05-27",
+          "cliente": "Maria Jimenez Peña",
+          "parent_id": "862490000005143062",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -526,15 +586,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 31,
-          "total_aportacion": 497056.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 31,
-          "total_aportacion": 497056.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "pipeline_stages": {
@@ -543,14 +603,14 @@
         "Asesoramiento": 2,
         "Reasesoramiento": 9,
         "Revisando Propuesta": 8,
-        "Aceptado/Falta Firma": 7,
-        "Cerrado Ganado": 31,
+        "Aceptado/Falta Firma": 5,
+        "Cerrado Ganado": 33,
         "Cerrado Perdido": 100
       },
       "pipeline_value": 552606.0,
-      "win_rate": 17.9,
+      "win_rate": 19.1,
       "avg_days_to_win": 6.5,
-      "products_closed_count": 31,
+      "products_closed_count": 33,
       "conversion_clientes": {
         "total_contacts": 6,
         "converted_contacts": 0,
@@ -566,19 +626,21 @@
       "label": "Este Año",
       "new_contacts": 6,
       "new_deals": 180,
-      "won_deals": 31,
+      "won_deals": 33,
       "lost_deals": 102,
-      "won_value": 497056.0,
-      "total_aportacion_won": 497056.0,
+      "won_value": 520306.0,
+      "total_aportacion_won": 520306.0,
       "product_breakdown": {
         "Monefit": 386310.0,
-        "Compra Única": 108346.0,
+        "Compra Única": 111346.0,
+        "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
         "Monefit": 17,
-        "Compra Única": 12,
-        "PIAS Estrategia 5": 2
+        "Compra Única": 13,
+        "PIAS Estrategia 5": 2,
+        "Cuenta Depósito Bonificada": 1
       },
       "product_details": [
         {
@@ -590,8 +652,14 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 12,
-          "total": 108346.0
+          "veces": 13,
+          "total": 111346.0
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 1,
+          "total": 20250.0
         },
         {
           "producto": "PIAS Estrategia 5",
@@ -629,7 +697,29 @@
           "total": 3000.0,
           "close_date": "2026-05-27",
           "cliente": "Maria Jimenez Peña",
+          "parent_id": "862490000005143104",
+          "fecha_inicio": "2026-05-27",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-05-27",
+          "cliente": "Maria Jimenez Peña",
           "parent_id": "862490000005143082",
+          "fecha_inicio": "2026-05-27",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-05-27",
+          "cliente": "Maria Jimenez Peña",
+          "parent_id": "862490000005143062",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -946,15 +1036,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 31,
-          "total_aportacion": 497056.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 31,
-          "total_aportacion": 497056.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "pipeline_stages": {
@@ -963,14 +1053,14 @@
         "Asesoramiento": 2,
         "Reasesoramiento": 9,
         "Revisando Propuesta": 8,
-        "Aceptado/Falta Firma": 7,
-        "Cerrado Ganado": 31,
+        "Aceptado/Falta Firma": 5,
+        "Cerrado Ganado": 33,
         "Cerrado Perdido": 102
       },
       "pipeline_value": 552606.0,
-      "win_rate": 17.2,
+      "win_rate": 18.3,
       "avg_days_to_win": 6.5,
-      "products_closed_count": 31,
+      "products_closed_count": 33,
       "conversion_clientes": {
         "total_contacts": 6,
         "converted_contacts": 0,
@@ -1325,11 +1415,11 @@
           "Asesoramiento": 2,
           "Reasesoramiento": 6,
           "Revisando Propuesta": 7,
-          "Aceptado/Falta Firma": 4,
+          "Aceptado/Falta Firma": 2,
           "Cerrado Ganado": 22,
           "Cerrado Perdido": 53
         },
-        "pipeline_value": 457867.0,
+        "pipeline_value": 434617.0,
         "win_rate": 23.7,
         "avg_days_to_win": 6.6,
         "products_closed_count": 22,
@@ -1648,8 +1738,8 @@
       "id": "862490000005143104",
       "Deal_Name": "Maria Jimenez Peña - SG CU plata",
       "Amount": 3000,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "Maria Jimenez Peña",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -1658,13 +1748,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-05-27T19:27:36+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-06-02",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 6,
+      "Sales_Cycle_Duration": 6,
       "_contact_id": "862490000005143057"
     },
     {
@@ -1694,8 +1784,8 @@
       "id": "862490000005143062",
       "Deal_Name": "Maria Jimenez Peña - TRM cuenta deposito bonificada",
       "Amount": 20250,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "Maria Jimenez Peña",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -1704,13 +1794,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-05-27T19:23:26+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-06-02",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 6,
+      "Sales_Cycle_Duration": 6,
       "_contact_id": "862490000005143057"
     },
     {
@@ -5672,7 +5762,7 @@
         {
           "stage": "Análisis Financiero",
           "count": 1,
-          "pct_of_total": 14.3,
+          "pct_of_total": 11.1,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -5713,8 +5803,8 @@
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 1,
-          "pct_of_total": 14.3,
+          "count": 3,
+          "pct_of_total": 33.3,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -5722,16 +5812,16 @@
         {
           "stage": "Cerrado Perdido",
           "count": 5,
-          "pct_of_total": 71.4,
+          "pct_of_total": 55.6,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
         }
       ],
       "active_total": 1,
-      "won_total": 1,
+      "won_total": 3,
       "lost_total": 5,
-      "total_pipeline": 7
+      "total_pipeline": 9
     },
     "this_quarter": {
       "stage_order": [
@@ -5787,20 +5877,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 7,
-          "pct_of_total": 4.0,
-          "conversion_from_prev": 87.5,
-          "conversion_from_top": 87.5,
+          "count": 5,
+          "pct_of_total": 2.9,
+          "conversion_from_prev": 62.5,
+          "conversion_from_top": 62.5,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 31,
-          "pct_of_total": 17.8,
+          "count": 33,
+          "pct_of_total": 19.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 387.5,
+          "conversion_from_top": 412.5,
           "cmp_count": null
         },
         {
@@ -5812,8 +5902,8 @@
           "cmp_count": 2
         }
       ],
-      "active_total": 43,
-      "won_total": 31,
+      "active_total": 41,
+      "won_total": 33,
       "lost_total": 100,
       "total_pipeline": 174
     },
@@ -5871,20 +5961,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 7,
-          "pct_of_total": 4.0,
-          "conversion_from_prev": 87.5,
-          "conversion_from_top": 87.5,
+          "count": 5,
+          "pct_of_total": 2.8,
+          "conversion_from_prev": 62.5,
+          "conversion_from_top": 62.5,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 31,
-          "pct_of_total": 17.6,
+          "count": 33,
+          "pct_of_total": 18.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 387.5,
+          "conversion_from_top": 412.5,
           "cmp_count": null
         },
         {
@@ -5896,8 +5986,8 @@
           "cmp_count": null
         }
       ],
-      "active_total": 43,
-      "won_total": 31,
+      "active_total": 41,
+      "won_total": 33,
       "lost_total": 102,
       "total_pipeline": 176
     }
