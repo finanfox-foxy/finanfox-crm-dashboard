@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-01T19:46:57Z",
-  "generated_at": "2026-06-01",
-  "today": "2026-06-01",
-  "yesterday": "2026-05-31",
+  "timestamp": "2026-06-02T02:00:23Z",
+  "generated_at": "2026-06-02",
+  "today": "2026-06-02",
+  "yesterday": "2026-06-01",
   "this_month": "2026-06",
   "this_quarter_start": "2026-04-01",
   "this_quarter_end": "2026-06-30",
@@ -112079,10 +112079,10 @@
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 6,
-      "new_deals": 6,
+      "new_contacts": 3,
+      "new_deals": 2,
       "won_deals": 0,
-      "lost_deals": 0,
+      "lost_deals": 8,
       "won_value": 0,
       "total_aportacion_won": 0,
       "product_breakdown": {},
@@ -112092,758 +112092,53 @@
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Llamada Pendiente": 2,
-        "Análisis Financiero": 4
+        "Análisis Financiero": 2,
+        "Cerrado Perdido": 8
       },
       "pipeline_value": 0.0,
       "win_rate": 0.0,
       "avg_days_to_win": null,
       "products_closed_count": 0,
       "conversion_clientes": {
-        "total_contacts": 6,
+        "total_contacts": 3,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "31": 6
+        "1": 3
       }
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 4000,
-      "new_deals": 231,
-      "won_deals": 64,
-      "lost_deals": 196,
-      "won_value": 1303692.0,
-      "total_aportacion_won": 1303692.0,
-      "product_breakdown": {
-        "Monefit": 875380.0,
-        "Compra Única": 281312.0,
-        "Cuenta Depósito Bonificada": 136000.0,
-        "Compra Experta": 5000.0,
-        "PIAS Estrategia 5": 4800.0,
-        "Compra Periódica": 1200.0
-      },
-      "product_count": {
-        "Monefit": 28,
-        "Compra Única": 28,
-        "Cuenta Depósito Bonificada": 6,
-        "PIAS Estrategia 5": 3,
-        "Compra Periódica": 1,
-        "Compra Experta": 1
-      },
-      "product_details": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "veces": 28,
-          "total": 875380.0
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "veces": 28,
-          "total": 281312.0
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "veces": 6,
-          "total": 136000.0
-        },
-        {
-          "producto": "Compra Experta",
-          "entidad": "SilverGold",
-          "veces": 1,
-          "total": 5000.0
-        },
-        {
-          "producto": "PIAS Estrategia 5",
-          "entidad": "Aegon",
-          "veces": 3,
-          "total": 4800.0
-        },
-        {
-          "producto": "Compra Periódica",
-          "entidad": "SilverGold",
-          "veces": 1,
-          "total": 1200.0
-        }
-      ],
-      "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 840.0,
-          "close_date": "2026-05-29",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 50.0,
-          "close_date": "2026-05-29",
-          "fecha_inicio": "2026-05-25",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2600.0,
-          "close_date": "2026-05-29",
-          "fecha_inicio": "2026-05-20",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 1100.0,
-          "close_date": "2026-05-29",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 500.0,
-          "close_date": "2026-05-29",
-          "fecha_inicio": "2026-05-11",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Periódica",
-          "entidad": "SilverGold",
-          "total": 1200.0,
-          "close_date": "2026-05-28",
-          "fecha_inicio": "2027-05-28",
-          "objetivo_financiero": "Hijos",
-          "plazo": "Largo Plazo (+10 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 30000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-26",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 6000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "PIAS Estrategia 5",
-          "entidad": "Aegon",
-          "total": 1200.0,
-          "close_date": "2026-05-27",
-          "fecha_inicio": "2026-05-27",
-          "objetivo_financiero": "Jubilación",
-          "plazo": "Largo Plazo (+10 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-05-27",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": ""
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 20000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 5000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-04",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 1000.0,
-          "close_date": "2026-05-26",
-          "fecha_inicio": "2026-05-20",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-22",
-          "fecha_inicio": "2026-05-25",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-22",
-          "fecha_inicio": "2026-05-25",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 5000.0,
-          "close_date": "2026-05-27",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 25000.0,
-          "close_date": "2026-05-27",
-          "fecha_inicio": "2026-05-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Experta",
-          "entidad": "SilverGold",
-          "total": 5000.0,
-          "close_date": "2026-05-22",
-          "fecha_inicio": "2026-05-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": ""
-        },
-        {
-          "producto": "PIAS Estrategia 5",
-          "entidad": "Aegon",
-          "total": 1200.0,
-          "close_date": "2026-05-21",
-          "fecha_inicio": "2026-05-21",
-          "objetivo_financiero": "Jubilación",
-          "plazo": "Largo Plazo (+10 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 290.0,
-          "close_date": "2026-05-21",
-          "fecha_inicio": "2026-04-05",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 5000.0,
-          "close_date": "2026-05-21",
-          "fecha_inicio": "2026-05-26",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 9000.0,
-          "close_date": "2026-05-21",
-          "fecha_inicio": "2026-05-26",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 5000.0,
-          "close_date": "2026-05-21",
-          "fecha_inicio": "2026-05-21",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-05-21",
-          "fecha_inicio": "2026-05-21",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": ""
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 20000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 200000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-18",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 12000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-27",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 8000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-25",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 6000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-20",
-          "objetivo_financiero": "Hijos",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 45000.0,
-          "close_date": "2026-05-20",
-          "fecha_inicio": "2026-05-19",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-19",
-          "fecha_inicio": "2026-05-27",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 30000.0,
-          "close_date": "2026-05-19",
-          "fecha_inicio": "",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 1000.0,
-          "close_date": "2026-05-18",
-          "fecha_inicio": "2026-05-18",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4500.0,
-          "close_date": "2026-05-14",
-          "fecha_inicio": "2026-05-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4500.0,
-          "close_date": "2026-05-14",
-          "fecha_inicio": "2026-05-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10500.0,
-          "close_date": "2026-05-14",
-          "fecha_inicio": "2026-05-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 25494.0,
-          "close_date": "2026-05-14",
-          "fecha_inicio": "",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10500.0,
-          "close_date": "2026-05-14",
-          "fecha_inicio": "2026-05-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4000.0,
-          "close_date": "2026-05-12",
-          "fecha_inicio": "2026-05-12",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2000.0,
-          "close_date": "2026-05-12",
-          "fecha_inicio": "2026-05-12",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 21000.0,
-          "close_date": "2026-05-12",
-          "fecha_inicio": "2026-05-12",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "PIAS Estrategia 5",
-          "entidad": "Aegon",
-          "total": 2400.0,
-          "close_date": "2026-05-08",
-          "fecha_inicio": "",
-          "objetivo_financiero": "Jubilación",
-          "plazo": "Largo Plazo (+10 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 5000.0,
-          "close_date": "2026-05-08",
-          "fecha_inicio": "2026-05-13",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 10000.0,
-          "close_date": "2026-05-08",
-          "fecha_inicio": "2026-05-08",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 7000.0,
-          "close_date": "2026-05-08",
-          "fecha_inicio": "2026-05-08",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-05-08",
-          "fecha_inicio": "2026-05-07",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 30000.0,
-          "close_date": "2026-05-08",
-          "fecha_inicio": "2026-05-12",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 220000.0,
-          "close_date": "2026-05-08",
-          "fecha_inicio": "2026-05-15",
-          "objetivo_financiero": "Negocio",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 7641.0,
-          "close_date": "2026-05-06",
-          "fecha_inicio": "2026-05-08",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 13000.0,
-          "close_date": "2026-05-05",
-          "fecha_inicio": "2026-05-14",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 25000.0,
-          "close_date": "2026-05-05",
-          "fecha_inicio": "2026-05-14",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 50000.0,
-          "close_date": "2026-05-05",
-          "fecha_inicio": "2026-05-04",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-05-05",
-          "fecha_inicio": "2026-05-05",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-05-05",
-          "fecha_inicio": "2026-05-05",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 30000.0,
-          "close_date": "2026-05-05",
-          "fecha_inicio": "2026-05-05",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 130000.0,
-          "close_date": "2026-05-07",
-          "fecha_inicio": "2026-05-07",
-          "objetivo_financiero": "Negocio",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 3000.0,
-          "close_date": "2026-05-07",
-          "fecha_inicio": "2026-05-07",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 4821.0,
-          "close_date": "2026-05-07",
-          "fecha_inicio": "2026-05-07",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 5000.0,
-          "close_date": "2026-05-07",
-          "fecha_inicio": "2026-05-07",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 10000.0,
-          "close_date": "2026-05-05",
-          "fecha_inicio": "2026-05-07",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 4000.0,
-          "close_date": "2026-04-30",
-          "fecha_inicio": "2026-05-14",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 20000.0,
-          "close_date": "2026-04-29",
-          "fecha_inicio": "2026-04-29",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 16356.0,
-          "close_date": "2026-04-29",
-          "fecha_inicio": "2026-04-28",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "total": 20250.0,
-          "close_date": "2026-04-29",
-          "fecha_inicio": "2026-05-22",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        }
-      ],
-      "advisor_ranking_won": [
-        {
-          "name": "Jaime Becerra",
-          "won": 24,
-          "total_aportacion": 552640.0
-        },
-        {
-          "name": "Alberto Prieto",
-          "won": 22,
-          "total_aportacion": 408517.0
-        },
-        {
-          "name": "Jose Orrequia",
-          "won": 13,
-          "total_aportacion": 208000.0
-        },
-        {
-          "name": "Alex Caballero",
-          "won": 5,
-          "total_aportacion": 134535.0
-        }
-      ],
-      "advisor_ranking_aportacion": [
-        {
-          "name": "Jaime Becerra",
-          "won": 24,
-          "total_aportacion": 552640.0
-        },
-        {
-          "name": "Alberto Prieto",
-          "won": 22,
-          "total_aportacion": 408517.0
-        },
-        {
-          "name": "Jose Orrequia",
-          "won": 13,
-          "total_aportacion": 208000.0
-        },
-        {
-          "name": "Alex Caballero",
-          "won": 5,
-          "total_aportacion": 134535.0
-        }
-      ],
+      "new_contacts": 3,
+      "new_deals": 2,
+      "won_deals": 0,
+      "lost_deals": 8,
+      "won_value": 0,
+      "total_aportacion_won": 0,
+      "product_breakdown": {},
+      "product_count": {},
+      "product_details": [],
+      "product_deals": [],
+      "advisor_ranking_won": [],
+      "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Llamada Pendiente": 38,
-        "Análisis Financiero": 24,
-        "Asesoramiento": 8,
-        "Reasesoramiento": 7,
-        "Revisando Propuesta": 9,
-        "Aceptado/Falta Firma": 7,
-        "Cerrado Ganado": 64,
-        "Cerrado Perdido": 196
+        "Análisis Financiero": 2,
+        "Cerrado Perdido": 8
       },
-      "pipeline_value": 1440942.0,
-      "win_rate": 27.7,
-      "avg_days_to_win": 10.6,
-      "products_closed_count": 67,
+      "pipeline_value": 0.0,
+      "win_rate": 0.0,
+      "avg_days_to_win": null,
+      "products_closed_count": 0,
       "conversion_clientes": {
-        "total_contacts": 4000,
+        "total_contacts": 3,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "28": 3997,
-        "30": 2,
-        "31": 1
+        "1": 3
       }
     },
     "this_quarter": {
@@ -112930,8 +112225,6 @@
           "entidad": "Monefit",
           "total": 840.0,
           "close_date": "2026-05-29",
-          "cliente": "Saul Fuego Caveda",
-          "parent_id": "862490000005289008",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -112941,8 +112234,6 @@
           "entidad": "Monefit",
           "total": 50.0,
           "close_date": "2026-05-29",
-          "cliente": "Juan Jose Gonzalez del Ojo",
-          "parent_id": "862490000005268122",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -112952,8 +112243,6 @@
           "entidad": "Monefit",
           "total": 2600.0,
           "close_date": "2026-05-29",
-          "cliente": "Marc Ventura",
-          "parent_id": "862490000003947128",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -112963,8 +112252,6 @@
           "entidad": "Monefit",
           "total": 1100.0,
           "close_date": "2026-05-29",
-          "cliente": "David Calero",
-          "parent_id": "862490000005199143",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -112974,8 +112261,6 @@
           "entidad": "Monefit",
           "total": 500.0,
           "close_date": "2026-05-29",
-          "cliente": "Virginia De la varga sanz",
-          "parent_id": "862490000003468760",
           "fecha_inicio": "2026-05-11",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -112985,8 +112270,6 @@
           "entidad": "SilverGold",
           "total": 1200.0,
           "close_date": "2026-05-28",
-          "cliente": "Jorge Martín Rodríguez",
-          "parent_id": "862490000005079230",
           "fecha_inicio": "2027-05-28",
           "objetivo_financiero": "Hijos",
           "plazo": "Largo Plazo (+10 años)"
@@ -112996,8 +112279,6 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-26",
-          "cliente": "Llane Méndez Méndez",
-          "parent_id": "862490000005136120",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113007,8 +112288,6 @@
           "entidad": "SilverGold",
           "total": 6000.0,
           "close_date": "2026-05-26",
-          "cliente": "María Dolores Puertas Navarro",
-          "parent_id": "862490000005122008",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113018,8 +112297,6 @@
           "entidad": "Aegon",
           "total": 1200.0,
           "close_date": "2026-05-27",
-          "cliente": "Saul Fuego Caveda",
-          "parent_id": "862490000005111039",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -113029,8 +112306,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-05-27",
-          "cliente": "Luis Fernández Manrique",
-          "parent_id": "862490000005110611",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113040,8 +112315,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-05-26",
-          "cliente": "Jorge Cordón Villar",
-          "parent_id": "862490000005110440",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -113051,8 +112324,6 @@
           "entidad": "SilverGold",
           "total": 20000.0,
           "close_date": "2026-05-26",
-          "cliente": "Jorge Cordón Villar",
-          "parent_id": "862490000005110410",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113062,8 +112333,6 @@
           "entidad": "Monefit",
           "total": 5000.0,
           "close_date": "2026-05-26",
-          "cliente": "Pedro Tocino Iglesias",
-          "parent_id": "862490000005110317",
           "fecha_inicio": "2026-05-04",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113073,8 +112342,6 @@
           "entidad": "Monefit",
           "total": 1000.0,
           "close_date": "2026-05-26",
-          "cliente": "Nazaret Oliva Domínguez",
-          "parent_id": "862490000005110288",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113084,8 +112351,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-22",
-          "cliente": "Noemí Güemes Villahoz",
-          "parent_id": "862490000005100058",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113095,8 +112360,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-22",
-          "cliente": "Rodrigo Cuesta Pérez",
-          "parent_id": "862490000005100015",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113106,8 +112369,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-27",
-          "cliente": "Iban Vázquez Cabeza",
-          "parent_id": "862490000005099801",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113117,8 +112378,6 @@
           "entidad": "SilverGold",
           "total": 25000.0,
           "close_date": "2026-05-27",
-          "cliente": "Iban Vázquez Cabeza",
-          "parent_id": "862490000005099780",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113128,8 +112387,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-22",
-          "cliente": "Jorge Martín Rodríguez",
-          "parent_id": "862490000005099261",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -113139,8 +112396,6 @@
           "entidad": "Aegon",
           "total": 1200.0,
           "close_date": "2026-05-21",
-          "cliente": "Aitor Nuñez Granados",
-          "parent_id": "862490000005099001",
           "fecha_inicio": "2026-05-21",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -113150,8 +112405,6 @@
           "entidad": "Monefit",
           "total": 290.0,
           "close_date": "2026-05-21",
-          "cliente": "Nerea Junyent Grao",
-          "parent_id": "862490000005079205",
           "fecha_inicio": "2026-04-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113161,8 +112414,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-21",
-          "cliente": "Javier Venegas Diaz",
-          "parent_id": "862490000005079116",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113172,8 +112423,6 @@
           "entidad": "SilverGold",
           "total": 9000.0,
           "close_date": "2026-05-21",
-          "cliente": "Javier Venegas Diaz",
-          "parent_id": "862490000003139141",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113183,8 +112432,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-21",
-          "cliente": "Alejandro Galindo García",
-          "parent_id": "862490000005079040",
           "fecha_inicio": "2026-05-21",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113194,8 +112441,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-21",
-          "cliente": "Llane Méndez Méndez",
-          "parent_id": "862490000005008008",
           "fecha_inicio": "2026-05-21",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113205,8 +112450,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-20",
-          "cliente": "Alberto Blanco Guinot",
-          "parent_id": "862490000005031076",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -113216,8 +112459,6 @@
           "entidad": "Monefit",
           "total": 20000.0,
           "close_date": "2026-05-20",
-          "cliente": "Nagore Fernandez",
-          "parent_id": "862490000005031043",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113227,8 +112468,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-05-20",
-          "cliente": "Patricia Villota",
-          "parent_id": "862490000003981549",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113238,8 +112477,6 @@
           "entidad": "Monefit",
           "total": 200000.0,
           "close_date": "2026-05-20",
-          "cliente": "Laura Panella Ubeda",
-          "parent_id": "862490000004992069",
           "fecha_inicio": "2026-05-18",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113249,8 +112486,6 @@
           "entidad": "SilverGold",
           "total": 12000.0,
           "close_date": "2026-05-20",
-          "cliente": "Luisa Rodríguez Guillén",
-          "parent_id": "862490000004983074",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113260,8 +112495,6 @@
           "entidad": "SilverGold",
           "total": 8000.0,
           "close_date": "2026-05-20",
-          "cliente": "Encarni Salvador Reyes",
-          "parent_id": "862490000004983003",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113271,8 +112504,6 @@
           "entidad": "Monefit",
           "total": 6000.0,
           "close_date": "2026-05-20",
-          "cliente": "Víctor Francisco Marinero Moreno",
-          "parent_id": "862490000004953112",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Hijos",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113282,8 +112513,6 @@
           "entidad": "Monefit",
           "total": 45000.0,
           "close_date": "2026-05-20",
-          "cliente": "Belén Vaquero García",
-          "parent_id": "862490000004953057",
           "fecha_inicio": "2026-05-19",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113293,8 +112522,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-19",
-          "cliente": "David Sin apellido",
-          "parent_id": "862490000004851167",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113304,8 +112531,6 @@
           "entidad": "The Real Money",
           "total": 30000.0,
           "close_date": "2026-05-19",
-          "cliente": "David Sin apellido",
-          "parent_id": "862490000004851124",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113315,8 +112540,6 @@
           "entidad": "Monefit",
           "total": 1000.0,
           "close_date": "2026-05-18",
-          "cliente": "Aitor Nuñez Granados",
-          "parent_id": "862490000004161122",
           "fecha_inicio": "2026-05-18",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113326,8 +112549,6 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004733133",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113337,8 +112558,6 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004733108",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113348,8 +112567,6 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004733090",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113359,8 +112576,6 @@
           "entidad": "SilverGold",
           "total": 25494.0,
           "close_date": "2026-05-14",
-          "cliente": "Manuel Riveiro Pardo",
-          "parent_id": "862490000004700053",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113370,8 +112585,6 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004688075",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113381,8 +112594,6 @@
           "entidad": "SilverGold",
           "total": 4000.0,
           "close_date": "2026-05-12",
-          "cliente": "Jose Antonio Romero Catalina (amigo Lara Novis Rojo)",
-          "parent_id": "862490000004558192",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113392,8 +112603,6 @@
           "entidad": "Monefit",
           "total": 2000.0,
           "close_date": "2026-05-12",
-          "cliente": "Lara Gonzalez Ortega",
-          "parent_id": "862490000004558137",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113403,8 +112612,6 @@
           "entidad": "Monefit",
           "total": 21000.0,
           "close_date": "2026-05-12",
-          "cliente": "Mercedes Cociña Salgueiro",
-          "parent_id": "862490000004558054",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113414,8 +112621,6 @@
           "entidad": "Aegon",
           "total": 2400.0,
           "close_date": "2026-05-08",
-          "cliente": "Alejandro Muga Carrasco",
-          "parent_id": "862490000004422004",
           "fecha_inicio": "",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -113425,8 +112630,6 @@
           "entidad": "Monefit",
           "total": 5000.0,
           "close_date": "2026-05-08",
-          "cliente": "Alejandro Muga Carrasco",
-          "parent_id": "862490000004422004",
           "fecha_inicio": "2026-05-13",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113436,8 +112639,6 @@
           "entidad": "Monefit",
           "total": 10000.0,
           "close_date": "2026-05-08",
-          "cliente": "Jose Antonio Romero Catalina (amigo Lara Novis Rojo)",
-          "parent_id": "862490000004377151",
           "fecha_inicio": "2026-05-08",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113447,8 +112648,6 @@
           "entidad": "SilverGold",
           "total": 7000.0,
           "close_date": "2026-05-08",
-          "cliente": "Catalina Oliver Trias",
-          "parent_id": "862490000004377078",
           "fecha_inicio": "2026-05-08",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113458,8 +112657,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-08",
-          "cliente": "Ilídio Paulo Sachiambo Vatuva",
-          "parent_id": "862490000004374140",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113469,8 +112666,6 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-08",
-          "cliente": "David Sin apellido",
-          "parent_id": "862490000003468895",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113480,8 +112675,6 @@
           "entidad": "Monefit",
           "total": 220000.0,
           "close_date": "2026-05-08",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000003620223",
           "fecha_inicio": "2026-05-15",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113491,8 +112684,6 @@
           "entidad": "SilverGold",
           "total": 7641.0,
           "close_date": "2026-05-06",
-          "cliente": "Laura Vázquez del Ganso",
-          "parent_id": "862490000004348066",
           "fecha_inicio": "2026-05-08",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113502,8 +112693,6 @@
           "entidad": "SilverGold",
           "total": 13000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ezequiel Muñoz Fernández",
-          "parent_id": "862490000003992268",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113513,8 +112702,6 @@
           "entidad": "The Real Money",
           "total": 25000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ezequiel Muñoz Fernández",
-          "parent_id": "862490000003992268",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113524,8 +112711,6 @@
           "entidad": "Monefit",
           "total": 50000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ezequiel Muñoz Fernández",
-          "parent_id": "862490000003992268",
           "fecha_inicio": "2026-05-04",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113535,8 +112720,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ignacio Bayon vegas",
-          "parent_id": "862490000003981074",
           "fecha_inicio": "2026-05-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113546,8 +112729,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-05",
-          "cliente": "Catalina Oliver Trias",
-          "parent_id": "862490000004347079",
           "fecha_inicio": "2026-05-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113557,8 +112738,6 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-05",
-          "cliente": "Rafael mira mateu",
-          "parent_id": "862490000004347049",
           "fecha_inicio": "2026-05-05",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113568,8 +112747,6 @@
           "entidad": "Monefit",
           "total": 130000.0,
           "close_date": "2026-05-07",
-          "cliente": "Álvaro Hernández Carrasco",
-          "parent_id": "862490000004315612",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113579,8 +112756,6 @@
           "entidad": "SilverGold",
           "total": 3000.0,
           "close_date": "2026-05-07",
-          "cliente": "Mar López Velasco",
-          "parent_id": "862490000004315551",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113590,8 +112765,6 @@
           "entidad": "SilverGold",
           "total": 4821.0,
           "close_date": "2026-05-07",
-          "cliente": "Ayda Carracedo Brito",
-          "parent_id": "862490000004315518",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113601,8 +112774,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-07",
-          "cliente": "Rafael mira mateu",
-          "parent_id": "862490000004315384",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113612,8 +112783,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-05",
-          "cliente": "Pablo Silvestre Marrodán",
-          "parent_id": "862490000004315207",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113623,8 +112792,6 @@
           "entidad": "Monefit",
           "total": 4000.0,
           "close_date": "2026-04-30",
-          "cliente": "Gabriel Herrera",
-          "parent_id": "862490000003468345",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113634,8 +112801,6 @@
           "entidad": "SilverGold",
           "total": 20000.0,
           "close_date": "2026-04-29",
-          "cliente": "Antonio Jesús Gavilán Rivero",
-          "parent_id": "862490000004289006",
           "fecha_inicio": "2026-04-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113645,8 +112810,6 @@
           "entidad": "Monefit",
           "total": 3000.0,
           "close_date": "2026-04-30",
-          "cliente": "Miguel Ángel Barriga Martí",
-          "parent_id": "862490000004273169",
           "fecha_inicio": "2026-04-17",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113656,8 +112819,6 @@
           "entidad": "Monefit",
           "total": 4200.0,
           "close_date": "2026-04-30",
-          "cliente": "Rocío Sin apellido",
-          "parent_id": "862490000004273114",
           "fecha_inicio": "2026-04-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113667,8 +112828,6 @@
           "entidad": "SilverGold",
           "total": 16356.0,
           "close_date": "2026-04-29",
-          "cliente": "François Lidove",
-          "parent_id": "862490000004231152",
           "fecha_inicio": "2026-04-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113678,8 +112837,6 @@
           "entidad": "Monefit",
           "total": 8500.0,
           "close_date": "2026-04-29",
-          "cliente": "Daniel Ferro Cociña",
-          "parent_id": "862490000004025351",
           "fecha_inicio": "2026-04-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113689,8 +112846,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-04-29",
-          "cliente": "Nagore Fernandez",
-          "parent_id": "862490000003446393",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113700,8 +112855,6 @@
           "entidad": "Monefit",
           "total": 1870.0,
           "close_date": "2026-04-27",
-          "cliente": "Noelia Sánchez",
-          "parent_id": "862490000004033198",
           "fecha_inicio": "2026-04-27",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113711,8 +112864,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-04-21",
-          "cliente": "Maria de los Angeles San Nicolas Cifuentes",
-          "parent_id": "862490000003469291",
           "fecha_inicio": "2026-04-21",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113722,8 +112873,6 @@
           "entidad": "SilverGold",
           "total": 20169.0,
           "close_date": "2026-04-20",
-          "cliente": "Jordan Bertsch",
-          "parent_id": "862490000004001470",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -113733,8 +112882,6 @@
           "entidad": "The Real Money",
           "total": 25000.0,
           "close_date": "2026-04-23",
-          "cliente": "Transportes Bara SCCL",
-          "parent_id": "862490000004000718",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113744,8 +112891,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-04-23",
-          "cliente": "Marcelo Anelo",
-          "parent_id": "862490000003838127",
           "fecha_inicio": "2026-04-24",
           "objetivo_financiero": "",
           "plazo": ""
@@ -113755,8 +112900,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-04-21",
-          "cliente": "Edurne Jiménez",
-          "parent_id": "862490000004000059",
           "fecha_inicio": "2026-04-22",
           "objetivo_financiero": "",
           "plazo": ""
@@ -113766,8 +112909,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-04-24",
-          "cliente": "María Dolores Puertas Navarro",
-          "parent_id": "862490000003992311",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113777,8 +112918,6 @@
           "entidad": "SilverGold",
           "total": 25800.0,
           "close_date": "2026-04-23",
-          "cliente": "Constantino Sánchez Martínez",
-          "parent_id": "862490000003992208",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113788,8 +112927,6 @@
           "entidad": "Crowmie",
           "total": 15000.0,
           "close_date": "2026-04-20",
-          "cliente": "Jose Antonio Pérez Álvarez",
-          "parent_id": "862490000003992119",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Medio Plazo (4-9 años)"
@@ -113799,8 +112936,6 @@
           "entidad": "Monefit",
           "total": 200.0,
           "close_date": "2026-04-20",
-          "cliente": "Chema Espejo",
-          "parent_id": "862490000003664266",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113810,8 +112945,6 @@
           "entidad": "SilverGold",
           "total": 2000.0,
           "close_date": "2026-04-20",
-          "cliente": "Isabel Maria Peña Vadillo",
-          "parent_id": "862490000003989430",
           "fecha_inicio": "2026-04-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113821,8 +112954,6 @@
           "entidad": "SilverGold",
           "total": 3851.0,
           "close_date": "2026-04-17",
-          "cliente": "Pablo Silvestre Marrodán",
-          "parent_id": "862490000003809276",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113832,8 +112963,6 @@
           "entidad": "Aegon",
           "total": 2673.0,
           "close_date": "2026-04-15",
-          "cliente": "Manuel Riveiro Pardo",
-          "parent_id": "862490000003700015",
           "fecha_inicio": "2026-04-16",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -113843,8 +112972,6 @@
           "entidad": "SilverGold",
           "total": 6515.0,
           "close_date": "2026-04-14",
-          "cliente": "Mathieu Rincent",
-          "parent_id": "862490000003689145",
           "fecha_inicio": "2026-04-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113854,8 +112981,6 @@
           "entidad": "Monefit",
           "total": 6000.0,
           "close_date": "2026-04-14",
-          "cliente": "S. Coop. G. César Quinteiro",
-          "parent_id": "862490000003679357",
           "fecha_inicio": "2026-04-13",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -113865,8 +112990,6 @@
           "entidad": "Monefit",
           "total": 14200.0,
           "close_date": "2026-04-14",
-          "cliente": "Jorge Cubrias Morales",
-          "parent_id": "862490000003679217",
           "fecha_inicio": "2026-04-13",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -113876,8 +112999,6 @@
           "entidad": "SilverGold",
           "total": 4929.0,
           "close_date": "2026-04-13",
-          "cliente": "Rebeca Barbanoj Torguet",
-          "parent_id": "862490000003669772",
           "fecha_inicio": "2025-04-24",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113887,8 +113008,6 @@
           "entidad": "SilverGold",
           "total": 17000.0,
           "close_date": "2026-04-13",
-          "cliente": "Rafael de la Fuente González",
-          "parent_id": "862490000003669614",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113898,8 +113017,6 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-04-13",
-          "cliente": "Isabel Maria Peña Vadillo",
-          "parent_id": "862490000003669433",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113909,8 +113026,6 @@
           "entidad": "Monefit",
           "total": 5300.0,
           "close_date": "2026-04-13",
-          "cliente": "Pablo Muñoz de la Cruz",
-          "parent_id": "862490000003669276",
           "fecha_inicio": "2026-03-15",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113920,8 +113035,6 @@
           "entidad": "SilverGold",
           "total": 30000.0,
           "close_date": "2026-04-14",
-          "cliente": "María Dolores Puertas Navarro",
-          "parent_id": "862490000003664104",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113931,8 +113044,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-04-09",
-          "cliente": "Carmen Irene Conejo Vega",
-          "parent_id": "862490000003495134",
           "fecha_inicio": "2026-04-21",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113942,8 +113053,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-04-09",
-          "cliente": "Carmen Irene Conejo Vega",
-          "parent_id": "862490000003495054",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -113953,8 +113062,6 @@
           "entidad": "Monefit",
           "total": 10000.0,
           "close_date": "2026-04-08",
-          "cliente": "Marta Salvadó Caminal",
-          "parent_id": "862490000003489489",
           "fecha_inicio": "",
           "objetivo_financiero": "",
           "plazo": ""
@@ -113964,8 +113071,6 @@
           "entidad": "Monefit",
           "total": 10000.0,
           "close_date": "2026-04-08",
-          "cliente": "Jose Huertas Ocaña",
-          "parent_id": "862490000003489336",
           "fecha_inicio": "",
           "objetivo_financiero": "",
           "plazo": ""
@@ -114126,8 +113231,6 @@
           "entidad": "Monefit",
           "total": 840.0,
           "close_date": "2026-05-29",
-          "cliente": "Saul Fuego Caveda",
-          "parent_id": "862490000005289008",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114137,8 +113240,6 @@
           "entidad": "Monefit",
           "total": 50.0,
           "close_date": "2026-05-29",
-          "cliente": "Juan Jose Gonzalez del Ojo",
-          "parent_id": "862490000005268122",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114148,8 +113249,6 @@
           "entidad": "Monefit",
           "total": 2600.0,
           "close_date": "2026-05-29",
-          "cliente": "Marc Ventura",
-          "parent_id": "862490000003947128",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114159,8 +113258,6 @@
           "entidad": "Monefit",
           "total": 1100.0,
           "close_date": "2026-05-29",
-          "cliente": "David Calero",
-          "parent_id": "862490000005199143",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114170,8 +113267,6 @@
           "entidad": "Monefit",
           "total": 500.0,
           "close_date": "2026-05-29",
-          "cliente": "Virginia De la varga sanz",
-          "parent_id": "862490000003468760",
           "fecha_inicio": "2026-05-11",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114181,8 +113276,6 @@
           "entidad": "SilverGold",
           "total": 1200.0,
           "close_date": "2026-05-28",
-          "cliente": "Jorge Martín Rodríguez",
-          "parent_id": "862490000005079230",
           "fecha_inicio": "2027-05-28",
           "objetivo_financiero": "Hijos",
           "plazo": "Largo Plazo (+10 años)"
@@ -114192,8 +113285,6 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-26",
-          "cliente": "Llane Méndez Méndez",
-          "parent_id": "862490000005136120",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114203,8 +113294,6 @@
           "entidad": "SilverGold",
           "total": 6000.0,
           "close_date": "2026-05-26",
-          "cliente": "María Dolores Puertas Navarro",
-          "parent_id": "862490000005122008",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114214,8 +113303,6 @@
           "entidad": "Aegon",
           "total": 1200.0,
           "close_date": "2026-05-27",
-          "cliente": "Saul Fuego Caveda",
-          "parent_id": "862490000005111039",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -114225,8 +113312,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-05-27",
-          "cliente": "Luis Fernández Manrique",
-          "parent_id": "862490000005110611",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114236,8 +113321,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-05-26",
-          "cliente": "Jorge Cordón Villar",
-          "parent_id": "862490000005110440",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -114247,8 +113330,6 @@
           "entidad": "SilverGold",
           "total": 20000.0,
           "close_date": "2026-05-26",
-          "cliente": "Jorge Cordón Villar",
-          "parent_id": "862490000005110410",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114258,8 +113339,6 @@
           "entidad": "Monefit",
           "total": 5000.0,
           "close_date": "2026-05-26",
-          "cliente": "Pedro Tocino Iglesias",
-          "parent_id": "862490000005110317",
           "fecha_inicio": "2026-05-04",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114269,8 +113348,6 @@
           "entidad": "Monefit",
           "total": 1000.0,
           "close_date": "2026-05-26",
-          "cliente": "Nazaret Oliva Domínguez",
-          "parent_id": "862490000005110288",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114280,8 +113357,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-22",
-          "cliente": "Noemí Güemes Villahoz",
-          "parent_id": "862490000005100058",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114291,8 +113366,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-22",
-          "cliente": "Rodrigo Cuesta Pérez",
-          "parent_id": "862490000005100015",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114302,8 +113375,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-27",
-          "cliente": "Iban Vázquez Cabeza",
-          "parent_id": "862490000005099801",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114313,8 +113384,6 @@
           "entidad": "SilverGold",
           "total": 25000.0,
           "close_date": "2026-05-27",
-          "cliente": "Iban Vázquez Cabeza",
-          "parent_id": "862490000005099780",
           "fecha_inicio": "2026-05-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114324,8 +113393,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-22",
-          "cliente": "Jorge Martín Rodríguez",
-          "parent_id": "862490000005099261",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -114335,8 +113402,6 @@
           "entidad": "Aegon",
           "total": 1200.0,
           "close_date": "2026-05-21",
-          "cliente": "Aitor Nuñez Granados",
-          "parent_id": "862490000005099001",
           "fecha_inicio": "2026-05-21",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -114346,8 +113411,6 @@
           "entidad": "Monefit",
           "total": 290.0,
           "close_date": "2026-05-21",
-          "cliente": "Nerea Junyent Grao",
-          "parent_id": "862490000005079205",
           "fecha_inicio": "2026-04-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114357,8 +113420,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-21",
-          "cliente": "Javier Venegas Diaz",
-          "parent_id": "862490000005079116",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114368,8 +113429,6 @@
           "entidad": "SilverGold",
           "total": 9000.0,
           "close_date": "2026-05-21",
-          "cliente": "Javier Venegas Diaz",
-          "parent_id": "862490000003139141",
           "fecha_inicio": "2026-05-26",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114379,8 +113438,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-21",
-          "cliente": "Alejandro Galindo García",
-          "parent_id": "862490000005079040",
           "fecha_inicio": "2026-05-21",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114390,8 +113447,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-21",
-          "cliente": "Llane Méndez Méndez",
-          "parent_id": "862490000005008008",
           "fecha_inicio": "2026-05-21",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114401,8 +113456,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-20",
-          "cliente": "Alberto Blanco Guinot",
-          "parent_id": "862490000005031076",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -114412,8 +113465,6 @@
           "entidad": "Monefit",
           "total": 20000.0,
           "close_date": "2026-05-20",
-          "cliente": "Nagore Fernandez",
-          "parent_id": "862490000005031043",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114423,8 +113474,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-05-20",
-          "cliente": "Patricia Villota",
-          "parent_id": "862490000003981549",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114434,8 +113483,6 @@
           "entidad": "Monefit",
           "total": 200000.0,
           "close_date": "2026-05-20",
-          "cliente": "Laura Panella Ubeda",
-          "parent_id": "862490000004992069",
           "fecha_inicio": "2026-05-18",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114445,8 +113492,6 @@
           "entidad": "SilverGold",
           "total": 12000.0,
           "close_date": "2026-05-20",
-          "cliente": "Luisa Rodríguez Guillén",
-          "parent_id": "862490000004983074",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114456,8 +113501,6 @@
           "entidad": "SilverGold",
           "total": 8000.0,
           "close_date": "2026-05-20",
-          "cliente": "Encarni Salvador Reyes",
-          "parent_id": "862490000004983003",
           "fecha_inicio": "2026-05-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114467,8 +113510,6 @@
           "entidad": "Monefit",
           "total": 6000.0,
           "close_date": "2026-05-20",
-          "cliente": "Víctor Francisco Marinero Moreno",
-          "parent_id": "862490000004953112",
           "fecha_inicio": "2026-05-20",
           "objetivo_financiero": "Hijos",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114478,8 +113519,6 @@
           "entidad": "Monefit",
           "total": 45000.0,
           "close_date": "2026-05-20",
-          "cliente": "Belén Vaquero García",
-          "parent_id": "862490000004953057",
           "fecha_inicio": "2026-05-19",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114489,8 +113528,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-19",
-          "cliente": "David Sin apellido",
-          "parent_id": "862490000004851167",
           "fecha_inicio": "2026-05-27",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114500,8 +113537,6 @@
           "entidad": "The Real Money",
           "total": 30000.0,
           "close_date": "2026-05-19",
-          "cliente": "David Sin apellido",
-          "parent_id": "862490000004851124",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114511,8 +113546,6 @@
           "entidad": "Monefit",
           "total": 1000.0,
           "close_date": "2026-05-18",
-          "cliente": "Aitor Nuñez Granados",
-          "parent_id": "862490000004161122",
           "fecha_inicio": "2026-05-18",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114522,8 +113555,6 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004733133",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114533,8 +113564,6 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004733108",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114544,8 +113573,6 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004733090",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114555,8 +113582,6 @@
           "entidad": "SilverGold",
           "total": 25494.0,
           "close_date": "2026-05-14",
-          "cliente": "Manuel Riveiro Pardo",
-          "parent_id": "862490000004700053",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114566,8 +113591,6 @@
           "entidad": "SilverGold",
           "total": 10500.0,
           "close_date": "2026-05-14",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000004688075",
           "fecha_inicio": "2026-05-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114577,8 +113600,6 @@
           "entidad": "SilverGold",
           "total": 4000.0,
           "close_date": "2026-05-12",
-          "cliente": "Jose Antonio Romero Catalina (amigo Lara Novis Rojo)",
-          "parent_id": "862490000004558192",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114588,8 +113609,6 @@
           "entidad": "Monefit",
           "total": 2000.0,
           "close_date": "2026-05-12",
-          "cliente": "Lara Gonzalez Ortega",
-          "parent_id": "862490000004558137",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114599,8 +113618,6 @@
           "entidad": "Monefit",
           "total": 21000.0,
           "close_date": "2026-05-12",
-          "cliente": "Mercedes Cociña Salgueiro",
-          "parent_id": "862490000004558054",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114610,8 +113627,6 @@
           "entidad": "Aegon",
           "total": 2400.0,
           "close_date": "2026-05-08",
-          "cliente": "Alejandro Muga Carrasco",
-          "parent_id": "862490000004422004",
           "fecha_inicio": "",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -114621,8 +113636,6 @@
           "entidad": "Monefit",
           "total": 5000.0,
           "close_date": "2026-05-08",
-          "cliente": "Alejandro Muga Carrasco",
-          "parent_id": "862490000004422004",
           "fecha_inicio": "2026-05-13",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114632,8 +113645,6 @@
           "entidad": "Monefit",
           "total": 10000.0,
           "close_date": "2026-05-08",
-          "cliente": "Jose Antonio Romero Catalina (amigo Lara Novis Rojo)",
-          "parent_id": "862490000004377151",
           "fecha_inicio": "2026-05-08",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114643,8 +113654,6 @@
           "entidad": "SilverGold",
           "total": 7000.0,
           "close_date": "2026-05-08",
-          "cliente": "Catalina Oliver Trias",
-          "parent_id": "862490000004377078",
           "fecha_inicio": "2026-05-08",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114654,8 +113663,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-08",
-          "cliente": "Ilídio Paulo Sachiambo Vatuva",
-          "parent_id": "862490000004374140",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114665,8 +113672,6 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-08",
-          "cliente": "David Sin apellido",
-          "parent_id": "862490000003468895",
           "fecha_inicio": "2026-05-12",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114676,8 +113681,6 @@
           "entidad": "Monefit",
           "total": 220000.0,
           "close_date": "2026-05-08",
-          "cliente": "Jordi Garcia Serra",
-          "parent_id": "862490000003620223",
           "fecha_inicio": "2026-05-15",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114687,8 +113690,6 @@
           "entidad": "SilverGold",
           "total": 7641.0,
           "close_date": "2026-05-06",
-          "cliente": "Laura Vázquez del Ganso",
-          "parent_id": "862490000004348066",
           "fecha_inicio": "2026-05-08",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114698,8 +113699,6 @@
           "entidad": "SilverGold",
           "total": 13000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ezequiel Muñoz Fernández",
-          "parent_id": "862490000003992268",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114709,8 +113708,6 @@
           "entidad": "The Real Money",
           "total": 25000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ezequiel Muñoz Fernández",
-          "parent_id": "862490000003992268",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114720,8 +113717,6 @@
           "entidad": "Monefit",
           "total": 50000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ezequiel Muñoz Fernández",
-          "parent_id": "862490000003992268",
           "fecha_inicio": "2026-05-04",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114731,8 +113726,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-05",
-          "cliente": "Ignacio Bayon vegas",
-          "parent_id": "862490000003981074",
           "fecha_inicio": "2026-05-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114742,8 +113735,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-05-05",
-          "cliente": "Catalina Oliver Trias",
-          "parent_id": "862490000004347079",
           "fecha_inicio": "2026-05-05",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114753,8 +113744,6 @@
           "entidad": "Monefit",
           "total": 30000.0,
           "close_date": "2026-05-05",
-          "cliente": "Rafael mira mateu",
-          "parent_id": "862490000004347049",
           "fecha_inicio": "2026-05-05",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114764,8 +113753,6 @@
           "entidad": "Monefit",
           "total": 130000.0,
           "close_date": "2026-05-07",
-          "cliente": "Álvaro Hernández Carrasco",
-          "parent_id": "862490000004315612",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Negocio",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114775,8 +113762,6 @@
           "entidad": "SilverGold",
           "total": 3000.0,
           "close_date": "2026-05-07",
-          "cliente": "Mar López Velasco",
-          "parent_id": "862490000004315551",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114786,8 +113771,6 @@
           "entidad": "SilverGold",
           "total": 4821.0,
           "close_date": "2026-05-07",
-          "cliente": "Ayda Carracedo Brito",
-          "parent_id": "862490000004315518",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114797,8 +113780,6 @@
           "entidad": "SilverGold",
           "total": 5000.0,
           "close_date": "2026-05-07",
-          "cliente": "Rafael mira mateu",
-          "parent_id": "862490000004315384",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114808,8 +113789,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-05-05",
-          "cliente": "Pablo Silvestre Marrodán",
-          "parent_id": "862490000004315207",
           "fecha_inicio": "2026-05-07",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114819,8 +113798,6 @@
           "entidad": "Monefit",
           "total": 4000.0,
           "close_date": "2026-04-30",
-          "cliente": "Gabriel Herrera",
-          "parent_id": "862490000003468345",
           "fecha_inicio": "2026-05-14",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114830,8 +113807,6 @@
           "entidad": "SilverGold",
           "total": 20000.0,
           "close_date": "2026-04-29",
-          "cliente": "Antonio Jesús Gavilán Rivero",
-          "parent_id": "862490000004289006",
           "fecha_inicio": "2026-04-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114841,8 +113816,6 @@
           "entidad": "Monefit",
           "total": 3000.0,
           "close_date": "2026-04-30",
-          "cliente": "Miguel Ángel Barriga Martí",
-          "parent_id": "862490000004273169",
           "fecha_inicio": "2026-04-17",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114852,8 +113825,6 @@
           "entidad": "Monefit",
           "total": 4200.0,
           "close_date": "2026-04-30",
-          "cliente": "Rocío Sin apellido",
-          "parent_id": "862490000004273114",
           "fecha_inicio": "2026-04-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114863,8 +113834,6 @@
           "entidad": "SilverGold",
           "total": 16356.0,
           "close_date": "2026-04-29",
-          "cliente": "François Lidove",
-          "parent_id": "862490000004231152",
           "fecha_inicio": "2026-04-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114874,8 +113843,6 @@
           "entidad": "Monefit",
           "total": 8500.0,
           "close_date": "2026-04-29",
-          "cliente": "Daniel Ferro Cociña",
-          "parent_id": "862490000004025351",
           "fecha_inicio": "2026-04-28",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114885,8 +113852,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-04-29",
-          "cliente": "Nagore Fernandez",
-          "parent_id": "862490000003446393",
           "fecha_inicio": "2026-05-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114896,8 +113861,6 @@
           "entidad": "Monefit",
           "total": 1870.0,
           "close_date": "2026-04-27",
-          "cliente": "Noelia Sánchez",
-          "parent_id": "862490000004033198",
           "fecha_inicio": "2026-04-27",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114907,8 +113870,6 @@
           "entidad": "Monefit",
           "total": 15000.0,
           "close_date": "2026-04-21",
-          "cliente": "Maria de los Angeles San Nicolas Cifuentes",
-          "parent_id": "862490000003469291",
           "fecha_inicio": "2026-04-21",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114918,8 +113879,6 @@
           "entidad": "SilverGold",
           "total": 20169.0,
           "close_date": "2026-04-20",
-          "cliente": "Jordan Bertsch",
-          "parent_id": "862490000004001470",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -114929,8 +113888,6 @@
           "entidad": "The Real Money",
           "total": 25000.0,
           "close_date": "2026-04-23",
-          "cliente": "Transportes Bara SCCL",
-          "parent_id": "862490000004000718",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114940,8 +113897,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-04-23",
-          "cliente": "Marcelo Anelo",
-          "parent_id": "862490000003838127",
           "fecha_inicio": "2026-04-24",
           "objetivo_financiero": "",
           "plazo": ""
@@ -114951,8 +113906,6 @@
           "entidad": "The Real Money",
           "total": 20250.0,
           "close_date": "2026-04-21",
-          "cliente": "Edurne Jiménez",
-          "parent_id": "862490000004000059",
           "fecha_inicio": "2026-04-22",
           "objetivo_financiero": "",
           "plazo": ""
@@ -114962,8 +113915,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-04-24",
-          "cliente": "María Dolores Puertas Navarro",
-          "parent_id": "862490000003992311",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114973,8 +113924,6 @@
           "entidad": "SilverGold",
           "total": 25800.0,
           "close_date": "2026-04-23",
-          "cliente": "Constantino Sánchez Martínez",
-          "parent_id": "862490000003992208",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -114984,8 +113933,6 @@
           "entidad": "Crowmie",
           "total": 15000.0,
           "close_date": "2026-04-20",
-          "cliente": "Jose Antonio Pérez Álvarez",
-          "parent_id": "862490000003992119",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Medio Plazo (4-9 años)"
@@ -114995,8 +113942,6 @@
           "entidad": "Monefit",
           "total": 200.0,
           "close_date": "2026-04-20",
-          "cliente": "Chema Espejo",
-          "parent_id": "862490000003664266",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115006,8 +113951,6 @@
           "entidad": "SilverGold",
           "total": 2000.0,
           "close_date": "2026-04-20",
-          "cliente": "Isabel Maria Peña Vadillo",
-          "parent_id": "862490000003989430",
           "fecha_inicio": "2026-04-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115017,8 +113960,6 @@
           "entidad": "SilverGold",
           "total": 3851.0,
           "close_date": "2026-04-17",
-          "cliente": "Pablo Silvestre Marrodán",
-          "parent_id": "862490000003809276",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115028,8 +113969,6 @@
           "entidad": "Aegon",
           "total": 2673.0,
           "close_date": "2026-04-15",
-          "cliente": "Manuel Riveiro Pardo",
-          "parent_id": "862490000003700015",
           "fecha_inicio": "2026-04-16",
           "objetivo_financiero": "Jubilación",
           "plazo": "Largo Plazo (+10 años)"
@@ -115039,8 +113978,6 @@
           "entidad": "SilverGold",
           "total": 6515.0,
           "close_date": "2026-04-14",
-          "cliente": "Mathieu Rincent",
-          "parent_id": "862490000003689145",
           "fecha_inicio": "2026-04-22",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115050,8 +113987,6 @@
           "entidad": "Monefit",
           "total": 6000.0,
           "close_date": "2026-04-14",
-          "cliente": "S. Coop. G. César Quinteiro",
-          "parent_id": "862490000003679357",
           "fecha_inicio": "2026-04-13",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -115061,8 +113996,6 @@
           "entidad": "Monefit",
           "total": 14200.0,
           "close_date": "2026-04-14",
-          "cliente": "Jorge Cubrias Morales",
-          "parent_id": "862490000003679217",
           "fecha_inicio": "2026-04-13",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -115072,8 +114005,6 @@
           "entidad": "SilverGold",
           "total": 4929.0,
           "close_date": "2026-04-13",
-          "cliente": "Rebeca Barbanoj Torguet",
-          "parent_id": "862490000003669772",
           "fecha_inicio": "2025-04-24",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115083,8 +114014,6 @@
           "entidad": "SilverGold",
           "total": 17000.0,
           "close_date": "2026-04-13",
-          "cliente": "Rafael de la Fuente González",
-          "parent_id": "862490000003669614",
           "fecha_inicio": "2026-04-20",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115094,8 +114023,6 @@
           "entidad": "SilverGold",
           "total": 4500.0,
           "close_date": "2026-04-13",
-          "cliente": "Isabel Maria Peña Vadillo",
-          "parent_id": "862490000003669433",
           "fecha_inicio": "2026-04-23",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115105,8 +114032,6 @@
           "entidad": "Monefit",
           "total": 5300.0,
           "close_date": "2026-04-13",
-          "cliente": "Pablo Muñoz de la Cruz",
-          "parent_id": "862490000003669276",
           "fecha_inicio": "2026-03-15",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115116,8 +114041,6 @@
           "entidad": "SilverGold",
           "total": 30000.0,
           "close_date": "2026-04-14",
-          "cliente": "María Dolores Puertas Navarro",
-          "parent_id": "862490000003664104",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115127,8 +114050,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-04-09",
-          "cliente": "Carmen Irene Conejo Vega",
-          "parent_id": "862490000003495134",
           "fecha_inicio": "2026-04-21",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115138,8 +114059,6 @@
           "entidad": "SilverGold",
           "total": 10000.0,
           "close_date": "2026-04-09",
-          "cliente": "Carmen Irene Conejo Vega",
-          "parent_id": "862490000003495054",
           "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115149,8 +114068,6 @@
           "entidad": "Monefit",
           "total": 10000.0,
           "close_date": "2026-04-08",
-          "cliente": "Marta Salvadó Caminal",
-          "parent_id": "862490000003489489",
           "fecha_inicio": "",
           "objetivo_financiero": "",
           "plazo": ""
@@ -115160,8 +114077,6 @@
           "entidad": "Monefit",
           "total": 10000.0,
           "close_date": "2026-04-08",
-          "cliente": "Jose Huertas Ocaña",
-          "parent_id": "862490000003489336",
           "fecha_inicio": "",
           "objetivo_financiero": "",
           "plazo": ""
@@ -115171,8 +114086,6 @@
           "entidad": "Monefit",
           "total": 5000.0,
           "close_date": "2026-03-26",
-          "cliente": "Tomás Imperioli",
-          "parent_id": "862490000003040096",
           "fecha_inicio": "2026-03-25",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": ""
@@ -115182,8 +114095,6 @@
           "entidad": "SilverGold",
           "total": 3000.0,
           "close_date": "2026-02-06",
-          "cliente": "Luis Manuel Azurmendi Caballero",
-          "parent_id": "862490000002429126",
           "fecha_inicio": "2026-03-18",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115193,8 +114104,6 @@
           "entidad": "Monefit",
           "total": 4000.0,
           "close_date": "2026-02-06",
-          "cliente": "Luis Manuel Azurmendi Caballero",
-          "parent_id": "862490000002429126",
           "fecha_inicio": "2026-02-06",
           "objetivo_financiero": "Colchón de seguridad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115204,8 +114113,6 @@
           "entidad": "Monefit",
           "total": 7000.0,
           "close_date": "2026-02-06",
-          "cliente": "Rubén Solano Miras",
-          "parent_id": "862490000001978125",
           "fecha_inicio": "2026-01-29",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115215,8 +114122,6 @@
           "entidad": "SilverGold",
           "total": 3000.0,
           "close_date": "2026-02-01",
-          "cliente": "Rubén Solano Miras",
-          "parent_id": "862490000001978125",
           "fecha_inicio": "2026-02-11",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -115296,12 +114201,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-05-30",
+      "previous": "2026-05-31",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 2,
-        "new_deals": 4,
+        "new_contacts": 6,
+        "new_deals": 6,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -115313,20 +114218,21 @@
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
-          "Llamada Pendiente": 4
+          "Llamada Pendiente": 2,
+          "Análisis Financiero": 4
         },
         "pipeline_value": 0.0,
         "win_rate": 0.0,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 2,
+          "total_contacts": 6,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "30": 2
+          "31": 6
         }
       }
     },
@@ -115401,8 +114307,6 @@
             "entidad": "Monefit",
             "total": 840.0,
             "close_date": "2026-05-29",
-            "cliente": "Saul Fuego Caveda",
-            "parent_id": "862490000005289008",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115412,8 +114316,6 @@
             "entidad": "Monefit",
             "total": 50.0,
             "close_date": "2026-05-29",
-            "cliente": "Juan Jose Gonzalez del Ojo",
-            "parent_id": "862490000005268122",
             "fecha_inicio": "2026-05-25",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115423,8 +114325,6 @@
             "entidad": "Monefit",
             "total": 2600.0,
             "close_date": "2026-05-29",
-            "cliente": "Marc Ventura",
-            "parent_id": "862490000003947128",
             "fecha_inicio": "2026-05-20",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115434,8 +114334,6 @@
             "entidad": "Monefit",
             "total": 1100.0,
             "close_date": "2026-05-29",
-            "cliente": "David Calero",
-            "parent_id": "862490000005199143",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115445,8 +114343,6 @@
             "entidad": "Monefit",
             "total": 500.0,
             "close_date": "2026-05-29",
-            "cliente": "Virginia De la varga sanz",
-            "parent_id": "862490000003468760",
             "fecha_inicio": "2026-05-11",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115456,8 +114352,6 @@
             "entidad": "SilverGold",
             "total": 1200.0,
             "close_date": "2026-05-28",
-            "cliente": "Jorge Martín Rodríguez",
-            "parent_id": "862490000005079230",
             "fecha_inicio": "2027-05-28",
             "objetivo_financiero": "Hijos",
             "plazo": "Largo Plazo (+10 años)"
@@ -115467,8 +114361,6 @@
             "entidad": "Monefit",
             "total": 30000.0,
             "close_date": "2026-05-26",
-            "cliente": "Llane Méndez Méndez",
-            "parent_id": "862490000005136120",
             "fecha_inicio": "2026-05-26",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115478,8 +114370,6 @@
             "entidad": "SilverGold",
             "total": 6000.0,
             "close_date": "2026-05-26",
-            "cliente": "María Dolores Puertas Navarro",
-            "parent_id": "862490000005122008",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115489,8 +114379,6 @@
             "entidad": "Aegon",
             "total": 1200.0,
             "close_date": "2026-05-27",
-            "cliente": "Saul Fuego Caveda",
-            "parent_id": "862490000005111039",
             "fecha_inicio": "2026-05-27",
             "objetivo_financiero": "Jubilación",
             "plazo": "Largo Plazo (+10 años)"
@@ -115500,8 +114388,6 @@
             "entidad": "The Real Money",
             "total": 20250.0,
             "close_date": "2026-05-27",
-            "cliente": "Luis Fernández Manrique",
-            "parent_id": "862490000005110611",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115511,8 +114397,6 @@
             "entidad": "The Real Money",
             "total": 20250.0,
             "close_date": "2026-05-26",
-            "cliente": "Jorge Cordón Villar",
-            "parent_id": "862490000005110440",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": ""
@@ -115522,8 +114406,6 @@
             "entidad": "SilverGold",
             "total": 20000.0,
             "close_date": "2026-05-26",
-            "cliente": "Jorge Cordón Villar",
-            "parent_id": "862490000005110410",
             "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115533,8 +114415,6 @@
             "entidad": "Monefit",
             "total": 5000.0,
             "close_date": "2026-05-26",
-            "cliente": "Pedro Tocino Iglesias",
-            "parent_id": "862490000005110317",
             "fecha_inicio": "2026-05-04",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115544,8 +114424,6 @@
             "entidad": "Monefit",
             "total": 1000.0,
             "close_date": "2026-05-26",
-            "cliente": "Nazaret Oliva Domínguez",
-            "parent_id": "862490000005110288",
             "fecha_inicio": "2026-05-20",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115555,8 +114433,6 @@
             "entidad": "SilverGold",
             "total": 10000.0,
             "close_date": "2026-05-22",
-            "cliente": "Noemí Güemes Villahoz",
-            "parent_id": "862490000005100058",
             "fecha_inicio": "2026-05-25",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115566,8 +114442,6 @@
             "entidad": "SilverGold",
             "total": 10000.0,
             "close_date": "2026-05-22",
-            "cliente": "Rodrigo Cuesta Pérez",
-            "parent_id": "862490000005100015",
             "fecha_inicio": "2026-05-25",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115577,8 +114451,6 @@
             "entidad": "SilverGold",
             "total": 5000.0,
             "close_date": "2026-05-27",
-            "cliente": "Iban Vázquez Cabeza",
-            "parent_id": "862490000005099801",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115588,8 +114460,6 @@
             "entidad": "SilverGold",
             "total": 25000.0,
             "close_date": "2026-05-27",
-            "cliente": "Iban Vázquez Cabeza",
-            "parent_id": "862490000005099780",
             "fecha_inicio": "2026-05-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115599,8 +114469,6 @@
             "entidad": "SilverGold",
             "total": 5000.0,
             "close_date": "2026-05-22",
-            "cliente": "Jorge Martín Rodríguez",
-            "parent_id": "862490000005099261",
             "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": ""
@@ -115610,8 +114478,6 @@
             "entidad": "Aegon",
             "total": 1200.0,
             "close_date": "2026-05-21",
-            "cliente": "Aitor Nuñez Granados",
-            "parent_id": "862490000005099001",
             "fecha_inicio": "2026-05-21",
             "objetivo_financiero": "Jubilación",
             "plazo": "Largo Plazo (+10 años)"
@@ -115621,8 +114487,6 @@
             "entidad": "Monefit",
             "total": 290.0,
             "close_date": "2026-05-21",
-            "cliente": "Nerea Junyent Grao",
-            "parent_id": "862490000005079205",
             "fecha_inicio": "2026-04-05",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115632,8 +114496,6 @@
             "entidad": "SilverGold",
             "total": 5000.0,
             "close_date": "2026-05-21",
-            "cliente": "Javier Venegas Diaz",
-            "parent_id": "862490000005079116",
             "fecha_inicio": "2026-05-26",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115643,8 +114505,6 @@
             "entidad": "SilverGold",
             "total": 9000.0,
             "close_date": "2026-05-21",
-            "cliente": "Javier Venegas Diaz",
-            "parent_id": "862490000003139141",
             "fecha_inicio": "2026-05-26",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115654,8 +114514,6 @@
             "entidad": "SilverGold",
             "total": 5000.0,
             "close_date": "2026-05-21",
-            "cliente": "Alejandro Galindo García",
-            "parent_id": "862490000005079040",
             "fecha_inicio": "2026-05-21",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115665,8 +114523,6 @@
             "entidad": "Monefit",
             "total": 15000.0,
             "close_date": "2026-05-21",
-            "cliente": "Llane Méndez Méndez",
-            "parent_id": "862490000005008008",
             "fecha_inicio": "2026-05-21",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115676,8 +114532,6 @@
             "entidad": "SilverGold",
             "total": 10000.0,
             "close_date": "2026-05-20",
-            "cliente": "Alberto Blanco Guinot",
-            "parent_id": "862490000005031076",
             "fecha_inicio": "2026-05-22",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": ""
@@ -115687,8 +114541,6 @@
             "entidad": "Monefit",
             "total": 20000.0,
             "close_date": "2026-05-20",
-            "cliente": "Nagore Fernandez",
-            "parent_id": "862490000005031043",
             "fecha_inicio": "2026-05-22",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115698,8 +114550,6 @@
             "entidad": "The Real Money",
             "total": 20250.0,
             "close_date": "2026-05-20",
-            "cliente": "Patricia Villota",
-            "parent_id": "862490000003981549",
             "fecha_inicio": "2026-05-22",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115709,8 +114559,6 @@
             "entidad": "Monefit",
             "total": 200000.0,
             "close_date": "2026-05-20",
-            "cliente": "Laura Panella Ubeda",
-            "parent_id": "862490000004992069",
             "fecha_inicio": "2026-05-18",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115720,8 +114568,6 @@
             "entidad": "SilverGold",
             "total": 12000.0,
             "close_date": "2026-05-20",
-            "cliente": "Luisa Rodríguez Guillén",
-            "parent_id": "862490000004983074",
             "fecha_inicio": "2026-05-27",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115731,8 +114577,6 @@
             "entidad": "SilverGold",
             "total": 8000.0,
             "close_date": "2026-05-20",
-            "cliente": "Encarni Salvador Reyes",
-            "parent_id": "862490000004983003",
             "fecha_inicio": "2026-05-25",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115742,8 +114586,6 @@
             "entidad": "Monefit",
             "total": 6000.0,
             "close_date": "2026-05-20",
-            "cliente": "Víctor Francisco Marinero Moreno",
-            "parent_id": "862490000004953112",
             "fecha_inicio": "2026-05-20",
             "objetivo_financiero": "Hijos",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115753,8 +114595,6 @@
             "entidad": "Monefit",
             "total": 45000.0,
             "close_date": "2026-05-20",
-            "cliente": "Belén Vaquero García",
-            "parent_id": "862490000004953057",
             "fecha_inicio": "2026-05-19",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115764,8 +114604,6 @@
             "entidad": "SilverGold",
             "total": 10000.0,
             "close_date": "2026-05-19",
-            "cliente": "David Sin apellido",
-            "parent_id": "862490000004851167",
             "fecha_inicio": "2026-05-27",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115775,8 +114613,6 @@
             "entidad": "The Real Money",
             "total": 30000.0,
             "close_date": "2026-05-19",
-            "cliente": "David Sin apellido",
-            "parent_id": "862490000004851124",
             "fecha_inicio": "",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115786,8 +114622,6 @@
             "entidad": "Monefit",
             "total": 1000.0,
             "close_date": "2026-05-18",
-            "cliente": "Aitor Nuñez Granados",
-            "parent_id": "862490000004161122",
             "fecha_inicio": "2026-05-18",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115797,8 +114631,6 @@
             "entidad": "SilverGold",
             "total": 4500.0,
             "close_date": "2026-05-14",
-            "cliente": "Jordi Garcia Serra",
-            "parent_id": "862490000004733133",
             "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115808,8 +114640,6 @@
             "entidad": "SilverGold",
             "total": 4500.0,
             "close_date": "2026-05-14",
-            "cliente": "Jordi Garcia Serra",
-            "parent_id": "862490000004733108",
             "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115819,8 +114649,6 @@
             "entidad": "SilverGold",
             "total": 10500.0,
             "close_date": "2026-05-14",
-            "cliente": "Jordi Garcia Serra",
-            "parent_id": "862490000004733090",
             "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115830,8 +114658,6 @@
             "entidad": "SilverGold",
             "total": 25494.0,
             "close_date": "2026-05-14",
-            "cliente": "Manuel Riveiro Pardo",
-            "parent_id": "862490000004700053",
             "fecha_inicio": "",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115841,8 +114667,6 @@
             "entidad": "SilverGold",
             "total": 10500.0,
             "close_date": "2026-05-14",
-            "cliente": "Jordi Garcia Serra",
-            "parent_id": "862490000004688075",
             "fecha_inicio": "2026-05-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115852,8 +114676,6 @@
             "entidad": "SilverGold",
             "total": 4000.0,
             "close_date": "2026-05-12",
-            "cliente": "Jose Antonio Romero Catalina (amigo Lara Novis Rojo)",
-            "parent_id": "862490000004558192",
             "fecha_inicio": "2026-05-12",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115863,8 +114685,6 @@
             "entidad": "Monefit",
             "total": 2000.0,
             "close_date": "2026-05-12",
-            "cliente": "Lara Gonzalez Ortega",
-            "parent_id": "862490000004558137",
             "fecha_inicio": "2026-05-12",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115874,8 +114694,6 @@
             "entidad": "Monefit",
             "total": 21000.0,
             "close_date": "2026-05-12",
-            "cliente": "Mercedes Cociña Salgueiro",
-            "parent_id": "862490000004558054",
             "fecha_inicio": "2026-05-12",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115885,8 +114703,6 @@
             "entidad": "Aegon",
             "total": 2400.0,
             "close_date": "2026-05-08",
-            "cliente": "Alejandro Muga Carrasco",
-            "parent_id": "862490000004422004",
             "fecha_inicio": "",
             "objetivo_financiero": "Jubilación",
             "plazo": "Largo Plazo (+10 años)"
@@ -115896,8 +114712,6 @@
             "entidad": "Monefit",
             "total": 5000.0,
             "close_date": "2026-05-08",
-            "cliente": "Alejandro Muga Carrasco",
-            "parent_id": "862490000004422004",
             "fecha_inicio": "2026-05-13",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115907,8 +114721,6 @@
             "entidad": "Monefit",
             "total": 10000.0,
             "close_date": "2026-05-08",
-            "cliente": "Jose Antonio Romero Catalina (amigo Lara Novis Rojo)",
-            "parent_id": "862490000004377151",
             "fecha_inicio": "2026-05-08",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115918,8 +114730,6 @@
             "entidad": "SilverGold",
             "total": 7000.0,
             "close_date": "2026-05-08",
-            "cliente": "Catalina Oliver Trias",
-            "parent_id": "862490000004377078",
             "fecha_inicio": "2026-05-08",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115929,8 +114739,6 @@
             "entidad": "Monefit",
             "total": 15000.0,
             "close_date": "2026-05-08",
-            "cliente": "Ilídio Paulo Sachiambo Vatuva",
-            "parent_id": "862490000004374140",
             "fecha_inicio": "2026-05-07",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115940,8 +114748,6 @@
             "entidad": "Monefit",
             "total": 30000.0,
             "close_date": "2026-05-08",
-            "cliente": "David Sin apellido",
-            "parent_id": "862490000003468895",
             "fecha_inicio": "2026-05-12",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115951,8 +114757,6 @@
             "entidad": "Monefit",
             "total": 220000.0,
             "close_date": "2026-05-08",
-            "cliente": "Jordi Garcia Serra",
-            "parent_id": "862490000003620223",
             "fecha_inicio": "2026-05-15",
             "objetivo_financiero": "Negocio",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115962,8 +114766,6 @@
             "entidad": "SilverGold",
             "total": 7641.0,
             "close_date": "2026-05-06",
-            "cliente": "Laura Vázquez del Ganso",
-            "parent_id": "862490000004348066",
             "fecha_inicio": "2026-05-08",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115973,8 +114775,6 @@
             "entidad": "SilverGold",
             "total": 13000.0,
             "close_date": "2026-05-05",
-            "cliente": "Ezequiel Muñoz Fernández",
-            "parent_id": "862490000003992268",
             "fecha_inicio": "2026-05-14",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115984,8 +114784,6 @@
             "entidad": "The Real Money",
             "total": 25000.0,
             "close_date": "2026-05-05",
-            "cliente": "Ezequiel Muñoz Fernández",
-            "parent_id": "862490000003992268",
             "fecha_inicio": "2026-05-14",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -115995,8 +114793,6 @@
             "entidad": "Monefit",
             "total": 50000.0,
             "close_date": "2026-05-05",
-            "cliente": "Ezequiel Muñoz Fernández",
-            "parent_id": "862490000003992268",
             "fecha_inicio": "2026-05-04",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116006,8 +114802,6 @@
             "entidad": "Monefit",
             "total": 15000.0,
             "close_date": "2026-05-05",
-            "cliente": "Ignacio Bayon vegas",
-            "parent_id": "862490000003981074",
             "fecha_inicio": "2026-05-05",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116017,8 +114811,6 @@
             "entidad": "Monefit",
             "total": 15000.0,
             "close_date": "2026-05-05",
-            "cliente": "Catalina Oliver Trias",
-            "parent_id": "862490000004347079",
             "fecha_inicio": "2026-05-05",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116028,8 +114820,6 @@
             "entidad": "Monefit",
             "total": 30000.0,
             "close_date": "2026-05-05",
-            "cliente": "Rafael mira mateu",
-            "parent_id": "862490000004347049",
             "fecha_inicio": "2026-05-05",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116039,8 +114829,6 @@
             "entidad": "Monefit",
             "total": 130000.0,
             "close_date": "2026-05-07",
-            "cliente": "Álvaro Hernández Carrasco",
-            "parent_id": "862490000004315612",
             "fecha_inicio": "2026-05-07",
             "objetivo_financiero": "Negocio",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116050,8 +114838,6 @@
             "entidad": "SilverGold",
             "total": 3000.0,
             "close_date": "2026-05-07",
-            "cliente": "Mar López Velasco",
-            "parent_id": "862490000004315551",
             "fecha_inicio": "2026-05-07",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116061,8 +114847,6 @@
             "entidad": "SilverGold",
             "total": 4821.0,
             "close_date": "2026-05-07",
-            "cliente": "Ayda Carracedo Brito",
-            "parent_id": "862490000004315518",
             "fecha_inicio": "2026-05-07",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116072,8 +114856,6 @@
             "entidad": "SilverGold",
             "total": 5000.0,
             "close_date": "2026-05-07",
-            "cliente": "Rafael mira mateu",
-            "parent_id": "862490000004315384",
             "fecha_inicio": "2026-05-07",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116083,8 +114865,6 @@
             "entidad": "SilverGold",
             "total": 10000.0,
             "close_date": "2026-05-05",
-            "cliente": "Pablo Silvestre Marrodán",
-            "parent_id": "862490000004315207",
             "fecha_inicio": "2026-05-07",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116094,8 +114874,6 @@
             "entidad": "Monefit",
             "total": 4000.0,
             "close_date": "2026-04-30",
-            "cliente": "Gabriel Herrera",
-            "parent_id": "862490000003468345",
             "fecha_inicio": "2026-05-14",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116105,8 +114883,6 @@
             "entidad": "SilverGold",
             "total": 20000.0,
             "close_date": "2026-04-29",
-            "cliente": "Antonio Jesús Gavilán Rivero",
-            "parent_id": "862490000004289006",
             "fecha_inicio": "2026-04-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116116,8 +114892,6 @@
             "entidad": "SilverGold",
             "total": 16356.0,
             "close_date": "2026-04-29",
-            "cliente": "François Lidove",
-            "parent_id": "862490000004231152",
             "fecha_inicio": "2026-04-28",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116127,8 +114901,6 @@
             "entidad": "The Real Money",
             "total": 20250.0,
             "close_date": "2026-04-29",
-            "cliente": "Nagore Fernandez",
-            "parent_id": "862490000003446393",
             "fecha_inicio": "2026-05-22",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116246,8 +115018,6 @@
             "entidad": "Monefit",
             "total": 5000.0,
             "close_date": "2026-03-26",
-            "cliente": "Tomás Imperioli",
-            "parent_id": "862490000003040096",
             "fecha_inicio": "2026-03-25",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": ""
@@ -116257,8 +115027,6 @@
             "entidad": "SilverGold",
             "total": 3000.0,
             "close_date": "2026-02-06",
-            "cliente": "Luis Manuel Azurmendi Caballero",
-            "parent_id": "862490000002429126",
             "fecha_inicio": "2026-03-18",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116268,8 +115036,6 @@
             "entidad": "Monefit",
             "total": 4000.0,
             "close_date": "2026-02-06",
-            "cliente": "Luis Manuel Azurmendi Caballero",
-            "parent_id": "862490000002429126",
             "fecha_inicio": "2026-02-06",
             "objetivo_financiero": "Colchón de seguridad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116279,8 +115045,6 @@
             "entidad": "Monefit",
             "total": 7000.0,
             "close_date": "2026-02-06",
-            "cliente": "Rubén Solano Miras",
-            "parent_id": "862490000001978125",
             "fecha_inicio": "2026-01-29",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116290,8 +115054,6 @@
             "entidad": "SilverGold",
             "total": 3000.0,
             "close_date": "2026-02-01",
-            "cliente": "Rubén Solano Miras",
-            "parent_id": "862490000001978125",
             "fecha_inicio": "2026-02-11",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
@@ -116399,18 +115161,18 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 2,
-          "pct_of_total": 33.3,
+          "count": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 4,
-          "pct_of_total": 66.7,
+          "count": 2,
+          "pct_of_total": 20.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 200.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
@@ -116418,7 +115180,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": 0.0,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
@@ -116426,7 +115188,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
@@ -116434,7 +115196,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
@@ -116442,7 +115204,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
@@ -116452,22 +115214,22 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 8,
+          "pct_of_total": 80.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
-      "active_total": 6,
+      "active_total": 2,
       "won_total": 0,
-      "lost_total": 0,
-      "total_pipeline": 6
+      "lost_total": 8,
+      "total_pipeline": 10
     },
     "this_month": {
       "stage_order": [
@@ -116483,75 +115245,75 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 38,
-          "pct_of_total": 10.8,
+          "count": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
-          "cmp_count": 38
+          "conversion_from_top": null,
+          "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 24,
-          "pct_of_total": 6.8,
-          "conversion_from_prev": 63.2,
-          "conversion_from_top": 63.2,
-          "cmp_count": 24
+          "count": 2,
+          "pct_of_total": 20.0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 8,
-          "pct_of_total": 2.3,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 21.1,
-          "cmp_count": 8
+          "count": 0,
+          "pct_of_total": 0.0,
+          "conversion_from_prev": 0.0,
+          "conversion_from_top": null,
+          "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 7,
-          "pct_of_total": 2.0,
-          "conversion_from_prev": 87.5,
-          "conversion_from_top": 18.4,
-          "cmp_count": 7
+          "count": 0,
+          "pct_of_total": 0.0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 9,
-          "pct_of_total": 2.5,
+          "count": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 23.7,
-          "cmp_count": 9
+          "conversion_from_top": null,
+          "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 7,
-          "pct_of_total": 2.0,
-          "conversion_from_prev": 77.8,
-          "conversion_from_top": 18.4,
-          "cmp_count": 7
+          "count": 0,
+          "pct_of_total": 0.0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
+          "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 64,
-          "pct_of_total": 18.1,
+          "count": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 168.4,
-          "cmp_count": 64
+          "conversion_from_top": null,
+          "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 196,
-          "pct_of_total": 55.5,
+          "count": 8,
+          "pct_of_total": 80.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 515.8,
-          "cmp_count": 196
+          "conversion_from_top": null,
+          "cmp_count": null
         }
       ],
-      "active_total": 93,
-      "won_total": 64,
-      "lost_total": 196,
-      "total_pipeline": 353
+      "active_total": 2,
+      "won_total": 0,
+      "lost_total": 8,
+      "total_pipeline": 10
     },
     "this_quarter": {
       "stage_order": [
@@ -116721,16 +115483,7 @@
       "lost_total": 277,
       "total_pipeline": 499
     },
-    "previous_pipeline": {
-      "Llamada Pendiente": 38,
-      "Análisis Financiero": 24,
-      "Asesoramiento": 8,
-      "Reasesoramiento": 7,
-      "Revisando Propuesta": 9,
-      "Aceptado/Falta Firma": 7,
-      "Cerrado Ganado": 64,
-      "Cerrado Perdido": 196
-    },
-    "previous_value": 1440942.0
+    "previous_pipeline": {},
+    "previous_value": 0.0
   }
 }
