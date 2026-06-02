@@ -1426,8 +1426,20 @@ function renderMayoAnalysis() {
 
     var deals = data.deals;
     var stats = data.stats;
-    var monthStats = stats.this_month || {};
-    var prevMonth = (data.comparison && data.comparison.this_month) ? data.comparison.this_month.stats : null;
+    // Fix: 'Análisis Mayo' must show May data. In June, this_month = June, comparison = May
+    // Use comparison (May) as main month, compute April from deals
+    var monthStats = (data.comparison && data.comparison.this_month) ? data.comparison.this_month.stats : {};
+    var prevMonth = null;
+    var aprilDeals = deals.filter(function(d) { return d.Closing_Date && d.Closing_Date.startsWith('2026-04'); });
+    var aprilWon = aprilDeals.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+    var aprilLost = aprilDeals.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+    if (aprilDeals.length > 0) {
+      prevMonth = {
+        won_value: aprilWon.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0),
+        won_deals: aprilWon.length,
+        lost_deals: aprilLost.length
+      };
+    }
 
     // ── Helper: format euros ──
     function fmt(v) {
