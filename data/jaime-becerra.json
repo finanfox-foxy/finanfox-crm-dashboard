@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-06-04T02:01:20Z",
+  "timestamp": "2026-06-04T08:50:16Z",
   "generated_at": "2026-06-04",
   "today": "2026-06-04",
   "yesterday": "2026-06-03",
@@ -25,9 +25,9 @@
           "Aceptado/Falta Firma": 5,
           "Cerrado Ganado": 31,
           "Revisando Propuesta": 7,
-          "Asesoramiento": 3,
+          "Asesoramiento": 2,
           "Análisis Financiero": 8,
-          "Reasesoramiento": 2,
+          "Reasesoramiento": 3,
           "Cerrado Perdido": 58
         },
         "by_owner": {
@@ -519,8 +519,8 @@
       "pipeline_stages": {
         "Llamada Pendiente": 15,
         "Análisis Financiero": 8,
-        "Asesoramiento": 3,
-        "Reasesoramiento": 2,
+        "Asesoramiento": 2,
+        "Reasesoramiento": 3,
         "Revisando Propuesta": 7,
         "Aceptado/Falta Firma": 5,
         "Cerrado Ganado": 31,
@@ -955,8 +955,8 @@
       "pipeline_stages": {
         "Llamada Pendiente": 15,
         "Análisis Financiero": 8,
-        "Asesoramiento": 3,
-        "Reasesoramiento": 2,
+        "Asesoramiento": 2,
+        "Reasesoramiento": 3,
         "Revisando Propuesta": 7,
         "Aceptado/Falta Firma": 5,
         "Cerrado Ganado": 31,
@@ -1354,8 +1354,8 @@
         "pipeline_stages": {
           "Llamada Pendiente": 12,
           "Análisis Financiero": 6,
-          "Asesoramiento": 3,
-          "Reasesoramiento": 1,
+          "Asesoramiento": 2,
+          "Reasesoramiento": 2,
           "Revisando Propuesta": 2,
           "Aceptado/Falta Firma": 2,
           "Cerrado Ganado": 24,
@@ -2255,7 +2255,7 @@
       "id": "862490000004598009",
       "Deal_Name": "Planificación de Maria del Mar Fuenteja Sancho",
       "Amount": null,
-      "Stage": "Asesoramiento",
+      "Stage": "Reasesoramiento",
       "Probability": 60,
       "Contact_Name": "Maria del Mar Fuenteja Sancho",
       "Owner": "Jaime Becerra",
@@ -4619,18 +4619,18 @@
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 2.3,
-          "conversion_from_prev": 37.5,
-          "conversion_from_top": 20.0,
+          "count": 2,
+          "pct_of_total": 1.6,
+          "conversion_from_prev": 25.0,
+          "conversion_from_top": 13.3,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 2,
-          "pct_of_total": 1.6,
-          "conversion_from_prev": 66.7,
-          "conversion_from_top": 13.3,
+          "count": 3,
+          "pct_of_total": 2.3,
+          "conversion_from_prev": null,
+          "conversion_from_top": 20.0,
           "cmp_count": null
         },
         {
@@ -4703,18 +4703,18 @@
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 2.3,
-          "conversion_from_prev": 37.5,
-          "conversion_from_top": 20.0,
+          "count": 2,
+          "pct_of_total": 1.6,
+          "conversion_from_prev": 25.0,
+          "conversion_from_top": 13.3,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 2,
-          "pct_of_total": 1.6,
-          "conversion_from_prev": 66.7,
-          "conversion_from_top": 13.3,
+          "count": 3,
+          "pct_of_total": 2.3,
+          "conversion_from_prev": null,
+          "conversion_from_top": 20.0,
           "cmp_count": null
         },
         {
