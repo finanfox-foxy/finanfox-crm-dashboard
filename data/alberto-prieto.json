@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-03T09:27:05Z",
+  "timestamp": "2026-06-03T05:00:22Z",
   "generated_at": "2026-06-03",
   "today": "2026-06-03",
   "yesterday": "2026-06-02",
@@ -21,10 +21,10 @@
       "deals": {
         "total": 181,
         "by_stage": {
-          "Cerrado Ganado": 38,
+          "Aceptado/Falta Firma": 6,
+          "Cerrado Ganado": 37,
           "Análisis Financiero": 9,
           "Cerrado Perdido": 103,
-          "Aceptado/Falta Firma": 5,
           "Reasesoramiento": 9,
           "Llamada Pendiente": 7,
           "Revisando Propuesta": 8,
@@ -33,13 +33,13 @@
         "by_owner": {
           "Alberto Prieto": 181
         },
-        "pipeline_value": 620606.0,
-        "total_aportaciones": 620606.0,
-        "avg_deal_size": 3428.76,
-        "closed_won": 38,
-        "closed_won_value": 588206.0,
+        "pipeline_value": 619006.0,
+        "total_aportaciones": 619006.0,
+        "avg_deal_size": 3419.92,
+        "closed_won": 37,
+        "closed_won_value": 586206.0,
         "closed_lost": 103,
-        "conversion_rate": 21.0
+        "conversion_rate": 20.4
       }
     },
     "yesterday": {
@@ -122,10 +122,11 @@
         }
       ],
       "pipeline_stages": {
+        "Aceptado/Falta Firma": 1,
         "Cerrado Ganado": 3,
         "Cerrado Perdido": 2
       },
-      "pipeline_value": 26250.0,
+      "pipeline_value": 26750.0,
       "win_rate": 300.0,
       "avg_days_to_win": 6.0,
       "products_closed_count": 3,
@@ -143,18 +144,16 @@
       "label": "Este Mes",
       "new_contacts": 1,
       "new_deals": 2,
-      "won_deals": 4,
+      "won_deals": 3,
       "lost_deals": 6,
-      "won_value": 28250.0,
-      "total_aportacion_won": 28250.0,
+      "won_value": 26250.0,
+      "total_aportacion_won": 26250.0,
       "product_breakdown": {
         "Cuenta Depósito Bonificada": 20250.0,
-        "Compra Única": 6000.0,
-        "Monefit": 2000.0
+        "Compra Única": 6000.0
       },
       "product_count": {
         "Compra Única": 2,
-        "Monefit": 1,
         "Cuenta Depósito Bonificada": 1
       },
       "product_details": [
@@ -169,26 +168,9 @@
           "entidad": "SilverGold",
           "veces": 2,
           "total": 6000.0
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "veces": 1,
-          "total": 2000.0
         }
       ],
       "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2000.0,
-          "close_date": "2026-06-02",
-          "cliente": "Carmen Rodriguez Ortiz (amiga Danae)",
-          "parent_id": "862490000005314124",
-          "fecha_inicio": "2026-06-02",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
@@ -226,26 +208,27 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 4,
-          "total_aportacion": 28250.0
+          "won": 3,
+          "total_aportacion": 26250.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 4,
-          "total_aportacion": 28250.0
+          "won": 3,
+          "total_aportacion": 26250.0
         }
       ],
       "pipeline_stages": {
         "Análisis Financiero": 1,
-        "Cerrado Ganado": 4,
+        "Aceptado/Falta Firma": 1,
+        "Cerrado Ganado": 3,
         "Cerrado Perdido": 6
       },
-      "pipeline_value": 28250.0,
-      "win_rate": 200.0,
-      "avg_days_to_win": 4.8,
-      "products_closed_count": 4,
+      "pipeline_value": 26750.0,
+      "win_rate": 150.0,
+      "avg_days_to_win": 6.0,
+      "products_closed_count": 3,
       "conversion_clientes": {
         "total_contacts": 1,
         "converted_contacts": 0,
@@ -260,18 +243,18 @@
       "label": "Este Trimestre",
       "new_contacts": 6,
       "new_deals": 174,
-      "won_deals": 34,
+      "won_deals": 33,
       "lost_deals": 101,
-      "won_value": 522306.0,
-      "total_aportacion_won": 522306.0,
+      "won_value": 520306.0,
+      "total_aportacion_won": 520306.0,
       "product_breakdown": {
-        "Monefit": 388310.0,
+        "Monefit": 386310.0,
         "Compra Única": 111346.0,
         "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
-        "Monefit": 18,
+        "Monefit": 17,
         "Compra Única": 13,
         "PIAS Estrategia 5": 2,
         "Cuenta Depósito Bonificada": 1
@@ -280,8 +263,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 18,
-          "total": 388310.0
+          "veces": 17,
+          "total": 386310.0
         },
         {
           "producto": "Compra Única",
@@ -303,17 +286,6 @@
         }
       ],
       "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2000.0,
-          "close_date": "2026-06-02",
-          "cliente": "Carmen Rodriguez Ortiz (amiga Danae)",
-          "parent_id": "862490000005314124",
-          "fecha_inicio": "2026-06-02",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -681,15 +653,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "pipeline_stages": {
@@ -698,14 +670,14 @@
         "Asesoramiento": 2,
         "Reasesoramiento": 9,
         "Revisando Propuesta": 8,
-        "Aceptado/Falta Firma": 5,
-        "Cerrado Ganado": 34,
+        "Aceptado/Falta Firma": 6,
+        "Cerrado Ganado": 33,
         "Cerrado Perdido": 101
       },
-      "pipeline_value": 554706.0,
-      "win_rate": 19.5,
-      "avg_days_to_win": 6.3,
-      "products_closed_count": 34,
+      "pipeline_value": 553106.0,
+      "win_rate": 19.0,
+      "avg_days_to_win": 6.5,
+      "products_closed_count": 33,
       "conversion_clientes": {
         "total_contacts": 6,
         "converted_contacts": 0,
@@ -721,18 +693,18 @@
       "label": "Este Año",
       "new_contacts": 6,
       "new_deals": 181,
-      "won_deals": 34,
+      "won_deals": 33,
       "lost_deals": 103,
-      "won_value": 522306.0,
-      "total_aportacion_won": 522306.0,
+      "won_value": 520306.0,
+      "total_aportacion_won": 520306.0,
       "product_breakdown": {
-        "Monefit": 388310.0,
+        "Monefit": 386310.0,
         "Compra Única": 111346.0,
         "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
-        "Monefit": 18,
+        "Monefit": 17,
         "Compra Única": 13,
         "PIAS Estrategia 5": 2,
         "Cuenta Depósito Bonificada": 1
@@ -741,8 +713,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 18,
-          "total": 388310.0
+          "veces": 17,
+          "total": 386310.0
         },
         {
           "producto": "Compra Única",
@@ -764,17 +736,6 @@
         }
       ],
       "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2000.0,
-          "close_date": "2026-06-02",
-          "cliente": "Carmen Rodriguez Ortiz (amiga Danae)",
-          "parent_id": "862490000005314124",
-          "fecha_inicio": "2026-06-02",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -1142,15 +1103,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         }
       ],
       "pipeline_stages": {
@@ -1159,14 +1120,14 @@
         "Asesoramiento": 2,
         "Reasesoramiento": 9,
         "Revisando Propuesta": 8,
-        "Aceptado/Falta Firma": 5,
-        "Cerrado Ganado": 34,
+        "Aceptado/Falta Firma": 6,
+        "Cerrado Ganado": 33,
         "Cerrado Perdido": 103
       },
-      "pipeline_value": 554706.0,
-      "win_rate": 18.8,
-      "avg_days_to_win": 6.3,
-      "products_closed_count": 34,
+      "pipeline_value": 553106.0,
+      "win_rate": 18.2,
+      "avg_days_to_win": 6.5,
+      "products_closed_count": 33,
       "conversion_clientes": {
         "total_contacts": 6,
         "converted_contacts": 0,
@@ -1525,7 +1486,7 @@
           "Cerrado Ganado": 22,
           "Cerrado Perdido": 53
         },
-        "pipeline_value": 434717.0,
+        "pipeline_value": 434617.0,
         "win_rate": 23.7,
         "avg_days_to_win": 6.6,
         "products_closed_count": 22,
@@ -1613,24 +1574,24 @@
     {
       "id": "862490000005314124",
       "Deal_Name": "Carmen Rodriguez Ortiz - Monefit",
-      "Amount": 2000,
-      "Stage": "Cerrado Ganado",
-      "Probability": 100,
+      "Amount": 500,
+      "Stage": "Aceptado/Falta Firma",
+      "Probability": 85,
       "Contact_Name": "Carmen Rodriguez Ortiz (amiga Danae)",
       "Owner": "Alberto Prieto",
       "Type": "Nuevo Cliente",
-      "Total_Aportaciones": 2000,
+      "Total_Aportaciones": 500,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-06-02T19:08:18+02:00",
-      "Closing_Date": "2026-06-03",
+      "Closing_Date": null,
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": 1,
-      "Sales_Cycle_Duration": 1,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
       "_contact_id": "862490000005172226"
     },
     {
@@ -2694,13 +2655,13 @@
     {
       "id": "862490000004641078",
       "Deal_Name": "Diana Jimenez Peña - Monefit",
-      "Amount": 1200,
+      "Amount": 1100,
       "Stage": "Asesoramiento",
       "Probability": 60,
       "Contact_Name": "Diana Jimenez Peña",
       "Owner": "Alberto Prieto",
       "Type": "Nuevo Cliente",
-      "Total_Aportaciones": 1200,
+      "Total_Aportaciones": 1100,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
@@ -5838,8 +5799,8 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 16.7,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -5849,7 +5810,7 @@
         {
           "stage": "Cerrado Ganado",
           "count": 3,
-          "pct_of_total": 60.0,
+          "pct_of_total": 50.0,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -5857,16 +5818,16 @@
         {
           "stage": "Cerrado Perdido",
           "count": 2,
-          "pct_of_total": 40.0,
+          "pct_of_total": 33.3,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
         }
       ],
-      "active_total": 0,
+      "active_total": 1,
       "won_total": 3,
       "lost_total": 2,
-      "total_pipeline": 5
+      "total_pipeline": 6
     },
     "this_month": {
       "stage_order": [
@@ -5922,8 +5883,8 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 9.1,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -5932,8 +5893,8 @@
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 4,
-          "pct_of_total": 36.4,
+          "count": 3,
+          "pct_of_total": 27.3,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -5947,8 +5908,8 @@
           "cmp_count": null
         }
       ],
-      "active_total": 1,
-      "won_total": 4,
+      "active_total": 2,
+      "won_total": 3,
       "lost_total": 6,
       "total_pipeline": 11
     },
@@ -6006,20 +5967,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 5,
-          "pct_of_total": 2.9,
-          "conversion_from_prev": 62.5,
-          "conversion_from_top": 71.4,
+          "count": 6,
+          "pct_of_total": 3.4,
+          "conversion_from_prev": 75.0,
+          "conversion_from_top": 85.7,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 34,
-          "pct_of_total": 19.4,
+          "count": 33,
+          "pct_of_total": 18.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 485.7,
+          "conversion_from_top": 471.4,
           "cmp_count": null
         },
         {
@@ -6031,8 +5992,8 @@
           "cmp_count": 2
         }
       ],
-      "active_total": 40,
-      "won_total": 34,
+      "active_total": 41,
+      "won_total": 33,
       "lost_total": 101,
       "total_pipeline": 175
     },
@@ -6090,20 +6051,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 5,
-          "pct_of_total": 2.8,
-          "conversion_from_prev": 62.5,
-          "conversion_from_top": 71.4,
+          "count": 6,
+          "pct_of_total": 3.4,
+          "conversion_from_prev": 75.0,
+          "conversion_from_top": 85.7,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 34,
-          "pct_of_total": 19.2,
+          "count": 33,
+          "pct_of_total": 18.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 485.7,
+          "conversion_from_top": 471.4,
           "cmp_count": null
         },
         {
@@ -6115,8 +6076,8 @@
           "cmp_count": null
         }
       ],
-      "active_total": 40,
-      "won_total": 34,
+      "active_total": 41,
+      "won_total": 33,
       "lost_total": 103,
       "total_pipeline": 177
     }

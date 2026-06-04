@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-03T09:27:05Z",
+  "timestamp": "2026-06-03T05:00:22Z",
   "generated_at": "2026-06-03",
   "today": "2026-06-03",
   "yesterday": "2026-06-02",
@@ -31,7 +31,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-06-02T13:09:42+02:00",
       "Modified_Time": "2026-06-02T13:09:42+02:00",
-      "Last_Activity_Time": "2026-06-03T09:11:44+02:00"
+      "Last_Activity_Time": "2026-06-02T13:10:19+02:00"
     },
     {
       "id": "862490000005277008",
@@ -100013,24 +100013,24 @@
     {
       "id": "862490000005314124",
       "Deal_Name": "Carmen Rodriguez Ortiz - Monefit",
-      "Amount": 2000,
-      "Stage": "Cerrado Ganado",
-      "Probability": 100,
+      "Amount": 500,
+      "Stage": "Aceptado/Falta Firma",
+      "Probability": 85,
       "Contact_Name": "Carmen Rodriguez Ortiz (amiga Danae)",
       "Owner": "Alberto Prieto",
       "Type": "Nuevo Cliente",
-      "Total_Aportaciones": 2000,
+      "Total_Aportaciones": 500,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-06-02T19:08:18+02:00",
-      "Closing_Date": "2026-06-03",
+      "Closing_Date": null,
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": 1,
-      "Sales_Cycle_Duration": 1,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
       "_contact_id": "862490000005172226"
     },
     {
@@ -102957,13 +102957,13 @@
     {
       "id": "862490000004641078",
       "Deal_Name": "Diana Jimenez Peña - Monefit",
-      "Amount": 1200,
+      "Amount": 1100,
       "Stage": "Asesoramiento",
       "Probability": 60,
       "Contact_Name": "Diana Jimenez Peña",
       "Owner": "Alberto Prieto",
       "Type": "Nuevo Cliente",
-      "Total_Aportaciones": 1200,
+      "Total_Aportaciones": 1100,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
@@ -112209,8 +112209,8 @@
       "deals": {
         "total": 511,
         "by_stage": {
-          "Cerrado Ganado": 103,
-          "Aceptado/Falta Firma": 14,
+          "Aceptado/Falta Firma": 15,
+          "Cerrado Ganado": 102,
           "Llamada Pendiente": 34,
           "Revisando Propuesta": 23,
           "Cerrado Perdido": 282,
@@ -112229,13 +112229,13 @@
           "Cliente existente": 396,
           "null": 4
         },
-        "pipeline_value": 2112699,
-        "total_aportaciones": 2082699,
-        "avg_deal_size": 4134.44,
-        "closed_won": 103,
-        "closed_won_value": 1726049,
+        "pipeline_value": 2111099,
+        "total_aportaciones": 2081099,
+        "avg_deal_size": 4131.31,
+        "closed_won": 102,
+        "closed_won_value": 1724049,
         "closed_lost": 282,
-        "conversion_rate": 20.2
+        "conversion_rate": 20.0
       }
     },
     "yesterday": {
@@ -112319,11 +112319,11 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 4,
-        "Aceptado/Falta Firma": 1,
+        "Aceptado/Falta Firma": 2,
         "Cerrado Ganado": 3,
         "Cerrado Perdido": 4
       },
-      "pipeline_value": 33250.0,
+      "pipeline_value": 33750.0,
       "win_rate": 42.9,
       "avg_days_to_win": 6.0,
       "products_closed_count": 3,
@@ -112341,18 +112341,16 @@
       "label": "Este Mes",
       "new_contacts": 7,
       "new_deals": 9,
-      "won_deals": 4,
+      "won_deals": 3,
       "lost_deals": 12,
-      "won_value": 28250.0,
-      "total_aportacion_won": 28250.0,
+      "won_value": 26250.0,
+      "total_aportacion_won": 26250.0,
       "product_breakdown": {
         "Cuenta Depósito Bonificada": 20250.0,
-        "Compra Única": 6000.0,
-        "Monefit": 2000.0
+        "Compra Única": 6000.0
       },
       "product_count": {
         "Compra Única": 2,
-        "Monefit": 1,
         "Cuenta Depósito Bonificada": 1
       },
       "product_details": [
@@ -112367,26 +112365,9 @@
           "entidad": "SilverGold",
           "veces": 2,
           "total": 6000.0
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "veces": 1,
-          "total": 2000.0
         }
       ],
       "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2000.0,
-          "close_date": "2026-06-02",
-          "cliente": "Carmen Rodriguez Ortiz (amiga Danae)",
-          "parent_id": "862490000005314124",
-          "fecha_inicio": "2026-06-02",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
@@ -112424,28 +112405,28 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 4,
-          "total_aportacion": 28250.0
+          "won": 3,
+          "total_aportacion": 26250.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 4,
-          "total_aportacion": 28250.0
+          "won": 3,
+          "total_aportacion": 26250.0
         }
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 4,
         "Análisis Financiero": 2,
-        "Aceptado/Falta Firma": 1,
-        "Cerrado Ganado": 4,
+        "Aceptado/Falta Firma": 2,
+        "Cerrado Ganado": 3,
         "Cerrado Perdido": 12
       },
-      "pipeline_value": 35250.0,
-      "win_rate": 44.4,
-      "avg_days_to_win": 4.8,
-      "products_closed_count": 4,
+      "pipeline_value": 33750.0,
+      "win_rate": 33.3,
+      "avg_days_to_win": 6.0,
+      "products_closed_count": 3,
       "conversion_clientes": {
         "total_contacts": 7,
         "converted_contacts": 0,
@@ -112461,12 +112442,12 @@
       "label": "Este Trimestre",
       "new_contacts": 4000,
       "new_deals": 485,
-      "won_deals": 96,
+      "won_deals": 95,
       "lost_deals": 277,
-      "won_value": 1638149.0,
-      "total_aportacion_won": 1638149.0,
+      "won_value": 1636149.0,
+      "total_aportacion_won": 1636149.0,
       "product_breakdown": {
-        "Monefit": 955650.0,
+        "Monefit": 953650.0,
         "Compra Única": 432076.0,
         "Cuenta Depósito Bonificada": 221750.0,
         "Proyectos crowdfunding energético": 15000.0,
@@ -112477,7 +112458,7 @@
       },
       "product_count": {
         "Compra Única": 42,
-        "Monefit": 40,
+        "Monefit": 39,
         "Cuenta Depósito Bonificada": 10,
         "PIAS Estrategia 5": 3,
         "Compra Periódica": 1,
@@ -112489,8 +112470,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 40,
-          "total": 955650.0
+          "veces": 39,
+          "total": 953650.0
         },
         {
           "producto": "Compra Única",
@@ -112536,17 +112517,6 @@
         }
       ],
       "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2000.0,
-          "close_date": "2026-06-02",
-          "cliente": "Carmen Rodriguez Ortiz (amiga Danae)",
-          "parent_id": "862490000005314124",
-          "fecha_inicio": "2026-06-02",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -113629,8 +113599,8 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         },
         {
           "name": "Jaime Becerra",
@@ -113656,8 +113626,8 @@
         },
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         },
         {
           "name": "Jose Orrequia",
@@ -113676,14 +113646,14 @@
         "Asesoramiento": 14,
         "Reasesoramiento": 14,
         "Revisando Propuesta": 23,
-        "Aceptado/Falta Firma": 14,
-        "Cerrado Ganado": 96,
+        "Aceptado/Falta Firma": 15,
+        "Cerrado Ganado": 95,
         "Cerrado Perdido": 277
       },
-      "pipeline_value": 2024799.0,
-      "win_rate": 19.8,
-      "avg_days_to_win": 8.7,
-      "products_closed_count": 99,
+      "pipeline_value": 2023199.0,
+      "win_rate": 19.6,
+      "avg_days_to_win": 8.8,
+      "products_closed_count": 98,
       "conversion_clientes": {
         "total_contacts": 4000,
         "converted_contacts": 0,
@@ -113702,12 +113672,12 @@
       "label": "Este Año",
       "new_contacts": 4000,
       "new_deals": 510,
-      "won_deals": 99,
+      "won_deals": 98,
       "lost_deals": 281,
-      "won_value": 1660149.0,
-      "total_aportacion_won": 1660149.0,
+      "won_value": 1658149.0,
+      "total_aportacion_won": 1658149.0,
       "product_breakdown": {
-        "Monefit": 971650.0,
+        "Monefit": 969650.0,
         "Compra Única": 438076.0,
         "Cuenta Depósito Bonificada": 221750.0,
         "Proyectos crowdfunding energético": 15000.0,
@@ -113718,7 +113688,7 @@
       },
       "product_count": {
         "Compra Única": 44,
-        "Monefit": 43,
+        "Monefit": 42,
         "Cuenta Depósito Bonificada": 10,
         "PIAS Estrategia 5": 3,
         "Compra Periódica": 1,
@@ -113730,8 +113700,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 43,
-          "total": 971650.0
+          "veces": 42,
+          "total": 969650.0
         },
         {
           "producto": "Compra Única",
@@ -113777,17 +113747,6 @@
         }
       ],
       "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 2000.0,
-          "close_date": "2026-06-02",
-          "cliente": "Carmen Rodriguez Ortiz (amiga Danae)",
-          "parent_id": "862490000005314124",
-          "fecha_inicio": "2026-06-02",
-          "objetivo_financiero": "Colchón de seguridad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -114925,8 +114884,8 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         },
         {
           "name": "Jaime Becerra",
@@ -114952,8 +114911,8 @@
         },
         {
           "name": "Alberto Prieto",
-          "won": 34,
-          "total_aportacion": 522306.0
+          "won": 33,
+          "total_aportacion": 520306.0
         },
         {
           "name": "Jose Orrequia",
@@ -114972,14 +114931,14 @@
         "Asesoramiento": 14,
         "Reasesoramiento": 14,
         "Revisando Propuesta": 23,
-        "Aceptado/Falta Firma": 14,
-        "Cerrado Ganado": 99,
+        "Aceptado/Falta Firma": 15,
+        "Cerrado Ganado": 98,
         "Cerrado Perdido": 281
       },
-      "pipeline_value": 2046799.0,
-      "win_rate": 19.4,
-      "avg_days_to_win": 9.5,
-      "products_closed_count": 104,
+      "pipeline_value": 2045199.0,
+      "win_rate": 19.2,
+      "avg_days_to_win": 9.6,
+      "products_closed_count": 103,
       "conversion_clientes": {
         "total_contacts": 4000,
         "converted_contacts": 0,
@@ -115890,7 +115849,7 @@
           "Cerrado Ganado": 64,
           "Cerrado Perdido": 196
         },
-        "pipeline_value": 1415892.0,
+        "pipeline_value": 1415792.0,
         "win_rate": 27.1,
         "avg_days_to_win": 10.6,
         "products_closed_count": 67,
@@ -116102,7 +116061,7 @@
         {
           "stage": "Llamada Pendiente",
           "count": 4,
-          "pct_of_total": 33.3,
+          "pct_of_total": 30.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -116141,10 +116100,10 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 1,
-          "pct_of_total": 8.3,
+          "count": 2,
+          "pct_of_total": 15.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 25.0,
+          "conversion_from_top": 50.0,
           "cmp_count": null
         }
       ],
@@ -116152,7 +116111,7 @@
         {
           "stage": "Cerrado Ganado",
           "count": 3,
-          "pct_of_total": 25.0,
+          "pct_of_total": 23.1,
           "conversion_from_prev": null,
           "conversion_from_top": 75.0,
           "cmp_count": null
@@ -116160,16 +116119,16 @@
         {
           "stage": "Cerrado Perdido",
           "count": 4,
-          "pct_of_total": 33.3,
+          "pct_of_total": 30.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         }
       ],
-      "active_total": 5,
+      "active_total": 6,
       "won_total": 3,
       "lost_total": 4,
-      "total_pipeline": 12
+      "total_pipeline": 13
     },
     "this_month": {
       "stage_order": [
@@ -116225,21 +116184,21 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 1,
-          "pct_of_total": 4.3,
+          "count": 2,
+          "pct_of_total": 8.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 25.0,
+          "conversion_from_top": 50.0,
           "cmp_count": 1
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 4,
-          "pct_of_total": 17.4,
+          "count": 3,
+          "pct_of_total": 13.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
-          "cmp_count": 3
+          "conversion_from_top": 75.0,
+          "cmp_count": 1
         },
         {
           "stage": "Cerrado Perdido",
@@ -116250,8 +116209,8 @@
           "cmp_count": 9
         }
       ],
-      "active_total": 7,
-      "won_total": 4,
+      "active_total": 8,
+      "won_total": 3,
       "lost_total": 12,
       "total_pipeline": 23
     },
@@ -116309,20 +116268,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 14,
-          "pct_of_total": 2.8,
-          "conversion_from_prev": 60.9,
-          "conversion_from_top": 41.2,
+          "count": 15,
+          "pct_of_total": 3.0,
+          "conversion_from_prev": 65.2,
+          "conversion_from_top": 44.1,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 96,
-          "pct_of_total": 19.2,
+          "count": 95,
+          "pct_of_total": 19.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 282.4,
+          "conversion_from_top": 279.4,
           "cmp_count": 3
         },
         {
@@ -116334,8 +116293,8 @@
           "cmp_count": 4
         }
       ],
-      "active_total": 126,
-      "won_total": 96,
+      "active_total": 127,
+      "won_total": 95,
       "lost_total": 277,
       "total_pipeline": 499
     },
@@ -116393,20 +116352,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 14,
-          "pct_of_total": 2.8,
-          "conversion_from_prev": 60.9,
-          "conversion_from_top": 41.2,
+          "count": 15,
+          "pct_of_total": 3.0,
+          "conversion_from_prev": 65.2,
+          "conversion_from_top": 44.1,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 99,
-          "pct_of_total": 19.6,
+          "count": 98,
+          "pct_of_total": 19.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 291.2,
+          "conversion_from_top": 288.2,
           "cmp_count": null
         },
         {
@@ -116418,8 +116377,8 @@
           "cmp_count": 1
         }
       ],
-      "active_total": 126,
-      "won_total": 99,
+      "active_total": 127,
+      "won_total": 98,
       "lost_total": 281,
       "total_pipeline": 506
     },
@@ -116427,9 +116386,9 @@
       "Llamada Pendiente": 1,
       "Análisis Financiero": 2,
       "Aceptado/Falta Firma": 1,
-      "Cerrado Ganado": 3,
+      "Cerrado Ganado": 1,
       "Cerrado Perdido": 9
     },
-    "previous_value": 33250.0
+    "previous_value": 10000.0
   }
 }
