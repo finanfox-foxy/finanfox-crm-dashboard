@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-06-08T10:30:17Z",
+  "timestamp": "2026-06-08T17:18:27Z",
   "generated_at": "2026-06-08",
   "today": "2026-06-08",
   "yesterday": "2026-06-07",
@@ -21,14 +21,14 @@
       "deals": {
         "total": 201,
         "by_stage": {
-          "Análisis Financiero": 14,
+          "Reasesoramiento": 4,
           "Llamada Pendiente": 14,
-          "Cerrado Perdido": 128,
+          "Cerrado Perdido": 129,
+          "Análisis Financiero": 11,
+          "Revisando Propuesta": 9,
           "Cerrado Ganado": 21,
           "Asesoramiento": 9,
-          "Reasesoramiento": 3,
-          "Aceptado/Falta Firma": 4,
-          "Revisando Propuesta": 8
+          "Aceptado/Falta Firma": 4
         },
         "by_owner": {
           "Jose Orrequia": 201
@@ -38,7 +38,7 @@
         "avg_deal_size": 2903.73,
         "closed_won": 21,
         "closed_won_value": 305900.0,
-        "closed_lost": 128,
+        "closed_lost": 129,
         "conversion_rate": 10.4
       }
     },
@@ -71,9 +71,6 @@
       },
       "contacts_by_day": {
         "7": 2
-      },
-      "deals_created_by_day": {
-        "7": 4
       }
     },
     "this_month": {
@@ -81,7 +78,7 @@
       "new_contacts": 13,
       "new_deals": 18,
       "won_deals": 0,
-      "lost_deals": 14,
+      "lost_deals": 15,
       "won_value": 0,
       "total_aportacion_won": 0,
       "product_breakdown": {},
@@ -92,8 +89,10 @@
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
         "Llamada Pendiente": 8,
-        "Análisis Financiero": 5,
-        "Cerrado Perdido": 14
+        "Análisis Financiero": 2,
+        "Reasesoramiento": 1,
+        "Revisando Propuesta": 1,
+        "Cerrado Perdido": 15
       },
       "pipeline_value": 0.0,
       "win_rate": 0.0,
@@ -112,16 +111,6 @@
         "5": 2,
         "6": 2,
         "7": 2
-      },
-      "deals_created_by_day": {
-        "1": 1,
-        "2": 4,
-        "3": 3,
-        "4": 1,
-        "5": 2,
-        "6": 2,
-        "7": 4,
-        "8": 1
       }
     },
     "this_quarter": {
@@ -129,7 +118,7 @@
       "new_contacts": 14,
       "new_deals": 195,
       "won_deals": 20,
-      "lost_deals": 127,
+      "lost_deals": 128,
       "won_value": 300900.0,
       "total_aportacion_won": 300900.0,
       "product_breakdown": {
@@ -400,13 +389,13 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 14,
-        "Análisis Financiero": 14,
+        "Análisis Financiero": 11,
         "Asesoramiento": 9,
-        "Reasesoramiento": 3,
-        "Revisando Propuesta": 8,
+        "Reasesoramiento": 4,
+        "Revisando Propuesta": 9,
         "Aceptado/Falta Firma": 4,
         "Cerrado Ganado": 20,
-        "Cerrado Perdido": 127
+        "Cerrado Perdido": 128
       },
       "pipeline_value": 578650.0,
       "win_rate": 10.3,
@@ -426,39 +415,6 @@
         "6": 2,
         "7": 2,
         "31": 1
-      },
-      "deals_created_by_day": {
-        "1": 7,
-        "2": 7,
-        "3": 5,
-        "4": 6,
-        "5": 8,
-        "6": 6,
-        "7": 24,
-        "8": 8,
-        "9": 5,
-        "10": 3,
-        "11": 3,
-        "12": 9,
-        "13": 6,
-        "14": 8,
-        "15": 5,
-        "16": 2,
-        "17": 6,
-        "18": 4,
-        "19": 4,
-        "20": 8,
-        "21": 10,
-        "22": 5,
-        "23": 6,
-        "24": 10,
-        "25": 2,
-        "26": 9,
-        "27": 7,
-        "28": 2,
-        "29": 1,
-        "30": 8,
-        "31": 1
       }
     },
     "this_year": {
@@ -466,7 +422,7 @@
       "new_contacts": 14,
       "new_deals": 201,
       "won_deals": 21,
-      "lost_deals": 128,
+      "lost_deals": 129,
       "won_value": 305900.0,
       "total_aportacion_won": 305900.0,
       "product_breakdown": {
@@ -748,13 +704,13 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 14,
-        "Análisis Financiero": 14,
+        "Análisis Financiero": 11,
         "Asesoramiento": 9,
-        "Reasesoramiento": 3,
-        "Revisando Propuesta": 8,
+        "Reasesoramiento": 4,
+        "Revisando Propuesta": 9,
         "Aceptado/Falta Firma": 4,
         "Cerrado Ganado": 21,
-        "Cerrado Perdido": 128
+        "Cerrado Perdido": 129
       },
       "pipeline_value": 583650.0,
       "win_rate": 10.4,
@@ -774,39 +730,6 @@
         "6": 2,
         "7": 2,
         "31": 1
-      },
-      "deals_created_by_day": {
-        "1": 7,
-        "2": 7,
-        "3": 5,
-        "4": 6,
-        "5": 8,
-        "6": 6,
-        "7": 24,
-        "8": 8,
-        "9": 5,
-        "10": 3,
-        "11": 3,
-        "12": 9,
-        "13": 6,
-        "14": 8,
-        "15": 5,
-        "16": 2,
-        "17": 6,
-        "18": 4,
-        "19": 4,
-        "20": 8,
-        "21": 10,
-        "22": 5,
-        "23": 6,
-        "24": 10,
-        "25": 3,
-        "26": 10,
-        "27": 7,
-        "28": 2,
-        "29": 2,
-        "30": 9,
-        "31": 3
       }
     }
   },
@@ -829,7 +752,7 @@
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
-          "Análisis Financiero": 2
+          "Reasesoramiento": 1
         },
         "pipeline_value": 0.0,
         "win_rate": 0.0,
@@ -842,9 +765,6 @@
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "6": 2
-        },
-        "deals_created_by_day": {
           "6": 2
         }
       }
@@ -1069,36 +989,6 @@
         },
         "contacts_by_day": {
           "31": 1
-        },
-        "deals_created_by_day": {
-          "1": 6,
-          "2": 3,
-          "3": 2,
-          "4": 5,
-          "5": 5,
-          "6": 4,
-          "7": 2,
-          "8": 4,
-          "9": 4,
-          "10": 2,
-          "11": 1,
-          "12": 2,
-          "13": 1,
-          "14": 3,
-          "15": 1,
-          "17": 2,
-          "18": 1,
-          "19": 2,
-          "20": 6,
-          "21": 3,
-          "22": 5,
-          "23": 1,
-          "24": 5,
-          "26": 6,
-          "27": 3,
-          "28": 1,
-          "30": 1,
-          "31": 1
         }
       }
     },
@@ -1170,14 +1060,7 @@
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {},
-        "deals_created_by_day": {
-          "25": 1,
-          "26": 1,
-          "29": 1,
-          "30": 1,
-          "31": 2
-        }
+        "contacts_by_day": {}
       }
     },
     "this_year": {
@@ -1210,8 +1093,7 @@
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {},
-        "deals_created_by_day": {}
+        "contacts_by_day": {}
       }
     }
   },
@@ -1220,8 +1102,8 @@
       "id": "862490000005593005",
       "Deal_Name": "Planificación de Manuel Pereira",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Reasesoramiento",
+      "Probability": 60,
       "Contact_Name": "Manuel Pereira",
       "Owner": "Jose Orrequia",
       "Type": "Cliente existente",
@@ -1289,23 +1171,23 @@
       "id": "862490000005581005",
       "Deal_Name": "Planificación de Josefina Ondo",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Josefina Ondo",
       "Owner": "Jose Orrequia",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-06-06T12:30:40+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-06-08",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 2,
+      "Sales_Cycle_Duration": 2,
       "_contact_id": "862490000005611001"
     },
     {
@@ -1542,8 +1424,8 @@
       "id": "862490000005260055",
       "Deal_Name": "Planificación de Julio Gonzalez Pradal",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Revisando Propuesta",
+      "Probability": 75,
       "Contact_Name": "Julio Gonzalez Pradal",
       "Owner": "Jose Orrequia",
       "Type": "Cliente existente",
@@ -5957,10 +5839,10 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 5,
-          "pct_of_total": 18.5,
-          "conversion_from_prev": 62.5,
-          "conversion_from_top": 62.5,
+          "count": 2,
+          "pct_of_total": 7.4,
+          "conversion_from_prev": 25.0,
+          "conversion_from_top": 25.0,
           "cmp_count": null
         },
         {
@@ -5973,25 +5855,25 @@
         },
         {
           "stage": "Reasesoramiento",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 3.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": 12.5,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "count": 1,
+          "pct_of_total": 3.7,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 12.5,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 0,
           "pct_of_total": 0.0,
-          "conversion_from_prev": null,
+          "conversion_from_prev": 0.0,
           "conversion_from_top": 0.0,
           "cmp_count": null
         }
@@ -6007,16 +5889,16 @@
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 14,
-          "pct_of_total": 51.9,
+          "count": 15,
+          "pct_of_total": 55.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 175.0,
+          "conversion_from_top": 187.5,
           "cmp_count": null
         }
       ],
-      "active_total": 13,
+      "active_total": 12,
       "won_total": 0,
-      "lost_total": 14,
+      "lost_total": 15,
       "total_pipeline": 27
     },
     "this_quarter": {
@@ -6041,41 +5923,41 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 14,
-          "pct_of_total": 7.0,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 100.0,
+          "count": 11,
+          "pct_of_total": 5.5,
+          "conversion_from_prev": 78.6,
+          "conversion_from_top": 78.6,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 9,
           "pct_of_total": 4.5,
-          "conversion_from_prev": 64.3,
+          "conversion_from_prev": 81.8,
           "conversion_from_top": 64.3,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 3,
-          "pct_of_total": 1.5,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 21.4,
+          "count": 4,
+          "pct_of_total": 2.0,
+          "conversion_from_prev": 44.4,
+          "conversion_from_top": 28.6,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 8,
-          "pct_of_total": 4.0,
+          "count": 9,
+          "pct_of_total": 4.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 57.1,
+          "conversion_from_top": 64.3,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 4,
           "pct_of_total": 2.0,
-          "conversion_from_prev": 50.0,
+          "conversion_from_prev": 44.4,
           "conversion_from_top": 28.6,
           "cmp_count": null
         }
@@ -6091,16 +5973,16 @@
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 127,
-          "pct_of_total": 63.8,
+          "count": 128,
+          "pct_of_total": 64.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 907.1,
+          "conversion_from_top": 914.3,
           "cmp_count": 1
         }
       ],
-      "active_total": 52,
+      "active_total": 51,
       "won_total": 20,
-      "lost_total": 127,
+      "lost_total": 128,
       "total_pipeline": 199
     },
     "this_year": {
@@ -6125,41 +6007,41 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 14,
-          "pct_of_total": 7.0,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 100.0,
+          "count": 11,
+          "pct_of_total": 5.5,
+          "conversion_from_prev": 78.6,
+          "conversion_from_top": 78.6,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 9,
           "pct_of_total": 4.5,
-          "conversion_from_prev": 64.3,
+          "conversion_from_prev": 81.8,
           "conversion_from_top": 64.3,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 3,
-          "pct_of_total": 1.5,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 21.4,
+          "count": 4,
+          "pct_of_total": 2.0,
+          "conversion_from_prev": 44.4,
+          "conversion_from_top": 28.6,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 8,
-          "pct_of_total": 4.0,
+          "count": 9,
+          "pct_of_total": 4.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 57.1,
+          "conversion_from_top": 64.3,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 4,
           "pct_of_total": 2.0,
-          "conversion_from_prev": 50.0,
+          "conversion_from_prev": 44.4,
           "conversion_from_top": 28.6,
           "cmp_count": null
         }
@@ -6175,16 +6057,16 @@
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 128,
-          "pct_of_total": 63.7,
+          "count": 129,
+          "pct_of_total": 64.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 914.3,
+          "conversion_from_top": 921.4,
           "cmp_count": null
         }
       ],
-      "active_total": 52,
+      "active_total": 51,
       "won_total": 21,
-      "lost_total": 128,
+      "lost_total": 129,
       "total_pipeline": 201
     }
   }
