@@ -455,6 +455,15 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
             contacts_by_day[day] = contacts_by_day.get(day, 0) + 1
     contacts_by_day = dict(sorted(contacts_by_day.items(), key=lambda x: int(x[0])))
 
+    # ── Deals (opportunities) by day of month ──
+    deals_by_day = {}
+    for d in new_deals:
+        created = d.get('Created_Time', '')
+        if created and len(created) >= 10:
+            day = created[8:10].lstrip('0') or '0'
+            deals_by_day[day] = deals_by_day.get(day, 0) + 1
+    deals_by_day = dict(sorted(deals_by_day.items(), key=lambda x: int(x[0])))
+
     conversion_clientes = {
         "total_contacts": total_contacts,
         "converted_contacts": converted_contacts,
@@ -483,6 +492,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "products_closed_count": products_closed_count,
         "conversion_clientes": conversion_clientes,
         "contacts_by_day": contacts_by_day,
+        "deals_by_day": deals_by_day,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
@@ -674,6 +684,14 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
                     deal_by_day[day] = deal_by_day.get(day, 0) + 1
             stats_obj['contacts_by_day'] = dict(sorted(deal_by_day.items(), key=lambda x: int(x[0])))
             stats_obj['new_contacts'] = sum(deal_by_day.values())
+            # Also fill deals_by_day from the same deal data
+            deals_day = {}
+            for d in advisor_deals:
+                created = d.get('Created_Time', '')
+                if created and filter_fn(created):
+                    day = created[8:10].lstrip('0') or '0'
+                    deals_day[day] = deals_day.get(day, 0) + 1
+            stats_obj['deals_by_day'] = dict(sorted(deals_day.items(), key=lambda x: int(x[0])))
 
     # ── Pipeline details ──
     this_month_pipeline = compute_pipeline_details(this_month_stats['pipeline_stages'])
