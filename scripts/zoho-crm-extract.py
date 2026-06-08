@@ -242,6 +242,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         and filter_fn(_close_or_create(d))
     ]
     won_deal_ids = {d['id'] for d in won_deals if d.get('id')}
+    # Build close-date lookup from won deals (use deal's Closing_Date, not product record's Created_Time)
+    won_deal_date_map = {d.get('id'): (d.get('Closing_Date', '') or '')[:10] for d in won_deals if d.get('id')}
 
     # Lost deals: Cerrado Perdido with Closing_Date in period
     lost_deals = [
@@ -276,7 +278,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                 pname = prod.get('name', 'Otro') if isinstance(prod, dict) else 'Otro'
                 entidad = pr.get('Entidades', '') or ''
                 amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
-                close_date = (pr.get('Created_Time', '') or '')[:10]
+                close_date = won_deal_date_map.get(parent_id) or (pr.get('Created_Time', '') or '')[:10]
                 fecha_inicio = (pr.get('Fecha_Inicio', '') or '')[:10]
                 obj_financiero = pr.get('Objetivo_Financiero', '') or ''
                 plazo = pr.get('Plazos', '') or ''
