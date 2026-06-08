@@ -216,6 +216,12 @@ STAGE_ORDER = [
     'Cerrado Perdido',
 ]
 
+def _close_or_create(d):
+    """
+    Return Closing_Date if set, else Created_Time as fallback.
+    """
+    return d.get('Closing_Date') or d.get('Created_Time')
+
 # ── Stats computation ────────────────────────────────────
 def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     """
@@ -233,7 +239,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     won_deals = [
         d for d in deals
         if 'Ganado' in (d.get('Stage') or '')
-        and filter_fn(d.get('Closing_Date'))
+        and filter_fn(_close_or_create(d))
     ]
     won_deal_ids = {d['id'] for d in won_deals if d.get('id')}
 
@@ -241,7 +247,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     lost_deals = [
         d for d in deals
         if 'Perdido' in (d.get('Stage') or '')
-        and filter_fn(d.get('Closing_Date'))
+        and filter_fn(_close_or_create(d))
     ]
 
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
@@ -356,7 +362,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     def _in_pipeline_period(deal):
         stage = deal.get('Stage', '')
         if 'Ganado' in stage or 'Perdido' in stage:
-            return filter_fn(deal.get('Closing_Date'))
+            return filter_fn(_close_or_create(deal))
         return filter_fn(deal.get('Created_Time'))
 
     pipeline_stages = {}
