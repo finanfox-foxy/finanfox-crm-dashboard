@@ -825,8 +825,6 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
                 }
             });
         }
-            });
-        }
 
         // ── Daily new deals bar chart (this_month only) ──
         var dealsCanvas = document.getElementById('daily-deals-this_month');
@@ -873,6 +871,7 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
             });
         }
     }
+}
 
 function renderGlobalTab(stats) {
     var s = stats.all_time;
