@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-10T05:01:32Z",
+  "timestamp": "2026-06-10T08:50:25Z",
   "generated_at": "2026-06-10",
   "today": "2026-06-10",
   "yesterday": "2026-06-09",
@@ -23,9 +23,9 @@
         "by_stage": {
           "Análisis Financiero": 13,
           "Llamada Pendiente": 11,
-          "Aceptado/Falta Firma": 5,
+          "Cerrado Ganado": 46,
           "Cerrado Perdido": 115,
-          "Cerrado Ganado": 45,
+          "Aceptado/Falta Firma": 4,
           "Reasesoramiento": 9,
           "Revisando Propuesta": 6,
           "Asesoramiento": 1
@@ -36,10 +36,10 @@
         "pipeline_value": 697995.0,
         "total_aportaciones": 697995.0,
         "avg_deal_size": 3404.85,
-        "closed_won": 45,
-        "closed_won_value": 647136.0,
+        "closed_won": 46,
+        "closed_won_value": 666795.0,
         "closed_lost": 115,
-        "conversion_rate": 22.0
+        "conversion_rate": 22.4
       }
     },
     "yesterday": {
@@ -82,18 +82,18 @@
       "label": "Este Mes",
       "new_contacts": 13,
       "new_deals": 26,
-      "won_deals": 11,
+      "won_deals": 12,
       "lost_deals": 20,
-      "won_value": 87180.0,
-      "total_aportacion_won": 87180.0,
+      "won_value": 106839.0,
+      "total_aportacion_won": 106839.0,
       "product_breakdown": {
         "Monefit": 57930.0,
-        "Cuenta Depósito Bonificada": 20250.0,
-        "Compra Única": 9000.0
+        "Compra Única": 28659.0,
+        "Cuenta Depósito Bonificada": 20250.0
       },
       "product_count": {
         "Monefit": 7,
-        "Compra Única": 3,
+        "Compra Única": 4,
         "Cuenta Depósito Bonificada": 1
       },
       "product_details": [
@@ -104,19 +104,30 @@
           "total": 57930.0
         },
         {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "veces": 4,
+          "total": 28659.0
+        },
+        {
           "producto": "Cuenta Depósito Bonificada",
           "entidad": "The Real Money",
           "veces": 1,
           "total": 20250.0
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "veces": 3,
-          "total": 9000.0
         }
       ],
       "product_deals": [
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 19659.0,
+          "close_date": "2026-06-10",
+          "cliente": "Carlos Lamas Hernandez",
+          "parent_id": "862490000005652158",
+          "fecha_inicio": "2026-06-08",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -242,29 +253,29 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 11,
-          "total_aportacion": 87180.0
+          "won": 12,
+          "total_aportacion": 106839.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 11,
-          "total_aportacion": 87180.0
+          "won": 12,
+          "total_aportacion": 106839.0
         }
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 4,
         "Análisis Financiero": 8,
         "Reasesoramiento": 1,
-        "Aceptado/Falta Firma": 2,
-        "Cerrado Ganado": 11,
+        "Aceptado/Falta Firma": 1,
+        "Cerrado Ganado": 12,
         "Cerrado Perdido": 20
       },
       "pipeline_value": 113839.0,
-      "win_rate": 42.3,
-      "avg_days_to_win": 19.5,
-      "products_closed_count": 11,
+      "win_rate": 46.2,
+      "avg_days_to_win": 18.1,
+      "products_closed_count": 12,
       "conversion_clientes": {
         "total_contacts": 13,
         "converted_contacts": 0,
@@ -296,19 +307,19 @@
       "label": "Este Trimestre",
       "new_contacts": 20,
       "new_deals": 198,
-      "won_deals": 45,
+      "won_deals": 46,
       "lost_deals": 113,
-      "won_value": 647136.0,
-      "total_aportacion_won": 647136.0,
+      "won_value": 666795.0,
+      "total_aportacion_won": 666795.0,
       "product_breakdown": {
         "Monefit": 510140.0,
-        "Compra Única": 114346.0,
+        "Compra Única": 134005.0,
         "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
         "Monefit": 28,
-        "Compra Única": 14,
+        "Compra Única": 15,
         "PIAS Estrategia 5": 2,
         "Cuenta Depósito Bonificada": 1
       },
@@ -322,8 +333,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 14,
-          "total": 114346.0
+          "veces": 15,
+          "total": 134005.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -339,6 +350,17 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 19659.0,
+          "close_date": "2026-06-10",
+          "cliente": "Carlos Lamas Hernandez",
+          "parent_id": "862490000005652158",
+          "fecha_inicio": "2026-06-08",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -838,15 +860,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 45,
-          "total_aportacion": 647136.0
+          "won": 46,
+          "total_aportacion": 666795.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 45,
-          "total_aportacion": 647136.0
+          "won": 46,
+          "total_aportacion": 666795.0
         }
       ],
       "pipeline_stages": {
@@ -855,14 +877,14 @@
         "Asesoramiento": 1,
         "Reasesoramiento": 9,
         "Revisando Propuesta": 6,
-        "Aceptado/Falta Firma": 5,
-        "Cerrado Ganado": 45,
+        "Aceptado/Falta Firma": 4,
+        "Cerrado Ganado": 46,
         "Cerrado Perdido": 113
       },
       "pipeline_value": 697995.0,
-      "win_rate": 22.7,
-      "avg_days_to_win": 10.0,
-      "products_closed_count": 45,
+      "win_rate": 23.2,
+      "avg_days_to_win": 9.8,
+      "products_closed_count": 46,
       "conversion_clientes": {
         "total_contacts": 20,
         "converted_contacts": 0,
@@ -917,19 +939,19 @@
       "label": "Este Año",
       "new_contacts": 20,
       "new_deals": 205,
-      "won_deals": 45,
+      "won_deals": 46,
       "lost_deals": 115,
-      "won_value": 647136.0,
-      "total_aportacion_won": 647136.0,
+      "won_value": 666795.0,
+      "total_aportacion_won": 666795.0,
       "product_breakdown": {
         "Monefit": 510140.0,
-        "Compra Única": 114346.0,
+        "Compra Única": 134005.0,
         "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 2400.0
       },
       "product_count": {
         "Monefit": 28,
-        "Compra Única": 14,
+        "Compra Única": 15,
         "PIAS Estrategia 5": 2,
         "Cuenta Depósito Bonificada": 1
       },
@@ -943,8 +965,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 14,
-          "total": 114346.0
+          "veces": 15,
+          "total": 134005.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -960,6 +982,17 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 19659.0,
+          "close_date": "2026-06-10",
+          "cliente": "Carlos Lamas Hernandez",
+          "parent_id": "862490000005652158",
+          "fecha_inicio": "2026-06-08",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -1459,15 +1492,15 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 45,
-          "total_aportacion": 647136.0
+          "won": 46,
+          "total_aportacion": 666795.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 45,
-          "total_aportacion": 647136.0
+          "won": 46,
+          "total_aportacion": 666795.0
         }
       ],
       "pipeline_stages": {
@@ -1476,14 +1509,14 @@
         "Asesoramiento": 1,
         "Reasesoramiento": 9,
         "Revisando Propuesta": 6,
-        "Aceptado/Falta Firma": 5,
-        "Cerrado Ganado": 45,
+        "Aceptado/Falta Firma": 4,
+        "Cerrado Ganado": 46,
         "Cerrado Perdido": 115
       },
       "pipeline_value": 697995.0,
-      "win_rate": 22.0,
-      "avg_days_to_win": 10.0,
-      "products_closed_count": 45,
+      "win_rate": 22.4,
+      "avg_days_to_win": 9.8,
+      "products_closed_count": 46,
       "conversion_clientes": {
         "total_contacts": 20,
         "converted_contacts": 0,
@@ -1603,11 +1636,10 @@
         "pipeline_stages": {
           "Llamada Pendiente": 1,
           "Análisis Financiero": 1,
-          "Aceptado/Falta Firma": 1,
           "Cerrado Ganado": 2,
           "Cerrado Perdido": 6
         },
-        "pipeline_value": 41809.0,
+        "pipeline_value": 22150.0,
         "win_rate": 50.0,
         "avg_days_to_win": 42.0,
         "products_closed_count": 2,
@@ -2129,8 +2161,8 @@
       "id": "862490000005652158",
       "Deal_Name": "Carlos Lamas Hernandez - Renovacion 2026 SG CU",
       "Amount": 19659,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "Carlos Lamas Hernandez",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -2139,13 +2171,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-06-08T12:52:48+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-06-10",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 2,
+      "Sales_Cycle_Duration": 2,
       "_contact_id": "862490000005171140"
     },
     {
@@ -6920,20 +6952,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 2,
-          "pct_of_total": 4.3,
+          "count": 1,
+          "pct_of_total": 2.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 50.0,
+          "conversion_from_top": 25.0,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 11,
-          "pct_of_total": 23.9,
+          "count": 12,
+          "pct_of_total": 26.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 275.0,
+          "conversion_from_top": 300.0,
           "cmp_count": null
         },
         {
@@ -6945,8 +6977,8 @@
           "cmp_count": null
         }
       ],
-      "active_total": 15,
-      "won_total": 11,
+      "active_total": 14,
+      "won_total": 12,
       "lost_total": 20,
       "total_pipeline": 46
     },
@@ -7004,20 +7036,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 5,
-          "pct_of_total": 2.5,
-          "conversion_from_prev": 83.3,
-          "conversion_from_top": 45.5,
+          "count": 4,
+          "pct_of_total": 2.0,
+          "conversion_from_prev": 66.7,
+          "conversion_from_top": 36.4,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 45,
-          "pct_of_total": 22.2,
+          "count": 46,
+          "pct_of_total": 22.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 409.1,
+          "conversion_from_top": 418.2,
           "cmp_count": null
         },
         {
@@ -7029,8 +7061,8 @@
           "cmp_count": 2
         }
       ],
-      "active_total": 45,
-      "won_total": 45,
+      "active_total": 44,
+      "won_total": 46,
       "lost_total": 113,
       "total_pipeline": 203
     },
@@ -7088,20 +7120,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 5,
-          "pct_of_total": 2.4,
-          "conversion_from_prev": 83.3,
-          "conversion_from_top": 45.5,
+          "count": 4,
+          "pct_of_total": 2.0,
+          "conversion_from_prev": 66.7,
+          "conversion_from_top": 36.4,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 45,
-          "pct_of_total": 22.0,
+          "count": 46,
+          "pct_of_total": 22.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 409.1,
+          "conversion_from_top": 418.2,
           "cmp_count": null
         },
         {
@@ -7113,8 +7145,8 @@
           "cmp_count": null
         }
       ],
-      "active_total": 45,
-      "won_total": 45,
+      "active_total": 44,
+      "won_total": 46,
       "lost_total": 115,
       "total_pipeline": 205
     }

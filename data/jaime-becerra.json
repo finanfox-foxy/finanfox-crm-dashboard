@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-06-10T05:01:32Z",
+  "timestamp": "2026-06-10T08:50:25Z",
   "generated_at": "2026-06-10",
   "today": "2026-06-10",
   "yesterday": "2026-06-09",
@@ -21,21 +21,21 @@
       "deals": {
         "total": 140,
         "by_stage": {
-          "Llamada Pendiente": 10,
-          "Análisis Financiero": 7,
+          "Llamada Pendiente": 9,
+          "Análisis Financiero": 8,
           "Cerrado Perdido": 73,
           "Cerrado Ganado": 32,
-          "Revisando Propuesta": 7,
-          "Aceptado/Falta Firma": 5,
+          "Revisando Propuesta": 6,
+          "Aceptado/Falta Firma": 6,
           "Asesoramiento": 3,
           "Reasesoramiento": 3
         },
         "by_owner": {
           "Jaime Becerra": 140
         },
-        "pipeline_value": 708235.0,
-        "total_aportaciones": 678235.0,
-        "avg_deal_size": 5058.82,
+        "pipeline_value": 718235.0,
+        "total_aportaciones": 688235.0,
+        "avg_deal_size": 5130.25,
         "closed_won": 32,
         "closed_won_value": 603735.0,
         "closed_lost": 73,
@@ -126,8 +126,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 7,
-        "Análisis Financiero": 3,
+        "Llamada Pendiente": 6,
+        "Análisis Financiero": 4,
         "Cerrado Ganado": 1,
         "Cerrado Perdido": 15
       },
@@ -583,16 +583,16 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 10,
-        "Análisis Financiero": 7,
+        "Llamada Pendiente": 9,
+        "Análisis Financiero": 8,
         "Asesoramiento": 3,
         "Reasesoramiento": 3,
-        "Revisando Propuesta": 7,
-        "Aceptado/Falta Firma": 5,
+        "Revisando Propuesta": 6,
+        "Aceptado/Falta Firma": 6,
         "Cerrado Ganado": 32,
         "Cerrado Perdido": 72
       },
-      "pipeline_value": 708235.0,
+      "pipeline_value": 718235.0,
       "win_rate": 24.6,
       "avg_days_to_win": 14.3,
       "products_closed_count": 32,
@@ -1065,16 +1065,16 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 10,
-        "Análisis Financiero": 7,
+        "Llamada Pendiente": 9,
+        "Análisis Financiero": 8,
         "Asesoramiento": 3,
         "Reasesoramiento": 3,
-        "Revisando Propuesta": 7,
-        "Aceptado/Falta Firma": 5,
+        "Revisando Propuesta": 6,
+        "Aceptado/Falta Firma": 6,
         "Cerrado Ganado": 32,
         "Cerrado Perdido": 72
       },
-      "pipeline_value": 708235.0,
+      "pipeline_value": 718235.0,
       "win_rate": 23.0,
       "avg_days_to_win": 14.3,
       "products_closed_count": 32,
@@ -1768,8 +1768,8 @@
       "id": "862490000005579079",
       "Deal_Name": "Planificación de Jesus Fuertes",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "Jesus Fuertes",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -4480,14 +4480,14 @@
     },
     {
       "id": "862490000003448283",
-      "Deal_Name": "Planificación de Salvador Perez",
-      "Amount": null,
-      "Stage": "Revisando Propuesta",
-      "Probability": 75,
+      "Deal_Name": "Salvador Perez - Monefit",
+      "Amount": 10000,
+      "Stage": "Aceptado/Falta Firma",
+      "Probability": 85,
       "Contact_Name": "Salvador Perez",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
-      "Total_Aportaciones": null,
+      "Total_Aportaciones": 10000,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": "Bookings",
@@ -4998,18 +4998,18 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 7,
-          "pct_of_total": 26.9,
+          "count": 6,
+          "pct_of_total": 23.1,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 3,
-          "pct_of_total": 11.5,
-          "conversion_from_prev": 42.9,
-          "conversion_from_top": 42.9,
+          "count": 4,
+          "pct_of_total": 15.4,
+          "conversion_from_prev": 66.7,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         },
         {
@@ -5051,7 +5051,7 @@
           "count": 1,
           "pct_of_total": 3.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 14.3,
+          "conversion_from_top": 16.7,
           "cmp_count": null
         },
         {
@@ -5059,7 +5059,7 @@
           "count": 15,
           "pct_of_total": 57.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 214.3,
+          "conversion_from_top": 250.0,
           "cmp_count": null
         }
       ],
@@ -5082,26 +5082,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 10,
-          "pct_of_total": 7.2,
+          "count": 9,
+          "pct_of_total": 6.5,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 7,
-          "pct_of_total": 5.0,
-          "conversion_from_prev": 70.0,
-          "conversion_from_top": 70.0,
+          "count": 8,
+          "pct_of_total": 5.8,
+          "conversion_from_prev": 88.9,
+          "conversion_from_top": 88.9,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 3,
           "pct_of_total": 2.2,
-          "conversion_from_prev": 42.9,
-          "conversion_from_top": 30.0,
+          "conversion_from_prev": 37.5,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
@@ -5109,23 +5109,23 @@
           "count": 3,
           "pct_of_total": 2.2,
           "conversion_from_prev": 100.0,
-          "conversion_from_top": 30.0,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 7,
-          "pct_of_total": 5.0,
+          "count": 6,
+          "pct_of_total": 4.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 70.0,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 5,
-          "pct_of_total": 3.6,
-          "conversion_from_prev": 71.4,
-          "conversion_from_top": 50.0,
+          "count": 6,
+          "pct_of_total": 4.3,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         }
       ],
@@ -5135,7 +5135,7 @@
           "count": 32,
           "pct_of_total": 23.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 320.0,
+          "conversion_from_top": 355.6,
           "cmp_count": null
         },
         {
@@ -5143,7 +5143,7 @@
           "count": 72,
           "pct_of_total": 51.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 720.0,
+          "conversion_from_top": 800.0,
           "cmp_count": null
         }
       ],
@@ -5166,26 +5166,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 10,
-          "pct_of_total": 7.2,
+          "count": 9,
+          "pct_of_total": 6.5,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 7,
-          "pct_of_total": 5.0,
-          "conversion_from_prev": 70.0,
-          "conversion_from_top": 70.0,
+          "count": 8,
+          "pct_of_total": 5.8,
+          "conversion_from_prev": 88.9,
+          "conversion_from_top": 88.9,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 3,
           "pct_of_total": 2.2,
-          "conversion_from_prev": 42.9,
-          "conversion_from_top": 30.0,
+          "conversion_from_prev": 37.5,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
@@ -5193,23 +5193,23 @@
           "count": 3,
           "pct_of_total": 2.2,
           "conversion_from_prev": 100.0,
-          "conversion_from_top": 30.0,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 7,
-          "pct_of_total": 5.0,
+          "count": 6,
+          "pct_of_total": 4.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 70.0,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 5,
-          "pct_of_total": 3.6,
-          "conversion_from_prev": 71.4,
-          "conversion_from_top": 50.0,
+          "count": 6,
+          "pct_of_total": 4.3,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         }
       ],
@@ -5219,7 +5219,7 @@
           "count": 32,
           "pct_of_total": 23.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 320.0,
+          "conversion_from_top": 355.6,
           "cmp_count": null
         },
         {
@@ -5227,7 +5227,7 @@
           "count": 72,
           "pct_of_total": 51.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 720.0,
+          "conversion_from_top": 800.0,
           "cmp_count": 1
         }
       ],
