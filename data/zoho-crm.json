@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-10T05:00:20Z",
+  "timestamp": "2026-06-10T05:01:32Z",
   "generated_at": "2026-06-10",
   "today": "2026-06-10",
   "yesterday": "2026-06-09",
@@ -117985,7 +117985,7 @@
           "pct_of_total": 13.7,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
-          "cmp_count": 22
+          "cmp_count": 14
         },
         {
           "stage": "Análisis Financiero",
@@ -117993,7 +117993,7 @@
           "pct_of_total": 17.6,
           "conversion_from_prev": null,
           "conversion_from_top": 128.6,
-          "cmp_count": 10
+          "cmp_count": 18
         },
         {
           "stage": "Asesoramiento",
@@ -118001,7 +118001,7 @@
           "pct_of_total": 1.0,
           "conversion_from_prev": 5.6,
           "conversion_from_top": 7.1,
-          "cmp_count": null
+          "cmp_count": 1
         },
         {
           "stage": "Reasesoramiento",
@@ -118035,7 +118035,7 @@
           "pct_of_total": 12.7,
           "conversion_from_prev": null,
           "conversion_from_top": 92.9,
-          "cmp_count": 12
+          "cmp_count": 13
         },
         {
           "stage": "Cerrado Perdido",
@@ -118043,7 +118043,7 @@
           "pct_of_total": 50.0,
           "conversion_from_prev": null,
           "conversion_from_top": 364.3,
-          "cmp_count": 45
+          "cmp_count": 51
         }
       ],
       "active_total": 38,
@@ -118220,14 +118220,15 @@
       "total_pipeline": 562
     },
     "previous_pipeline": {
-      "Llamada Pendiente": 22,
-      "Análisis Financiero": 10,
+      "Llamada Pendiente": 14,
+      "Análisis Financiero": 18,
+      "Asesoramiento": 1,
       "Reasesoramiento": 2,
       "Revisando Propuesta": 1,
       "Aceptado/Falta Firma": 2,
-      "Cerrado Ganado": 12,
-      "Cerrado Perdido": 45
+      "Cerrado Ganado": 13,
+      "Cerrado Perdido": 51
     },
-    "previous_value": 120839.0
+    "previous_value": 155839.0
   }
 }
