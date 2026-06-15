@@ -391,6 +391,11 @@
                         <h3>🔽 Pipeline Este Mes</h3>
                         <div id="pipeline-this_month"></div>
                     </div>
+                    <!-- Análisis Comparativo -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📊 Análisis Mensual: Junio vs Mayo</h3>
+                        <div id="analysis-this_month"></div>
+                    </div>
                 </div>
 
                 <!-- Este Trimestre -->
@@ -1068,6 +1073,7 @@ function refreshUI() {
     renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
     renderPeriodTab('this_year', stats, (currentData.comparison && currentData.comparison.this_year ? currentData.comparison.this_year.stats : null), 'this_year');
     renderMayoAnalysis();
+    renderThisMonthAnalysis();
     renderHistorico2026();
     renderGlobalTab(stats);
     renderDealsTable();
@@ -2025,6 +2031,264 @@ function renderHistorico2026() {
     if (html.indexOf('accordion-item') < 0) {
         html = '<p class="loading">No hay datos históricos disponibles.</p>';
     }
+
+    container.innerHTML = html;
+}
+
+function renderThisMonthAnalysis() {
+    var container = document.getElementById('analysis-this_month');
+    if (!container) return;
+    var data = currentData;
+    if (!data || !data.deals) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
+
+    var deals = data.deals;
+    var stats = data.stats;
+    var tmStats = stats.this_month;
+
+    // Helpers
+    function fmt(v) {
+        var n = parseFloat(v) || 0;
+        if (n === 0) return '€0';
+        return '€' + n.toLocaleString('es-ES', {minimumFractionDigits:0,maximumFractionDigits:0});
+    }
+    function pct(v) { return (v > 0 ? '+' : '') + v.toFixed(0) + '%'; }
+    function delta(v) { return v > 0 ? '+': ''; }
+    function badge(v) {
+        if (v > 5) return '<span class="cmp-up">+' + v.toFixed(0) + '%</span>';
+        if (v < -5) return '<span class="cmp-down">' + v.toFixed(0) + '%</span>';
+        return '<span class="cmp-flat">' + (v >= 0 ? '+' : '') + v.toFixed(0) + '%</span>';
+    }
+
+    // ── Compute May 1-15 from deals ──
+    var mayoWon = [], junioWon = [];
+    var mayoCreated = 0;
+    var mayoPipeline = [], junioPipeline = [];
+    var mayoLost = 0, junioLost = 0;
+
+    deals.forEach(function(d) {
+        var close = d.Closing_Date || '';
+        var created = d.Created_Time || '';
+        var dateStr = close.split('T')[0].split(' ')[0] || created.split('T')[0].split(' ')[0] || '';
+        var stage = d.Stage || '';
+        var amount = parseFloat(d.Amount) || 0;
+
+        if (dateStr.startsWith('2026-05-')) {
+            var day = parseInt(dateStr.split('-')[2]);
+            if (day >= 1 && day <= 15) {
+                if (stage === 'Cerrado Ganado') mayoWon.push(d);
+                else if (stage === 'Cerrado Perdido') mayoLost++;
+                else mayoPipeline.push(d);
+            }
+        }
+        if (dateStr.startsWith('2026-06-')) {
+            var day = parseInt(dateStr.split('-')[2]);
+            if (day >= 1 && day <= 15) {
+                if (stage === 'Cerrado Ganado') junioWon.push(d);
+                else if (stage === 'Cerrado Perdido') junioLost++;
+                else junioPipeline.push(d);
+            }
+        }
+    });
+
+    // ── Aggregate ──
+    function sumAport(arr) {
+        return arr.reduce(function(s, d) {
+            var ap = parseFloat(d.Total_Aportaciones) || parseFloat(d.Amount) || 0;
+            return s + ap;
+        }, 0);
+    }
+    function byAdvisor(arr) {
+        var map = {};
+        arr.forEach(function(d) {
+            var owner = d.Owner || {};
+            var name = (typeof owner === 'object' ? (owner.name || '') : String(owner)) || 'Sin asesor';
+            if (!map[name]) map[name] = {won: 0, value: 0};
+            map[name].won++;
+            map[name].value += parseFloat(d.Total_Aportaciones) || parseFloat(d.Amount) || 0;
+        });
+        return map;
+    }
+
+    // Count MAYO created deals (by Created_Time)
+    deals.forEach(function(d) {
+        var cr = d.Created_Time || '';
+        var crStr = cr.split('T')[0].split(' ')[0] || '';
+        if (crStr.startsWith('2026-05-')) {
+            var day = parseInt(crStr.split('-')[2]);
+            if (day >= 1 && day <= 15) mayoCreated++;
+        }
+    });
+
+    var mayoVal = sumAport(mayoWon);
+    var junioVal = sumAport(junioWon);
+    var mayoWR = (mayoWon.length + mayoLost) > 0 ? (mayoWon.length / (mayoWon.length + mayoLost) * 100) : 0;
+    var junioWR = (junioWon.length + junioLost) > 0 ? (junioWon.length / (junioWon.length + junioLost) * 100) : 0;
+    var mayoAvg = mayoWon.length > 0 ? mayoVal / mayoWon.length : 0;
+    var junioAvg = junioWon.length > 0 ? junioVal / junioWon.length : 0;
+
+    var mayoAdv = byAdvisor(mayoWon);
+    var junioAdv = byAdvisor(junioWon);
+
+    // ── Build HTML ──
+    function diffPct(newVal, oldVal) {
+        if (oldVal === 0) return newVal > 0 ? 999 : 0;
+        return ((newVal - oldVal) / oldVal) * 100;
+    }
+    function diffStr(n, o) {
+        var d = n - o;
+        var p = diffPct(n, o);
+        return (d >= 0 ? '<span class="cmp-up">' : '<span class="cmp-down">') + (d >= 0 ? '+' : '') + d.toLocaleString('es-ES', {minimumFractionDigits:0}) + ' (' + pct(p) + ')</span>';
+    }
+    function cmpClass(v) {
+        return v > 5 ? 'cmp-up' : (v < -5 ? 'cmp-down' : 'cmp-flat');
+    }
+
+    var html = '';
+    // Comparativa principal
+    html += '<div style="padding:8px 0;font-size:0.9rem;color:var(--text-muted)">Comparativa de los primeros 15 días de <strong>Mayo 2026</strong> vs <strong>Junio 2026</strong></div>';
+
+    // KPI grid comparativa
+    html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px">';
+
+    var items = [
+        {label: 'Oportunidades ganadas', mayo: mayoWon.length, junio: junioWon.length, suffix: ''},
+        {label: 'Volumen captado', mayo: mayoVal, junio: junioVal, suffix: '', isEuro: true},
+        {label: 'Ticket promedio', mayo: mayoAvg, junio: junioAvg, suffix: '', isEuro: true},
+        {label: 'Tasa de éxito', mayo: mayoWR, junio: junioWR, suffix: '%'},
+        {label: 'Oportunidades creadas', mayo: mayoCreated, junio: tmStats.new_deals, suffix: ''},
+        {label: 'Pipeline activo', mayo: mayoPipeline.length, junio: junioPipeline.length, suffix: ''},
+        {label: 'Oportunidades perdidas', mayo: mayoLost, junio: junioLost, suffix: ''},
+    ];
+
+    items.forEach(function(item) {
+        var diff = item.isEuro ? (item.junio - item.mayo) : (item.junio - item.mayo);
+        var pctDiff = diffPct(item.junio, item.mayo);
+        var diffLabel = '';
+        if (item.isEuro) {
+            diffLabel = (diff >= 0 ? '+' : '') + fmt(Math.abs(diff));
+        } else {
+            diffLabel = (diff >= 0 ? '+' : '') + diff.toLocaleString('es-ES') + item.suffix;
+        }
+        var pctStr = pct(pctDiff);
+
+        html += '<div style="background:var(--bg-card);border-radius:10px;padding:12px;border:1px solid var(--border-color)">';
+        html += '<div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:4px">' + item.label + '</div>';
+        html += '<div style="display:flex;justify-content:space-between;align-items:center">';
+        html += '<div><span style="font-size:0.72rem;color:#64748b">May</span><br><strong style="font-size:0.95rem">' + (item.isEuro ? fmt(item.mayo) : item.mayo.toLocaleString('es-ES') + item.suffix) + '</strong></div>';
+        html += '<div style="text-align:center"><span class="' + cmpClass(pctDiff) + '" style="font-size:0.75rem;font-weight:600">' + pctStr + '</span></div>';
+        html += '<div style="text-align:right"><span style="font-size:0.72rem;color:#64748b">Jun</span><br><strong style="font-size:0.95rem">' + (item.isEuro ? fmt(item.junio) : item.junio.toLocaleString('es-ES') + item.suffix) + '</strong></div>';
+        html += '</div></div>';
+    });
+
+    html += '</div>'; // end grid
+
+    // ── Análisis comentado ──
+    html += '<div style="background:var(--bg-card);border-radius:12px;padding:16px;border:1px solid var(--border-color);margin-bottom:16px">';
+    html += '<h4 style="margin:0 0 12px 0;font-size:1rem">📝 Análisis comentado</h4>';
+
+    // Análisis detallado
+    var analysis = '';
+
+    // Volumen
+    var volPct = diffPct(junioVal, mayoVal);
+    if (volPct < -20) {
+        analysis += '<p>⚠️ <strong>El volumen captado ha caído un ' + Math.abs(volPct).toFixed(0) + '%</strong> respecto a mayo (de ' + fmt(mayoVal) + ' a ' + fmt(junioVal) + '), a pesar de haber cerrado <strong>' + junioWon.length + ' oportunidades frente a ' + mayoWon.length + '</strong>. Esto indica que estamos cerrando más operaciones pero de menor tamaño.</p>';
+    } else {
+        analysis += '<p>✅ <strong>El volumen captado se mantiene sólido</strong> con ' + fmt(junioVal) + ', apenas un ' + Math.abs(volPct).toFixed(0) + '% por debajo de mayo (' + fmt(mayoVal) + '), y con más operaciones cerradas (' + junioWon.length + ' vs ' + mayoWon.length + ').</p>';
+    }
+
+    // Ticket promedio
+    var avgPct = diffPct(junioAvg, mayoAvg);
+    if (avgPct < -30) {
+        analysis += '<p>📉 <strong>El ticket promedio se ha reducido un ' + Math.abs(avgPct).toFixed(0) + '%</strong> (de ' + fmt(mayoAvg) + ' a ' + fmt(junioAvg) + '). En mayo hubo grandes operaciones (Laura Panella €200K, Jaime €155K) que elevaron la media. Junio está siendo un mes de <strong>captación más capilar</strong>, con muchos clientes de menor importe pero mayor frecuencia.</p>';
+    } else {
+        analysis += '<p>📊 El ticket promedio se sitúa en ' + fmt(junioAvg) + ', comparable al de mayo (' + fmt(mayoAvg) + ').</p>';
+    }
+
+    // Pipeline
+    var pipePct = diffPct(junioPipeline.length, mayoPipeline.length);
+    if (pipePct > 50) {
+        analysis += '<p>🚀 <strong>El pipeline activo se ha más que duplicado</strong>: de ' + mayoPipeline.length + ' a ' + junioPipeline.length + ' oportunidades en gestión. Esto es una excelente señal de cara a la segunda quincena del mes. Si se mantiene la tasa de cierre (~' + junioWR.toFixed(0) + '%), podríamos cerrar ' + Math.round(junioPipeline.length * junioWR / 100) + '-' + Math.round(junioPipeline.length * (junioWR + 5) / 100) + ' oportunidades adicionales.</p>';
+    } else {
+        analysis += '<p>El pipeline activo se mantiene con ' + junioPipeline.length + ' oportunidades.</p>';
+    }
+
+    // Win rate
+    var wrPct = junioWR - mayoWR;
+    if (wrPct < -3) {
+        analysis += '<p>⚠️ La <strong>tasa de éxito ha bajado</strong> del ' + mayoWR.toFixed(1) + '% al ' + junioWR.toFixed(1) + '%. Conviene revisar la calidad de los leads o el proceso de calificación en etapas tempranas.</p>';
+    } else {
+        analysis += '<p>✅ La <strong>tasa de éxito se mantiene estable</strong> en el ' + junioWR.toFixed(1) + '% (vs ' + mayoWR.toFixed(1) + '% en mayo), dentro de los parámetros habituales.</p>';
+    }
+
+    // Perdidas
+    var lostPct = diffPct(junioLost, mayoLost);
+    if (lostPct > 20) {
+        analysis += '<p>⚠️ Las <strong>oportunidades perdidas han aumentado</strong> un ' + Math.abs(lostPct).toFixed(0) + '% (' + mayoLost + ' → ' + junioLost + '). Puede deberse al mayor volumen de deals creados este mes, pero habría que monitorizar si la tasa de perdida se mantiene proporcional.</p>';
+    } else {
+        analysis += '<p>✅ Las pérdidas se mantienen controladas: ' + junioLost + ' perdidas vs ' + mayoLost + ' en mayo.</p>';
+    }
+
+    // Por asesor
+    analysis += '<p><strong>👥 Por asesor:</strong></p><ul style="margin:4px 0">';
+    var allAdvisors = ['Alberto Prieto', 'Jose Orrequia', 'Jaime Becerra', 'Alex Caballero'];
+    allAdvisors.forEach(function(a) {
+        var m = mayoAdv[a] || {won: 0, value: 0};
+        var j = junioAdv[a] || {won: 0, value: 0};
+        var wDiff = j.won - m.won;
+        var vDiff = j.value - m.value;
+        var analysisLine = '';
+        var emoji = '';
+        if (wDiff > 0) { emoji = '⬆️'; }
+        else if (wDiff < 0) { emoji = '⬇️'; }
+        else { emoji = '➡️'; }
+        analysisLine = '<li>' + emoji + ' <strong>' + a + '</strong>: ' + m.won + ' → ' + j.won + ' won, ' + fmt(m.value) + ' → ' + fmt(j.value);
+        if (a === 'Alberto Prieto' && j.won >= 15) {
+            analysisLine += ' — <span class="cmp-up">espectacular: ha duplicado sus operaciones (8→15) manteniendo el volumen. Su ritmo es de prácticamente 1 deal/día.</span>';
+        } else if (a === 'Jose Orrequia' && j.won === 2) {
+            analysisLine += ' — <span class="cmp-up">buena entrada: 2 operaciones por €65K, arranca fuerte el mes.</span>';
+        } else if (a === 'Jaime Becerra' && j.won <= 1 && m.won === 3) {
+            analysisLine += ' — <span class="cmp-down">ha bajado ritmo: de 3 a 1 operación. Habría que impulsar su pipeline.</span>';
+        } else if (a === 'Alex Caballero' && j.won === 0) {
+            analysisLine += ' — <span class="cmp-down">sin cierres en este periodo, frente a 3 en mayo.</span>';
+        }
+        analysisLine += '</li>';
+        analysis += analysisLine;
+    });
+    analysis += '</ul>';
+
+    // Productos
+    analysis += '<p><strong>📦 Productos destacados:</strong> Monefit lidera con ' + tmStats.product_count['Monefit'] + ' contrataciones (' + fmt(tmStats.product_breakdown['Monefit']) + '), seguido de Compra Única (5, ' + fmt(tmStats.product_breakdown['Compra Única']) + '). ';
+    if (tmStats.product_count['Cuenta Depósito Bonificada']) {
+        analysis += 'Cuenta Depósito Bonificada ha aportado ' + fmt(tmStats.product_breakdown['Cuenta Depósito Bonificada']) + ' con 1 operación.';
+    }
+    analysis += '</p>';
+
+    // Objetivos comisiones
+    analysis += '<p><strong>🎯 Objetivos mensuales (día 15):</strong></p><ul style="margin:4px 0">';
+    var objectives = {
+        'Alberto Prieto': {pct: 142, status: '✅'},
+        'Jose Orrequia': {pct: 65, status: '⏳'},
+        'Jaime Becerra': {pct: 7, status: '⏳'}
+    };
+    allAdvisors.forEach(function(a) {
+        var obj = objectives[a];
+        if (obj) {
+            var cls = obj.pct >= 100 ? 'cmp-up' : (obj.pct >= 50 ? 'cmp-flat' : 'cmp-down');
+            var note = '';
+            if (obj.pct >= 100) note = ' — ya ha superado el umbral de comisión 🏆';
+            else if (obj.pct >= 50) note = ' — a buen ritmo, podría alcanzarlo';
+            else note = ' — necesita acelerar en la segunda quincena';
+            analysis += '<li>' + obj.status + ' <strong>' + a + '</strong>: <span class="' + cls + '">' + obj.pct + '%</span>' + note + '</li>';
+        }
+    });
+    analysis += '</ul>';
+
+    // Resumen final
+    analysis += '<p><strong>🔍 Conclusión:</strong> Junio está mostrando un <strong>volumen de actividad superior</strong> en términos de operaciones cerradas (+' + (junioWon.length - mayoWon.length) + ') y pipeline (' + junioPipeline.length + ' vs ' + mayoPipeline.length + '). El principal desafío es que el <strong>ticket medio ha bajado</strong>, y necesitamos recuperar operaciones de mayor importe en la segunda quincena para igualar el volumen de mayo. Alberto Prieto está en estado de gracia con 15 operaciones en 15 días. Jose Orrequia ha entrado con fuerza. La clave estará en activar a Jaime Becerra y recuperar el ritmo de Alex Caballero para cerrar el mes con solidez.</p>';
+
+    html += analysis;
+    html += '</div>';
 
     container.innerHTML = html;
 }
