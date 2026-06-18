@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-06-17T09:52:02Z",
+  "timestamp": "2026-06-17T05:00:21Z",
   "generated_at": "2026-06-17",
   "today": "2026-06-17",
   "yesterday": "2026-06-16",
@@ -26,9 +26,9 @@
           "Llamada Pendiente": 6,
           "Cerrado Perdido": 88,
           "Asesoramiento": 5,
-          "Revisando Propuesta": 6,
+          "Revisando Propuesta": 5,
           "Cerrado Ganado": 35,
-          "Reasesoramiento": 5
+          "Reasesoramiento": 6
         },
         "by_owner": {
           "Jaime Becerra": 154
@@ -725,8 +725,8 @@
         "Llamada Pendiente": 6,
         "Análisis Financiero": 5,
         "Asesoramiento": 5,
-        "Reasesoramiento": 5,
-        "Revisando Propuesta": 6,
+        "Reasesoramiento": 6,
+        "Revisando Propuesta": 5,
         "Aceptado/Falta Firma": 4,
         "Cerrado Ganado": 35,
         "Cerrado Perdido": 87
@@ -1246,8 +1246,8 @@
         "Llamada Pendiente": 6,
         "Análisis Financiero": 5,
         "Asesoramiento": 5,
-        "Reasesoramiento": 5,
-        "Revisando Propuesta": 6,
+        "Reasesoramiento": 6,
+        "Revisando Propuesta": 5,
         "Aceptado/Falta Firma": 4,
         "Cerrado Ganado": 35,
         "Cerrado Perdido": 87
@@ -1728,8 +1728,8 @@
           "Llamada Pendiente": 2,
           "Análisis Financiero": 1,
           "Asesoramiento": 1,
-          "Reasesoramiento": 4,
-          "Revisando Propuesta": 3,
+          "Reasesoramiento": 5,
+          "Revisando Propuesta": 2,
           "Aceptado/Falta Firma": 1,
           "Cerrado Ganado": 24,
           "Cerrado Perdido": 36
@@ -3355,8 +3355,8 @@
       "id": "862490000004544099",
       "Deal_Name": "Planificación de Adela Bueno Carrión",
       "Amount": null,
-      "Stage": "Revisando Propuesta",
-      "Probability": 75,
+      "Stage": "Reasesoramiento",
+      "Probability": 60,
       "Contact_Name": "Adela Bueno Carrión",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -5612,14 +5612,6 @@
         },
         {
           "stage": "Reasesoramiento",
-          "count": 5,
-          "pct_of_total": 3.3,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 83.3,
-          "cmp_count": null
-        },
-        {
-          "stage": "Revisando Propuesta",
           "count": 6,
           "pct_of_total": 3.9,
           "conversion_from_prev": null,
@@ -5627,10 +5619,18 @@
           "cmp_count": null
         },
         {
+          "stage": "Revisando Propuesta",
+          "count": 5,
+          "pct_of_total": 3.3,
+          "conversion_from_prev": 83.3,
+          "conversion_from_top": 83.3,
+          "cmp_count": null
+        },
+        {
           "stage": "Aceptado/Falta Firma",
           "count": 4,
           "pct_of_total": 2.6,
-          "conversion_from_prev": 66.7,
+          "conversion_from_prev": 80.0,
           "conversion_from_top": 66.7,
           "cmp_count": null
         }
@@ -5696,14 +5696,6 @@
         },
         {
           "stage": "Reasesoramiento",
-          "count": 5,
-          "pct_of_total": 3.3,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 83.3,
-          "cmp_count": null
-        },
-        {
-          "stage": "Revisando Propuesta",
           "count": 6,
           "pct_of_total": 3.9,
           "conversion_from_prev": null,
@@ -5711,10 +5703,18 @@
           "cmp_count": null
         },
         {
+          "stage": "Revisando Propuesta",
+          "count": 5,
+          "pct_of_total": 3.3,
+          "conversion_from_prev": 83.3,
+          "conversion_from_top": 83.3,
+          "cmp_count": null
+        },
+        {
           "stage": "Aceptado/Falta Firma",
           "count": 4,
           "pct_of_total": 2.6,
-          "conversion_from_prev": 66.7,
+          "conversion_from_prev": 80.0,
           "conversion_from_top": 66.7,
           "cmp_count": null
         }
