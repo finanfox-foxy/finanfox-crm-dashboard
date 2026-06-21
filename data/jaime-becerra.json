@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-06-20T05:00:22Z",
-  "generated_at": "2026-06-20",
-  "today": "2026-06-20",
-  "yesterday": "2026-06-19",
+  "timestamp": "2026-06-21T02:01:25Z",
+  "generated_at": "2026-06-21",
+  "today": "2026-06-21",
+  "yesterday": "2026-06-20",
   "this_month": "2026-06",
   "this_quarter_start": "2026-04-01",
   "this_quarter_end": "2026-06-30",
@@ -57,9 +57,9 @@
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Aceptado/Falta Firma": 1
+        "Llamada Pendiente": 1
       },
-      "pipeline_value": 6000.0,
+      "pipeline_value": 0.0,
       "win_rate": 0.0,
       "avg_days_to_win": null,
       "products_closed_count": 0,
@@ -70,10 +70,10 @@
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "19": 1
+        "20": 1
       },
       "deals_by_day": {
-        "19": 1
+        "20": 1
       }
     },
     "this_month": {
@@ -1304,14 +1304,14 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-06-18",
+      "previous": "2026-06-19",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
         "new_contacts": 1,
-        "new_deals": 6,
+        "new_deals": 1,
         "won_deals": 0,
-        "lost_deals": 1,
+        "lost_deals": 0,
         "won_value": 0,
         "total_aportacion_won": 0,
         "product_breakdown": {},
@@ -1321,26 +1321,23 @@
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
-          "Llamada Pendiente": 2,
-          "Análisis Financiero": 1,
-          "Aceptado/Falta Firma": 3,
-          "Cerrado Perdido": 1
+          "Aceptado/Falta Firma": 1
         },
-        "pipeline_value": 20000.0,
+        "pipeline_value": 6000.0,
         "win_rate": 0.0,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 1,
+          "total_contacts": 0,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "18": 1
+          "19": 1
         },
         "deals_by_day": {
-          "18": 6
+          "19": 1
         }
       }
     },
@@ -5583,18 +5580,18 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 100.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
           "count": 0,
           "pct_of_total": 0.0,
-          "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_prev": 0.0,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
@@ -5602,7 +5599,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
@@ -5610,7 +5607,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
@@ -5618,15 +5615,15 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 1,
-          "pct_of_total": 100.0,
+          "count": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         }
       ],
@@ -5636,7 +5633,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
@@ -5644,7 +5641,7 @@
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         }
       ],
