@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-06-22T10:39:26Z",
-  "generated_at": "2026-06-22",
-  "today": "2026-06-22",
-  "yesterday": "2026-06-21",
+  "timestamp": "2026-06-23T08:29:52Z",
+  "generated_at": "2026-06-23",
+  "today": "2026-06-23",
+  "yesterday": "2026-06-22",
   "this_month": "2026-06",
   "this_quarter_start": "2026-04-01",
   "this_quarter_end": "2026-06-30",
@@ -21,14 +21,14 @@
       "deals": {
         "total": 167,
         "by_stage": {
-          "Aceptado/Falta Firma": 10,
+          "Aceptado/Falta Firma": 9,
           "Llamada Pendiente": 7,
-          "Análisis Financiero": 6,
+          "Cerrado Ganado": 37,
+          "Análisis Financiero": 5,
           "Cerrado Perdido": 93,
-          "Asesoramiento": 3,
+          "Asesoramiento": 4,
           "Reasesoramiento": 6,
-          "Revisando Propuesta": 6,
-          "Cerrado Ganado": 36
+          "Revisando Propuesta": 6
         },
         "by_owner": {
           "Jaime Becerra": 167
@@ -36,33 +36,71 @@
         "pipeline_value": 771355.0,
         "total_aportaciones": 721355.0,
         "avg_deal_size": 4618.89,
-        "closed_won": 36,
-        "closed_won_value": 640855.0,
+        "closed_won": 37,
+        "closed_won_value": 646855.0,
         "closed_lost": 93,
-        "conversion_rate": 21.6
+        "conversion_rate": 22.2
       }
     },
     "yesterday": {
       "label": "Ayer",
       "new_contacts": 1,
       "new_deals": 2,
-      "won_deals": 0,
-      "lost_deals": 0,
-      "won_value": 0,
-      "total_aportacion_won": 0,
-      "product_breakdown": {},
-      "product_count": {},
-      "product_details": [],
-      "product_deals": [],
-      "advisor_ranking_won": [],
-      "advisor_ranking_aportacion": [],
-      "pipeline_stages": {
-        "Llamada Pendiente": 2
+      "won_deals": 1,
+      "lost_deals": 1,
+      "won_value": 6000.0,
+      "total_aportacion_won": 6000.0,
+      "product_breakdown": {
+        "Monefit": 6000.0
       },
-      "pipeline_value": 0.0,
-      "win_rate": 0.0,
-      "avg_days_to_win": null,
-      "products_closed_count": 0,
+      "product_count": {
+        "Monefit": 1
+      },
+      "product_details": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "veces": 1,
+          "total": 6000.0
+        }
+      ],
+      "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-06-22",
+          "cliente": "David San Jose Fuentenebro",
+          "parent_id": "862490000006295007",
+          "fecha_inicio": "2026-06-19",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        }
+      ],
+      "advisor_ranking_won": [
+        {
+          "name": "Jaime Becerra",
+          "won": 1,
+          "total_aportacion": 6000.0
+        }
+      ],
+      "advisor_ranking_aportacion": [
+        {
+          "name": "Jaime Becerra",
+          "won": 1,
+          "total_aportacion": 6000.0
+        }
+      ],
+      "pipeline_stages": {
+        "Llamada Pendiente": 1,
+        "Aceptado/Falta Firma": 1,
+        "Cerrado Ganado": 1,
+        "Cerrado Perdido": 1
+      },
+      "pipeline_value": 31000.0,
+      "win_rate": 50.0,
+      "avg_days_to_win": 3.0,
+      "products_closed_count": 1,
       "conversion_clientes": {
         "total_contacts": 1,
         "converted_contacts": 0,
@@ -70,34 +108,34 @@
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "21": 1
+        "22": 1
       },
       "deals_by_day": {
-        "21": 2
+        "22": 2
       }
     },
     "this_month": {
       "label": "Este Mes",
       "new_contacts": 20,
       "new_deals": 41,
-      "won_deals": 5,
+      "won_deals": 6,
       "lost_deals": 35,
-      "won_value": 44120.0,
-      "total_aportacion_won": 44120.0,
+      "won_value": 50120.0,
+      "total_aportacion_won": 50120.0,
       "product_breakdown": {
-        "Monefit": 42920.0,
+        "Monefit": 48920.0,
         "Compra Periódica": 1200.0
       },
       "product_count": {
-        "Monefit": 4,
+        "Monefit": 5,
         "Compra Periódica": 1
       },
       "product_details": [
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 4,
-          "total": 42920.0
+          "veces": 5,
+          "total": 48920.0
         },
         {
           "producto": "Compra Periódica",
@@ -107,6 +145,17 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-06-22",
+          "cliente": "David San Jose Fuentenebro",
+          "parent_id": "862490000006295007",
+          "fecha_inicio": "2026-06-19",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -166,31 +215,31 @@
       "advisor_ranking_won": [
         {
           "name": "Jaime Becerra",
-          "won": 5,
-          "total_aportacion": 44120.0
+          "won": 6,
+          "total_aportacion": 50120.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Jaime Becerra",
-          "won": 5,
-          "total_aportacion": 44120.0
+          "won": 6,
+          "total_aportacion": 50120.0
         }
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 6,
-        "Análisis Financiero": 5,
-        "Asesoramiento": 3,
+        "Análisis Financiero": 4,
+        "Asesoramiento": 4,
         "Reasesoramiento": 1,
         "Revisando Propuesta": 1,
-        "Aceptado/Falta Firma": 7,
-        "Cerrado Ganado": 5,
+        "Aceptado/Falta Firma": 6,
+        "Cerrado Ganado": 6,
         "Cerrado Perdido": 35
       },
       "pipeline_value": 99820.0,
-      "win_rate": 12.2,
-      "avg_days_to_win": 38.2,
-      "products_closed_count": 5,
+      "win_rate": 14.6,
+      "avg_days_to_win": 32.3,
+      "products_closed_count": 6,
       "conversion_clientes": {
         "total_contacts": 20,
         "converted_contacts": 0,
@@ -242,12 +291,12 @@
       "label": "Este Trimestre",
       "new_contacts": 22,
       "new_deals": 157,
-      "won_deals": 36,
+      "won_deals": 37,
       "lost_deals": 92,
-      "won_value": 640855.0,
-      "total_aportacion_won": 640855.0,
+      "won_value": 646855.0,
+      "total_aportacion_won": 646855.0,
       "product_breakdown": {
-        "Monefit": 450660.0,
+        "Monefit": 456660.0,
         "Compra Única": 152795.0,
         "Cuenta Depósito Bonificada": 30000.0,
         "Compra Experta": 5000.0,
@@ -255,7 +304,7 @@
       },
       "product_count": {
         "Compra Única": 18,
-        "Monefit": 14,
+        "Monefit": 15,
         "Compra Periódica": 2,
         "Compra Experta": 1,
         "Cuenta Depósito Bonificada": 1
@@ -264,8 +313,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 14,
-          "total": 450660.0
+          "veces": 15,
+          "total": 456660.0
         },
         {
           "producto": "Compra Única",
@@ -293,6 +342,17 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-06-22",
+          "cliente": "David San Jose Fuentenebro",
+          "parent_id": "862490000006295007",
+          "fecha_inicio": "2026-06-19",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -693,31 +753,31 @@
       "advisor_ranking_won": [
         {
           "name": "Jaime Becerra",
-          "won": 36,
-          "total_aportacion": 640855.0
+          "won": 37,
+          "total_aportacion": 646855.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Jaime Becerra",
-          "won": 36,
-          "total_aportacion": 640855.0
+          "won": 37,
+          "total_aportacion": 646855.0
         }
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 7,
-        "Análisis Financiero": 6,
-        "Asesoramiento": 3,
+        "Análisis Financiero": 5,
+        "Asesoramiento": 4,
         "Reasesoramiento": 6,
         "Revisando Propuesta": 6,
-        "Aceptado/Falta Firma": 10,
-        "Cerrado Ganado": 36,
+        "Aceptado/Falta Firma": 9,
+        "Cerrado Ganado": 37,
         "Cerrado Perdido": 92
       },
       "pipeline_value": 771355.0,
-      "win_rate": 22.9,
-      "avg_days_to_win": 17.8,
-      "products_closed_count": 36,
+      "win_rate": 23.6,
+      "avg_days_to_win": 17.4,
+      "products_closed_count": 37,
       "conversion_clientes": {
         "total_contacts": 22,
         "converted_contacts": 0,
@@ -777,12 +837,12 @@
       "label": "Este Año",
       "new_contacts": 22,
       "new_deals": 166,
-      "won_deals": 36,
+      "won_deals": 37,
       "lost_deals": 92,
-      "won_value": 640855.0,
-      "total_aportacion_won": 640855.0,
+      "won_value": 646855.0,
+      "total_aportacion_won": 646855.0,
       "product_breakdown": {
-        "Monefit": 450660.0,
+        "Monefit": 456660.0,
         "Compra Única": 152795.0,
         "Cuenta Depósito Bonificada": 30000.0,
         "Compra Experta": 5000.0,
@@ -790,7 +850,7 @@
       },
       "product_count": {
         "Compra Única": 18,
-        "Monefit": 14,
+        "Monefit": 15,
         "Compra Periódica": 2,
         "Compra Experta": 1,
         "Cuenta Depósito Bonificada": 1
@@ -799,8 +859,8 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
-          "veces": 14,
-          "total": 450660.0
+          "veces": 15,
+          "total": 456660.0
         },
         {
           "producto": "Compra Única",
@@ -828,6 +888,17 @@
         }
       ],
       "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 6000.0,
+          "close_date": "2026-06-22",
+          "cliente": "David San Jose Fuentenebro",
+          "parent_id": "862490000006295007",
+          "fecha_inicio": "2026-06-19",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
@@ -1228,31 +1299,31 @@
       "advisor_ranking_won": [
         {
           "name": "Jaime Becerra",
-          "won": 36,
-          "total_aportacion": 640855.0
+          "won": 37,
+          "total_aportacion": 646855.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Jaime Becerra",
-          "won": 36,
-          "total_aportacion": 640855.0
+          "won": 37,
+          "total_aportacion": 646855.0
         }
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 7,
-        "Análisis Financiero": 6,
-        "Asesoramiento": 3,
+        "Análisis Financiero": 5,
+        "Asesoramiento": 4,
         "Reasesoramiento": 6,
         "Revisando Propuesta": 6,
-        "Aceptado/Falta Firma": 10,
-        "Cerrado Ganado": 36,
+        "Aceptado/Falta Firma": 9,
+        "Cerrado Ganado": 37,
         "Cerrado Perdido": 92
       },
       "pipeline_value": 771355.0,
-      "win_rate": 21.7,
-      "avg_days_to_win": 17.8,
-      "products_closed_count": 36,
+      "win_rate": 22.3,
+      "avg_days_to_win": 17.4,
+      "products_closed_count": 37,
       "conversion_clientes": {
         "total_contacts": 22,
         "converted_contacts": 0,
@@ -1312,12 +1383,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-06-20",
+      "previous": "2026-06-21",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
         "new_contacts": 1,
-        "new_deals": 1,
+        "new_deals": 2,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -1329,23 +1400,23 @@
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
-          "Llamada Pendiente": 1
+          "Llamada Pendiente": 2
         },
         "pipeline_value": 0.0,
         "win_rate": 0.0,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 0,
+          "total_contacts": 1,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "20": 1
+          "21": 1
         },
         "deals_by_day": {
-          "20": 1
+          "21": 2
         }
       }
     },
@@ -1936,8 +2007,8 @@
       "id": "862490000006295007",
       "Deal_Name": "David San Jose Fuentenebro - Monefit",
       "Amount": 6000,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "David San Jose Fuentenebro",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -1946,13 +2017,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-06-19T10:46:47+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-06-22",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 3,
+      "Sales_Cycle_Duration": 3,
       "_contact_id": "862490000003468883"
     },
     {
@@ -2465,8 +2536,8 @@
       "id": "862490000005649153",
       "Deal_Name": "Fran Garcia Rodenas - Planificacion financiera",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Asesoramiento",
+      "Probability": 60,
       "Contact_Name": "Fran Garcia Rodenas",
       "Owner": "Jaime Becerra",
       "Type": "Nuevo Cliente",
@@ -5680,8 +5751,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 2,
-          "pct_of_total": 100.0,
+          "count": 1,
+          "pct_of_total": 25.0,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -5720,35 +5791,35 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 25.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 25.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 25.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         }
       ],
       "active_total": 2,
-      "won_total": 0,
-      "lost_total": 0,
-      "total_pipeline": 2
+      "won_total": 1,
+      "lost_total": 1,
+      "total_pipeline": 4
     },
     "this_month": {
       "stage_order": [
@@ -5772,25 +5843,25 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 5,
-          "pct_of_total": 7.9,
-          "conversion_from_prev": 83.3,
-          "conversion_from_top": 83.3,
+          "count": 4,
+          "pct_of_total": 6.3,
+          "conversion_from_prev": 66.7,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 4.8,
-          "conversion_from_prev": 60.0,
-          "conversion_from_top": 50.0,
+          "count": 4,
+          "pct_of_total": 6.3,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 66.7,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 1,
           "pct_of_total": 1.6,
-          "conversion_from_prev": 33.3,
+          "conversion_from_prev": 25.0,
           "conversion_from_top": 16.7,
           "cmp_count": null
         },
@@ -5804,20 +5875,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 7,
-          "pct_of_total": 11.1,
+          "count": 6,
+          "pct_of_total": 9.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 116.7,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 5,
-          "pct_of_total": 7.9,
+          "count": 6,
+          "pct_of_total": 9.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 83.3,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
@@ -5829,8 +5900,8 @@
           "cmp_count": null
         }
       ],
-      "active_total": 23,
-      "won_total": 5,
+      "active_total": 22,
+      "won_total": 6,
       "lost_total": 35,
       "total_pipeline": 63
     },
@@ -5856,18 +5927,18 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 6,
-          "pct_of_total": 3.6,
-          "conversion_from_prev": 85.7,
-          "conversion_from_top": 85.7,
+          "count": 5,
+          "pct_of_total": 3.0,
+          "conversion_from_prev": 71.4,
+          "conversion_from_top": 71.4,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 1.8,
-          "conversion_from_prev": 50.0,
-          "conversion_from_top": 42.9,
+          "count": 4,
+          "pct_of_total": 2.4,
+          "conversion_from_prev": 80.0,
+          "conversion_from_top": 57.1,
           "cmp_count": null
         },
         {
@@ -5888,20 +5959,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 10,
-          "pct_of_total": 6.0,
+          "count": 9,
+          "pct_of_total": 5.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 142.9,
+          "conversion_from_top": 128.6,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 36,
-          "pct_of_total": 21.7,
+          "count": 37,
+          "pct_of_total": 22.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 514.3,
+          "conversion_from_top": 528.6,
           "cmp_count": null
         },
         {
@@ -5913,8 +5984,8 @@
           "cmp_count": null
         }
       ],
-      "active_total": 38,
-      "won_total": 36,
+      "active_total": 37,
+      "won_total": 37,
       "lost_total": 92,
       "total_pipeline": 166
     },
@@ -5940,18 +6011,18 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 6,
-          "pct_of_total": 3.6,
-          "conversion_from_prev": 85.7,
-          "conversion_from_top": 85.7,
+          "count": 5,
+          "pct_of_total": 3.0,
+          "conversion_from_prev": 71.4,
+          "conversion_from_top": 71.4,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 1.8,
-          "conversion_from_prev": 50.0,
-          "conversion_from_top": 42.9,
+          "count": 4,
+          "pct_of_total": 2.4,
+          "conversion_from_prev": 80.0,
+          "conversion_from_top": 57.1,
           "cmp_count": null
         },
         {
@@ -5972,20 +6043,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 10,
-          "pct_of_total": 6.0,
+          "count": 9,
+          "pct_of_total": 5.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 142.9,
+          "conversion_from_top": 128.6,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 36,
-          "pct_of_total": 21.7,
+          "count": 37,
+          "pct_of_total": 22.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 514.3,
+          "conversion_from_top": 528.6,
           "cmp_count": null
         },
         {
@@ -5997,8 +6068,8 @@
           "cmp_count": 1
         }
       ],
-      "active_total": 38,
-      "won_total": 36,
+      "active_total": 37,
+      "won_total": 37,
       "lost_total": 92,
       "total_pipeline": 166
     }
