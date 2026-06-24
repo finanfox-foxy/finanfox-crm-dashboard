@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-23T08:29:52Z",
+  "timestamp": "2026-06-23T05:00:22Z",
   "generated_at": "2026-06-23",
   "today": "2026-06-23",
   "yesterday": "2026-06-22",
@@ -131,7 +131,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-06-22T19:59:40+02:00",
       "Modified_Time": "2026-06-22T20:00:29+02:00",
-      "Last_Activity_Time": "2026-06-23T10:12:06+02:00"
+      "Last_Activity_Time": "2026-06-22T20:00:59+02:00"
     },
     {
       "id": "862490000006371008",
@@ -406,7 +406,7 @@
       "Average_Time_Spent_Minutes": null,
       "Created_Time": "2026-06-19T15:00:13+02:00",
       "Modified_Time": "2026-06-22T10:04:41+02:00",
-      "Last_Activity_Time": "2026-06-23T10:07:12+02:00"
+      "Last_Activity_Time": "2026-06-22T10:50:58+02:00"
     },
     {
       "id": "862490000006222100",
@@ -121129,7 +121129,7 @@
           "pct_of_total": 10.6,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
-          "cmp_count": 26
+          "cmp_count": 33
         },
         {
           "stage": "Análisis Financiero",
@@ -121137,7 +121137,7 @@
           "pct_of_total": 9.3,
           "conversion_from_prev": 87.5,
           "conversion_from_top": 87.5,
-          "cmp_count": 23
+          "cmp_count": 19
         },
         {
           "stage": "Asesoramiento",
@@ -121169,7 +121169,7 @@
           "pct_of_total": 9.3,
           "conversion_from_prev": null,
           "conversion_from_top": 87.5,
-          "cmp_count": 20
+          "cmp_count": 19
         }
       ],
       "terminal": [
@@ -121187,7 +121187,7 @@
           "pct_of_total": 48.9,
           "conversion_from_prev": null,
           "conversion_from_top": 462.5,
-          "cmp_count": 106
+          "cmp_count": 103
         }
       ],
       "active_total": 85,
@@ -121364,15 +121364,15 @@
       "total_pipeline": 670
     },
     "previous_pipeline": {
-      "Llamada Pendiente": 26,
-      "Análisis Financiero": 23,
+      "Llamada Pendiente": 33,
+      "Análisis Financiero": 19,
       "Asesoramiento": 7,
       "Reasesoramiento": 7,
       "Revisando Propuesta": 4,
-      "Aceptado/Falta Firma": 20,
+      "Aceptado/Falta Firma": 19,
       "Cerrado Ganado": 29,
-      "Cerrado Perdido": 106
+      "Cerrado Perdido": 103
     },
-    "previous_value": 656525.0
+    "previous_value": 631525.0
   }
 }
