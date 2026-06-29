@@ -677,6 +677,9 @@ function renderKPI(periodKey, stats, comparisonStats) {
         html += '<div class="crm-card success"><div class="value-row"><div class="value">' + s.won_deals + '</div>' + (cmp ? renderCmpBadge(s.won_deals, cmp.won_deals, true) : '') + '</div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + formatEUR(s.won_value) + ' ' + (cmp ? renderCmpBadge(s.won_value, cmp.won_value, true) : '') + '</div></div>';
         html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
         html += '<div class="crm-card error"><div class="value-row"><div class="value">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+                    var directLost = s.direct_lost_deals || 0;
+                    var directLossRate = s.direct_loss_rate || 0;
+                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + directLost + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + directLossRate + '%)</div></div><div class="label">🔴 Pérdidas Directas</div><div class="sub">Desde Llamada Pendiente en ≤2 días</div></div>';
                 html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
         // Calculate Win Rate live: won / new
                     var liveWR = s.new_deals > 0 ? Math.round(s.won_deals / s.new_deals * 1000) / 10 : null;
@@ -694,6 +697,7 @@ function renderKPI(periodKey, stats, comparisonStats) {
         html += '<div class="crm-card success"><div class="value">' + formatEUR(d.pipeline_value) + '</div><div class="label">📊 Pipeline Total</div><div class="sub">' + d.closed_won + ' ganados: ' + formatEUR(d.closed_won_value) + '</div></div>';
         html += '<div class="crm-card purple"><div class="value">' + d.conversion_rate + '%</div><div class="label">🎯 Tasa Conversión</div><div class="sub">' + formatEUR(d.total_aportaciones) + ' en inversiones</div></div>';
         html += '<div class="crm-card error"><div class="value">' + (d.closed_lost || 0) + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+        html += '<div class="crm-card warning"><div class="value">' + (d.direct_lost || 0) + '</div><div class="label">🔴 Pérdidas Directas</div><div class="sub">Desde llamada en ≤2 días</div></div>';
         html += '<div class="crm-card warning"><div class="value">' + (currentData.products ? currentData.products.length : 0) + '</div><div class="label">📦 Productos</div></div>';
         return html;
     }

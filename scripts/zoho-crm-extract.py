@@ -83,6 +83,21 @@ def fetch_all(module, params_extra=None):
             break
     return all_records
 
+
+def fetch_by_ids(module, ids_list, fields_str=None):
+    """Fetch records by a list of IDs (batched 200 at a time)."""
+    all_records = []
+    for i in range(0, len(ids_list), 200):
+        batch = ids_list[i:i+200]
+        params = {'ids': ','.join(batch)}
+        if fields_str:
+            params['fields'] = fields_str
+        r = api_get(module, params)
+        records = r.get('data', []) or []
+        all_records.extend(records)
+    return all_records
+
+
 def simplify(record, keep_fields):
     result = {}
     for key in keep_fields:
@@ -251,6 +266,18 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         if 'Perdido' in (d.get('Stage') or '')
         and filter_fn(_close_or_create(d))
     ]
+
+    # Direct losses: lost deals with Sales_Cycle_Duration <= 2 days
+    # These are opportunities that went from 'Llamada Pendiente' directly to 'Cerrado Perdido'
+    # without progressing through intermediate stages (low-quality leads)
+    DIRECT_LOSS_DAYS = 2
+    direct_lost_deals = [
+        d for d in lost_deals
+        if (d.get('Sales_Cycle_Duration') or 0) <= DIRECT_LOSS_DAYS
+    ]
+    direct_lost_count = len(direct_lost_deals)
+    total_lost_count = len(lost_deals)
+    direct_loss_rate = round(direct_lost_count / total_lost_count * 100, 1) if total_lost_count > 0 else 0.0
 
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
     product_details = {}
@@ -493,6 +520,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "conversion_clientes": conversion_clientes,
         "contacts_by_day": contacts_by_day,
         "deals_by_day": deals_by_day,
+        "direct_lost_deals": direct_lost_count,
+        "direct_loss_rate": direct_loss_rate,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
@@ -894,7 +923,8 @@ def main():
             "closed_won": closed_won_count,
             "closed_won_value": closed_won_value,
             "closed_lost": closed_lost_count,
-            "conversion_rate": round(conversion_rate, 1)
+            "conversion_rate": round(conversion_rate, 1),
+            "direct_lost": len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2])
         }
     }
 
