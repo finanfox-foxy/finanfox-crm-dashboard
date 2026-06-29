@@ -267,33 +267,36 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         and filter_fn(_close_or_create(d))
     ]
 
-    # Direct losses: lost deals with Sales_Cycle_Duration <= 2 days
-    # These are opportunities that went from 'Llamada Pendiente' directly to 'Cerrado Perdido'
-    # without progressing through intermediate stages (low-quality leads)
-    DIRECT_LOSS_DAYS = 2
-    direct_lost_deals = [
-        d for d in lost_deals
-        if (d.get('Sales_Cycle_Duration') or 0) <= DIRECT_LOSS_DAYS
-    ]
-    direct_lost_count = len(direct_lost_deals)
-    total_lost_count = len(lost_deals)
-    direct_loss_rate = round(direct_lost_count / total_lost_count * 100, 1) if total_lost_count > 0 else 0.0
+    # ── Lead Quality: No interesado / No apareció (total + ≤7d) ──
+    # Compute all lost deals with relevant reasons
+    lost_nina = [d for d in lost_deals if d.get('Motivo_de_cierre_perdido') in ('No interesado', 'No apareció')]
+    lost_ni = [d for d in lost_deals if d.get('Motivo_de_cierre_perdido') == 'No interesado']
+    lost_na = [d for d in lost_deals if d.get('Motivo_de_cierre_perdido') == 'No apareció']
+    # Within 7 days
+    CUTOFF_DAYS = 7
+    lost_nina_7d = [d for d in lost_nina if (d.get('Sales_Cycle_Duration') or 999) <= CUTOFF_DAYS]
+    lost_ni_7d = [d for d in lost_ni if (d.get('Sales_Cycle_Duration') or 999) <= CUTOFF_DAYS]
+    lost_na_7d = [d for d in lost_na if (d.get('Sales_Cycle_Duration') or 999) <= CUTOFF_DAYS]
 
-    # Breakdown by reason for direct losses
-    RELEVANT_REASONS = ['No interesado', 'No apareció']
-    direct_lost_by_reason = {}
-    for reason in RELEVANT_REASONS:
-        direct_lost_by_reason[reason] = len([d for d in direct_lost_deals if d.get('Motivo_de_cierre_perdido') == reason])
-    direct_lost_by_reason['Otros'] = len([d for d in direct_lost_deals if d.get('Motivo_de_cierre_perdido') not in RELEVANT_REASONS])
-
-    # Quality rate: % of all NEW deals that are direct losses due to 'No interesado' or 'No apareció'
-    ni_count = direct_lost_by_reason.get('No interesado', 0)
-    na_count = direct_lost_by_reason.get('No apareció', 0)
     total_new = len(new_deals)
-    direct_lost_quality_losses = ni_count + na_count
-    direct_lost_quality_rate = round(direct_lost_quality_losses / total_new * 100, 1) if total_new > 0 else 0.0
-    ni_rate = round(ni_count / total_new * 100, 1) if total_new > 0 else 0.0
-    na_rate = round(na_count / total_new * 100, 1) if total_new > 0 else 0.0
+
+    def _rate(count, base):
+        return round(count / base * 100, 1) if base > 0 else 0.0
+
+    lead_quality = {
+        'ni_total': len(lost_ni),
+        'na_total': len(lost_na),
+        'ni_na_total': len(lost_nina),
+        'ni_total_rate': _rate(len(lost_ni), total_new),
+        'na_total_rate': _rate(len(lost_na), total_new),
+        'ni_na_total_rate': _rate(len(lost_nina), total_new),
+        'ni_7d': len(lost_ni_7d),
+        'na_7d': len(lost_na_7d),
+        'ni_na_7d': len(lost_nina_7d),
+        'ni_7d_rate': _rate(len(lost_ni_7d), total_new),
+        'na_7d_rate': _rate(len(lost_na_7d), total_new),
+        'ni_na_7d_rate': _rate(len(lost_nina_7d), total_new),
+    }
 
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
     product_details = {}
@@ -536,13 +539,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "conversion_clientes": conversion_clientes,
         "contacts_by_day": contacts_by_day,
         "deals_by_day": deals_by_day,
-        "direct_lost_deals": direct_lost_count,
-        "direct_loss_rate": direct_loss_rate,
-        "direct_lost_by_reason": direct_lost_by_reason,
-        "direct_lost_quality_losses": direct_lost_quality_losses,
-        "direct_lost_quality_rate": direct_lost_quality_rate,
-        "ni_rate": ni_rate,
-        "na_rate": na_rate,
+        "lead_quality": lead_quality,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
@@ -945,11 +942,11 @@ def main():
             "closed_won_value": closed_won_value,
             "closed_lost": closed_lost_count,
             "conversion_rate": round(conversion_rate, 1),
-            "direct_lost": len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2]),
-            "direct_lost_reasons": {
-                'No interesado': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2 and d.get('Motivo_de_cierre_perdido') == 'No interesado']),
-                'No apareció': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2 and d.get('Motivo_de_cierre_perdido') == 'No apareció']),
-                'Otros': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2 and d.get('Motivo_de_cierre_perdido') not in ('No interesado', 'No apareció')])
+            "lead_quality": {
+                'ni_total': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and d.get('Motivo_de_cierre_perdido') == 'No interesado']),
+                'na_total': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and d.get('Motivo_de_cierre_perdido') == 'No apareció']),
+                'ni_na_total': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and d.get('Motivo_de_cierre_perdido') in ('No interesado', 'No apareció')]),
+                'ni_na_7d': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and d.get('Motivo_de_cierre_perdido') in ('No interesado', 'No apareció') and (d.get('Sales_Cycle_Duration') or 999) <= 7]),
             }
         }
     }

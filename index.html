@@ -677,15 +677,14 @@ function renderKPI(periodKey, stats, comparisonStats) {
         html += '<div class="crm-card success"><div class="value-row"><div class="value">' + s.won_deals + '</div>' + (cmp ? renderCmpBadge(s.won_deals, cmp.won_deals, true) : '') + '</div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + formatEUR(s.won_value) + ' ' + (cmp ? renderCmpBadge(s.won_value, cmp.won_value, true) : '') + '</div></div>';
         html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
         html += '<div class="crm-card error"><div class="value-row"><div class="value">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
-                    var directLost = s.direct_lost_deals || 0;
-                    var qualityLosses = s.direct_lost_quality_losses || 0;
-                    var qualityRate = s.direct_lost_quality_rate || 0;
-                    var reasonBreakdown = s.direct_lost_by_reason || {};
-                    var noInteresado = reasonBreakdown['No interesado'] || 0;
-                    var noAparecio = reasonBreakdown['No apareció'] || 0;
-                    var niRate = s.ni_rate || 0;
-                    var naRate = s.na_rate || 0;
-                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + qualityLosses + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + qualityRate + '%)</div></div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + noInteresado + ' (' + niRate + '%)  |  🙅 No apareció: ' + noAparecio + ' (' + naRate + '%)</div></div>';
+                    var lq = s.lead_quality || {};
+                    var niNaTotal = lq.ni_na_total || 0;
+                    var niNaTotalRate = lq.ni_na_total_rate || 0;
+                    var niNa7d = lq.ni_na_7d || 0;
+                    var niNa7dRate = lq.ni_na_7d_rate || 0;
+                    var niTotal = lq.ni_total || 0;
+                    var naTotal = lq.na_total || 0;
+                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + niNaTotal + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + niNaTotalRate + '%)</div></div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + niTotal + ' | 🙅 No apareció: ' + naTotal + '</div><div class="sub" style="color:var(--text-muted);margin-top:2px;">⏱️ En ≤7d: ' + niNa7d + ' (' + niNa7dRate + '%)</div></div>';
                 html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
         // Calculate Win Rate live: won / new
                     var liveWR = s.new_deals > 0 ? Math.round(s.won_deals / s.new_deals * 1000) / 10 : null;
@@ -703,7 +702,7 @@ function renderKPI(periodKey, stats, comparisonStats) {
         html += '<div class="crm-card success"><div class="value">' + formatEUR(d.pipeline_value) + '</div><div class="label">📊 Pipeline Total</div><div class="sub">' + d.closed_won + ' ganados: ' + formatEUR(d.closed_won_value) + '</div></div>';
         html += '<div class="crm-card purple"><div class="value">' + d.conversion_rate + '%</div><div class="label">🎯 Tasa Conversión</div><div class="sub">' + formatEUR(d.total_aportaciones) + ' en inversiones</div></div>';
         html += '<div class="crm-card error"><div class="value">' + (d.closed_lost || 0) + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
-        html += '<div class="crm-card warning"><div class="value">' + (d.direct_lost || 0) + '</div><div class="label">🔴 Pérdidas Directas</div><div class="sub">😞 No interesado: ' + ((d.direct_lost_reasons && d.direct_lost_reasons['No interesado']) || 0) + ' | 🙅 No apareció: ' + ((d.direct_lost_reasons && d.direct_lost_reasons['No apareció']) || 0) + '</div></div>';
+        html += '<div class="crm-card warning"><div class="value">' + ((d.lead_quality && d.lead_quality.ni_na_total) || 0) + '</div><div class="label">🔴 Leads Malos</div><div class="sub">⏱️ ≤7d: ' + ((d.lead_quality && d.lead_quality.ni_na_7d) || 0) + '</div></div>';
         html += '<div class="crm-card warning"><div class="value">' + (currentData.products ? currentData.products.length : 0) + '</div><div class="label">📦 Productos</div></div>';
         return html;
     }
