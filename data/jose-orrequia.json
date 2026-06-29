@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-06-29T05:28:07Z",
+  "timestamp": "2026-06-29T05:42:40Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -83,7 +83,9 @@
         "Otros": 0
       },
       "direct_lost_quality_losses": 0,
-      "direct_lost_quality_rate": 0.0
+      "direct_lost_quality_rate": 0.0,
+      "ni_rate": 0.0,
+      "na_rate": 0.0
     },
     "this_month": {
       "label": "Este Mes",
@@ -308,7 +310,9 @@
         "Otros": 2
       },
       "direct_lost_quality_losses": 15,
-      "direct_lost_quality_rate": 19.5
+      "direct_lost_quality_rate": 19.5,
+      "ni_rate": 11.7,
+      "na_rate": 7.8
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -758,7 +762,9 @@
         "Otros": 3
       },
       "direct_lost_quality_losses": 19,
-      "direct_lost_quality_rate": 7.5
+      "direct_lost_quality_rate": 7.5,
+      "ni_rate": 3.9,
+      "na_rate": 3.5
     },
     "this_year": {
       "label": "Este Año",
@@ -1219,7 +1225,9 @@
         "Otros": 3
       },
       "direct_lost_quality_losses": 20,
-      "direct_lost_quality_rate": 7.7
+      "direct_lost_quality_rate": 7.7,
+      "ni_rate": 4.2,
+      "na_rate": 3.5
     }
   },
   "comparison": {
@@ -1267,7 +1275,9 @@
           "Otros": 0
         },
         "direct_lost_quality_losses": 0,
-        "direct_lost_quality_rate": 0.0
+        "direct_lost_quality_rate": 0.0,
+        "ni_rate": 0.0,
+        "na_rate": 0.0
       }
     },
     "this_month": {
@@ -1531,7 +1541,9 @@
           "Otros": 0
         },
         "direct_lost_quality_losses": 2,
-        "direct_lost_quality_rate": 2.4
+        "direct_lost_quality_rate": 2.4,
+        "ni_rate": 1.2,
+        "na_rate": 1.2
       }
     },
     "this_quarter": {
@@ -1618,7 +1630,9 @@
           "Otros": 0
         },
         "direct_lost_quality_losses": 1,
-        "direct_lost_quality_rate": 16.7
+        "direct_lost_quality_rate": 16.7,
+        "ni_rate": 16.7,
+        "na_rate": 0.0
       }
     },
     "this_year": {
@@ -1661,7 +1675,9 @@
           "Otros": 0
         },
         "direct_lost_quality_losses": 0,
-        "direct_lost_quality_rate": 0.0
+        "direct_lost_quality_rate": 0.0,
+        "ni_rate": 0.0,
+        "na_rate": 0.0
       }
     }
   },
