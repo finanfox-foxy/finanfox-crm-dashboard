@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-29T05:16:52Z",
+  "timestamp": "2026-06-29T05:27:00Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -76,7 +76,12 @@
         "28": 3
       },
       "direct_lost_deals": 0,
-      "direct_loss_rate": 0.0
+      "direct_loss_rate": 0.0,
+      "direct_lost_by_reason": {
+        "No interesado": 0,
+        "No apareció": 0,
+        "Otros": 0
+      }
     },
     "this_month": {
       "label": "Este Mes",
@@ -458,7 +463,12 @@
         "29": 2
       },
       "direct_lost_deals": 18,
-      "direct_loss_rate": 36.0
+      "direct_loss_rate": 36.0,
+      "direct_lost_by_reason": {
+        "No interesado": 15,
+        "No apareció": 2,
+        "Otros": 1
+      }
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -1216,7 +1226,12 @@
         "31": 5
       },
       "direct_lost_deals": 43,
-      "direct_loss_rate": 30.1
+      "direct_loss_rate": 30.1,
+      "direct_lost_by_reason": {
+        "No interesado": 30,
+        "No apareció": 6,
+        "Otros": 7
+      }
     },
     "this_year": {
       "label": "Este Año",
@@ -1975,7 +1990,12 @@
         "31": 6
       },
       "direct_lost_deals": 45,
-      "direct_loss_rate": 31.0
+      "direct_loss_rate": 31.0,
+      "direct_lost_by_reason": {
+        "No interesado": 31,
+        "No apareció": 7,
+        "Otros": 7
+      }
     }
   },
   "comparison": {
@@ -2016,7 +2036,12 @@
           "27": 1
         },
         "direct_lost_deals": 0,
-        "direct_loss_rate": 0.0
+        "direct_loss_rate": 0.0,
+        "direct_lost_by_reason": {
+          "No interesado": 0,
+          "No apareció": 0,
+          "Otros": 0
+        }
       }
     },
     "this_month": {
@@ -2371,7 +2396,12 @@
           "31": 5
         },
         "direct_lost_deals": 10,
-        "direct_loss_rate": 19.6
+        "direct_loss_rate": 19.6,
+        "direct_lost_by_reason": {
+          "No interesado": 7,
+          "No apareció": 2,
+          "Otros": 1
+        }
       }
     },
     "this_quarter": {
@@ -2414,7 +2444,12 @@
           "31": 1
         },
         "direct_lost_deals": 2,
-        "direct_loss_rate": 100.0
+        "direct_loss_rate": 100.0,
+        "direct_lost_by_reason": {
+          "No interesado": 1,
+          "No apareció": 1,
+          "Otros": 0
+        }
       }
     },
     "this_year": {
@@ -2450,7 +2485,12 @@
         "contacts_by_day": {},
         "deals_by_day": {},
         "direct_lost_deals": 0,
-        "direct_loss_rate": 0.0
+        "direct_loss_rate": 0.0,
+        "direct_lost_by_reason": {
+          "No interesado": 0,
+          "No apareció": 0,
+          "Otros": 0
+        }
       }
     }
   },

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-29T05:16:52Z",
+  "timestamp": "2026-06-29T05:27:00Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -117231,7 +117231,12 @@
         "closed_won_value": 2162124,
         "closed_lost": 407,
         "conversion_rate": 18.7,
-        "direct_lost": 79
+        "direct_lost": 79,
+        "direct_lost_reasons": {
+          "No interesado": 48,
+          "No apareció": 19,
+          "Otros": 12
+        }
       }
     },
     "yesterday": {
@@ -117268,7 +117273,12 @@
         "28": 10
       },
       "direct_lost_deals": 0,
-      "direct_loss_rate": 0.0
+      "direct_loss_rate": 0.0,
+      "direct_lost_by_reason": {
+        "No interesado": 0,
+        "No apareció": 0,
+        "Otros": 0
+      }
     },
     "this_month": {
       "label": "Este Mes",
@@ -117885,7 +117895,12 @@
         "29": 5
       },
       "direct_lost_deals": 42,
-      "direct_loss_rate": 30.2
+      "direct_loss_rate": 30.2,
+      "direct_lost_by_reason": {
+        "No interesado": 27,
+        "No apareció": 11,
+        "Otros": 4
+      }
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -119611,7 +119626,12 @@
         "31": 6
       },
       "direct_lost_deals": 75,
-      "direct_loss_rate": 18.7
+      "direct_loss_rate": 18.7,
+      "direct_lost_by_reason": {
+        "No interesado": 46,
+        "No apareció": 18,
+        "Otros": 11
+      }
     },
     "this_year": {
       "label": "Este Año",
@@ -121392,7 +121412,12 @@
         "31": 10
       },
       "direct_lost_deals": 78,
-      "direct_loss_rate": 19.2
+      "direct_loss_rate": 19.2,
+      "direct_lost_by_reason": {
+        "No interesado": 48,
+        "No apareció": 19,
+        "Otros": 11
+      }
     }
   },
   "comparison": {
@@ -121433,7 +121458,12 @@
           "27": 5
         },
         "direct_lost_deals": 0,
-        "direct_loss_rate": 0.0
+        "direct_loss_rate": 0.0,
+        "direct_lost_by_reason": {
+          "No interesado": 0,
+          "No apareció": 0,
+          "Otros": 0
+        }
       }
     },
     "this_month": {
@@ -122343,7 +122373,12 @@
           "31": 6
         },
         "direct_lost_deals": 12,
-        "direct_loss_rate": 6.2
+        "direct_loss_rate": 6.2,
+        "direct_lost_by_reason": {
+          "No interesado": 8,
+          "No apareció": 3,
+          "Otros": 1
+        }
       }
     },
     "this_quarter": {
@@ -122490,7 +122525,12 @@
           "31": 4
         },
         "direct_lost_deals": 3,
-        "direct_loss_rate": 75.0
+        "direct_loss_rate": 75.0,
+        "direct_lost_by_reason": {
+          "No interesado": 2,
+          "No apareció": 1,
+          "Otros": 0
+        }
       }
     },
     "this_year": {
@@ -122530,7 +122570,12 @@
           "20": 1
         },
         "direct_lost_deals": 1,
-        "direct_loss_rate": 100.0
+        "direct_loss_rate": 100.0,
+        "direct_lost_by_reason": {
+          "No interesado": 0,
+          "No apareció": 0,
+          "Otros": 1
+        }
       }
     }
   },

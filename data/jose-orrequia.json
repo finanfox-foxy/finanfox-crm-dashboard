@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-06-29T05:16:52Z",
+  "timestamp": "2026-06-29T05:27:01Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -76,7 +76,12 @@
         "28": 7
       },
       "direct_lost_deals": 0,
-      "direct_loss_rate": 0.0
+      "direct_loss_rate": 0.0,
+      "direct_lost_by_reason": {
+        "No interesado": 0,
+        "No apareció": 0,
+        "Otros": 0
+      }
     },
     "this_month": {
       "label": "Este Mes",
@@ -294,7 +299,12 @@
         "29": 3
       },
       "direct_lost_deals": 17,
-      "direct_loss_rate": 37.8
+      "direct_loss_rate": 37.8,
+      "direct_lost_by_reason": {
+        "No interesado": 9,
+        "No apareció": 6,
+        "Otros": 2
+      }
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -737,7 +747,12 @@
         "31": 1
       },
       "direct_lost_deals": 22,
-      "direct_loss_rate": 13.9
+      "direct_loss_rate": 13.9,
+      "direct_lost_by_reason": {
+        "No interesado": 10,
+        "No apareció": 9,
+        "Otros": 3
+      }
     },
     "this_year": {
       "label": "Este Año",
@@ -1191,7 +1206,12 @@
         "31": 3
       },
       "direct_lost_deals": 23,
-      "direct_loss_rate": 14.5
+      "direct_loss_rate": 14.5,
+      "direct_lost_by_reason": {
+        "No interesado": 11,
+        "No apareció": 9,
+        "Otros": 3
+      }
     }
   },
   "comparison": {
@@ -1232,7 +1252,12 @@
           "27": 2
         },
         "direct_lost_deals": 0,
-        "direct_loss_rate": 0.0
+        "direct_loss_rate": 0.0,
+        "direct_lost_by_reason": {
+          "No interesado": 0,
+          "No apareció": 0,
+          "Otros": 0
+        }
       }
     },
     "this_month": {
@@ -1489,7 +1514,12 @@
           "31": 1
         },
         "direct_lost_deals": 2,
-        "direct_loss_rate": 1.9
+        "direct_loss_rate": 1.9,
+        "direct_lost_by_reason": {
+          "No interesado": 1,
+          "No apareció": 1,
+          "Otros": 0
+        }
       }
     },
     "this_quarter": {
@@ -1569,7 +1599,12 @@
           "31": 2
         },
         "direct_lost_deals": 1,
-        "direct_loss_rate": 100.0
+        "direct_loss_rate": 100.0,
+        "direct_lost_by_reason": {
+          "No interesado": 1,
+          "No apareció": 0,
+          "Otros": 0
+        }
       }
     },
     "this_year": {
@@ -1605,7 +1640,12 @@
         "contacts_by_day": {},
         "deals_by_day": {},
         "direct_lost_deals": 0,
-        "direct_loss_rate": 0.0
+        "direct_loss_rate": 0.0,
+        "direct_lost_by_reason": {
+          "No interesado": 0,
+          "No apareció": 0,
+          "Otros": 0
+        }
       }
     }
   },
