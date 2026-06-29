@@ -683,7 +683,9 @@ function renderKPI(periodKey, stats, comparisonStats) {
                     var reasonBreakdown = s.direct_lost_by_reason || {};
                     var noInteresado = reasonBreakdown['No interesado'] || 0;
                     var noAparecio = reasonBreakdown['No apareció'] || 0;
-                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + qualityLosses + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + qualityRate + '%)</div></div><div class="label">🔴 Leads Malos (Pérdida Directa)</div><div class="sub">😞 No interesado: ' + noInteresado + ' | 🙅 No apareció: ' + noAparecio + ' · ' + qualityRate + '% de oportunidades nuevas</div></div>';
+                    var niRate = s.ni_rate || 0;
+                    var naRate = s.na_rate || 0;
+                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + qualityLosses + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + qualityRate + '%)</div></div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + noInteresado + ' (' + niRate + '%)  |  🙅 No apareció: ' + noAparecio + ' (' + naRate + '%)</div></div>';
                 html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
         // Calculate Win Rate live: won / new
                     var liveWR = s.new_deals > 0 ? Math.round(s.won_deals / s.new_deals * 1000) / 10 : null;

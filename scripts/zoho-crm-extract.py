@@ -292,6 +292,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     total_new = len(new_deals)
     direct_lost_quality_losses = ni_count + na_count
     direct_lost_quality_rate = round(direct_lost_quality_losses / total_new * 100, 1) if total_new > 0 else 0.0
+    ni_rate = round(ni_count / total_new * 100, 1) if total_new > 0 else 0.0
+    na_rate = round(na_count / total_new * 100, 1) if total_new > 0 else 0.0
 
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
     product_details = {}
@@ -539,6 +541,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "direct_lost_by_reason": direct_lost_by_reason,
         "direct_lost_quality_losses": direct_lost_quality_losses,
         "direct_lost_quality_rate": direct_lost_quality_rate,
+        "ni_rate": ni_rate,
+        "na_rate": na_rate,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
