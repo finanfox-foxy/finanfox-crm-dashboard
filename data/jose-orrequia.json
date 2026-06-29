@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-06-29T05:27:01Z",
+  "timestamp": "2026-06-29T05:28:07Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -81,7 +81,9 @@
         "No interesado": 0,
         "No apareció": 0,
         "Otros": 0
-      }
+      },
+      "direct_lost_quality_losses": 0,
+      "direct_lost_quality_rate": 0.0
     },
     "this_month": {
       "label": "Este Mes",
@@ -304,7 +306,9 @@
         "No interesado": 9,
         "No apareció": 6,
         "Otros": 2
-      }
+      },
+      "direct_lost_quality_losses": 15,
+      "direct_lost_quality_rate": 19.5
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -752,7 +756,9 @@
         "No interesado": 10,
         "No apareció": 9,
         "Otros": 3
-      }
+      },
+      "direct_lost_quality_losses": 19,
+      "direct_lost_quality_rate": 7.5
     },
     "this_year": {
       "label": "Este Año",
@@ -1211,7 +1217,9 @@
         "No interesado": 11,
         "No apareció": 9,
         "Otros": 3
-      }
+      },
+      "direct_lost_quality_losses": 20,
+      "direct_lost_quality_rate": 7.7
     }
   },
   "comparison": {
@@ -1257,7 +1265,9 @@
           "No interesado": 0,
           "No apareció": 0,
           "Otros": 0
-        }
+        },
+        "direct_lost_quality_losses": 0,
+        "direct_lost_quality_rate": 0.0
       }
     },
     "this_month": {
@@ -1519,7 +1529,9 @@
           "No interesado": 1,
           "No apareció": 1,
           "Otros": 0
-        }
+        },
+        "direct_lost_quality_losses": 2,
+        "direct_lost_quality_rate": 2.4
       }
     },
     "this_quarter": {
@@ -1604,7 +1616,9 @@
           "No interesado": 1,
           "No apareció": 0,
           "Otros": 0
-        }
+        },
+        "direct_lost_quality_losses": 1,
+        "direct_lost_quality_rate": 16.7
       }
     },
     "this_year": {
@@ -1645,7 +1659,9 @@
           "No interesado": 0,
           "No apareció": 0,
           "Otros": 0
-        }
+        },
+        "direct_lost_quality_losses": 0,
+        "direct_lost_quality_rate": 0.0
       }
     }
   },
