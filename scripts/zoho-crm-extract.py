@@ -286,6 +286,13 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         direct_lost_by_reason[reason] = len([d for d in direct_lost_deals if d.get('Motivo_de_cierre_perdido') == reason])
     direct_lost_by_reason['Otros'] = len([d for d in direct_lost_deals if d.get('Motivo_de_cierre_perdido') not in RELEVANT_REASONS])
 
+    # Quality rate: % of all NEW deals that are direct losses due to 'No interesado' or 'No apareció'
+    ni_count = direct_lost_by_reason.get('No interesado', 0)
+    na_count = direct_lost_by_reason.get('No apareció', 0)
+    total_new = len(new_deals)
+    direct_lost_quality_losses = ni_count + na_count
+    direct_lost_quality_rate = round(direct_lost_quality_losses / total_new * 100, 1) if total_new > 0 else 0.0
+
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
     product_details = {}
     product_deals = []  # individual per-deal records with close dates (for chronological commission)
@@ -530,6 +537,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "direct_lost_deals": direct_lost_count,
         "direct_loss_rate": direct_loss_rate,
         "direct_lost_by_reason": direct_lost_by_reason,
+        "direct_lost_quality_losses": direct_lost_quality_losses,
+        "direct_lost_quality_rate": direct_lost_quality_rate,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
