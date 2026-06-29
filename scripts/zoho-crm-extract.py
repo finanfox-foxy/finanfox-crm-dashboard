@@ -279,6 +279,13 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
     total_lost_count = len(lost_deals)
     direct_loss_rate = round(direct_lost_count / total_lost_count * 100, 1) if total_lost_count > 0 else 0.0
 
+    # Breakdown by reason for direct losses
+    RELEVANT_REASONS = ['No interesado', 'No apareció']
+    direct_lost_by_reason = {}
+    for reason in RELEVANT_REASONS:
+        direct_lost_by_reason[reason] = len([d for d in direct_lost_deals if d.get('Motivo_de_cierre_perdido') == reason])
+    direct_lost_by_reason['Otros'] = len([d for d in direct_lost_deals if d.get('Motivo_de_cierre_perdido') not in RELEVANT_REASONS])
+
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
     product_details = {}
     product_deals = []  # individual per-deal records with close dates (for chronological commission)
@@ -522,6 +529,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         "deals_by_day": deals_by_day,
         "direct_lost_deals": direct_lost_count,
         "direct_loss_rate": direct_loss_rate,
+        "direct_lost_by_reason": direct_lost_by_reason,
     }
 
 def compute_pipeline_details(pipeline_stages, previous_pipeline=None):
@@ -924,7 +932,12 @@ def main():
             "closed_won_value": closed_won_value,
             "closed_lost": closed_lost_count,
             "conversion_rate": round(conversion_rate, 1),
-            "direct_lost": len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2])
+            "direct_lost": len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2]),
+            "direct_lost_reasons": {
+                'No interesado': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2 and d.get('Motivo_de_cierre_perdido') == 'No interesado']),
+                'No apareció': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2 and d.get('Motivo_de_cierre_perdido') == 'No apareció']),
+                'Otros': len([d for d in deals if 'Perdido' in (d.get('Stage') or '') and (d.get('Sales_Cycle_Duration') or 0) <= 2 and d.get('Motivo_de_cierre_perdido') not in ('No interesado', 'No apareció')])
+            }
         }
     }
 
