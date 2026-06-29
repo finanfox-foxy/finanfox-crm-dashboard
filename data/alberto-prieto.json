@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-29T05:42:40Z",
+  "timestamp": "2026-06-29T06:41:12Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -75,17 +75,20 @@
       "deals_by_day": {
         "28": 3
       },
-      "direct_lost_deals": 0,
-      "direct_loss_rate": 0.0,
-      "direct_lost_by_reason": {
-        "No interesado": 0,
-        "No apareció": 0,
-        "Otros": 0
-      },
-      "direct_lost_quality_losses": 0,
-      "direct_lost_quality_rate": 0.0,
-      "ni_rate": 0.0,
-      "na_rate": 0.0
+      "lead_quality": {
+        "ni_total": 0,
+        "na_total": 0,
+        "ni_na_total": 0,
+        "ni_total_rate": 0.0,
+        "na_total_rate": 0.0,
+        "ni_na_total_rate": 0.0,
+        "ni_7d": 0,
+        "na_7d": 0,
+        "ni_na_7d": 0,
+        "ni_7d_rate": 0.0,
+        "na_7d_rate": 0.0,
+        "ni_na_7d_rate": 0.0
+      }
     },
     "this_month": {
       "label": "Este Mes",
@@ -466,17 +469,20 @@
         "28": 3,
         "29": 3
       },
-      "direct_lost_deals": 18,
-      "direct_loss_rate": 36.0,
-      "direct_lost_by_reason": {
-        "No interesado": 15,
-        "No apareció": 2,
-        "Otros": 1
-      },
-      "direct_lost_quality_losses": 17,
-      "direct_lost_quality_rate": 18.9,
-      "ni_rate": 16.7,
-      "na_rate": 2.2
+      "lead_quality": {
+        "ni_total": 38,
+        "na_total": 10,
+        "ni_na_total": 48,
+        "ni_total_rate": 42.2,
+        "na_total_rate": 11.1,
+        "ni_na_total_rate": 53.3,
+        "ni_7d": 19,
+        "na_7d": 9,
+        "ni_na_7d": 28,
+        "ni_7d_rate": 21.1,
+        "na_7d_rate": 10.0,
+        "ni_na_7d_rate": 31.1
+      }
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -1233,17 +1239,20 @@
         "29": 12,
         "31": 5
       },
-      "direct_lost_deals": 43,
-      "direct_loss_rate": 30.1,
-      "direct_lost_by_reason": {
-        "No interesado": 30,
-        "No apareció": 6,
-        "Otros": 7
-      },
-      "direct_lost_quality_losses": 36,
-      "direct_lost_quality_rate": 13.7,
-      "ni_rate": 11.5,
-      "na_rate": 2.3
+      "lead_quality": {
+        "ni_total": 89,
+        "na_total": 38,
+        "ni_na_total": 127,
+        "ni_total_rate": 34.0,
+        "na_total_rate": 14.5,
+        "ni_na_total_rate": 48.5,
+        "ni_7d": 46,
+        "na_7d": 32,
+        "ni_na_7d": 78,
+        "ni_7d_rate": 17.6,
+        "na_7d_rate": 12.2,
+        "ni_na_7d_rate": 29.8
+      }
     },
     "this_year": {
       "label": "Este Año",
@@ -2001,17 +2010,20 @@
         "30": 2,
         "31": 6
       },
-      "direct_lost_deals": 45,
-      "direct_loss_rate": 31.0,
-      "direct_lost_by_reason": {
-        "No interesado": 31,
-        "No apareció": 7,
-        "Otros": 7
-      },
-      "direct_lost_quality_losses": 38,
-      "direct_lost_quality_rate": 14.1,
-      "ni_rate": 11.5,
-      "na_rate": 2.6
+      "lead_quality": {
+        "ni_total": 90,
+        "na_total": 39,
+        "ni_na_total": 129,
+        "ni_total_rate": 33.5,
+        "na_total_rate": 14.5,
+        "ni_na_total_rate": 48.0,
+        "ni_7d": 46,
+        "na_7d": 33,
+        "ni_na_7d": 79,
+        "ni_7d_rate": 17.1,
+        "na_7d_rate": 12.3,
+        "ni_na_7d_rate": 29.4
+      }
     }
   },
   "comparison": {
@@ -2051,17 +2063,20 @@
         "deals_by_day": {
           "27": 1
         },
-        "direct_lost_deals": 0,
-        "direct_loss_rate": 0.0,
-        "direct_lost_by_reason": {
-          "No interesado": 0,
-          "No apareció": 0,
-          "Otros": 0
-        },
-        "direct_lost_quality_losses": 0,
-        "direct_lost_quality_rate": 0.0,
-        "ni_rate": 0.0,
-        "na_rate": 0.0
+        "lead_quality": {
+          "ni_total": 0,
+          "na_total": 0,
+          "ni_na_total": 0,
+          "ni_total_rate": 0.0,
+          "na_total_rate": 0.0,
+          "ni_na_total_rate": 0.0,
+          "ni_7d": 0,
+          "na_7d": 0,
+          "ni_na_7d": 0,
+          "ni_7d_rate": 0.0,
+          "na_7d_rate": 0.0,
+          "ni_na_7d_rate": 0.0
+        }
       }
     },
     "this_month": {
@@ -2415,17 +2430,20 @@
           "29": 3,
           "31": 5
         },
-        "direct_lost_deals": 10,
-        "direct_loss_rate": 19.6,
-        "direct_lost_by_reason": {
-          "No interesado": 7,
-          "No apareció": 2,
-          "Otros": 1
-        },
-        "direct_lost_quality_losses": 9,
-        "direct_lost_quality_rate": 9.7,
-        "ni_rate": 7.5,
-        "na_rate": 2.2
+        "lead_quality": {
+          "ni_total": 27,
+          "na_total": 17,
+          "ni_na_total": 44,
+          "ni_total_rate": 29.0,
+          "na_total_rate": 18.3,
+          "ni_na_total_rate": 47.3,
+          "ni_7d": 10,
+          "na_7d": 13,
+          "ni_na_7d": 23,
+          "ni_7d_rate": 10.8,
+          "na_7d_rate": 14.0,
+          "ni_na_7d_rate": 24.7
+        }
       }
     },
     "this_quarter": {
@@ -2467,17 +2485,20 @@
           "30": 2,
           "31": 1
         },
-        "direct_lost_deals": 2,
-        "direct_loss_rate": 100.0,
-        "direct_lost_by_reason": {
-          "No interesado": 1,
-          "No apareció": 1,
-          "Otros": 0
-        },
-        "direct_lost_quality_losses": 2,
-        "direct_lost_quality_rate": 28.6,
-        "ni_rate": 14.3,
-        "na_rate": 14.3
+        "lead_quality": {
+          "ni_total": 1,
+          "na_total": 1,
+          "ni_na_total": 2,
+          "ni_total_rate": 14.3,
+          "na_total_rate": 14.3,
+          "ni_na_total_rate": 28.6,
+          "ni_7d": 0,
+          "na_7d": 1,
+          "ni_na_7d": 1,
+          "ni_7d_rate": 0.0,
+          "na_7d_rate": 14.3,
+          "ni_na_7d_rate": 14.3
+        }
       }
     },
     "this_year": {
@@ -2512,17 +2533,20 @@
         },
         "contacts_by_day": {},
         "deals_by_day": {},
-        "direct_lost_deals": 0,
-        "direct_loss_rate": 0.0,
-        "direct_lost_by_reason": {
-          "No interesado": 0,
-          "No apareció": 0,
-          "Otros": 0
-        },
-        "direct_lost_quality_losses": 0,
-        "direct_lost_quality_rate": 0.0,
-        "ni_rate": 0.0,
-        "na_rate": 0.0
+        "lead_quality": {
+          "ni_total": 0,
+          "na_total": 0,
+          "ni_na_total": 0,
+          "ni_total_rate": 0.0,
+          "na_total_rate": 0.0,
+          "ni_na_total_rate": 0.0,
+          "ni_7d": 0,
+          "na_7d": 0,
+          "ni_na_7d": 0,
+          "ni_7d_rate": 0.0,
+          "na_7d_rate": 0.0,
+          "ni_na_7d_rate": 0.0
+        }
       }
     }
   },
