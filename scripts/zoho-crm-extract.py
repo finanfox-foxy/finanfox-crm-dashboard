@@ -296,6 +296,11 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         'ni_7d_rate': _rate(len(lost_ni_7d), total_new),
         'na_7d_rate': _rate(len(lost_na_7d), total_new),
         'ni_na_7d_rate': _rate(len(lost_nina_7d), total_new),
+        # Internal distribution within lead_quality bucket
+        'ni_pct': _rate(len(lost_ni), len(lost_nina)),
+        'na_pct': _rate(len(lost_na), len(lost_nina)),
+        'ni_7d_pct': _rate(len(lost_ni_7d), len(lost_nina_7d)),
+        'na_7d_pct': _rate(len(lost_na_7d), len(lost_nina_7d)),
     }
 
     # Product breakdown with ENTIDAD: detailed list + aggregated summary
