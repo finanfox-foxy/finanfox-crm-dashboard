@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-06-29T05:00:23Z",
+  "timestamp": "2026-06-29T05:16:52Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -68,7 +68,9 @@
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {},
-      "deals_by_day": {}
+      "deals_by_day": {},
+      "direct_lost_deals": 0,
+      "direct_loss_rate": 0.0
     },
     "this_month": {
       "label": "Este Mes",
@@ -289,7 +291,9 @@
         "25": 2,
         "26": 3,
         "27": 2
-      }
+      },
+      "direct_lost_deals": 7,
+      "direct_loss_rate": 15.9
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -880,7 +884,9 @@
         "28": 5,
         "29": 5,
         "30": 7
-      }
+      },
+      "direct_lost_deals": 10,
+      "direct_loss_rate": 9.9
     },
     "this_year": {
       "label": "Este Año",
@@ -1472,7 +1478,9 @@
         "29": 8,
         "30": 8,
         "31": 1
-      }
+      },
+      "direct_lost_deals": 10,
+      "direct_loss_rate": 9.9
     }
   },
   "comparison": {
@@ -1511,7 +1519,9 @@
         },
         "deals_by_day": {
           "27": 2
-        }
+        },
+        "direct_lost_deals": 0,
+        "direct_loss_rate": 0.0
       }
     },
     "this_month": {
@@ -1897,7 +1907,9 @@
           "28": 3,
           "29": 2,
           "30": 3
-        }
+        },
+        "direct_lost_deals": 0,
+        "direct_loss_rate": 0.0
       }
     },
     "this_quarter": {
@@ -1938,7 +1950,9 @@
           "29": 3,
           "30": 1,
           "31": 1
-        }
+        },
+        "direct_lost_deals": 0,
+        "direct_loss_rate": 0.0
       }
     },
     "this_year": {
@@ -1976,7 +1990,9 @@
         "contacts_by_day": {},
         "deals_by_day": {
           "20": 1
-        }
+        },
+        "direct_lost_deals": 1,
+        "direct_loss_rate": 100.0
       }
     }
   },

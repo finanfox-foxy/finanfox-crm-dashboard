@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-06-29T05:00:23Z",
+  "timestamp": "2026-06-29T05:16:52Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -74,7 +74,9 @@
       },
       "deals_by_day": {
         "28": 7
-      }
+      },
+      "direct_lost_deals": 0,
+      "direct_loss_rate": 0.0
     },
     "this_month": {
       "label": "Este Mes",
@@ -290,7 +292,9 @@
         "27": 2,
         "28": 7,
         "29": 3
-      }
+      },
+      "direct_lost_deals": 17,
+      "direct_loss_rate": 37.8
     },
     "this_quarter": {
       "label": "Este Trimestre",
@@ -731,7 +735,9 @@
         "29": 4,
         "30": 8,
         "31": 1
-      }
+      },
+      "direct_lost_deals": 22,
+      "direct_loss_rate": 13.9
     },
     "this_year": {
       "label": "Este Año",
@@ -1183,7 +1189,9 @@
         "29": 5,
         "30": 9,
         "31": 3
-      }
+      },
+      "direct_lost_deals": 23,
+      "direct_loss_rate": 14.5
     }
   },
   "comparison": {
@@ -1222,7 +1230,9 @@
         },
         "deals_by_day": {
           "27": 2
-        }
+        },
+        "direct_lost_deals": 0,
+        "direct_loss_rate": 0.0
       }
     },
     "this_month": {
@@ -1477,7 +1487,9 @@
           "28": 1,
           "30": 1,
           "31": 1
-        }
+        },
+        "direct_lost_deals": 2,
+        "direct_loss_rate": 1.9
       }
     },
     "this_quarter": {
@@ -1555,7 +1567,9 @@
           "29": 1,
           "30": 1,
           "31": 2
-        }
+        },
+        "direct_lost_deals": 1,
+        "direct_loss_rate": 100.0
       }
     },
     "this_year": {
@@ -1589,7 +1603,9 @@
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {},
-        "deals_by_day": {}
+        "deals_by_day": {},
+        "direct_lost_deals": 0,
+        "direct_loss_rate": 0.0
       }
     }
   },
