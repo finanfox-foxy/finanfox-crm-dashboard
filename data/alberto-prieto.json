@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-29T07:21:23Z",
+  "timestamp": "2026-06-29T09:26:46Z",
   "generated_at": "2026-06-29",
   "today": "2026-06-29",
   "yesterday": "2026-06-28",
@@ -21,14 +21,14 @@
       "deals": {
         "total": 269,
         "by_stage": {
-          "Llamada Pendiente": 21,
-          "Análisis Financiero": 17,
+          "Análisis Financiero": 21,
+          "Llamada Pendiente": 16,
           "Cerrado Ganado": 55,
           "Cerrado Perdido": 145,
           "Asesoramiento": 3,
           "Reasesoramiento": 13,
           "Aceptado/Falta Firma": 9,
-          "Revisando Propuesta": 6
+          "Revisando Propuesta": 7
         },
         "by_owner": {
           "Alberto Prieto": 269
@@ -57,7 +57,8 @@
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Llamada Pendiente": 3
+        "Llamada Pendiente": 1,
+        "Análisis Financiero": 2
       },
       "pipeline_value": 0.0,
       "win_rate": 0.0,
@@ -394,11 +395,11 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 14,
-        "Análisis Financiero": 13,
+        "Llamada Pendiente": 9,
+        "Análisis Financiero": 17,
         "Asesoramiento": 3,
         "Reasesoramiento": 7,
-        "Revisando Propuesta": 3,
+        "Revisando Propuesta": 4,
         "Aceptado/Falta Firma": 7,
         "Cerrado Ganado": 21,
         "Cerrado Perdido": 50
@@ -1166,11 +1167,11 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 21,
-        "Análisis Financiero": 17,
+        "Llamada Pendiente": 16,
+        "Análisis Financiero": 21,
         "Asesoramiento": 3,
         "Reasesoramiento": 13,
-        "Revisando Propuesta": 6,
+        "Revisando Propuesta": 7,
         "Aceptado/Falta Firma": 9,
         "Cerrado Ganado": 55,
         "Cerrado Perdido": 143
@@ -1940,11 +1941,11 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 21,
-        "Análisis Financiero": 17,
+        "Llamada Pendiente": 16,
+        "Análisis Financiero": 21,
         "Asesoramiento": 3,
         "Reasesoramiento": 13,
-        "Revisando Propuesta": 6,
+        "Revisando Propuesta": 7,
         "Aceptado/Falta Firma": 9,
         "Cerrado Ganado": 55,
         "Cerrado Perdido": 145
@@ -2587,8 +2588,8 @@
       "id": "862490000006671108",
       "Deal_Name": "Planificación de Beatriz San Jose",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "Beatriz San Jose",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -2610,8 +2611,8 @@
       "id": "862490000006671084",
       "Deal_Name": "Planificación de Adriana Carranza",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "Adriana Carranza",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -2633,8 +2634,8 @@
       "id": "862490000006671059",
       "Deal_Name": "Planificación de JUAN PEDRO MORAL",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "JUAN PEDRO MORAL",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -2748,8 +2749,8 @@
       "id": "862490000006630062",
       "Deal_Name": "Planificación de Magda Gost",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "Magda Gost",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -2794,8 +2795,8 @@
       "id": "862490000006622092",
       "Deal_Name": "Planificación de JAVIER MONTESA BERNET",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "JAVIER MONTESA BERNET",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -3668,8 +3669,8 @@
       "id": "862490000006015026",
       "Deal_Name": "Planificación de Agustin Albert",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Revisando Propuesta",
+      "Probability": 75,
       "Contact_Name": "Agustin Albert",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -8795,25 +8796,25 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 3,
-          "pct_of_total": 100.0,
+          "count": 1,
+          "pct_of_total": 33.3,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": 0.0,
-          "conversion_from_top": 0.0,
+          "count": 2,
+          "pct_of_total": 66.7,
+          "conversion_from_prev": null,
+          "conversion_from_top": 200.0,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 0,
           "pct_of_total": 0.0,
-          "conversion_from_prev": null,
+          "conversion_from_prev": 0.0,
           "conversion_from_top": 0.0,
           "cmp_count": null
         },
@@ -8879,26 +8880,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 14,
-          "pct_of_total": 11.9,
+          "count": 9,
+          "pct_of_total": 7.6,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 13,
-          "pct_of_total": 11.0,
-          "conversion_from_prev": 92.9,
-          "conversion_from_top": 92.9,
+          "count": 17,
+          "pct_of_total": 14.4,
+          "conversion_from_prev": null,
+          "conversion_from_top": 188.9,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 3,
           "pct_of_total": 2.5,
-          "conversion_from_prev": 23.1,
-          "conversion_from_top": 21.4,
+          "conversion_from_prev": 17.6,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
@@ -8906,15 +8907,15 @@
           "count": 7,
           "pct_of_total": 5.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 50.0,
+          "conversion_from_top": 77.8,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 3,
-          "pct_of_total": 2.5,
-          "conversion_from_prev": 42.9,
-          "conversion_from_top": 21.4,
+          "count": 4,
+          "pct_of_total": 3.4,
+          "conversion_from_prev": 57.1,
+          "conversion_from_top": 44.4,
           "cmp_count": null
         },
         {
@@ -8922,7 +8923,7 @@
           "count": 7,
           "pct_of_total": 5.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 50.0,
+          "conversion_from_top": 77.8,
           "cmp_count": null
         }
       ],
@@ -8932,7 +8933,7 @@
           "count": 21,
           "pct_of_total": 17.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 150.0,
+          "conversion_from_top": 233.3,
           "cmp_count": null
         },
         {
@@ -8940,7 +8941,7 @@
           "count": 50,
           "pct_of_total": 42.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 357.1,
+          "conversion_from_top": 555.6,
           "cmp_count": null
         }
       ],
@@ -8963,26 +8964,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 21,
-          "pct_of_total": 7.9,
+          "count": 16,
+          "pct_of_total": 6.0,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 17,
-          "pct_of_total": 6.4,
-          "conversion_from_prev": 81.0,
-          "conversion_from_top": 81.0,
+          "count": 21,
+          "pct_of_total": 7.9,
+          "conversion_from_prev": null,
+          "conversion_from_top": 131.2,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 3,
           "pct_of_total": 1.1,
-          "conversion_from_prev": 17.6,
-          "conversion_from_top": 14.3,
+          "conversion_from_prev": 14.3,
+          "conversion_from_top": 18.8,
           "cmp_count": null
         },
         {
@@ -8990,15 +8991,15 @@
           "count": 13,
           "pct_of_total": 4.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 61.9,
+          "conversion_from_top": 81.2,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 6,
-          "pct_of_total": 2.2,
-          "conversion_from_prev": 46.2,
-          "conversion_from_top": 28.6,
+          "count": 7,
+          "pct_of_total": 2.6,
+          "conversion_from_prev": 53.8,
+          "conversion_from_top": 43.8,
           "cmp_count": null
         },
         {
@@ -9006,7 +9007,7 @@
           "count": 9,
           "pct_of_total": 3.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 42.9,
+          "conversion_from_top": 56.2,
           "cmp_count": null
         }
       ],
@@ -9016,7 +9017,7 @@
           "count": 55,
           "pct_of_total": 20.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 261.9,
+          "conversion_from_top": 343.8,
           "cmp_count": null
         },
         {
@@ -9024,7 +9025,7 @@
           "count": 143,
           "pct_of_total": 53.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 681.0,
+          "conversion_from_top": 893.8,
           "cmp_count": 2
         }
       ],
@@ -9047,26 +9048,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 21,
-          "pct_of_total": 7.8,
+          "count": 16,
+          "pct_of_total": 5.9,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 17,
-          "pct_of_total": 6.3,
-          "conversion_from_prev": 81.0,
-          "conversion_from_top": 81.0,
+          "count": 21,
+          "pct_of_total": 7.8,
+          "conversion_from_prev": null,
+          "conversion_from_top": 131.2,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 3,
           "pct_of_total": 1.1,
-          "conversion_from_prev": 17.6,
-          "conversion_from_top": 14.3,
+          "conversion_from_prev": 14.3,
+          "conversion_from_top": 18.8,
           "cmp_count": null
         },
         {
@@ -9074,15 +9075,15 @@
           "count": 13,
           "pct_of_total": 4.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 61.9,
+          "conversion_from_top": 81.2,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 6,
-          "pct_of_total": 2.2,
-          "conversion_from_prev": 46.2,
-          "conversion_from_top": 28.6,
+          "count": 7,
+          "pct_of_total": 2.6,
+          "conversion_from_prev": 53.8,
+          "conversion_from_top": 43.8,
           "cmp_count": null
         },
         {
@@ -9090,7 +9091,7 @@
           "count": 9,
           "pct_of_total": 3.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 42.9,
+          "conversion_from_top": 56.2,
           "cmp_count": null
         }
       ],
@@ -9100,7 +9101,7 @@
           "count": 55,
           "pct_of_total": 20.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 261.9,
+          "conversion_from_top": 343.8,
           "cmp_count": null
         },
         {
@@ -9108,7 +9109,7 @@
           "count": 145,
           "pct_of_total": 53.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 690.5,
+          "conversion_from_top": 906.2,
           "cmp_count": null
         }
       ],
