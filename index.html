@@ -684,11 +684,18 @@ function renderKPI(periodKey, stats, comparisonStats) {
                     var niNa7dRate = lq.ni_na_7d_rate || 0;
                     var niTotal = lq.ni_total || 0;
                     var naTotal = lq.na_total || 0;
+                    // Compute internal distribution percentages
+                    var niPct = niNaTotal > 0 ? Math.round(niTotal / niNaTotal * 1000) / 10 : 0;
+                    var naPct = niNaTotal > 0 ? Math.round(naTotal / niNaTotal * 1000) / 10 : 0;
+                    var ni7d = lq.ni_7d || 0;
+                    var na7d = lq.na_7d || 0;
+                    var ni7dPct = niNa7d > 0 ? Math.round(ni7d / niNa7d * 1000) / 10 : 0;
+                    var na7dPct = niNa7d > 0 ? Math.round(na7d / niNa7d * 1000) / 10 : 0;
                     // Comparison data
                     var cmpLq = cmp ? (cmp.lead_quality || {}) : {};
                     var cmpNiNaTotal = cmpLq.ni_na_total;
                     var cmpNiNa7d = cmpLq.ni_na_7d;
-                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + niNaTotal + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + niNaTotalRate + '%)</div>' + (cmpNiNaTotal !== undefined ? renderCmpBadge(niNaTotal, cmpNiNaTotal, true) : '') + '</div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + niTotal + ' (' + (lq.ni_pct || 0) + '%)  |  🙅 No apareció: ' + naTotal + ' (' + (lq.na_pct || 0) + '%)</div><div class="sub" style="color:var(--text-muted);margin-top:2px;">⏱️ En ≤7d: ' + niNa7d + ' (' + niNa7dRate + '%) — NI: ' + (lq.ni_7d || 0) + ' (' + (lq.ni_7d_pct || 0) + '%)  NA: ' + (lq.na_7d || 0) + ' (' + (lq.na_7d_pct || 0) + '%)' + (cmpNiNa7d !== undefined ? ' vs ' + cmpNiNa7d + ' ant.' : '') + '</div></div>';
+                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + niNaTotal + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + niNaTotalRate + '%)</div>' + (cmpNiNaTotal !== undefined ? renderCmpBadge(niNaTotal, cmpNiNaTotal, true) : '') + '</div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + niTotal + ' (' + niPct + '%)  |  🙅 No apareció: ' + naTotal + ' (' + naPct + '%)</div><div class="sub" style="color:var(--text-muted);margin-top:2px;">⏱️ En ≤7d: ' + niNa7d + ' (' + niNa7dRate + '%) — NI: ' + ni7d + ' (' + ni7dPct + '%)  NA: ' + na7d + ' (' + na7dPct + '%)' + (cmpNiNa7d !== undefined ? ' vs ' + cmpNiNa7d + ' ant.' : '') + '</div></div>';
                 html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
         // Calculate Win Rate live: won / new
                     var liveWR = s.new_deals > 0 ? Math.round(s.won_deals / s.new_deals * 1000) / 10 : null;
