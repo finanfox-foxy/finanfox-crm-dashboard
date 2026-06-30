@@ -257,6 +257,22 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.3s ease; }
         .ranking-medal { font-size: 1.1rem; margin-right: 4px; }
+        /* ── MarketINhouse-style funnel bars ── */
+        .funnel-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+        .funnel-label { width:160px; font-size:0.78rem; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; }
+        .funnel-track { flex:1; height:22px; background:#e2e8f0; border-radius:6px; overflow:hidden; position:relative; }
+        .funnel-fill { height:100%; border-radius:6px; transition:width 0.3s ease; min-width:4px; }
+        .funnel-val { width:50px; text-align:right; font-size:0.78rem; font-weight:700; white-space:nowrap; flex-shrink:0; }
+        .funnel-pct { font-size:0.68rem; color:var(--text-muted); font-weight:400; }
+        .forecast-table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+        .forecast-table th { text-align:left; padding:6px 8px; font-weight:600; color:var(--text-muted); border-bottom:2px solid var(--border); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.3px; }
+        .forecast-table th.n { text-align:right; }
+        .forecast-table td { padding:6px 8px; border-bottom:1px solid var(--border); }
+        .forecast-table td.n { text-align:right; }
+        .forecast-summary { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+        .forecast-card { flex:1; min-width:140px; background:var(--bg-card); border-radius:10px; padding:12px 16px; border:1px solid var(--border); }
+        .forecast-card .num { font-size:1.3rem; font-weight:700; line-height:1.2; }
+        .forecast-card .lbl { font-size:0.72rem; color:var(--text-muted); margin-top:2px; }
         .last-updated {
             text-align: center; color: var(--text-muted); font-size: 0.78rem;
             margin-top: 32px; padding: 16px; border-top: 1px solid var(--border);
@@ -389,7 +405,26 @@
                     <!-- Pipeline Este Mes -->
                     <div class="chart-container full-width" style="margin-bottom:20px">
                         <h3>🔽 Pipeline Este Mes</h3>
+                        <div id="forecast-this_month" class="forecast-summary" style="display:none"></div>
+                        <div id="forecast-table-this_month"></div>
                         <div id="pipeline-this_month"></div>
+                    </div>
+                    <!-- Conversión por cohorte -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📅 Conversión por Cohorte</h3>
+                        <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 8px 0">Contactos creados en cada mes que se convirtieron en ventas este mes</p>
+                        <div id="cohort-this_month"></div>
+                    </div>
+                    <!-- Por producto y entidad -->
+                    <div class="charts-row" style="margin-bottom:20px">
+                        <div class="chart-container">
+                            <h3>📦 Por Producto</h3>
+                            <div id="products-entity-this_month"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>🏢 Por Entidad</h3>
+                            <div id="entities-this_month"></div>
+                        </div>
                     </div>
                     <!-- Análisis Comparativo -->
                     <div class="chart-container full-width" style="margin-bottom:20px">
@@ -419,9 +454,11 @@
                     <!-- Pipeline Este Trimestre -->
                     <div class="chart-container full-width" style="margin-bottom:20px">
                         <h3>🔽 Pipeline Este Trimestre</h3>
+                        <div id="forecast-this_quarter" class="forecast-summary" style="display:none"></div>
+                        <div id="forecast-table-this_quarter"></div>
                         <div id="pipeline-this_quarter"></div>
                     </div>
-                                </div>
+                </div>
 
                 <!-- Este Año -->
                 <div class="tab-panel" id="panel-this_year">
@@ -443,6 +480,8 @@
                     </div>
                     <div class="chart-container full-width" style="margin-bottom:20px">
                         <h3>🔽 Pipeline Este Año</h3>
+                        <div id="forecast-this_year" class="forecast-summary" style="display:none"></div>
+                        <div id="forecast-table-this_year"></div>
                         <div id="pipeline-this_year"></div>
                     </div>
                 </div>
@@ -1083,6 +1122,181 @@ function renderFunnelFromPipeline(pipeline, periodKey) {
     funnelEl.innerHTML = html;
 }
 
+// ── Pipeline ponderado (forecast) ──
+function renderForecast(periodKey) {
+    var summaryEl = document.getElementById('forecast-' + periodKey);
+    var tableEl = document.getElementById('forecast-table-' + periodKey);
+    if (!summaryEl && !tableEl) return;
+    if (!currentData || !currentData.deals) return;
+
+    var openStagesProb = {
+        'Llamada Pendiente': 0.10,
+        'Análisis Financiero': 0.40,
+        'Asesoramiento': 0.60,
+        'Reasesoramiento': 0.60,
+        'Revisando Propuesta': 0.75,
+        'Aceptado/Falta Firma': 0.85
+    };
+
+    var openDeals = currentData.deals.filter(function(d) {
+        var stage = d.Stage || '';
+        return openStagesProb.hasOwnProperty(stage);
+    });
+
+    if (openDeals.length === 0) {
+        if (summaryEl) summaryEl.style.display = 'none';
+        if (tableEl) tableEl.innerHTML = '';
+        return;
+    }
+
+    var totalOpen = openDeals.length;
+    var expectedCloses = 0;
+    var expectedRevenue = 0;
+    var stageData = {};
+    Object.keys(openStagesProb).forEach(function(s) { stageData[s] = { deals: 0, totalAmount: 0, expectedCloses: 0, expectedRevenue: 0 }; });
+
+    openDeals.forEach(function(d) {
+        var stage = d.Stage;
+        var prob = openStagesProb[stage] || 0;
+        var amount = parseFloat(d.Amount) || 0;
+        stageData[stage].deals++;
+        stageData[stage].totalAmount += amount;
+        stageData[stage].expectedCloses += prob;
+        stageData[stage].expectedRevenue += amount * prob;
+        expectedCloses += prob;
+        expectedRevenue += amount * prob;
+    });
+
+    // Summary cards
+    if (summaryEl) {
+        summaryEl.style.display = 'flex';
+        summaryEl.innerHTML = '';
+        function _addCard(num, lbl, color) {
+            var c = document.createElement('div');
+            c.className = 'forecast-card';
+            c.innerHTML = '<div class="num" style="color:' + (color || 'var(--text)') + '">' + num + '</div><div class="lbl">' + lbl + '</div>';
+            summaryEl.appendChild(c);
+        }
+        _addCard(totalOpen, 'Oportunidades abiertas');
+        _addCard(expectedCloses.toFixed(1), 'Cierres esperados', 'var(--success)');
+        _addCard('€' + Math.round(expectedRevenue).toLocaleString('es-ES'), 'Ingreso esperado', 'var(--accent)');
+    }
+
+    // Stage table
+    if (tableEl) {
+        var html = '<p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 8px 0"><strong>' + totalOpen + '</strong> oportunidades abiertas — <strong>~' + expectedCloses.toFixed(1) + '</strong> cierres esperados (€' + Math.round(expectedRevenue).toLocaleString('es-ES') + ' estimados)</p>';
+        html += '<table class="forecast-table"><thead><tr><th>Fase</th><th class="n">Oportunidades</th><th class="n">Prob. cierre</th><th class="n">Cierres esperados</th><th class="n">€ Ingreso esperado</th></tr></thead><tbody>';
+        var stageOrder = ['Llamada Pendiente', 'Análisis Financiero', 'Asesoramiento', 'Reasesoramiento', 'Revisando Propuesta', 'Aceptado/Falta Firma'];
+        stageOrder.forEach(function(s) {
+            var sd = stageData[s];
+            if (!sd || sd.deals === 0) return;
+            html += '<tr><td><strong>' + s + '</strong></td><td class="n">' + sd.deals + '</td><td class="n">' + Math.round(openStagesProb[s] * 100) + '%</td><td class="n">' + sd.expectedCloses.toFixed(1) + '</td><td class="n">' + formatEUR(sd.expectedRevenue) + '</td></tr>';
+        });
+        html += '</tbody></table>';
+        html += '<div style="font-size:0.72rem;color:var(--text-muted);padding:4px 0">Cierres esperados = Σ (oportunidades × probabilidad de fase). Ingreso = Σ (importe × probabilidad).</div>';
+        tableEl.innerHTML = html;
+    }
+}
+
+// ── Conversión por cohorte (bar chart) ──
+function renderCohort() {
+    var el = document.getElementById('cohort-this_month');
+    if (!el || !currentData || !currentData.deals) { if (el) el.innerHTML = ''; return; }
+
+    var now = new Date();
+    var currentMonth = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+
+    var wonThisMonth = currentData.deals.filter(function(d) {
+        return (d.Stage === 'Cerrado Ganado') && d.Closing_Date && d.Closing_Date.substring(0, 7) === currentMonth;
+    });
+
+    if (wonThisMonth.length === 0) {
+        el.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:12px">No hay oportunidades ganadas este mes.</p>';
+        return;
+    }
+
+    var cohortByMonth = {};
+    var totalWon = wonThisMonth.length;
+    wonThisMonth.forEach(function(d) {
+        var created = d.Created_Time || '';
+        var month = created.substring(0, 7);
+        if (month) cohortByMonth[month] = (cohortByMonth[month] || 0) + 1;
+    });
+
+    var months = Object.keys(cohortByMonth).sort();
+    if (months.length === 0) {
+        el.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem">No se pudo determinar el mes de creación.</p>';
+        return;
+    }
+
+    var maxCount = Math.max.apply(null, months.map(function(m) { return cohortByMonth[m]; }));
+    var monthNames = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+    var html = '<p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 12px 0">En <strong>' + currentMonth + '</strong> se han cerrado <strong>' + totalWon + '</strong> oportunidades. ¿Cuándo se crearon esos contactos?</p>';
+    html += '<div style="display:flex;align-items:flex-end;gap:12px;padding:12px 0 8px;min-height:180px;flex-wrap:wrap">';
+    months.forEach(function(m) {
+        var count = cohortByMonth[m];
+        var pct = totalWon > 0 ? Math.round(count / totalWon * 100) : 0;
+        var barH = Math.max(24, maxCount > 0 ? Math.round(count / maxCount * 130) : 24);
+        var mn = parseInt(m.substring(5));
+        html += '<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:48px">';
+        html += '<div style="font-size:0.75rem;font-weight:700;color:var(--text)">' + count + '</div>';
+        html += '<div style="width:100%;max-width:48px;height:' + barH + 'px;background:var(--accent);border-radius:6px 6px 0 0;margin:4px 0;position:relative">';
+        html += '<span style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-size:0.65rem;color:var(--text-muted);white-space:nowrap">' + pct + '%</span>';
+        html += '</div>';
+        html += '<div style="font-size:0.68rem;color:var(--text-muted);text-align:center">' + (monthNames[mn] || m.substring(5)) + '\'' + m.substring(2,4) + '</div>';
+        html += '</div>';
+    });
+    html += '</div>';
+    html += '<div style="font-size:0.72rem;color:var(--text-muted);padding:4px 8px;background:#f8fafc;border-radius:4px">';
+    html += 'Basado en Created_Time del deal como proxy de la fecha de captación del lead. No se incluyen oportunidades sin fecha de creación.';
+    html += '</div>';
+    el.innerHTML = html;
+}
+
+// ── Producto / Entidad % breakdown ──
+function renderProductEntityBreakdown(periodKey) {
+    var prodEl = document.getElementById('products-entity-' + periodKey);
+    var entEl = document.getElementById('entities-' + periodKey);
+    if (!prodEl && !entEl) return;
+
+    var statKey = PERIOD_MAP[periodKey] || periodKey;
+    var stats = currentData.stats;
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
+    var productDetails = s.product_details || [];
+
+    if (productDetails.length === 0) {
+        if (prodEl) prodEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:8px">Sin datos en el periodo.</p>';
+        if (entEl) entEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:8px">Sin datos en el periodo.</p>';
+        return;
+    }
+
+    var byProduct = {}, byEntity = {};
+    productDetails.forEach(function(pd) {
+        var prod = pd.producto || pd.product || '(sin producto)';
+        var ent = pd.entidad || pd.entity || '(sin entidad)';
+        var n = pd.veces || pd.count || 0;
+        byProduct[prod] = (byProduct[prod] || 0) + n;
+        byEntity[ent] = (byEntity[ent] || 0) + n;
+    });
+
+    var totalProd = Object.values(byProduct).reduce(function(a, b) { return a + b; }, 0) || 1;
+    var totalEnt = Object.values(byEntity).reduce(function(a, b) { return a + b; }, 0) || 1;
+
+    function _table(data, total) {
+        var keys = Object.keys(data).sort(function(a, b) { return data[b] - data[a]; });
+        var t = '<table class="cmp-table"><thead><tr><th>Nombre</th><th class="n">Contratos</th><th class="n">%</th></tr></thead><tbody>';
+        keys.forEach(function(k) {
+            t += '<tr><td><strong>' + k + '</strong></td><td class="n">' + data[k] + '</td><td class="n">' + (data[k] / total * 100).toFixed(1) + '%</td></tr>';
+        });
+        t += '</tbody></table>';
+        return t;
+    }
+
+    if (prodEl) prodEl.innerHTML = _table(byProduct, totalProd);
+    if (entEl) entEl.innerHTML = _table(byEntity, totalEnt);
+}
+
 function refreshUI() {
     var stats = currentData.stats;
     document.getElementById('crm-timestamp').textContent = '🕐 ' + (currentData.timestamp || '') + ' (Global: ' + stats.all_time.contacts.total + ' contactos)';
@@ -1092,6 +1306,13 @@ function refreshUI() {
     renderPeriodTab('this_month', stats, (currentData.comparison && currentData.comparison.this_month ? currentData.comparison.this_month.stats : null), 'prev_month');
     renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
     renderPeriodTab('this_year', stats, (currentData.comparison && currentData.comparison.this_year ? currentData.comparison.this_year.stats : null), 'this_year');
+    renderForecast('this_month');
+    renderForecast('this_quarter');
+    renderForecast('this_year');
+    renderCohort();
+    renderProductEntityBreakdown('this_month');
+    renderProductEntityBreakdown('this_quarter');
+    renderProductEntityBreakdown('this_year');
     renderMayoAnalysis();
     renderThisMonthAnalysis();
     renderHistorico2026();
