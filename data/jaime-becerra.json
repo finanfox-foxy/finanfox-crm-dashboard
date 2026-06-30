@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-06-30T14:46:13Z",
+  "timestamp": "2026-06-30T15:13:44Z",
   "generated_at": "2026-06-30",
   "today": "2026-06-30",
   "yesterday": "2026-06-29",
@@ -22,11 +22,11 @@
         "total": 187,
         "by_stage": {
           "Llamada Pendiente": 9,
-          "Análisis Financiero": 9,
+          "Cerrado Perdido": 104,
+          "Análisis Financiero": 7,
           "Cerrado Ganado": 41,
-          "Asesoramiento": 3,
+          "Asesoramiento": 4,
           "Aceptado/Falta Firma": 9,
-          "Cerrado Perdido": 103,
           "Reasesoramiento": 6,
           "Revisando Propuesta": 7
         },
@@ -38,7 +38,7 @@
         "avg_deal_size": 4473.56,
         "closed_won": 41,
         "closed_won_value": 681855.0,
-        "closed_lost": 103,
+        "closed_lost": 104,
         "conversion_rate": 21.9
       }
     },
@@ -148,7 +148,7 @@
       "new_contacts": 34,
       "new_deals": 61,
       "won_deals": 10,
-      "lost_deals": 45,
+      "lost_deals": 46,
       "won_value": 85120.0,
       "total_aportacion_won": 85120.0,
       "product_breakdown": {
@@ -328,13 +328,13 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 9,
-        "Análisis Financiero": 7,
-        "Asesoramiento": 3,
+        "Análisis Financiero": 5,
+        "Asesoramiento": 4,
         "Reasesoramiento": 3,
         "Revisando Propuesta": 2,
         "Aceptado/Falta Firma": 7,
         "Cerrado Ganado": 10,
-        "Cerrado Perdido": 45
+        "Cerrado Perdido": 46
       },
       "pipeline_value": 169820.0,
       "win_rate": 16.4,
@@ -424,7 +424,7 @@
       "new_contacts": 36,
       "new_deals": 177,
       "won_deals": 41,
-      "lost_deals": 102,
+      "lost_deals": 103,
       "won_value": 681855.0,
       "total_aportacion_won": 681855.0,
       "product_breakdown": {
@@ -969,13 +969,13 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 9,
-        "Análisis Financiero": 9,
-        "Asesoramiento": 3,
+        "Análisis Financiero": 7,
+        "Asesoramiento": 4,
         "Reasesoramiento": 6,
         "Revisando Propuesta": 7,
         "Aceptado/Falta Firma": 9,
         "Cerrado Ganado": 41,
-        "Cerrado Perdido": 102
+        "Cerrado Perdido": 103
       },
       "pipeline_value": 836555.0,
       "win_rate": 23.2,
@@ -1067,7 +1067,7 @@
       "new_contacts": 36,
       "new_deals": 186,
       "won_deals": 41,
-      "lost_deals": 102,
+      "lost_deals": 103,
       "won_value": 681855.0,
       "total_aportacion_won": 681855.0,
       "product_breakdown": {
@@ -1612,13 +1612,13 @@
       ],
       "pipeline_stages": {
         "Llamada Pendiente": 9,
-        "Análisis Financiero": 9,
-        "Asesoramiento": 3,
+        "Análisis Financiero": 7,
+        "Asesoramiento": 4,
         "Reasesoramiento": 6,
         "Revisando Propuesta": 7,
         "Aceptado/Falta Firma": 9,
         "Cerrado Ganado": 41,
-        "Cerrado Perdido": 102
+        "Cerrado Perdido": 103
       },
       "pipeline_value": 836555.0,
       "win_rate": 22.0,
@@ -2421,23 +2421,23 @@
       "id": "862490000006630036",
       "Deal_Name": "Planificación de Angel Naranjo Gozalo",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Angel Naranjo Gozalo",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "Buscaba un asesor fiscal",
       "Fuente": "Bookings",
       "Created_Time": "2026-06-27T13:18:48+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-06-30",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 3,
+      "Sales_Cycle_Duration": 3,
       "_contact_id": "862490000006701004"
     },
     {
@@ -2513,8 +2513,8 @@
       "id": "862490000006562055",
       "Deal_Name": "Planificación de Norisy Orea",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Asesoramiento",
+      "Probability": 60,
       "Contact_Name": "Norisy Orea",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -6694,25 +6694,25 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 7,
-          "pct_of_total": 8.1,
-          "conversion_from_prev": 77.8,
-          "conversion_from_top": 77.8,
+          "count": 5,
+          "pct_of_total": 5.8,
+          "conversion_from_prev": 55.6,
+          "conversion_from_top": 55.6,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 3.5,
-          "conversion_from_prev": 42.9,
-          "conversion_from_top": 33.3,
+          "count": 4,
+          "pct_of_total": 4.7,
+          "conversion_from_prev": 80.0,
+          "conversion_from_top": 44.4,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 3,
           "pct_of_total": 3.5,
-          "conversion_from_prev": 100.0,
+          "conversion_from_prev": 75.0,
           "conversion_from_top": 33.3,
           "cmp_count": null
         },
@@ -6744,16 +6744,16 @@
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 45,
-          "pct_of_total": 52.3,
+          "count": 46,
+          "pct_of_total": 53.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 500.0,
+          "conversion_from_top": 511.1,
           "cmp_count": null
         }
       ],
-      "active_total": 31,
+      "active_total": 30,
       "won_total": 10,
-      "lost_total": 45,
+      "lost_total": 46,
       "total_pipeline": 86
     },
     "this_quarter": {
@@ -6778,18 +6778,18 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 9,
-          "pct_of_total": 4.8,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 100.0,
+          "count": 7,
+          "pct_of_total": 3.8,
+          "conversion_from_prev": 77.8,
+          "conversion_from_top": 77.8,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 1.6,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 33.3,
+          "count": 4,
+          "pct_of_total": 2.2,
+          "conversion_from_prev": 57.1,
+          "conversion_from_top": 44.4,
           "cmp_count": null
         },
         {
@@ -6828,16 +6828,16 @@
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 102,
-          "pct_of_total": 54.8,
+          "count": 103,
+          "pct_of_total": 55.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 1133.3,
+          "conversion_from_top": 1144.4,
           "cmp_count": null
         }
       ],
-      "active_total": 43,
+      "active_total": 42,
       "won_total": 41,
-      "lost_total": 102,
+      "lost_total": 103,
       "total_pipeline": 186
     },
     "this_year": {
@@ -6862,18 +6862,18 @@
         },
         {
           "stage": "Análisis Financiero",
-          "count": 9,
-          "pct_of_total": 4.8,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 100.0,
+          "count": 7,
+          "pct_of_total": 3.8,
+          "conversion_from_prev": 77.8,
+          "conversion_from_top": 77.8,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 1.6,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 33.3,
+          "count": 4,
+          "pct_of_total": 2.2,
+          "conversion_from_prev": 57.1,
+          "conversion_from_top": 44.4,
           "cmp_count": null
         },
         {
@@ -6912,16 +6912,16 @@
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 102,
-          "pct_of_total": 54.8,
+          "count": 103,
+          "pct_of_total": 55.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 1133.3,
+          "conversion_from_top": 1144.4,
           "cmp_count": 1
         }
       ],
-      "active_total": 43,
+      "active_total": 42,
       "won_total": 41,
-      "lost_total": 102,
+      "lost_total": 103,
       "total_pipeline": 186
     }
   }

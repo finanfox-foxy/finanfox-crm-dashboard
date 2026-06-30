@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-06-30T14:46:13Z",
+  "timestamp": "2026-06-30T15:13:44Z",
   "generated_at": "2026-06-30",
   "today": "2026-06-30",
   "yesterday": "2026-06-29",
@@ -21,9 +21,9 @@
       "deals": {
         "total": 271,
         "by_stage": {
-          "Llamada Pendiente": 13,
+          "Análisis Financiero": 17,
+          "Llamada Pendiente": 12,
           "Aceptado/Falta Firma": 10,
-          "Análisis Financiero": 16,
           "Reasesoramiento": 18,
           "Asesoramiento": 4,
           "Cerrado Ganado": 56,
@@ -442,8 +442,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 6,
-        "Análisis Financiero": 12,
+        "Llamada Pendiente": 5,
+        "Análisis Financiero": 13,
         "Asesoramiento": 4,
         "Reasesoramiento": 12,
         "Revisando Propuesta": 3,
@@ -1227,8 +1227,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 13,
-        "Análisis Financiero": 16,
+        "Llamada Pendiente": 12,
+        "Análisis Financiero": 17,
         "Asesoramiento": 4,
         "Reasesoramiento": 18,
         "Revisando Propuesta": 5,
@@ -2014,8 +2014,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 13,
-        "Análisis Financiero": 16,
+        "Llamada Pendiente": 12,
+        "Análisis Financiero": 17,
         "Asesoramiento": 4,
         "Reasesoramiento": 18,
         "Revisando Propuesta": 5,
@@ -2664,8 +2664,8 @@
       "id": "862490000006779004",
       "Deal_Name": "Planificación de Alberto Guerra Marroco",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "Alberto Guerra Marroco",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -9002,26 +9002,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 6,
-          "pct_of_total": 5.0,
+          "count": 5,
+          "pct_of_total": 4.1,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 12,
-          "pct_of_total": 9.9,
+          "count": 13,
+          "pct_of_total": 10.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 200.0,
+          "conversion_from_top": 260.0,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 4,
           "pct_of_total": 3.3,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 66.7,
+          "conversion_from_prev": 30.8,
+          "conversion_from_top": 80.0,
           "cmp_count": null
         },
         {
@@ -9029,7 +9029,7 @@
           "count": 12,
           "pct_of_total": 9.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 200.0,
+          "conversion_from_top": 240.0,
           "cmp_count": null
         },
         {
@@ -9037,7 +9037,7 @@
           "count": 3,
           "pct_of_total": 2.5,
           "conversion_from_prev": 25.0,
-          "conversion_from_top": 50.0,
+          "conversion_from_top": 60.0,
           "cmp_count": null
         },
         {
@@ -9045,7 +9045,7 @@
           "count": 8,
           "pct_of_total": 6.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 133.3,
+          "conversion_from_top": 160.0,
           "cmp_count": null
         }
       ],
@@ -9055,7 +9055,7 @@
           "count": 22,
           "pct_of_total": 18.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 366.7,
+          "conversion_from_top": 440.0,
           "cmp_count": null
         },
         {
@@ -9063,7 +9063,7 @@
           "count": 54,
           "pct_of_total": 44.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 900.0,
+          "conversion_from_top": 1080.0,
           "cmp_count": null
         }
       ],
@@ -9086,26 +9086,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 13,
-          "pct_of_total": 4.8,
+          "count": 12,
+          "pct_of_total": 4.5,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 16,
-          "pct_of_total": 5.9,
+          "count": 17,
+          "pct_of_total": 6.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 123.1,
+          "conversion_from_top": 141.7,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 4,
           "pct_of_total": 1.5,
-          "conversion_from_prev": 25.0,
-          "conversion_from_top": 30.8,
+          "conversion_from_prev": 23.5,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
@@ -9113,7 +9113,7 @@
           "count": 18,
           "pct_of_total": 6.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 138.5,
+          "conversion_from_top": 150.0,
           "cmp_count": null
         },
         {
@@ -9121,7 +9121,7 @@
           "count": 5,
           "pct_of_total": 1.9,
           "conversion_from_prev": 27.8,
-          "conversion_from_top": 38.5,
+          "conversion_from_top": 41.7,
           "cmp_count": null
         },
         {
@@ -9129,7 +9129,7 @@
           "count": 10,
           "pct_of_total": 3.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 76.9,
+          "conversion_from_top": 83.3,
           "cmp_count": null
         }
       ],
@@ -9139,7 +9139,7 @@
           "count": 56,
           "pct_of_total": 20.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 430.8,
+          "conversion_from_top": 466.7,
           "cmp_count": null
         },
         {
@@ -9147,7 +9147,7 @@
           "count": 147,
           "pct_of_total": 54.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 1130.8,
+          "conversion_from_top": 1225.0,
           "cmp_count": 2
         }
       ],
@@ -9170,26 +9170,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 13,
-          "pct_of_total": 4.8,
+          "count": 12,
+          "pct_of_total": 4.4,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 16,
-          "pct_of_total": 5.9,
+          "count": 17,
+          "pct_of_total": 6.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 123.1,
+          "conversion_from_top": 141.7,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 4,
           "pct_of_total": 1.5,
-          "conversion_from_prev": 25.0,
-          "conversion_from_top": 30.8,
+          "conversion_from_prev": 23.5,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
@@ -9197,7 +9197,7 @@
           "count": 18,
           "pct_of_total": 6.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 138.5,
+          "conversion_from_top": 150.0,
           "cmp_count": null
         },
         {
@@ -9205,7 +9205,7 @@
           "count": 5,
           "pct_of_total": 1.8,
           "conversion_from_prev": 27.8,
-          "conversion_from_top": 38.5,
+          "conversion_from_top": 41.7,
           "cmp_count": null
         },
         {
@@ -9213,7 +9213,7 @@
           "count": 10,
           "pct_of_total": 3.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 76.9,
+          "conversion_from_top": 83.3,
           "cmp_count": null
         }
       ],
@@ -9223,7 +9223,7 @@
           "count": 56,
           "pct_of_total": 20.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 430.8,
+          "conversion_from_top": 466.7,
           "cmp_count": null
         },
         {
@@ -9231,7 +9231,7 @@
           "count": 149,
           "pct_of_total": 55.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 1146.2,
+          "conversion_from_top": 1241.7,
           "cmp_count": null
         }
       ],
