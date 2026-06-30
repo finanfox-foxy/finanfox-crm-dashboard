@@ -458,6 +458,12 @@
                         <div id="forecast-table-this_quarter"></div>
                         <div id="pipeline-this_quarter"></div>
                     </div>
+                    <!-- Conversión por cohorte Este Trimestre -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📅 Conversión por Cohorte</h3>
+                        <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 8px 0">Contactos creados en cada mes que se convirtieron en ventas en este trimestre</p>
+                        <div id="cohort-this_quarter"></div>
+                    </div>
                 </div>
 
                 <!-- Este Año -->
@@ -483,6 +489,12 @@
                         <div id="forecast-this_year" class="forecast-summary" style="display:none"></div>
                         <div id="forecast-table-this_year"></div>
                         <div id="pipeline-this_year"></div>
+                    </div>
+                    <!-- Conversión por cohorte Este Año -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📅 Conversión por Cohorte</h3>
+                        <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 8px 0">Contactos creados en cada mes que se convirtieron en ventas en este año</p>
+                        <div id="cohort-this_year"></div>
                     </div>
                 </div>
 
@@ -1199,25 +1211,42 @@ function renderForecast(periodKey) {
 }
 
 // ── Conversión por cohorte (bar chart) ──
-function renderCohort() {
-    var el = document.getElementById('cohort-this_month');
+function renderCohort(periodKey) {
+    var el = document.getElementById('cohort-' + periodKey);
     if (!el || !currentData || !currentData.deals) { if (el) el.innerHTML = ''; return; }
 
     var now = new Date();
-    var currentMonth = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    var currentYear = now.getFullYear();
+    var currentMonthNum = now.getMonth() + 1; // 1-12
+    var currentMonth = currentYear + '-' + String(currentMonthNum).padStart(2, '0');
 
-    var wonThisMonth = currentData.deals.filter(function(d) {
-        return (d.Stage === 'Cerrado Ganado') && d.Closing_Date && d.Closing_Date.substring(0, 7) === currentMonth;
+    // Determine won deals filter based on periodKey
+    var wonDeals = currentData.deals.filter(function(d) {
+        if (d.Stage !== 'Cerrado Ganado') return false;
+        var closeDate = d.Closing_Date || '';
+        var closeMonth = closeDate.substring(0, 7);
+        if (periodKey === 'this_month') {
+            return closeMonth === currentMonth;
+        } else if (periodKey === 'this_quarter') {
+            // Q2: Apr-Jun
+            var m = parseInt(closeDate.substring(5, 7));
+            return closeDate.substring(0, 4) === String(currentYear) && m >= 4 && m <= 6;
+        } else if (periodKey === 'this_year') {
+            return closeDate.substring(0, 4) === String(currentYear);
+        }
+        return false;
     });
 
-    if (wonThisMonth.length === 0) {
-        el.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:12px">No hay oportunidades ganadas este mes.</p>';
+    var periodLabel = { 'this_month': 'este mes', 'this_quarter': 'este trimestre', 'this_year': 'este año' }[periodKey] || periodKey;
+
+    if (wonDeals.length === 0) {
+        el.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:12px">No hay oportunidades ganadas ' + periodLabel + '.</p>';
         return;
     }
 
     var cohortByMonth = {};
-    var totalWon = wonThisMonth.length;
-    wonThisMonth.forEach(function(d) {
+    var totalWon = wonDeals.length;
+    wonDeals.forEach(function(d) {
         var created = d.Created_Time || '';
         var month = created.substring(0, 7);
         if (month) cohortByMonth[month] = (cohortByMonth[month] || 0) + 1;
@@ -1232,19 +1261,18 @@ function renderCohort() {
     var maxCount = Math.max.apply(null, months.map(function(m) { return cohortByMonth[m]; }));
     var monthNames = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
-    var html = '<p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 12px 0">En <strong>' + currentMonth + '</strong> se han cerrado <strong>' + totalWon + '</strong> oportunidades. ¿Cuándo se crearon esos contactos?</p>';
-    html += '<div style="display:flex;align-items:flex-end;gap:12px;padding:12px 0 8px;min-height:180px;flex-wrap:wrap">';
+    var html = '<p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 12px 0">Se han cerrado <strong>' + totalWon + '</strong> oportunidades ' + periodLabel + '. Distribución por mes de creación del contacto:</p>';
+    html += '<div style="display:flex;align-items:flex-end;gap:10px;padding:8px 0;min-height:170px;flex-wrap:wrap">';
     months.forEach(function(m) {
         var count = cohortByMonth[m];
         var pct = totalWon > 0 ? Math.round(count / totalWon * 100) : 0;
-        var barH = Math.max(24, maxCount > 0 ? Math.round(count / maxCount * 130) : 24);
+        var barH = Math.max(28, maxCount > 0 ? Math.round(count / maxCount * 130) : 28);
         var mn = parseInt(m.substring(5));
-        html += '<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:48px">';
-        html += '<div style="font-size:0.75rem;font-weight:700;color:var(--text)">' + count + '</div>';
-        html += '<div style="width:100%;max-width:48px;height:' + barH + 'px;background:var(--accent);border-radius:6px 6px 0 0;margin:4px 0;position:relative">';
-        html += '<span style="position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-size:0.65rem;color:var(--text-muted);white-space:nowrap">' + pct + '%</span>';
-        html += '</div>';
-        html += '<div style="font-size:0.68rem;color:var(--text-muted);text-align:center">' + (monthNames[mn] || m.substring(5)) + '\'' + m.substring(2,4) + '</div>';
+        html += '<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:52px">';
+        html += '<div style="font-size:0.78rem;font-weight:700;color:var(--text);line-height:1.2">' + count + '</div>';
+        html += '<div style="font-size:0.65rem;color:var(--text-muted);font-weight:500;line-height:1;margin-bottom:2px">' + pct + '%</div>';
+        html += '<div style="width:100%;max-width:48px;height:' + barH + 'px;background:var(--accent);border-radius:6px 6px 0 0;margin:0"></div>';
+        html += '<div style="font-size:0.68rem;color:var(--text-muted);text-align:center;margin-top:3px;line-height:1.2">' + (monthNames[mn] || m.substring(5)) + ' ' + m.substring(0,4) + '</div>';
         html += '</div>';
     });
     html += '</div>';
@@ -1309,7 +1337,9 @@ function refreshUI() {
     renderForecast('this_month');
     renderForecast('this_quarter');
     renderForecast('this_year');
-    renderCohort();
+    renderCohort('this_month');
+    renderCohort('this_quarter');
+    renderCohort('this_year');
     renderProductEntityBreakdown('this_month');
     renderProductEntityBreakdown('this_quarter');
     renderProductEntityBreakdown('this_year');
