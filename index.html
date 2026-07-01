@@ -1758,13 +1758,11 @@ function renderMayoAnalysis() {
     var data = currentData;
     if (!data || !data.deals) { container.innerHTML = '<p class="loading">Datos no disponibles para análisis profundo.</p>'; return; }
 
-    var deals = data.deals;
     var stats = data.stats;
-    // Fix: 'Análisis Mayo' must show May data. In June, this_month = June, comparison = May
-    // Use comparison (May) as main month, compute April from deals
-    var monthStats = (data.comparison && data.comparison.this_month) ? data.comparison.this_month.stats : {};
+    // Compute April data from ALL deals for comparison
     var prevMonth = null;
-    var aprilDeals = deals.filter(function(d) { return d.Closing_Date && d.Closing_Date.startsWith('2026-04'); });
+    var allDeals = data.deals;
+    var aprilDeals = allDeals.filter(function(d) { return d.Closing_Date && d.Closing_Date.startsWith('2026-04'); });
     var aprilWon = aprilDeals.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
     var aprilLost = aprilDeals.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
     if (aprilDeals.length > 0) {
@@ -1774,6 +1772,15 @@ function renderMayoAnalysis() {
         lost_deals: aprilLost.length
       };
     }
+    // Filter deals to May 2026 only
+    var deals = allDeals.filter(function(d) { var cl = d.Closing_Date || ''; return cl.startsWith('2026-05'); });
+    // Compute product breakdown from May won deals (producto via inferProduct or Product field)
+    var productBreakdown = {};
+    var mayWonDeals = deals.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+    mayWonDeals.forEach(function(d) {
+        var p = d['Product'] || d['Producto'] || 'Otros';
+        productBreakdown[p] = (productBreakdown[p] || 0) + (parseFloat(d.Amount)||0);
+    });
 
     // ── Helper: format euros ──
     function fmt(v) {
@@ -1891,9 +1898,9 @@ function renderMayoAnalysis() {
     });
     var maxDay = Math.max.apply(null, Object.values(dayCount), 1);
 
-    // Count deals created in May only
-    var mayDeals = deals.filter(function(d) { return (d.Created_Time || '').startsWith('2026-05'); });
-    var totalNewDeals = monthStats.new_deals || mayDeals.length;
+    // Count deals created in May only (from all data, not just closed-in-May)
+    var mayCreatedAll = allDeals.filter(function(d) { return (d.Created_Time || '').startsWith('2026-05'); });
+    var totalNewDeals = mayCreatedAll.length;
     var avgPerAdvisor = totalNewDeals / 3;
     var dealsPerDay = (avgPerAdvisor / 20).toFixed(1);
 
@@ -1907,12 +1914,12 @@ function renderMayoAnalysis() {
     var prevValue = prevMonth ? (prevMonth.won_value || 0) : 0;
     var prevWon = prevMonth ? (prevMonth.won_deals || 0) : 0;
     var prevLost = prevMonth ? (prevMonth.lost_deals || 0) : 0;
-    var volumeChange = prevValue > 0 ? ((monthStats.won_value - prevValue) / prevValue * 100) : 0;
+    var volumeChange = prevValue > 0 ? ((wonVol - prevValue) / prevValue * 100) : 0;
     html += '<div class="crm-grid">';
-    html += '<div class="crm-card success"><div class="value">' + fmt(monthStats.won_value) + '</div><div class="label">Volumen Ganado Mayo</div><div class="sub">vs Abril ' + fmt(prevValue) + ' ' + badge(volumeChange) + '</div></div>';
-    html += '<div class="crm-card accent"><div class="value">' + (monthStats.won_deals||0) + '</div><div class="label">Deals Ganados</div><div class="sub">vs Abril ' + (prevWon||0) + ' ' + badge((monthStats.won_deals||0) > 0 && prevWon > 0 ? ((monthStats.won_deals||0)-prevWon)/prevWon*100 : 0) + '</div></div>';
-    html += '<div class="crm-card warning"><div class="value" style="color:var(--warning)">' + (monthStats.lost_deals||0) + '</div><div class="label">Deals Perdidos</div><div class="sub">vs Abril ' + (prevLost||0) + ' ' + badge((monthStats.lost_deals||0) > 0 && prevLost > 0 ? ((monthStats.lost_deals||0)-prevLost)/prevLost*100 : 0) + '</div></div>';
-    var avgTicket = (monthStats.won_deals||0) > 0 ? monthStats.won_value / monthStats.won_deals : 0;
+    html += '<div class="crm-card success"><div class="value">' + fmt(wonVol) + '</div><div class="label">Volumen Ganado Mayo</div><div class="sub">vs Abril ' + fmt(prevValue) + ' ' + badge(volumeChange) + '</div></div>';
+    html += '<div class="crm-card accent"><div class="value">' + won.length + '</div><div class="label">Deals Ganados</div><div class="sub">vs Abril ' + (prevWon||0) + ' ' + badge(won.length > 0 && prevWon > 0 ? ((won.length-prevWon)/prevWon*100) : 0) + '</div></div>';
+    html += '<div class="crm-card warning"><div class="value" style="color:var(--warning)">' + lost.length + '</div><div class="label">Deals Perdidos</div><div class="sub">vs Abril ' + (prevLost||0) + ' ' + badge(lost.length > 0 && prevLost > 0 ? ((lost.length-prevLost)/prevLost*100) : 0) + '</div></div>';
+    var avgTicket = won.length > 0 ? wonVol / won.length : 0;
     var avgPrevTicket = prevWon > 0 ? prevValue / prevWon : 0;
     html += '<div class="crm-card info"><div class="value">' + fmt(avgTicket) + '</div><div class="label">Ticket Medio</div><div class="sub">vs Abril ' + fmt(avgPrevTicket) + '</div></div>';
     html += '</div>';
@@ -2007,8 +2014,9 @@ function renderMayoAnalysis() {
     // === PRODUCT BREAKDOWN ===
     html += '<div class="charts-row">';
     html += '<div class="chart-container"><h3>📦 Productos — Volumen</h3>';
-    if (monthStats.product_breakdown) {
-        var prods = monthStats.product_breakdown;
+    // Product data — use Q2 aggregate (Apr-Jun) from comparison
+    var prods = data.comparison && data.comparison.this_quarter && data.comparison.this_quarter.stats ? data.comparison.this_quarter.stats.product_breakdown : null;
+    if (prods && Object.keys(prods).length > 0) {
         var prodKeys = Object.keys(prods).sort(function(a,b) { return prods[b] - prods[a]; });
         var totalProd = prodKeys.reduce(function(s,k) { return s + prods[k]; }, 0);
         html += '<div style="overflow-x:auto"><table class="compact-table">';
