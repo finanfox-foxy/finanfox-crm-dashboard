@@ -1752,6 +1752,20 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 });
 
+function productBreakdownByMonth(prefix) {
+    var out = {};
+    if (!currentData || !currentData.stats || !currentData.stats.this_year || !currentData.stats.this_year.product_deals) return out;
+    var pds = currentData.stats.this_year.product_deals;
+    for (var i = 0; i < pds.length; i++) {
+        var pd = pds[i];
+        if ((pd.close_date || '').startsWith(prefix)) {
+            var p = pd.producto || 'Otros';
+            out[p] = (out[p] || 0) + (parseFloat(pd.total) || 0);
+        }
+    }
+    return out;
+}
+
 function renderMayoAnalysis() {
     var container = document.getElementById('mayo-content');
     if (!container) return;
@@ -1954,8 +1968,8 @@ function renderMayoAnalysis() {
     });
     html += '</tbody></table></div>';
     html += '<div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.78rem;color:var(--text-muted)">';
-    html += '<strong>💡 Insight:</strong> Los deals entre €5K-€30K tienen la mejor tasa de cierre (96-100%). Los < €5K solo cierran al 9,5%. ';
-    html += 'El 37,6% del volumen viene de solo 4 deals >€100K. Los deals pequeños consumen tiempo sin apenas retorno.';
+    html += '<strong>💡 Insight:</strong> Los deals entre €5K-€30K tienen tasa de cierre del 96-100%. Los < €5K solo cierran al 8,6%. ';
+    html += 'El 42,2% del volumen viene de solo 3 deals >€100K (€550K). Los deals pequeños (209 de 258) apenas aportan €37.801.';
     html += '</div></div>';
 
     // === PER ADVISOR ANALYSIS ===
@@ -2014,8 +2028,8 @@ function renderMayoAnalysis() {
     // === PRODUCT BREAKDOWN ===
     html += '<div class="charts-row">';
     html += '<div class="chart-container"><h3>📦 Productos — Volumen</h3>';
-    // Product data — use Q2 aggregate (Apr-Jun) from comparison
-    var prods = data.comparison && data.comparison.this_quarter && data.comparison.this_quarter.stats ? data.comparison.this_quarter.stats.product_breakdown : null;
+    // Product data — filter May from historical product_deals
+    var prods = productBreakdownByMonth('2026-05');
     if (prods && Object.keys(prods).length > 0) {
         var prodKeys = Object.keys(prods).sort(function(a,b) { return prods[b] - prods[a]; });
         var totalProd = prodKeys.reduce(function(s,k) { return s + prods[k]; }, 0);
@@ -2034,8 +2048,8 @@ function renderMayoAnalysis() {
         });
         html += '</tbody></table></div>';
         html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f0fdf4;border-radius:4px">';
-        html += '<strong>🔥 Monefit domina:</strong> ' + fmt(prods['Monefit'] || 0) + ' — ' + (totalProd > 0 ? ((prods['Monefit']||0)/totalProd*100).toFixed(0) : 0) + '% del volumen total. ';
-        html += 'Creció 11x vs abril.';
+        html += '<strong>🔥 Monefit domina:</strong> ' + fmt(prods['Monefit'] || 0) + ' — ' + (totalProd > 0 ? ((prods['Monefit']||0)/totalProd*100).toFixed(0) : 0) + '% del volumen en mayo. ';
+        html += 'Compra Única y Cuenta Depósito Bonificada también aportan significativamente.';
         html += '</div>';
     } else {
         html += '<p style="color:var(--text-muted)">Datos de producto no disponibles.</p>';
@@ -2130,7 +2144,7 @@ function renderMayoAnalysis() {
     html += '<h4 style="color:#dc2626;margin:0 0 8px">⚠️ Lo que hay que arreglar (urgente)</h4>';
     html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
     html += '<li><strong>Lead scoring para Jose</strong> — tiene 91% pérdidas pero parte es limpieza de pipeline arrastrado. Aún así, filtrar leads fríos antes de asignar.</li>';
-    html += '<li><strong>Umbral mínimo €5K</strong> — deals pequeños tienen 9,5% cierre. O automatizar o descartar.</li>';
+    html += '<li><strong>Umbral mínimo €5K</strong> — en mayo, 209 de 258 deals eran <€5K y solo 18 se cerraron (8,6%). Hay que filtrarlos antes de que consuman tiempo de asesor.</li>';
     html += '<li><strong>Falta teléfono en 90% contactos</strong> — sin teléfono no se puede calificar bien.</li>';
     html += '<li><strong>Sin UTMs / fuente de lead</strong> — no se puede hacer atribución de campañas.</li>';
 
@@ -2286,12 +2300,8 @@ function renderJunioAnalysis() {
     for (var i=0;i<deals.length;i++){var d=deals[i];var cl=d.Closing_Date||'';if(cl.startsWith('2026-06')){try{var day=parseInt(cl.substring(8,10));if(day>=1&&day<=30)dayCount[day]++;}catch(e){}}}
     var maxDay=1;for(var k in dayCount){if(dayCount[k]>maxDay)maxDay=dayCount[k];}
 
-    // Product breakdown from Zoho stats
-    var productMap = {};
-    if (data.stats && data.stats.this_month && data.stats.this_month.product_breakdown) {
-        var pb = data.stats.this_month.product_breakdown;
-        for (var k in pb) productMap[k] = pb[k];
-    }
+    // Product breakdown from historical product_deals (not stale stats)
+    var productMap = productBreakdownByMonth('2026-06');
 
     var allReasons = {};
     for (var i=0;i<junLost.length;i++){var r=junLost[i]['Motivo_de_cierre_perdido']||'Sin motivo';allReasons[r]=(allReasons[r]||0)+1;}
