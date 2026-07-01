@@ -439,6 +439,9 @@ function switchTab(tab) {
 function formatEUR(v) {
     return '€' + Number(v).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 }
+function formatEuroCents(v) {
+    return '€' + Number(v).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
 
 function getBadgeClass(i) {
     var cls = ['badge-1','badge-2','badge-3','badge-4','badge-5','badge-6','badge-7','badge-8'];
@@ -754,8 +757,9 @@ function renderCommissionSectionForDeals(deals) {
             var cumBefore = 0;
             for (var k = 0; k < idx; k++) { cumBefore += dealsWithMeta[k].pct; }
             var remainingPct = Math.max(0, 1.0 - cumBefore);
-            var objectivePortion = remainingPct * item.total;
-            var commPortion = item.total - objectivePortion;
+            // Objective portion = remaining % of the PRODUCT MINIMUM (not the deal amount)
+            var objectiveAmount = remainingPct * item.min;
+            var commPortion = Math.max(0, item.total - objectiveAmount);
             item.commission = commPortion * item.rate;
             totalCommission += item.commission;
         } else { item.commission = 0; }
@@ -776,7 +780,7 @@ function renderCommissionSectionForDeals(deals) {
     if (displayPct > 10) { html += '<span style="color:#fff;font-size:0.75rem;font-weight:600">' + displayPct + '%</span>'; }
     html += '</div></div></div>';
     html += '<div class="crm-grid" style="margin-bottom:12px">';
-    html += '<div class="crm-card success"><div class="value">' + formatEUR(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
+    html += '<div class="crm-card success"><div class="value">' + formatEuroCents(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
     html += '</div>';
     html += '<table class="compact-table"><thead><tr><th>#</th><th>Cliente</th><th>Producto</th><th>Entidad</th><th>Fecha Cierre</th><th>Inversión</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
     var runningPct = 0;
@@ -795,7 +799,7 @@ function renderCommissionSectionForDeals(deals) {
         html += '<td style="font-size:0.72rem;color:var(--text-muted)">' + item.close_date + '</td>';
         html += '<td>' + formatEUR(item.total) + '</td>';
         html += '<td><div style="display:flex;align-items:center;gap:4px"><div style="height:12px;width:' + Math.min(pctBar, 100) + '%;background:' + (hasComm ? 'var(--success)' : 'var(--accent)') + ';border-radius:4px;max-width:60px;min-width:4px;transition:width 0.4s"></div><span style="font-size:0.7rem">' + pctBar + '%</span></div></td>';
-        html += '<td ' + (hasComm ? 'style="color:var(--success);font-weight:600"' : 'style="color:var(--text-muted)"') + '>' + (hasComm ? formatEUR(item.commission) : '0€') + '</td>';
+        html += '<td ' + (hasComm ? 'style="color:var(--success);font-weight:600"' : 'style="color:var(--text-muted)"') + '>' + (hasComm ? formatEuroCents(item.commission) : '0€') + '</td>';
         html += '<td style="font-size:0.72rem;' + (hasComm ? 'color:var(--success);' : 'color:var(--accent);') + 'font-weight:500">' + stateLabel + '</td>';
         html += '</tr>';
     });
@@ -810,7 +814,7 @@ function renderCommissionSectionForDeals(deals) {
     } else {
         html += '<strong>Resumen:</strong> Se ha acumulado un <strong>' + displayPct + '%</strong> del objetivo global. Aún no se ha alcanzado el 100%.';
     }
-    html += ' Comisión total estimada: <strong>' + formatEUR(totalCommission) + '</strong>.';
+    html += ' Comisión total estimada: <strong>' + formatEuroCents(totalCommission) + '</strong>.';
     html += '</div></div>';
     return html;
 }
@@ -895,8 +899,9 @@ function renderCommissionSection(stats) {
             var cumBefore = 0;
             for (var k = 0; k < idx; k++) { cumBefore += dealsWithMeta[k].pct; }
             var remainingPct = Math.max(0, 1.0 - cumBefore);
-            var objectivePortion = remainingPct * item.total;
-            var commPortion = item.total - objectivePortion;
+            // Objective portion = remaining % of the PRODUCT MINIMUM (not the deal amount)
+            var objectiveAmount = remainingPct * item.min;
+            var commPortion = Math.max(0, item.total - objectiveAmount);
             item.commission = commPortion * item.rate;
             totalCommission += item.commission;
         } else {
@@ -923,7 +928,7 @@ function renderCommissionSection(stats) {
     }
     html += '</div></div></div>';
     html += '<div class="crm-grid" style="margin-bottom:12px">';
-    html += '<div class="crm-card success"><div class="value">' + formatEUR(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
+    html += '<div class="crm-card success"><div class="value">' + formatEuroCents(totalCommission) + '</div><div class="label">💰 Comisión Estimada Mensual</div></div>';
     html += '</div>';
     
     html += '<table class="compact-table"><thead><tr><th>#</th><th>Cliente</th><th>Producto</th><th>Entidad</th><th>Fecha Cierre</th><th>Inversión</th><th>% Objetivo</th><th>Comisión</th><th>Estado</th></tr></thead><tbody>';
@@ -944,7 +949,7 @@ function renderCommissionSection(stats) {
         html += '<td style="font-size:0.72rem;color:var(--text-muted)">' + item.close_date + '</td>';
         html += '<td>' + formatEUR(item.total) + '</td>';
         html += '<td><div style="display:flex;align-items:center;gap:4px"><div style="height:12px;width:' + Math.min(pctBar, 100) + '%;background:' + (hasComm ? 'var(--success)' : 'var(--accent)') + ';border-radius:4px;max-width:60px;min-width:4px;transition:width 0.4s"></div><span style="font-size:0.7rem">' + pctBar + '%</span></div></td>';
-        html += '<td ' + (hasComm ? 'style="color:var(--success);font-weight:600"' : 'style="color:var(--text-muted)"') + '>' + (hasComm ? formatEUR(item.commission) : '0€') + '</td>';
+        html += '<td ' + (hasComm ? 'style="color:var(--success);font-weight:600"' : 'style="color:var(--text-muted)"') + '>' + (hasComm ? formatEuroCents(item.commission) : '0€') + '</td>';
         html += '<td style="font-size:0.72rem;' + (hasComm ? 'color:var(--success);' : 'color:var(--accent);') + 'font-weight:500">' + stateLabel + '</td>';
         html += '</tr>';
     });
@@ -965,7 +970,7 @@ function renderCommissionSection(stats) {
     } else {
         html += '<strong>Resumen:</strong> Se ha acumulado un <strong>' + displayPct + '%</strong> del objetivo global. Aún no se ha alcanzado el 100%.';
     }
-    html += ' Comisión total estimada: <strong>' + formatEUR(totalCommission) + '</strong>.';
+    html += ' Comisión total estimada: <strong>' + formatEuroCents(totalCommission) + '</strong>.';
     html += '</div></div>';
     return html;
 }
