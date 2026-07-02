@@ -231,11 +231,32 @@ STAGE_ORDER = [
     'Cerrado Perdido',
 ]
 
+# ── Close-date validation ──────────────────────────────
+def _close_date_with_source(d):
+    """
+    Return (date_str, source) where source is 'Closing_Date' or 'Created_Time_fallback'.
+    Also logs a warning when Closing_Date equals Created_Time's date (suspicious).
+    """
+    closing = d.get('Closing_Date')
+    created = d.get('Created_Time')
+    if closing:
+        # Compare only the date part
+        closing_date = closing[:10] if closing else ''
+        created_date = created[:10] if created else ''
+        if closing_date and created_date and closing_date == created_date:
+            deal_name = d.get('Deal_Name', 'desconocido')
+            deal_id = d.get('id', '?')
+            print(f"  ⚠️ Closing_Date igual a Created_Time en deal '{deal_name}' (id={deal_id}): {closing_date}")
+            print(f"     Puede que el campo no se haya rellenado manualmente al cerrar.")
+        return closing, 'Closing_Date'
+    return created, 'Created_Time_fallback'
+
 def _close_or_create(d):
     """
     Return Closing_Date if set, else Created_Time as fallback.
-    """
-    return d.get('Closing_Date') or d.get('Created_Time')
+    Also validates suspicious dates."""
+    date_str, _ = _close_date_with_source(d)
+    return date_str
 
 # ── Stats computation ────────────────────────────────────
 def compute_period_stats(contacts, deals, product_records, label, filter_fn):
@@ -329,7 +350,11 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                 pname = prod.get('name', 'Otro') if isinstance(prod, dict) else 'Otro'
                 entidad = pr.get('Entidades', '') or ''
                 amount = float(pr.get('Aportaci_n_Inicial', 0) or 0)
-                close_date = won_deal_date_map.get(parent_id) or (pr.get('Created_Time', '') or '')[:10]
+                close_date = won_deal_date_map.get(parent_id)
+                close_date_source = 'deal_Closing_Date'
+                if not close_date:
+                    close_date = (pr.get('Created_Time', '') or '')[:10]
+                    close_date_source = 'product_Created_Time_fallback'
                 fecha_inicio = (pr.get('Fecha_Inicio', '') or '')[:10]
                 obj_financiero = pr.get('Objetivo_Financiero', '') or ''
                 plazo = pr.get('Plazos', '') or ''
@@ -346,6 +371,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                     'entidad': entidad,
                     'total': amount,
                     'close_date': close_date,
+                    'close_date_source': close_date_source,
                     'cliente': cliente,
                     'parent_id': parent_id,
                     'fecha_inicio': fecha_inicio,
@@ -357,7 +383,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         for d in won_deals:
             deal_name = d.get('Deal_Name', '') or ''
             amount = float(d.get('Total_Aportaciones', 0) or 0)
-            close_date = (d.get('Closing_Date', '') or '')[:10]
+            close_date, close_date_source = _close_date_with_source(d)
+            close_date = close_date[:10] if close_date else ''
             cn = d.get('Contact_Name', {})
             cliente = cn.get('name', '') if isinstance(cn, dict) else (cn if isinstance(cn, str) else '')
             if ' - ' in deal_name:
@@ -382,6 +409,7 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                 'entidad': entidad,
                 'total': amount,
                 'close_date': close_date,
+                'close_date_source': close_date_source,
                 'cliente': cliente,
                 'parent_id': d.get('id'),
                 'fecha_inicio': '',
