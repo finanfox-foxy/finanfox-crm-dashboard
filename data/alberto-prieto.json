@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-07-02T08:15:01Z",
+  "timestamp": "2026-07-02T08:21:20Z",
   "generated_at": "2026-07-02",
   "today": "2026-07-02",
   "yesterday": "2026-07-01",
@@ -696,7 +696,7 @@
           "producto": "PIAS Estrategia 5",
           "entidad": "Aegon",
           "total": 1200.0,
-          "close_date": "2026-05-27",
+          "close_date": "2026-06-03",
           "cliente": "Saul Fuego Caveda",
           "parent_id": "862490000005111039",
           "fecha_inicio": "2026-06-03",
@@ -1060,7 +1060,7 @@
       },
       "pipeline_value": 778481.0,
       "win_rate": 21.2,
-      "avg_days_to_win": 9.9,
+      "avg_days_to_win": 10.1,
       "products_closed_count": 58,
       "conversion_clientes": {
         "total_contacts": 69,
@@ -1217,20 +1217,20 @@
         "label": "Mes Anterior",
         "new_contacts": 61,
         "new_deals": 92,
-        "won_deals": 22,
+        "won_deals": 23,
         "lost_deals": 54,
-        "won_value": 140425.0,
-        "total_aportacion_won": 140425.0,
+        "won_value": 141625.0,
+        "total_aportacion_won": 141625.0,
         "product_breakdown": {
           "Monefit": 77316.0,
           "Compra Única": 41659.0,
           "Cuenta Depósito Bonificada": 20250.0,
-          "PIAS Estrategia 5": 1200.0
+          "PIAS Estrategia 5": 2400.0
         },
         "product_count": {
           "Monefit": 13,
           "Compra Única": 7,
-          "PIAS Estrategia 5": 1,
+          "PIAS Estrategia 5": 2,
           "Cuenta Depósito Bonificada": 1
         },
         "product_details": [
@@ -1261,8 +1261,8 @@
           {
             "producto": "PIAS Estrategia 5",
             "entidad": "Aegon",
-            "veces": 1,
-            "total": 1200.0
+            "veces": 2,
+            "total": 2400.0
           }
         ],
         "product_deals": [
@@ -1507,20 +1507,31 @@
             "fecha_inicio": "2026-05-26",
             "objetivo_financiero": "Obtener rentabilidad",
             "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "PIAS Estrategia 5",
+            "entidad": "Aegon",
+            "total": 1200.0,
+            "close_date": "2026-06-03",
+            "cliente": "Saul Fuego Caveda",
+            "parent_id": "862490000005111039",
+            "fecha_inicio": "2026-06-03",
+            "objetivo_financiero": "Jubilación",
+            "plazo": "Largo Plazo (+10 años)"
           }
         ],
         "advisor_ranking_won": [
           {
             "name": "Alberto Prieto",
-            "won": 22,
-            "total_aportacion": 140425.0
+            "won": 23,
+            "total_aportacion": 141625.0
           }
         ],
         "advisor_ranking_aportacion": [
           {
             "name": "Alberto Prieto",
-            "won": 22,
-            "total_aportacion": 140425.0
+            "won": 23,
+            "total_aportacion": 141625.0
           }
         ],
         "pipeline_stages": {
@@ -1530,13 +1541,13 @@
           "Reasesoramiento": 13,
           "Revisando Propuesta": 4,
           "Aceptado/Falta Firma": 8,
-          "Cerrado Ganado": 22,
+          "Cerrado Ganado": 23,
           "Cerrado Perdido": 54
         },
-        "pipeline_value": 186625.0,
-        "win_rate": 23.9,
-        "avg_days_to_win": 15.5,
-        "products_closed_count": 22,
+        "pipeline_value": 187825.0,
+        "win_rate": 25.0,
+        "avg_days_to_win": 15.1,
+        "products_closed_count": 23,
         "conversion_clientes": {
           "total_contacts": 61,
           "converted_contacts": 3,
@@ -1962,7 +1973,7 @@
             "producto": "PIAS Estrategia 5",
             "entidad": "Aegon",
             "total": 1200.0,
-            "close_date": "2026-05-27",
+            "close_date": "2026-06-03",
             "cliente": "Saul Fuego Caveda",
             "parent_id": "862490000005111039",
             "fecha_inicio": "2026-06-03",
@@ -2326,7 +2337,7 @@
         },
         "pipeline_value": 766581.0,
         "win_rate": 21.2,
-        "avg_days_to_win": 10.3,
+        "avg_days_to_win": 10.5,
         "products_closed_count": 56,
         "conversion_clientes": {
           "total_contacts": 68,
@@ -4970,13 +4981,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-05-27T13:16:49+02:00",
-      "Closing_Date": "2026-05-27",
+      "Closing_Date": "2026-06-03",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": 0,
-      "Sales_Cycle_Duration": 0,
+      "Overall_Sales_Duration": 7,
+      "Sales_Cycle_Duration": 7,
       "_contact_id": "862490000003408091"
     },
     {
