@@ -257,8 +257,8 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
         and filter_fn(_close_or_create(d))
     ]
     won_deal_ids = {d['id'] for d in won_deals if d.get('id')}
-    # Build close-date lookup from won deals (use deal's Closing_Date, not product record's Created_Time)
-    won_deal_date_map = {d.get('id'): (d.get('Closing_Date', '') or '')[:10] for d in won_deals if d.get('id')}
+    # Build close-date lookup from won deals (use same _close_or_create logic as filter)
+    won_deal_date_map = {d.get('id'): _close_or_create(d)[:10] for d in won_deals if d.get('id')}
 
     # Lost deals: Cerrado Perdido with Closing_Date in period
     lost_deals = [
@@ -695,15 +695,10 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
                 prev_adv_month = prev_adv.get('stats', {}).get('this_month', {})
                 if prev_adv_month.get('won_deals', 0) > 0:
                     old_ts = prev_adv.get('generated_at', '')
-                    if old_ts:
-                        try:
-                            old_dt = datetime.strptime(old_ts, '%Y-%m-%d')
-                            age_days = (datetime.now() - old_dt).days
-                        except:
-                            age_days = 99
-                    else:
-                        age_days = 99
-                    if age_days < 35:
+                    old_month = old_ts[:7] if old_ts else ''
+                    # Only inherit if old data is from the SAME calendar month
+                    # (prevents leaking last month's deals into the new month's commission calc)
+                    if old_month == THIS_MONTH:
                         this_month_stats = prev_adv_month
             except (json.JSONDecodeError, KeyError):
                 pass
@@ -975,16 +970,9 @@ def main():
                 prev_month_data = prev_data.get('stats', {}).get('this_month', {})
                 if prev_month_data.get('won_deals', 0) > 0:
                     old_ts = prev_data.get('generated_at', '')
-                    # Solo mantener si los datos viejos tienen <35 días (no datos eternamente obsoletos)
-                    if old_ts:
-                        try:
-                            old_dt = datetime.strptime(old_ts, '%Y-%m-%d')
-                            age_days = (datetime.now() - old_dt).days
-                        except:
-                            age_days = 99
-                    else:
-                        age_days = 99
-                    if age_days < 35:
+                    old_month = old_ts[:7] if old_ts else ''
+                    # Solo mantener si es del mismo mes (evita filtrar datos del mes anterior en el nuevo)
+                    if old_month == THIS_MONTH:
                         print(f"\n  ⚠️ Transición de mes detectada: THIS_MONTH={THIS_MONTH} pero 0 deals ganados.")
                         print(f"     Manteniendo datos de {old_ts} (won_deals={prev_month_data['won_deals']}) para evitar ceros.")
                         print(f"     Los datos se actualizarán cuando se cierre el primer deal de {THIS_MONTH}.")
