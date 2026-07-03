@@ -1603,8 +1603,8 @@ function renderFinancialComparison() {
     var cmp = currentComparisonData;
     if (!cmp) { document.getElementById('comparison-summary').innerHTML = '<p style="color:var(--text-muted)">Datos de comparativa no disponibles.</p>'; return; }
 
-    var p25 = cmp.periods.jan_may_2025;
-    var p26 = cmp.periods.jan_may_2026;
+    var p25 = cmp.periods.jan_jun_2025;
+    var p26 = cmp.periods.jan_jun_2026;
     var var_ = cmp.variation;
     var marginEvo = cmp.margin_evolution;
     var catVar = cmp.category_variation;
@@ -1612,7 +1612,7 @@ function renderFinancialComparison() {
 
     // ── Summary comparison table ──
     function pctStr(v) { return v !== null ? (v >= 0 ? '+' : '') + v.toFixed(1) + '%' : 'N/A'; }
-    var summaryHtml = '<div style="overflow-x:auto"><table class="cmp-table"><thead><tr><th></th><th>Ene-May 2025</th><th>Ene-May 2026</th><th>Variación €</th><th>Variación %</th></tr></thead><tbody>';
+    var summaryHtml = '<div style="overflow-x:auto"><table class="cmp-table"><thead><tr><th></th><th>Ene-Jun 2025</th><th>Ene-Jun 2026</th><th>Variación €</th><th>Variación %</th></tr></thead><tbody>';
     summaryHtml += '<tr><td><strong>💰 Ingresos</strong></td><td>' + formatEUR(p25.totals.income) + '</td><td>' + formatEUR(p26.totals.income) + '</td><td style="color:' + (var_.income_abs >=0 ? 'var(--success)' : '#ef4444') + '">' + (var_.income_abs >=0 ? '+' : '') + formatEUR(var_.income_abs) + '</td><td>' + pctStr(var_.income_pct) + '</td></tr>';
     summaryHtml += '<tr><td><strong>📉 Gastos</strong></td><td>' + formatEUR(p25.totals.expenses) + '</td><td>' + formatEUR(p26.totals.expenses) + '</td><td style="color:' + (var_.expenses_abs >=0 ? '#ef4444' : 'var(--success)') + '">' + (var_.expenses_abs >=0 ? '+' : '') + formatEUR(var_.expenses_abs) + '</td><td>' + pctStr(var_.expenses_pct) + '</td></tr>';
     summaryHtml += '<tr><td><strong>📈 Margen</strong></td><td>' + formatEUR(p25.totals.margin) + '</td><td>' + formatEUR(p26.totals.margin) + '</td><td style="color:' + (var_.margin_abs >=0 ? 'var(--success)' : '#ef4444') + '">' + (var_.margin_abs >=0 ? '+' : '') + formatEUR(var_.margin_abs) + '</td><td>' + (p25.totals.margin === 0 ? 'NUEVO' : pctStr(var_.margin_pct)) + '</td></tr>';
@@ -1676,7 +1676,7 @@ function renderFinancialComparison() {
     var projHtml = '<h3>📊 Estimaciones Anuales</h3>';
     projHtml += '<div class="crm-grid" style="grid-template-columns:repeat(3,1fr)">';
     var e25 = estimates['2025_full'];
-    var e26 = estimates['2026_jan_may_projection'];
+    var e26 = estimates['2026_jan_jun_projection'];
     if (e25 && e26) {
         // Income
         var incVar = e26.annual_estimate.income - e25.annual_estimate.income;
