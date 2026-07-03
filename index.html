@@ -10,7 +10,9 @@
             --bg: #f8fafc;
             --surface: #ffffff;
             --surface-hover: #f1f5f9;
+            --bg-card: #ffffff;
             --border: #e2e8f0;
+            --border-color: #e2e8f0;
             --text: #1e293b;
             --text-muted: #64748b;
             --accent: #f97316;
@@ -1712,6 +1714,146 @@ function renderFinancialComparison() {
     }
     projHtml += '</div>';
     document.getElementById('comparison-projections').innerHTML = projHtml;
+
+    // ══════════════════════════════════════════════════════════════
+    // ── Análisis escrito de la evolución H1 2026 y proyección H2 ──
+    // ══════════════════════════════════════════════════════════════
+
+    var analysisHtml = '';
+
+    // Helper: compute per-month margin from raw data
+    function getMonthMargin(fd, m) {
+        var d = fd.months[m];
+        return d ? d.margin : 0;
+    }
+
+    // Compute H1 averages
+    var h1Income = p26.totals.income;
+    var h1Expenses = p26.totals.expenses;
+    var h1Margin = p26.totals.margin;
+    var h1AvgIncome = (h1Income / 6).toFixed(0);
+    var h1AvgExpenses = (h1Expenses / 6).toFixed(0);
+    var h1AvgMargin = (h1Margin / 6).toFixed(0);
+    var marginRate = (h1Margin / h1Income * 100).toFixed(1);
+
+    // Determine best/worst months from monthly_evolution
+    var evo = cmp.margin_evolution;
+    var bestMonth = evo.reduce(function(a,b){ return a.margin_2026 > b.margin_2026 ? a : b; });
+    var worstMonth = evo.reduce(function(a,b){ return a.margin_2026 < b.margin_2026 ? a : b; });
+
+    analysisHtml += '<div style="margin-top:32px;padding-top:24px;border-top:2px solid var(--border)">';
+    analysisHtml += '<h3>📝 Análisis de Evolución — H1 2026</h3>';
+
+    // ── Card 1: Resumen Ejecutivo ──
+    analysisHtml += '<div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:16px">';
+    analysisHtml += '<h4 style="margin-top:0;color:var(--primary)">🚀 Resumen Ejecutivo</h4>';
+    analysisHtml += '<p style="line-height:1.7;margin:0">';
+    analysisHtml += 'Finanfox cierra el <strong>primer semestre de 2026</strong> con unos resultados que no tienen nada que ver con el año pasado. ';
+    analysisHtml += 'Los ingresos crecen un <strong style="color:#22c55e">+47,1%</strong> hasta los <strong>' + formatEUR(h1Income) + '</strong>, ';
+    analysisHtml += 'mientras los gastos crecen solo un <strong>+27,8%</strong> (' + formatEUR(h1Expenses) + '). ';
+    analysisHtml += 'El resultado: un margen de <strong style="color:#2A9D8F">' + formatEUR(h1Margin) + '</strong> que duplica (+100,2%) el del mismo periodo de 2025. ';
+    analysisHtml += 'La mejora del margen sobre ingresos, de <strong>26,7% a ' + marginRate + '%</strong> (+' + marginDelta.toFixed(1) + ' pp), ';
+    analysisHtml += 'demuestra que la empresa está escalando con una estructura de costes cada vez más eficiente.';
+    analysisHtml += '</p></div>';
+
+    // ── Card 2: Motor de Ingresos ──
+    var incCats = p26.categories.income;
+    var incCats25 = p25.categories.income;
+    analysisHtml += '<div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:16px">';
+    analysisHtml += '<h4 style="margin-top:0;color:#22c55e">📈 Motor de Ingresos</h4>';
+    analysisHtml += '<p style="line-height:1.7;margin:0">';
+    analysisHtml += '<strong>Monefit</strong> sigue siendo el tractor principal: <strong>' + formatEUR(incCats['Monefit']) + '</strong> en H1 2026 ';
+    analysisHtml += '(+70,1% vs H1 2025), consolidándose como el producto estrella con una cuota del ~' + (incCats['Monefit']/h1Income*100).toFixed(0) + '% de los ingresos totales. ';
+    analysisHtml += 'El crecimiento es consistente mes a mes y no parece un pico puntual.';
+    analysisHtml += '<br><br>';
+    analysisHtml += '<strong>SilverGold</strong> ha explotado: <strong>' + formatEUR(incCats['SilverGold']) + '</strong> (+228,8%), ';
+    analysisHtml += 'aunque una parte importante de ese crecimiento corresponde a recuperaciones de capital que no afectan al P&L. ';
+    analysisHtml += 'Las comisiones reales de SilverGold en junio (8.391 €) son un mejor indicador del run-rate recurrente.';
+    analysisHtml += '<br><br>';
+    analysisHtml += '<strong>The Real Money</strong> aporta <strong>' + formatEUR(incCats['The Real Money']) + '</strong> (+51,8%), ';
+    analysisHtml += 'un crecimiento sólido aunque con cierta irregularidad mensual. ';
+    analysisHtml += '<strong>Sunday Marketplace</strong> ha caído un -92,4% (de ' + formatEUR(incCats25['Sunday Marketplace']) + ' a ' + formatEUR(incCats['Sunday Marketplace']) + '), ';
+    analysisHtml += 'lo que era esperable tras la pausa de la plataforma, pero que apenas impacta porque otros productos han compensado sobradamente.';
+    analysisHtml += '</p></div>';
+
+    // ── Card 3: Estructura de Gastos ──
+    var expCats = p26.categories.expenses;
+    var expCats25 = p25.categories.expenses;
+    analysisHtml += '<div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:16px">';
+    analysisHtml += '<h4 style="margin-top:0;color:#E76F51">📉 Estructura de Gastos</h4>';
+    analysisHtml += '<p style="line-height:1.7;margin:0">';
+    analysisHtml += '<strong>Marketing</strong> es la partida que más crece: <strong>' + formatEUR(expCats['Marketing']) + '</strong> (+126,7%), ';
+    analysisHtml += 'pasando del 21,1% al 30,8% de los ingresos. Es la contrapartida natural del crecimiento: ';
+    analysisHtml += 'para sostener la captación de Monefit y TRM, se está invirtiendo más en publicidad. ';
+    analysisHtml += 'El dato positivo es que el CAC está siendo rentable — el margen absoluto sigue creciendo.';
+    analysisHtml += '<br><br>';
+    analysisHtml += '<strong>Impuestos</strong> también suben un +118,2% (' + formatEUR(expCats['Impuestos']) + '), ';
+    analysisHtml += 'lo cual es coherente con el aumento de ingresos (más IVA repercutido, más IS/IRPF). ';
+    analysisHtml += 'Es un gasto directamente correlacionado con la facturación, no una fuga.';
+    analysisHtml += '<br><br>';
+    analysisHtml += '<strong>Nóminas</strong> bajan ligeramente (-4,9%) a <strong>' + formatEUR(expCats['Nóminas']) + '</strong>, ';
+    analysisHtml += 'lo que significa que el equipo actual está generando más ingresos sin necesidad de ampliar plantilla. ';
+    analysisHtml += 'La productividad por empleado ha mejorado significativamente.';
+    analysisHtml += '</p></div>';
+
+    // ── Card 4: Análisis Mensual ──
+    analysisHtml += '<div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:16px">';
+    analysisHtml += '<h4 style="margin-top:0;color:#3b82f6">📅 Análisis Mensual</h4>';
+    analysisHtml += '<p style="line-height:1.7;margin:0">';
+    analysisHtml += 'El mejor mes ha sido <strong>' + bestMonth.month_label + '</strong> con +' + formatEUR(bestMonth.margin_2026) + ' de margen. ';
+    analysisHtml += 'El más flojo, <strong>' + worstMonth.month_label + '</strong> con +' + formatEUR(worstMonth.margin_2026) + '. ';
+    analysisHtml += 'La media mensual de margen es de <strong>' + formatEUR(parseFloat(h1AvgMargin)) + '</strong>.';
+    analysisHtml += '<br><br>';
+    analysisHtml += 'Junio (16.615 €) es el segundo mes más débil, pero hay que ponerlo en contexto: ';
+    analysisHtml += 'el gasto de marketing incluye el adeudo completo de la tarjeta AmEx de mayo (16.249 €). ';
+    analysisHtml += 'Sin ese efecto puntual, el margen de junio se acerca a los 33.000 €, ';
+    analysisHtml += 'alineado con la media del semestre. Es un mes <strong>estacionalmente normal</strong> ';
+    analysisHtml += 'y no representa una tendencia de deterioro.';
+    analysisHtml += '</p></div>';
+
+    // ── Card 5: Proyección H2 2026 ──
+    analysisHtml += '<div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:20px;margin-bottom:16px">';
+    analysisHtml += '<h4 style="margin-top:0;color:#a855f7">🔮 Proyección H2 2026</h4>';
+    analysisHtml += '<p style="line-height:1.7;margin:0">';
+    analysisHtml += 'De cara al segundo semestre, hay varios factores que apuntan a una continuidad de la tendencia:';
+    analysisHtml += '</p>';
+    analysisHtml += '<ul style="line-height:1.8;padding-left:20px;margin:10px 0">';
+    analysisHtml += '<li><strong>Monefit</strong> muestra un crecimiento lineal sostenido (+80% en 12 meses). ';
+    analysisHtml += 'Si mantiene el ritmo, el H2 debería superar los 320.000 € en ingresos.</li>';
+    analysisHtml += '<li><strong>The Real Money</strong> tiene estacionalidad positiva en el segundo semestre ';
+    analysisHtml += '(en 2025, los meses fuertes fueron agosto-noviembre). Esperable que repunte.</li>';
+    analysisHtml += '<li><strong>SilverGold</strong> seguirá generando comisiones estables en el entorno de 8.000-10.000 €/mes, ';
+    analysisHtml += 'más recuperaciones de capital puntuales.</li>';
+    analysisHtml += '<li><strong>Marketing</strong>: el gasto actual (~30% de ingresos) está en el límite alto de lo razonable. ';
+    analysisHtml += 'Si se mantiene estable en torno a 30.000 €/mes, el margen debería seguir mejorando a medida que los ingresos crecen.</li>';
+    analysisHtml += '<li><strong>Riesgos</strong>: posible concentración excesiva en Monefit (>52% de ingresos). ';
+    analysisHtml += 'Una eventual ralentización de Monefit impactaría más que antes. ';
+    analysisHtml += 'También monitorizar que el marketing no se dispare sin control (junio fue 33.630 €, cerca del récord de enero).</li>';
+    analysisHtml += '</ul>';
+    analysisHtml += '<p style="line-height:1.7;margin:8px 0 0 0">';
+    analysisHtml += '<strong>Escenario base H2:</strong> ingresos entre <strong>550.000-600.000 €</strong>, gastos entre <strong>350.000-380.000 €</strong>, ';
+    analysisHtml += 'margen entre <strong>180.000-230.000 €</strong>. ';
+    analysisHtml += 'Esto situaría el <strong>año completo 2026 en un margen de 395.000-445.000 €</strong>, ';
+    analysisHtml += 'muy por encima de los 322.000 € de 2025. La empresa está en una fase de escalado real.';
+    analysisHtml += '</p></div>';
+
+    // ── Card 6: Conclusión ──
+    analysisHtml += '<div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:20px;background:linear-gradient(135deg, #2A9D8F10, #26465310)">';
+    analysisHtml += '<h4 style="margin-top:0;color:var(--primary)">🎯 Conclusión</h4>';
+    analysisHtml += '<p style="line-height:1.7;margin:0;font-size:0.95rem">';
+    analysisHtml += 'Finanfox está en su mejor momento. El crecimiento de ingresos (+47%) duplica el crecimiento de gastos (+28%), ';
+    analysisHtml += 'lo que demuestra que el modelo de negocio tiene <strong>apalancamiento operativo</strong>. ';
+    analysisHtml += 'El margen sobre ingresos ha pasado del 26,7% al ' + marginRate + '%, y la proyección apunta a que 2026 ';
+    analysisHtml += 'será holgadamente el mejor año de la historia de la compañía. ';
+    analysisHtml += 'La clave para el H2 será mantener la disciplina en marketing y seguir diversificando las fuentes de ingreso ';
+    analysisHtml += 'para no depender excesivamente de Monefit. ';
+    analysisHtml += 'Con los números actuales, el objetivo de <strong>400.000 €+ de margen anual</strong> es alcanzable ';
+    analysisHtml += 'si no hay sorpresas macro o regulatorias.';
+    analysisHtml += '</p></div>';
+
+    analysisHtml += '</div>';
+
+    document.getElementById('comparison-projections').insertAdjacentHTML('afterend', analysisHtml);
 }
 
 
