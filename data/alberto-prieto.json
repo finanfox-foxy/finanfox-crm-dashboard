@@ -1,6 +1,6 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-07-07T02:01:19Z",
+  "timestamp": "2026-07-07T08:23:55Z",
   "generated_at": "2026-07-07",
   "today": "2026-07-07",
   "yesterday": "2026-07-06",
@@ -11,19 +11,19 @@
   "stats": {
     "all_time": {
       "contacts": {
-        "total": 85,
-        "with_email": 85,
-        "with_phone": 85,
+        "total": 86,
+        "with_email": 86,
+        "with_phone": 86,
         "by_owner": {
-          "Alberto Prieto": 85
+          "Alberto Prieto": 86
         }
       },
       "deals": {
-        "total": 295,
+        "total": 296,
         "by_stage": {
-          "Llamada Pendiente": 17,
+          "Llamada Pendiente": 16,
           "Aceptado/Falta Firma": 6,
-          "Cerrado Perdido": 163,
+          "Cerrado Perdido": 165,
           "Análisis Financiero": 16,
           "Reasesoramiento": 17,
           "Cerrado Ganado": 65,
@@ -31,14 +31,14 @@
           "Revisando Propuesta": 6
         },
         "by_owner": {
-          "Alberto Prieto": 295
+          "Alberto Prieto": 296
         },
-        "pipeline_value": 779131.0,
-        "total_aportaciones": 779131.0,
-        "avg_deal_size": 2641.12,
+        "pipeline_value": 784131.0,
+        "total_aportaciones": 784131.0,
+        "avg_deal_size": 2649.09,
         "closed_won": 65,
         "closed_won_value": 747281.0,
-        "closed_lost": 163,
+        "closed_lost": 165,
         "conversion_rate": 22.0
       }
     },
@@ -57,12 +57,12 @@
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Llamada Pendiente": 2,
+        "Llamada Pendiente": 1,
         "Análisis Financiero": 1,
         "Aceptado/Falta Firma": 1,
         "Cerrado Perdido": 7
       },
-      "pipeline_value": 500.0,
+      "pipeline_value": 5500.0,
       "win_rate": 0.0,
       "avg_days_to_win": null,
       "products_closed_count": 0,
@@ -99,10 +99,10 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 17,
-      "new_deals": 24,
+      "new_contacts": 18,
+      "new_deals": 25,
       "won_deals": 9,
-      "lost_deals": 14,
+      "lost_deals": 16,
       "won_value": 46900.0,
       "total_aportacion_won": 46900.0,
       "product_breakdown": {
@@ -252,21 +252,21 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 7,
+        "Llamada Pendiente": 6,
         "Análisis Financiero": 8,
         "Reasesoramiento": 1,
         "Aceptado/Falta Firma": 1,
         "Cerrado Ganado": 9,
-        "Cerrado Perdido": 14
+        "Cerrado Perdido": 16
       },
-      "pipeline_value": 47400.0,
-      "win_rate": 37.5,
+      "pipeline_value": 52400.0,
+      "win_rate": 36.0,
       "avg_days_to_win": 11.0,
       "products_closed_count": 9,
       "conversion_clientes": {
-        "total_contacts": 17,
+        "total_contacts": 18,
         "converted_contacts": 3,
-        "ratio": 17.6,
+        "ratio": 16.7,
         "avg_days_to_convert": 18.7
       },
       "contacts_by_day": {
@@ -276,7 +276,7 @@
         "4": 5,
         "5": 3,
         "6": 4,
-        "7": 1
+        "7": 2
       },
       "deals_by_day": {
         "1": 3,
@@ -285,33 +285,33 @@
         "4": 6,
         "5": 4,
         "6": 5,
-        "7": 1
+        "7": 2
       },
       "lead_quality": {
-        "ni_total": 11,
-        "na_total": 2,
-        "ni_na_total": 13,
-        "ni_total_rate": 45.8,
-        "na_total_rate": 8.3,
-        "ni_na_total_rate": 54.2,
-        "ni_7d": 6,
-        "na_7d": 1,
-        "ni_na_7d": 7,
-        "ni_7d_rate": 25.0,
-        "na_7d_rate": 4.2,
-        "ni_na_7d_rate": 29.2,
-        "ni_pct": 84.6,
-        "na_pct": 15.4,
-        "ni_7d_pct": 85.7,
-        "na_7d_pct": 14.3
+        "ni_total": 12,
+        "na_total": 3,
+        "ni_na_total": 15,
+        "ni_total_rate": 48.0,
+        "na_total_rate": 12.0,
+        "ni_na_total_rate": 60.0,
+        "ni_7d": 7,
+        "na_7d": 2,
+        "ni_na_7d": 9,
+        "ni_7d_rate": 28.0,
+        "na_7d_rate": 8.0,
+        "ni_na_7d_rate": 36.0,
+        "ni_pct": 80.0,
+        "na_pct": 20.0,
+        "ni_7d_pct": 77.8,
+        "na_7d_pct": 22.2
       }
     },
     "this_quarter": {
       "label": "Este Trimestre",
-      "new_contacts": 17,
-      "new_deals": 24,
+      "new_contacts": 18,
+      "new_deals": 25,
       "won_deals": 9,
-      "lost_deals": 14,
+      "lost_deals": 16,
       "won_value": 46900.0,
       "total_aportacion_won": 46900.0,
       "product_breakdown": {
@@ -461,21 +461,21 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 7,
+        "Llamada Pendiente": 6,
         "Análisis Financiero": 8,
         "Reasesoramiento": 1,
         "Aceptado/Falta Firma": 1,
         "Cerrado Ganado": 9,
-        "Cerrado Perdido": 14
+        "Cerrado Perdido": 16
       },
-      "pipeline_value": 47400.0,
-      "win_rate": 37.5,
+      "pipeline_value": 52400.0,
+      "win_rate": 36.0,
       "avg_days_to_win": 11.0,
       "products_closed_count": 9,
       "conversion_clientes": {
-        "total_contacts": 17,
+        "total_contacts": 18,
         "converted_contacts": 3,
-        "ratio": 17.6,
+        "ratio": 16.7,
         "avg_days_to_convert": 18.7
       },
       "contacts_by_day": {
@@ -485,7 +485,7 @@
         "4": 5,
         "5": 3,
         "6": 4,
-        "7": 1
+        "7": 2
       },
       "deals_by_day": {
         "1": 3,
@@ -494,33 +494,33 @@
         "4": 6,
         "5": 4,
         "6": 5,
-        "7": 1
+        "7": 2
       },
       "lead_quality": {
-        "ni_total": 11,
-        "na_total": 2,
-        "ni_na_total": 13,
-        "ni_total_rate": 45.8,
-        "na_total_rate": 8.3,
-        "ni_na_total_rate": 54.2,
-        "ni_7d": 6,
-        "na_7d": 1,
-        "ni_na_7d": 7,
-        "ni_7d_rate": 25.0,
-        "na_7d_rate": 4.2,
-        "ni_na_7d_rate": 29.2,
-        "ni_pct": 84.6,
-        "na_pct": 15.4,
-        "ni_7d_pct": 85.7,
-        "na_7d_pct": 14.3
+        "ni_total": 12,
+        "na_total": 3,
+        "ni_na_total": 15,
+        "ni_total_rate": 48.0,
+        "na_total_rate": 12.0,
+        "ni_na_total_rate": 60.0,
+        "ni_7d": 7,
+        "na_7d": 2,
+        "ni_na_7d": 9,
+        "ni_7d_rate": 28.0,
+        "na_7d_rate": 8.0,
+        "ni_na_7d_rate": 36.0,
+        "ni_pct": 80.0,
+        "na_pct": 20.0,
+        "ni_7d_pct": 77.8,
+        "na_7d_pct": 22.2
       }
     },
     "this_year": {
       "label": "Este Año",
-      "new_contacts": 85,
-      "new_deals": 295,
+      "new_contacts": 86,
+      "new_deals": 296,
       "won_deals": 65,
-      "lost_deals": 163,
+      "lost_deals": 165,
       "won_value": 747281.0,
       "total_aportacion_won": 747281.0,
       "product_breakdown": {
@@ -1364,23 +1364,23 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 17,
+        "Llamada Pendiente": 16,
         "Análisis Financiero": 16,
         "Asesoramiento": 5,
         "Reasesoramiento": 17,
         "Revisando Propuesta": 6,
         "Aceptado/Falta Firma": 6,
         "Cerrado Ganado": 65,
-        "Cerrado Perdido": 163
+        "Cerrado Perdido": 165
       },
-      "pipeline_value": 779131.0,
+      "pipeline_value": 784131.0,
       "win_rate": 22.0,
       "avg_days_to_win": 10.5,
       "products_closed_count": 65,
       "conversion_clientes": {
-        "total_contacts": 85,
+        "total_contacts": 86,
         "converted_contacts": 5,
-        "ratio": 5.9,
+        "ratio": 5.8,
         "avg_days_to_convert": 13.8
       },
       "contacts_by_day": {
@@ -1390,7 +1390,7 @@
         "4": 7,
         "5": 3,
         "6": 7,
-        "7": 2,
+        "7": 3,
         "8": 1,
         "9": 4,
         "10": 2,
@@ -1423,7 +1423,7 @@
         "4": 15,
         "5": 11,
         "6": 16,
-        "7": 21,
+        "7": 22,
         "8": 15,
         "9": 9,
         "10": 4,
@@ -1450,22 +1450,22 @@
         "31": 6
       },
       "lead_quality": {
-        "ni_total": 104,
-        "na_total": 41,
-        "ni_na_total": 145,
-        "ni_total_rate": 35.3,
-        "na_total_rate": 13.9,
-        "ni_na_total_rate": 49.2,
-        "ni_7d": 52,
-        "na_7d": 34,
-        "ni_na_7d": 86,
-        "ni_7d_rate": 17.6,
-        "na_7d_rate": 11.5,
-        "ni_na_7d_rate": 29.2,
-        "ni_pct": 71.7,
-        "na_pct": 28.3,
-        "ni_7d_pct": 60.5,
-        "na_7d_pct": 39.5
+        "ni_total": 105,
+        "na_total": 42,
+        "ni_na_total": 147,
+        "ni_total_rate": 35.5,
+        "na_total_rate": 14.2,
+        "ni_na_total_rate": 49.7,
+        "ni_7d": 53,
+        "na_7d": 35,
+        "ni_na_7d": 88,
+        "ni_7d_rate": 17.9,
+        "na_7d_rate": 11.8,
+        "ni_na_7d_rate": 29.7,
+        "ni_pct": 71.4,
+        "na_pct": 28.6,
+        "ni_7d_pct": 60.2,
+        "na_7d_pct": 39.8
       }
     }
   },
@@ -1488,7 +1488,6 @@
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
-          "Llamada Pendiente": 1,
           "Análisis Financiero": 3
         },
         "pipeline_value": 0.0,
@@ -2880,6 +2879,29 @@
   },
   "deals": [
     {
+      "id": "862490000007227006",
+      "Deal_Name": "Planificación de Marisa Aldeguer",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Marisa Aldeguer",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-07-07T07:08:15+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000007242001"
+    },
+    {
       "id": "862490000007199031",
       "Deal_Name": "Planificación de José Antonio Ferrás Escalona",
       "Amount": null,
@@ -2928,13 +2950,13 @@
     {
       "id": "862490000007178129",
       "Deal_Name": "Miguel Ibañez Domingo - Monefit",
-      "Amount": 500,
+      "Amount": 5500,
       "Stage": "Aceptado/Falta Firma",
       "Probability": 85,
       "Contact_Name": "Miguel Ibañez Domingo",
       "Owner": "Alberto Prieto",
       "Type": "Nuevo Cliente",
-      "Total_Aportaciones": 500,
+      "Total_Aportaciones": 5500,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
@@ -3044,46 +3066,46 @@
       "id": "862490000007140177",
       "Deal_Name": "Planificación de Yolanda Escolano",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Yolanda Escolano",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-07-06T17:31:04+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-07-07",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 1,
+      "Sales_Cycle_Duration": 1,
       "_contact_id": "862490000007117039"
     },
     {
       "id": "862490000007140077",
       "Deal_Name": "Planificación de Cristobalina León López",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Cristobalina León López",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No apareció",
       "Fuente": "Bookings",
       "Created_Time": "2026-07-05T07:59:10+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-07-07",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 2,
+      "Sales_Cycle_Duration": 2,
       "_contact_id": "862490000007114012"
     },
     {
@@ -9689,8 +9711,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 2,
-          "pct_of_total": 18.2,
+          "count": 1,
+          "pct_of_total": 10.0,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -9698,9 +9720,9 @@
         {
           "stage": "Análisis Financiero",
           "count": 1,
-          "pct_of_total": 9.1,
-          "conversion_from_prev": 50.0,
-          "conversion_from_top": 50.0,
+          "pct_of_total": 10.0,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
@@ -9730,9 +9752,9 @@
         {
           "stage": "Aceptado/Falta Firma",
           "count": 1,
-          "pct_of_total": 9.1,
+          "pct_of_total": 10.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 50.0,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         }
       ],
@@ -9748,16 +9770,16 @@
         {
           "stage": "Cerrado Perdido",
           "count": 7,
-          "pct_of_total": 63.6,
+          "pct_of_total": 70.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 350.0,
+          "conversion_from_top": 700.0,
           "cmp_count": null
         }
       ],
-      "active_total": 4,
+      "active_total": 3,
       "won_total": 0,
       "lost_total": 7,
-      "total_pipeline": 11
+      "total_pipeline": 10
     },
     "this_month": {
       "stage_order": [
@@ -9773,8 +9795,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 7,
-          "pct_of_total": 17.5,
+          "count": 6,
+          "pct_of_total": 14.6,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -9782,9 +9804,9 @@
         {
           "stage": "Análisis Financiero",
           "count": 8,
-          "pct_of_total": 20.0,
+          "pct_of_total": 19.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 114.3,
+          "conversion_from_top": 133.3,
           "cmp_count": null
         },
         {
@@ -9798,9 +9820,9 @@
         {
           "stage": "Reasesoramiento",
           "count": 1,
-          "pct_of_total": 2.5,
+          "pct_of_total": 2.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 14.3,
+          "conversion_from_top": 16.7,
           "cmp_count": null
         },
         {
@@ -9814,9 +9836,9 @@
         {
           "stage": "Aceptado/Falta Firma",
           "count": 1,
-          "pct_of_total": 2.5,
+          "pct_of_total": 2.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 14.3,
+          "conversion_from_top": 16.7,
           "cmp_count": null
         }
       ],
@@ -9824,24 +9846,24 @@
         {
           "stage": "Cerrado Ganado",
           "count": 9,
-          "pct_of_total": 22.5,
+          "pct_of_total": 22.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 128.6,
+          "conversion_from_top": 150.0,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 14,
-          "pct_of_total": 35.0,
+          "count": 16,
+          "pct_of_total": 39.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 200.0,
+          "conversion_from_top": 266.7,
           "cmp_count": null
         }
       ],
-      "active_total": 17,
+      "active_total": 16,
       "won_total": 9,
-      "lost_total": 14,
-      "total_pipeline": 40
+      "lost_total": 16,
+      "total_pipeline": 41
     },
     "this_quarter": {
       "stage_order": [
@@ -9857,8 +9879,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 7,
-          "pct_of_total": 17.5,
+          "count": 6,
+          "pct_of_total": 14.6,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": 10
@@ -9866,9 +9888,9 @@
         {
           "stage": "Análisis Financiero",
           "count": 8,
-          "pct_of_total": 20.0,
+          "pct_of_total": 19.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 114.3,
+          "conversion_from_top": 133.3,
           "cmp_count": 8
         },
         {
@@ -9882,9 +9904,9 @@
         {
           "stage": "Reasesoramiento",
           "count": 1,
-          "pct_of_total": 2.5,
+          "pct_of_total": 2.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 14.3,
+          "conversion_from_top": 16.7,
           "cmp_count": 16
         },
         {
@@ -9898,9 +9920,9 @@
         {
           "stage": "Aceptado/Falta Firma",
           "count": 1,
-          "pct_of_total": 2.5,
+          "pct_of_total": 2.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 14.3,
+          "conversion_from_top": 16.7,
           "cmp_count": 5
         }
       ],
@@ -9908,24 +9930,24 @@
         {
           "stage": "Cerrado Ganado",
           "count": 9,
-          "pct_of_total": 22.5,
+          "pct_of_total": 22.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 128.6,
+          "conversion_from_top": 150.0,
           "cmp_count": 56
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 14,
-          "pct_of_total": 35.0,
+          "count": 16,
+          "pct_of_total": 39.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 200.0,
+          "conversion_from_top": 266.7,
           "cmp_count": 147
         }
       ],
-      "active_total": 17,
+      "active_total": 16,
       "won_total": 9,
-      "lost_total": 14,
-      "total_pipeline": 40
+      "lost_total": 16,
+      "total_pipeline": 41
     },
     "this_year": {
       "stage_order": [
@@ -9941,8 +9963,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 17,
-          "pct_of_total": 5.8,
+          "count": 16,
+          "pct_of_total": 5.4,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -9951,8 +9973,8 @@
           "stage": "Análisis Financiero",
           "count": 16,
           "pct_of_total": 5.4,
-          "conversion_from_prev": 94.1,
-          "conversion_from_top": 94.1,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
@@ -9960,15 +9982,15 @@
           "count": 5,
           "pct_of_total": 1.7,
           "conversion_from_prev": 31.2,
-          "conversion_from_top": 29.4,
+          "conversion_from_top": 31.2,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 17,
-          "pct_of_total": 5.8,
+          "pct_of_total": 5.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
+          "conversion_from_top": 106.2,
           "cmp_count": null
         },
         {
@@ -9976,7 +9998,7 @@
           "count": 6,
           "pct_of_total": 2.0,
           "conversion_from_prev": 35.3,
-          "conversion_from_top": 35.3,
+          "conversion_from_top": 37.5,
           "cmp_count": null
         },
         {
@@ -9984,7 +10006,7 @@
           "count": 6,
           "pct_of_total": 2.0,
           "conversion_from_prev": 100.0,
-          "conversion_from_top": 35.3,
+          "conversion_from_top": 37.5,
           "cmp_count": null
         }
       ],
@@ -9994,22 +10016,22 @@
           "count": 65,
           "pct_of_total": 22.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 382.4,
+          "conversion_from_top": 406.2,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 163,
-          "pct_of_total": 55.3,
+          "count": 165,
+          "pct_of_total": 55.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 958.8,
+          "conversion_from_top": 1031.2,
           "cmp_count": null
         }
       ],
-      "active_total": 67,
+      "active_total": 66,
       "won_total": 65,
-      "lost_total": 163,
-      "total_pipeline": 295
+      "lost_total": 165,
+      "total_pipeline": 296
     }
   }
 }
