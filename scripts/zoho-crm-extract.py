@@ -715,13 +715,20 @@ def generate_advisor_data(advisor_name, contacts_all, deals_all, pf_records_all)
     this_month_stats = compute_period_stats(advisor_contacts, advisor_deals, advisor_pf, "Este Mes", in_this_month)
 
     # ── Same guard: evitar sobreescribir this_month con ceros en transición de mes ──
+    # Also inherits when prev file has product_deals (even if won_deals=0)
+    # This protects against Zoho API non-determinism where Closing_Date can change
+    # between API calls, causing product_deals to disappear and break commission calc
     if this_month_stats['won_deals'] == 0 and this_month_stats['won_value'] == 0.0:
         adv_file = DATA_DIR / f'{advisor_name.lower().replace(" ", "-")}.json'
         if adv_file.exists():
             try:
                 prev_adv = json.loads(adv_file.read_text())
                 prev_adv_month = prev_adv.get('stats', {}).get('this_month', {})
-                if prev_adv_month.get('won_deals', 0) > 0:
+                prev_has_data = (
+                    prev_adv_month.get('won_deals', 0) > 0 or
+                    len(prev_adv_month.get('product_deals', [])) > 0
+                )
+                if prev_has_data:
                     old_ts = prev_adv.get('generated_at', '')
                     old_month = old_ts[:7] if old_ts else ''
                     # Only inherit if old data is from the SAME calendar month
@@ -1164,6 +1171,10 @@ def main():
         adv_file = DATA_DIR / f'{slug}.json'
         try:
             adv_data = generate_advisor_data(advisor, contacts, deals, pf_records)
+            # Backup previous file before overwriting (protects against Zoho API non-determinism)
+            if adv_file.exists():
+                bak_file = DATA_DIR / f'{slug}.bak.json'
+                bak_file.write_text(adv_file.read_text())
             adv_file.write_text(json.dumps(adv_data, indent=2, ensure_ascii=False))
             all_s = adv_data['stats']
             print(f"   {advisor}: {all_s['all_time']['deals']['total']} ofertas, {all_s['all_time']['contacts']['total']} contactos → {adv_file.name}")
