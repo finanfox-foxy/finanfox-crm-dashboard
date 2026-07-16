@@ -68,6 +68,7 @@ def api_get(module, params=None):
 def fetch_all(module, params_extra=None):
     all_records = []
     page = 1
+    total = 0
     p = {'per_page': 200, 'page': page}
     if params_extra:
         p.update(params_extra)
@@ -78,9 +79,11 @@ def fetch_all(module, params_extra=None):
         if not records:
             break
         all_records.extend(records)
+        total += len(records)
         page += 1
-        if page > 50:
-            break
+        if page % 100 == 0:
+            print(f"    ...{total} registros obtenidos de {module} (página {page})")
+    print(f"    -> {len(all_records)} registros de {module} en {page-1} páginas")
     return all_records
 
 
