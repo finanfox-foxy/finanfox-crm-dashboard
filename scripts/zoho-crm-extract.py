@@ -79,7 +79,7 @@ def fetch_all(module, params_extra=None):
             break
         all_records.extend(records)
         page += 1
-        if page > 20:
+        if page > 50:
             break
     return all_records
 
@@ -378,8 +378,57 @@ def compute_period_stats(contacts, deals, product_records, label, filter_fn):
                     'objetivo_financiero': obj_financiero,
                     'plazo': plazo
                 })
+        # Fallback: for won deals that have NO linked PF records (e.g. migrated from Odoo),
+        # extract product info from deal name (format: "ClientName - ProductName")
+        # Solo deals que YA se procesaron en el primer loop (winning PF records en won_deal_ids)
+        pf_parent_ids = set()
+        for pr in product_records:
+            parent = pr.get('Parent_Id', {})
+            parent_id = parent.get('id') if isinstance(parent, dict) else None
+            if parent_id and parent_id in won_deal_ids:
+                pf_parent_ids.add(parent_id)
+        for d in won_deals:
+            did = d.get('id')
+            if did and did in pf_parent_ids:
+                continue  # already handled above via PF record
+            deal_name = d.get('Deal_Name', '') or ''
+            amount = float(d.get('Total_Aportaciones', 0) or 0)
+            close_date, close_date_source = _close_date_with_source(d)
+            close_date = close_date[:10] if close_date else ''
+            cn = d.get('Contact_Name', {})
+            cliente = cn.get('name', '') if isinstance(cn, dict) else (cn if isinstance(cn, str) else '')
+            if ' - ' in deal_name:
+                parts = deal_name.split(' - ')
+                pname = parts[-1].strip()
+                if not cliente:
+                    cliente = parts[0].strip()
+            else:
+                pname = 'Planificación'
+            if not pname:
+                pname = 'Otro'
+            entidad = ''
+            key = (pname, entidad)
+            if key not in product_details:
+                product_details[key] = {'producto': pname, 'entidad': entidad, 'veces': 0, 'total': 0.0}
+            product_details[key]['veces'] += 1
+            product_details[key]['total'] += amount
+            product_breakdown[pname] = product_breakdown.get(pname, 0) + amount
+            product_count[pname] = product_count.get(pname, 0) + 1
+            product_deals.append({
+                'producto': pname,
+                'entidad': entidad,
+                'total': amount,
+                'close_date': close_date,
+                'close_date_source': close_date_source,
+                'cliente': cliente,
+                'parent_id': did,
+                'fecha_inicio': '',
+                'objetivo_financiero': '',
+                'plazo': ''
+            })
     else:
-        # Fallback: extract product info from won deal names (format: "ClientName - ProductName")
+        # Fallback (no PF records at all): extract product info from won deal names
+        # (format: "ClientName - ProductName")
         for d in won_deals:
             deal_name = d.get('Deal_Name', '') or ''
             amount = float(d.get('Total_Aportaciones', 0) or 0)
