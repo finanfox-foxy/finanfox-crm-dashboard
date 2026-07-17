@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-07-16T15:28:30Z",
-  "generated_at": "2026-07-16",
-  "today": "2026-07-16",
-  "yesterday": "2026-07-15",
+  "timestamp": "2026-07-17T07:18:27Z",
+  "generated_at": "2026-07-17",
+  "today": "2026-07-17",
+  "yesterday": "2026-07-16",
   "this_month": "2026-07",
   "this_quarter_start": "2026-07-01",
   "this_quarter_end": "2026-09-30",
@@ -19,10 +19,10 @@
         }
       },
       "deals": {
-        "total": 2644,
+        "total": 2643,
         "by_stage": {
           "Cerrado Perdido": 1962,
-          "Cerrado Ganado": 639,
+          "Cerrado Ganado": 638,
           "Llamada Pendiente": 13,
           "Aceptado/Falta Firma": 10,
           "Asesoramiento": 4,
@@ -31,21 +31,21 @@
           "Revisando Propuesta": 6
         },
         "by_owner": {
-          "Jaime Becerra": 2644
+          "Jaime Becerra": 2643
         },
-        "pipeline_value": 18603996.57,
-        "total_aportaciones": 16459497.0,
-        "avg_deal_size": 7036.31,
-        "closed_won": 639,
-        "closed_won_value": 10135730.06,
+        "pipeline_value": 18528996.57,
+        "total_aportaciones": 16384497.0,
+        "avg_deal_size": 7010.59,
+        "closed_won": 638,
+        "closed_won_value": 10060730.06,
         "closed_lost": 1962,
-        "conversion_rate": 24.2
+        "conversion_rate": 24.1
       }
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 2433,
-      "new_deals": 2433,
+      "new_contacts": 0,
+      "new_deals": 0,
       "won_deals": 0,
       "lost_deals": 0,
       "won_value": 0,
@@ -58,7 +58,7 @@
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {},
       "pipeline_value": 0.0,
-      "win_rate": 0.0,
+      "win_rate": null,
       "avg_days_to_win": null,
       "products_closed_count": 0,
       "conversion_clientes": {
@@ -67,12 +67,8 @@
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {
-        "15": 2433
-      },
-      "deals_by_day": {
-        "15": 2433
-      },
+      "contacts_by_day": {},
+      "deals_by_day": {},
       "lead_quality": {
         "ni_total": 0,
         "na_total": 0,
@@ -95,7 +91,7 @@
     "this_month": {
       "label": "Este Mes",
       "new_contacts": 14,
-      "new_deals": 2457,
+      "new_deals": 2456,
       "won_deals": 5,
       "lost_deals": 18,
       "won_value": 46424.0,
@@ -251,7 +247,7 @@
         "9": 1,
         "10": 5,
         "11": 2,
-        "15": 2433
+        "15": 2432
       },
       "lead_quality": {
         "ni_total": 11,
@@ -275,7 +271,7 @@
     "this_quarter": {
       "label": "Este Trimestre",
       "new_contacts": 14,
-      "new_deals": 2457,
+      "new_deals": 2456,
       "won_deals": 5,
       "lost_deals": 18,
       "won_value": 46424.0,
@@ -431,7 +427,7 @@
         "9": 1,
         "10": 5,
         "11": 2,
-        "15": 2433
+        "15": 2432
       },
       "lead_quality": {
         "ni_total": 11,
@@ -455,7 +451,7 @@
     "this_year": {
       "label": "Este Año",
       "new_contacts": 1860,
-      "new_deals": 2643,
+      "new_deals": 2642,
       "won_deals": 107,
       "lost_deals": 250,
       "won_value": 1735623.92,
@@ -1921,7 +1917,7 @@
         "12": 9,
         "13": 11,
         "14": 7,
-        "15": 2438,
+        "15": 2437,
         "16": 4,
         "17": 5,
         "18": 7,
@@ -1961,12 +1957,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-07-14",
+      "previous": "2026-07-15",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 0,
-        "new_deals": 0,
+        "new_contacts": 2432,
+        "new_deals": 2432,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -1979,7 +1975,7 @@
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {},
         "pipeline_value": 0.0,
-        "win_rate": null,
+        "win_rate": 0.0,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
@@ -1988,8 +1984,12 @@
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {},
-        "deals_by_day": {},
+        "contacts_by_day": {
+          "15": 2432
+        },
+        "deals_by_day": {
+          "15": 2432
+        },
         "lead_quality": {
           "ni_total": 0,
           "na_total": 0,
@@ -31582,29 +31582,6 @@
       "Overall_Sales_Duration": 0,
       "Sales_Cycle_Duration": 0,
       "_contact_id": "862490000005161916"
-    },
-    {
-      "id": "862490000007661143",
-      "Deal_Name": "Jose Manuel Molina Romero - NWT y SilverGold",
-      "Amount": 75000,
-      "Stage": "Cerrado Ganado",
-      "Probability": 100,
-      "Contact_Name": "Jose Manuel Molina Romero",
-      "Owner": "Jaime Becerra",
-      "Type": null,
-      "Total_Aportaciones": 75000,
-      "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
-      "Fuente": null,
-      "Created_Time": "2026-07-15T03:17:46+02:00",
-      "Closing_Date": "2024-01-09",
-      "Tag": [
-        "Odoo"
-      ],
-      "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": 0,
-      "Sales_Cycle_Duration": 0,
-      "_contact_id": "862490000005161827"
     },
     {
       "id": "862490000007661143",
