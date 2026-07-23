@@ -1,9 +1,9 @@
 {
   "advisor_name": "Alberto Prieto",
-  "timestamp": "2026-07-21T07:35:13Z",
-  "generated_at": "2026-07-21",
-  "today": "2026-07-21",
-  "yesterday": "2026-07-20",
+  "timestamp": "2026-07-22T07:36:48Z",
+  "generated_at": "2026-07-22",
+  "today": "2026-07-22",
+  "yesterday": "2026-07-21",
   "this_month": "2026-07",
   "this_quarter_start": "2026-07-01",
   "this_quarter_end": "2026-09-30",
@@ -11,64 +11,107 @@
   "stats": {
     "all_time": {
       "contacts": {
-        "total": 3647,
-        "with_email": 3635,
-        "with_phone": 3627,
+        "total": 3649,
+        "with_email": 3637,
+        "with_phone": 3629,
         "by_owner": {
-          "Alberto Prieto": 3647
+          "Alberto Prieto": 3649
         }
       },
       "deals": {
-        "total": 4753,
+        "total": 4755,
         "by_stage": {
-          "Llamada Pendiente": 16,
+          "Llamada Pendiente": 18,
           "Análisis Financiero": 14,
-          "Cerrado Ganado": 1338,
+          "Cerrado Ganado": 1339,
           "Cerrado Perdido": 3353,
-          "Aceptado/Falta Firma": 11,
+          "Aceptado/Falta Firma": 10,
           "Reasesoramiento": 13,
           "Revisando Propuesta": 6,
           "Asesoramiento": 2
         },
         "by_owner": {
-          "Alberto Prieto": 4753
+          "Alberto Prieto": 4755
         },
         "pipeline_value": 18181159.34,
         "total_aportaciones": 16144107.0,
-        "avg_deal_size": 3825.2,
-        "closed_won": 1338,
-        "closed_won_value": 15376577.91,
+        "avg_deal_size": 3823.59,
+        "closed_won": 1339,
+        "closed_won_value": 15426577.91,
         "closed_lost": 3353,
         "conversion_rate": 28.2
       }
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 0,
-      "new_deals": 0,
-      "won_deals": 0,
+      "new_contacts": 1,
+      "new_deals": 1,
+      "won_deals": 1,
       "lost_deals": 0,
-      "won_value": 0,
-      "total_aportacion_won": 0,
-      "product_breakdown": {},
-      "product_count": {},
-      "product_details": [],
-      "product_deals": [],
-      "advisor_ranking_won": [],
-      "advisor_ranking_aportacion": [],
-      "pipeline_stages": {},
-      "pipeline_value": 0.0,
-      "win_rate": null,
-      "avg_days_to_win": null,
-      "products_closed_count": 0,
-      "conversion_clientes": {
-        "total_contacts": 0,
-        "converted_contacts": 0,
-        "ratio": 0.0,
-        "avg_days_to_convert": 0
+      "won_value": 50000.0,
+      "total_aportacion_won": 50000.0,
+      "product_breakdown": {
+        "Cuenta Depósito Bonificada": 50000.0
       },
-      "contacts_by_day": {},
-      "deals_by_day": {},
+      "product_count": {
+        "Cuenta Depósito Bonificada": 1
+      },
+      "product_details": [
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 1,
+          "total": 50000.0
+        }
+      ],
+      "product_deals": [
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 50000.0,
+          "close_date": "2026-07-21",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Antonio Martín",
+          "parent_id": "862490000007461301",
+          "fecha_inicio": "2026-07-13",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        }
+      ],
+      "advisor_ranking_won": [
+        {
+          "name": "Alberto Prieto",
+          "won": 1,
+          "total_aportacion": 50000.0
+        }
+      ],
+      "advisor_ranking_aportacion": [
+        {
+          "name": "Alberto Prieto",
+          "won": 1,
+          "total_aportacion": 50000.0
+        }
+      ],
+      "pipeline_stages": {
+        "Llamada Pendiente": 1,
+        "Cerrado Ganado": 1
+      },
+      "pipeline_value": 50000.0,
+      "win_rate": 100.0,
+      "avg_days_to_win": 8.0,
+      "products_closed_count": 1,
+      "conversion_clientes": {
+        "total_contacts": 1,
+        "converted_contacts": 1,
+        "ratio": 100.0,
+        "avg_days_to_convert": 36.0
+      },
+      "contacts_by_day": {
+        "21": 1
+      },
+      "deals_by_day": {
+        "21": 1
+      },
       "lead_quality": {
         "ni_total": 0,
         "na_total": 0,
@@ -90,23 +133,23 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 44,
-      "new_deals": 4482,
-      "won_deals": 24,
+      "new_contacts": 46,
+      "new_deals": 4484,
+      "won_deals": 25,
       "lost_deals": 50,
-      "won_value": 2094329.0,
-      "total_aportacion_won": 2094329.0,
+      "won_value": 2144329.0,
+      "total_aportacion_won": 2144329.0,
       "product_breakdown": {
         "Monefit": 2019050.0,
+        "Cuenta Depósito Bonificada": 70250.0,
         "Compra Única": 50229.0,
-        "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 4800.0
       },
       "product_count": {
         "Monefit": 11,
         "Compra Única": 9,
         "PIAS Estrategia 5": 3,
-        "Cuenta Depósito Bonificada": 1
+        "Cuenta Depósito Bonificada": 2
       },
       "product_details": [
         {
@@ -116,16 +159,16 @@
           "total": 2019050.0
         },
         {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 2,
+          "total": 70250.0
+        },
+        {
           "producto": "Compra Única",
           "entidad": "SilverGold",
           "veces": 9,
           "total": 50229.0
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "veces": 1,
-          "total": 20250.0
         },
         {
           "producto": "PIAS Estrategia 5",
@@ -227,6 +270,18 @@
           "close_date_source": "deal_Closing_Date",
           "cliente": "Félix Arriero Perantón",
           "parent_id": "862490000007461366",
+          "fecha_inicio": "2026-07-13",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 50000.0,
+          "close_date": "2026-07-21",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Antonio Martín",
+          "parent_id": "862490000007461301",
           "fecha_inicio": "2026-07-13",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -427,35 +482,35 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 24,
-          "total_aportacion": 2094329.0
+          "won": 25,
+          "total_aportacion": 2144329.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 24,
-          "total_aportacion": 2094329.0
+          "won": 25,
+          "total_aportacion": 2144329.0
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 7,
+        "Llamada Pendiente": 9,
         "Análisis Financiero": 7,
         "Reasesoramiento": 5,
         "Revisando Propuesta": 1,
-        "Aceptado/Falta Firma": 6,
-        "Cerrado Ganado": 24,
+        "Aceptado/Falta Firma": 5,
+        "Cerrado Ganado": 25,
         "Cerrado Perdido": 50
       },
       "pipeline_value": 2174329.0,
-      "win_rate": 0.5,
+      "win_rate": 0.6,
       "avg_days_to_win": 7.6,
-      "products_closed_count": 24,
+      "products_closed_count": 25,
       "conversion_clientes": {
-        "total_contacts": 44,
-        "converted_contacts": 15,
-        "ratio": 34.1,
-        "avg_days_to_convert": 31.0
+        "total_contacts": 46,
+        "converted_contacts": 16,
+        "ratio": 34.8,
+        "avg_days_to_convert": 31.3
       },
       "contacts_by_day": {
         "1": 1,
@@ -473,7 +528,9 @@
         "13": 6,
         "14": 2,
         "18": 1,
-        "19": 1
+        "19": 1,
+        "21": 1,
+        "22": 1
       },
       "deals_by_day": {
         "1": 3,
@@ -493,7 +550,9 @@
         "15": 4416,
         "16": 1,
         "18": 1,
-        "19": 1
+        "19": 1,
+        "21": 1,
+        "22": 1
       },
       "lead_quality": {
         "ni_total": 36,
@@ -516,23 +575,23 @@
     },
     "this_quarter": {
       "label": "Este Trimestre",
-      "new_contacts": 44,
-      "new_deals": 4482,
-      "won_deals": 24,
+      "new_contacts": 46,
+      "new_deals": 4484,
+      "won_deals": 25,
       "lost_deals": 50,
-      "won_value": 2094329.0,
-      "total_aportacion_won": 2094329.0,
+      "won_value": 2144329.0,
+      "total_aportacion_won": 2144329.0,
       "product_breakdown": {
         "Monefit": 2019050.0,
+        "Cuenta Depósito Bonificada": 70250.0,
         "Compra Única": 50229.0,
-        "Cuenta Depósito Bonificada": 20250.0,
         "PIAS Estrategia 5": 4800.0
       },
       "product_count": {
         "Monefit": 11,
         "Compra Única": 9,
         "PIAS Estrategia 5": 3,
-        "Cuenta Depósito Bonificada": 1
+        "Cuenta Depósito Bonificada": 2
       },
       "product_details": [
         {
@@ -542,16 +601,16 @@
           "total": 2019050.0
         },
         {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 2,
+          "total": 70250.0
+        },
+        {
           "producto": "Compra Única",
           "entidad": "SilverGold",
           "veces": 9,
           "total": 50229.0
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "veces": 1,
-          "total": 20250.0
         },
         {
           "producto": "PIAS Estrategia 5",
@@ -653,6 +712,18 @@
           "close_date_source": "deal_Closing_Date",
           "cliente": "Félix Arriero Perantón",
           "parent_id": "862490000007461366",
+          "fecha_inicio": "2026-07-13",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 50000.0,
+          "close_date": "2026-07-21",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Antonio Martín",
+          "parent_id": "862490000007461301",
           "fecha_inicio": "2026-07-13",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -853,35 +924,35 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 24,
-          "total_aportacion": 2094329.0
+          "won": 25,
+          "total_aportacion": 2144329.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 24,
-          "total_aportacion": 2094329.0
+          "won": 25,
+          "total_aportacion": 2144329.0
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 7,
+        "Llamada Pendiente": 9,
         "Análisis Financiero": 7,
         "Reasesoramiento": 5,
         "Revisando Propuesta": 1,
-        "Aceptado/Falta Firma": 6,
-        "Cerrado Ganado": 24,
+        "Aceptado/Falta Firma": 5,
+        "Cerrado Ganado": 25,
         "Cerrado Perdido": 50
       },
       "pipeline_value": 2174329.0,
-      "win_rate": 0.5,
+      "win_rate": 0.6,
       "avg_days_to_win": 7.6,
-      "products_closed_count": 24,
+      "products_closed_count": 25,
       "conversion_clientes": {
-        "total_contacts": 44,
-        "converted_contacts": 15,
-        "ratio": 34.1,
-        "avg_days_to_convert": 31.0
+        "total_contacts": 46,
+        "converted_contacts": 16,
+        "ratio": 34.8,
+        "avg_days_to_convert": 31.3
       },
       "contacts_by_day": {
         "1": 1,
@@ -899,7 +970,9 @@
         "13": 6,
         "14": 2,
         "18": 1,
-        "19": 1
+        "19": 1,
+        "21": 1,
+        "22": 1
       },
       "deals_by_day": {
         "1": 3,
@@ -919,7 +992,9 @@
         "15": 4416,
         "16": 1,
         "18": 1,
-        "19": 1
+        "19": 1,
+        "21": 1,
+        "22": 1
       },
       "lead_quality": {
         "ni_total": 36,
@@ -942,16 +1017,16 @@
     },
     "this_year": {
       "label": "Este Año",
-      "new_contacts": 3647,
-      "new_deals": 4753,
-      "won_deals": 171,
+      "new_contacts": 3649,
+      "new_deals": 4755,
+      "won_deals": 172,
       "lost_deals": 417,
-      "won_value": 3664007.0,
-      "total_aportacion_won": 3659007.0,
+      "won_value": 3714007.0,
+      "total_aportacion_won": 3709007.0,
       "product_breakdown": {
         "Monefit": 2980804.0,
         "Compra Única": 512353.0,
-        "Cuenta Depósito Bonificada": 131350.0,
+        "Cuenta Depósito Bonificada": 181350.0,
         "PIAS Estrategia 5": 22200.0,
         "Gold Opportunity": 10000.0,
         "APEX PIAS Estrategia 5": 2000.0,
@@ -963,7 +1038,7 @@
         "Monefit": 83,
         "Compra Única": 62,
         "PIAS Estrategia 5": 13,
-        "Cuenta Depósito Bonificada": 6,
+        "Cuenta Depósito Bonificada": 7,
         "Compra Periódica": 2,
         "Gold Opportunity": 2,
         "APEX PIAS Estrategia 5": 1,
@@ -986,8 +1061,8 @@
         {
           "producto": "Cuenta Depósito Bonificada",
           "entidad": "The Real Money",
-          "veces": 6,
-          "total": 131350.0
+          "veces": 7,
+          "total": 181350.0
         },
         {
           "producto": "PIAS Estrategia 5",
@@ -2192,6 +2267,18 @@
           "plazo": "Corto Plazo (1-3 años)"
         },
         {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 50000.0,
+          "close_date": "2026-07-21",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Antonio Martín",
+          "parent_id": "862490000007461301",
+          "fecha_inicio": "2026-07-13",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
           "producto": "PIAS Estrategia 5",
           "entidad": "Aegon",
           "total": 2400.0,
@@ -3095,36 +3182,36 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 171,
-          "total_aportacion": 3659007.0
+          "won": 172,
+          "total_aportacion": 3709007.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 171,
-          "total_aportacion": 3659007.0
+          "won": 172,
+          "total_aportacion": 3709007.0
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 16,
+        "Llamada Pendiente": 18,
         "Análisis Financiero": 14,
         "Asesoramiento": 2,
         "Reasesoramiento": 13,
         "Revisando Propuesta": 6,
-        "Aceptado/Falta Firma": 11,
-        "Cerrado Ganado": 171,
+        "Aceptado/Falta Firma": 10,
+        "Cerrado Ganado": 172,
         "Cerrado Perdido": 417
       },
       "pipeline_value": 3984457.0,
       "win_rate": 3.6,
-      "avg_days_to_win": -74.8,
-      "products_closed_count": 171,
+      "avg_days_to_win": -74.3,
+      "products_closed_count": 172,
       "conversion_clientes": {
-        "total_contacts": 3647,
-        "converted_contacts": 100,
-        "ratio": 2.7,
-        "avg_days_to_convert": -47.3
+        "total_contacts": 3649,
+        "converted_contacts": 101,
+        "ratio": 2.8,
+        "avg_days_to_convert": -46.5
       },
       "contacts_by_day": {
         "1": 11,
@@ -3147,8 +3234,8 @@
         "18": 11,
         "19": 9,
         "20": 9,
-        "21": 15,
-        "22": 7,
+        "21": 16,
+        "22": 8,
         "23": 7,
         "24": 3,
         "25": 6,
@@ -3180,8 +3267,8 @@
         "18": 15,
         "19": 9,
         "20": 6,
-        "21": 16,
-        "22": 6,
+        "21": 17,
+        "22": 7,
         "23": 8,
         "24": 6,
         "25": 8,
@@ -3214,12 +3301,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-07-19",
+      "previous": "2026-07-20",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 1,
-        "new_deals": 1,
+        "new_contacts": 0,
+        "new_deals": 0,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -3230,25 +3317,19 @@
         "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
-        "pipeline_stages": {
-          "Llamada Pendiente": 1
-        },
+        "pipeline_stages": {},
         "pipeline_value": 0.0,
-        "win_rate": 0.0,
+        "win_rate": null,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 1,
+          "total_contacts": 0,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
-        "contacts_by_day": {
-          "19": 1
-        },
-        "deals_by_day": {
-          "19": 1
-        },
+        "contacts_by_day": {},
+        "deals_by_day": {},
         "lead_quality": {
           "ni_total": 0,
           "na_total": 0,
@@ -9708,6 +9789,52 @@
     }
   },
   "deals": [
+    {
+      "id": "862490000008270012",
+      "Deal_Name": "Planificación de TEÓFILO RICO VERDÚ",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "TEÓFILO RICO VERDÚ",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-07-22T07:51:18+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000008223002"
+    },
+    {
+      "id": "862490000008247050",
+      "Deal_Name": "Planificación de Manel Gil",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Manel Gil",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-07-21T18:15:23+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000008257008"
+    },
     {
       "id": "862490000008093035",
       "Deal_Name": "Planificación de David Pinazo Sánchez",
@@ -111947,8 +112074,8 @@
       "id": "862490000007461301",
       "Deal_Name": "Antonio Martín - TRM cuenta deposito bonificada empresa",
       "Amount": 50000,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "Antonio Martín",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -111957,13 +112084,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-07-13T16:09:26+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-07-21",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 8,
+      "Sales_Cycle_Duration": 8,
       "_contact_id": "862490000005999002"
     },
     {
@@ -119052,75 +119179,75 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 0,
-          "pct_of_total": 0,
+          "count": 1,
+          "pct_of_total": 50.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
           "count": 0,
-          "pct_of_total": 0,
-          "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "pct_of_total": 0.0,
+          "conversion_from_prev": 0.0,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 0,
-          "pct_of_total": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 0,
-          "pct_of_total": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
           "count": 0,
-          "pct_of_total": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 0,
-          "pct_of_total": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 0,
-          "pct_of_total": 0,
+          "count": 1,
+          "pct_of_total": 50.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 0,
-          "pct_of_total": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
-          "conversion_from_top": null,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         }
       ],
-      "active_total": 0,
-      "won_total": 0,
+      "active_total": 1,
+      "won_total": 1,
       "lost_total": 0,
-      "total_pipeline": 0
+      "total_pipeline": 2
     },
     "this_month": {
       "stage_order": [
@@ -119136,8 +119263,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 7,
-          "pct_of_total": 7.0,
+          "count": 9,
+          "pct_of_total": 8.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -119145,9 +119272,9 @@
         {
           "stage": "Análisis Financiero",
           "count": 7,
-          "pct_of_total": 7.0,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 100.0,
+          "pct_of_total": 6.9,
+          "conversion_from_prev": 77.8,
+          "conversion_from_top": 77.8,
           "cmp_count": null
         },
         {
@@ -119161,9 +119288,9 @@
         {
           "stage": "Reasesoramiento",
           "count": 5,
-          "pct_of_total": 5.0,
+          "pct_of_total": 4.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 71.4,
+          "conversion_from_top": 55.6,
           "cmp_count": null
         },
         {
@@ -119171,40 +119298,40 @@
           "count": 1,
           "pct_of_total": 1.0,
           "conversion_from_prev": 20.0,
-          "conversion_from_top": 14.3,
+          "conversion_from_top": 11.1,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 6,
-          "pct_of_total": 6.0,
+          "count": 5,
+          "pct_of_total": 4.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 85.7,
+          "conversion_from_top": 55.6,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 24,
-          "pct_of_total": 24.0,
+          "count": 25,
+          "pct_of_total": 24.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 342.9,
+          "conversion_from_top": 277.8,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 50,
-          "pct_of_total": 50.0,
+          "pct_of_total": 49.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 714.3,
+          "conversion_from_top": 555.6,
           "cmp_count": null
         }
       ],
-      "active_total": 26,
-      "won_total": 24,
+      "active_total": 27,
+      "won_total": 25,
       "lost_total": 50,
-      "total_pipeline": 100
+      "total_pipeline": 102
     },
     "this_quarter": {
       "stage_order": [
@@ -119220,8 +119347,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 7,
-          "pct_of_total": 7.0,
+          "count": 9,
+          "pct_of_total": 8.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": 9
@@ -119229,9 +119356,9 @@
         {
           "stage": "Análisis Financiero",
           "count": 7,
-          "pct_of_total": 7.0,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 100.0,
+          "pct_of_total": 6.9,
+          "conversion_from_prev": 77.8,
+          "conversion_from_top": 77.8,
           "cmp_count": 7
         },
         {
@@ -119245,9 +119372,9 @@
         {
           "stage": "Reasesoramiento",
           "count": 5,
-          "pct_of_total": 5.0,
+          "pct_of_total": 4.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 71.4,
+          "conversion_from_top": 55.6,
           "cmp_count": 8
         },
         {
@@ -119255,40 +119382,40 @@
           "count": 1,
           "pct_of_total": 1.0,
           "conversion_from_prev": 20.0,
-          "conversion_from_top": 14.3,
+          "conversion_from_top": 11.1,
           "cmp_count": 5
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 6,
-          "pct_of_total": 6.0,
+          "count": 5,
+          "pct_of_total": 4.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 85.7,
+          "conversion_from_top": 55.6,
           "cmp_count": 5
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 24,
-          "pct_of_total": 24.0,
+          "count": 25,
+          "pct_of_total": 24.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 342.9,
+          "conversion_from_top": 277.8,
           "cmp_count": 66
         },
         {
           "stage": "Cerrado Perdido",
           "count": 50,
-          "pct_of_total": 50.0,
+          "pct_of_total": 49.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 714.3,
+          "conversion_from_top": 555.6,
           "cmp_count": 165
         }
       ],
-      "active_total": 26,
-      "won_total": 24,
+      "active_total": 27,
+      "won_total": 25,
       "lost_total": 50,
-      "total_pipeline": 100
+      "total_pipeline": 102
     },
     "this_year": {
       "stage_order": [
@@ -119304,8 +119431,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 16,
-          "pct_of_total": 2.5,
+          "count": 18,
+          "pct_of_total": 2.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -119313,9 +119440,9 @@
         {
           "stage": "Análisis Financiero",
           "count": 14,
-          "pct_of_total": 2.2,
-          "conversion_from_prev": 87.5,
-          "conversion_from_top": 87.5,
+          "pct_of_total": 2.1,
+          "conversion_from_prev": 77.8,
+          "conversion_from_top": 77.8,
           "cmp_count": null
         },
         {
@@ -119323,7 +119450,7 @@
           "count": 2,
           "pct_of_total": 0.3,
           "conversion_from_prev": 14.3,
-          "conversion_from_top": 12.5,
+          "conversion_from_top": 11.1,
           "cmp_count": null
         },
         {
@@ -119331,7 +119458,7 @@
           "count": 13,
           "pct_of_total": 2.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 81.2,
+          "conversion_from_top": 72.2,
           "cmp_count": null
         },
         {
@@ -119339,40 +119466,40 @@
           "count": 6,
           "pct_of_total": 0.9,
           "conversion_from_prev": 46.2,
-          "conversion_from_top": 37.5,
+          "conversion_from_top": 33.3,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 11,
-          "pct_of_total": 1.7,
+          "count": 10,
+          "pct_of_total": 1.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 68.8,
+          "conversion_from_top": 55.6,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 171,
-          "pct_of_total": 26.3,
+          "count": 172,
+          "pct_of_total": 26.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 1068.8,
+          "conversion_from_top": 955.6,
           "cmp_count": 394
         },
         {
           "stage": "Cerrado Perdido",
           "count": 417,
-          "pct_of_total": 64.2,
+          "pct_of_total": 64.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 2606.2,
+          "conversion_from_top": 2316.7,
           "cmp_count": 2421
         }
       ],
-      "active_total": 62,
-      "won_total": 171,
+      "active_total": 63,
+      "won_total": 172,
       "lost_total": 417,
-      "total_pipeline": 650
+      "total_pipeline": 652
     }
   }
 }
