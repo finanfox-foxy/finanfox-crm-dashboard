@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-07-26T07:37:53Z",
-  "generated_at": "2026-07-26",
-  "today": "2026-07-26",
-  "yesterday": "2026-07-25",
+  "timestamp": "2026-07-27T08:33:04Z",
+  "generated_at": "2026-07-27",
+  "today": "2026-07-27",
+  "yesterday": "2026-07-26",
   "this_month": "2026-07",
   "this_quarter_start": "2026-07-01",
   "this_quarter_end": "2026-09-30",
@@ -21,12 +21,12 @@
       "deals": {
         "total": 2654,
         "by_stage": {
-          "Llamada Pendiente": 24,
+          "Llamada Pendiente": 22,
           "Cerrado Perdido": 1962,
           "Cerrado Ganado": 639,
+          "Análisis Financiero": 10,
           "Aceptado/Falta Firma": 9,
           "Asesoramiento": 4,
-          "Análisis Financiero": 8,
           "Reasesoramiento": 2,
           "Revisando Propuesta": 6
         },
@@ -70,10 +70,10 @@
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "25": 2
+        "26": 2
       },
       "deals_by_day": {
-        "25": 2
+        "26": 2
       },
       "lead_quality": {
         "ni_total": 0,
@@ -229,8 +229,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 24,
-        "Análisis Financiero": 2,
+        "Llamada Pendiente": 22,
+        "Análisis Financiero": 4,
         "Asesoramiento": 2,
         "Aceptado/Falta Firma": 2,
         "Cerrado Ganado": 6,
@@ -432,8 +432,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 24,
-        "Análisis Financiero": 2,
+        "Llamada Pendiente": 22,
+        "Análisis Financiero": 4,
         "Asesoramiento": 2,
         "Aceptado/Falta Firma": 2,
         "Cerrado Ganado": 6,
@@ -1915,8 +1915,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 24,
-        "Análisis Financiero": 8,
+        "Llamada Pendiente": 22,
+        "Análisis Financiero": 10,
         "Asesoramiento": 4,
         "Reasesoramiento": 2,
         "Revisando Propuesta": 6,
@@ -2021,7 +2021,7 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-07-24",
+      "previous": "2026-07-25",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
@@ -2045,16 +2045,16 @@
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 0,
+          "total_contacts": 2,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "24": 2
+          "25": 2
         },
         "deals_by_day": {
-          "24": 2
+          "25": 2
         },
         "lead_quality": {
           "ni_total": 0,
@@ -62726,8 +62726,8 @@
       "id": "862490000007483025",
       "Deal_Name": "Planificación de david sanchez zapata",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "david sanchez zapata",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -62841,8 +62841,8 @@
       "id": "862490000007362031",
       "Deal_Name": "Planificación de Jose llario",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "Jose llario",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -63096,7 +63096,7 @@
       "Amount": null,
       "Stage": "Análisis Financiero",
       "Probability": 40,
-      "Contact_Name": "José Luis Sillero Amor",
+      "Contact_Name": "José Sillero Amor",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
@@ -67658,26 +67658,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 24,
-          "pct_of_total": 44.4,
+          "count": 22,
+          "pct_of_total": 40.7,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 2,
-          "pct_of_total": 3.7,
-          "conversion_from_prev": 8.3,
-          "conversion_from_top": 8.3,
+          "count": 4,
+          "pct_of_total": 7.4,
+          "conversion_from_prev": 18.2,
+          "conversion_from_top": 18.2,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 2,
           "pct_of_total": 3.7,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 8.3,
+          "conversion_from_prev": 50.0,
+          "conversion_from_top": 9.1,
           "cmp_count": null
         },
         {
@@ -67701,7 +67701,7 @@
           "count": 2,
           "pct_of_total": 3.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 8.3,
+          "conversion_from_top": 9.1,
           "cmp_count": null
         }
       ],
@@ -67711,7 +67711,7 @@
           "count": 6,
           "pct_of_total": 11.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 25.0,
+          "conversion_from_top": 27.3,
           "cmp_count": null
         },
         {
@@ -67719,7 +67719,7 @@
           "count": 18,
           "pct_of_total": 33.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 75.0,
+          "conversion_from_top": 81.8,
           "cmp_count": null
         }
       ],
@@ -67742,26 +67742,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 24,
-          "pct_of_total": 44.4,
+          "count": 22,
+          "pct_of_total": 40.7,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 2,
-          "pct_of_total": 3.7,
-          "conversion_from_prev": 8.3,
-          "conversion_from_top": 8.3,
+          "count": 4,
+          "pct_of_total": 7.4,
+          "conversion_from_prev": 18.2,
+          "conversion_from_top": 18.2,
           "cmp_count": 6
         },
         {
           "stage": "Asesoramiento",
           "count": 2,
           "pct_of_total": 3.7,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 8.3,
+          "conversion_from_prev": 50.0,
+          "conversion_from_top": 9.1,
           "cmp_count": 2
         },
         {
@@ -67785,7 +67785,7 @@
           "count": 2,
           "pct_of_total": 3.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 8.3,
+          "conversion_from_top": 9.1,
           "cmp_count": 7
         }
       ],
@@ -67795,7 +67795,7 @@
           "count": 6,
           "pct_of_total": 11.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 25.0,
+          "conversion_from_top": 27.3,
           "cmp_count": 49
         },
         {
@@ -67803,7 +67803,7 @@
           "count": 18,
           "pct_of_total": 33.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 75.0,
+          "conversion_from_top": 81.8,
           "cmp_count": 108
         }
       ],
@@ -67826,26 +67826,26 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 24,
-          "pct_of_total": 5.8,
+          "count": 22,
+          "pct_of_total": 5.4,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
-          "count": 8,
-          "pct_of_total": 1.9,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 33.3,
+          "count": 10,
+          "pct_of_total": 2.4,
+          "conversion_from_prev": 45.5,
+          "conversion_from_top": 45.5,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 4,
           "pct_of_total": 1.0,
-          "conversion_from_prev": 50.0,
-          "conversion_from_top": 16.7,
+          "conversion_from_prev": 40.0,
+          "conversion_from_top": 18.2,
           "cmp_count": null
         },
         {
@@ -67853,7 +67853,7 @@
           "count": 2,
           "pct_of_total": 0.5,
           "conversion_from_prev": 50.0,
-          "conversion_from_top": 8.3,
+          "conversion_from_top": 9.1,
           "cmp_count": null
         },
         {
@@ -67861,7 +67861,7 @@
           "count": 6,
           "pct_of_total": 1.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 25.0,
+          "conversion_from_top": 27.3,
           "cmp_count": null
         },
         {
@@ -67869,7 +67869,7 @@
           "count": 9,
           "pct_of_total": 2.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 37.5,
+          "conversion_from_top": 40.9,
           "cmp_count": null
         }
       ],
@@ -67879,7 +67879,7 @@
           "count": 108,
           "pct_of_total": 26.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 450.0,
+          "conversion_from_top": 490.9,
           "cmp_count": 244
         },
         {
@@ -67887,7 +67887,7 @@
           "count": 250,
           "pct_of_total": 60.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 1041.7,
+          "conversion_from_top": 1136.4,
           "cmp_count": 1374
         }
       ],
