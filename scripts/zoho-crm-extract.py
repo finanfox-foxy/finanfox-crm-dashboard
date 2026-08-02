@@ -13,8 +13,9 @@ Outputs structured data to data/zoho-crm.json with:
 """
 
 import os, sys, json, time, requests
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, date
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 # ── Credentials ──────────────────────────────────────────
 CLIENT_ID = os.environ.get('ZOHO_CLIENT_ID')
@@ -51,38 +52,74 @@ def get_access_token(force=False):
     ACCESS_TOKEN = data['access_token']
     return ACCESS_TOKEN
 
-def api_get(module, params=None):
+def api_get(module, params=None, max_retries=3):
     token = get_access_token()
     url = f"{API_DOMAIN}/crm/v2/{module}"
-    r = requests.get(url, headers={'Authorization': f'Zoho-oauthtoken {token}'}, params=params)
-    if r.status_code == 204:
-        return {"data": []}
-    if r.status_code == 401:
-        token = get_access_token(force=True)
-        r = requests.get(url, headers={'Authorization': f'Zoho-oauthtoken {token}'}, params=params)
-    try:
-        return r.json()
-    except:
-        return {"error": f"HTTP {r.status_code}"}
+    for attempt in range(max_retries):
+        try:
+            r = requests.get(url, headers={'Authorization': f'Zoho-oauthtoken {token}'}, params=params, timeout=30)
+            if r.status_code == 204:
+                return {"data": []}
+            if r.status_code == 401:
+                token = get_access_token(force=True)
+                r = requests.get(url, headers={'Authorization': f'Zoho-oauthtoken {token}'}, params=params, timeout=30)
+                if r.status_code == 204:
+                    return {"data": []}
+            if r.status_code == 429:
+                wait = 2 ** (attempt + 1)  # 2, 4, 8 seconds
+                print(f"  ⏳ Rate limited (429), retrying in {wait}s (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait)
+                continue
+            if r.status_code >= 500:
+                wait = 2 ** attempt
+                print(f"  ⚠️ Server error {r.status_code}, retrying in {wait}s (attempt {attempt+1}/{max_retries})")
+                time.sleep(wait)
+                continue
+            try:
+                return r.json()
+            except:
+                print(f"  ❌ Invalid JSON response: HTTP {r.status_code}")
+                return {"error": f"Invalid JSON from HTTP {r.status_code}"}
+        except requests.exceptions.Timeout:
+            print(f"  ⏰ Timeout (attempt {attempt+1}/{max_retries})")
+            if attempt == max_retries - 1:
+                return {"error": "Timeout after retries"}
+            time.sleep(2 ** attempt)
+        except requests.exceptions.ConnectionError as e:
+            print(f"  🔌 Connection error: {e} (attempt {attempt+1}/{max_retries})")
+            if attempt == max_retries - 1:
+                return {"error": f"Connection error after retries: {e}"}
+            time.sleep(2 ** attempt)
+    return {"error": f"Max retries exceeded for HTTP {r.status_code if 'r' in dir() else 'unknown'}"}
 
 def fetch_all(module, params_extra=None):
     all_records = []
     page = 1
     total = 0
+    MAX_PAGES = 500  # safety limit (500 pages × 200 = 100k records)
     p = {'per_page': 200, 'page': page}
     if params_extra:
         p.update(params_extra)
-    while True:
+    while page <= MAX_PAGES:
         p['page'] = page
         r = api_get(module, p)
+        if 'error' in r:
+            print(f"    ❌ Error en página {page}: {r['error']}")
+            break
         records = r.get('data', [])
+        info = r.get('info', {})
+        more_records = info.get('more_records', False) if info else bool(records)
         if not records:
             break
         all_records.extend(records)
         total += len(records)
         page += 1
-        if page % 100 == 0:
+        if page % 20 == 0:
             print(f"    ...{total} registros obtenidos de {module} (página {page})")
+        if not more_records:
+            break
+    if page > MAX_PAGES:
+        print(f"    ⚠️ Límite de seguridad alcanzado ({MAX_PAGES} páginas). Posible loop infinito.")
     print(f"    -> {len(all_records)} registros de {module} en {page-1} páginas")
     return all_records
 
@@ -114,11 +151,9 @@ def simplify(record, keep_fields):
 
 # ── Date helpers (Europe/Madrid) ─────────────────────────
 def spain_today():
-    """Return today's date in Spain timezone (CEST = UTC+2 in summer)."""
+    """Return today's date in Spain timezone (CEST/CET real)."""
     now_utc = datetime.now(timezone.utc)
-    # CEST (late Mar to late Oct) = UTC+2; rest CET = UTC+1
-    # Approximate: May is CEST = +2h
-    spain = now_utc + timedelta(hours=2)
+    spain = now_utc.astimezone(ZoneInfo('Europe/Madrid'))
     return spain.date()
 
 TODAY = spain_today()

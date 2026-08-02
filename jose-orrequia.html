@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Dashboard 🦊</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="scripts/commission-engine.js"></script>
+<script src="scripts/commission-engine.js"></script>
     <style>
         :root {
             --bg: #f8fafc;
@@ -580,116 +582,6 @@ function renderAdvisorTable(ranking) {
 }
 
 // ── Commission table for financial products ──
-var COMMISSION_TABLE = [
-    { keywords: ['monefit'], product: 'Monefit', partner: 'MONEFIT', min: 100000, rate: 0.0023 },
-    { keywords: ['neowintech', 'neowin'], product: 'Neowintech', partner: 'NEOWINTECH', min: 157500, rate: 0.0013 },
-    // Entity-based entries: match by partner/entity name (any product from this partner)
-    { entityKeywords: ['silvergold', 'silver gold', 'sg '], product: 'SilverGold', partner: 'SILVERGOLD', min: 132750, rate: 0.0057 },
-    { entityKeywords: ['monefit', 'creditstar'], product: 'Monefit', partner: 'MONEFIT', min: 100000, rate: 0.0023 },
-    { entityKeywords: ['neowintech', 'neowin'], product: 'Neowintech', partner: 'NEOWINTECH', min: 157500, rate: 0.0013 },
-    { entityKeywords: ['reental'], product: 'Reental', partner: 'REENTAL', min: 60000, rate: 0.0042 },
-    { entityKeywords: ['crowmie'], product: 'Crowmie', partner: 'CROWMIE', min: 80000, rate: 0.0024 },
-    { entityKeywords: ['aegon'], product: 'Aportación anual PIAS', partner: 'AEGON', min: 4500, rate: 0.0663 },
-    { entityKeywords: ['mapfre'], product: 'Aportación anual PIAS Elección', partner: 'MAPFRE', min: 40000, rate: 0.0042 },
-    { entityKeywords: ['santalucia', 'santa lucí', 'santa lu'], product: 'Aportación anual PIAS', partner: 'SANTALUCÍA', min: 40000, rate: 0.0042 },
-    { entityKeywords: ['the real money', 'real money', 'trm'], product: 'Cuenta Depósito bonificado', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
-    // APEX (Aportación Extraordinaria) — producto separado con su propio objetivo (500K) y comisión 0.04%
-    { productKeywords: ['apex', 'aportación extraordinaria', 'aportacion extraordinaria'], product: 'APEX PIAS/UL', partner: 'AEGON', min: 500000, rate: 0.0004 },
-    // Specific product-name entries (fallback when entity unknown)
-    { productKeywords: ['unit-linked', 'unit linked', 'u-l ', 'ul '], product: 'Unit-Linked Prima única', partner: 'AEGON', min: 15000, rate: 0.0049 },
-    { productKeywords: ['pias estrategia', 'pias selección', 'pias elección', 'pias eleccion', 'pias '], product: 'Aportación anual PIAS', partner: 'AEGON', min: 4500, rate: 0.0663 },
-    { productKeywords: ['seguro de vida', 'vida', 'crecivida'], product: 'Prima neta Seguro de Vida', partner: 'AEGON', min: 4350, rate: 0.15 },
-    { productKeywords: ['cuenta depósito bonificada', 'cuenta deposito bonificada', 'cuenta depósito', 'cuenta deposito'], product: 'Cuenta Depósito bonificado', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
-    { productKeywords: ['gold opportunity', 'gold opp'], product: 'Gold Opportunity', partner: 'THE REAL MONEY', min: 65000, rate: 0.009 },
-];
-
-function findCommission(productName, entityName) {
-    var entLower = (entityName || '').toLowerCase();
-    var prodLower = (productName || '').toLowerCase();
-    // First try match by product name (more specific than entity — e.g. APEX vs generic Aegon PIAS)
-    for (var i = 0; i < COMMISSION_TABLE.length; i++) {
-        var pk = COMMISSION_TABLE[i].productKeywords;
-        if (pk) {
-            for (var j = 0; j < pk.length; j++) {
-                if (prodLower.indexOf(pk[j]) !== -1) {
-                    return COMMISSION_TABLE[i];
-                }
-            }
-        }
-    }
-    // Fallback: match by entity/partner name
-    for (var i = 0; i < COMMISSION_TABLE.length; i++) {
-        var ek = COMMISSION_TABLE[i].entityKeywords;
-        if (ek) {
-            for (var j = 0; j < ek.length; j++) {
-                if (entLower.indexOf(ek[j]) !== -1) {
-                    return COMMISSION_TABLE[i];
-                }
-            }
-        }
-    }
-    return null;
-}
-
-// Normalize product name for commission grouping (SilverGold/TRM variants → canonical)
-function normalizeProduct(producto, entidad) {
-    var e = (entidad || '').toLowerCase();
-    var p = (producto || '').toLowerCase();
-    if (e.indexOf('silvergold') >= 0 || e.indexOf('silver gold') >= 0) return 'SilverGold';
-    if (e.indexOf('the real money') >= 0 || e.indexOf('real money') >= 0 || e.indexOf('trm') >= 0) return 'TRM';
-    if (e.indexOf('monefit') >= 0) return 'Monefit';
-    if (p.indexOf('apex') >= 0 || e.indexOf('apex') >= 0) return 'APEX';
-    if (e.indexOf('aegon') >= 0) return 'PIAS';
-    if (e.indexOf('neowintech') >= 0) return 'Neowintech';
-    if (e.indexOf('reental') >= 0) return 'Reental';
-    if (e.indexOf('crowmie') >= 0) return 'Crowmie';
-    if (e.indexOf('santalucia') >= 0 || e.indexOf('santa lu') >= 0) return 'PIAS Santalucía';
-    if (e.indexOf('mapfre') >= 0) return 'PIAS Mapfre';
-    if (p.indexOf('monefit') >= 0) return 'Monefit';
-    if (p.indexOf('compra ') >= 0 || p.indexOf('silvergold') >= 0 || p.indexOf('ccu') >= 0) return 'SilverGold';
-    if (p.indexOf('pias') >= 0) return 'PIAS';
-    if (p.indexOf('cuenta dep') >= 0 || p.indexOf('gold opportunity') >= 0 || p.indexOf('dep') >= 0) return 'TRM';
-    if (p.indexOf('neowin') >= 0) return 'Neowintech';
-    if (p.indexOf('reental') >= 0) return 'Reental';
-    if (p.indexOf('crowmie') >= 0) return 'Crowmie';
-    return producto;
-}
-
-// Fallback product→entity mapping for when entidad is empty (extracted from deal names)
-var PRODUCT_ENTITY_MAP = {
-    'compra única': 'SilverGold',
-    'compra unica': 'SilverGold',
-    'silvergold': 'SilverGold',
-    'sg': 'SilverGold',
-    'trm': 'The Real Money',
-    'the real money': 'The Real Money',
-    'gold opportunity': 'The Real Money',
-    'cuenta depósito': 'The Real Money',
-    'cuenta deposito': 'The Real Money',
-    'monefit': 'Monefit',
-    'reental': 'Reental',
-    'crowmie': 'Crowmie',
-    'neowintech': 'Neowintech',
-    'apex': 'Aegon',
-    'pias': 'Aegon',
-    'unit-linked': 'Aegon',
-    'unit linked': 'Aegon',
-    'seguro de vida': 'Aegon',
-    'vida': 'Aegon',
-    'crecivida': 'Aegon',
-};
-
-function guessEntity(productName) {
-    var lower = (productName || '').toLowerCase();
-    for (var key in PRODUCT_ENTITY_MAP) {
-        if (lower.indexOf(key) !== -1) {
-            return PRODUCT_ENTITY_MAP[key];
-        }
-    }
-    return '';
-}
-
-
 function _extractNameParts(deal) {
     var dn = deal.Deal_Name || '';
     var cn = deal.Contact_Name || {};
@@ -1259,10 +1151,11 @@ function refreshData() {
     var advisorName = ADVISOR_MAP[advisorSlug] || 'Asesor';
     document.title = advisorName + ' - CRM Dashboard 🦊';
     document.getElementById('advisor-title').textContent = advisorName;
-    var zohoFetch = fetch('data/' + advisorSlug + '.json?_=' + Date.now())
+    var zohoFetch = safeFetch('data/' + advisorSlug + '.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     zohoFetch
-        .then(function(data) {
+        .then(function(data) {})
+        .catch(function(e) { showError("Error: " + e.message); })
             loadData(data);
         })
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });

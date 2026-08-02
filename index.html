@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Dashboard - Finanfox 🦊</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="scripts/commission-engine.js"></script>
+<script src="scripts/commission-engine.js"></script>
     <style>
         :root {
             --bg: #f8fafc;
@@ -1861,12 +1863,12 @@ function refreshData() {
     document.getElementById('dashboard-content').style.display = 'none';
     document.getElementById('loading-state').style.display = 'block';
     document.getElementById('error-state').style.display = 'none';
-    var zohoFetch = fetch('data/zoho-crm.json?_=' + Date.now())
+    var zohoFetch = safeFetch('data/zoho-crm.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
-    var finFetch = fetch('data/financial_data.json?_=' + Date.now())
+    var finFetch = safeFetch('data/financial_data.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function(d) { currentFinancialData = d; });
-    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now())
+    var cmpFetch = safeFetch('data/financial_comparison.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) return null; return r.json(); })
         .then(function(d) { currentComparisonData = d; });
     Promise.all([zohoFetch, finFetch, cmpFetch])
@@ -1878,12 +1880,12 @@ function refreshData() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var zohoFetch = fetch('data/zoho-crm.json?_=' + Date.now())
+    var zohoFetch = safeFetch('data/zoho-crm.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
-    var finFetch = fetch('data/financial_data.json?_=' + Date.now())
+    var finFetch = safeFetch('data/financial_data.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function(d) { currentFinancialData = d; });
-    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now())
+    var cmpFetch = safeFetch('data/financial_comparison.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) return null; return r.json(); })
         .then(function(d) { currentComparisonData = d; });
     Promise.all([zohoFetch, finFetch, cmpFetch])
