@@ -1151,7 +1151,7 @@ function refreshData() {
     var advisorName = ADVISOR_MAP[advisorSlug] || 'Asesor';
     document.title = advisorName + ' - CRM Dashboard 🦊';
     document.getElementById('advisor-title').textContent = advisorName;
-    var zohoFetch = safeFetch('data/' + advisorSlug + '.json?_=' + Date.now(), 15000)
+    var zohoFetch = fetch('data/' + advisorSlug + '.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     zohoFetch
         .then(function(data) {
