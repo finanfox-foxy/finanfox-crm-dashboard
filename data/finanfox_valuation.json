@@ -1,0 +1,78 @@
+{
+  "company": "Finanfox Planificadores Financieros",
+  "valuation_date": "2026-08-02",
+  "methodology": "DCF con 3 escenarios + múltiplos de mercado",
+  "key_assumptions": {
+    "tax_rate": 0.25,
+    "wacc_base": 0.12,
+    "terminal_growth_base": 0.025,
+    "fy2025_margin": 209524,
+    "fy2026e_margin": 431000,
+    "fy2026e_fcf": 323250.0
+  },
+  "scenarios": {
+    "BASE": {
+      "description": "Proyección base — 2026E como punto de partida",
+      "wacc": 0.12,
+      "terminal_growth": 0.025,
+      "fcf_projections": [
+        323250.0,
+        404062.5,
+        484875.0,
+        557606.25,
+        624519.0000000001
+      ],
+      "enterprise_value": 5488047.783871126,
+      "terminal_value": 6738231.315789474,
+      "pv_fcf_sum": 1664594.3752481057,
+      "pv_terminal": 3823453.4086230206
+    },
+    "OPTIMISTA": {
+      "description": "Captación de 2-3 asesores más + expansión de producto",
+      "wacc": 0.1,
+      "terminal_growth": 0.03,
+      "fcf_projections": [
+        355575.0,
+        462247.5,
+        577809.375,
+        693371.25,
+        797376.9374999999
+      ],
+      "enterprise_value": 9393245.317698825,
+      "terminal_value": 11732832.08035714,
+      "pv_fcf_sum": 2108079.6991325724,
+      "pv_terminal": 7285165.618566253
+    },
+    "CONSERVADOR": {
+      "description": "Crecimiento orgánico lento, sin nuevas contrataciones",
+      "wacc": 0.14,
+      "terminal_growth": 0.02,
+      "fcf_projections": [
+        274762.5,
+        315976.875,
+        353894.10000000003,
+        389283.51000000007,
+        420426.1908000001
+      ],
+      "enterprise_value": 3027893.004918481,
+      "terminal_value": 3573622.621800001,
+      "pv_fcf_sum": 1171865.3969081934,
+      "pv_terminal": 1856027.6080102876
+    }
+  },
+  "weighted_valuation": 6167576.0882289065,
+  "valuation_range": [
+    3027893.004918481,
+    9393245.317698825
+  ],
+  "market_multiples": {
+    "revenue_range": [
+      1779000.0,
+      3558000.0
+    ],
+    "margin_range": [
+      2586000,
+      5172000
+    ]
+  }
+}
