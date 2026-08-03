@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-08-03T04:56:53Z",
+  "timestamp": "2026-08-03T07:36:58Z",
   "generated_at": "2026-08-03",
   "today": "2026-08-03",
   "yesterday": "2026-08-02",
@@ -22,13 +22,13 @@
         "total": 3372,
         "by_stage": {
           "Llamada Pendiente": 16,
-          "Cerrado Ganado": 710,
+          "Cerrado Ganado": 711,
           "Cerrado Perdido": 2601,
-          "Aceptado/Falta Firma": 4,
           "Asesoramiento": 14,
           "Revisando Propuesta": 14,
           "Análisis Financiero": 6,
-          "Reasesoramiento": 7
+          "Reasesoramiento": 7,
+          "Aceptado/Falta Firma": 3
         },
         "by_owner": {
           "Jose Orrequia": 3372
@@ -36,8 +36,8 @@
         "pipeline_value": 18391068.34,
         "total_aportaciones": 9715104.0,
         "avg_deal_size": 5454.05,
-        "closed_won": 710,
-        "closed_won_value": 8662202.94,
+        "closed_won": 711,
+        "closed_won_value": 8682452.94,
         "closed_lost": 2601,
         "conversion_rate": 21.1
       }
@@ -98,28 +98,65 @@
       "label": "Este Mes",
       "new_contacts": 1,
       "new_deals": 2,
-      "won_deals": 0,
+      "won_deals": 1,
       "lost_deals": 0,
-      "won_value": 0,
-      "total_aportacion_won": 0,
-      "product_breakdown": {},
-      "product_count": {},
-      "product_details": [],
-      "product_deals": [],
-      "advisor_ranking_won": [],
-      "advisor_ranking_aportacion": [],
-      "pipeline_stages": {
-        "Llamada Pendiente": 2
+      "won_value": 20250.0,
+      "total_aportacion_won": 20250.0,
+      "product_breakdown": {
+        "Cuenta Depósito Bonificada": 20250.0
       },
-      "pipeline_value": 0.0,
-      "win_rate": 0.0,
-      "avg_days_to_win": null,
-      "products_closed_count": 0,
+      "product_count": {
+        "Cuenta Depósito Bonificada": 1
+      },
+      "product_details": [
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 1,
+          "total": 20250.0
+        }
+      ],
+      "product_deals": [
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-08-03",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Pedro Gómez Lozano",
+          "parent_id": "862490000008752034",
+          "fecha_inicio": "",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        }
+      ],
+      "advisor_ranking_won": [
+        {
+          "name": "Jose Orrequia",
+          "won": 1,
+          "total_aportacion": 20250.0
+        }
+      ],
+      "advisor_ranking_aportacion": [
+        {
+          "name": "Jose Orrequia",
+          "won": 1,
+          "total_aportacion": 20250.0
+        }
+      ],
+      "pipeline_stages": {
+        "Llamada Pendiente": 2,
+        "Cerrado Ganado": 1
+      },
+      "pipeline_value": 20250.0,
+      "win_rate": 50.0,
+      "avg_days_to_win": 5.0,
+      "products_closed_count": 1,
       "conversion_clientes": {
         "total_contacts": 1,
-        "converted_contacts": 0,
-        "ratio": 0.0,
-        "avg_days_to_convert": 0
+        "converted_contacts": 1,
+        "ratio": 100.0,
+        "avg_days_to_convert": 67.0
       },
       "contacts_by_day": {
         "1": 1
@@ -151,32 +188,32 @@
       "label": "Este Trimestre",
       "new_contacts": 79,
       "new_deals": 3107,
-      "won_deals": 30,
+      "won_deals": 31,
       "lost_deals": 106,
-      "won_value": 534929.0,
-      "total_aportacion_won": 534929.0,
+      "won_value": 555179.0,
+      "total_aportacion_won": 555179.0,
       "product_breakdown": {
+        "Cuenta Depósito Bonificada": 276250.0,
         "Monefit": 267816.0,
-        "Cuenta Depósito Bonificada": 256000.0,
         "Compra Única": 11113.0
       },
       "product_count": {
         "Monefit": 18,
-        "Cuenta Depósito Bonificada": 10,
+        "Cuenta Depósito Bonificada": 11,
         "Compra Única": 2
       },
       "product_details": [
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "veces": 11,
+          "total": 276250.0
+        },
         {
           "producto": "Monefit",
           "entidad": "Monefit",
           "veces": 18,
           "total": 267816.0
-        },
-        {
-          "producto": "Cuenta Depósito Bonificada",
-          "entidad": "The Real Money",
-          "veces": 10,
-          "total": 256000.0
         },
         {
           "producto": "Compra Única",
@@ -195,6 +232,18 @@
           "cliente": "Nacho Granado",
           "parent_id": "862490000008927001",
           "fecha_inicio": "2026-07-29",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-08-03",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Pedro Gómez Lozano",
+          "parent_id": "862490000008752034",
+          "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
         },
@@ -550,15 +599,15 @@
       "advisor_ranking_won": [
         {
           "name": "Jose Orrequia",
-          "won": 30,
-          "total_aportacion": 534929.0
+          "won": 31,
+          "total_aportacion": 555179.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Jose Orrequia",
-          "won": 30,
-          "total_aportacion": 534929.0
+          "won": 31,
+          "total_aportacion": 555179.0
         }
       ],
       "pipeline_stages": {
@@ -567,19 +616,19 @@
         "Asesoramiento": 5,
         "Reasesoramiento": 2,
         "Revisando Propuesta": 4,
-        "Aceptado/Falta Firma": 2,
-        "Cerrado Ganado": 30,
+        "Aceptado/Falta Firma": 1,
+        "Cerrado Ganado": 31,
         "Cerrado Perdido": 106
       },
       "pipeline_value": 720429.0,
       "win_rate": 1.0,
-      "avg_days_to_win": 8.8,
-      "products_closed_count": 30,
+      "avg_days_to_win": 8.7,
+      "products_closed_count": 31,
       "conversion_clientes": {
         "total_contacts": 79,
-        "converted_contacts": 25,
-        "ratio": 31.6,
-        "avg_days_to_convert": 40.5
+        "converted_contacts": 26,
+        "ratio": 32.9,
+        "avg_days_to_convert": 41.5
       },
       "contacts_by_day": {
         "1": 6,
@@ -663,13 +712,13 @@
       "label": "Este Año",
       "new_contacts": 2644,
       "new_deals": 3372,
-      "won_deals": 147,
+      "won_deals": 148,
       "lost_deals": 413,
-      "won_value": 2177335.7,
-      "total_aportacion_won": 2174335.0,
+      "won_value": 2197585.7,
+      "total_aportacion_won": 2194585.0,
       "product_breakdown": {
         "Monefit": 1053249.0,
-        "Cuenta Depósito Bonificada": 767500.0,
+        "Cuenta Depósito Bonificada": 787750.0,
         "Compra Única": 339386.0,
         "Gold Opportunity": 10000.0,
         "PIAS Estrategia 5": 2400.0,
@@ -678,7 +727,7 @@
       "product_count": {
         "Monefit": 69,
         "Compra Única": 45,
-        "Cuenta Depósito Bonificada": 30,
+        "Cuenta Depósito Bonificada": 31,
         "PIAS Estrategia 5": 2,
         "Gold Opportunity": 1,
         "APEX PIAS Estrategia 5": 1
@@ -693,8 +742,8 @@
         {
           "producto": "Cuenta Depósito Bonificada",
           "entidad": "The Real Money",
-          "veces": 30,
-          "total": 767500.0
+          "veces": 31,
+          "total": 787750.0
         },
         {
           "producto": "Compra Única",
@@ -731,6 +780,18 @@
           "cliente": "Nacho Granado",
           "parent_id": "862490000008927001",
           "fecha_inicio": "2026-07-29",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Cuenta Depósito Bonificada",
+          "entidad": "The Real Money",
+          "total": 20250.0,
+          "close_date": "2026-08-03",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Pedro Gómez Lozano",
+          "parent_id": "862490000008752034",
+          "fecha_inicio": "",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
         },
@@ -2502,15 +2563,15 @@
       "advisor_ranking_won": [
         {
           "name": "Jose Orrequia",
-          "won": 147,
-          "total_aportacion": 2174335.0
+          "won": 148,
+          "total_aportacion": 2194585.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Jose Orrequia",
-          "won": 147,
-          "total_aportacion": 2174335.0
+          "won": 148,
+          "total_aportacion": 2194585.0
         }
       ],
       "pipeline_stages": {
@@ -2519,19 +2580,19 @@
         "Asesoramiento": 14,
         "Reasesoramiento": 7,
         "Revisando Propuesta": 14,
-        "Aceptado/Falta Firma": 4,
-        "Cerrado Ganado": 147,
+        "Aceptado/Falta Firma": 3,
+        "Cerrado Ganado": 148,
         "Cerrado Perdido": 413
       },
       "pipeline_value": 2674085.7,
       "win_rate": 4.4,
-      "avg_days_to_win": -81.6,
-      "products_closed_count": 148,
+      "avg_days_to_win": -81.0,
+      "products_closed_count": 149,
       "conversion_clientes": {
         "total_contacts": 2644,
-        "converted_contacts": 84,
+        "converted_contacts": 85,
         "ratio": 3.2,
-        "avg_days_to_convert": -41.7
+        "avg_days_to_convert": -40.4
       },
       "contacts_by_day": {
         "1": 14,
@@ -3099,11 +3160,11 @@
           "Asesoramiento": 5,
           "Reasesoramiento": 2,
           "Revisando Propuesta": 4,
-          "Aceptado/Falta Firma": 2,
+          "Aceptado/Falta Firma": 1,
           "Cerrado Ganado": 30,
           "Cerrado Perdido": 106
         },
-        "pipeline_value": 720429.0,
+        "pipeline_value": 700179.0,
         "win_rate": 1.0,
         "avg_days_to_win": 8.8,
         "products_closed_count": 30,
@@ -6112,8 +6173,8 @@
       "id": "862490000008752034",
       "Deal_Name": "Pedro Gómez Lozano - TRM Cuenta Depósito Bonificado",
       "Amount": 20250,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "Pedro Gómez Lozano",
       "Owner": "Jose Orrequia",
       "Type": "Cliente existente",
@@ -6122,13 +6183,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-07-29T17:31:34+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-08-03",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 5,
+      "Sales_Cycle_Duration": 5,
       "_contact_id": "862490000005172271"
     },
     {
@@ -83637,7 +83698,7 @@
         {
           "stage": "Llamada Pendiente",
           "count": 2,
-          "pct_of_total": 100.0,
+          "pct_of_total": 66.7,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -83686,10 +83747,10 @@
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 0,
-          "pct_of_total": 0.0,
+          "count": 1,
+          "pct_of_total": 33.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": 50.0,
           "cmp_count": null
         },
         {
@@ -83702,9 +83763,9 @@
         }
       ],
       "active_total": 2,
-      "won_total": 0,
+      "won_total": 1,
       "lost_total": 0,
-      "total_pipeline": 2
+      "total_pipeline": 3
     },
     "this_quarter": {
       "stage_order": [
@@ -83760,20 +83821,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 2,
-          "pct_of_total": 1.2,
-          "conversion_from_prev": 50.0,
-          "conversion_from_top": 12.5,
+          "count": 1,
+          "pct_of_total": 0.6,
+          "conversion_from_prev": 25.0,
+          "conversion_from_top": 6.2,
           "cmp_count": 2
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 30,
-          "pct_of_total": 17.5,
+          "count": 31,
+          "pct_of_total": 18.1,
           "conversion_from_prev": null,
-          "conversion_from_top": 187.5,
+          "conversion_from_top": 193.8,
           "cmp_count": 37
         },
         {
@@ -83785,8 +83846,8 @@
           "cmp_count": 164
         }
       ],
-      "active_total": 35,
-      "won_total": 30,
+      "active_total": 34,
+      "won_total": 31,
       "lost_total": 106,
       "total_pipeline": 171
     },
@@ -83844,20 +83905,20 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 4,
-          "pct_of_total": 0.6,
-          "conversion_from_prev": 28.6,
-          "conversion_from_top": 25.0,
+          "count": 3,
+          "pct_of_total": 0.5,
+          "conversion_from_prev": 21.4,
+          "conversion_from_top": 18.8,
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 147,
-          "pct_of_total": 23.7,
+          "count": 148,
+          "pct_of_total": 23.8,
           "conversion_from_prev": null,
-          "conversion_from_top": 918.8,
+          "conversion_from_top": 925.0,
           "cmp_count": 163
         },
         {
@@ -83869,8 +83930,8 @@
           "cmp_count": 1827
         }
       ],
-      "active_total": 61,
-      "won_total": 147,
+      "active_total": 60,
+      "won_total": 148,
       "lost_total": 413,
       "total_pipeline": 621
     }
