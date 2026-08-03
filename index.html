@@ -2619,15 +2619,16 @@ function renderHistorico2026() {
     function round(v) { return Math.round(v); }
     function bar(pct,c) { return '<div style="height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden"><div style="height:8px;width:'+Math.min(pct,100)+'%;background:'+c+';border-radius:4px"></div></div>'; }
 
-    // Discover months dynamically from data
+    // Generate all months of 2026 from January to current month
     var monthNames = {'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'};
     var monthSet = {};
-    deals.forEach(function(d) {
-        var cl = (d.Closing_Date || '').substring(0,7);
-        var ct = (d.Created_Time || '').substring(0,7);
-        if (cl >= '2026-01' && cl <= '2026-12') monthSet[cl] = true;
-        if (ct >= '2026-01' && ct <= '2026-12') monthSet[ct] = true;
-    });
+    var now = new Date();
+    var currentYear = 2026;
+    var currentMonth = now.getFullYear() === 2026 ? now.getMonth() + 1 : 12;
+    for (var m = 1; m <= currentMonth; m++) {
+        var mk = '2026-' + (m < 10 ? '0' : '') + m;
+        monthSet[mk] = true;
+    }
     var monthOrder = Object.keys(monthSet).sort().reverse();
     var monthLabels = {};
     monthOrder.forEach(function(m) { var parts = m.split('-'); monthLabels[m] = monthNames[parts[1]] + ' ' + parts[0]; });
@@ -2689,7 +2690,7 @@ function renderHistorico2026() {
     monthOrder.forEach(function(mk) {
         var m = byMonth[mk];
         var label = monthLabels[mk];
-        var isSignificant = m.created >= 5 && m.won + m.lost >= 2;
+        var hasData = m.created > 0 || m.won > 0 || m.lost > 0;
         var totalClosed = m.won + m.lost;
         var winRate = totalClosed > 0 ? (m.won / totalClosed * 100).toFixed(1) : '-';
         var prevLabel = monthOrder[monthOrder.indexOf(mk) + 1];
@@ -2708,9 +2709,9 @@ function renderHistorico2026() {
         var prods = productBreakdown(m.deals);
         var totalProd = prods.reduce(function(s,p){return s+p.vol;}, 0);
 
-        if (!isSignificant) {
+        if (!hasData) {
             html += '<div class="accordion-item" style="opacity:0.5;pointer-events:none">';
-            html += '<div class="accordion-header"><span class="month-label">' + label + '</span><span class="month-summary">Sin datos significativos</span></div></div>';
+            html += '<div class="accordion-header"><span class="month-label">' + label + '</span><span class="month-summary">Sin datos del mes</span></div></div>';
             return;
         }
 

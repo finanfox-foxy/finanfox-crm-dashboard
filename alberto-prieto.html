@@ -1211,15 +1211,16 @@ function renderHistorico2026() {
         return Object.keys(prods).sort(function(a,b){return prods[b]-prods[a];}).map(function(k){return {name:k,vol:prods[k]};});
     }
 
-    // Discover months dynamically from data
+    // Generate all months of 2026 from January to current month
     var monthNames = {'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'};
     var monthSet = {};
-    deals.forEach(function(d) {
-        var cl = (d.Closing_Date || '').substring(0,7);
-        var ct = (d.Created_Time || '').substring(0,7);
-        if (cl >= '2026-01' && cl <= '2026-12') monthSet[cl] = true;
-        if (ct >= '2026-01' && ct <= '2026-12') monthSet[ct] = true;
-    });
+    var now = new Date();
+    var currentYear = 2026;
+    var currentMonth = now.getFullYear() === 2026 ? now.getMonth() + 1 : 12;
+    for (var m = 1; m <= currentMonth; m++) {
+        var mk = '2026-' + (m < 10 ? '0' : '') + m;
+        monthSet[mk] = true;
+    }
     var monthOrder = Object.keys(monthSet).sort().reverse();
     var monthLabels = {};
     monthOrder.forEach(function(m) { var parts = m.split('-'); monthLabels[m] = monthNames[parts[1]] + ' ' + parts[0]; });
