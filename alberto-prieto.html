@@ -1188,13 +1188,30 @@ function inferProduct(name) {
     if (n.indexOf('monefit') >= 0) return 'Monefit';
     if (n.indexOf('apex') >= 0) return 'APEX';
     if (n.indexOf('pias') >= 0 || n.indexOf('estrategia') >= 0) return 'PIAS';
-    if (n.indexOf('trm') >= 0 || n.indexOf('gold opp') >= 0 || n.indexOf('gold oport') >= 0 || n.indexOf('cuenta gold') >= 0) return 'TRM';
+    if (n.indexOf('trm') >= 0 || n.indexOf('gold opp') >= 0 || n.indexOf('gold oportunity') >= 0 || n.indexOf('cuenta gold') >= 0) return 'TRM';
     if (n.indexOf('depósito') >= 0 || n.indexOf('cuenta deposito') >= 0) return 'Cuenta Depósito';
-    if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0 || n.indexOf('compra experta') >= 0 || n.indexOf(' cu ') >= 0) return 'Compra Única';
+    if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0) return 'Compra Única';
+    if (n.indexOf('compra experta') >= 0) return 'Compra Experta';
     if (n.indexOf('planificacion') >= 0 || n.indexOf('planificación') >= 0 || n.indexOf('plan financ') >= 0) return 'Planificación Financiera';
-    if (n.indexOf('silvergold') >= 0 || n.indexOf(' sg ') >= 0 || n.indexOf('sg ') >= 0 || n.indexOf('sg-') >= 0 || n.indexOf('ccu') >= 0 || n.indexOf('opportunity') >= 0 || n.indexOf('oportunity') >= 0) return 'SilverGold';
+    if (n.indexOf('silvergold') >= 0 || n.indexOf('sivergold') >= 0 || n.indexOf('ccu') >= 0 || n.indexOf('sg ') >= 0 || n.indexOf('sg-') >= 0 || n.indexOf('opportunity') >= 0 || n.indexOf('oportunity') >= 0 || n.indexOf('cu sg') >= 0 || n.indexOf('sg oro') >= 0) return 'SilverGold';
+    if (n.indexOf('reental') >= 0) return 'Reental';
+    if (n.indexOf('santalucía') >= 0 || n.indexOf('santalucia') >= 0 || n.indexOf('santa lucía') >= 0 || n.indexOf('vida integral') >= 0) return 'Santalucía';
+    if (n.indexOf('seguro vida') >= 0 || n.indexOf('seguro de vida') >= 0 || n.indexOf('aegon') >= 0) return 'Seguro de Vida';
+    if (n.indexOf('traspaso pp') >= 0 || n.indexOf('traspaso plan') >= 0 || n.indexOf('traspaso pension') >= 0 || n.indexOf('traspaso ppi') >= 0) return 'Traspaso PP';
+    if (n.indexOf('crowmie') >= 0 || n.indexOf('crownie') >= 0) return 'Crowmie';
+    if (n.indexOf('neowintech') >= 0 || n.indexOf('nwt') >= 0) return 'Neowintech';
+    if (n.indexOf('the real money') >= 0) return 'The Real Money';
+    if (n.indexOf('hipoteca') >= 0) return 'Hipoteca';
+    if (n.indexOf('ahorro') >= 0 || n.indexOf('ahorradoras') >= 0) return 'Ahorro/PP';
     if (n.indexOf('crowdfunding') >= 0 || n.indexOf('proyecto') >= 0) return 'Crowdfunding';
-    return 'Otros';
+    if (n.indexOf('fondo') >= 0) return 'Fondos';
+    if (n.indexOf('caser') >= 0) return 'Caser';
+    if (n.indexOf('pension') >= 0 || n.indexOf('jubilacion') >= 0 || n.indexOf('jubilación') >= 0) return 'Pensiones';
+    if (n.indexOf('seguro') >= 0) return 'Seguros';
+    if (n.indexOf('iban') >= 0) return 'IBAN';
+    var parts = name.split(' - ');
+    if (parts.length > 1) return parts.slice(1).join(' - ').substring(0, 45);
+    return name.substring(0, 45);
 }
 
 function renderHistorico2026() {
@@ -1310,7 +1327,7 @@ function renderHistorico2026() {
         if (prods.length > 0) {
             html += '<h4 style="margin:14px 0 8px;font-size:0.82rem">📦 Productos</h4>';
             html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
-            html += '<thead><tr><th>Producto</th><th>Volumen</th><th>%</th><th></th></tr></thead><tbody>';
+            html += '<thead><tr><th>Producto</th><th>Inversión</th><th>%</th><th></th></tr></thead><tbody>';
             var prodColors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444','#14b8a6','#6366f1'];
             prods.forEach(function(p,i) {
                 var pct = totalProd > 0 ? (p.vol/totalProd*100).toFixed(1) : 0;
