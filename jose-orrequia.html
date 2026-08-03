@@ -1154,8 +1154,7 @@ function refreshData() {
     var zohoFetch = safeFetch('data/' + advisorSlug + '.json?_=' + Date.now(), 15000)
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
     zohoFetch
-        .then(function(data) {})
-        .catch(function(e) { showError("Error: " + e.message); })
+        .then(function(data) {
             loadData(data);
         })
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
