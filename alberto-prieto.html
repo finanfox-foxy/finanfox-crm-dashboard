@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<!-- DEBUG v4 2026-08-03 11:37 -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alberto Prieto - CRM Dashboard 🦊</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="scripts/commission-engine.js"></script>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --border-color: #e2e8f0;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --accent: #f97316;
+            --success: #22c55e;
+            --warning: #eab308;
+            --error: #ef4444;
+            --info: #3b82f6;
+            --purple: #a855f7;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        .top-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: var(--shadow);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .top-bar h1 { font-size: 1.3rem; }
+        .top-bar h1 span { color: var(--accent); }
+        .timestamp { color: var(--text-muted); font-size: 0.8rem; }
+        .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px 24px; }
+        .tab-bar {
+            display: flex; gap: 0; margin-bottom: 20px;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-btn:hover { background: var(--surface-hover); }
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            background: #fff7ed;
+        }
+        .app-tab-bar {
+            display: flex; gap: 0; margin-bottom: 24px;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .app-tab-btn {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        .app-tab-btn:hover { background: var(--surface-hover); }
+        .app-tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            background: #fff7ed;
+        }
+        .app-panel { display: none; }
+        .app-panel.active { display: block; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        .crm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .crm-card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--text-muted);
+        }
+        .crm-card.accent { border-left-color: var(--accent); }
+        .crm-card.success { border-left-color: var(--success); }
+        .crm-card.info { border-left-color: var(--info); }
+        .crm-card.purple { border-left-color: var(--purple); }
+        .crm-card.warning { border-left-color: var(--warning); }
+        .crm-card.error { border-left-color: var(--error); }
+        .crm-card .value { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+        .crm-card .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+        .crm-card .sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+        .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        .chart-container {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .chart-container h3 { font-size: 0.85rem; margin-bottom: 12px; color: var(--text-muted); }
+        .chart-container canvas { max-height: 300px; }
+        .full-width { grid-column: 1 / -1; }
+        .funnel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 0;
+        }
+        .funnel-stage {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .funnel-stage:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+        .funnel-stage .funnel-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            min-width: 160px;
+        }
+        .funnel-stage .funnel-count { font-weight: 700; font-size: 1.1rem; }
+        .funnel-stage .funnel-pct { color: var(--text-muted); font-size: 0.78rem; margin-left: 8px; }
+        .funnel-stage .funnel-conv {
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-left: 12px;
+            color: var(--text);
+            background: var(--surface-hover);
+            border-radius: 6px;
+            padding: 2px 10px;
+        }
+        .funnel-connector {
+            width: 2px;
+            height: 12px;
+            background: var(--border);
+            border-radius: 1px;
+        }
+        .compact-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        .compact-table th {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .compact-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+        .compact-table tr:hover td { background: var(--surface-hover); }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+        .badge-1 { background: #fff7ed; color: #c2410c; }
+        .badge-2 { background: #f0fdf4; color: #15803d; }
+        .badge-3 { background: #eff6ff; color: #1d4ed8; }
+        .badge-4 { background: #f5f3ff; color: #6d28d9; }
+        .badge-5 { background: #fdf2f8; color: #be185d; }
+        .badge-6 { background: #f0f9ff; color: #0e7490; }
+        .badge-7 { background: #fefce8; color: #a16207; }
+        .badge-8 { background: #f1f5f9; color: #475569; }
+        .cmp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+            vertical-align: middle;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+        }
+        .cmp-up {
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+        .cmp-down {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        .cmp-flat {
+            background: #f1f5f9;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+        .cmp-na {
+            background: #f8fafc;
+            color: #94a3b8;
+            border: 1px solid #e2e8f0;
+            font-size: 0.65rem;
+        }
+        .cmp-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+        .cmp-table th { background:var(--surface-hover); padding:8px 10px; text-align:left; font-weight:600; border-bottom:2px solid var(--border); }
+        .cmp-table td { padding:7px 10px; border-bottom:1px solid var(--border); }
+        .cmp-table tr:hover td { background:var(--surface-hover); }
+        .crm-card .value-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease; }
+        .ranking-medal { font-size: 1.1rem; margin-right: 4px; }
+        /* ── MarketINhouse-style funnel bars ── */
+        .funnel-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+        .funnel-label { width:160px; font-size:0.78rem; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; }
+        .funnel-track { flex:1; height:22px; background:#e2e8f0; border-radius:6px; overflow:hidden; position:relative; }
+        .funnel-fill { height:100%; border-radius:6px; transition:width 0.3s ease; min-width:4px; }
+        .funnel-val { width:50px; text-align:right; font-size:0.78rem; font-weight:700; white-space:nowrap; flex-shrink:0; }
+        .funnel-pct { font-size:0.68rem; color:var(--text-muted); font-weight:400; }
+        .forecast-table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+        .forecast-table th { text-align:left; padding:6px 8px; font-weight:600; color:var(--text-muted); border-bottom:2px solid var(--border); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.3px; }
+        .forecast-table th.n { text-align:right; }
+        .forecast-table td { padding:6px 8px; border-bottom:1px solid var(--border); }
+        .forecast-table td.n { text-align:right; }
+        .forecast-summary { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+        .forecast-card { flex:1; min-width:140px; background:var(--bg-card); border-radius:10px; padding:12px 16px; border:1px solid var(--border); }
+        .forecast-card .num { font-size:1.3rem; font-weight:700; line-height:1.2; }
+        .forecast-card .lbl { font-size:0.72rem; color:var(--text-muted); margin-top:2px; }
+        .last-updated {
+            text-align: center; color: var(--text-muted); font-size: 0.78rem;
+            margin-top: 32px; padding: 16px; border-top: 1px solid var(--border);
+        }
+        .last-updated a { color: var(--accent); text-decoration: none; }
+        .loading { text-align: center; padding: 80px; color: var(--text-muted); }
+        .loading .spinner { font-size: 2.5rem; margin-bottom: 16px; animation: spin 1.5s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .error-banner {
+            background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
+            padding: 24px; margin-bottom: 20px; color: #991b1b; text-align: center;
+        }
+        @media (max-width: 768px) {
+            .charts-row { grid-template-columns: 1fr; }
+            .crm-grid { grid-template-columns: 1fr 1fr; }
+            .container { padding: 12px; }
+            .top-bar { padding: 12px 16px; }
+            .tab-btn { font-size: 0.8rem; padding: 12px 10px; }
+        }
+        .fin-period-panel { animation:fadeIn .2s ease; }
+
+        /* ── Accordion Histórico ── */
+        .accordion-item { border:1px solid #e2e8f0; border-radius:8px; margin-bottom:8px; overflow:hidden; background:#fff; }
+        .accordion-header { display:flex; justify-content:space-between; align-items:center; padding:14px 18px; cursor:pointer; user-select:none; transition:background .15s; }
+        .accordion-header:hover { background:#f8fafc; }
+        .accordion-header .month-label { font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:10px; }
+        .accordion-header .month-summary { font-size:0.78rem; color:var(--text-muted); display:flex; align-items:center; gap:12px; }
+        .accordion-arrow { transition:transform .2s; font-size:0.8rem; margin-left:8px; }
+        .accordion-arrow.open { transform:rotate(180deg); }
+        .accordion-body { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+        .accordion-body.open { max-height:5000px; }
+        .accordion-inner { padding:18px; border-top:1px solid #e2e8f0; }
+        </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>🦊 <span>Alberto Prieto</span></h1>
+        <div class="header-right">
+            <span class="timestamp" id="crm-timestamp">Cargando...</span>
+            <button onclick="refreshData()"
+                    style="background:var(--accent);color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:0.82rem">
+                🔄 Actualizar
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loading-state" class="loading">
+            <div class="spinner">🔄</div>
+            <p>Cargando datos del CRM...</p>
+        </div>
+        <div id="error-state" class="error-banner" style="display:none">
+            <h3>⚠️ No se pudieron cargar los datos</h3>
+            <p id="error-message">Error de conexión.</p>
+        </div>
+        <div id="dashboard-content" class="fade-in" style="display:none">
+
+            <!-- App-level tabs: Ventas | Financiero -->
+            
+
+            <!-- ===== VENTAS PANEL ===== -->
+            <div class="app-panel active" id="app-ventas">
+                <!-- Period tab bar: Ayer | Este Mes | Este Trimestre | Global -->
+                <div class="tab-bar" id="tab-bar">
+                    
+                    <button class="tab-btn active" data-tab="this_month" onclick="switchTab('this_month')">📆 Este Mes</button>
+                    <button class="tab-btn" data-tab="this_quarter" onclick="switchTab('this_quarter')">🗓️ Este Trimestre</button>
+                    <button class="tab-btn" data-tab="this_year" onclick="switchTab('this_year')">📆 Este Año</button>
+                    <button class="tab-btn" data-tab="mayo2026" onclick="switchTab('mayo2026')">📊 Análisis Mayo</button>
+                    <button class="tab-btn" data-tab="junio2026" onclick="switchTab('junio2026')">📊 Análisis Junio</button>
+                    <button class="tab-btn" data-tab="historico2026" onclick="switchTab('historico2026')">📅 Histórico 2026</button>
+                    <button class="tab-btn" data-tab="all_time" onclick="switchTab('all_time')">🌐 Global</button>
+                </div>
+
+                <!-- Este Mes -->
+                <div class="tab-panel" id="panel-this_month">
+                    <p class="cmp-context" id="cmp-header-this_month" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_month"></div>
+                    <!-- Daily contacts chart -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📈 Nuevos Contactos por Día</h3>
+                        <canvas id="daily-contacts-this_month"></canvas>
+                    </div>
+                    <!-- Daily deals chart -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📈 Nuevas Oportunidades por Día</h3>
+                        <canvas id="daily-deals-this_month"></canvas>
+                    </div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_month"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_month"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_month"></div>
+                    </div>
+                    <!-- Pipeline Este Mes -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Mes</h3>
+                        <div id="forecast-this_month" class="forecast-summary" style="display:none"></div>
+                        <div id="forecast-table-this_month"></div>
+                        <div id="pipeline-this_month"></div>
+                    </div>
+                    <!-- Conversión por cohorte -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📅 Conversión por Cohorte</h3>
+                        <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 8px 0">Contactos creados en cada mes que se convirtieron en ventas este mes</p>
+                        <div id="cohort-this_month"></div>
+                    </div>
+                    <!-- Por producto y entidad -->
+                    <div class="charts-row" style="margin-bottom:20px">
+                        <div class="chart-container">
+                            <h3>📦 Por Producto</h3>
+                            <div id="products-entity-this_month"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>🏢 Por Entidad</h3>
+                            <div id="entities-this_month"></div>
+                        </div>
+                    </div>
+                    <!-- Análisis Comparativo -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📊 Análisis Mensual: Junio vs Mayo</h3>
+                        <div id="analysis-this_month"></div>
+                    </div>
+                </div>
+
+                <!-- Este Trimestre -->
+                <div class="tab-panel" id="panel-this_quarter">
+                    <p class="cmp-context" id="cmp-header-this_quarter" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_quarter"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_quarter"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_quarter"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_quarter"></div>
+                    </div>
+                    <!-- Pipeline Este Trimestre -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Trimestre</h3>
+                        <div id="forecast-this_quarter" class="forecast-summary" style="display:none"></div>
+                        <div id="forecast-table-this_quarter"></div>
+                        <div id="pipeline-this_quarter"></div>
+                    </div>
+                    <!-- Conversión por cohorte Este Trimestre -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📅 Conversión por Cohorte</h3>
+                        <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 8px 0">Contactos creados en cada mes que se convirtieron en ventas en este trimestre</p>
+                        <div id="cohort-this_quarter"></div>
+                    </div>
+                </div>
+
+                <!-- Este Año -->
+                <div class="tab-panel" id="panel-this_year">
+                    <p class="cmp-context" id="cmp-header-this_year" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px"></p>
+                    <div class="crm-grid" id="kpi-this_year"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>🔝 Ranking Asesores (Oportunidades Ganadas)</h3>
+                            <div id="advisor-won-this_year"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>💰 Ranking Asesores (Por Inversión)</h3>
+                            <div id="advisor-aport-this_year"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📦 Productos Cerrados</h3>
+                        <div id="products-this_year"></div>
+                    </div>
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>🔽 Pipeline Este Año</h3>
+                        <div id="forecast-this_year" class="forecast-summary" style="display:none"></div>
+                        <div id="forecast-table-this_year"></div>
+                        <div id="pipeline-this_year"></div>
+                    </div>
+                    <!-- Conversión por cohorte Este Año -->
+                    <div class="chart-container full-width" style="margin-bottom:20px">
+                        <h3>📅 Conversión por Cohorte</h3>
+                        <p style="font-size:0.78rem;color:var(--text-muted);margin:0 0 8px 0">Contactos creados en cada mes que se convirtieron en ventas en este año</p>
+                        <div id="cohort-this_year"></div>
+                    </div>
+                </div>
+
+                <!-- Mayo 2026 - Análisis Profundo -->
+                <div class="tab-panel" id="panel-mayo2026">
+                    <div id="mayo-content"></div>
+                </div>
+
+                <!-- Junio 2026 - Análisis Profundo -->
+                <div class="tab-panel" id="panel-junio2026">
+                    <div id="junio-content"></div>
+                </div>
+
+                <!-- Histórico 2026 -->
+                <div class="tab-panel" id="panel-historico2026">
+                    <div id="historico-content"></div>
+                </div>
+
+                <!-- Global -->
+                <div class="tab-panel" id="panel-all_time">
+                    <div class="crm-grid" id="kpi-all_time"></div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>💰 Oportunidades por Asesor</h3>
+                            <canvas id="chart-owner-all"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>👥 Contactos por Asesor</h3>
+                            <canvas id="chart-contact-owner-all"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container full-width">
+                        <h3>📋 Últimas Ofertas</h3>
+                        <div style="overflow-x:auto">
+                            <table class="compact-table">
+                                <thead><tr>
+                                    <th>Nombre</th>
+                                    <th>Contacto</th>
+                                    <th>Asesor</th>
+                                    <th>Etapa</th>
+                                    <th>Importe</th>
+                                    <th>Inversión</th>
+                                    <th>Tipo</th>
+                                </tr></thead>
+                                <tbody id="deals-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="last-updated">
+                🦊 <strong>Finanfox</strong> — <span id="footer-timestamp"></span>
+                · <a href="javascript:refreshData()">Actualizar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+console.log('DEBUG v5: TOP LEVEL - script is executing');
+let currentData = null;
+const charts = {};
+const PERIOD_MAP = { ayer: 'yesterday', this_month: 'this_month', this_quarter: 'this_quarter', this_year: 'this_year' };
+
+function switchAppTab(app) {
+    document.querySelectorAll('.app-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.app-panel').forEach(function(p) { p.classList.remove('active'); });
+    var tb = document.querySelector('.app-tab-btn[data-app="' + app + '"]');
+    if (tb) tb.classList.add('active');
+    var pn = document.getElementById('app-' + app);
+    if (pn) pn.classList.add('active');
+}
+
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    var tb = document.querySelector('.tab-btn[data-tab="' + tab + '"]');
+    if (tb) tb.classList.add('active');
+    var pn = document.getElementById('panel-' + tab);
+    if (pn) pn.classList.add('active');
+}
+
+function formatEUR(v) {
+    return '€' + Number(v).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function getBadgeClass(i) {
+    var cls = ['badge-1','badge-2','badge-3','badge-4','badge-5','badge-6','badge-7','badge-8'];
+    return cls[i % cls.length];
+}
+
+function getStageColor(stage) {
+    var s = (stage || '').toLowerCase();
+    if (s.indexOf('ganado') !== -1) return '#22c55e';
+    if (s.indexOf('perdido') !== -1) return '#ef4444';
+    if (s.indexOf('firma') !== -1) return '#a855f7';
+    if (s.indexOf('analisis') !== -1) return '#3b82f6';
+    if (s.indexOf('pendiente') !== -1 || s.indexOf('llamada') !== -1) return '#f97316';
+    return '#94a3b8';
+}
+
+function calcChange(current, previous) {
+    if (previous === 0 && current === 0) return { pct: 0, cls: 'cmp-flat', arrow: '→' };
+    if (previous === 0) return { pct: 999.9, cls: 'cmp-up', arrow: '↑' };
+    var pct = ((current - previous) / previous) * 100;
+    if (pct > 0) return { pct: Math.round(pct * 10) / 10, cls: 'cmp-up', arrow: '↑' };
+    if (pct < 0) return { pct: Math.round(pct * 10) / 10, cls: 'cmp-down', arrow: '↓' };
+    return { pct: 0, cls: 'cmp-flat', arrow: '→' };
+}
+
+function renderCmpBadge(current, previous, showQty) {
+    if (previous === undefined || previous === null) {
+        return '<span class="cmp-badge cmp-na">N/A</span>';
+    }
+    var change = calcChange(current, previous);
+    var qty = Math.round((current - previous) * 100) / 100;
+    var qtyStr = qty > 0 ? '+' + qty : String(qty);
+    if (change.pct === 999.9) {
+        return '<span class="cmp-badge cmp-up">+' + qty + ' / +∞% ↑</span>';
+    }
+    var sign = change.pct > 0 ? '+' : '';
+    if (showQty) {
+        return '<span class="cmp-badge ' + change.cls + '">' + qtyStr + ' / ' + sign + change.pct + '% ' + change.arrow + '</span>';
+    }
+    return '<span class="cmp-badge ' + change.cls + '">' + sign + change.pct + '% ' + change.arrow + '</span>';
+}
+
+function renderFunnel(stages) {
+    if (!stages || stages.length === 0) {
+        return '<p style="color:var(--text-muted);padding:12px">Pipeline activo vacío.</p>';
+    }
+    var html = '<div class="funnel-container">';
+    stages.forEach(function(item, i) {
+        var stage = item.stage;
+        var count = item.count;
+        var pctTotal = item.pct_of_total;
+        var convFromPrev = item.conversion_from_prev;
+        var convFromTop = item.conversion_from_top;
+        var color = getStageColor(stage);
+
+        html += '<div class="funnel-stage" style="border-color:' + color + '40">';
+        html += '<div class="funnel-left">';
+        html += '<span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:' + color + '"></span>';
+        html += '<strong>' + stage + '</strong>';
+        html += '</div>';
+        html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
+        html += '<span class="funnel-count">' + count + '</span>';
+
+        // pct_of_total badge
+        if (pctTotal !== undefined && pctTotal !== null && pctTotal !== '') {
+            html += '<span class="badge" style="font-size:0.7rem;background:#f1f5f9;color:#475569">' + pctTotal + '%</span>';
+        }
+
+        // conversion_from_top: % from top-of-funnel
+        if (convFromTop !== undefined && convFromTop !== null && convFromTop !== '' && i > 0) {
+            html += '<span class="funnel-conv" style="color:var(--text-muted)">' + convFromTop + '% del top</span>';
+        }
+
+        // conversion_from_prev: only when meaningful (decrease from prev stage)
+        if (convFromPrev !== undefined && convFromPrev !== null && convFromPrev !== '' && convFromPrev !== 0) {
+            html += '<span class="funnel-conv cmp-down">↓' + convFromPrev + '% conv.</span>';
+        }
+
+        if (item.cmp_count !== undefined && item.cmp_count !== null) {
+            html += renderCmpBadge(count, item.cmp_count, false);
+        }
+        html += '</div></div>';
+    });
+    html += '</div>';
+    return html;
+}
+
+function renderKPI(periodKey, stats, comparisonStats) {
+    var statKey = PERIOD_MAP[periodKey] || periodKey;
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
+    var isPeriod = periodKey !== 'all_time';
+    if (isPeriod) {
+        var cmp = comparisonStats || null;
+        var lost = s.lost_deals || 0;
+        var lostCmp = cmp ? (cmp.lost_deals || 0) : null;
+        var html = '';
+        html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + s.new_contacts + '</div>' + (cmp ? renderCmpBadge(s.new_contacts, cmp.new_contacts, true) : '') + '</div><div class="label">👥 Nuevos Contactos</div></div>';
+        html += '<div class="crm-card info"><div class="value-row"><div class="value">' + s.new_deals + '</div>' + (cmp ? renderCmpBadge(s.new_deals, cmp.new_deals, true) : '') + '</div><div class="label">📈 Nuevas Oportunidades</div></div>';
+        html += '<div class="crm-card success"><div class="value-row"><div class="value">' + s.won_deals + '</div>' + (cmp ? renderCmpBadge(s.won_deals, cmp.won_deals, true) : '') + '</div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + formatEUR(s.won_value) + ' ' + (cmp ? renderCmpBadge(s.won_value, cmp.won_value, true) : '') + '</div></div>';
+        html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
+        html += '<div class="crm-card error"><div class="value-row"><div class="value">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+                    var lq = s.lead_quality || {};
+                    var niNaTotal = lq.ni_na_total || 0;
+                    var niNaTotalRate = lq.ni_na_total_rate || 0;
+                    var niNa7d = lq.ni_na_7d || 0;
+                    var niNa7dRate = lq.ni_na_7d_rate || 0;
+                    var niTotal = lq.ni_total || 0;
+                    var naTotal = lq.na_total || 0;
+                    // Compute internal distribution percentages
+                    var niPct = niNaTotal > 0 ? Math.round(niTotal / niNaTotal * 1000) / 10 : 0;
+                    var naPct = niNaTotal > 0 ? Math.round(naTotal / niNaTotal * 1000) / 10 : 0;
+                    var ni7d = lq.ni_7d || 0;
+                    var na7d = lq.na_7d || 0;
+                    var ni7dPct = niNa7d > 0 ? Math.round(ni7d / niNa7d * 1000) / 10 : 0;
+                    var na7dPct = niNa7d > 0 ? Math.round(na7d / niNa7d * 1000) / 10 : 0;
+                    // Comparison data
+                    var cmpLq = cmp ? (cmp.lead_quality || {}) : {};
+                    var cmpNiNaTotal = cmpLq.ni_na_total;
+                    var cmpNiNa7d = cmpLq.ni_na_7d;
+                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + niNaTotal + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + niNaTotalRate + '%)</div>' + (cmpNiNaTotal !== undefined ? renderCmpBadge(niNaTotal, cmpNiNaTotal, true) : '') + '</div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + niTotal + ' (' + niPct + '%)  |  🙅 No apareció: ' + naTotal + ' (' + naPct + '%)</div><div class="sub" style="color:var(--text-muted);margin-top:2px;">⏱️ En ≤7d: ' + niNa7d + ' (' + niNa7dRate + '%) — NI: ' + ni7d + ' (' + ni7dPct + '%)  NA: ' + na7d + ' (' + na7dPct + '%)' + (cmpNiNa7d !== undefined ? ' vs ' + cmpNiNa7d + ' ant.' : '') + '</div></div>';
+                html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
+        // Calculate Win Rate live: won / new
+                    var liveWR = s.new_deals > 0 ? Math.round(s.won_deals / s.new_deals * 1000) / 10 : null;
+                    var cmpLiveWR = cmp ? (cmp.new_deals > 0 ? Math.round(cmp.won_deals / cmp.new_deals * 1000) / 10 : null) : null;
+                    html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (liveWR !== null ? liveWR + '%' : 'N/A') + '</div>' + (cmpLiveWR !== null ? renderCmpBadge(liveWR, cmpLiveWR, false) : '') + '</div><div class="label">⚡ Win Rate</div><div class="sub">' + (s.won_deals + ' ganados de ' + s.new_deals + ' nuevas') + '</div></div>';
+        html += '<div class="crm-card info"><div class="value-row"><div class="value">' + (s.avg_days_to_win !== undefined && s.avg_days_to_win > 0 ? s.avg_days_to_win + ' días' : 'N/A') + '</div>' + (cmp && cmp.avg_days_to_win !== undefined && cmp.avg_days_to_win > 0 ? renderCmpBadge(s.avg_days_to_win, cmp.avg_days_to_win, false) : '') + '</div><div class="label">📅 Días hasta cierre</div></div>';
+        html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + (s.conversion_clientes ? s.conversion_clientes.ratio + '%' : 'N/A') + '</div>' + (cmp && cmp.conversion_clientes ? renderCmpBadge(s.conversion_clientes.ratio, cmp.conversion_clientes.ratio, false) : '') + '</div><div class="label">🔄 Conversión clientes</div><div class="sub">' + (s.conversion_clientes ? s.conversion_clientes.converted_contacts + ' de ' + s.conversion_clientes.total_contacts : '') + '</div></div>';
+        return html;
+    } else {
+        var c = s.contacts;
+        var d = s.deals;
+        var html = '';
+        html += '<div class="crm-card accent"><div class="value">' + c.total + '</div><div class="label">👥 Contactos</div><div class="sub">📧 ' + c.with_email + ' con email</div></div>';
+        html += '<div class="crm-card info"><div class="value">' + d.total + '</div><div class="label">💰 Oportunidades</div><div class="sub">Promedio: ' + formatEUR(d.avg_deal_size) + '</div></div>';
+        html += '<div class="crm-card success"><div class="value">' + formatEUR(d.pipeline_value) + '</div><div class="label">📊 Pipeline Total</div><div class="sub">' + d.closed_won + ' ganados: ' + formatEUR(d.closed_won_value) + '</div></div>';
+        html += '<div class="crm-card purple"><div class="value">' + d.conversion_rate + '%</div><div class="label">🎯 Tasa Conversión</div><div class="sub">' + formatEUR(d.total_aportaciones) + ' en inversiones</div></div>';
+        html += '<div class="crm-card error"><div class="value">' + (d.closed_lost || 0) + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+        html += '<div class="crm-card warning"><div class="value">' + ((d.lead_quality && d.lead_quality.ni_na_total) || 0) + '</div><div class="label">🔴 Leads Malos</div><div class="sub">⏱️ ≤7d: ' + ((d.lead_quality && d.lead_quality.ni_na_7d) || 0) + '</div></div>';
+        html += '<div class="crm-card warning"><div class="value">' + (currentData.products ? currentData.products.length : 0) + '</div><div class="label">📦 Productos</div></div>';
+        return html;
+    }
+}
+
+function renderAdvisorTable(ranking) {
+    if (!ranking || ranking.length === 0) {
+        return '<p style="color:var(--text-muted);padding:12px">Sin datos en este período.</p>';
+    }
+    var medals = ['🥇','🥈','🥉'];
+    var html = '<table class="compact-table"><thead><tr><th>#</th><th>Asesor</th><th>🏆 Ganadas</th><th>💰 Inversión</th></tr></thead><tbody>';
+    ranking.forEach(function(a, i) {
+        var medal = i < 3 ? medals[i] : String(i+1) + '.';
+        html += '<tr><td><span class="ranking-medal">' + medal + '</span></td><td><strong>' + a.name + '</strong></td><td>' + a.won + '</td><td>' + formatEUR(a.total_aportacion) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    return html;
+}
+
+function renderProductBreakdown(products, counts, details) {
+    var names = Object.keys(products);
+    if (names.length === 0) {
+        return '<p style="color:var(--text-muted);padding:12px">Sin productos cerrados en este período.</p>';
+    }
+    var total = Object.values(products).reduce(function(a,b) { return a + b; }, 0);
+    var hasDetails = details && details.length > 0;
+    var html = '<table class="compact-table"><thead><tr><th>Producto</th>' + (hasDetails ? '<th>Entidad</th>' : '') + '<th>CANTIDAD</th><th>Total Invertido</th><th>%</th></tr></thead><tbody>';
+    if (hasDetails) {
+        details.forEach(function(item, i) {
+            var amt = item.total || item.aportacion || 0;
+            var cnt = item.veces || 1;
+            var pct = (amt / total * 100).toFixed(1);
+            html += '<tr><td><span class="badge ' + getBadgeClass(i) + '">' + item.producto + '</span></td><td>' + (item.entidad || '-') + '</td><td><strong>' + cnt + '</strong></td><td><strong>' + formatEUR(amt) + '</strong></td>';
+            html += '<td><div style="display:flex;align-items:center;gap:8px"><div style="height:16px;width:' + pct + '%;background:var(--accent);border-radius:4px;min-width:4px;max-width:120px;transition:width 0.4s"></div><span style="font-size:0.75rem;color:var(--text-muted)">' + pct + '%</span></div></td></tr>';
+        });
+    } else {
+        names.forEach(function(name, i) {
+            var amt = products[name];
+            var cnt = counts[name] || 0;
+            var pct = (amt / total * 100).toFixed(1);
+            html += '<tr><td><span class="badge ' + getBadgeClass(i) + '">' + name + '</span></td><td>' + cnt + '</td><td><strong>' + formatEUR(amt) + '</strong></td>';
+            html += '<td><div style="display:flex;align-items:center;gap:8px"><div style="height:16px;width:' + pct + '%;background:var(--accent);border-radius:4px;min-width:4px;max-width:120px;transition:width 0.4s"></div><span style="font-size:0.75rem;color:var(--text-muted)">' + pct + '%</span></div></td></tr>';
+        });
+    }
+    html += '</tbody></table>';
+    return html;
+}
+
+function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
+    var el;
+
+    el = document.getElementById('cmp-header-' + periodKey);
+    if (el && comparisonStats) {
+        var cmpLabel = 'mes previo';
+        if (cmpKey === 'yesterday') cmpLabel = 'anteayer';
+        else if (cmpKey === 'this_quarter') cmpLabel = 'trimestre previo';
+        el.textContent = '↔️ Comparativa vs ' + cmpLabel;
+        el.style.display = 'block';
+    } else if (el) {
+        el.style.display = 'none';
+    }
+
+    el = document.getElementById('kpi-' + periodKey);
+    if (el) el.innerHTML = renderKPI(periodKey, stats, comparisonStats);
+
+    var statKey = PERIOD_MAP[periodKey] || periodKey;
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
+
+    el = document.getElementById('advisor-won-' + periodKey);
+    if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_won);
+
+    el = document.getElementById('advisor-aport-' + periodKey);
+    if (el) el.innerHTML = renderAdvisorTable(s.advisor_ranking_aportacion);
+
+    el = document.getElementById('products-' + periodKey);
+    if (el) el.innerHTML = renderProductBreakdown(s.product_breakdown || {}, s.product_count || {}, s.product_details || []);
+
+    // Render period-specific pipeline
+    var pipelineKey = statKey;
+    var pipelineData = (currentData.pipeline && currentData.pipeline[pipelineKey]) ? currentData.pipeline[pipelineKey] : null;
+    var pipelineEl = document.getElementById('pipeline-' + periodKey);
+    if (pipelineEl && pipelineData) {
+        renderFunnelFromPipeline(pipelineData, periodKey);
+    }
+
+    // ── Daily new contacts bar chart (this_month only) ──
+    if (periodKey === 'this_month') {
+        var dailyCanvas = document.getElementById('daily-contacts-this_month');
+        if (dailyCanvas) {
+            if (charts.dailyContacts) { charts.dailyContacts.destroy(); }
+            var byDay = s.contacts_by_day || {};
+            var allDays = [];
+            var now = new Date();
+            var daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            for (var d = 1; d <= daysInMonth; d++) {
+                allDays.push(String(d));
+            }
+            var counts = allDays.map(function(day) { return byDay[day] || 0; });
+            charts.dailyContacts = new Chart(dailyCanvas, {
+                type: 'bar',
+                data: {
+                    labels: allDays,
+                    datasets: [{
+                        label: 'Nuevos Contactos',
+                        data: counts,
+                        backgroundColor: '#3b82f6',
+                        borderColor: '#2563eb',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: function(items) { return 'Día ' + items[0].label; },
+                                label: function(item) { return item.raw + ' contacto' + (item.raw !== 1 ? 's' : ''); }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Día del Mes' },
+                            ticks: { maxTicksLimit: 31 }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Nº Contactos' },
+                            ticks: { stepSize: 1, precision: 0 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ── Daily new deals bar chart (this_month only) ──
+        var dealsCanvas = document.getElementById('daily-deals-this_month');
+        if (dealsCanvas) {
+            if (charts.dailyDeals) { charts.dailyDeals.destroy(); }
+            var dealsByDay = s.deals_by_day || {};
+            var dealCounts = allDays.map(function(day) { return dealsByDay[day] || 0; });
+            charts.dailyDeals = new Chart(dealsCanvas, {
+                type: 'bar',
+                data: {
+                    labels: allDays,
+                    datasets: [{
+                        label: 'Nuevas Oportunidades',
+                        data: dealCounts,
+                        backgroundColor: '#f97316',
+                        borderColor: '#ea580c',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: function(items) { return 'Día ' + items[0].label; },
+                                label: function(item) { return item.raw + ' oportunidad' + (item.raw !== 1 ? 'es' : ''); }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Día del Mes' },
+                            ticks: { maxTicksLimit: 31 }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Nº Oportunidades' },
+                            ticks: { stepSize: 1, precision: 0 }
+                        }
+                    }
+                }
+            });
+        }
+    }
+}
+
+function renderGlobalTab(stats) {
+    var s = stats.all_time;
+    document.getElementById('kpi-all_time').innerHTML = renderKPI('all_time', stats, null);
+
+    if (charts.chartOwner) { charts.chartOwner.destroy(); }
+    if (charts.chartContact) { charts.chartContact.destroy(); }
+
+    var ctx1 = document.getElementById('chart-owner-all');
+    if (ctx1 && s.deals.by_owner) {
+        var owners = Object.keys(s.deals.by_owner);
+        var vals = owners.map(function(o) { return s.deals.by_owner[o]; });
+        charts.chartOwner = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: owners,
+                datasets: [{
+                    label: 'Oportunidades',
+                    data: vals,
+                    backgroundColor: '#f97316'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    }
+
+    var ctx2 = document.getElementById('chart-contact-owner-all');
+    if (ctx2 && s.contacts.by_owner) {
+        var owners = Object.keys(s.contacts.by_owner);
+        var vals = owners.map(function(o) { return s.contacts.by_owner[o]; });
+        charts.chartContact = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: owners,
+                datasets: [{
+                    label: 'Contactos',
+                    data: vals,
+                    backgroundColor: '#3b82f6'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    }
+    }
+
+function renderDealsTable() {
+    var tbody = document.getElementById('deals-table-body');
+    if (!tbody) return;
+    var deals = currentData.deals || [];
+    var html = '';
+    deals.forEach(function(d) {
+        var stageColor = getStageColor(d.Stage);
+        html += '<tr>';
+        html += '<td><strong>' + d.Deal_Name + '</strong></td>';
+        html += '<td>' + (d.Contact_Name || '-') + '</td>';
+        html += '<td>' + (d.Owner || '-') + '</td>';
+        html += '<td><span style="color:' + stageColor + ';font-weight:600">●</span> ' + d.Stage + '</td>';
+        html += '<td>' + (d.Amount ? formatEUR(d.Amount) : '-') + '</td>';
+        html += '<td>' + (d.Total_Aportaciones ? formatEUR(d.Total_Aportaciones) : '-') + '</td>';
+        html += '<td>' + (d.Type || '-') + '</td>';
+        html += '</tr>';
+    });
+    tbody.innerHTML = html;
+}
+
+function renderFunnelFromPipeline(pipeline, periodKey) {
+    var funnelElId = 'pipeline-' + (periodKey || 'funnel');
+    var funnelEl = document.getElementById(funnelElId);
+    if (!funnelEl) return;
+
+    if (!pipeline || (!pipeline.details || pipeline.details.length === 0) && (!pipeline.stages)) {
+        funnelEl.innerHTML = '<p style="color:var(--text-muted);padding:12px">Pipeline vacío.</p>';
+        return;
+    }
+
+    var html = '';
+
+    // ── Active pipeline funnel ──
+    var activeStages = [];
+    if (pipeline.details && pipeline.details.length > 0) {
+        pipeline.details.forEach(function(d) {
+            activeStages.push({
+                stage: d.stage,
+                count: d.count,
+                pct_of_total: d.pct_of_total,
+                conversion_from_prev: d.conversion_from_prev,
+                conversion_from_top: d.conversion_from_top,
+                cmp_count: d.cmp_count
+            });
+        });
+    } else if (pipeline.stages) {
+        // Fallback for old data format
+        var order = pipeline.stage_order || Object.keys(pipeline.stages);
+        var prevStages = pipeline.previous_pipeline || {};
+        order.forEach(function(stage) {
+            if (stage === 'Cerrado Ganado' || stage === 'Cerrado Perdido') return;
+            activeStages.push({
+                stage: stage,
+                count: pipeline.stages[stage],
+                pct_of_total: null,
+                conversion_from_prev: null,
+                conversion_from_top: null,
+                cmp_count: prevStages[stage]
+            });
+        });
+    }
+
+    // Active funnel
+        html += '<div style="margin-bottom:4px"><strong style="font-size:0.8rem;color:var(--text-muted)">📊 Pipeline Activo</strong></div>';
+    html += '<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0">';
+    html += '<strong style="color:#475569">Leyenda:</strong> ';
+    html += '<span style="margin-right:10px"><strong>Nº</strong> = Oportunidades en etapa</span>';
+    html += '<span style="margin-right:10px"><strong>%</strong> = % sobre total del pipeline</span>';
+    html += '<span style="margin-right:10px"><strong>% del top</strong> = % respecto a inicio del embudo</span>';
+    html += '<span style="margin-right:10px"><strong>↓X% conv.</strong> = Caída de conversión vs etapa anterior</span>';
+    html += '<span><strong>↑/↓ badge</strong> = Cambio vs periodo anterior</span>';
+    html += '</div>';
+    html += renderFunnel(activeStages);
+
+    // ── Terminal outcomes (Cerrado Ganado / Cerrado Perdido) ──
+    var terminalStages = [];
+    if (pipeline.terminal && pipeline.terminal.length > 0) {
+        terminalStages = pipeline.terminal;
+    } else if (pipeline.stages) {
+        // Fallback for old data format
+        ['Cerrado Ganado', 'Cerrado Perdido'].forEach(function(s) {
+            if (pipeline.stages[s]) {
+                terminalStages.push({
+                    stage: s,
+                    count: pipeline.stages[s],
+                    pct_of_total: null
+                });
+            }
+        });
+    }
+
+    if (terminalStages.length > 0) {
+        html += '<div style="margin:16px 0 4px"><strong style="font-size:0.8rem;color:var(--text-muted)">✅ Resultados Finales</strong></div>';
+        html += '<div style="display:flex;gap:16px">';
+        terminalStages.forEach(function(t) {
+            var isWon = t.stage.indexOf('Ganado') !== -1;
+            var bg = isWon ? '#f0fdf4' : '#fef2f2';
+            var border = isWon ? '#22c55e' : '#ef4444';
+            var color = isWon ? '#15803d' : '#dc2626';
+            var icon = isWon ? '🏆' : '❌';
+            var pctLabel = '';
+            if (t.pct_of_total !== undefined && t.pct_of_total !== null && t.pct_of_total !== '') {
+                pctLabel = ' · ' + t.pct_of_total + '% del total';
+            }
+            html += '<div style="flex:1;background:' + bg + ';border:2px solid ' + border + ';border-radius:10px;padding:16px;text-align:center">';
+            html += '<div style="font-size:2rem;font-weight:700;color:' + color + '">' + icon + ' ' + t.count + '</div>';
+            html += '<div style="font-size:0.85rem;color:' + color + ';font-weight:600">' + t.stage + '</div>';
+            if (pctLabel) html += '<div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">' + pctLabel + '</div>';
+            if (t.cmp_count !== undefined && t.cmp_count !== null) {
+                html += '<div style="margin-top:4px">' + renderCmpBadge(t.count, t.cmp_count, true) + '</div>';
+            }
+            html += '</div>';
+        });
+
+        // Win/Loss ratio
+        var wonTotal = pipeline.won_total || 0;
+        var lostTotal = pipeline.lost_total || 0;
+        var total = wonTotal + lostTotal;
+        if (total > 0) {
+            var winRate = Math.round(wonTotal / total * 100);
+            html += '<div style="flex:1;background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;padding:16px;text-align:center">';
+            html += '<div style="font-size:2rem;font-weight:700;color:var(--text)">' + winRate + '%</div>';
+            html += '<div style="font-size:0.85rem;color:var(--text-muted);font-weight:600">⚡ Win Rate</div>';
+                        html += '<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px">' + wonTotal + ' ganados de ' + total + '</div>';
+            html += '<div style="font-size:0.65rem;color:var(--text-muted);margin-top:1px">Ganados / (Ganados+Perdidos)</div>';
+            html += '</div>';
+        }
+        html += '</div>';
+    }
+
+    funnelEl.innerHTML = html;
+}
+
+// ── Pipeline ponderado (forecast) ──
+function renderForecast(periodKey) {
+    var summaryEl = document.getElementById('forecast-' + periodKey);
+    var tableEl = document.getElementById('forecast-table-' + periodKey);
+    if (!summaryEl && !tableEl) return;
+    if (!currentData || !currentData.deals) return;
+
+    var openStagesProb = {
+        'Llamada Pendiente': 0.10,
+        'Análisis Financiero': 0.40,
+        'Asesoramiento': 0.60,
+        'Reasesoramiento': 0.60,
+        'Revisando Propuesta': 0.75,
+        'Aceptado/Falta Firma': 0.85
+    };
+
+    var openDeals = currentData.deals.filter(function(d) {
+        var stage = d.Stage || '';
+        return openStagesProb.hasOwnProperty(stage);
+    });
+
+    if (openDeals.length === 0) {
+        if (summaryEl) summaryEl.style.display = 'none';
+        if (tableEl) tableEl.innerHTML = '';
+        return;
+    }
+
+    var totalOpen = openDeals.length;
+    var expectedCloses = 0;
+    var expectedRevenue = 0;
+    var stageData = {};
+    Object.keys(openStagesProb).forEach(function(s) { stageData[s] = { deals: 0, totalAmount: 0, expectedCloses: 0, expectedRevenue: 0 }; });
+
+    openDeals.forEach(function(d) {
+        var stage = d.Stage;
+        var prob = openStagesProb[stage] || 0;
+        var amount = parseFloat(d.Amount) || 0;
+        stageData[stage].deals++;
+        stageData[stage].totalAmount += amount;
+        stageData[stage].expectedCloses += prob;
+        stageData[stage].expectedRevenue += amount * prob;
+        expectedCloses += prob;
+        expectedRevenue += amount * prob;
+    });
+
+    // Summary cards
+    if (summaryEl) {
+        summaryEl.style.display = 'flex';
+        summaryEl.innerHTML = '';
+        function _addCard(num, lbl, color) {
+            var c = document.createElement('div');
+            c.className = 'forecast-card';
+            c.innerHTML = '<div class="num" style="color:' + (color || 'var(--text)') + '">' + num + '</div><div class="lbl">' + lbl + '</div>';
+            summaryEl.appendChild(c);
+        }
+        _addCard(totalOpen, 'Oportunidades abiertas');
+        _addCard(expectedCloses.toFixed(1), 'Cierres esperados', 'var(--success)');
+        _addCard('€' + Math.round(expectedRevenue).toLocaleString('es-ES'), 'Ingreso esperado', 'var(--accent)');
+    }
+
+    // Stage table
+    if (tableEl) {
+        var html = '<p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 8px 0"><strong>' + totalOpen + '</strong> oportunidades abiertas — <strong>~' + expectedCloses.toFixed(1) + '</strong> cierres esperados (€' + Math.round(expectedRevenue).toLocaleString('es-ES') + ' estimados)</p>';
+        html += '<table class="forecast-table"><thead><tr><th>Fase</th><th class="n">Oportunidades</th><th class="n">Prob. cierre</th><th class="n">Cierres esperados</th><th class="n">€ Ingreso esperado</th></tr></thead><tbody>';
+        var stageOrder = ['Llamada Pendiente', 'Análisis Financiero', 'Asesoramiento', 'Reasesoramiento', 'Revisando Propuesta', 'Aceptado/Falta Firma'];
+        stageOrder.forEach(function(s) {
+            var sd = stageData[s];
+            if (!sd || sd.deals === 0) return;
+            html += '<tr><td><strong>' + s + '</strong></td><td class="n">' + sd.deals + '</td><td class="n">' + Math.round(openStagesProb[s] * 100) + '%</td><td class="n">' + sd.expectedCloses.toFixed(1) + '</td><td class="n">' + formatEUR(sd.expectedRevenue) + '</td></tr>';
+        });
+        html += '</tbody></table>';
+        html += '<div style="font-size:0.72rem;color:var(--text-muted);padding:4px 0">Cierres esperados = Σ (oportunidades × probabilidad de fase). Ingreso = Σ (importe × probabilidad).</div>';
+        tableEl.innerHTML = html;
+    }
+}
+
+// ── Conversión por cohorte (bar chart) ──
+function renderCohort(periodKey) {
+    var el = document.getElementById('cohort-' + periodKey);
+    if (!el || !currentData || !currentData.deals) { if (el) el.innerHTML = ''; return; }
+
+    var now = new Date();
+    var currentYear = now.getFullYear();
+    var currentMonthNum = now.getMonth() + 1; // 1-12
+    var currentMonth = currentYear + '-' + String(currentMonthNum).padStart(2, '0');
+
+    // Determine won deals filter based on periodKey
+    var wonDeals = currentData.deals.filter(function(d) {
+        if (d.Stage !== 'Cerrado Ganado') return false;
+        var closeDate = d.Closing_Date || '';
+        var closeMonth = closeDate.substring(0, 7);
+        if (periodKey === 'this_month') {
+            return closeMonth === currentMonth;
+        } else if (periodKey === 'this_quarter') {
+            // Q2: Apr-Jun
+            var m = parseInt(closeDate.substring(5, 7));
+            return closeDate.substring(0, 4) === String(currentYear) && m >= 4 && m <= 6;
+        } else if (periodKey === 'this_year') {
+            return closeDate.substring(0, 4) === String(currentYear);
+        }
+        return false;
+    });
+
+    var periodLabel = { 'this_month': 'este mes', 'this_quarter': 'este trimestre', 'this_year': 'este año' }[periodKey] || periodKey;
+
+    if (wonDeals.length === 0) {
+        el.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:12px">No hay oportunidades ganadas ' + periodLabel + '.</p>';
+        return;
+    }
+
+    var cohortByMonth = {};
+    var totalWon = wonDeals.length;
+    wonDeals.forEach(function(d) {
+        var created = d.Created_Time || '';
+        var month = created.substring(0, 7);
+        if (month) cohortByMonth[month] = (cohortByMonth[month] || 0) + 1;
+    });
+
+    var months = Object.keys(cohortByMonth).sort();
+    if (months.length === 0) {
+        el.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem">No se pudo determinar el mes de creación.</p>';
+        return;
+    }
+
+    var maxCount = Math.max.apply(null, months.map(function(m) { return cohortByMonth[m]; }));
+    var monthNames = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+    var html = '<p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 12px 0">Se han cerrado <strong>' + totalWon + '</strong> oportunidades ' + periodLabel + '. Distribución por mes de creación del contacto:</p>';
+    html += '<div style="display:flex;align-items:flex-end;gap:10px;padding:8px 0;min-height:170px;flex-wrap:wrap">';
+    months.forEach(function(m) {
+        var count = cohortByMonth[m];
+        var pct = totalWon > 0 ? Math.round(count / totalWon * 100) : 0;
+        var barH = Math.max(28, maxCount > 0 ? Math.round(count / maxCount * 130) : 28);
+        var mn = parseInt(m.substring(5));
+        html += '<div style="display:flex;flex-direction:column;align-items:center;flex:1;min-width:52px">';
+        html += '<div style="font-size:0.78rem;font-weight:700;color:var(--text);line-height:1.2">' + count + '</div>';
+        html += '<div style="font-size:0.65rem;color:var(--text-muted);font-weight:500;line-height:1;margin-bottom:2px">' + pct + '%</div>';
+        html += '<div style="width:100%;max-width:48px;height:' + barH + 'px;background:var(--accent);border-radius:6px 6px 0 0;margin:0"></div>';
+        html += '<div style="font-size:0.68rem;color:var(--text-muted);text-align:center;margin-top:3px;line-height:1.2">' + (monthNames[mn] || m.substring(5)) + ' ' + m.substring(0,4) + '</div>';
+        html += '</div>';
+    });
+    html += '</div>';
+    html += '<div style="font-size:0.72rem;color:var(--text-muted);padding:4px 8px;background:#f8fafc;border-radius:4px">';
+    html += 'Basado en Created_Time del deal como proxy de la fecha de captación del lead. No se incluyen oportunidades sin fecha de creación.';
+    html += '</div>';
+    el.innerHTML = html;
+}
+
+// ── Producto / Entidad % breakdown ──
+function renderProductEntityBreakdown(periodKey) {
+    var prodEl = document.getElementById('products-entity-' + periodKey);
+    var entEl = document.getElementById('entities-' + periodKey);
+    if (!prodEl && !entEl) return;
+
+    var statKey = PERIOD_MAP[periodKey] || periodKey;
+    var stats = currentData.stats;
+    var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
+    var productDetails = s.product_details || [];
+
+    if (productDetails.length === 0) {
+        if (prodEl) prodEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:8px">Sin datos en el periodo.</p>';
+        if (entEl) entEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.82rem;padding:8px">Sin datos en el periodo.</p>';
+        return;
+    }
+
+    var byProduct = {}, byEntity = {};
+    productDetails.forEach(function(pd) {
+        var prod = pd.producto || pd.product || '(sin producto)';
+        var ent = pd.entidad || pd.entity || '(sin entidad)';
+        var n = pd.veces || pd.count || 0;
+        byProduct[prod] = (byProduct[prod] || 0) + n;
+        byEntity[ent] = (byEntity[ent] || 0) + n;
+    });
+
+    var totalProd = Object.values(byProduct).reduce(function(a, b) { return a + b; }, 0) || 1;
+    var totalEnt = Object.values(byEntity).reduce(function(a, b) { return a + b; }, 0) || 1;
+
+    function _table(data, total) {
+        var keys = Object.keys(data).sort(function(a, b) { return data[b] - data[a]; });
+        var t = '<table class="cmp-table"><thead><tr><th>Nombre</th><th class="n">Contratos</th><th class="n">%</th></tr></thead><tbody>';
+        keys.forEach(function(k) {
+            t += '<tr><td><strong>' + k + '</strong></td><td class="n">' + data[k] + '</td><td class="n">' + (data[k] / total * 100).toFixed(1) + '%</td></tr>';
+        });
+        t += '</tbody></table>';
+        return t;
+    }
+
+    if (prodEl) prodEl.innerHTML = _table(byProduct, totalProd);
+    if (entEl) entEl.innerHTML = _table(byEntity, totalEnt);
+}
+
+function refreshUI() {
+    console.log('DEBUG v4 refreshUI: deals.length =', currentData.deals ? currentData.deals.length : 'null');
+    var stats = currentData.stats;
+    document.getElementById('crm-timestamp').textContent = '🕐 ' + (currentData.timestamp || '') + ' (Global: ' + stats.all_time.contacts.total + ' contactos)';
+    document.getElementById('footer-timestamp').textContent = 'Actualizado: ' + (currentData.timestamp || '-');
+
+    renderPeriodTab('ayer', stats, (currentData.comparison && currentData.comparison.yesterday ? currentData.comparison.yesterday.stats : null), 'yesterday');
+    renderPeriodTab('this_month', stats, (currentData.comparison && currentData.comparison.this_month ? currentData.comparison.this_month.stats : null), 'prev_month');
+    renderPeriodTab('this_quarter', stats, (currentData.comparison && currentData.comparison.this_quarter ? currentData.comparison.this_quarter.stats : null), 'this_quarter');
+    renderPeriodTab('this_year', stats, (currentData.comparison && currentData.comparison.this_year ? currentData.comparison.this_year.stats : null), 'this_year');
+    renderForecast('this_month');
+    renderForecast('this_quarter');
+    renderForecast('this_year');
+    renderCohort('this_month');
+    renderCohort('this_quarter');
+    renderCohort('this_year');
+    renderProductEntityBreakdown('this_month');
+    renderProductEntityBreakdown('this_quarter');
+    renderProductEntityBreakdown('this_year');
+    renderMayoAnalysis();
+    renderJunioAnalysis();
+    renderThisMonthAnalysis();
+    renderHistorico2026();
+    renderGlobalTab(stats);
+    renderDealsTable();
+}
+
+function loadData(data) {
+    currentData = data;
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display = 'none';
+    document.getElementById('dashboard-content').style.display = 'block';
+    refreshUI();
+}
+
+function showError(msg) {
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display = 'block';
+    document.getElementById('error-message').textContent = msg;
+}
+
+
+function refreshData() {
+    document.getElementById('dashboard-content').style.display = 'none';
+    document.getElementById('loading-state').style.display = 'block';
+    document.getElementById('error-state').style.display = 'none';
+    var zohoFetch = fetch('data/alberto-prieto.json?_=' + Date.now(), 15000)
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    var finFetch = fetch('data/financial_data.json?_=' + Date.now(), 15000)
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function(d) { currentFinancialData = d; });
+    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now(), 15000)
+        .then(function(r) { if (!r.ok) return null; return r.json(); })
+        .then(function(d) { currentComparisonData = d; });
+    Promise.all([zohoFetch, finFetch, cmpFetch])
+        .then(function(results) {
+            loadData(results[0]);
+
+        })
+        .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var zohoFetch = fetch('data/alberto-prieto.json?_=' + Date.now(), 15000)
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+    var finFetch = fetch('data/financial_data.json?_=' + Date.now(), 15000)
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function(d) { currentFinancialData = d; });
+    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now(), 15000)
+        .then(function(r) { if (!r.ok) return null; return r.json(); })
+        .then(function(d) { currentComparisonData = d; });
+    Promise.all([zohoFetch, finFetch, cmpFetch])
+        .then(function(results) {
+            loadData(results[0]);
+
+        })
+        .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
+});
+
+function productBreakdownByMonth(prefix) {
+    var out = {};
+    if (!currentData || !currentData.stats || !currentData.stats.this_year || !currentData.stats.this_year.product_deals) return out;
+    var pds = currentData.stats.this_year.product_deals;
+    for (var i = 0; i < pds.length; i++) {
+        var pd = pds[i];
+        if ((pd.close_date || '').startsWith(prefix)) {
+            var e = (pd.entidad || '').trim();
+            var key = e || pd.producto || 'Otros';
+            out[key] = (out[key] || 0) + (parseFloat(pd.total) || 0);
+        }
+    }
+    return out;
+}
+
+function renderMayoAnalysis() {
+    var container = document.getElementById('mayo-content');
+    if (!container) return;
+    var data = currentData;
+    if (!data || !data.deals) { container.innerHTML = '<p class="loading">Datos no disponibles para análisis profundo.</p>'; return; }
+
+    var stats = data.stats;
+    // Compute April data from ALL deals for comparison
+    var prevMonth = null;
+    var allDeals = data.deals;
+    var aprilDeals = allDeals.filter(function(d) { return d.Closing_Date && d.Closing_Date.startsWith('2026-04'); });
+    var aprilWon = aprilDeals.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+    var aprilLost = aprilDeals.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+    if (aprilDeals.length > 0) {
+      prevMonth = {
+        won_value: aprilWon.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0),
+        won_deals: aprilWon.length,
+        lost_deals: aprilLost.length
+      };
+    }
+    // Filter deals to May 2026 only
+    var deals = allDeals.filter(function(d) { var cl = d.Closing_Date || ''; return cl.startsWith('2026-05'); });
+    // Compute product breakdown from May won deals (producto via inferProduct or Product field)
+    var productBreakdown = {};
+    var mayWonDeals = deals.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+    mayWonDeals.forEach(function(d) {
+        var p = d['Product'] || d['Producto'] || 'Otros';
+        productBreakdown[p] = (productBreakdown[p] || 0) + (parseFloat(d.Amount)||0);
+    });
+
+    // ── Helper: format euros ──
+    function fmt(v) {
+        var n = parseFloat(v) || 0;
+        return '€' + n.toLocaleString('es-ES', {minimumFractionDigits:0,maximumFractionDigits:0});
+    }
+    function fmtDec(v) {
+        var n = parseFloat(v) || 0;
+        return '€' + n.toLocaleString('es-ES', {minimumFractionDigits:2,maximumFractionDigits:2});
+    }
+    function badge(v) { return v > 0 ? '<span class="cmp-up">+' + v.toFixed(0) + '%</span>' : v < 0 ? '<span class="cmp-down">' + v.toFixed(0) + '%</span>' : '<span class="cmp-flat">0%</span>'; }
+    function bar(pct, color) { return '<div style="height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden"><div style="height:10px;width:'+Math.min(pct,100)+'%;background:'+color+';border-radius:5px"></div></div>'; }
+    function getStageColor(s) {
+        var colors = {'Llamada Pendiente':'#94a3b8','Análisis Financiero':'#3b82f6','Asesoramiento':'#a855f7','Reasesoramiento':'#8b5cf6','Revisando Propuesta':'#eab308','Aceptado/Falta Firma':'#22c55e','Cerrado Ganado':'#15803d','Cerrado Perdido':'#ef4444'};
+        return colors[s] || '#64748b';
+    }
+
+    // ── Compute from deals ──
+    var won = deals.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+    var lost = deals.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+    var open = deals.filter(function(d) { return d.Stage !== 'Cerrado Ganado' && d.Stage !== 'Cerrado Perdido'; });
+    var wonVol = won.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+    var lostVol = lost.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+    var openVol = open.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+
+    // Per advisor
+    var advisors = ['Alberto Prieto','Jaime Becerra','Jose Orrequia','Alex Caballero'];
+    var advData = {};
+    advisors.forEach(function(a) {
+        var ad = deals.filter(function(d) { return (d.Owner || d['Deal Owner']) === a; });
+        var aw = ad.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+        var al = ad.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+        var ao = ad.filter(function(d) { return d.Stage !== 'Cerrado Ganado' && d.Stage !== 'Cerrado Perdido'; });
+        var awv = aw.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+        var totalClosed = aw.length + al.length;
+        var reasons = {};
+        al.forEach(function(d) {
+            var r = d['Motivo_de_cierre_perdido'] || 'Sin motivo';
+            reasons[r] = (reasons[r] || 0) + 1;
+        });
+        var sortedReasons = Object.keys(reasons).sort(function(a,b){ return reasons[b] - reasons[a]; });
+        // Sales cycle
+        var cycles = [];
+        aw.forEach(function(d) {
+            var sd = d['Sales_Cycle_Duration'];
+            if (sd !== null && sd !== undefined && sd !== '') { var n = parseInt(sd); if (!isNaN(n)) cycles.push(n); }
+        });
+        var avgCycle = cycles.length > 0 ? (cycles.reduce(function(a,b){return a+b;},0)/cycles.length).toFixed(1) : '-';
+        advData[a] = {
+            won: aw, lost: al, open: ao,
+            wonCount: aw.length, lostCount: al.length, openCount: ao.length,
+            wonVol: awv,
+            rate: totalClosed > 0 ? (aw.length/totalClosed*100).toFixed(1) : '-',
+            reasons: reasons, sortedReasons: sortedReasons,
+            avgCycle: avgCycle, cycles: cycles
+        };
+    });
+
+    // Deal size distribution
+    var brackets = [
+        {label:'< €5K', lo:0, hi:5000, color:'#94a3b8'},
+        {label:'€5K-€15K', lo:5000, hi:15000, color:'#3b82f6'},
+        {label:'€15K-€30K', lo:15000, hi:30000, color:'#22c55e'},
+        {label:'€30K-€50K', lo:30000, hi:50000, color:'#eab308'},
+        {label:'€50K-€100K', lo:50000, hi:100000, color:'#a855f7'},
+        {label:'€100K-€200K', lo:100000, hi:200000, color:'#f97316'},
+        {label:'> €200K', lo:200000, hi:999999999, color:'#ef4444'}
+    ];
+    var bracketData = brackets.map(function(b) {
+        var inBracket = deals.filter(function(d) { var a = parseFloat(d.Amount)||0; return a >= b.lo && a < b.hi; });
+        var wonIn = inBracket.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+        var lostIn = inBracket.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+        var wonVol = wonIn.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+        var totalClosed = wonIn.length + lostIn.length;
+        return {
+            label: b.label, lo: b.lo, hi: b.hi, color: b.color,
+            total: inBracket.length, won: wonIn.length, lost: lostIn.length,
+            wonVol: wonVol,
+            rate: totalClosed > 0 ? (wonIn.length/totalClosed*100).toFixed(1) : '-'
+        };
+    });
+
+    // Weekly trend
+    var weeks = [
+        {label:'Semana 1', start:1, end:7},
+        {label:'Semana 2', start:8, end:14},
+        {label:'Semana 3', start:15, end:21},
+        {label:'Semana 4', start:22, end:28},
+        {label:'Semana 5', start:29, end:31}
+    ];
+    var weekData = weeks.map(function(w) {
+        var inWeek = deals.filter(function(d) {
+            var ct = d.Created_Time || '';
+            if (!ct.startsWith('2026-05')) return false;
+            try { var day = parseInt(ct.substring(8,10)); return day >= w.start && day <= w.end; }
+            catch(e) { return false; }
+        });
+        var wonW = inWeek.filter(function(d) { return d.Stage === 'Cerrado Ganado'; });
+        var lostW = inWeek.filter(function(d) { return d.Stage === 'Cerrado Perdido'; });
+        var vol = inWeek.reduce(function(s,d) { return s + (parseFloat(d.Amount)||0); }, 0);
+        return { label: w.label, total: inWeek.length, won: wonW.length, lost: lostW.length, vol: vol };
+    });
+
+    // Top 10 deals
+    var sortedWon = won.slice().sort(function(a,b) { return (parseFloat(b.Amount)||0) - (parseFloat(a.Amount)||0); }).slice(0, 10);
+
+    // Closing day distribution
+    var dayCount = {};
+    for (var i = 1; i <= 31; i++) dayCount[i] = 0;
+    deals.forEach(function(d) {
+        var cl = d.Closing_Date || '';
+        if (cl.startsWith('2026-05')) {
+            try { var day = parseInt(cl.substring(8,10)); if (day >= 1 && day <= 31) dayCount[day]++; } catch(e) {}
+        }
+    });
+    var maxDay = Math.max.apply(null, Object.values(dayCount), 1);
+
+    // Count deals created in May only (from all data, not just closed-in-May)
+    var mayCreatedAll = allDeals.filter(function(d) { return (d.Created_Time || '').startsWith('2026-05'); });
+    var totalNewDeals = mayCreatedAll.length;
+    var avgPerAdvisor = totalNewDeals / 3;
+    var dealsPerDay = (avgPerAdvisor / 20).toFixed(1);
+
+    // ── Build HTML ──
+    var html = '';
+
+    // === HEADER ===
+    html += '<h3 style="margin-top:0;margin-bottom:16px">📊 <span style="color:var(--accent)">Análisis Profundo</span> — Mayo 2026</h3>';
+
+    // === KPI ROW ===
+    var prevValue = prevMonth ? (prevMonth.won_value || 0) : 0;
+    var prevWon = prevMonth ? (prevMonth.won_deals || 0) : 0;
+    var prevLost = prevMonth ? (prevMonth.lost_deals || 0) : 0;
+    var volumeChange = prevValue > 0 ? ((wonVol - prevValue) / prevValue * 100) : 0;
+    html += '<div class="crm-grid">';
+    html += '<div class="crm-card success"><div class="value">' + fmt(wonVol) + '</div><div class="label">Volumen Ganado Mayo</div><div class="sub">vs Abril ' + fmt(prevValue) + ' ' + badge(volumeChange) + '</div></div>';
+    html += '<div class="crm-card accent"><div class="value">' + won.length + '</div><div class="label">Deals Ganados</div><div class="sub">vs Abril ' + (prevWon||0) + ' ' + badge(won.length > 0 && prevWon > 0 ? ((won.length-prevWon)/prevWon*100) : 0) + '</div></div>';
+    html += '<div class="crm-card warning"><div class="value" style="color:var(--warning)">' + lost.length + '</div><div class="label">Deals Perdidos</div><div class="sub">vs Abril ' + (prevLost||0) + ' ' + badge(lost.length > 0 && prevLost > 0 ? ((lost.length-prevLost)/prevLost*100) : 0) + '</div></div>';
+    var avgTicket = won.length > 0 ? wonVol / won.length : 0;
+    var avgPrevTicket = prevWon > 0 ? prevValue / prevWon : 0;
+    html += '<div class="crm-card info"><div class="value">' + fmt(avgTicket) + '</div><div class="label">Ticket Medio</div><div class="sub">vs Abril ' + fmt(avgPrevTicket) + '</div></div>';
+    html += '</div>';
+
+    // === MONTH HIGHLIGHT BANNER ===
+    html += '<div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border:2px solid var(--accent);border-radius:12px;padding:16px;margin-bottom:20px">';
+    html += '<div style="font-size:1.1rem;font-weight:700;color:#9a3412">🔥 Mayo ha sido un mes histórico</div>';
+    html += '<p style="color:#7c2d12;font-size:0.85rem;margin:6px 0 0">';
+    html += 'Casi multiplicáis por <strong>4,3</strong> el volumen de abril. <strong>' + totalNewDeals + ' nuevas oportunidades</strong> creadas, el ticket medio subió un <strong>' + (avgPrevTicket > 0 ? ((avgTicket - avgPrevTicket)/avgPrevTicket*100).toFixed(0) : 'N/A') + '%</strong>. Los 3 asesores mejoraron.';
+    html += '<br><em>Nota: la cifra de perdidos está inflada porque Jose cerró de golpe oportunidades antiguas de abril que tenía en "Llamada Pendiente".';
+    html += ' Limpieza administrativa, no pérdidas reales del mes.</em>';
+    html += '</p></div>';
+
+    // === DEAL SIZE DISTRIBUTION ===
+    html += '<div class="chart-container full-width" style="margin-bottom:20px">';
+    html += '<h3>📏 Distribución por Tamaño de Deal</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Rango</th><th>Total</th><th>Won</th><th>Lost</th><th>Volumen</th><th>% Cierre</th><th>% Volumen</th><th></th></tr></thead><tbody>';
+    var globalWonVol = bracketData.reduce(function(s,b) { return s + b.wonVol; }, 0);
+    bracketData.forEach(function(b) {
+        var pctVol = globalWonVol > 0 ? (b.wonVol/globalWonVol*100).toFixed(1) : 0;
+        html += '<tr>';
+        html += '<td><strong>' + b.label + '</strong></td>';
+        html += '<td>' + b.total + '</td>';
+        html += '<td><span style="color:var(--success);font-weight:600">' + b.won + '</span></td>';
+        html += '<td><span style="color:var(--error)">' + b.lost + '</span></td>';
+        html += '<td>' + fmt(b.wonVol) + '</td>';
+        html += '<td>' + (b.rate !== '-' ? '<span style="font-weight:600;color:' + (parseFloat(b.rate) >= 50 ? 'var(--success)' : parseFloat(b.rate) >= 25 ? 'var(--warning)' : 'var(--error)') + '">' + b.rate + '%</span>' : '-') + '</td>';
+        html += '<td>' + pctVol + '%</td>';
+        html += '<td style="width:120px">' + bar(pctVol, b.color) + '</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.78rem;color:var(--text-muted)">';
+    html += '<strong>💡 Insight:</strong> Los deals entre €5K-€30K tienen tasa de cierre del 96-100%. Los < €5K solo cierran al 8,6%. ';
+    html += 'El 42,2% del volumen viene de solo 3 deals >€100K (€550K). Los deals pequeños (209 de 258) apenas aportan €37.801.';
+    html += '</div></div>';
+
+    // === PER ADVISOR ANALYSIS ===
+    html += '<div class="charts-row">';
+    // Advisor win rates
+    html += '<div class="chart-container"><h3>👥 Rendimiento por Asesor</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Won</th><th>Lost</th><th>% Cierre</th><th>Volumen</th><th>Ticket med</th><th>Ciclo med</th></tr></thead><tbody>';
+    advisors.forEach(function(a) {
+        var ad = advData[a];
+        var ticket = ad.wonCount > 0 ? fmt(ad.wonVol / ad.wonCount) : '-';
+        html += '<tr>';
+        html += '<td><strong>' + a + '</strong></td>';
+        html += '<td><span style="color:var(--success);font-weight:600">' + ad.wonCount + '</span></td>';
+        html += '<td><span style="color:var(--error)">' + ad.lostCount + '</span></td>';
+        var rateColor = parseFloat(ad.rate) >= 30 ? 'var(--success)' : parseFloat(ad.rate) >= 20 ? 'var(--warning)' : 'var(--error)';
+        html += '<td><span style="font-weight:600;color:' + rateColor + '">' + ad.rate + '%</span></td>';
+        html += '<td>' + fmt(ad.wonVol) + '</td>';
+        html += '<td>' + ticket + '</td>';
+        html += '<td>' + ad.avgCycle + 'd</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f8fafc;border-radius:4px">* Alex tiene tasa alta porque gestiona leads directos/CEO. Los perdidos de Jose están inflados por cierre batch de pipeline arrastrado de abril.</div></div>';
+
+    // Lost reasons by advisor
+    html += '<div class="chart-container"><h3>❌ Motivos de Pérdida por Asesor</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Motivo</th><th>#</th><th>%</th></tr></thead><tbody>';
+    var top3Advisors = ['Alberto Prieto', 'Jaime Becerra', 'Jose Orrequia'];
+    top3Advisors.forEach(function(a) {
+        var ad = advData[a];
+        if (!ad || ad.lostCount === 0) return;
+        var reasons = ad.sortedReasons;
+        var shown = 0;
+        reasons.forEach(function(r) {
+            if (shown >= 3) return;
+            var pct = (ad.reasons[r] / ad.lostCount * 100).toFixed(1);
+            html += '<tr>';
+            html += '<td>' + (shown === 0 ? '<strong>' + a + '</strong>' : '') + '</td>';
+            html += '<td>' + r + '</td>';
+            html += '<td>' + ad.reasons[r] + '</td>';
+            html += '<td>' + pct + '%</td>';
+            html += '</tr>';
+            shown++;
+        });
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#fef2f2;border-radius:4px">';
+    html += '<strong>⚠️ Jose:</strong> 91,2% pérdidas por "No interesado" — pero <em>parcialmente explicado</em> porque cerró de golpe oportunidades antiguas de "Llamada Pendiente" que arrastraba de abril. Limpieza administrativa.';
+    html += '<br><strong>⚠️ Jaime:</strong> 41,4% "No apareció" — necesita mejores recordatorios.';
+    html += '<br><strong>⚠️ Alberto:</strong> 55,7% "No interesado" + 29,9% "No apareció" — mixto.';
+    html += '</div></div>';
+    html += '</div>';
+
+    // === PRODUCT BREAKDOWN ===
+    html += '<div class="charts-row">';
+    html += '<div class="chart-container"><h3>📦 Productos — Volumen</h3>';
+    // Product data — filter May from historical product_deals
+    var prods = productBreakdownByMonth('2026-05');
+    if (prods && Object.keys(prods).length > 0) {
+        var prodKeys = Object.keys(prods).sort(function(a,b) { return prods[b] - prods[a]; });
+        var totalProd = prodKeys.reduce(function(s,k) { return s + prods[k]; }, 0);
+        html += '<div style="overflow-x:auto"><table class="compact-table">';
+        html += '<thead><tr><th>Producto</th><th>Volumen</th><th>%</th><th></th></tr></thead><tbody>';
+        prodKeys.forEach(function(p) {
+            var pct = totalProd > 0 ? (prods[p]/totalProd*100).toFixed(1) : 0;
+            var colors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444'];
+            var ci = prodKeys.indexOf(p) % colors.length;
+            html += '<tr>';
+            html += '<td>' + p + '</td>';
+            html += '<td>' + fmt(prods[p]) + '</td>';
+            html += '<td>' + pct + '%</td>';
+            html += '<td style="width:100px">' + bar(pct, colors[ci]) + '</td>';
+            html += '</tr>';
+        });
+        html += '</tbody></table></div>';
+        html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f0fdf4;border-radius:4px">';
+        html += '<strong>🔥 Monefit domina:</strong> ' + fmt(prods['Monefit'] || 0) + ' — ' + (totalProd > 0 ? ((prods['Monefit']||0)/totalProd*100).toFixed(0) : 0) + '% del volumen en mayo. ';
+        html += 'Compra Única y Cuenta Depósito Bonificada también aportan significativamente.';
+        html += '</div>';
+    } else {
+        html += '<p style="color:var(--text-muted)">Datos de producto no disponibles.</p>';
+    }
+    html += '</div>';
+
+    // Weekly trend
+    html += '<div class="chart-container"><h3>📈 Tendencia Semanal (Deals Creados)</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Semana</th><th>Nuevos</th><th>Won</th><th>Lost</th><th>Volumen</th></tr></thead><tbody>';
+    weekData.forEach(function(w) {
+        html += '<tr><td>' + w.label + '</td><td>' + w.total + '</td><td><span style="color:var(--success)">' + w.won + '</span></td><td><span style="color:var(--error)">' + w.lost + '</span></td><td>' + fmt(w.vol) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '</div>';
+    html += '</div>';
+
+    // === CLOSING DAYS + CYCLE ===
+    html += '<div class="charts-row">';
+    // Closing days
+    html += '<div class="chart-container"><h3>📅 Cierres por Día — Mayo 2026</h3>';
+    html += '<div style="font-size:0.72rem;line-height:1.6">';
+    for (var d = 1; d <= 31; d++) {
+        var c = dayCount[d] || 0;
+        var barW = maxDay > 0 ? Math.round(c / maxDay * 100) : 0;
+        var barColor = d === 22 ? '#f97316' : d === 29 ? '#a855f7' : '#3b82f6';
+        html += '<div style="display:flex;align-items:center;gap:4px;margin-bottom:1px">';
+        html += '<span style="width:24px;text-align:right;font-size:0.7rem;color:var(--text-muted)">' + d + '</span>';
+        html += '<div style="flex:1;height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden">';
+        html += '<div style="height:8px;width:' + barW + '%;background:' + barColor + ';border-radius:4px"></div></div>';
+        html += '<span style="width:24px;font-size:0.68rem;font-weight:600">' + c + '</span>';
+        html += '</div>';
+    }
+    html += '</div>';
+    html += '<div style="margin-top:6px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#fff7ed;border-radius:4px">';
+    html += '<strong>📌 Pico día 22 (' + dayCount[22] + ' cierres):</strong> Posible carga batch o cierre masivo. Día 29 (' + dayCount[29] + ') también destaca.';
+    html += '</div></div>';
+
+    // Cycle times
+    html += '<div class="chart-container"><h3>⏱️ Ciclo de Ventas</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Ciclo medio</th><th>&lt;7 días</th><th>&gt;30 días</th><th>Ritmo</th></tr></thead><tbody>';
+    top3Advisors.forEach(function(a) {
+        var ad = advData[a];
+        var fast = ad.cycles.filter(function(c) { return c < 7; }).length;
+        var slow = ad.cycles.filter(function(c) { return c > 30; }).length;
+        var paceEmoji = parseFloat(ad.avgCycle) <= 7 ? '🏎️ rápido' : parseFloat(ad.avgCycle) <= 14 ? '🚶 normal' : '🐢 lento';
+        html += '<tr><td><strong>' + a + '</strong></td><td>' + ad.avgCycle + ' días</td><td>' + fast + '/' + ad.cycles.length + '</td><td>' + slow + '/' + ad.cycles.length + '</td><td>' + paceEmoji + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '</div>';
+    html += '</div>';
+
+    // === TOP 10 DEALS ===
+    html += '<div class="chart-container full-width" style="margin-bottom:20px">';
+    html += '<h3>🏆 Top 10 Deals Ganados — Mayo 2026</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>#</th><th>Asesor</th><th>Importe</th><th>Deal</th></tr></thead><tbody>';
+    sortedWon.forEach(function(d, i) {
+        var name = d.Deal_Name || d['Deal Name'] || 'N/A';
+        var owner = d.Owner || d['Deal Owner'] || 'N/A';
+        var amt = parseFloat(d.Amount) || 0;
+        html += '<tr>';
+        html += '<td>' + (i+1) + '</td>';
+        html += '<td>' + owner + '</td>';
+        var medal = i < 3 ? ['🥇','🥈','🥉'][i] : '';
+        html += '<td><strong>' + medal + ' ' + fmt(amt) + '</strong></td>';
+        html += '<td>' + name.substring(0,50) + '</td>';
+        html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '</div>';
+
+    // === KEY FINDINGS ===
+    html += '<div class="chart-container full-width" style="margin-bottom:20px">';
+    html += '<h3>🔑 Conclusiones y Acciones</h3>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">';
+    // Positive
+    html += '<div style="background:#f0fdf4;border-radius:10px;padding:16px;border:1px solid #bbf7d0">';
+    html += '<h4 style="color:#15803d;margin:0 0 8px">✅ Lo que funciona (amplificar)</h4>';
+    html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
+    html += '<li><strong>Monefit es el tractor</strong> — 67% del volumen. Seguir empujándolo.</li>';
+    html += '<li><strong>Jaime tiene el mejor perfil</strong> — mejor tasa de cierre y ticket más alto.</li>';
+    html += '<li><strong>Alberto cierra rápido</strong> — 6,5 días de ciclo. Más leads = más volumen.</li>';
+    html += '<li><strong>Deals entre €5K-€30K se cierran solos</strong> — 96-100% de éxito.</li>';
+    html += '<li><strong>Mayo récord</strong> — 4,3x el volumen de abril. Tendencia clara 📈</li>';
+    html += '<li><strong>Jose tiene potencial</strong> — su tasa de cierre real es mejor de lo que muestran los números (limpieza de pipeline infló los perdidos).</li>';
+    html += '<li><strong>Top of funnel sólido</strong> — ' + totalNewDeals + ' nuevas oportunidades en mayo: ~' + Math.round(avgPerAdvisor) + ' por asesor (~' + dealsPerDay + '/día hábil). Buen ritmo de generación.</li>';
+    html += '</ul></div>';
+    // Improve
+    html += '<div style="background:#fef2f2;border-radius:10px;padding:16px;border:1px solid #fecaca">';
+    html += '<h4 style="color:#dc2626;margin:0 0 8px">⚠️ Lo que hay que arreglar (urgente)</h4>';
+    html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
+    html += '<li><strong>Lead scoring para Jose</strong> — tiene 91% pérdidas pero parte es limpieza de pipeline arrastrado. Aún así, filtrar leads fríos antes de asignar.</li>';
+    html += '<li><strong>Umbral mínimo €5K</strong> — en mayo, 209 de 258 deals eran <€5K y solo 18 se cerraron (8,6%). Hay que filtrarlos antes de que consuman tiempo de asesor.</li>';
+    html += '<li><strong>Falta teléfono en 90% contactos</strong> — sin teléfono no se puede calificar bien.</li>';
+    html += '<li><strong>Sin UTMs / fuente de lead</strong> — no se puede hacer atribución de campañas.</li>';
+
+    html += '</ul></div>';
+    html += '</div>';
+    html += '<div style="margin-top:12px;padding:12px 16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:0.82rem">';
+    html += '<strong>🎯 Próximos pasos:</strong> Mejorar lead scoring + campo UTM en formularios + recordatorios automáticos de citas (+ Jose necesita disciplina de cierre semanal para evitar batchs) + sesión con Jaime para replicar su método.';
+    html += '</div></div>';
+
+    container.innerHTML = html;
+}
+
+function toggleMonth(monthKey) {
+    var body = document.getElementById('month-' + monthKey);
+    var arrow = document.querySelector('.accordion-header[data-month="' + monthKey + '"] .accordion-arrow');
+    if (!body) return;
+    var isOpen = body.classList.contains('open');
+    // Close all others
+    document.querySelectorAll('.accordion-body').forEach(function(b) { b.classList.remove('open'); });
+    document.querySelectorAll('.accordion-arrow').forEach(function(a) { a.classList.remove('open'); });
+    // Toggle clicked
+    if (!isOpen) {
+        body.classList.add('open');
+        if (arrow) arrow.classList.add('open');
+    }
+}
+
+function renderJunioAnalysis() {
+    var container = document.getElementById('junio-content');
+    if (!container) return;
+    var data = currentData;
+    if (!data || !data.deals) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
+
+    var deals = data.deals;
+    var junWon = [], junLost = [], junPipeline = [];
+    for (var i = 0; i < deals.length; i++) {
+        var d = deals[i];
+        var stage = d.Stage || '';
+        var cl = d.Closing_Date || '';
+        if (!cl.startsWith('2026-06')) continue;
+        if (stage === 'Cerrado Ganado') junWon.push(d);
+        else if (stage === 'Cerrado Perdido') junLost.push(d);
+    }
+    for (var i = 0; i < deals.length; i++) {
+        var d = deals[i];
+        var stage = d.Stage || '';
+        var ct = d.Created_Time || '';
+        if (!ct.startsWith('2026-06')) continue;
+        if (stage !== 'Cerrado Ganado' && stage !== 'Cerrado Perdido') junPipeline.push(d);
+    }
+
+    var mayWon = [], mayLost = [];
+    for (var i = 0; i < deals.length; i++) {
+        var d = deals[i];
+        var cl = d.Closing_Date || '';
+        if (!cl.startsWith('2026-05')) continue;
+        if (d.Stage === 'Cerrado Ganado') mayWon.push(d);
+        else if (d.Stage === 'Cerrado Perdido') mayLost.push(d);
+    }
+
+    var aprWon = [];
+    for (var i = 0; i < deals.length; i++) {
+        var d = deals[i];
+        var cl = d.Closing_Date || '';
+        if (!cl.startsWith('2026-04')) continue;
+        if (d.Stage === 'Cerrado Ganado') aprWon.push(d);
+    }
+
+    function amt__(d) { return parseFloat(d.Amount) || 0; }
+    function sumAmt__(arr) { var s = 0; for (var i = 0; i < arr.length; i++) s += amt__(arr[i]); return s; }
+    function fmt__(v) { var n = parseFloat(v) || 0; return '\u20AC' + n.toLocaleString('es-ES', {minimumFractionDigits:0,maximumFractionDigits:0}); }
+    function badge__(v) { return v > 0 ? '<span class="cmp-up">+' + v.toFixed(0) + '%</span>' : v < 0 ? '<span class="cmp-down">' + v.toFixed(0) + '%</span>' : '<span class="cmp-flat">0%</span>'; }
+    function bar__(pct, color) { return '<div style="height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden"><div style="height:10px;width:'+Math.min(pct,100)+'%;background:'+color+';border-radius:5px"></div></div>'; }
+    function byOwner__(arr, name) { var out = []; for (var i = 0; i < arr.length; i++) { if ((arr[i].Owner || arr[i]['Deal Owner']) === name) out.push(arr[i]); } return out; }
+
+    var junVol = sumAmt__(junWon), mayVol = sumAmt__(mayWon), aprVol = sumAmt__(aprWon);
+    var junWR = (junWon.length + junLost.length) > 0 ? (junWon.length / (junWon.length + junLost.length) * 100) : 0;
+    var junAvg = junWon.length > 0 ? junVol / junWon.length : 0;
+    var mayAvg = mayWon.length > 0 ? mayVol / mayWon.length : 0;
+
+    var junCreated = 0;
+    for (var i = 0; i < deals.length; i++) { if ((deals[i].Created_Time || '').startsWith('2026-06')) junCreated++; }
+
+    var top3Advisors = ['Alberto Prieto','Jaime Becerra','Jose Orrequia'];
+    var allAdvisors = top3Advisors.concat('Alex Caballero');
+    var advData = {};
+    top3Advisors.forEach(function(a) {
+        var rawW = byOwner__(junWon, a);
+        var rawL = byOwner__(junLost, a);
+        var ap = byOwner__(junPipeline, a);
+        var totalClosed = rawW.length + rawL.length;
+        var reasons = {};
+        rawL.forEach(function(d) { var r = d['Motivo_de_cierre_perdido'] || 'Sin motivo'; reasons[r] = (reasons[r] || 0) + 1; });
+        var sortedReasons = Object.keys(reasons).sort(function(a,b){ return reasons[b] - reasons[a]; });
+        var cycles = [];
+        rawW.forEach(function(d) {
+            var sd = d['Sales_Cycle_Duration'];
+            if (sd !== null && sd !== undefined && sd !== '') { var n = parseInt(sd); if (!isNaN(n)) cycles.push(n); }
+        });
+        var avgCycle = cycles.length > 0 ? (cycles.reduce(function(a,b){return a+b;},0)/cycles.length).toFixed(1) : '-';
+        var mw = byOwner__(mayWon, a);
+        advData[a] = {
+            wonCount: rawW.length, lostCount: rawL.length, openCount: ap.length,
+            wonVol: sumAmt__(rawW),
+            rate: totalClosed > 0 ? (rawW.length/totalClosed*100).toFixed(1) : '-',
+            reasons: reasons, sortedReasons: sortedReasons,
+            avgCycle: avgCycle, cycles: cycles,
+            mayWonCount: mw.length, mayWonVol: sumAmt__(mw)
+        };
+    });
+
+    var alexJun = byOwner__(junWon, 'Alex Caballero');
+    var alexMay = byOwner__(mayWon, 'Alex Caballero');
+
+    var brackets = [
+        {label:'< \u20AC5K', lo:0, hi:5000, color:'#94a3b8'},{label:'\u20AC5K-\u20AC15K', lo:5000, hi:15000, color:'#3b82f6'},
+        {label:'\u20AC15K-\u20AC30K', lo:15000, hi:30000, color:'#22c55e'},{label:'\u20AC30K-\u20AC50K', lo:30000, hi:50000, color:'#eab308'},
+        {label:'\u20AC50K-\u20AC100K', lo:50000, hi:100000, color:'#a855f7'},{label:'\u20AC100K-\u20AC200K', lo:100000, hi:200000, color:'#f97316'},
+        {label:'> \u20AC200K', lo:200000, hi:999999999, color:'#ef4444'}
+    ];
+    var allJunDeals = [];
+    for (var i = 0; i < deals.length; i++) {
+        var d = deals[i];
+        if ((d.Closing_Date || '').startsWith('2026-06') || (d.Created_Time || '').startsWith('2026-06')) allJunDeals.push(d);
+    }
+    var bracketData = [];
+    for (var b = 0; b < brackets.length; b++) {
+        var bk = brackets[b];
+        var inBracket = [];
+        for (var j = 0; j < allJunDeals.length; j++) { var a = amt__(allJunDeals[j]); if (a >= bk.lo && a < bk.hi) inBracket.push(allJunDeals[j]); }
+        var wonIn = []; for (var j = 0; j < inBracket.length; j++) { if (inBracket[j].Stage === 'Cerrado Ganado') wonIn.push(inBracket[j]); }
+        var lostIn = []; for (var j = 0; j < inBracket.length; j++) { if (inBracket[j].Stage === 'Cerrado Perdido') lostIn.push(inBracket[j]); }
+        var totalClosed = wonIn.length + lostIn.length;
+        bracketData.push({
+            label: bk.label, lo: bk.lo, hi: bk.hi, color: bk.color,
+            total: inBracket.length, won: wonIn.length, lost: lostIn.length, wonVol: sumAmt__(wonIn),
+            rate: totalClosed > 0 ? (wonIn.length/totalClosed*100).toFixed(1) : '-'
+        });
+    }
+
+    var weeks = [{label:'Semana 1', start:1, end:7},{label:'Semana 2', start:8, end:14},{label:'Semana 3', start:15, end:21},{label:'Semana 4', start:22, end:28},{label:'Semana 5', start:29, end:30}];
+    var weekData = weeks.map(function(w) {
+        var inWeek = []; for (var i = 0; i < deals.length; i++) { var d=deals[i]; var ct=d.Closing_Date||''; if (!ct.startsWith('2026-06')) continue; try { var day=parseInt(ct.substring(8,10)); if (day>=w.start && day<=w.end) inWeek.push(d); } catch(e){} }
+        var wonW=[]; for (var i=0;i<inWeek.length;i++){if(inWeek[i].Stage==='Cerrado Ganado')wonW.push(inWeek[i]);}
+        var lostW=[]; for (var i=0;i<inWeek.length;i++){if(inWeek[i].Stage==='Cerrado Perdido')lostW.push(inWeek[i]);}
+        return {label:w.label,total:inWeek.length,won:wonW.length,lost:lostW.length,vol:sumAmt__(inWeek)};
+    });
+
+    var sortedWon = junWon.slice().sort(function(a,b){return amt__(b)-amt__(a);}).slice(0,10);
+
+    var dayCount = {};
+    for (var i=1;i<=30;i++) dayCount[i]=0;
+    for (var i=0;i<deals.length;i++){var d=deals[i];var cl=d.Closing_Date||'';if(cl.startsWith('2026-06')){try{var day=parseInt(cl.substring(8,10));if(day>=1&&day<=30)dayCount[day]++;}catch(e){}}}
+    var maxDay=1;for(var k in dayCount){if(dayCount[k]>maxDay)maxDay=dayCount[k];}
+
+    // Product breakdown from historical product_deals (not stale stats)
+    var productMap = productBreakdownByMonth('2026-06');
+
+    var allReasons = {};
+    for (var i=0;i<junLost.length;i++){var r=junLost[i]['Motivo_de_cierre_perdido']||'Sin motivo';allReasons[r]=(allReasons[r]||0)+1;}
+    var sortedAllReasons = Object.keys(allReasons).sort(function(a,b){return allReasons[b]-allReasons[a];});
+
+    var html = '';
+    html += '<h3 style="margin-top:0;margin-bottom:16px">📊 <span style="color:var(--accent)">Análisis Profundo</span> — Junio 2026</h3>';
+
+    var volChange = mayVol > 0 ? ((junVol - mayVol) / mayVol * 100) : 0;
+    html += '<div class="crm-grid">';
+    html += '<div class="crm-card accent"><div class="value">' + fmt__(junVol) + '</div><div class="label">Volumen Ganado Junio</div><div class="sub">vs Mayo ' + fmt__(mayVol) + ' ' + badge__(volChange) + '</div></div>';
+    html += '<div class="crm-card success"><div class="value">' + junWon.length + '</div><div class="label">Oportunidades Ganadas</div><div class="sub">vs Mayo ' + mayWon.length + ' ' + badge__((junWon.length - mayWon.length) / mayWon.length * 100) + '</div></div>';
+    html += '<div class="crm-card warning"><div class="value" style="color:var(--warning)">' + junLost.length + '</div><div class="label">Oportunidades Perdidas</div><div class="sub">vs Mayo ' + mayLost.length + ' ' + badge__((junLost.length - mayLost.length) / mayLost.length * 100) + '</div></div>';
+    html += '<div class="crm-card info"><div class="value">' + fmt__(junAvg) + '</div><div class="label">Ticket Medio (vs May ' + fmt__(mayAvg) + ')</div><div><span class="cmp-context">Win rate ' + junWR.toFixed(1) + '%</span></div></div>';
+    html += '</div>';
+
+    html += '<div class="charts-row" style="gap:8px;margin-bottom:12px">' +
+        '<div style="flex:1;padding:8px 12px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border-color);font-size:0.78rem"><span style="color:var(--text-muted)">Pipeline activo: </span><strong>' + junPipeline.length + '</strong> oportunidades</div>' +
+        '<div style="flex:1;padding:8px 12px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border-color);font-size:0.78rem"><span style="color:var(--text-muted)">Nuevas creadas: </span><strong>' + junCreated + '</strong></div>' +
+        '</div>';
+
+    // HIGHLIGHT BANNER
+    var volPct = ((mayVol - junVol) / mayVol * 100).toFixed(0);
+    html += '<div style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border:2px solid var(--accent);border-radius:12px;padding:16px;margin-bottom:20px">';
+    html += '<div style="font-size:1.1rem;font-weight:700;color:#9a3412">📉 Junio: mes de consolidación tras el pico de mayo</div>';
+    html += '<p style="color:#7c2d12;font-size:0.85rem;margin:6px 0 0">';
+    html += 'El volumen baja un ' + volPct + '% vs mayo (€' + mayVol.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:0}) + ' → €' + junVol.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:0}) + '), pero se mantiene <strong>' + (junVol/aprVol).toFixed(1) + 'x por encima de abril</strong> (€' + aprVol.toLocaleString('es-ES',{minimumFractionDigits:0,minimumFractionDigits:0}) + '). ';
+    html += '<strong>' + junCreated + ' nuevas oportunidades</strong> creadas. El ticket medio baja de ' + fmt__(mayAvg) + ' a ' + fmt__(junAvg) + ' — en mayo hubo grandes operaciones (Laura Panella €200K, Jaime €155K) que no se repiten en junio. La captación es más capilar pero <strong>el ritmo de generación es sólido</strong>.';
+    html += '<br><em>Nota: los 151 perdidos incluyen muchas oportunidades arrastradas de meses anteriores. La cifra real de pérdidas del mes es menor.</em>';
+    html += '</p></div>';
+
+    // DEAL SIZE DISTRIBUTION
+    html += '<div class="chart-container full-width" style="margin-bottom:20px"><h3>📏 Distribución por Tamaño de Deal</h3><div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Rango</th><th>Total</th><th>Won</th><th>Lost</th><th>Volumen</th><th>% Cierre</th><th>% Vol</th><th></th></tr></thead><tbody>';
+    var globalWonVol = 0; for (var i=0;i<bracketData.length;i++) globalWonVol += bracketData[i].wonVol;
+    bracketData.forEach(function(b) {
+        var pctVol = globalWonVol > 0 ? (b.wonVol/globalWonVol*100).toFixed(1) : 0;
+        var rc = parseFloat(b.rate) >= 50 ? 'var(--success)' : parseFloat(b.rate) >= 25 ? 'var(--warning)' : 'var(--error)';
+        html += '<tr><td><strong>' + b.label + '</strong></td><td>' + b.total + '</td><td><span style="color:var(--success);font-weight:600">' + b.won + '</span></td><td><span style="color:var(--error)">' + b.lost + '</span></td><td>' + fmt__(b.wonVol) + '</td><td>' + (b.rate !== '-' ? '<span style="font-weight:600;color:'+rc+'">'+b.rate+'%</span>' : '-') + '</td><td>' + pctVol + '%</td><td style="width:120px">' + bar__(pctVol, b.color) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.78rem;color:var(--text-muted)">';
+    html += '<strong>💡 Insight:</strong> Los rangos de €30K-€100K concentran la mayor parte del volumen ganado. Las pérdidas se concentran en rangos bajos y medios, reflejo del alto volumen de actividad.</div></div>';
+
+    // PER ADVISOR
+    html += '<div class="charts-row">';
+    html += '<div class="chart-container"><h3>👥 Rendimiento por Asesor</h3><div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Won</th><th>Lost</th><th>% Cierre</th><th>Volumen</th><th>Ticket med</th><th>Ciclo</th><th>Won May</th></tr></thead><tbody>';
+    allAdvisors.forEach(function(a) {
+        if (a === 'Alex Caballero') {
+            html += '<tr><td><strong>Alex Caballero</strong></td><td><span style="color:var(--success);font-weight:600">' + alexJun.length + '</span></td><td><span style="color:var(--error)">0</span></td><td><span style="font-weight:600;color:var(--success)">100%</span></td><td>' + fmt__(sumAmt__(alexJun)) + '</td><td>' + (alexJun.length>0?fmt__(sumAmt__(alexJun)/alexJun.length):'-') + '</td><td>-</td><td>' + alexMay.length + '</td></tr>';
+            return;
+        }
+        var ad = advData[a];
+        if (!ad) return;
+        var ticket = ad.wonCount>0?fmt__(ad.wonVol/ad.wonCount):'-';
+        var rc = parseFloat(ad.rate) >= 30 ? 'var(--success)' : parseFloat(ad.rate) >= 20 ? 'var(--warning)' : 'var(--error)';
+        html += '<tr><td><strong>' + a + '</strong></td><td><span style="color:var(--success);font-weight:600">' + ad.wonCount + '</span></td><td><span style="color:var(--error)">' + ad.lostCount + '</span></td><td><span style="font-weight:600;color:'+rc+'">' + ad.rate + '%</span></td><td>' + fmt__(ad.wonVol) + '</td><td>' + ticket + '</td><td>' + ad.avgCycle + 'd</td><td>' + ad.mayWonCount + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f8fafc;border-radius:4px">* Jose absorbe gran parte de los perdidos por limpieza de pipeline arrastrado. En el mes solo perdió ' + (advData['Jose Orrequia']?advData['Jose Orrequia'].lostCount:0) + ' oportunidades.</div></div>';
+
+    // LOST REASONS
+    html += '<div class="chart-container"><h3>❌ Motivos de Pérdida</h3><div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Motivo</th><th>#</th><th>%</th></tr></thead><tbody>';
+    sortedAllReasons.forEach(function(r) { var pct = (allReasons[r]/junLost.length*100).toFixed(1);
+        html += '<tr><td>' + r + '</td><td>' + allReasons[r] + '</td><td>' + pct + '%</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#fef2f2;border-radius:4px">';
+    html += '<strong>⚠️ Principal causa: ' + (allReasons['No interesado']||0) + ' (57,6%)</strong> — leads mal calificados desde origen. <strong>No apareció:</strong> ' + (allReasons['No apareció']||0) + ' (31,1%) — mejorar recordatorios.';
+    html += '</div></div></div>';
+
+    // PRODUCT BREAKDOWN
+    html += '<div class="charts-row"><div class="chart-container"><h3>📦 Productos — Volumen</h3>';
+    var prodKeys = Object.keys(productMap).sort(function(a,b){return productMap[b]-productMap[a];});
+    var totalProd = prodKeys.reduce(function(s,k){return s+productMap[k];},0);
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Producto</th><th>Volumen</th><th>%</th><th></th></tr></thead><tbody>';
+    prodKeys.forEach(function(p) {
+        var pct = totalProd>0?(productMap[p]/totalProd*100).toFixed(1):0;
+        var colors=['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444'];
+        var ci=prodKeys.indexOf(p)%colors.length;
+        html += '<tr><td>'+p+'</td><td>'+fmt__(productMap[p])+'</td><td>'+pct+'%</td><td style="width:100px">'+bar__(pct,colors[ci])+'</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div style="margin-top:8px;font-size:0.72rem;color:var(--text-muted);padding:6px 10px;background:#f0fdf4;border-radius:4px">';
+    var mf = productMap['Monefit']||0;
+    html += '<strong>🔥 Monefit domina:</strong> ' + fmt__(mf) + ' — ' + (totalProd>0?((mf/totalProd)*100).toFixed(0):0) + '% del volumen.</div></div>';
+
+    // WEEKLY TREND
+    html += '<div class="chart-container"><h3>📈 Tendencia Semanal (Cierres)</h3><div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Semana</th><th>Total</th><th>Won</th><th>Lost</th><th>Volumen</th></tr></thead><tbody>';
+    weekData.forEach(function(w) {
+        html += '<tr><td>'+w.label+'</td><td>'+w.total+'</td><td><span style="color:var(--success)">'+w.won+'</span></td><td><span style="color:var(--error)">'+w.lost+'</span></td><td>'+fmt__(w.vol)+'</td></tr>';
+    });
+    html += '</tbody></table></div></div></div>';
+
+    // CLOSING DAYS DISTRIBUTION
+    html += '<div class="charts-row"><div class="chart-container"><h3>📅 Cierres por Día</h3><div style="font-size:0.72rem;line-height:1.6">';
+    for (var d=1;d<=30;d++) {
+        var c=dayCount[d]||0;
+        var barW=maxDay>0?Math.round(c/maxDay*100):0;
+        html += '<div style="display:flex;align-items:center;gap:4px;margin-bottom:1px"><span style="width:24px;text-align:right;font-size:0.7rem;color:var(--text-muted)">'+d+'</span><div style="flex:1;height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden"><div style="height:8px;width:'+barW+'%;background:#3b82f6;border-radius:4px"></div></div><span style="width:24px;font-size:0.68rem;font-weight:600">'+c+'</span></div>';
+    }
+    html += '</div></div>';
+
+    // CYCLES
+    html += '<div class="chart-container"><h3>⏱️ Ciclo de Ventas</h3><div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>Asesor</th><th>Ciclo medio</th><th><7d</th><th>>30d</th><th>Ritmo</th></tr></thead><tbody>';
+    top3Advisors.forEach(function(a) {
+        var ad = advData[a];
+        if (!ad || ad.cycles.length===0) { html += '<tr><td>'+a+'</td><td colspan="4" style="color:var(--text-muted)">Sin datos</td></tr>'; return; }
+        var fast=0,slow=0; ad.cycles.forEach(function(c){if(c<7)fast++;else if(c>30)slow++;});
+        var pace = parseFloat(ad.avgCycle) <= 7 ? '🏎️ rápido' : parseFloat(ad.avgCycle) <= 14 ? '🚶 normal' : '🐢 lento';
+        html += '<tr><td><strong>'+a+'</strong></td><td>'+ad.avgCycle+'d</td><td>'+fast+'/'+ad.cycles.length+'</td><td>'+slow+'/'+ad.cycles.length+'</td><td>'+pace+'</td></tr>';
+    });
+    html += '</tbody></table></div></div></div>';
+
+    // TOP 10
+    html += '<div class="chart-container full-width" style="margin-bottom:20px"><h3>🏆 Top 10 Deals Ganados</h3>';
+    html += '<div style="overflow-x:auto"><table class="compact-table">';
+    html += '<thead><tr><th>#</th><th>Asesor</th><th>Importe</th><th>Deal</th></tr></thead><tbody>';
+    sortedWon.forEach(function(d,i){
+        var name=d.Deal_Name||d['Deal Name']||'N/A';
+        var owner=d.Owner||d['Deal Owner']||'N/A';
+        var medal=i<3?['🥇','🥈','🥉'][i]:'';
+        html += '<tr><td>'+(i+1)+'</td><td>'+owner+'</td><td><strong>'+medal+' '+fmt__(amt__(d))+'</strong></td><td>'+name.substring(0,50)+'</td></tr>';
+    });
+    html += '</tbody></table></div></div>';
+
+    // KEY FINDINGS
+    html += '<div class="chart-container full-width" style="margin-bottom:20px"><h3>🔑 Conclusiones y Acciones</h3>';
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">';
+    html += '<div style="background:#f0fdf4;border-radius:10px;padding:16px;border:1px solid #bbf7d0">';
+    html += '<h4 style="color:#15803d;margin:0 0 8px">✅ Lo que funciona (amplificar)</h4>';
+    html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
+    html += '<li><strong>Monefit sigue siendo el tractor</strong> — ' + fmt__(mf) + ', ' + (totalProd>0?((mf/totalProd)*100).toFixed(0):0) + '% del volumen.</li>';
+    html += '<li><strong>Jose lidera en volumen</strong> — €' + (advData['Jose Orrequia']?advData['Jose Orrequia'].wonVol.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:0}):0) + ', casi la mitad del total. Excelente mes.</li>';
+    html += '<li><strong>Alberto consistente</strong> — 22 ganadas, mismo número que en mayo. Su pipeline es el motor.</li>';
+    html += '<li><strong>Ritmo de generación fuerte</strong> — ' + junCreated + ' nuevas oportunidades creadas, pipeline de ' + junPipeline.length + '.</li>';
+    html += '<li><strong>Alex sin pérdidas</strong> — 2 deals cerrados, 100% win rate en leads directos de CEO.</li>';
+    html += '<li><strong>Sin mega-deals, el volumen se normaliza</strong> — pero ' + fmt__(junVol) + ' sigue siendo un mes muy sólido.</li>';
+    html += '<li><strong>Comparativa interanual</strong> — Junio 2025 fueron €81.672. Junio 2026 son ' + fmt__(junVol) + ' (~' + (junVol/81672.72*100).toFixed(0) + '% vs 2025).</li>';
+    html += '</ul></div>';
+    html += '<div style="background:#fef2f2;border-radius:10px;padding:16px;border:1px solid #fecaca">';
+    html += '<h4 style="color:#dc2626;margin:0 0 8px">⚠️ Lo que hay que mejorar</h4>';
+    html += '<ul style="margin:0;padding-left:18px;font-size:0.82rem;line-height:1.7">';
+    html += '<li><strong>Lead quality sigue siendo el talón de Aquiles</strong> — ' + (allReasons['No interesado']||0) + ' (57,6%) leads perdidos por falta de interés. Mejorar scoring.</li>';
+    html += '<li><strong>' + (allReasons['No apareció']||0) + ' incomparecencias (31,1%)</strong> — sistema de recordatorios automáticos urgente.</li>';
+    html += '<li><strong>Ticket medio cae</strong> de ' + fmt__(mayAvg) + ' a ' + fmt__(junAvg) + ' — búsqueda de clientes de mayor valor.</li>';
+    html += '<li><strong>Jaime baja</strong> de 24 a ' + (advData['Jaime Becerra']?advData['Jaime Becerra'].wonCount:'?') + ' ganadas — detectar causa.</li>';
+    html += '<li><strong>Limpieza de pipeline distorsiona indicadores</strong> — los 151 perdidos y la tasa de cierre del 22,2% no reflejan la eficiencia real.</li>';
+    html += '</ul></div></div>';
+    html += '<div style="margin-top:12px;padding:12px 16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:0.82rem">';
+    html += '<strong>🎯 Próximos pasos:</strong> Lead scoring automático + recordatorios de citas + segmentar leads por canal de origen + sesión con Jose para entender su método de captación de alto valor + revisar caída de productividad de Jaime.';
+    html += '</div></div>';
+
+    container.innerHTML = html;
+}
+
+function renderHistorico2026() {
+    console.log('DEBUG v4 renderHistorico2026 called');
+    var container = document.getElementById('historico-content');
+    if (!container) { console.log('DEBUG v4: container not found!'); return; }
+    var deals = currentData.deals;
+    console.log('DEBUG v4: deals.length =', deals ? deals.length : 'null');
+    if (!deals) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
+
+    function fmt(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:0}); }
+    function fmtDec(v) { return '€' + (parseFloat(v)||0).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+    function round(v) { return Math.round(v); }
+    function bar(pct,c) { return '<div style="height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden"><div style="height:8px;width:'+Math.min(pct,100)+'%;background:'+c+';border-radius:4px"></div></div>'; }
+
+    // Generate all months of 2026 from January to current month
+    var monthNames = {'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'};
+    var monthSet = {};
+    var now = new Date();
+    var currentYear = 2026;
+    var currentMonth = now.getFullYear() === 2026 ? now.getMonth() + 1 : 12;
+    for (var m = 1; m <= currentMonth; m++) {
+        var mk = '2026-' + (m < 10 ? '0' : '') + m;
+        monthSet[mk] = true;
+    }
+    var monthOrder = Object.keys(monthSet).sort().reverse();
+    console.log('DEBUG v4 monthOrder:', JSON.stringify(monthOrder));
+    var monthLabels = {};
+    monthOrder.forEach(function(m) { var parts = m.split('-'); monthLabels[m] = monthNames[parts[1]] + ' ' + parts[0]; });
+
+    // ── Compute per-month stats from deals ──
+    var byMonth = {};
+    monthOrder.forEach(function(m) { byMonth[m] = {won:0,lost:0,vol_won:0,vol_lost:0,created:0,deals:[],open:0}; });
+
+    deals.forEach(function(d) {
+        var cl = (d.Closing_Date || '').substring(0,7);
+        var ct = (d.Created_Time || '').substring(0,7);
+        var stage = d.Stage || '';
+        var amt = parseFloat(d.Amount) || 0;
+        var owner = d.Owner || d['Deal Owner'] || '';
+        var name = d.Deal_Name || d['Deal Name'] || '';
+
+        // Per closing month
+        if (byMonth[cl]) {
+            if (stage === 'Cerrado Ganado') { byMonth[cl].won++; byMonth[cl].vol_won += amt; byMonth[cl].deals.push({name:name,amt:amt,owner:owner}); }
+            else if (stage === 'Cerrado Perdido') { byMonth[cl].lost++; byMonth[cl].vol_lost += amt; }
+        }
+        // Per created month
+        if (byMonth[ct]) { byMonth[ct].created++; }
+        // Pipeline open
+        if (byMonth[cl] && stage !== 'Cerrado Ganado' && stage !== 'Cerrado Perdido') {
+            byMonth[cl].open++;
+        }
+    });
+
+    // ── Product inference ──
+    function inferProduct(name) {
+        var n = (name || '').toLowerCase();
+        if (n.indexOf('monefit') >= 0) return 'Monefit';
+        if (n.indexOf('depósito') >= 0 || n.indexOf('cuenta deposito') >= 0) return 'Cuenta Depósito';
+        if (n.indexOf('planificacion') >= 0 || n.indexOf('planificación') >= 0 || n.indexOf('plan financ') >= 0) return 'Planificación Financiera';
+        if (n.indexOf('compra única') >= 0 || n.indexOf('compra unica') >= 0) return 'Compra Única';
+        if (n.indexOf('pias') >= 0 || n.indexOf('estrategia') >= 0) return 'PIAS';
+        if (n.indexOf('trm') >= 0) return 'TRM';
+        if (n.indexOf('compra experta') >= 0) return 'Compra Experta';
+        if (n.indexOf('crowdfunding') >= 0 || n.indexOf('proyecto') >= 0) return 'Crowdfunding';
+        return 'Otros';
+    }
+
+    function productBreakdown(dealsArr) {
+        var prods = {};
+        dealsArr.forEach(function(d) {
+            var p = inferProduct(d.name);
+            prods[p] = (prods[p] || 0) + d.amt;
+        });
+        return Object.keys(prods).sort(function(a,b){return prods[b]-prods[a];}).map(function(k){return {name:k,vol:prods[k]};});
+    }
+
+    // ── Build HTML ──
+    var html = '';
+    html += '<h3 style="margin-top:0;margin-bottom:16px">📅 <span style="color:var(--accent)">Histórico Mensual</span> — 2026</h3>';
+    html += '<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:16px">Haz clic en un mes para expandir. Se cierra automáticamente al abrir otro.</p>';
+
+    var prevMonthVol = null;
+    monthOrder.forEach(function(mk) {
+        var m = byMonth[mk];
+        var label = monthLabels[mk];
+        var hasData = m.created > 0 || m.won > 0 || m.lost > 0;
+        var totalClosed = m.won + m.lost;
+        var winRate = totalClosed > 0 ? (m.won / totalClosed * 100).toFixed(1) : '-';
+        var prevLabel = monthOrder[monthOrder.indexOf(mk) + 1];
+        var prev = prevLabel ? byMonth[prevLabel] : null;
+        var vsPrev = '';
+        if (prev && prev.won > 0) {
+            var change = ((m.vol_won - prev.vol_won) / prev.vol_won * 100);
+            var arrowIcon = change > 0 ? '📈' : change < 0 ? '📉' : '➡️';
+            vsPrev = arrowIcon + ' <span style="color:' + (change >= 0 ? 'var(--success)' : 'var(--error)') + ';font-weight:600">' + (change >= 0 ? '+' : '') + change.toFixed(0) + '%</span>';
+        }
+
+        // Sort top deals
+        var topDeals = m.deals.slice().sort(function(a,b){return b.amt-a.amt;}).slice(0,5);
+
+        // Product breakdown from won deals
+        var prods = productBreakdown(m.deals);
+        var totalProd = prods.reduce(function(s,p){return s+p.vol;}, 0);
+
+        if (!hasData) {
+            html += '<div class="accordion-item" style="opacity:0.5;pointer-events:none">';
+            html += '<div class="accordion-header"><span class="month-label">' + label + '</span><span class="month-summary">Sin datos del mes</span></div></div>';
+            return;
+        }
+
+        html += '<div class="accordion-item">';
+        html += '<div class="accordion-header" data-month="' + mk + '" onclick="toggleMonth(\'' + mk + '\')">';
+        html += '<span class="month-label">' + label + ' ' + vsPrev + '</span>';
+        html += '<span class="month-summary">';
+        html += '<span>🏆 ' + fmt(m.vol_won) + '</span>';
+        html += '<span>✅ ' + m.won + ' won</span>';
+        html += '<span>❌ ' + m.lost + ' lost</span>';
+        html += '<span>📊 ' + m.created + ' creados</span>';
+        html += '<span class="accordion-arrow">▼</span>';
+        html += '</span></div>';
+        html += '<div class="accordion-body" id="month-' + mk + '">';
+        html += '<div class="accordion-inner">';
+
+        // KPI grid
+        html += '<div class="crm-grid" style="margin-bottom:14px;grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">';
+        html += '<div class="crm-card success" style="padding:10px"><div class="value" style="font-size:1rem">' + fmt(m.vol_won) + '</div><div class="label" style="font-size:0.7rem">Volumen ganado</div></div>';
+        html += '<div class="crm-card accent" style="padding:10px"><div class="value" style="font-size:1rem">' + m.won + '</div><div class="label" style="font-size:0.7rem">Deals ganados</div></div>';
+        html += '<div class="crm-card warning" style="padding:10px"><div class="value" style="font-size:1rem;color:var(--warning)">' + m.lost + '</div><div class="label" style="font-size:0.7rem">Deals perdidos</div></div>';
+        html += '<div class="crm-card" style="padding:10px;border-color:' + (parseFloat(winRate)>=30?'var(--success)':parseFloat(winRate)>=15?'var(--warning)':'var(--error)') + '"><div class="value" style="font-size:1rem;color:' + (parseFloat(winRate)>=30?'var(--success)':parseFloat(winRate)>=15?'var(--warning)':'var(--error)') + '">' + winRate + '%</div><div class="label" style="font-size:0.7rem">Tasa cierre</div></div>';
+        html += '<div class="crm-card" style="padding:10px"><div class="value" style="font-size:1rem">' + fmt(m.won > 0 ? m.vol_won/m.won : 0) + '</div><div class="label" style="font-size:0.7rem">Ticket medio</div></div>';
+        html += '<div class="crm-card" style="padding:10px"><div class="value" style="font-size:1rem">' + m.created + '</div><div class="label" style="font-size:0.7rem">Nuevos creados</div></div>';
+        html += '</div>';
+
+        // Product breakdown
+        if (prods.length > 0) {
+            html += '<h4 style="margin:0 0 8px;font-size:0.82rem">📦 Productos</h4>';
+            html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
+            html += '<thead><tr><th>Producto</th><th>Volumen</th><th>%</th><th></th></tr></thead><tbody>';
+            var prodColors = ['#f97316','#3b82f6','#22c55e','#a855f7','#eab308','#ef4444','#14b8a6','#6366f1'];
+            prods.forEach(function(p,i) {
+                var pct = totalProd > 0 ? (p.vol/totalProd*100).toFixed(1) : 0;
+                html += '<tr><td>' + p.name + '</td><td>' + fmt(p.vol) + '</td><td>' + pct + '%</td><td style="width:80px">' + bar(pct, prodColors[i % prodColors.length]) + '</td></tr>';
+            });
+            html += '</tbody></table></div>';
+        }
+
+        // Top deals
+        if (topDeals.length > 0) {
+            html += '<h4 style="margin:12px 0 8px;font-size:0.82rem">🏆 Top 5 Deals</h4>';
+            html += '<div style="overflow-x:auto"><table class="compact-table" style="font-size:0.75rem">';
+            html += '<thead><tr><th>#</th><th>Asesor</th><th>Importe</th><th>Deal</th></tr></thead><tbody>';
+            topDeals.forEach(function(t,i) {
+                html += '<tr><td>' + (i+1) + '</td><td>' + t.owner + '</td><td><strong>' + fmt(t.amt) + '</strong></td><td>' + (t.name||'').substring(0,45) + '</td></tr>';
+            });
+            html += '</tbody></table></div>';
+        }
+
+        // Pipeline remaining at month end
+        if (m.open > 0) {
+            html += '<div style="margin-top:10px;padding:8px 12px;background:#f8fafc;border-radius:6px;font-size:0.72rem;color:var(--text-muted)">';
+            html += '📌 <strong>' + m.open + ' oportunidades</strong> siguen abiertas a cierre de mes';
+            html += '</div>';
+        }
+
+        html += '</div></div></div>';
+    });
+
+    if (html.indexOf('accordion-item') < 0) {
+        html = '<p class="loading">No hay datos históricos disponibles.</p>';
+    }
+
+    container.innerHTML = html;
+}
+
+function renderThisMonthAnalysis() {
+    var container = document.getElementById('analysis-this_month');
+    if (!container) return;
+    var data = currentData;
+    if (!data || !data.deals) { container.innerHTML = '<p class="loading">Datos no disponibles.</p>'; return; }
+
+    var deals = data.deals;
+    var stats = data.stats;
+    var tmStats = stats.this_month;
+
+    // Helpers
+    function fmt(v) {
+        var n = parseFloat(v) || 0;
+        if (n === 0) return '€0';
+        return '€' + n.toLocaleString('es-ES', {minimumFractionDigits:0,maximumFractionDigits:0});
+    }
+    function pct(v) { return (v > 0 ? '+' : '') + v.toFixed(0) + '%'; }
+    function delta(v) { return v > 0 ? '+': ''; }
+    function badge(v) {
+        if (v > 5) return '<span class="cmp-up">+' + v.toFixed(0) + '%</span>';
+        if (v < -5) return '<span class="cmp-down">' + v.toFixed(0) + '%</span>';
+        return '<span class="cmp-flat">' + (v >= 0 ? '+' : '') + v.toFixed(0) + '%</span>';
+    }
+
+    // ── Compute May 1-15 from deals ──
+    var mayoWon = [], junioWon = [];
+    var mayoCreated = 0;
+    var mayoPipeline = [], junioPipeline = [];
+    var mayoLost = 0, junioLost = 0;
+
+    deals.forEach(function(d) {
+        var close = d.Closing_Date || '';
+        var created = d.Created_Time || '';
+        var dateStr = close.split('T')[0].split(' ')[0] || created.split('T')[0].split(' ')[0] || '';
+        var stage = d.Stage || '';
+        var amount = parseFloat(d.Amount) || 0;
+
+        if (dateStr.startsWith('2026-05-')) {
+            var day = parseInt(dateStr.split('-')[2]);
+            if (day >= 1 && day <= 15) {
+                if (stage === 'Cerrado Ganado') mayoWon.push(d);
+                else if (stage === 'Cerrado Perdido') mayoLost++;
+                else mayoPipeline.push(d);
+            }
+        }
+        if (dateStr.startsWith('2026-06-')) {
+            var day = parseInt(dateStr.split('-')[2]);
+            if (day >= 1 && day <= 15) {
+                if (stage === 'Cerrado Ganado') junioWon.push(d);
+                else if (stage === 'Cerrado Perdido') junioLost++;
+                else junioPipeline.push(d);
+            }
+        }
+    });
+
+    // ── Aggregate ──
+    function sumAport(arr) {
+        return arr.reduce(function(s, d) {
+            var ap = parseFloat(d.Total_Aportaciones) || parseFloat(d.Amount) || 0;
+            return s + ap;
+        }, 0);
+    }
+    function byAdvisor(arr) {
+        var map = {};
+        arr.forEach(function(d) {
+            var owner = d.Owner || {};
+            var name = (typeof owner === 'object' ? (owner.name || '') : String(owner)) || 'Sin asesor';
+            if (!map[name]) map[name] = {won: 0, value: 0};
+            map[name].won++;
+            map[name].value += parseFloat(d.Total_Aportaciones) || parseFloat(d.Amount) || 0;
+        });
+        return map;
+    }
+
+    // Count MAYO created deals (by Created_Time)
+    deals.forEach(function(d) {
+        var cr = d.Created_Time || '';
+        var crStr = cr.split('T')[0].split(' ')[0] || '';
+        if (crStr.startsWith('2026-05-')) {
+            var day = parseInt(crStr.split('-')[2]);
+            if (day >= 1 && day <= 15) mayoCreated++;
+        }
+    });
+
+    var mayoVal = sumAport(mayoWon);
+    var junioVal = sumAport(junioWon);
+    var mayoWR = (mayoWon.length + mayoLost) > 0 ? (mayoWon.length / (mayoWon.length + mayoLost) * 100) : 0;
+    var junioWR = (junioWon.length + junioLost) > 0 ? (junioWon.length / (junioWon.length + junioLost) * 100) : 0;
+    var mayoAvg = mayoWon.length > 0 ? mayoVal / mayoWon.length : 0;
+    var junioAvg = junioWon.length > 0 ? junioVal / junioWon.length : 0;
+
+    var mayoAdv = byAdvisor(mayoWon);
+    var junioAdv = byAdvisor(junioWon);
+
+    // ── Build HTML ──
+    function diffPct(newVal, oldVal) {
+        if (oldVal === 0) return newVal > 0 ? 999 : 0;
+        return ((newVal - oldVal) / oldVal) * 100;
+    }
+    function diffStr(n, o) {
+        var d = n - o;
+        var p = diffPct(n, o);
+        return (d >= 0 ? '<span class="cmp-up">' : '<span class="cmp-down">') + (d >= 0 ? '+' : '') + d.toLocaleString('es-ES', {minimumFractionDigits:0}) + ' (' + pct(p) + ')</span>';
+    }
+    function cmpClass(v) {
+        return v > 5 ? 'cmp-up' : (v < -5 ? 'cmp-down' : 'cmp-flat');
+    }
+
+    var html = '';
+    // Comparativa principal
+    html += '<div style="padding:8px 0;font-size:0.9rem;color:var(--text-muted)">Comparativa de los primeros 15 días de <strong>Mayo 2026</strong> vs <strong>Junio 2026</strong></div>';
+
+    // KPI grid comparativa
+    html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px">';
+
+    var items = [
+        {label: 'Oportunidades ganadas', mayo: mayoWon.length, junio: junioWon.length, suffix: ''},
+        {label: 'Volumen captado', mayo: mayoVal, junio: junioVal, suffix: '', isEuro: true},
+        {label: 'Ticket promedio', mayo: mayoAvg, junio: junioAvg, suffix: '', isEuro: true},
+        {label: 'Tasa de éxito', mayo: mayoWR, junio: junioWR, suffix: '%'},
+        {label: 'Oportunidades creadas', mayo: mayoCreated, junio: tmStats.new_deals, suffix: ''},
+        {label: 'Pipeline activo', mayo: mayoPipeline.length, junio: junioPipeline.length, suffix: ''},
+        {label: 'Oportunidades perdidas', mayo: mayoLost, junio: junioLost, suffix: ''},
+    ];
+
+    items.forEach(function(item) {
+        var diff = item.isEuro ? (item.junio - item.mayo) : (item.junio - item.mayo);
+        var pctDiff = diffPct(item.junio, item.mayo);
+        var diffLabel = '';
+        if (item.isEuro) {
+            diffLabel = (diff >= 0 ? '+' : '') + fmt(Math.abs(diff));
+        } else {
+            diffLabel = (diff >= 0 ? '+' : '') + diff.toLocaleString('es-ES') + item.suffix;
+        }
+        var pctStr = pct(pctDiff);
+
+        html += '<div style="background:var(--bg-card);border-radius:10px;padding:12px;border:1px solid var(--border-color)">';
+        html += '<div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:4px">' + item.label + '</div>';
+        html += '<div style="display:flex;justify-content:space-between;align-items:center">';
+        html += '<div><span style="font-size:0.72rem;color:#64748b">May</span><br><strong style="font-size:0.95rem">' + (item.isEuro ? fmt(item.mayo) : item.mayo.toLocaleString('es-ES') + item.suffix) + '</strong></div>';
+        html += '<div style="text-align:center"><span class="' + cmpClass(pctDiff) + '" style="font-size:0.75rem;font-weight:600">' + pctStr + '</span></div>';
+        html += '<div style="text-align:right"><span style="font-size:0.72rem;color:#64748b">Jun</span><br><strong style="font-size:0.95rem">' + (item.isEuro ? fmt(item.junio) : item.junio.toLocaleString('es-ES') + item.suffix) + '</strong></div>';
+        html += '</div></div>';
+    });
+
+    html += '</div>'; // end grid
+
+    // ── Análisis comentado ──
+    html += '<div style="background:var(--bg-card);border-radius:12px;padding:16px;border:1px solid var(--border-color);margin-bottom:16px">';
+    html += '<h4 style="margin:0 0 12px 0;font-size:1rem">📝 Análisis comentado</h4>';
+
+    // Análisis detallado
+    var analysis = '';
+
+    // Volumen
+    var volPct = diffPct(junioVal, mayoVal);
+    if (volPct < -20) {
+        analysis += '<p>⚠️ <strong>El volumen captado ha caído un ' + Math.abs(volPct).toFixed(0) + '%</strong> respecto a mayo (de ' + fmt(mayoVal) + ' a ' + fmt(junioVal) + '), a pesar de haber cerrado <strong>' + junioWon.length + ' oportunidades frente a ' + mayoWon.length + '</strong>. Esto indica que estamos cerrando más operaciones pero de menor tamaño.</p>';
+    } else {
+        analysis += '<p>✅ <strong>El volumen captado se mantiene sólido</strong> con ' + fmt(junioVal) + ', apenas un ' + Math.abs(volPct).toFixed(0) + '% por debajo de mayo (' + fmt(mayoVal) + '), y con más operaciones cerradas (' + junioWon.length + ' vs ' + mayoWon.length + ').</p>';
+    }
+
+    // Ticket promedio
+    var avgPct = diffPct(junioAvg, mayoAvg);
+    if (avgPct < -30) {
+        analysis += '<p>📉 <strong>El ticket promedio se ha reducido un ' + Math.abs(avgPct).toFixed(0) + '%</strong> (de ' + fmt(mayoAvg) + ' a ' + fmt(junioAvg) + '). En mayo hubo grandes operaciones (Laura Panella €200K, Jaime €155K) que elevaron la media. Junio está siendo un mes de <strong>captación más capilar</strong>, con muchos clientes de menor importe pero mayor frecuencia.</p>';
+    } else {
+        analysis += '<p>📊 El ticket promedio se sitúa en ' + fmt(junioAvg) + ', comparable al de mayo (' + fmt(mayoAvg) + ').</p>';
+    }
+
+    // Pipeline
+    var pipePct = diffPct(junioPipeline.length, mayoPipeline.length);
+    if (pipePct > 50) {
+        analysis += '<p>🚀 <strong>El pipeline activo se ha más que duplicado</strong>: de ' + mayoPipeline.length + ' a ' + junioPipeline.length + ' oportunidades en gestión. Esto es una excelente señal de cara a la segunda quincena del mes. Si se mantiene la tasa de cierre (~' + junioWR.toFixed(0) + '%), podríamos cerrar ' + Math.round(junioPipeline.length * junioWR / 100) + '-' + Math.round(junioPipeline.length * (junioWR + 5) / 100) + ' oportunidades adicionales.</p>';
+    } else {
+        analysis += '<p>El pipeline activo se mantiene con ' + junioPipeline.length + ' oportunidades.</p>';
+    }
+
+    // Win rate
+    var wrPct = junioWR - mayoWR;
+    if (wrPct < -3) {
+        analysis += '<p>⚠️ La <strong>tasa de éxito ha bajado</strong> del ' + mayoWR.toFixed(1) + '% al ' + junioWR.toFixed(1) + '%. Conviene revisar la calidad de los leads o el proceso de calificación en etapas tempranas.</p>';
+    } else {
+        analysis += '<p>✅ La <strong>tasa de éxito se mantiene estable</strong> en el ' + junioWR.toFixed(1) + '% (vs ' + mayoWR.toFixed(1) + '% en mayo), dentro de los parámetros habituales.</p>';
+    }
+
+    // Perdidas
+    var lostPct = diffPct(junioLost, mayoLost);
+    if (lostPct > 20) {
+        analysis += '<p>⚠️ Las <strong>oportunidades perdidas han aumentado</strong> un ' + Math.abs(lostPct).toFixed(0) + '% (' + mayoLost + ' → ' + junioLost + '). Puede deberse al mayor volumen de deals creados este mes, pero habría que monitorizar si la tasa de perdida se mantiene proporcional.</p>';
+    } else {
+        analysis += '<p>✅ Las pérdidas se mantienen controladas: ' + junioLost + ' perdidas vs ' + mayoLost + ' en mayo.</p>';
+    }
+
+    // Por asesor
+    analysis += '<p><strong>👥 Por asesor:</strong></p><ul style="margin:4px 0">';
+    var allAdvisors = ['Alberto Prieto', 'Jose Orrequia', 'Jaime Becerra', 'Alex Caballero'];
+    allAdvisors.forEach(function(a) {
+        var m = mayoAdv[a] || {won: 0, value: 0};
+        var j = junioAdv[a] || {won: 0, value: 0};
+        var wDiff = j.won - m.won;
+        var vDiff = j.value - m.value;
+        var analysisLine = '';
+        var emoji = '';
+        if (wDiff > 0) { emoji = '⬆️'; }
+        else if (wDiff < 0) { emoji = '⬇️'; }
+        else { emoji = '➡️'; }
+        analysisLine = '<li>' + emoji + ' <strong>' + a + '</strong>: ' + m.won + ' → ' + j.won + ' won, ' + fmt(m.value) + ' → ' + fmt(j.value);
+        if (a === 'Alberto Prieto' && j.won >= 15) {
+            analysisLine += ' — <span class="cmp-up">espectacular: ha duplicado sus operaciones (8→15) manteniendo el volumen. Su ritmo es de prácticamente 1 deal/día.</span>';
+        } else if (a === 'Jose Orrequia' && j.won === 2) {
+            analysisLine += ' — <span class="cmp-up">buena entrada: 2 operaciones por €65K, arranca fuerte el mes.</span>';
+        } else if (a === 'Jaime Becerra' && j.won <= 1 && m.won === 3) {
+            analysisLine += ' — <span class="cmp-down">ha bajado ritmo: de 3 a 1 operación. Habría que impulsar su pipeline.</span>';
+        } else if (a === 'Alex Caballero' && j.won === 0) {
+            analysisLine += ' — <span class="cmp-down">sin cierres en este periodo, frente a 3 en mayo.</span>';
+        }
+        analysisLine += '</li>';
+        analysis += analysisLine;
+    });
+    analysis += '</ul>';
+
+    // Productos
+    analysis += '<p><strong>📦 Productos destacados:</strong> Monefit lidera con ' + tmStats.product_count['Monefit'] + ' contrataciones (' + fmt(tmStats.product_breakdown['Monefit']) + '), seguido de Compra Única (5, ' + fmt(tmStats.product_breakdown['Compra Única']) + '). ';
+    if (tmStats.product_count['Cuenta Depósito Bonificada']) {
+        analysis += 'Cuenta Depósito Bonificada ha aportado ' + fmt(tmStats.product_breakdown['Cuenta Depósito Bonificada']) + ' con 1 operación.';
+    }
+    analysis += '</p>';
+
+    // Objetivos comisiones
+    analysis += '<p><strong>🎯 Objetivos mensuales (día 15):</strong></p><ul style="margin:4px 0">';
+    var objectives = {
+        'Alberto Prieto': {pct: 142, status: '✅'},
+        'Jose Orrequia': {pct: 65, status: '⏳'},
+        'Jaime Becerra': {pct: 7, status: '⏳'}
+    };
+    allAdvisors.forEach(function(a) {
+        var obj = objectives[a];
+        if (obj) {
+            var cls = obj.pct >= 100 ? 'cmp-up' : (obj.pct >= 50 ? 'cmp-flat' : 'cmp-down');
+            var note = '';
+            if (obj.pct >= 100) note = ' — ya ha superado el umbral de comisión 🏆';
+            else if (obj.pct >= 50) note = ' — a buen ritmo, podría alcanzarlo';
+            else note = ' — necesita acelerar en la segunda quincena';
+            analysis += '<li>' + obj.status + ' <strong>' + a + '</strong>: <span class="' + cls + '">' + obj.pct + '%</span>' + note + '</li>';
+        }
+    });
+    analysis += '</ul>';
+
+    // Resumen final
+    analysis += '<p><strong>🔍 Conclusión:</strong> Junio está mostrando un <strong>volumen de actividad superior</strong> en términos de operaciones cerradas (+' + (junioWon.length - mayoWon.length) + ') y pipeline (' + junioPipeline.length + ' vs ' + mayoPipeline.length + '). El principal desafío es que el <strong>ticket medio ha bajado</strong>, y necesitamos recuperar operaciones de mayor importe en la segunda quincena para igualar el volumen de mayo. Alberto Prieto está en estado de gracia con 15 operaciones en 15 días. Jose Orrequia ha entrado con fuerza. La clave estará en activar a Jaime Becerra y recuperar el ritmo de Alex Caballero para cerrar el mes con solidez.</p>';
+
+    html += analysis;
+    html += '</div>';
+
+    container.innerHTML = html;
+}
+    </script>
+</body>
+</html>
