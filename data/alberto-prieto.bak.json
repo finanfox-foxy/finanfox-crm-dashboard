@@ -1,6 +1,7 @@
 {
   "advisor_name": "Alberto Prieto",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "timestamp": "2026-08-09T05:48:51Z",
 =======
   "timestamp": "2026-08-09T05:01:56Z",
@@ -8,6 +9,12 @@
   "generated_at": "2026-08-09",
   "today": "2026-08-09",
   "yesterday": "2026-08-08",
+=======
+  "timestamp": "2026-08-08T05:44:03Z",
+  "generated_at": "2026-08-08",
+  "today": "2026-08-08",
+  "yesterday": "2026-08-07",
+>>>>>>> Stashed changes
   "this_month": "2026-08",
   "this_quarter_start": "2026-07-01",
   "this_quarter_end": "2026-09-30",
@@ -15,6 +22,7 @@
   "stats": {
     "all_time": {
       "contacts": {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "total": 3715,
         "with_email": 3703,
@@ -44,6 +52,21 @@
           "Cerrado Ganado": 1355,
           "Llamada Pendiente": 36,
 >>>>>>> Stashed changes
+=======
+        "total": 3706,
+        "with_email": 3694,
+        "with_phone": 3686,
+        "by_owner": {
+          "Alberto Prieto": 3706
+        }
+      },
+      "deals": {
+        "total": 4836,
+        "by_stage": {
+          "Aceptado/Falta Firma": 18,
+          "Cerrado Ganado": 1355,
+          "Llamada Pendiente": 27,
+>>>>>>> Stashed changes
           "Análisis Financiero": 19,
           "Cerrado Perdido": 3396,
           "Reasesoramiento": 14,
@@ -51,6 +74,7 @@
           "Revisando Propuesta": 5
         },
         "by_owner": {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "Alberto Prieto": 4846
 =======
@@ -66,12 +90,22 @@
 >>>>>>> Stashed changes
         "closed_won": 1355,
         "closed_won_value": 15670732.910000002,
+=======
+          "Alberto Prieto": 4836
+        },
+        "pipeline_value": 18452814.34,
+        "total_aportaciones": 16415762.0,
+        "avg_deal_size": 3815.72,
+        "closed_won": 1355,
+        "closed_won_value": 15670732.91,
+>>>>>>> Stashed changes
         "closed_lost": 3396,
         "conversion_rate": 28.0
       }
     },
     "yesterday": {
       "label": "Ayer",
+<<<<<<< Updated upstream
       "new_contacts": 6,
       "new_deals": 7,
       "won_deals": 0,
@@ -140,6 +174,130 @@
       },
       "product_count": {
         "Monefit": 5
+=======
+      "new_contacts": 5,
+      "new_deals": 8,
+      "won_deals": 2,
+      "lost_deals": 2,
+      "won_value": 11000.0,
+      "total_aportacion_won": 11000.0,
+      "product_breakdown": {
+        "Monefit": 11000.0
+      },
+      "product_count": {
+        "Monefit": 2
+>>>>>>> Stashed changes
+      },
+      "product_details": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+<<<<<<< Updated upstream
+          "veces": 5,
+          "total": 29000.0
+=======
+          "veces": 2,
+          "total": 11000.0
+>>>>>>> Stashed changes
+        }
+      ],
+      "product_deals": [
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+          "total": 10000.0,
+          "close_date": "2026-08-07",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "Mario Magallon calvo",
+          "parent_id": "862490000009463001",
+          "fecha_inicio": "2026-08-07",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Monefit",
+          "entidad": "Monefit",
+<<<<<<< Updated upstream
+=======
+          "total": 1000.0,
+          "close_date": "2026-08-07",
+          "close_date_source": "deal_Closing_Date",
+          "cliente": "TEÓFILO RICO VERDÚ",
+          "parent_id": "862490000008270012",
+          "fecha_inicio": "2026-08-05",
+          "objetivo_financiero": "Colchón de seguridad",
+          "plazo": "Corto Plazo (1-3 años)"
+        }
+      ],
+      "advisor_ranking_won": [
+        {
+          "name": "Alberto Prieto",
+          "won": 2,
+          "total_aportacion": 11000.0
+        }
+      ],
+      "advisor_ranking_aportacion": [
+        {
+          "name": "Alberto Prieto",
+          "won": 2,
+          "total_aportacion": 11000.0
+        }
+      ],
+      "pipeline_stages": {
+        "Llamada Pendiente": 3,
+        "Análisis Financiero": 3,
+        "Aceptado/Falta Firma": 1,
+        "Cerrado Ganado": 2,
+        "Cerrado Perdido": 2
+      },
+      "pipeline_value": 31000.0,
+      "win_rate": 25.0,
+      "avg_days_to_win": 8.0,
+      "products_closed_count": 2,
+      "conversion_clientes": {
+        "total_contacts": 5,
+        "converted_contacts": 2,
+        "ratio": 40.0,
+        "avg_days_to_convert": 22.0
+      },
+      "contacts_by_day": {
+        "7": 5
+      },
+      "deals_by_day": {
+        "7": 8
+      },
+      "lead_quality": {
+        "ni_total": 0,
+        "na_total": 1,
+        "ni_na_total": 1,
+        "ni_total_rate": 0.0,
+        "na_total_rate": 12.5,
+        "ni_na_total_rate": 12.5,
+        "ni_7d": 0,
+        "na_7d": 1,
+        "ni_na_7d": 1,
+        "ni_7d_rate": 0.0,
+        "na_7d_rate": 12.5,
+        "ni_na_7d_rate": 12.5,
+        "ni_pct": 0.0,
+        "na_pct": 100.0,
+        "ni_7d_pct": 0.0,
+        "na_7d_pct": 100.0
+      }
+    },
+    "this_month": {
+      "label": "Este Mes",
+      "new_contacts": 31,
+      "new_deals": 43,
+      "won_deals": 5,
+      "lost_deals": 26,
+      "won_value": 29000.0,
+      "total_aportacion_won": 29000.0,
+      "product_breakdown": {
+        "Monefit": 29000.0
+      },
+      "product_count": {
+        "Monefit": 5
       },
       "product_details": [
         {
@@ -165,6 +323,7 @@
         {
           "producto": "Monefit",
           "entidad": "Monefit",
+>>>>>>> Stashed changes
           "total": 1000.0,
           "close_date": "2026-08-06",
           "close_date_source": "deal_Closing_Date",
@@ -227,9 +386,13 @@
       ],
       "pipeline_stages": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "Llamada Pendiente": 23,
 =======
         "Llamada Pendiente": 22,
+>>>>>>> Stashed changes
+=======
+        "Llamada Pendiente": 13,
 >>>>>>> Stashed changes
         "Análisis Financiero": 7,
         "Reasesoramiento": 1,
@@ -238,6 +401,7 @@
         "Cerrado Perdido": 26
       },
       "pipeline_value": 105000.0,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       "win_rate": 9.4,
       "avg_days_to_win": 3.4,
@@ -255,6 +419,15 @@
         "converted_contacts": 3,
         "ratio": 7.7,
 >>>>>>> Stashed changes
+=======
+      "win_rate": 11.6,
+      "avg_days_to_win": 3.4,
+      "products_closed_count": 5,
+      "conversion_clientes": {
+        "total_contacts": 31,
+        "converted_contacts": 3,
+        "ratio": 9.7,
+>>>>>>> Stashed changes
         "avg_days_to_convert": 37.0
       },
       "contacts_by_day": {
@@ -264,11 +437,15 @@
         "5": 11,
         "6": 4,
         "7": 5,
+<<<<<<< Updated upstream
         "8": 6,
 <<<<<<< Updated upstream
         "9": 4
 =======
         "9": 3
+>>>>>>> Stashed changes
+=======
+        "8": 1
 >>>>>>> Stashed changes
       },
       "deals_by_day": {
@@ -278,17 +455,22 @@
         "5": 11,
         "6": 10,
         "7": 8,
+<<<<<<< Updated upstream
         "8": 7,
 <<<<<<< Updated upstream
         "9": 4
 =======
         "9": 3
 >>>>>>> Stashed changes
+=======
+        "8": 1
+>>>>>>> Stashed changes
       },
       "lead_quality": {
         "ni_total": 14,
         "na_total": 6,
         "ni_na_total": 20,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "ni_total_rate": 26.4,
         "na_total_rate": 11.3,
@@ -310,6 +492,17 @@
         "na_7d_rate": 5.8,
         "ni_na_7d_rate": 21.2,
 >>>>>>> Stashed changes
+=======
+        "ni_total_rate": 32.6,
+        "na_total_rate": 14.0,
+        "ni_na_total_rate": 46.5,
+        "ni_7d": 8,
+        "na_7d": 3,
+        "ni_na_7d": 11,
+        "ni_7d_rate": 18.6,
+        "na_7d_rate": 7.0,
+        "ni_na_7d_rate": 25.6,
+>>>>>>> Stashed changes
         "ni_pct": 70.0,
         "na_pct": 30.0,
         "ni_7d_pct": 72.7,
@@ -319,11 +512,16 @@
     "this_quarter": {
       "label": "Este Trimestre",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "new_contacts": 110,
       "new_deals": 4575,
 =======
       "new_contacts": 109,
       "new_deals": 4574,
+>>>>>>> Stashed changes
+=======
+      "new_contacts": 101,
+      "new_deals": 4565,
 >>>>>>> Stashed changes
       "won_deals": 41,
       "lost_deals": 93,
@@ -877,9 +1075,13 @@
       ],
       "pipeline_stages": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "Llamada Pendiente": 28,
 =======
         "Llamada Pendiente": 27,
+>>>>>>> Stashed changes
+=======
+        "Llamada Pendiente": 18,
 >>>>>>> Stashed changes
         "Análisis Financiero": 13,
         "Asesoramiento": 1,
@@ -895,6 +1097,7 @@
       "products_closed_count": 41,
       "conversion_clientes": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "total_contacts": 110,
         "converted_contacts": 20,
         "ratio": 18.2,
@@ -902,6 +1105,11 @@
         "total_contacts": 109,
         "converted_contacts": 20,
         "ratio": 18.3,
+>>>>>>> Stashed changes
+=======
+        "total_contacts": 101,
+        "converted_contacts": 20,
+        "ratio": 19.8,
 >>>>>>> Stashed changes
         "avg_days_to_convert": 30.7
       },
@@ -913,11 +1121,16 @@
         "5": 14,
         "6": 8,
         "7": 9,
+<<<<<<< Updated upstream
         "8": 8,
 <<<<<<< Updated upstream
         "9": 5,
 =======
         "9": 4,
+>>>>>>> Stashed changes
+=======
+        "8": 3,
+        "9": 1,
 >>>>>>> Stashed changes
         "10": 6,
         "11": 2,
@@ -946,11 +1159,16 @@
         "5": 15,
         "6": 16,
         "7": 14,
+<<<<<<< Updated upstream
         "8": 10,
 <<<<<<< Updated upstream
         "9": 5,
 =======
         "9": 4,
+>>>>>>> Stashed changes
+=======
+        "8": 4,
+        "9": 1,
 >>>>>>> Stashed changes
         "10": 6,
         "11": 3,
@@ -995,11 +1213,16 @@
     "this_year": {
       "label": "Este Año",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "new_contacts": 3715,
       "new_deals": 4846,
 =======
       "new_contacts": 3714,
       "new_deals": 4845,
+>>>>>>> Stashed changes
+=======
+      "new_contacts": 3706,
+      "new_deals": 4836,
 >>>>>>> Stashed changes
       "won_deals": 188,
       "lost_deals": 460,
@@ -3369,9 +3592,13 @@
       ],
       "pipeline_stages": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "Llamada Pendiente": 37,
 =======
         "Llamada Pendiente": 36,
+>>>>>>> Stashed changes
+=======
+        "Llamada Pendiente": 27,
 >>>>>>> Stashed changes
         "Análisis Financiero": 19,
         "Asesoramiento": 2,
@@ -3387,9 +3614,13 @@
       "products_closed_count": 188,
       "conversion_clientes": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "total_contacts": 3715,
 =======
         "total_contacts": 3714,
+>>>>>>> Stashed changes
+=======
+        "total_contacts": 3706,
 >>>>>>> Stashed changes
         "converted_contacts": 105,
         "ratio": 2.8,
@@ -3403,11 +3634,16 @@
         "5": 20,
         "6": 21,
         "7": 19,
+<<<<<<< Updated upstream
         "8": 17,
 <<<<<<< Updated upstream
         "9": 12,
 =======
         "9": 11,
+>>>>>>> Stashed changes
+=======
+        "8": 12,
+        "9": 8,
 >>>>>>> Stashed changes
         "10": 11,
         "11": 5,
@@ -3440,11 +3676,16 @@
         "5": 22,
         "6": 27,
         "7": 34,
+<<<<<<< Updated upstream
         "8": 25,
 <<<<<<< Updated upstream
         "9": 14,
 =======
         "9": 13,
+>>>>>>> Stashed changes
+=======
+        "8": 19,
+        "9": 10,
 >>>>>>> Stashed changes
         "10": 10,
         "11": 9,
@@ -3491,6 +3732,7 @@
   },
   "comparison": {
     "yesterday": {
+<<<<<<< Updated upstream
       "previous": "2026-08-07",
       "period_label": "anteayer",
       "stats": {
@@ -3506,19 +3748,42 @@
         },
         "product_count": {
           "Monefit": 2
+=======
+      "previous": "2026-08-06",
+      "period_label": "anteayer",
+      "stats": {
+        "label": "Anteayer",
+        "new_contacts": 4,
+        "new_deals": 10,
+        "won_deals": 1,
+        "lost_deals": 4,
+        "won_value": 1000.0,
+        "total_aportacion_won": 1000.0,
+        "product_breakdown": {
+          "Monefit": 1000.0
+        },
+        "product_count": {
+          "Monefit": 1
+>>>>>>> Stashed changes
         },
         "product_details": [
           {
             "producto": "Monefit",
             "entidad": "Monefit",
+<<<<<<< Updated upstream
             "veces": 2,
             "total": 11000.0
+=======
+            "veces": 1,
+            "total": 1000.0
+>>>>>>> Stashed changes
           }
         ],
         "product_deals": [
           {
             "producto": "Monefit",
             "entidad": "Monefit",
+<<<<<<< Updated upstream
             "total": 10000.0,
             "close_date": "2026-08-07",
             "close_date_source": "deal_Closing_Date",
@@ -3538,19 +3803,34 @@
             "parent_id": "862490000008270012",
             "fecha_inicio": "2026-08-05",
             "objetivo_financiero": "Colchón de seguridad",
+=======
+            "total": 1000.0,
+            "close_date": "2026-08-06",
+            "close_date_source": "deal_Closing_Date",
+            "cliente": "Susana Yebra Yebra Ramos",
+            "parent_id": "862490000009382229",
+            "fecha_inicio": "2026-08-06",
+            "objetivo_financiero": "Obtener rentabilidad",
+>>>>>>> Stashed changes
             "plazo": "Corto Plazo (1-3 años)"
           }
         ],
         "advisor_ranking_won": [
           {
             "name": "Alberto Prieto",
+<<<<<<< Updated upstream
             "won": 2,
             "total_aportacion": 11000.0
+=======
+            "won": 1,
+            "total_aportacion": 1000.0
+>>>>>>> Stashed changes
           }
         ],
         "advisor_ranking_aportacion": [
           {
             "name": "Alberto Prieto",
+<<<<<<< Updated upstream
             "won": 2,
             "total_aportacion": 11000.0
           }
@@ -3595,6 +3875,52 @@
           "na_pct": 100.0,
           "ni_7d_pct": 0.0,
           "na_7d_pct": 100.0
+=======
+            "won": 1,
+            "total_aportacion": 1000.0
+          }
+        ],
+        "pipeline_stages": {
+          "Llamada Pendiente": 1,
+          "Análisis Financiero": 1,
+          "Aceptado/Falta Firma": 5,
+          "Cerrado Ganado": 1,
+          "Cerrado Perdido": 4
+        },
+        "pipeline_value": 54000.0,
+        "win_rate": 10.0,
+        "avg_days_to_win": 0.0,
+        "products_closed_count": 1,
+        "conversion_clientes": {
+          "total_contacts": 4,
+          "converted_contacts": 1,
+          "ratio": 25.0,
+          "avg_days_to_convert": 70.0
+        },
+        "contacts_by_day": {
+          "6": 4
+        },
+        "deals_by_day": {
+          "6": 10
+        },
+        "lead_quality": {
+          "ni_total": 2,
+          "na_total": 0,
+          "ni_na_total": 2,
+          "ni_total_rate": 20.0,
+          "na_total_rate": 0.0,
+          "ni_na_total_rate": 20.0,
+          "ni_7d": 2,
+          "na_7d": 0,
+          "ni_na_7d": 2,
+          "ni_7d_rate": 20.0,
+          "na_7d_rate": 0.0,
+          "ni_na_7d_rate": 20.0,
+          "ni_pct": 100.0,
+          "na_pct": 0.0,
+          "ni_7d_pct": 100.0,
+          "na_7d_pct": 0.0
+>>>>>>> Stashed changes
         }
       }
     },
@@ -10232,6 +10558,7 @@
       "_contact_id": "862490000007476011"
     },
     {
+<<<<<<< Updated upstream
       "id": "862490000009447087",
       "Deal_Name": "Planificación de María Eugenia Payan",
       "Amount": null,
@@ -10260,6 +10587,13 @@
       "Amount": null,
       "Stage": "Llamada Pendiente",
       "Probability": 10,
+=======
+      "id": "862490000009447014",
+      "Deal_Name": "Planificación de Neus Mestres",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+>>>>>>> Stashed changes
       "Contact_Name": "Neus Mestres",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -10278,6 +10612,7 @@
       "_contact_id": "862490000009447005"
     },
     {
+<<<<<<< Updated upstream
       "id": "862490000009436178",
       "Deal_Name": "Planificación de Marian Lucian Rizea",
       "Amount": null,
@@ -10370,6 +10705,8 @@
       "_contact_id": "862490000009419007"
     },
     {
+=======
+>>>>>>> Stashed changes
       "id": "862490000009436047",
       "Deal_Name": "Planificación de Antonio Pérez Hervás",
       "Amount": null,
@@ -10416,6 +10753,7 @@
       "_contact_id": "862490000009358002"
     },
     {
+<<<<<<< Updated upstream
       "id": "862490000009417080",
       "Deal_Name": "Planificación de Julia Martínez garcia",
       "Amount": null,
@@ -10439,6 +10777,8 @@
       "_contact_id": "862490000009448015"
     },
     {
+=======
+>>>>>>> Stashed changes
       "id": "862490000009417038",
       "Deal_Name": "Planificación de Jose Maria Arigita Gil",
       "Amount": null,
@@ -10485,6 +10825,7 @@
       "_contact_id": "862490000009406003"
     },
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       "id": "862490000009416127",
       "Deal_Name": "Planificación de Santiago Atupaña Ibáñez",
@@ -10534,6 +10875,8 @@
       "_contact_id": "862490000009427011"
     },
     {
+=======
+>>>>>>> Stashed changes
       "id": "862490000009416008",
       "Deal_Name": "Planificación de Lidia Aldeguer Quintanilla",
       "Amount": null,
@@ -10557,6 +10900,7 @@
       "_contact_id": "862490000009392003"
     },
     {
+<<<<<<< Updated upstream
       "id": "862490000009414106",
       "Deal_Name": "Planificación de Francisco Javier González Márquez",
       "Amount": null,
@@ -10603,6 +10947,8 @@
       "_contact_id": "862490000009427016"
     },
     {
+=======
+>>>>>>> Stashed changes
       "id": "862490000009414050",
       "Deal_Name": "Planificación de Carmen Sanchez",
       "Amount": null,
@@ -121671,18 +122017,30 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
+<<<<<<< Updated upstream
           "count": 7,
           "pct_of_total": 100.0,
+=======
+          "count": 3,
+          "pct_of_total": 27.3,
+>>>>>>> Stashed changes
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
+<<<<<<< Updated upstream
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": 0.0,
           "conversion_from_top": 0.0,
+=======
+          "count": 3,
+          "pct_of_total": 27.3,
+          "conversion_from_prev": 100.0,
+          "conversion_from_top": 100.0,
+>>>>>>> Stashed changes
           "cmp_count": null
         },
         {
@@ -121711,35 +122069,62 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
+<<<<<<< Updated upstream
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
           "conversion_from_top": 0.0,
+=======
+          "count": 1,
+          "pct_of_total": 9.1,
+          "conversion_from_prev": null,
+          "conversion_from_top": 33.3,
+>>>>>>> Stashed changes
           "cmp_count": null
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
+<<<<<<< Updated upstream
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
           "conversion_from_top": 0.0,
+=======
+          "count": 2,
+          "pct_of_total": 18.2,
+          "conversion_from_prev": null,
+          "conversion_from_top": 66.7,
+>>>>>>> Stashed changes
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
+<<<<<<< Updated upstream
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": null,
           "conversion_from_top": 0.0,
+=======
+          "count": 2,
+          "pct_of_total": 18.2,
+          "conversion_from_prev": null,
+          "conversion_from_top": 66.7,
+>>>>>>> Stashed changes
           "cmp_count": null
         }
       ],
       "active_total": 7,
+<<<<<<< Updated upstream
       "won_total": 0,
       "lost_total": 0,
       "total_pipeline": 7
+=======
+      "won_total": 2,
+      "lost_total": 2,
+      "total_pipeline": 11
+>>>>>>> Stashed changes
     },
     "this_month": {
       "stage_order": [
@@ -121756,11 +122141,16 @@
         {
           "stage": "Llamada Pendiente",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "count": 23,
           "pct_of_total": 32.9,
 =======
           "count": 22,
           "pct_of_total": 31.9,
+>>>>>>> Stashed changes
+=======
+          "count": 13,
+          "pct_of_total": 21.7,
 >>>>>>> Stashed changes
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
@@ -121770,6 +122160,7 @@
           "stage": "Análisis Financiero",
           "count": 7,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "pct_of_total": 10.0,
           "conversion_from_prev": 30.4,
           "conversion_from_top": 30.4,
@@ -121777,6 +122168,11 @@
           "pct_of_total": 10.1,
           "conversion_from_prev": 31.8,
           "conversion_from_top": 31.8,
+>>>>>>> Stashed changes
+=======
+          "pct_of_total": 11.7,
+          "conversion_from_prev": 53.8,
+          "conversion_from_top": 53.8,
 >>>>>>> Stashed changes
           "cmp_count": null
         },
@@ -121791,12 +122187,18 @@
         {
           "stage": "Reasesoramiento",
           "count": 1,
+<<<<<<< Updated upstream
           "pct_of_total": 1.4,
           "conversion_from_prev": null,
 <<<<<<< Updated upstream
           "conversion_from_top": 4.3,
 =======
           "conversion_from_top": 4.5,
+>>>>>>> Stashed changes
+=======
+          "pct_of_total": 1.7,
+          "conversion_from_prev": null,
+          "conversion_from_top": 7.7,
 >>>>>>> Stashed changes
           "cmp_count": null
         },
@@ -121812,6 +122214,7 @@
           "stage": "Aceptado/Falta Firma",
           "count": 8,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "pct_of_total": 11.4,
           "conversion_from_prev": null,
           "conversion_from_top": 34.8,
@@ -121819,6 +122222,11 @@
           "pct_of_total": 11.6,
           "conversion_from_prev": null,
           "conversion_from_top": 36.4,
+>>>>>>> Stashed changes
+=======
+          "pct_of_total": 13.3,
+          "conversion_from_prev": null,
+          "conversion_from_top": 61.5,
 >>>>>>> Stashed changes
           "cmp_count": null
         }
@@ -121828,6 +122236,7 @@
           "stage": "Cerrado Ganado",
           "count": 5,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "pct_of_total": 7.1,
           "conversion_from_prev": null,
           "conversion_from_top": 21.7,
@@ -121836,11 +122245,17 @@
           "conversion_from_prev": null,
           "conversion_from_top": 22.7,
 >>>>>>> Stashed changes
+=======
+          "pct_of_total": 8.3,
+          "conversion_from_prev": null,
+          "conversion_from_top": 38.5,
+>>>>>>> Stashed changes
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 26,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "pct_of_total": 37.1,
           "conversion_from_prev": null,
@@ -121864,6 +122279,18 @@
       "lost_total": 26,
       "total_pipeline": 69
 >>>>>>> Stashed changes
+=======
+          "pct_of_total": 43.3,
+          "conversion_from_prev": null,
+          "conversion_from_top": 200.0,
+          "cmp_count": null
+        }
+      ],
+      "active_total": 29,
+      "won_total": 5,
+      "lost_total": 26,
+      "total_pipeline": 60
+>>>>>>> Stashed changes
     },
     "this_quarter": {
       "stage_order": [
@@ -121880,11 +122307,16 @@
         {
           "stage": "Llamada Pendiente",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "count": 28,
           "pct_of_total": 14.3,
 =======
           "count": 27,
           "pct_of_total": 13.8,
+>>>>>>> Stashed changes
+=======
+          "count": 18,
+          "pct_of_total": 9.7,
 >>>>>>> Stashed changes
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
@@ -121894,6 +122326,7 @@
           "stage": "Análisis Financiero",
           "count": 13,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "pct_of_total": 6.6,
           "conversion_from_prev": 46.4,
           "conversion_from_top": 46.4,
@@ -121901,6 +122334,11 @@
           "pct_of_total": 6.7,
           "conversion_from_prev": 48.1,
           "conversion_from_top": 48.1,
+>>>>>>> Stashed changes
+=======
+          "pct_of_total": 7.0,
+          "conversion_from_prev": 72.2,
+          "conversion_from_top": 72.2,
 >>>>>>> Stashed changes
           "cmp_count": 6
         },
@@ -121910,21 +122348,31 @@
           "pct_of_total": 0.5,
           "conversion_from_prev": 7.7,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "conversion_from_top": 3.6,
 =======
           "conversion_from_top": 3.7,
+>>>>>>> Stashed changes
+=======
+          "conversion_from_top": 5.6,
 >>>>>>> Stashed changes
           "cmp_count": 1
         },
         {
           "stage": "Reasesoramiento",
           "count": 8,
+<<<<<<< Updated upstream
           "pct_of_total": 4.1,
           "conversion_from_prev": null,
 <<<<<<< Updated upstream
           "conversion_from_top": 28.6,
 =======
           "conversion_from_top": 29.6,
+>>>>>>> Stashed changes
+=======
+          "pct_of_total": 4.3,
+          "conversion_from_prev": null,
+          "conversion_from_top": 44.4,
 >>>>>>> Stashed changes
           "cmp_count": 6
         },
@@ -121934,21 +122382,31 @@
           "pct_of_total": 0.5,
           "conversion_from_prev": 12.5,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "conversion_from_top": 3.6,
 =======
           "conversion_from_top": 3.7,
+>>>>>>> Stashed changes
+=======
+          "conversion_from_top": 5.6,
 >>>>>>> Stashed changes
           "cmp_count": 4
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 11,
+<<<<<<< Updated upstream
           "pct_of_total": 5.6,
           "conversion_from_prev": null,
 <<<<<<< Updated upstream
           "conversion_from_top": 39.3,
 =======
           "conversion_from_top": 40.7,
+>>>>>>> Stashed changes
+=======
+          "pct_of_total": 5.9,
+          "conversion_from_prev": null,
+          "conversion_from_top": 61.1,
 >>>>>>> Stashed changes
           "cmp_count": 7
         }
@@ -121958,6 +122416,7 @@
           "stage": "Cerrado Ganado",
           "count": 41,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "pct_of_total": 20.9,
           "conversion_from_prev": null,
           "conversion_from_top": 146.4,
@@ -121966,11 +122425,17 @@
           "conversion_from_prev": null,
           "conversion_from_top": 151.9,
 >>>>>>> Stashed changes
+=======
+          "pct_of_total": 22.0,
+          "conversion_from_prev": null,
+          "conversion_from_top": 227.8,
+>>>>>>> Stashed changes
           "cmp_count": 66
         },
         {
           "stage": "Cerrado Perdido",
           "count": 93,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "pct_of_total": 47.4,
           "conversion_from_prev": null,
@@ -121994,6 +122459,18 @@
       "lost_total": 93,
       "total_pipeline": 195
 >>>>>>> Stashed changes
+=======
+          "pct_of_total": 50.0,
+          "conversion_from_prev": null,
+          "conversion_from_top": 516.7,
+          "cmp_count": 165
+        }
+      ],
+      "active_total": 52,
+      "won_total": 41,
+      "lost_total": 93,
+      "total_pipeline": 186
+>>>>>>> Stashed changes
     },
     "this_year": {
       "stage_order": [
@@ -122010,11 +122487,16 @@
         {
           "stage": "Llamada Pendiente",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "count": 37,
           "pct_of_total": 5.0,
 =======
           "count": 36,
           "pct_of_total": 4.9,
+>>>>>>> Stashed changes
+=======
+          "count": 27,
+          "pct_of_total": 3.7,
 >>>>>>> Stashed changes
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
@@ -122025,11 +122507,16 @@
           "count": 19,
           "pct_of_total": 2.6,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "conversion_from_prev": 51.4,
           "conversion_from_top": 51.4,
 =======
           "conversion_from_prev": 52.8,
           "conversion_from_top": 52.8,
+>>>>>>> Stashed changes
+=======
+          "conversion_from_prev": 70.4,
+          "conversion_from_top": 70.4,
 >>>>>>> Stashed changes
           "cmp_count": null
         },
@@ -122039,9 +122526,13 @@
           "pct_of_total": 0.3,
           "conversion_from_prev": 10.5,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "conversion_from_top": 5.4,
 =======
           "conversion_from_top": 5.6,
+>>>>>>> Stashed changes
+=======
+          "conversion_from_top": 7.4,
 >>>>>>> Stashed changes
           "cmp_count": null
         },
@@ -122051,9 +122542,13 @@
           "pct_of_total": 1.9,
           "conversion_from_prev": null,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "conversion_from_top": 37.8,
 =======
           "conversion_from_top": 38.9,
+>>>>>>> Stashed changes
+=======
+          "conversion_from_top": 51.9,
 >>>>>>> Stashed changes
           "cmp_count": null
         },
@@ -122063,9 +122558,13 @@
           "pct_of_total": 0.7,
           "conversion_from_prev": 35.7,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "conversion_from_top": 13.5,
 =======
           "conversion_from_top": 13.9,
+>>>>>>> Stashed changes
+=======
+          "conversion_from_top": 18.5,
 >>>>>>> Stashed changes
           "cmp_count": null
         },
@@ -122075,9 +122574,13 @@
           "pct_of_total": 2.4,
           "conversion_from_prev": null,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "conversion_from_top": 48.6,
 =======
           "conversion_from_top": 50.0,
+>>>>>>> Stashed changes
+=======
+          "conversion_from_top": 66.7,
 >>>>>>> Stashed changes
           "cmp_count": null
         }
@@ -122086,6 +122589,7 @@
         {
           "stage": "Cerrado Ganado",
           "count": 188,
+<<<<<<< Updated upstream
           "pct_of_total": 25.3,
           "conversion_from_prev": null,
 <<<<<<< Updated upstream
@@ -122093,11 +122597,17 @@
 =======
           "conversion_from_top": 522.2,
 >>>>>>> Stashed changes
+=======
+          "pct_of_total": 25.6,
+          "conversion_from_prev": null,
+          "conversion_from_top": 696.3,
+>>>>>>> Stashed changes
           "cmp_count": 394
         },
         {
           "stage": "Cerrado Perdido",
           "count": 460,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "pct_of_total": 61.9,
           "conversion_from_prev": null,
@@ -122120,6 +122630,18 @@
       "won_total": 188,
       "lost_total": 460,
       "total_pipeline": 742
+>>>>>>> Stashed changes
+=======
+          "pct_of_total": 62.8,
+          "conversion_from_prev": null,
+          "conversion_from_top": 1703.7,
+          "cmp_count": 2421
+        }
+      ],
+      "active_total": 85,
+      "won_total": 188,
+      "lost_total": 460,
+      "total_pipeline": 733
 >>>>>>> Stashed changes
     }
   }
