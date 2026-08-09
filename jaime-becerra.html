@@ -105,9 +105,13 @@
             background: #fff7ed;
         }
         .app-panel { display: none; }
-        .app-panel.active { display: block; }
+        .app-panel.active { display: block; animation: panelFadeIn 0.3s ease; }
         .tab-panel { display: none; }
-        .tab-panel.active { display: block; }
+        .tab-panel.active { display: block; animation: panelFadeIn 0.3s ease; }
+        @keyframes panelFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
         .crm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -282,9 +286,44 @@
             margin-top: 32px; padding: 16px; border-top: 1px solid var(--border);
         }
         .last-updated a { color: var(--accent); text-decoration: none; }
-        .loading { text-align: center; padding: 80px; color: var(--text-muted); }
+        .loading { text-align: center; padding: 40px; color: var(--text-muted); }
         .loading .spinner { font-size: 2.5rem; margin-bottom: 16px; animation: spin 1.5s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
+        /* ── Skeleton shimmer (loading) ── */
+        .skeleton-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 0 auto 20px;
+            max-width: 900px;
+        }
+        .skeleton-card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            text-align: left;
+        }
+        .skeleton-shimmer {
+            position: relative;
+            overflow: hidden;
+            background: #e2e8f0;
+            border-radius: 6px;
+        }
+        .skeleton-shimmer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            transform: translateX(-100%);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+            animation: shimmer 1.4s infinite;
+        }
+        .skeleton-value { height: 28px; width: 60%; margin-bottom: 12px; }
+        .skeleton-label { height: 12px; width: 45%; }
+        .skeleton-line  { height: 12px; width: 100%; }
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        .skeleton-loading-note { font-size: 0.85rem; margin-bottom: 20px; }
         .error-banner {
             background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px;
             padding: 24px; margin-bottom: 20px; color: #991b1b; text-align: center;
@@ -325,8 +364,18 @@
 
     <div class="container">
         <div id="loading-state" class="loading">
-            <div class="spinner">🔄</div>
-            <p>Cargando datos del CRM...</p>
+            <p class="skeleton-loading-note">Cargando datos del CRM...</p>
+            <div class="skeleton-grid">
+                <div class="skeleton-card"><div class="skeleton-shimmer skeleton-value"></div><div class="skeleton-shimmer skeleton-label"></div></div>
+                <div class="skeleton-card"><div class="skeleton-shimmer skeleton-value"></div><div class="skeleton-shimmer skeleton-label"></div></div>
+                <div class="skeleton-card"><div class="skeleton-shimmer skeleton-value"></div><div class="skeleton-shimmer skeleton-label"></div></div>
+                <div class="skeleton-card"><div class="skeleton-shimmer skeleton-value"></div><div class="skeleton-shimmer skeleton-label"></div></div>
+                <div class="skeleton-card"><div class="skeleton-shimmer skeleton-value"></div><div class="skeleton-shimmer skeleton-label"></div></div>
+                <div class="skeleton-card"><div class="skeleton-shimmer skeleton-value"></div><div class="skeleton-shimmer skeleton-label"></div></div>
+            </div>
+            <div style="max-width:900px;margin:0 auto">
+                <div class="skeleton-shimmer skeleton-line" style="height:200px"></div>
+            </div>
         </div>
         <div id="error-state" class="error-banner" style="display:none">
             <h3>⚠️ No se pudieron cargar los datos</h3>
@@ -558,6 +607,91 @@ function formatEUR(v) {
     return '€' + Number(v).toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 }
 
+/* ── Count-up animation ───────────────────────────────
+ * Animates a numeric value from `start` to `end` over `duration` ms
+ * using ease-out quad. Formats the display with `formatter` (optional).
+ * Falls back to the target value immediately if RAF is unavailable.
+ */
+function animateValue(el, start, end, duration, formatter) {
+    if (!el) return;
+    if (typeof end !== 'number' || isNaN(end)) {
+        el.textContent = formatter ? formatter(end, end) : String(end);
+        return;
+    }
+    if (typeof start !== 'number' || isNaN(start)) start = 0;
+    duration = duration || 800;
+    var t0 = null;
+    function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
+    function step(ts) {
+        if (t0 === null) t0 = ts;
+        var progress = Math.min((ts - t0) / duration, 1);
+        var eased = easeOutQuad(progress);
+        var val = start + (end - start) * eased;
+        el.textContent = formatter ? formatter(val, end) : String(Math.round(val));
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            el.textContent = formatter ? formatter(end, end) : String(end);
+        }
+    }
+    requestAnimationFrame(step);
+}
+
+/* Formats a running count-up value. Adds locale thousands separators and
+ * keeps decimals for the target if `decimals` is provided.
+ */
+function countUpFormatter(decimals) {
+    decimals = decimals || 0;
+    return function (val) {
+        return Number(val).toLocaleString('es-ES', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+        });
+    };
+}
+
+/* Observe a value element and animate it once it becomes visible.
+ * data-count holds the target number; data-start (optional) the starting
+ * number; data-format = 'eur' | 'count' | 'plain' (default plain).
+ */
+function animateValOnVisible(el, duration) {
+    if (!el) return;
+    var end = parseFloat(el.getAttribute('data-count'));
+    if (isNaN(end)) return;
+    var start = el.hasAttribute('data-start') ? parseFloat(el.getAttribute('data-start')) : 0;
+    var fmt = el.getAttribute('data-format') || 'plain';
+    var formatter;
+    if (fmt === 'eur') formatter = function (v) { return formatEUR(v); };
+    else if (fmt === 'count') formatter = countUpFormatter(0);
+    else formatter = null;
+
+    function run() {
+        animateValue(el, start, end, duration || 800, formatter);
+    }
+
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    run();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        observer.observe(el);
+    } else {
+        run();
+    }
+}
+
+/* Scan a container for [data-count] elements and animate them on visibility. */
+function setupCountUps(containerId) {
+    var root = containerId ? document.getElementById(containerId) : document;
+    if (!root) return;
+    var els = root.querySelectorAll('[data-count]');
+    els.forEach(function (el) { animateValOnVisible(el, 800); });
+}
+
 function getBadgeClass(i) {
     var cls = ['badge-1','badge-2','badge-3','badge-4','badge-5','badge-6','badge-7','badge-8'];
     return cls[i % cls.length];
@@ -618,7 +752,7 @@ function renderFunnel(stages) {
         html += '<strong>' + stage + '</strong>';
         html += '</div>';
         html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
-        html += '<span class="funnel-count">' + count + '</span>';
+        html += '<span class="funnel-count" data-count="' + count + '" data-format="count">' + count + '</span>';
 
         // pct_of_total badge
         if (pctTotal !== undefined && pctTotal !== null && pctTotal !== '') {
@@ -653,11 +787,11 @@ function renderKPI(periodKey, stats, comparisonStats) {
         var lost = s.lost_deals || 0;
         var lostCmp = cmp ? (cmp.lost_deals || 0) : null;
         var html = '';
-        html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + s.new_contacts + '</div>' + (cmp ? renderCmpBadge(s.new_contacts, cmp.new_contacts, true) : '') + '</div><div class="label">👥 Nuevos Contactos</div></div>';
-        html += '<div class="crm-card info"><div class="value-row"><div class="value">' + s.new_deals + '</div>' + (cmp ? renderCmpBadge(s.new_deals, cmp.new_deals, true) : '') + '</div><div class="label">📈 Nuevas Oportunidades</div></div>';
-        html += '<div class="crm-card success"><div class="value-row"><div class="value">' + s.won_deals + '</div>' + (cmp ? renderCmpBadge(s.won_deals, cmp.won_deals, true) : '') + '</div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + formatEUR(s.won_value) + ' ' + (cmp ? renderCmpBadge(s.won_value, cmp.won_value, true) : '') + '</div></div>';
-        html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
-        html += '<div class="crm-card error"><div class="value-row"><div class="value">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+        html += '<div class="crm-card accent"><div class="value-row"><div class="value" data-count="' + s.new_contacts + '" data-format="count">' + s.new_contacts + '</div>' + (cmp ? renderCmpBadge(s.new_contacts, cmp.new_contacts, true) : '') + '</div><div class="label">👥 Nuevos Contactos</div></div>';
+        html += '<div class="crm-card info"><div class="value-row"><div class="value" data-count="' + s.new_deals + '" data-format="count">' + s.new_deals + '</div>' + (cmp ? renderCmpBadge(s.new_deals, cmp.new_deals, true) : '') + '</div><div class="label">📈 Nuevas Oportunidades</div></div>';
+        html += '<div class="crm-card success"><div class="value-row"><div class="value" data-count="' + s.won_deals + '" data-format="count">' + s.won_deals + '</div>' + (cmp ? renderCmpBadge(s.won_deals, cmp.won_deals, true) : '') + '</div><div class="label">🏆 Oportunidades Ganadas</div><div class="sub">' + formatEUR(s.won_value) + ' ' + (cmp ? renderCmpBadge(s.won_value, cmp.won_value, true) : '') + '</div></div>';
+        html += '<div class="crm-card purple"><div class="value-row"><div class="value" data-count="' + s.total_aportacion_won + '" data-format="eur">' + formatEUR(s.total_aportacion_won) + '</div>' + (cmp ? renderCmpBadge(s.total_aportacion_won, cmp.total_aportacion_won, true) : '') + '</div><div class="label">💰 Total Invertido</div></div>';
+        html += '<div class="crm-card error"><div class="value-row"><div class="value" data-count="' + lost + '" data-format="count">' + lost + '</div>' + (lostCmp !== null ? renderCmpBadge(lost, lostCmp, true) : '') + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
                     var lq = s.lead_quality || {};
                     var niNaTotal = lq.ni_na_total || 0;
                     var niNaTotalRate = lq.ni_na_total_rate || 0;
@@ -676,26 +810,26 @@ function renderKPI(periodKey, stats, comparisonStats) {
                     var cmpLq = cmp ? (cmp.lead_quality || {}) : {};
                     var cmpNiNaTotal = cmpLq.ni_na_total;
                     var cmpNiNa7d = cmpLq.ni_na_7d;
-                    html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + niNaTotal + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + niNaTotalRate + '%)</div>' + (cmpNiNaTotal !== undefined ? renderCmpBadge(niNaTotal, cmpNiNaTotal, true) : '') + '</div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + niTotal + ' (' + niPct + '%)  |  🙅 No apareció: ' + naTotal + ' (' + naPct + '%)</div><div class="sub" style="color:var(--text-muted);margin-top:2px;">⏱️ En ≤7d: ' + niNa7d + ' (' + niNa7dRate + '%) — NI: ' + ni7d + ' (' + ni7dPct + '%)  NA: ' + na7d + ' (' + na7dPct + '%)' + (cmpNiNa7d !== undefined ? ' vs ' + cmpNiNa7d + ' ant.' : '') + '</div></div>';
-                html += '<div class="crm-card warning"><div class="value-row"><div class="value">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
+                    html += '<div class="crm-card warning"><div class="value-row"><div class="value" data-count="' + niNaTotal + '" data-format="count">' + niNaTotal + '</div><div class="sub" style="margin-left:6px;font-size:0.72rem;color:var(--text-muted)">(' + niNaTotalRate + '%)</div>' + (cmpNiNaTotal !== undefined ? renderCmpBadge(niNaTotal, cmpNiNaTotal, true) : '') + '</div><div class="label">🔴 Leads Malos</div><div class="sub">😞 No interesado: ' + niTotal + ' (' + niPct + '%)  |  🙅 No apareció: ' + naTotal + ' (' + naPct + '%)</div><div class="sub" style="color:var(--text-muted);margin-top:2px;">⏱️ En ≤7d: ' + niNa7d + ' (' + niNa7dRate + '%) — NI: ' + ni7d + ' (' + ni7dPct + '%)  NA: ' + na7d + ' (' + na7dPct + '%)' + (cmpNiNa7d !== undefined ? ' vs ' + cmpNiNa7d + ' ant.' : '') + '</div></div>';
+                html += '<div class="crm-card warning"><div class="value-row"><div class="value" data-count="' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '" data-format="count">' + (s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length) + '</div>' + (cmp ? renderCmpBadge(s.products_closed_count !== undefined ? s.products_closed_count : Object.keys(s.product_breakdown).length, cmp.products_closed_count !== undefined ? cmp.products_closed_count : Object.keys(cmp.product_breakdown).length, false) : '') + '</div><div class="label">📦 Productos Cerrados</div></div>';
         // Calculate Win Rate live: won / new
                     var liveWR = s.new_deals > 0 ? Math.round(s.won_deals / s.new_deals * 1000) / 10 : null;
                     var cmpLiveWR = cmp ? (cmp.new_deals > 0 ? Math.round(cmp.won_deals / cmp.new_deals * 1000) / 10 : null) : null;
-                    html += '<div class="crm-card purple"><div class="value-row"><div class="value">' + (liveWR !== null ? liveWR + '%' : 'N/A') + '</div>' + (cmpLiveWR !== null ? renderCmpBadge(liveWR, cmpLiveWR, false) : '') + '</div><div class="label">⚡ Win Rate</div><div class="sub">' + (s.won_deals + ' ganados de ' + s.new_deals + ' nuevas') + '</div></div>';
-        html += '<div class="crm-card info"><div class="value-row"><div class="value">' + (s.avg_days_to_win !== undefined && s.avg_days_to_win > 0 ? s.avg_days_to_win + ' días' : 'N/A') + '</div>' + (cmp && cmp.avg_days_to_win !== undefined && cmp.avg_days_to_win > 0 ? renderCmpBadge(s.avg_days_to_win, cmp.avg_days_to_win, false) : '') + '</div><div class="label">📅 Días hasta cierre</div></div>';
-        html += '<div class="crm-card accent"><div class="value-row"><div class="value">' + (s.conversion_clientes ? s.conversion_clientes.ratio + '%' : 'N/A') + '</div>' + (cmp && cmp.conversion_clientes ? renderCmpBadge(s.conversion_clientes.ratio, cmp.conversion_clientes.ratio, false) : '') + '</div><div class="label">🔄 Conversión clientes</div><div class="sub">' + (s.conversion_clientes ? s.conversion_clientes.converted_contacts + ' de ' + s.conversion_clientes.total_contacts : '') + '</div></div>';
+                    html += '<div class="crm-card purple"><div class="value-row"><div class="value"' + (liveWR !== null ? ' data-count="' + liveWR + '" data-format="count"' : '') + '>' + (liveWR !== null ? liveWR + '%' : 'N/A') + '</div>' + (cmpLiveWR !== null ? renderCmpBadge(liveWR, cmpLiveWR, false) : '') + '</div><div class="label">⚡ Win Rate</div><div class="sub">' + (s.won_deals + ' ganados de ' + s.new_deals + ' nuevas') + '</div></div>';
+        html += '<div class="crm-card info"><div class="value-row"><div class="value"' + (s.avg_days_to_win !== undefined && s.avg_days_to_win > 0 ? ' data-count="' + s.avg_days_to_win + '" data-format="count"' : '') + '>' + (s.avg_days_to_win !== undefined && s.avg_days_to_win > 0 ? s.avg_days_to_win + ' días' : 'N/A') + '</div>' + (cmp && cmp.avg_days_to_win !== undefined && cmp.avg_days_to_win > 0 ? renderCmpBadge(s.avg_days_to_win, cmp.avg_days_to_win, false) : '') + '</div><div class="label">📅 Días hasta cierre</div></div>';
+        html += '<div class="crm-card accent"><div class="value-row"><div class="value"' + (s.conversion_clientes ? ' data-count="' + s.conversion_clientes.ratio + '" data-format="count"' : '') + '>' + (s.conversion_clientes ? s.conversion_clientes.ratio + '%' : 'N/A') + '</div>' + (cmp && cmp.conversion_clientes ? renderCmpBadge(s.conversion_clientes.ratio, cmp.conversion_clientes.ratio, false) : '') + '</div><div class="label">🔄 Conversión clientes</div><div class="sub">' + (s.conversion_clientes ? s.conversion_clientes.converted_contacts + ' de ' + s.conversion_clientes.total_contacts : '') + '</div></div>';
         return html;
     } else {
         var c = s.contacts;
         var d = s.deals;
         var html = '';
-        html += '<div class="crm-card accent"><div class="value">' + c.total + '</div><div class="label">👥 Contactos</div><div class="sub">📧 ' + c.with_email + ' con email</div></div>';
-        html += '<div class="crm-card info"><div class="value">' + d.total + '</div><div class="label">💰 Oportunidades</div><div class="sub">Promedio: ' + formatEUR(d.avg_deal_size) + '</div></div>';
-        html += '<div class="crm-card success"><div class="value">' + formatEUR(d.pipeline_value) + '</div><div class="label">📊 Pipeline Total</div><div class="sub">' + d.closed_won + ' ganados: ' + formatEUR(d.closed_won_value) + '</div></div>';
-        html += '<div class="crm-card purple"><div class="value">' + d.conversion_rate + '%</div><div class="label">🎯 Tasa Conversión</div><div class="sub">' + formatEUR(d.total_aportaciones) + ' en inversiones</div></div>';
-        html += '<div class="crm-card error"><div class="value">' + (d.closed_lost || 0) + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
-        html += '<div class="crm-card warning"><div class="value">' + ((d.lead_quality && d.lead_quality.ni_na_total) || 0) + '</div><div class="label">🔴 Leads Malos</div><div class="sub">⏱️ ≤7d: ' + ((d.lead_quality && d.lead_quality.ni_na_7d) || 0) + '</div></div>';
-        html += '<div class="crm-card warning"><div class="value">' + (currentData.products ? currentData.products.length : 0) + '</div><div class="label">📦 Productos</div></div>';
+        html += '<div class="crm-card accent"><div class="value" data-count="' + c.total + '" data-format="count">' + c.total + '</div><div class="label">👥 Contactos</div><div class="sub">📧 ' + c.with_email + ' con email</div></div>';
+        html += '<div class="crm-card info"><div class="value" data-count="' + d.total + '" data-format="count">' + d.total + '</div><div class="label">💰 Oportunidades</div><div class="sub">Promedio: ' + formatEUR(d.avg_deal_size) + '</div></div>';
+        html += '<div class="crm-card success"><div class="value" data-count="' + d.pipeline_value + '" data-format="eur">' + formatEUR(d.pipeline_value) + '</div><div class="label">📊 Pipeline Total</div><div class="sub">' + d.closed_won + ' ganados: ' + formatEUR(d.closed_won_value) + '</div></div>';
+        html += '<div class="crm-card purple"><div class="value" data-count="' + d.conversion_rate + '" data-format="count">' + d.conversion_rate + '%</div><div class="label">🎯 Tasa Conversión</div><div class="sub">' + formatEUR(d.total_aportaciones) + ' en inversiones</div></div>';
+        html += '<div class="crm-card error"><div class="value" data-count="' + (d.closed_lost || 0) + '" data-format="count">' + (d.closed_lost || 0) + '</div><div class="label">❌ Oportunidades Perdidas</div></div>';
+        html += '<div class="crm-card warning"><div class="value" data-count="' + ((d.lead_quality && d.lead_quality.ni_na_total) || 0) + '" data-format="count">' + ((d.lead_quality && d.lead_quality.ni_na_total) || 0) + '</div><div class="label">🔴 Leads Malos</div><div class="sub">⏱️ ≤7d: ' + ((d.lead_quality && d.lead_quality.ni_na_7d) || 0) + '</div></div>';
+        html += '<div class="crm-card warning"><div class="value" data-count="' + (currentData.products ? currentData.products.length : 0) + '" data-format="count">' + (currentData.products ? currentData.products.length : 0) + '</div><div class="label">📦 Productos</div></div>';
         return html;
     }
 }
@@ -758,7 +892,10 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
     }
 
     el = document.getElementById('kpi-' + periodKey);
-    if (el) el.innerHTML = renderKPI(periodKey, stats, comparisonStats);
+    if (el) {
+        el.innerHTML = renderKPI(periodKey, stats, comparisonStats);
+        setupCountUps(el.id);
+    }
 
     var statKey = PERIOD_MAP[periodKey] || periodKey;
     var s = (periodKey === 'all_time' ? stats.all_time : stats[statKey]) || {};
@@ -778,6 +915,7 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
     var pipelineEl = document.getElementById('pipeline-' + periodKey);
     if (pipelineEl && pipelineData) {
         renderFunnelFromPipeline(pipelineData, periodKey);
+        setupCountUps(pipelineEl.id);
     }
 
     // ── Daily new contacts bar chart (this_month only) ──
@@ -882,6 +1020,7 @@ function renderPeriodTab(periodKey, stats, comparisonStats, cmpKey) {
 function renderGlobalTab(stats) {
     var s = stats.all_time;
     document.getElementById('kpi-all_time').innerHTML = renderKPI('all_time', stats, null);
+    setupCountUps('kpi-all_time');
 
     if (charts.chartOwner) { charts.chartOwner.destroy(); }
     if (charts.chartContact) { charts.chartContact.destroy(); }
@@ -1301,12 +1440,12 @@ function refreshData() {
     document.getElementById('dashboard-content').style.display = 'none';
     document.getElementById('loading-state').style.display = 'block';
     document.getElementById('error-state').style.display = 'none';
-    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now(), 15000)
+    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
-    var finFetch = fetch('data/financial_data.json?_=' + Date.now(), 15000)
+    var finFetch = fetch('data/financial_data.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function(d) { currentFinancialData = d; });
-    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now(), 15000)
+    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) return null; return r.json(); })
         .then(function(d) { currentComparisonData = d; });
     Promise.all([zohoFetch, finFetch, cmpFetch])
@@ -1318,12 +1457,12 @@ function refreshData() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now(), 15000)
+    var zohoFetch = fetch('data/jaime-becerra.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
-    var finFetch = fetch('data/financial_data.json?_=' + Date.now(), 15000)
+    var finFetch = fetch('data/financial_data.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function(d) { currentFinancialData = d; });
-    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now(), 15000)
+    var cmpFetch = fetch('data/financial_comparison.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) return null; return r.json(); })
         .then(function(d) { currentComparisonData = d; });
     Promise.all([zohoFetch, finFetch, cmpFetch])
