@@ -1456,6 +1456,12 @@ function refreshData() {
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 }
 
+// Leer parámetro ?tab= de la URL para que el Hub pueda cargar la pestaña correcta
+function getQueryParam(name) {
+    var match = window.location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     var zohoFetch = fetch('data/alberto-prieto.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
@@ -1469,6 +1475,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(results) {
             loadData(results[0]);
 
+            // Activar pestaña correcta según URL (?tab=financiero o ?tab=ventas)
+            var tabParam = getQueryParam('tab');
+            if (tabParam && (tabParam === 'financiero' || tabParam === 'ventas')) {
+                switchAppTab(tabParam);
+            }
         })
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 });

@@ -1526,7 +1526,8 @@ function renderFinancialTab() {
     }
     document.getElementById('financial-loading').style.display = 'none';
     document.getElementById('financial-content').style.display = 'block';
-    document.getElementById('financial-period').textContent = 'Periodo: ' + fd.period_start + ' a ' + fd.period_end + ' \u00b7 ' + fd.account_name;
+    var periodText = 'Periodo: ' + (fd.period_start || 'N/A') + ' a ' + (fd.period_end || 'N/A') + (fd.account_name ? ' \u00b7 ' + fd.account_name : '');
+    document.getElementById('financial-period').textContent = periodText;
 
     // Render all three periods
     renderFinancialPeriodTab('this_month', fd);
@@ -2020,6 +2021,12 @@ function refreshData() {
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 }
 
+// Leer parámetro ?tab= de la URL para que el Hub pueda cargar la pestaña correcta
+function getQueryParam(name) {
+    var match = window.location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     var zohoFetch = fetch('data/zoho-crm.json?_=' + Date.now())
         .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
@@ -2033,6 +2040,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(results) {
             loadData(results[0]);
             renderFinancialTab();
+            // Activar pestaña correcta según URL (?tab=financiero o ?tab=ventas)
+            var tabParam = getQueryParam('tab');
+            if (tabParam && (tabParam === 'financiero' || tabParam === 'ventas')) {
+                switchAppTab(tabParam);
+            }
         })
         .catch(function(e) { showError('Error al cargar datos: ' + e.message); });
 });
