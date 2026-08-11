@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jose Orrequia",
-  "timestamp": "2026-08-09T18:27:27Z",
-  "generated_at": "2026-08-09",
-  "today": "2026-08-09",
-  "yesterday": "2026-08-08",
+  "timestamp": "2026-08-10T06:12:42Z",
+  "generated_at": "2026-08-10",
+  "today": "2026-08-10",
+  "yesterday": "2026-08-09",
   "this_month": "2026-08",
   "this_quarter_start": "2026-07-01",
   "this_quarter_end": "2026-09-30",
@@ -19,9 +19,9 @@
         }
       },
       "deals": {
-        "total": 3378,
+        "total": 3379,
         "by_stage": {
-          "Llamada Pendiente": 23,
+          "Llamada Pendiente": 24,
           "Cerrado Ganado": 711,
           "Cerrado Perdido": 2600,
           "Asesoramiento": 14,
@@ -31,11 +31,11 @@
           "Aceptado/Falta Firma": 3
         },
         "by_owner": {
-          "Jose Orrequia": 3378
+          "Jose Orrequia": 3379
         },
         "pipeline_value": 18395068.34,
         "total_aportaciones": 9719104.0,
-        "avg_deal_size": 5445.55,
+        "avg_deal_size": 5443.94,
         "closed_won": 711,
         "closed_won_value": 8686452.94,
         "closed_lost": 2600,
@@ -44,8 +44,8 @@
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 3,
-      "new_deals": 3,
+      "new_contacts": 0,
+      "new_deals": 0,
       "won_deals": 0,
       "lost_deals": 0,
       "won_value": 0,
@@ -56,11 +56,9 @@
       "product_deals": [],
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
-      "pipeline_stages": {
-        "Llamada Pendiente": 3
-      },
+      "pipeline_stages": {},
       "pipeline_value": 0.0,
-      "win_rate": 0.0,
+      "win_rate": null,
       "avg_days_to_win": null,
       "products_closed_count": 0,
       "conversion_clientes": {
@@ -69,12 +67,8 @@
         "ratio": 0.0,
         "avg_days_to_convert": 0
       },
-      "contacts_by_day": {
-        "8": 3
-      },
-      "deals_by_day": {
-        "8": 3
-      },
+      "contacts_by_day": {},
+      "deals_by_day": {},
       "lead_quality": {
         "ni_total": 0,
         "na_total": 0,
@@ -97,7 +91,7 @@
     "this_month": {
       "label": "Este Mes",
       "new_contacts": 1,
-      "new_deals": 9,
+      "new_deals": 10,
       "won_deals": 0,
       "lost_deals": 0,
       "won_value": 0,
@@ -109,7 +103,7 @@
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Llamada Pendiente": 9
+        "Llamada Pendiente": 10
       },
       "pipeline_value": 0.0,
       "win_rate": 0.0,
@@ -130,7 +124,8 @@
         "5": 1,
         "6": 1,
         "7": 2,
-        "8": 3
+        "8": 3,
+        "10": 1
       },
       "lead_quality": {
         "ni_total": 0,
@@ -154,7 +149,7 @@
     "this_quarter": {
       "label": "Este Trimestre",
       "new_contacts": 79,
-      "new_deals": 3113,
+      "new_deals": 3114,
       "won_deals": 31,
       "lost_deals": 106,
       "won_value": 559179.0,
@@ -578,7 +573,7 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 23,
+        "Llamada Pendiente": 24,
         "Análisis Financiero": 6,
         "Asesoramiento": 5,
         "Reasesoramiento": 2,
@@ -636,7 +631,7 @@
         "7": 7,
         "8": 7,
         "9": 3,
-        "10": 3,
+        "10": 4,
         "11": 3,
         "12": 4,
         "13": 7,
@@ -678,7 +673,7 @@
     "this_year": {
       "label": "Este Año",
       "new_contacts": 2643,
-      "new_deals": 3378,
+      "new_deals": 3379,
       "won_deals": 148,
       "lost_deals": 412,
       "won_value": 2201585.7,
@@ -2542,7 +2537,7 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 23,
+        "Llamada Pendiente": 24,
         "Análisis Financiero": 6,
         "Asesoramiento": 14,
         "Reasesoramiento": 7,
@@ -2604,7 +2599,7 @@
         "7": 31,
         "8": 15,
         "9": 11,
-        "10": 7,
+        "10": 8,
         "11": 8,
         "12": 20,
         "13": 16,
@@ -2649,12 +2644,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-08-07",
+      "previous": "2026-08-08",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 2,
-        "new_deals": 2,
+        "new_contacts": 3,
+        "new_deals": 3,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -2666,7 +2661,7 @@
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
-          "Llamada Pendiente": 2
+          "Llamada Pendiente": 3
         },
         "pipeline_value": 0.0,
         "win_rate": 0.0,
@@ -2679,10 +2674,10 @@
           "avg_days_to_convert": 0
         },
         "contacts_by_day": {
-          "7": 2
+          "8": 3
         },
         "deals_by_day": {
-          "7": 2
+          "8": 3
         },
         "lead_quality": {
           "ni_total": 0,
@@ -6032,6 +6027,29 @@
       "Overall_Sales_Duration": null,
       "Sales_Cycle_Duration": null,
       "_contact_id": "862490000005171980"
+    },
+    {
+      "id": "862490000009436263",
+      "Deal_Name": "Planificación de Maria Jimenez Padilla",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Maria Jimenez Padilla",
+      "Owner": "Jose Orrequia",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-10T01:34:36+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000004595031"
     },
     {
       "id": "862490000009436065",
@@ -83730,50 +83748,50 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 3,
-          "pct_of_total": 100.0,
+          "count": 0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 100.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Análisis Financiero",
           "count": 0,
-          "pct_of_total": 0.0,
-          "conversion_from_prev": 0.0,
-          "conversion_from_top": 0.0,
+          "pct_of_total": 0,
+          "conversion_from_prev": null,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Asesoramiento",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
@@ -83781,24 +83799,24 @@
         {
           "stage": "Cerrado Ganado",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
           "count": 0,
-          "pct_of_total": 0.0,
+          "pct_of_total": 0,
           "conversion_from_prev": null,
-          "conversion_from_top": 0.0,
+          "conversion_from_top": null,
           "cmp_count": null
         }
       ],
-      "active_total": 3,
+      "active_total": 0,
       "won_total": 0,
       "lost_total": 0,
-      "total_pipeline": 3
+      "total_pipeline": 0
     },
     "this_month": {
       "stage_order": [
@@ -83814,7 +83832,7 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 9,
+          "count": 10,
           "pct_of_total": 100.0,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
@@ -83879,10 +83897,10 @@
           "cmp_count": null
         }
       ],
-      "active_total": 9,
+      "active_total": 10,
       "won_total": 0,
       "lost_total": 0,
-      "total_pipeline": 9
+      "total_pipeline": 10
     },
     "this_quarter": {
       "stage_order": [
@@ -83898,8 +83916,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 23,
-          "pct_of_total": 12.9,
+          "count": 24,
+          "pct_of_total": 13.4,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -83908,8 +83926,8 @@
           "stage": "Análisis Financiero",
           "count": 6,
           "pct_of_total": 3.4,
-          "conversion_from_prev": 26.1,
-          "conversion_from_top": 26.1,
+          "conversion_from_prev": 25.0,
+          "conversion_from_top": 25.0,
           "cmp_count": null
         },
         {
@@ -83917,7 +83935,7 @@
           "count": 5,
           "pct_of_total": 2.8,
           "conversion_from_prev": 83.3,
-          "conversion_from_top": 21.7,
+          "conversion_from_top": 20.8,
           "cmp_count": 9
         },
         {
@@ -83925,7 +83943,7 @@
           "count": 2,
           "pct_of_total": 1.1,
           "conversion_from_prev": 40.0,
-          "conversion_from_top": 8.7,
+          "conversion_from_top": 8.3,
           "cmp_count": 5
         },
         {
@@ -83933,7 +83951,7 @@
           "count": 4,
           "pct_of_total": 2.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 17.4,
+          "conversion_from_top": 16.7,
           "cmp_count": 10
         },
         {
@@ -83941,7 +83959,7 @@
           "count": 1,
           "pct_of_total": 0.6,
           "conversion_from_prev": 25.0,
-          "conversion_from_top": 4.3,
+          "conversion_from_top": 4.2,
           "cmp_count": 2
         }
       ],
@@ -83949,24 +83967,24 @@
         {
           "stage": "Cerrado Ganado",
           "count": 31,
-          "pct_of_total": 17.4,
+          "pct_of_total": 17.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 134.8,
+          "conversion_from_top": 129.2,
           "cmp_count": 37
         },
         {
           "stage": "Cerrado Perdido",
           "count": 106,
-          "pct_of_total": 59.6,
+          "pct_of_total": 59.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 460.9,
+          "conversion_from_top": 441.7,
           "cmp_count": 164
         }
       ],
-      "active_total": 41,
+      "active_total": 42,
       "won_total": 31,
       "lost_total": 106,
-      "total_pipeline": 178
+      "total_pipeline": 179
     },
     "this_year": {
       "stage_order": [
@@ -83982,8 +84000,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 23,
-          "pct_of_total": 3.7,
+          "count": 24,
+          "pct_of_total": 3.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -83992,8 +84010,8 @@
           "stage": "Análisis Financiero",
           "count": 6,
           "pct_of_total": 1.0,
-          "conversion_from_prev": 26.1,
-          "conversion_from_top": 26.1,
+          "conversion_from_prev": 25.0,
+          "conversion_from_top": 25.0,
           "cmp_count": null
         },
         {
@@ -84001,7 +84019,7 @@
           "count": 14,
           "pct_of_total": 2.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 60.9,
+          "conversion_from_top": 58.3,
           "cmp_count": null
         },
         {
@@ -84009,7 +84027,7 @@
           "count": 7,
           "pct_of_total": 1.1,
           "conversion_from_prev": 50.0,
-          "conversion_from_top": 30.4,
+          "conversion_from_top": 29.2,
           "cmp_count": null
         },
         {
@@ -84017,7 +84035,7 @@
           "count": 14,
           "pct_of_total": 2.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 60.9,
+          "conversion_from_top": 58.3,
           "cmp_count": null
         },
         {
@@ -84025,7 +84043,7 @@
           "count": 3,
           "pct_of_total": 0.5,
           "conversion_from_prev": 21.4,
-          "conversion_from_top": 13.0,
+          "conversion_from_top": 12.5,
           "cmp_count": null
         }
       ],
@@ -84035,22 +84053,22 @@
           "count": 148,
           "pct_of_total": 23.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 643.5,
+          "conversion_from_top": 616.7,
           "cmp_count": 163
         },
         {
           "stage": "Cerrado Perdido",
           "count": 412,
-          "pct_of_total": 65.7,
+          "pct_of_total": 65.6,
           "conversion_from_prev": null,
-          "conversion_from_top": 1791.3,
+          "conversion_from_top": 1716.7,
           "cmp_count": 1827
         }
       ],
-      "active_total": 67,
+      "active_total": 68,
       "won_total": 148,
       "lost_total": 412,
-      "total_pipeline": 627
+      "total_pipeline": 628
     }
   }
 }
