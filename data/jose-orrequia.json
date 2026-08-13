@@ -44,8 +44,8 @@
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 6,
-      "new_deals": 7,
+      "new_contacts": 5,
+      "new_deals": 5,
       "won_deals": 0,
       "lost_deals": 0,
       "won_value": 0,
@@ -57,14 +57,14 @@
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Llamada Pendiente": 7
+        "Llamada Pendiente": 5
       },
       "pipeline_value": 0.0,
       "win_rate": 0.0,
       "avg_days_to_win": null,
       "products_closed_count": 0,
       "conversion_clientes": {
-        "total_contacts": 6,
+        "total_contacts": 5,
         "converted_contacts": 0,
         "ratio": 0.0,
         "avg_days_to_convert": 0
@@ -2654,12 +2654,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-08-10",
+      "previous": "2026-08-11",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 2,
-        "new_deals": 2,
+        "new_contacts": 6,
+        "new_deals": 7,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -2671,14 +2671,14 @@
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
         "pipeline_stages": {
-          "Llamada Pendiente": 2
+          "Llamada Pendiente": 7
         },
         "pipeline_value": 0.0,
         "win_rate": 0.0,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 2,
+          "total_contacts": 6,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
@@ -6015,6 +6015,98 @@
     }
   },
   "deals": [
+    {
+      "id": "862490000009634054",
+      "Deal_Name": "Planificación de Roberto Hernández",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Roberto Hernández",
+      "Owner": "Jose Orrequia",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-12T23:43:28+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009657009"
+    },
+    {
+      "id": "862490000009634005",
+      "Deal_Name": "Planificación de Martín sabino Gomez",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Martín sabino Gomez",
+      "Owner": "Jose Orrequia",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-12T11:06:04+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009625001"
+    },
+    {
+      "id": "862490000009633006",
+      "Deal_Name": "Planificación de Manuel Estevez",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Manuel Estevez",
+      "Owner": "Jose Orrequia",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-12T11:44:25+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009645001"
+    },
+    {
+      "id": "862490000009615016",
+      "Deal_Name": "Planificación de Ruben Tejero Aicua",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Ruben Tejero Aicua",
+      "Owner": "Jose Orrequia",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-13T00:53:49+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009677001"
+    },
     {
       "id": "862490000009532024",
       "Deal_Name": "Planificación de Ana Belen Moreno",

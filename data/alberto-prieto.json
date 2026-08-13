@@ -19,19 +19,19 @@
         }
       },
       "deals": {
-        "total": 4871,
+        "total": 4878,
         "by_stage": {
-          "Llamada Pendiente": 33,
+          "Llamada Pendiente": 31,
+          "Reasesoramiento": 18,
           "Análisis Financiero": 35,
+          "Cerrado Perdido": 3411,
           "Aceptado/Falta Firma": 13,
-          "Cerrado Ganado": 1361,
-          "Reasesoramiento": 16,
-          "Cerrado Perdido": 3405,
+          "Cerrado Ganado": 1362,
           "Revisando Propuesta": 6,
           "Asesoramiento": 2
         },
         "by_owner": {
-          "Alberto Prieto": 4871
+          "Alberto Prieto": 4878
         },
         "pipeline_value": 18457814.34,
         "total_aportaciones": 16420762.0,
@@ -44,32 +44,67 @@
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 9,
-      "new_deals": 10,
-      "won_deals": 0,
-      "lost_deals": 1,
-      "won_value": 0,
-      "total_aportacion_won": 0,
-      "product_breakdown": {},
-      "product_count": {},
-      "product_details": [],
-      "product_deals": [],
-      "advisor_ranking_won": [],
-      "advisor_ranking_aportacion": [],
+      "new_contacts": 7,
+      "new_deals": 8,
+      "won_deals": 1,
+      "lost_deals": 6,
+      "won_value": 3000.0,
+      "total_aportacion_won": 3000.0,
+      "product_breakdown": {
+        "Compra Única": 3000.0
+      },
+      "product_count": {
+        "Compra Única": 1
+      },
+      "product_details": [
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "veces": 1,
+          "total": 3000.0
+        }
+      ],
+      "product_deals": [
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-08-12",
+          "fecha_inicio": "2026-08-03",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        }
+      ],
+      "advisor_ranking_won": [
+        {
+          "name": "Alberto Prieto",
+          "won": 1,
+          "total_aportacion": 3000.0
+        }
+      ],
+      "advisor_ranking_aportacion": [
+        {
+          "name": "Alberto Prieto",
+          "won": 1,
+          "total_aportacion": 3000.0
+        }
+      ],
       "pipeline_stages": {
         "Llamada Pendiente": 5,
-        "Análisis Financiero": 5,
-        "Cerrado Perdido": 1
+        "Análisis Financiero": 2,
+        "Reasesoramiento": 1,
+        "Cerrado Ganado": 1,
+        "Cerrado Perdido": 6
       },
-      "pipeline_value": 0.0,
-      "win_rate": 0.0,
-      "avg_days_to_win": null,
-      "products_closed_count": 0,
+      "pipeline_value": 3000.0,
+      "win_rate": 12.5,
+      "avg_days_to_win": 9.0,
+      "products_closed_count": 1,
       "conversion_clientes": {
-        "total_contacts": 9,
-        "converted_contacts": 0,
-        "ratio": 0.0,
-        "avg_days_to_convert": 0
+        "total_contacts": 7,
+        "converted_contacts": 1,
+        "ratio": 14.3,
+        "avg_days_to_convert": 30.0
       },
       "contacts_by_day": {
         "11": 9
@@ -98,20 +133,20 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 58,
-      "new_deals": 78,
-      "won_deals": 11,
-      "lost_deals": 35,
-      "won_value": 129000.0,
-      "total_aportacion_won": 129000.0,
+      "new_contacts": 64,
+      "new_deals": 85,
+      "won_deals": 12,
+      "lost_deals": 41,
+      "won_value": 132000.0,
+      "total_aportacion_won": 132000.0,
       "product_breakdown": {
         "Monefit": 79000.0,
-        "Compra Única": 25000.0,
+        "Compra Única": 28000.0,
         "Cuenta Depósito Bonificada": 25000.0
       },
       "product_count": {
         "Monefit": 7,
-        "Compra Única": 3,
+        "Compra Única": 4,
         "Cuenta Depósito Bonificada": 1
       },
       "product_details": [
@@ -124,8 +159,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 3,
-          "total": 25000.0
+          "veces": 4,
+          "total": 28000.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -266,34 +301,43 @@
           "fecha_inicio": "2026-08-03",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-08-12",
+          "fecha_inicio": "2026-08-03",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
         }
       ],
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 11,
-          "total_aportacion": 129000.0
+          "won": 12,
+          "total_aportacion": 132000.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 11,
-          "total_aportacion": 129000.0
+          "won": 12,
+          "total_aportacion": 132000.0
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 21,
+        "Llamada Pendiente": 19,
         "Análisis Financiero": 24,
-        "Reasesoramiento": 4,
+        "Reasesoramiento": 6,
         "Aceptado/Falta Firma": 4,
-        "Cerrado Ganado": 11,
-        "Cerrado Perdido": 35
+        "Cerrado Ganado": 12,
+        "Cerrado Perdido": 41
       },
       "pipeline_value": 140000.0,
       "win_rate": 14.1,
-      "avg_days_to_win": 4.9,
-      "products_closed_count": 11,
+      "avg_days_to_win": 5.2,
+      "products_closed_count": 12,
       "conversion_clientes": {
         "total_contacts": 58,
         "converted_contacts": 4,
@@ -347,21 +391,21 @@
     },
     "this_quarter": {
       "label": "Este Trimestre",
-      "new_contacts": 128,
-      "new_deals": 4600,
-      "won_deals": 47,
-      "lost_deals": 102,
-      "won_value": 2488484.0,
-      "total_aportacion_won": 2488484.0,
+      "new_contacts": 134,
+      "new_deals": 4607,
+      "won_deals": 48,
+      "lost_deals": 108,
+      "won_value": 2491484.0,
+      "total_aportacion_won": 2491484.0,
       "product_breakdown": {
         "Monefit": 2230205.0,
-        "Compra Única": 158229.0,
+        "Compra Única": 161229.0,
         "Cuenta Depósito Bonificada": 95250.0,
         "PIAS Estrategia 5": 4800.0
       },
       "product_count": {
         "Monefit": 24,
-        "Compra Única": 17,
+        "Compra Única": 18,
         "Cuenta Depósito Bonificada": 3,
         "PIAS Estrategia 5": 3
       },
@@ -375,8 +419,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 17,
-          "total": 158229.0
+          "veces": 18,
+          "total": 161229.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -520,6 +564,15 @@
           "close_date_source": "deal_Closing_Date",
           "cliente": "Mario Magallon calvo",
           "parent_id": "862490000009138013",
+          "fecha_inicio": "2026-08-03",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-08-12",
           "fecha_inicio": "2026-08-03",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -960,31 +1013,31 @@
       "advisor_ranking_won": [
         {
           "name": "Alberto Prieto",
-          "won": 47,
-          "total_aportacion": 2488484.0
+          "won": 48,
+          "total_aportacion": 2491484.0
         }
       ],
       "advisor_ranking_aportacion": [
         {
           "name": "Alberto Prieto",
-          "won": 47,
-          "total_aportacion": 2488484.0
+          "won": 48,
+          "total_aportacion": 2491484.0
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 24,
+        "Llamada Pendiente": 22,
         "Análisis Financiero": 29,
         "Asesoramiento": 1,
-        "Reasesoramiento": 10,
+        "Reasesoramiento": 12,
         "Revisando Propuesta": 2,
         "Aceptado/Falta Firma": 7,
-        "Cerrado Ganado": 47,
-        "Cerrado Perdido": 102
+        "Cerrado Ganado": 48,
+        "Cerrado Perdido": 108
       },
-      "pipeline_value": 2499984.0,
+      "pipeline_value": 2511984.0,
       "win_rate": 1.0,
       "avg_days_to_win": 7.8,
-      "products_closed_count": 47,
+      "products_closed_count": 48,
       "conversion_clientes": {
         "total_contacts": 128,
         "converted_contacts": 21,
@@ -1003,8 +1056,8 @@
         "9": 5,
         "10": 13,
         "11": 11,
-        "12": 5,
-        "13": 6,
+        "12": 10,
+        "13": 7,
         "14": 2,
         "18": 1,
         "19": 1,
@@ -1110,8 +1163,8 @@
         {
           "producto": "Compra Única",
           "entidad": "SilverGold",
-          "veces": 69,
-          "total": 613353.0
+          "veces": 70,
+          "total": 616353.0
         },
         {
           "producto": "Cuenta Depósito Bonificada",
@@ -1297,6 +1350,15 @@
           "close_date_source": "deal_Closing_Date",
           "cliente": "Mario Magallon calvo",
           "parent_id": "862490000009138013",
+          "fecha_inicio": "2026-08-03",
+          "objetivo_financiero": "Obtener rentabilidad",
+          "plazo": "Corto Plazo (1-3 años)"
+        },
+        {
+          "producto": "Compra Única",
+          "entidad": "SilverGold",
+          "total": 3000.0,
+          "close_date": "2026-08-12",
           "fecha_inicio": "2026-08-03",
           "objetivo_financiero": "Obtener rentabilidad",
           "plazo": "Corto Plazo (1-3 años)"
@@ -3513,10 +3575,10 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 33,
+        "Llamada Pendiente": 31,
         "Análisis Financiero": 35,
         "Asesoramiento": 2,
-        "Reasesoramiento": 16,
+        "Reasesoramiento": 18,
         "Revisando Propuesta": 6,
         "Aceptado/Falta Firma": 13,
         "Cerrado Ganado": 194,
@@ -3620,7 +3682,7 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-08-10",
+      "previous": "2026-08-11",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
@@ -3749,21 +3811,20 @@
           }
         ],
         "pipeline_stages": {
-          "Llamada Pendiente": 2,
-          "Análisis Financiero": 6,
+          "Llamada Pendiente": 3,
+          "Análisis Financiero": 4,
           "Aceptado/Falta Firma": 1,
-          "Cerrado Ganado": 6,
-          "Cerrado Perdido": 8
+          "Cerrado Perdido": 1
         },
-        "pipeline_value": 105000.0,
-        "win_rate": 66.7,
-        "avg_days_to_win": 6.2,
-        "products_closed_count": 6,
+        "pipeline_value": 0.0,
+        "win_rate": 0.0,
+        "avg_days_to_win": null,
+        "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 7,
-          "converted_contacts": 1,
-          "ratio": 14.3,
-          "avg_days_to_convert": 74.0
+          "total_contacts": 9,
+          "converted_contacts": 0,
+          "ratio": 0.0,
+          "avg_days_to_convert": 0
         },
         "contacts_by_day": {
           "10": 7
@@ -4298,7 +4359,7 @@
           "Cerrado Ganado": 36,
           "Cerrado Perdido": 67
         },
-        "pipeline_value": 2359984.0,
+        "pipeline_value": 2371984.0,
         "win_rate": 0.8,
         "avg_days_to_win": 8.7,
         "products_closed_count": 36,
@@ -10379,19 +10440,41 @@
   },
   "deals": [
     {
-      "id": "862490000009532064",
-      "Deal_Name": "Planificación de Vanesa Caro",
+      "id": "862490000009642007",
+      "Deal_Name": "Planificación de cristian villa",
       "Amount": null,
       "Stage": "Llamada Pendiente",
       "Probability": 10,
-      "Contact_Name": "Vanesa Caro",
+      "Contact_Name": null,
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": "Bookings",
-      "Created_Time": "2026-08-11T20:26:53+02:00",
+      "Created_Time": "2026-08-12T14:18:01+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null
+    },
+    {
+      "id": "862490000009634028",
+      "Deal_Name": "Planificación de Gilberto Jofre Triana",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Gilberto Jofre Triana",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-12T13:39:45+02:00",
       "Closing_Date": null,
       "Tag": [
         "Finanfox"
@@ -10399,6 +10482,144 @@
       "Lead_Conversion_Time": null,
       "Overall_Sales_Duration": null,
       "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009657001"
+    },
+    {
+      "id": "862490000009633056",
+      "Deal_Name": "Planificación de Manuel Gordillo",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Manuel Gordillo",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-13T00:24:06+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009653002"
+    },
+    {
+      "id": "862490000009633028",
+      "Deal_Name": "Planificación de Andrea Test",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Andrea Test",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-12T14:13:05+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009663001"
+    },
+    {
+      "id": "862490000009613007",
+      "Deal_Name": "Planificación de Jose Huerta Valderas",
+      "Amount": null,
+      "Stage": "Llamada Pendiente",
+      "Probability": 10,
+      "Contact_Name": "Jose Huerta Valderas",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-12T21:07:46+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009670001"
+    },
+    {
+      "id": "862490000009612114",
+      "Deal_Name": "Pablo Fructuoso Veracruz",
+      "Amount": null,
+      "Stage": "Reasesoramiento",
+      "Probability": 60,
+      "Contact_Name": "Pablo Fructuoso Veracruz",
+      "Owner": "Alberto Prieto",
+      "Type": "Nuevo Cliente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": null,
+      "Created_Time": "2026-08-12T12:59:01+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009604001"
+    },
+    {
+      "id": "862490000009535009",
+      "Deal_Name": "Planificación de Daymar Cadenas",
+      "Amount": null,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
+      "Contact_Name": "Daymar Cadenas",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-12T09:18:52+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000009559005"
+    },
+    {
+      "id": "862490000009532064",
+      "Deal_Name": "Planificación de Vanesa Caro",
+      "Amount": null,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
+      "Contact_Name": "Vanesa Caro",
+      "Owner": "Alberto Prieto",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": null,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": "No interesado",
+      "Fuente": "Bookings",
+      "Created_Time": "2026-08-11T20:26:53+02:00",
+      "Closing_Date": "2026-08-12",
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": 1,
+      "Sales_Cycle_Duration": 1,
       "_contact_id": "862490000008668009"
     },
     {
@@ -10474,8 +10695,8 @@
       "id": "862490000009520081",
       "Deal_Name": "Planificación de Julian Planells",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "Julian Planells",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -10589,8 +10810,8 @@
       "id": "862490000009499064",
       "Deal_Name": "Manuel Garcia Rosas - Monefit",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Aceptado/Falta Firma",
+      "Probability": 85,
       "Contact_Name": "Manuel Garcia Rosas",
       "Owner": "Alberto Prieto",
       "Type": "Nuevo Cliente",
@@ -11118,23 +11339,23 @@
       "id": "862490000009416184",
       "Deal_Name": "Planificación de Ramon Castro",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Ramon Castro",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-08-11T08:26:25+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-08-12",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 1,
+      "Sales_Cycle_Duration": 1,
       "_contact_id": "862490000009467030"
     },
     {
@@ -11371,23 +11592,23 @@
       "id": "862490000009414027",
       "Deal_Name": "Planificación de ROBERTO VIDAL",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "ROBERTO VIDAL",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-08-06T20:33:57+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-08-12",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 6,
+      "Sales_Cycle_Duration": 6,
       "_contact_id": "862490000009420001"
     },
     {
@@ -11555,8 +11776,8 @@
       "id": "862490000009336037",
       "Deal_Name": "Planificación de Enrique Rodríguez",
       "Amount": null,
-      "Stage": "Análisis Financiero",
-      "Probability": 40,
+      "Stage": "Reasesoramiento",
+      "Probability": 60,
       "Contact_Name": "Enrique Rodríguez",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -11601,69 +11822,69 @@
       "id": "862490000009321121",
       "Deal_Name": "Planificación de Alberto Aguilera Ávila",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Alberto Aguilera Ávila",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-08-05T23:09:19+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-08-12",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 7,
+      "Sales_Cycle_Duration": 7,
       "_contact_id": "862490000009304037"
     },
     {
       "id": "862490000009321080",
       "Deal_Name": "Planificación de Magda Plazas",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Magda Plazas",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "Sin capacidad de ahorro",
       "Fuente": "Bookings",
       "Created_Time": "2026-08-05T16:00:57+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-08-12",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 7,
+      "Sales_Cycle_Duration": 7,
       "_contact_id": "862490000009361004"
     },
     {
       "id": "862490000009321058",
       "Deal_Name": "Planificación de Oscar Ortiz Fernández",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Óscar Ortiz Fernández",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-08-05T14:43:09+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-08-12",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 7,
+      "Sales_Cycle_Duration": 7,
       "_contact_id": "862490000009358002"
     },
     {
@@ -12061,8 +12282,8 @@
       "id": "862490000009076003",
       "Deal_Name": "Francisco Martin Barriga De Vicente - SG CU oro",
       "Amount": 3000,
-      "Stage": "Aceptado/Falta Firma",
-      "Probability": 85,
+      "Stage": "Cerrado Ganado",
+      "Probability": 100,
       "Contact_Name": "Francisco Martin Barriga De Vicente",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
@@ -12071,13 +12292,13 @@
       "Motivo_de_cierre_perdido": null,
       "Fuente": null,
       "Created_Time": "2026-08-03T09:50:07+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-08-12",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 9,
+      "Sales_Cycle_Duration": 9,
       "_contact_id": "862490000007505030"
     },
     {
@@ -12174,14 +12395,14 @@
     },
     {
       "id": "862490000008973008",
-      "Deal_Name": "Planificación de Manuel Garcia morcillo",
-      "Amount": null,
+      "Deal_Name": "Manuel Garcia morcillo - Monefit",
+      "Amount": 12000,
       "Stage": "Aceptado/Falta Firma",
       "Probability": 85,
       "Contact_Name": "Manuel Garcia morcillo",
       "Owner": "Alberto Prieto",
       "Type": "Cliente existente",
-      "Total_Aportaciones": null,
+      "Total_Aportaciones": 12000,
       "Total_Suscripci_n": null,
       "Motivo_de_cierre_perdido": null,
       "Fuente": "Bookings",
