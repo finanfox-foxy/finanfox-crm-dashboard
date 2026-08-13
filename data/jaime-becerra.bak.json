@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-08-12T02:03:44Z",
+  "timestamp": "2026-08-12T06:16:17Z",
   "generated_at": "2026-08-12",
   "today": "2026-08-12",
   "yesterday": "2026-08-11",
@@ -22,12 +22,12 @@
         "total": 2687,
         "by_stage": {
           "Aceptado/Falta Firma": 14,
-          "Análisis Financiero": 8,
-          "Llamada Pendiente": 19,
+          "Análisis Financiero": 9,
+          "Llamada Pendiente": 18,
           "Cerrado Perdido": 1994,
-          "Asesoramiento": 3,
+          "Asesoramiento": 2,
+          "Reasesoramiento": 3,
           "Cerrado Ganado": 643,
-          "Reasesoramiento": 2,
           "Revisando Propuesta": 4
         },
         "by_owner": {
@@ -139,8 +139,8 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 15,
-        "Análisis Financiero": 2,
+        "Llamada Pendiente": 14,
+        "Análisis Financiero": 3,
         "Aceptado/Falta Firma": 2,
         "Cerrado Ganado": 1,
         "Cerrado Perdido": 19
@@ -378,9 +378,10 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 19,
-        "Análisis Financiero": 6,
-        "Asesoramiento": 3,
+        "Llamada Pendiente": 18,
+        "Análisis Financiero": 7,
+        "Asesoramiento": 2,
+        "Reasesoramiento": 1,
         "Aceptado/Falta Firma": 8,
         "Cerrado Ganado": 10,
         "Cerrado Perdido": 50
@@ -1920,10 +1921,10 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 19,
-        "Análisis Financiero": 8,
-        "Asesoramiento": 3,
-        "Reasesoramiento": 2,
+        "Llamada Pendiente": 18,
+        "Análisis Financiero": 9,
+        "Asesoramiento": 2,
+        "Reasesoramiento": 3,
         "Revisando Propuesta": 4,
         "Aceptado/Falta Firma": 14,
         "Cerrado Ganado": 112,
@@ -2026,12 +2027,12 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-08-10",
+      "previous": "2026-08-11",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 3,
-        "new_deals": 5,
+        "new_contacts": 0,
+        "new_deals": 0,
         "won_deals": 0,
         "lost_deals": 0,
         "won_value": 0,
@@ -2042,16 +2043,13 @@
         "product_deals": [],
         "advisor_ranking_won": [],
         "advisor_ranking_aportacion": [],
-        "pipeline_stages": {
-          "Llamada Pendiente": 3,
-          "Aceptado/Falta Firma": 2
-        },
-        "pipeline_value": 30250.0,
-        "win_rate": 0.0,
+        "pipeline_stages": {},
+        "pipeline_value": 0.0,
+        "win_rate": null,
         "avg_days_to_win": null,
         "products_closed_count": 0,
         "conversion_clientes": {
-          "total_contacts": 3,
+          "total_contacts": 0,
           "converted_contacts": 0,
           "ratio": 0.0,
           "avg_days_to_convert": 0
@@ -2258,7 +2256,8 @@
         "pipeline_stages": {
           "Llamada Pendiente": 4,
           "Análisis Financiero": 4,
-          "Asesoramiento": 3,
+          "Asesoramiento": 2,
+          "Reasesoramiento": 1,
           "Aceptado/Falta Firma": 6,
           "Cerrado Ganado": 9,
           "Cerrado Perdido": 31
@@ -6870,8 +6869,8 @@
       "id": "862490000009181001",
       "Deal_Name": "Planificación de David Nieto Fernández",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Análisis Financiero",
+      "Probability": 40,
       "Contact_Name": "David Nieto Fernández",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -7215,7 +7214,7 @@
       "id": "862490000008778001",
       "Deal_Name": "Planificación de amable ruedas",
       "Amount": null,
-      "Stage": "Asesoramiento",
+      "Stage": "Reasesoramiento",
       "Probability": 60,
       "Contact_Name": "amable ruedas",
       "Owner": "Jaime Becerra",
