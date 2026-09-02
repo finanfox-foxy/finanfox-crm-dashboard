@@ -1,9 +1,9 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-09-01T11:35:55Z",
-  "generated_at": "2026-09-01",
-  "today": "2026-09-01",
-  "yesterday": "2026-08-31",
+  "timestamp": "2026-09-02T09:21:42Z",
+  "generated_at": "2026-09-02",
+  "today": "2026-09-02",
+  "yesterday": "2026-09-01",
   "this_month": "2026-09",
   "this_quarter_start": "2026-07-01",
   "this_quarter_end": "2026-09-30",
@@ -43,122 +43,53 @@
     },
     "yesterday": {
       "label": "Ayer",
-      "new_contacts": 1,
-      "new_deals": 1,
-      "won_deals": 3,
-      "lost_deals": 6,
-      "won_value": 136250.0,
-      "total_aportacion_won": 136250.0,
-      "product_breakdown": {
-        "Monefit": 133250.0,
-        "Compra Única": 3000.0
-      },
-      "product_count": {
-        "Monefit": 2,
-        "Compra Única": 1
-      },
-      "product_details": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "veces": 2,
-          "total": 133250.0
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "veces": 1,
-          "total": 3000.0
-        }
-      ],
-      "product_deals": [
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 15000.0,
-          "close_date": "2026-08-31",
-          "close_date_source": "deal_Closing_Date",
-          "cliente": "Francisco Javier Sadaba Sanz",
-          "parent_id": "862490000010823165",
-          "fecha_inicio": "2026-08-31",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Compra Única",
-          "entidad": "SilverGold",
-          "total": 3000.0,
-          "close_date": "2026-08-31",
-          "close_date_source": "deal_Closing_Date",
-          "cliente": "Emma Cañada Corts",
-          "parent_id": "862490000010543023",
-          "fecha_inicio": "2026-08-31",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        },
-        {
-          "producto": "Monefit",
-          "entidad": "Monefit",
-          "total": 118250.0,
-          "close_date": "2026-08-31",
-          "close_date_source": "deal_Closing_Date",
-          "cliente": "Francisco Sánchez Gracia",
-          "parent_id": "862490000010331166",
-          "fecha_inicio": "2026-08-31",
-          "objetivo_financiero": "Obtener rentabilidad",
-          "plazo": "Corto Plazo (1-3 años)"
-        }
-      ],
-      "advisor_ranking_won": [
-        {
-          "name": "Jaime Becerra",
-          "won": 3,
-          "total_aportacion": 136250.0
-        }
-      ],
-      "advisor_ranking_aportacion": [
-        {
-          "name": "Jaime Becerra",
-          "won": 3,
-          "total_aportacion": 136250.0
-        }
-      ],
+      "new_contacts": 2,
+      "new_deals": 2,
+      "won_deals": 0,
+      "lost_deals": 2,
+      "won_value": 0,
+      "total_aportacion_won": 0,
+      "product_breakdown": {},
+      "product_count": {},
+      "product_details": [],
+      "product_deals": [],
+      "advisor_ranking_won": [],
+      "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Aceptado/Falta Firma": 1,
-        "Cerrado Ganado": 3,
-        "Cerrado Perdido": 6
+        "Aceptado/Falta Firma": 2,
+        "Cerrado Perdido": 2
       },
-      "pipeline_value": 186250.0,
-      "win_rate": 300.0,
-      "avg_days_to_win": 7.0,
-      "products_closed_count": 3,
+      "pipeline_value": 6000.0,
+      "win_rate": 0.0,
+      "avg_days_to_win": null,
+      "products_closed_count": 0,
       "conversion_clientes": {
-        "total_contacts": 1,
-        "converted_contacts": 3,
-        "ratio": 300.0,
-        "avg_days_to_convert": 95.0
+        "total_contacts": 0,
+        "converted_contacts": 0,
+        "ratio": 0.0,
+        "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "31": 1
+        "1": 2
       },
       "deals_by_day": {
-        "31": 1
+        "1": 2
       },
       "lead_quality": {
-        "ni_total": 3,
-        "na_total": 2,
-        "ni_na_total": 5,
-        "ni_total_rate": 300.0,
-        "na_total_rate": 200.0,
-        "ni_na_total_rate": 500.0,
+        "ni_total": 1,
+        "na_total": 1,
+        "ni_na_total": 2,
+        "ni_total_rate": 50.0,
+        "na_total_rate": 50.0,
+        "ni_na_total_rate": 100.0,
         "ni_7d": 0,
         "na_7d": 0,
         "ni_na_7d": 0,
         "ni_7d_rate": 0.0,
         "na_7d_rate": 0.0,
         "ni_na_7d_rate": 0.0,
-        "ni_pct": 60.0,
-        "na_pct": 40.0,
+        "ni_pct": 50.0,
+        "na_pct": 50.0,
         "ni_7d_pct": 0.0,
         "na_7d_pct": 0.0
       }
@@ -2491,50 +2422,126 @@
   },
   "comparison": {
     "yesterday": {
-      "previous": "2026-08-30",
+      "previous": "2026-08-31",
       "period_label": "anteayer",
       "stats": {
         "label": "Anteayer",
-        "new_contacts": 0,
-        "new_deals": 0,
-        "won_deals": 0,
-        "lost_deals": 0,
-        "won_value": 0,
-        "total_aportacion_won": 0,
-        "product_breakdown": {},
-        "product_count": {},
-        "product_details": [],
-        "product_deals": [],
-        "advisor_ranking_won": [],
-        "advisor_ranking_aportacion": [],
-        "pipeline_stages": {},
-        "pipeline_value": 0.0,
-        "win_rate": null,
-        "avg_days_to_win": null,
-        "products_closed_count": 0,
-        "conversion_clientes": {
-          "total_contacts": 0,
-          "converted_contacts": 0,
-          "ratio": 0.0,
-          "avg_days_to_convert": 0
+        "new_contacts": 1,
+        "new_deals": 1,
+        "won_deals": 3,
+        "lost_deals": 6,
+        "won_value": 136250.0,
+        "total_aportacion_won": 136250.0,
+        "product_breakdown": {
+          "Monefit": 133250.0,
+          "Compra Única": 3000.0
         },
-        "contacts_by_day": {},
-        "deals_by_day": {},
+        "product_count": {
+          "Monefit": 2,
+          "Compra Única": 1
+        },
+        "product_details": [
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "veces": 2,
+            "total": 133250.0
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "veces": 1,
+            "total": 3000.0
+          }
+        ],
+        "product_deals": [
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 15000.0,
+            "close_date": "2026-08-31",
+            "close_date_source": "deal_Closing_Date",
+            "cliente": "Francisco Javier Sadaba Sanz",
+            "parent_id": "862490000010823165",
+            "fecha_inicio": "2026-08-31",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Compra Única",
+            "entidad": "SilverGold",
+            "total": 3000.0,
+            "close_date": "2026-08-31",
+            "close_date_source": "deal_Closing_Date",
+            "cliente": "Emma Cañada Corts",
+            "parent_id": "862490000010543023",
+            "fecha_inicio": "2026-08-31",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          },
+          {
+            "producto": "Monefit",
+            "entidad": "Monefit",
+            "total": 118250.0,
+            "close_date": "2026-08-31",
+            "close_date_source": "deal_Closing_Date",
+            "cliente": "Francisco Sánchez Gracia",
+            "parent_id": "862490000010331166",
+            "fecha_inicio": "2026-08-31",
+            "objetivo_financiero": "Obtener rentabilidad",
+            "plazo": "Corto Plazo (1-3 años)"
+          }
+        ],
+        "advisor_ranking_won": [
+          {
+            "name": "Jaime Becerra",
+            "won": 3,
+            "total_aportacion": 136250.0
+          }
+        ],
+        "advisor_ranking_aportacion": [
+          {
+            "name": "Jaime Becerra",
+            "won": 3,
+            "total_aportacion": 136250.0
+          }
+        ],
+        "pipeline_stages": {
+          "Aceptado/Falta Firma": 1,
+          "Cerrado Ganado": 3,
+          "Cerrado Perdido": 6
+        },
+        "pipeline_value": 186250.0,
+        "win_rate": 300.0,
+        "avg_days_to_win": 7.0,
+        "products_closed_count": 3,
+        "conversion_clientes": {
+          "total_contacts": 1,
+          "converted_contacts": 3,
+          "ratio": 300.0,
+          "avg_days_to_convert": 95.0
+        },
+        "contacts_by_day": {
+          "31": 1
+        },
+        "deals_by_day": {
+          "31": 1
+        },
         "lead_quality": {
-          "ni_total": 0,
-          "na_total": 0,
-          "ni_na_total": 0,
-          "ni_total_rate": 0.0,
-          "na_total_rate": 0.0,
-          "ni_na_total_rate": 0.0,
+          "ni_total": 3,
+          "na_total": 2,
+          "ni_na_total": 5,
+          "ni_total_rate": 300.0,
+          "na_total_rate": 200.0,
+          "ni_na_total_rate": 500.0,
           "ni_7d": 0,
           "na_7d": 0,
           "ni_na_7d": 0,
           "ni_7d_rate": 0.0,
           "na_7d_rate": 0.0,
           "ni_na_7d_rate": 0.0,
-          "ni_pct": 0.0,
-          "na_pct": 0.0,
+          "ni_pct": 60.0,
+          "na_pct": 40.0,
           "ni_7d_pct": 0.0,
           "na_7d_pct": 0.0
         }
@@ -69153,8 +69160,8 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 1,
-          "pct_of_total": 10.0,
+          "count": 2,
+          "pct_of_total": 50.0,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -69163,25 +69170,25 @@
       "terminal": [
         {
           "stage": "Cerrado Ganado",
-          "count": 3,
-          "pct_of_total": 30.0,
+          "count": 0,
+          "pct_of_total": 0.0,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 6,
-          "pct_of_total": 60.0,
+          "count": 2,
+          "pct_of_total": 50.0,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
         }
       ],
-      "active_total": 1,
-      "won_total": 3,
-      "lost_total": 6,
-      "total_pipeline": 10
+      "active_total": 2,
+      "won_total": 0,
+      "lost_total": 2,
+      "total_pipeline": 4
     },
     "this_month": {
       "stage_order": [
