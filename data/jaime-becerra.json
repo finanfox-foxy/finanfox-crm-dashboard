@@ -1,6 +1,6 @@
 {
   "advisor_name": "Jaime Becerra",
-  "timestamp": "2026-09-04T02:06:38Z",
+  "timestamp": "2026-09-04T09:24:03Z",
   "generated_at": "2026-09-04",
   "today": "2026-09-04",
   "yesterday": "2026-09-03",
@@ -19,25 +19,24 @@
         }
       },
       "deals": {
-        "total": 2698,
+        "total": 2700,
         "by_stage": {
-          "Aceptado/Falta Firma": 6,
+          "Aceptado/Falta Firma": 9,
           "Cerrado Ganado": 661,
-          "Cerrado Perdido": 2020,
-          "Llamada Pendiente": 4,
-          "Asesoramiento": 3,
-          "Reasesoramiento": 2,
-          "Revisando Propuesta": 2
+          "Cerrado Perdido": 2024,
+          "Asesoramiento": 2,
+          "Revisando Propuesta": 3,
+          "Llamada Pendiente": 1
         },
         "by_owner": {
-          "Jaime Becerra": 2698
+          "Jaime Becerra": 2700
         },
-        "pipeline_value": 19091227.57,
-        "total_aportaciones": 16966728.0,
-        "avg_deal_size": 7076.07,
+        "pipeline_value": 19147227.57,
+        "total_aportaciones": 17022728.0,
+        "avg_deal_size": 7091.57,
         "closed_won": 661,
         "closed_won_value": 10551452.06,
-        "closed_lost": 2020,
+        "closed_lost": 2024,
         "conversion_rate": 24.5
       }
     },
@@ -89,10 +88,10 @@
     },
     "this_month": {
       "label": "Este Mes",
-      "new_contacts": 2,
-      "new_deals": 2,
+      "new_contacts": 4,
+      "new_deals": 4,
       "won_deals": 0,
-      "lost_deals": 2,
+      "lost_deals": 6,
       "won_value": 0,
       "total_aportacion_won": 0,
       "product_breakdown": {},
@@ -102,10 +101,10 @@
       "advisor_ranking_won": [],
       "advisor_ranking_aportacion": [],
       "pipeline_stages": {
-        "Aceptado/Falta Firma": 2,
-        "Cerrado Perdido": 2
+        "Aceptado/Falta Firma": 4,
+        "Cerrado Perdido": 6
       },
-      "pipeline_value": 6000.0,
+      "pipeline_value": 62000.0,
       "win_rate": 0.0,
       "avg_days_to_win": null,
       "products_closed_count": 0,
@@ -116,26 +115,28 @@
         "avg_days_to_convert": 0
       },
       "contacts_by_day": {
-        "1": 2
+        "1": 2,
+        "4": 2
       },
       "deals_by_day": {
-        "1": 2
+        "1": 2,
+        "4": 2
       },
       "lead_quality": {
-        "ni_total": 1,
-        "na_total": 1,
-        "ni_na_total": 2,
-        "ni_total_rate": 50.0,
+        "ni_total": 3,
+        "na_total": 2,
+        "ni_na_total": 5,
+        "ni_total_rate": 75.0,
         "na_total_rate": 50.0,
-        "ni_na_total_rate": 100.0,
+        "ni_na_total_rate": 125.0,
         "ni_7d": 0,
         "na_7d": 0,
         "ni_na_7d": 0,
         "ni_7d_rate": 0.0,
         "na_7d_rate": 0.0,
         "ni_na_7d_rate": 0.0,
-        "ni_pct": 50.0,
-        "na_pct": 50.0,
+        "ni_pct": 60.0,
+        "na_pct": 40.0,
         "ni_7d_pct": 0.0,
         "na_7d_pct": 0.0
       }
@@ -143,9 +144,9 @@
     "this_quarter": {
       "label": "Este Trimestre",
       "new_contacts": 50,
-      "new_deals": 2511,
+      "new_deals": 2513,
       "won_deals": 28,
-      "lost_deals": 76,
+      "lost_deals": 80,
       "won_value": 537146.0,
       "total_aportacion_won": 537146.0,
       "product_breakdown": {
@@ -547,14 +548,14 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 4,
-        "Asesoramiento": 3,
-        "Reasesoramiento": 1,
-        "Aceptado/Falta Firma": 5,
+        "Llamada Pendiente": 1,
+        "Asesoramiento": 2,
+        "Revisando Propuesta": 1,
+        "Aceptado/Falta Firma": 7,
         "Cerrado Ganado": 28,
-        "Cerrado Perdido": 76
+        "Cerrado Perdido": 80
       },
-      "pipeline_value": 726655.0,
+      "pipeline_value": 782655.0,
       "win_rate": 1.1,
       "avg_days_to_win": 25.5,
       "products_closed_count": 28,
@@ -588,7 +589,7 @@
         "1": 7,
         "2": 3,
         "3": 1,
-        "4": 6,
+        "4": 8,
         "5": 2,
         "6": 3,
         "7": 1,
@@ -613,20 +614,20 @@
         "31": 6
       },
       "lead_quality": {
-        "ni_total": 26,
-        "na_total": 29,
-        "ni_na_total": 55,
-        "ni_total_rate": 1.0,
+        "ni_total": 28,
+        "na_total": 30,
+        "ni_na_total": 58,
+        "ni_total_rate": 1.1,
         "na_total_rate": 1.2,
-        "ni_na_total_rate": 2.2,
+        "ni_na_total_rate": 2.3,
         "ni_7d": 2,
         "na_7d": 13,
         "ni_na_7d": 15,
         "ni_7d_rate": 0.1,
         "na_7d_rate": 0.5,
         "ni_na_7d_rate": 0.6,
-        "ni_pct": 47.3,
-        "na_pct": 52.7,
+        "ni_pct": 48.3,
+        "na_pct": 51.7,
         "ni_7d_pct": 13.3,
         "na_7d_pct": 86.7
       }
@@ -634,9 +635,9 @@
     "this_year": {
       "label": "Este Año",
       "new_contacts": 1896,
-      "new_deals": 2697,
+      "new_deals": 2699,
       "won_deals": 130,
-      "lost_deals": 308,
+      "lost_deals": 312,
       "won_value": 2226345.92,
       "total_aportacion_won": 2221427.0,
       "product_breakdown": {
@@ -2310,15 +2311,14 @@
         }
       ],
       "pipeline_stages": {
-        "Llamada Pendiente": 4,
-        "Asesoramiento": 3,
-        "Reasesoramiento": 2,
-        "Revisando Propuesta": 2,
-        "Aceptado/Falta Firma": 6,
+        "Llamada Pendiente": 1,
+        "Asesoramiento": 2,
+        "Revisando Propuesta": 3,
+        "Aceptado/Falta Firma": 9,
         "Cerrado Ganado": 130,
-        "Cerrado Perdido": 308
+        "Cerrado Perdido": 312
       },
-      "pipeline_value": 2737420.43,
+      "pipeline_value": 2793420.43,
       "win_rate": 4.8,
       "avg_days_to_win": -51.0,
       "products_closed_count": 132,
@@ -2364,7 +2364,7 @@
         "1": 11,
         "2": 9,
         "3": 5,
-        "4": 10,
+        "4": 12,
         "5": 6,
         "6": 6,
         "7": 12,
@@ -2394,20 +2394,20 @@
         "31": 7
       },
       "lead_quality": {
-        "ni_total": 93,
-        "na_total": 89,
-        "ni_na_total": 182,
-        "ni_total_rate": 3.4,
+        "ni_total": 95,
+        "na_total": 90,
+        "ni_na_total": 185,
+        "ni_total_rate": 3.5,
         "na_total_rate": 3.3,
-        "ni_na_total_rate": 6.7,
+        "ni_na_total_rate": 6.9,
         "ni_7d": 12,
         "na_7d": 28,
         "ni_na_7d": 40,
         "ni_7d_rate": 0.4,
         "na_7d_rate": 1.0,
         "ni_na_7d_rate": 1.5,
-        "ni_pct": 51.1,
-        "na_pct": 48.9,
+        "ni_pct": 51.4,
+        "na_pct": 48.6,
         "ni_7d_pct": 30.0,
         "na_7d_pct": 70.0
       }
@@ -2750,7 +2750,6 @@
           }
         ],
         "pipeline_stages": {
-          "Llamada Pendiente": 1,
           "Asesoramiento": 1,
           "Aceptado/Falta Firma": 2,
           "Cerrado Ganado": 19,
@@ -3523,9 +3522,8 @@
           }
         ],
         "pipeline_stages": {
-          "Reasesoramiento": 1,
           "Revisando Propuesta": 2,
-          "Aceptado/Falta Firma": 1,
+          "Aceptado/Falta Firma": 2,
           "Cerrado Ganado": 49,
           "Cerrado Perdido": 108
         },
@@ -6962,6 +6960,52 @@
   },
   "deals": [
     {
+      "id": "862490000011213369",
+      "Deal_Name": "Fernando Alves Gonzalez - Monefit",
+      "Amount": 52000,
+      "Stage": "Aceptado/Falta Firma",
+      "Probability": 85,
+      "Contact_Name": "Fernando Alves Gonzalez",
+      "Owner": "Jaime Becerra",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": 52000,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": null,
+      "Created_Time": "2026-09-04T11:09:13+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000005153556"
+    },
+    {
+      "id": "862490000011213347",
+      "Deal_Name": "Daniel Espejo Molina - SilverGold compra extra",
+      "Amount": 4000,
+      "Stage": "Aceptado/Falta Firma",
+      "Probability": 85,
+      "Contact_Name": "Daniel Espejo Molina",
+      "Owner": "Jaime Becerra",
+      "Type": "Cliente existente",
+      "Total_Aportaciones": 4000,
+      "Total_Suscripci_n": null,
+      "Motivo_de_cierre_perdido": null,
+      "Fuente": null,
+      "Created_Time": "2026-09-04T11:07:33+02:00",
+      "Closing_Date": null,
+      "Tag": [
+        "Finanfox"
+      ],
+      "Lead_Conversion_Time": null,
+      "Overall_Sales_Duration": null,
+      "Sales_Cycle_Duration": null,
+      "_contact_id": "862490000005505001"
+    },
+    {
       "id": "862490000011196046",
       "Deal_Name": "Manuel Eduardo Lopez Iribarren - SilverGold compra plata",
       "Amount": 3000,
@@ -7425,23 +7469,23 @@
       "id": "862490000009436222",
       "Deal_Name": "Planificación de Jairo Rodrigo Ramos Delgado",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Jairo Rodrigo Ramos Delgado",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No apareció",
       "Fuente": "Bookings",
       "Created_Time": "2026-08-09T13:09:37+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-09-04",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 26,
+      "Sales_Cycle_Duration": 26,
       "_contact_id": "862490000009413009"
     },
     {
@@ -8207,23 +8251,23 @@
       "id": "862490000008280013",
       "Deal_Name": "Planificación de Guillermo Mateu",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Guillermo Mateu",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-07-22T00:13:11+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-09-04",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 44,
+      "Sales_Cycle_Duration": 44,
       "_contact_id": "862490000008275003"
     },
     {
@@ -64327,23 +64371,23 @@
       "id": "862490000007362006",
       "Deal_Name": "Planificación de Manuel Trigás",
       "Amount": null,
-      "Stage": "Llamada Pendiente",
-      "Probability": 10,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "Manuel Trigás",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "No interesado",
       "Fuente": "Bookings",
       "Created_Time": "2026-07-08T21:35:37+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-09-04",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 58,
+      "Sales_Cycle_Duration": 58,
       "_contact_id": "862490000007368003"
     },
     {
@@ -64465,8 +64509,8 @@
       "id": "862490000007142095",
       "Deal_Name": "Planificación de David Díaz Arribas",
       "Amount": null,
-      "Stage": "Asesoramiento",
-      "Probability": 60,
+      "Stage": "Revisando Propuesta",
+      "Probability": 75,
       "Contact_Name": "David Díaz Arribas",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -64511,23 +64555,23 @@
       "id": "862490000007140103",
       "Deal_Name": "Planificación de María Jesús Del rey vacas",
       "Amount": null,
-      "Stage": "Reasesoramiento",
-      "Probability": 60,
+      "Stage": "Cerrado Perdido",
+      "Probability": 0,
       "Contact_Name": "María Jesús Del rey vacas",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
       "Total_Aportaciones": null,
       "Total_Suscripci_n": null,
-      "Motivo_de_cierre_perdido": null,
+      "Motivo_de_cierre_perdido": "Más adelante",
       "Fuente": "Bookings",
       "Created_Time": "2026-07-05T09:23:49+02:00",
-      "Closing_Date": null,
+      "Closing_Date": "2026-09-04",
       "Tag": [
         "Finanfox"
       ],
       "Lead_Conversion_Time": null,
-      "Overall_Sales_Duration": null,
-      "Sales_Cycle_Duration": null,
+      "Overall_Sales_Duration": 61,
+      "Sales_Cycle_Duration": 61,
       "_contact_id": "862490000007147007"
     },
     {
@@ -65337,7 +65381,7 @@
     },
     {
       "id": "862490000006155157",
-      "Deal_Name": "Montserrat Ponce y Manuel Ruiz Sanchez - SilverGold",
+      "Deal_Name": "Montserrat Ponce y Manuel Ruiz Sanchez - SilverGold oro",
       "Amount": 7000,
       "Stage": "Aceptado/Falta Firma",
       "Probability": 85,
@@ -66443,8 +66487,8 @@
       "id": "862490000005068118",
       "Deal_Name": "Planificación de Victoria López Morejón",
       "Amount": null,
-      "Stage": "Reasesoramiento",
-      "Probability": 60,
+      "Stage": "Aceptado/Falta Firma",
+      "Probability": 85,
       "Contact_Name": "Victoria López Morejón",
       "Owner": "Jaime Becerra",
       "Type": "Cliente existente",
@@ -69161,8 +69205,8 @@
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 2,
-          "pct_of_total": 50.0,
+          "count": 4,
+          "pct_of_total": 40.0,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
@@ -69179,17 +69223,17 @@
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 2,
-          "pct_of_total": 50.0,
+          "count": 6,
+          "pct_of_total": 60.0,
           "conversion_from_prev": null,
           "conversion_from_top": null,
           "cmp_count": null
         }
       ],
-      "active_total": 2,
+      "active_total": 4,
       "won_total": 0,
-      "lost_total": 2,
-      "total_pipeline": 4
+      "lost_total": 6,
+      "total_pipeline": 10
     },
     "this_quarter": {
       "stage_order": [
@@ -69205,8 +69249,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 4,
-          "pct_of_total": 3.4,
+          "count": 1,
+          "pct_of_total": 0.8,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -69221,59 +69265,59 @@
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 2.6,
+          "count": 2,
+          "pct_of_total": 1.7,
           "conversion_from_prev": null,
-          "conversion_from_top": 75.0,
+          "conversion_from_top": 200.0,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 1,
-          "pct_of_total": 0.9,
-          "conversion_from_prev": 33.3,
-          "conversion_from_top": 25.0,
-          "cmp_count": 1
-        },
-        {
-          "stage": "Revisando Propuesta",
           "count": 0,
           "pct_of_total": 0.0,
           "conversion_from_prev": 0.0,
           "conversion_from_top": 0.0,
+          "cmp_count": null
+        },
+        {
+          "stage": "Revisando Propuesta",
+          "count": 1,
+          "pct_of_total": 0.8,
+          "conversion_from_prev": null,
+          "conversion_from_top": 100.0,
           "cmp_count": 2
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 5,
-          "pct_of_total": 4.3,
+          "count": 7,
+          "pct_of_total": 5.9,
           "conversion_from_prev": null,
-          "conversion_from_top": 125.0,
-          "cmp_count": 1
+          "conversion_from_top": 700.0,
+          "cmp_count": 2
         }
       ],
       "terminal": [
         {
           "stage": "Cerrado Ganado",
           "count": 28,
-          "pct_of_total": 23.9,
+          "pct_of_total": 23.5,
           "conversion_from_prev": null,
-          "conversion_from_top": 700.0,
+          "conversion_from_top": 2800.0,
           "cmp_count": 49
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 76,
-          "pct_of_total": 65.0,
+          "count": 80,
+          "pct_of_total": 67.2,
           "conversion_from_prev": null,
-          "conversion_from_top": 1900.0,
+          "conversion_from_top": 8000.0,
           "cmp_count": 108
         }
       ],
-      "active_total": 13,
+      "active_total": 11,
       "won_total": 28,
-      "lost_total": 76,
-      "total_pipeline": 117
+      "lost_total": 80,
+      "total_pipeline": 119
     },
     "this_year": {
       "stage_order": [
@@ -69289,8 +69333,8 @@
       "details": [
         {
           "stage": "Llamada Pendiente",
-          "count": 4,
-          "pct_of_total": 0.9,
+          "count": 1,
+          "pct_of_total": 0.2,
           "conversion_from_prev": null,
           "conversion_from_top": 100.0,
           "cmp_count": null
@@ -69305,34 +69349,34 @@
         },
         {
           "stage": "Asesoramiento",
-          "count": 3,
-          "pct_of_total": 0.7,
+          "count": 2,
+          "pct_of_total": 0.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 75.0,
+          "conversion_from_top": 200.0,
           "cmp_count": null
         },
         {
           "stage": "Reasesoramiento",
-          "count": 2,
-          "pct_of_total": 0.4,
-          "conversion_from_prev": 66.7,
-          "conversion_from_top": 50.0,
+          "count": 0,
+          "pct_of_total": 0.0,
+          "conversion_from_prev": 0.0,
+          "conversion_from_top": 0.0,
           "cmp_count": null
         },
         {
           "stage": "Revisando Propuesta",
-          "count": 2,
-          "pct_of_total": 0.4,
-          "conversion_from_prev": 100.0,
-          "conversion_from_top": 50.0,
+          "count": 3,
+          "pct_of_total": 0.7,
+          "conversion_from_prev": null,
+          "conversion_from_top": 300.0,
           "cmp_count": null
         },
         {
           "stage": "Aceptado/Falta Firma",
-          "count": 6,
-          "pct_of_total": 1.3,
+          "count": 9,
+          "pct_of_total": 2.0,
           "conversion_from_prev": null,
-          "conversion_from_top": 150.0,
+          "conversion_from_top": 900.0,
           "cmp_count": null
         }
       ],
@@ -69340,24 +69384,24 @@
         {
           "stage": "Cerrado Ganado",
           "count": 130,
-          "pct_of_total": 28.6,
+          "pct_of_total": 28.4,
           "conversion_from_prev": null,
-          "conversion_from_top": 3250.0,
+          "conversion_from_top": 13000.0,
           "cmp_count": 244
         },
         {
           "stage": "Cerrado Perdido",
-          "count": 308,
-          "pct_of_total": 67.7,
+          "count": 312,
+          "pct_of_total": 68.3,
           "conversion_from_prev": null,
-          "conversion_from_top": 7700.0,
+          "conversion_from_top": 31200.0,
           "cmp_count": 1374
         }
       ],
-      "active_total": 17,
+      "active_total": 15,
       "won_total": 130,
-      "lost_total": 308,
-      "total_pipeline": 455
+      "lost_total": 312,
+      "total_pipeline": 457
     }
   }
 }
