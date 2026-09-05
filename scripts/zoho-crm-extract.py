@@ -953,7 +953,10 @@ def main():
         'Estado_civil', 'Profesi_n', 'Club', 'Divisi_n',
         'Plantilla_Bienvenida_enviada', 'Visitor_Score', 'Days_Visited',
         'Average_Time_Spent_Minutes', 'Created_Time', 'Modified_Time',
-        'Last_Activity_Time'
+        'Last_Activity_Time',
+        'GCLID', 'GCLID1', 'FBCLID',
+        'Referrer',
+        'UTM_SOURCE', 'UTM_MEDIUM', 'UTM_CAMPAIGN', 'UTM_CONTENT', 'UTM_TERM'
     ]
     contacts = [simplify(c, contact_fields) for c in contacts_raw]
     print(f"    -> {len(contacts)} contactos")
